@@ -86,16 +86,21 @@ describe('CIAClassificationApp', () => {
   test('error handling', () => {
     render(<CIAClassificationApp />);
     const select = screen.getByLabelText(/Availability Level/i);
-    // Initial state check
+    
+    // Initial value should be "None"
     expect(select).toHaveValue('None');
-    // Try to set invalid value
+    
+    // Simulate attempting to set an invalid value
     fireEvent.change(select, { target: { value: 'Invalid' } });
-    // Should remain at 'None' since 'Invalid' is not a valid option
+    
+    // Value should remain "None" after attempting to set invalid value
     expect(select).toHaveValue('None');
-    // Cost should remain at initial value
+    
+    // Cost estimates should remain at initial values
     expect(screen.getByText(/Estimated CAPEX/i)).toHaveTextContent('$10,000');
+    expect(screen.getByText(/Estimated OPEX/i)).toHaveTextContent('$500');
   });
-
+  
   test('useMemo hook with different combinations', () => {
     render(<CIAClassificationApp />);
     const availabilitySelect = screen.getByLabelText(/Availability Level/i);
