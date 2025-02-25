@@ -11,9 +11,9 @@ const CIAClassificationApp: React.FC = () => {
 
   const toggleDarkMode = () => setDarkMode((prev) => !prev);
 
-  const availabilityDetail = availabilityOptions[availability];
-  const integrityDetail = integrityOptions[integrity];
-  const confidentialityDetail = confidentialityOptions[confidentiality];
+  const availabilityDetail = availabilityOptions[availability] || availabilityOptions["None"];
+  const integrityDetail = integrityOptions[integrity] || integrityOptions["None"];
+  const confidentialityDetail = confidentialityOptions[confidentiality] || confidentialityOptions["None"];
 
   // Memoize cost calculations to improve performance
   const { totalCapex, totalOpex } = useMemo(() => {
