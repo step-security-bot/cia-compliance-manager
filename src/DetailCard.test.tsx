@@ -8,7 +8,7 @@ type Level = 'None' | 'Basic' | 'Moderate' | 'High' | 'Very High';
 
 const levels = {
   'None': {
-    bg: '#f3f4f6',
+    bg: 'rgb(229, 231, 235)', // Updated to match actual color
     text: '#374151'
   },
   'Basic': {
