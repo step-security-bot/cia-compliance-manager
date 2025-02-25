@@ -8,24 +8,24 @@ type Level = 'None' | 'Basic' | 'Moderate' | 'High' | 'Very High';
 
 const levels = {
   'None': {
-    bg: 'rgb(229, 231, 235)', // Updated to match actual color
-    text: '#374151'
+    bg: "#e5e7eb",
+    text: "#374151"
   },
   'Basic': {
-    bg: '#dbeafe',
-    text: '#1e40af'
+    bg: "#d1fae5",
+    text: "#065f46"
   },
   'Moderate': {
-    bg: '#fef3c7',
-    text: '#92400e'
+    bg: "#fef3c7",
+    text: "#92400e"
   },
   'High': {
-    bg: '#fee2e2',
-    text: '#991b1b'
+    bg: "#ffedd5",
+    text: "#c2410c"
   },
   'Very High': {
-    bg: '#fde2e2',
-    text: '#7f1d1d'
+    bg: "#fee2e2",
+    text: "#991b1b"
   }
 } as const;
 
