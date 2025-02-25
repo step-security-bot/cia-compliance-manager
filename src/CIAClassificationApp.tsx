@@ -2,6 +2,7 @@ import React, { useState, useMemo } from "react";
 import Selection from "./components/Selection";
 import DetailCard from "./components/DetailCard";
 import { availabilityOptions, integrityOptions, confidentialityOptions } from "./hooks/useCIAOptions";
+import { CIADetails } from "./hooks/useCIAOptions";
 
 const CIAClassificationApp: React.FC = () => {
   const [availability, setAvailability] = useState<string>("None");
