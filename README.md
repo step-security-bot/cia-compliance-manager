@@ -1,6 +1,12 @@
 # cia-compliance-manager
 The CIA Compliance Manager is an application that helps organizations assess and manage the availability, integrity, and confidentiality of their systems and data based on customizable security levels, providing cost estimates, business impact assessments, and technical implementation details.
 
+## Badges
+
+[![License](https://img.shields.io/github/license/Hack23/cia-compliance-manager.svg)](https://github.com/Hack23/cia-compliance-manager/raw/master/LICENSE.md) [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/Hack23/cia-compliance-manager/badge)](https://scorecard.dev/viewer/?uri=github.com/Hack23/cia-compliance-manager)
+[![Scorecard supply-chain security](https://github.com/Hack23/cia-compliance-manager/actions/workflows/scorecard.yml/badge.svg?branch=main)](https://github.com/Hack23/cia-compliance-manager/actions/workflows/scorecard.yml)
+
+
 ### `npm start`
 
 Runs the app in the development mode.\
