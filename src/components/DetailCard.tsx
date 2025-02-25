@@ -3,7 +3,7 @@ import React from "react";
 interface DetailCardProps {
   category: string;
   level: string;
-  details: {
+  details?: {
     capex: number;
     opex: number;
     impact: string;
@@ -24,19 +24,27 @@ const DetailCard: React.FC<DetailCardProps> = ({ category, level, details }) => 
   <div
     className="p-4 border border-gray-300 dark:border-gray-700 rounded-md"
     style={{ backgroundColor: levelColors[level].bg }}
+    role="region"
+    tabIndex={0}
   >
     <h3 className="font-semibold" style={{ color: levelColors[level].text }}>
       {category} - {level}
     </h3>
-    <p className="text-sm text-gray-700 dark:text-gray-200">
-      CAPEX: {details.capex}% | OPEX: {details.opex}%
-    </p>
-    <p className="mt-1" style={{ color: levelColors[level].text }}>
-      Impact: {details.impact}
-    </p>
-    <p className="mt-1 text-gray-600 dark:text-gray-400">
-      Technical: {details.technical}
-    </p>
+    {details ? (
+      <>
+        <p className="text-sm text-gray-700 dark:text-gray-200">
+          CAPEX: {details.capex}% | OPEX: {details.opex}%
+        </p>
+        <p className="mt-1" style={{ color: levelColors[level].text }}>
+          Impact: {details.impact}
+        </p>
+        <p className="mt-1 text-gray-600 dark:text-gray-400">
+          Technical: {details.technical}
+        </p>
+      </>
+    ) : (
+      <p className="text-sm text-gray-700 dark:text-gray-200">No details available</p>
+    )}
   </div>
 );
 
