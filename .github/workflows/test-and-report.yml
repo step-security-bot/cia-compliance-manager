@@ -112,14 +112,6 @@ jobs:
         with:
           path: artifacts
 
-      - name: Publish test results
-        uses: EnricoMi/publish-unit-test-result-action@v2
-        if: always()
-        with:
-          files: |
-            artifacts/**/junit.xml
-            artifacts/**/test-results.xml
-
       - name: Generate combined coverage report
         run: |
           npm install -g nyc
