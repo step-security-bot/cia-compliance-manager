@@ -134,3 +134,4 @@ build/*
 cypress/videos
 cypress/screenshots
 cypress/downloads
+cypress/results/junit.xml
