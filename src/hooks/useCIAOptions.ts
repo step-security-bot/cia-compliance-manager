@@ -1,3 +1,11 @@
+export type CIADetails = {
+  capex: number;
+  opex: number;
+  impact: string;
+  technical: string;
+  description: string;
+};
+
 export const availabilityOptions: Record<string, CIADetails> = {
   None: {
     capex: 0,
