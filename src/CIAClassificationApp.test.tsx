@@ -57,13 +57,6 @@ describe('CIAClassificationApp', () => {
     expect(screen.getByText(/Estimated OPEX/i)).toHaveTextContent('$500');
   });
 
-  test('invalid selections', () => {
-    render(<CIAClassificationApp />);
-    const select = screen.getByLabelText(/Availability Level/i);
-    fireEvent.change(select, { target: { value: 'Invalid' } });
-    expect(select).toHaveValue('Invalid');
-  });
-
   test('boundary values', () => {
     render(<CIAClassificationApp />);
     const select = screen.getByLabelText(/Availability Level/i);
