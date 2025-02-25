@@ -5,14 +5,16 @@ interface SelectionProps {
   options: Record<string, any>;
   value: string;
   onChange: (value: string) => void;
+  id: string;
 }
 
-const Selection: React.FC<SelectionProps> = ({ label, options, value, onChange }) => (
+const Selection: React.FC<SelectionProps> = ({ label, options, value, onChange, id }) => (
   <div className="flex flex-col">
-    <label className="mb-2 font-medium text-gray-700 dark:text-gray-300">
+    <label htmlFor={id} className="mb-2 font-medium text-gray-700 dark:text-gray-300">
       {label}
     </label>
     <select
+      id={id}
       value={value}
       onChange={(e) => onChange(e.target.value)}
       className="p-2 border border-gray-300 dark:border-gray-700 rounded-md"
