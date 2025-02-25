@@ -47,4 +47,53 @@ describe('CIAClassificationApp', () => {
     render(<CIAClassificationApp />);
     expect(screen.getByText(/Detailed Analysis/i)).toBeInTheDocument();
   });
+
+  test('initial state', () => {
+    render(<CIAClassificationApp />);
+    expect(screen.getByLabelText(/Availability Level/i)).toHaveValue('None');
+    expect(screen.getByLabelText(/Integrity Level/i)).toHaveValue('None');
+    expect(screen.getByLabelText(/Confidentiality Level/i)).toHaveValue('None');
+    expect(screen.getByText(/Estimated CAPEX/i)).toHaveTextContent('$10,000');
+    expect(screen.getByText(/Estimated OPEX/i)).toHaveTextContent('$500');
+  });
+
+  test('invalid selections', () => {
+    render(<CIAClassificationApp />);
+    const select = screen.getByLabelText(/Availability Level/i);
+    fireEvent.change(select, { target: { value: 'Invalid' } });
+    expect(select).toHaveValue('Invalid');
+  });
+
+  test('boundary values', () => {
+    render(<CIAClassificationApp />);
+    const select = screen.getByLabelText(/Availability Level/i);
+    fireEvent.change(select, { target: { value: 'Very High' } });
+    expect(screen.getByText(/Estimated CAPEX/i)).toHaveTextContent('$1,000,000');
+    expect(screen.getByText(/Estimated OPEX/i)).toHaveTextContent('$50,000');
+  });
+
+  test('performance optimization', () => {
+    render(<CIAClassificationApp />);
+    const select = screen.getByLabelText(/Availability Level/i);
+    fireEvent.change(select, { target: { value: 'High' } });
+    expect(screen.getByText(/Estimated CAPEX/i)).toHaveTextContent('$1,000,000');
+    fireEvent.change(select, { target: { value: 'High' } });
+    expect(screen.getByText(/Estimated CAPEX/i)).toHaveTextContent('$1,000,000');
+  });
+
+  test('conditional rendering', () => {
+    render(<CIAClassificationApp />);
+    const select = screen.getByLabelText(/Availability Level/i);
+    fireEvent.change(select, { target: { value: 'None' } });
+    expect(screen.getByText(/Small solution estimation based on lower risk configuration./i)).toBeInTheDocument();
+    fireEvent.change(select, { target: { value: 'Very High' } });
+    expect(screen.getByText(/Large solution estimation for high-criticality deployment./i)).toBeInTheDocument();
+  });
+
+  test('error handling', () => {
+    render(<CIAClassificationApp />);
+    const select = screen.getByLabelText(/Availability Level/i);
+    fireEvent.change(select, { target: { value: 'Invalid' } });
+    expect(screen.getByText(/Estimated CAPEX/i)).toHaveTextContent('$10,000');
+  });
 });
