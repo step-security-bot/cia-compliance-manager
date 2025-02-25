@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import DetailCard from './DetailCard.tsx';
+import DetailCard from './components/DetailCard';
 
 describe('DetailCard', () => {
   const mockDetails = {

@@ -12,6 +12,7 @@ describe('Selection Component', () => {
         options={availabilityOptions}
         value="None"
         onChange={() => {}}
+        id="availability"
       />
     );
     expect(screen.getByText(/Availability Level/i)).toBeInTheDocument();
@@ -24,6 +25,7 @@ describe('Selection Component', () => {
         options={availabilityOptions}
         value="None"
         onChange={() => {}}
+        id="availability"
       />
     );
     expect(screen.getByText(/No Availability Controls/i)).toBeInTheDocument();
@@ -41,6 +43,7 @@ describe('Selection Component', () => {
         options={availabilityOptions}
         value="None"
         onChange={handleChange}
+        id="availability"
       />
     );
     fireEvent.change(screen.getByLabelText(/Availability Level/i), {

@@ -54,18 +54,21 @@ const CIAClassificationApp: React.FC = () => {
               options={availabilityOptions}
               value={availability}
               onChange={setAvailability}
+              id="availability"
             />
             <Selection
               label="Integrity Level"
               options={integrityOptions}
               value={integrity}
               onChange={setIntegrity}
+              id="integrity"
             />
             <Selection
               label="Confidentiality Level"
               options={confidentialityOptions}
               value={confidentiality}
               onChange={setConfidentiality}
+              id="confidentiality"
             />
           </div>
           <div className="mb-8">
