@@ -96,4 +96,18 @@ describe('CIAClassificationApp', () => {
     fireEvent.change(select, { target: { value: 'Invalid' } });
     expect(screen.getByText(/Estimated CAPEX/i)).toHaveTextContent('$10,000');
   });
+
+  test('useMemo hook with different combinations', () => {
+    render(<CIAClassificationApp />);
+    const availabilitySelect = screen.getByLabelText(/Availability Level/i);
+    const integritySelect = screen.getByLabelText(/Integrity Level/i);
+    const confidentialitySelect = screen.getByLabelText(/Confidentiality Level/i);
+
+    fireEvent.change(availabilitySelect, { target: { value: 'High' } });
+    fireEvent.change(integritySelect, { target: { value: 'Moderate' } });
+    fireEvent.change(confidentialitySelect, { target: { value: 'Very High' } });
+
+    expect(screen.getByText(/Estimated CAPEX/i)).toHaveTextContent('$1,000,000');
+    expect(screen.getByText(/Estimated OPEX/i)).toHaveTextContent('$50,000');
+  });
 });
