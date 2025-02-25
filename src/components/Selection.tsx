@@ -9,6 +9,22 @@ interface SelectionProps {
   "data-testid"?: string;
 }
 
+// Helper function to get icon for security level
+const getLevelIcon = (level: string): string => {
+  switch (level) {
+    case "Very High":
+      return "🔒"; // Locked
+    case "High":
+      return "🔐"; // Lock with key
+    case "Moderate":
+      return "⚠️"; // Warning
+    case "Low":
+      return "ℹ️"; // Info
+    default:
+      return "";
+  }
+};
+
 const Selection: React.FC<SelectionProps> = ({
   label,
   options,
@@ -37,7 +53,7 @@ const Selection: React.FC<SelectionProps> = ({
     >
       {Object.entries(options).map(([key, option]) => (
         <option key={key} value={key}>
-          {key}
+          {key} {getLevelIcon(key)}
         </option>
       ))}
     </select>

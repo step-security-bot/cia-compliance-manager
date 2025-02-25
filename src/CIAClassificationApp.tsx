@@ -1,12 +1,13 @@
 import React, { useState, useMemo } from "react";
 import Selection from "./components/Selection";
 import DetailCard from "./components/DetailCard";
+import RadarChart from "./components/RadarChart";
 import {
   availabilityOptions,
   integrityOptions,
   confidentialityOptions,
-  CIADetails,
 } from "./hooks/useCIAOptions";
+import { CIADetails } from "./types/cia"; // Import directly from types file
 
 const CIAClassificationApp: React.FC = () => {
   const [availability, setAvailability] = useState<string>("None");
@@ -104,6 +105,13 @@ const CIAClassificationApp: React.FC = () => {
               onChange={setConfidentiality}
               id="confidentiality"
               data-testid="confidentiality-select"
+            />
+          </div>
+          <div className="mb-8">
+            <RadarChart
+              availability={availability}
+              integrity={integrity}
+              confidentiality={confidentiality}
             />
           </div>
           <div className="mb-8">

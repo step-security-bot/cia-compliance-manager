@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Mocha Tests" time="5.676" tests="6" failures="0">
-  <testsuite name="Root Suite" timestamp="2025-02-25T11:45:50" tests="0" file="cypress/e2e/CIAClassificationApp.cy.ts" time="0.000" failures="0">
+<testsuites name="Mocha Tests" time="5.966" tests="6" failures="0">
+  <testsuite name="Root Suite" timestamp="2025-02-25T23:29:19" tests="0" file="cypress/e2e/CIAClassificationApp.cy.ts" time="0.000" failures="0">
   </testsuite>
-  <testsuite name="CIA Classification App" timestamp="2025-02-25T11:45:50" tests="1" time="0.000" failures="0">
-    <testcase name="CIA Classification App should load the application successfully" time="1.725" classname="should load the application successfully">
+  <testsuite name="CIA Classification App" timestamp="2025-02-25T23:29:19" tests="1" time="0.000" failures="0">
+    <testcase name="CIA Classification App should load the application successfully" time="1.182" classname="should load the application successfully">
     </testcase>
   </testsuite>
-  <testsuite name="Classification Controls" timestamp="2025-02-25T11:45:52" tests="2" time="2.646" failures="0">
-    <testcase name="CIA Classification App Classification Controls should handle all CIA level selections" time="2.273" classname="should handle all CIA level selections">
+  <testsuite name="Classification Controls" timestamp="2025-02-25T23:29:21" tests="2" time="3.066" failures="0">
+    <testcase name="CIA Classification App Classification Controls should handle all CIA level selections" time="2.630" classname="should handle all CIA level selections">
     </testcase>
-    <testcase name="CIA Classification App Classification Controls should update cost estimates when levels change" time="0.275" classname="should update cost estimates when levels change">
-    </testcase>
-  </testsuite>
-  <testsuite name="Theme Toggle" timestamp="2025-02-25T11:45:55" tests="1" time="0.356" failures="0">
-    <testcase name="CIA Classification App Theme Toggle should toggle between light and dark modes" time="0.315" classname="should toggle between light and dark modes">
+    <testcase name="CIA Classification App Classification Controls should update cost estimates when levels change" time="0.314" classname="should update cost estimates when levels change">
     </testcase>
   </testsuite>
-  <testsuite name="Form Submission" timestamp="2025-02-25T11:45:55" tests="1" time="0.568" failures="0">
-    <testcase name="CIA Classification App Form Submission should update analysis when levels change" time="0.521" classname="should update analysis when levels change">
+  <testsuite name="Theme Toggle" timestamp="2025-02-25T23:29:24" tests="1" time="0.419" failures="0">
+    <testcase name="CIA Classification App Theme Toggle should toggle between light and dark modes" time="0.371" classname="should toggle between light and dark modes">
     </testcase>
   </testsuite>
-  <testsuite name="Analysis Display" timestamp="2025-02-25T11:45:55" tests="1" time="0.310" failures="0">
-    <testcase name="CIA Classification App Analysis Display should show detailed analysis based on selections" time="0.254" classname="should show detailed analysis based on selections">
+  <testsuite name="Form Submission" timestamp="2025-02-25T23:29:24" tests="1" time="0.679" failures="0">
+    <testcase name="CIA Classification App Form Submission should update analysis when levels change" time="0.592" classname="should update analysis when levels change">
+    </testcase>
+  </testsuite>
+  <testsuite name="Analysis Display" timestamp="2025-02-25T23:29:25" tests="1" time="0.569" failures="0">
+    <testcase name="CIA Classification App Analysis Display should show detailed analysis based on selections" time="0.384" classname="should show detailed analysis based on selections">
     </testcase>
   </testsuite>
 </testsuites>

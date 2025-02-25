@@ -3,6 +3,22 @@ import { render, screen, fireEvent, within } from "./utils/test-utils";
 import "@testing-library/jest-dom";
 import CIAClassificationApp from "./CIAClassificationApp";
 
+// Mock getContext to prevent errors
+HTMLCanvasElement.prototype.getContext = jest.fn(() => null);
+
+// Mock Chart.js
+jest.mock("chart.js/auto", () => {
+  return class Chart {
+    static defaults: { color: string } = { color: "#666" }; // Fix: Add type annotation
+    destroy = jest.fn();
+    constructor() {
+      return {
+        destroy: jest.fn(),
+      };
+    }
+  };
+});
+
 describe("CIAClassificationApp", () => {
   beforeEach(() => {
     render(<CIAClassificationApp />);
@@ -139,6 +155,92 @@ describe("CIAClassificationApp", () => {
         within(recommendationsSection).getByText(/Very High/)
       ).toBeInTheDocument();
       expect(analysisSection).toBeVisible();
+    });
+  });
+
+  describe("DetailCard Interaction", () => {
+    it("expands detail cards on click", () => {
+      const firstDetailCard = screen.getAllByRole("button")[1]; // First card after theme toggle button
+
+      // Find the content div and check if it has the 'hidden' class
+      const contentDiv = screen
+        .getAllByText(/📝 Description:/)[0]
+        .closest("div");
+      // Handle potential null with null assertion operator since we know it exists
+      expect(contentDiv!).toHaveClass("hidden");
+
+      // Click to expand
+      fireEvent.click(firstDetailCard);
+
+      // Now it should not have the hidden class
+      expect(contentDiv!).not.toHaveClass("hidden");
+
+      // Click to collapse
+      fireEvent.click(firstDetailCard);
+
+      // Hidden again
+      expect(contentDiv!).toHaveClass("hidden");
+    });
+
+    it("shows recommendations in detail cards", () => {
+      const availabilitySelect = screen.getByTestId("availability-select");
+      fireEvent.change(availabilitySelect, { target: { value: "High" } });
+
+      // Get the first DetailCard (Availability) and expand it
+      const detailCards = screen.getAllByRole("button");
+      const availabilityCard = detailCards.find((card) =>
+        within(card).queryByText(/Availability/)
+      );
+
+      // Ensure availabilityCard is not undefined before clicking
+      expect(availabilityCard).not.toBeUndefined();
+
+      // Now click to expand with a type guard
+      if (availabilityCard) {
+        fireEvent.click(availabilityCard);
+      }
+
+      // Get all recommendation elements and select the first one (Availability)
+      const recommendationElements = screen.getAllByText(/💡 Recommendations:/);
+      expect(recommendationElements[0]).toBeVisible();
+
+      // Check for High availability recommendations
+      const cardContainer =
+        recommendationElements[0].closest("div")?.parentElement;
+      // Add null check before using within
+      if (cardContainer) {
+        expect(
+          within(cardContainer).getByText(/Multi-region deployment/)
+        ).toBeVisible();
+      }
+    });
+  });
+
+  describe("RadarChart", () => {
+    it("renders radar chart component", () => {
+      expect(screen.getByTestId("radar-chart")).toBeInTheDocument();
+    });
+
+    it("renders radar chart after selection changes", () => {
+      const availabilitySelect = screen.getByTestId("availability-select");
+      fireEvent.change(availabilitySelect, { target: { value: "High" } });
+      expect(screen.getByTestId("radar-chart")).toBeInTheDocument();
+    });
+
+    it("updates after selection changes", () => {
+      const availabilitySelect = screen.getByTestId("availability-select");
+      const integritySelect = screen.getByTestId("integrity-select");
+      const confidentialitySelect = screen.getByTestId(
+        "confidentiality-select"
+      );
+
+      // Change all selections
+      fireEvent.change(availabilitySelect, { target: { value: "High" } });
+      fireEvent.change(integritySelect, { target: { value: "Moderate" } });
+      fireEvent.change(confidentialitySelect, { target: { value: "Low" } });
+
+      // The chart should still be in the DOM
+      expect(screen.getByTestId("radar-chart")).toBeInTheDocument();
     });
   });
 });

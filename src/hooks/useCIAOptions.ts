@@ -1,12 +1,4 @@
-export interface CIADetails {
-  description: string;
-  impact: string;
-  technical: string; // Added missing field
-  capex: number;
-  opex: number;
-  bg: string;
-  text: string;
-}
+import { CIADetails } from "../types/cia";
 
 export const availabilityOptions: Record<string, CIADetails> = {
   None: {
@@ -17,6 +9,9 @@ export const availabilityOptions: Record<string, CIADetails> = {
     opex: 0,
     bg: "#ffffff",
     text: "#000000",
+    recommendations: [
+      "Consider baseline availability requirements for all systems",
+    ],
   },
   Low: {
     description: "Minimal downtime acceptable",
@@ -26,6 +21,10 @@ export const availabilityOptions: Record<string, CIADetails> = {
     opex: 5,
     bg: "#e5f5e0",
     text: "#1a535c",
+    recommendations: [
+      "Implement basic monitoring",
+      "Document recovery procedures",
+    ],
   },
   Moderate: {
     description: "Limited downtime acceptable",
@@ -35,6 +34,11 @@ export const availabilityOptions: Record<string, CIADetails> = {
     opex: 15,
     bg: "#a1d99b",
     text: "#1a535c",
+    recommendations: [
+      "Deploy load balancers",
+      "Implement automated backups",
+      "Create disaster recovery plan",
+    ],
   },
   High: {
     description: "Minimal downtime required",
@@ -44,6 +48,11 @@ export const availabilityOptions: Record<string, CIADetails> = {
     opex: 30,
     bg: "#31a354",
     text: "#ffffff",
+    recommendations: [
+      "Multi-region deployment",
+      "Redundant infrastructure",
+      "24/7 monitoring",
+    ],
   },
   "Very High": {
     description: "No downtime acceptable",
@@ -53,8 +62,145 @@ export const availabilityOptions: Record<string, CIADetails> = {
     opex: 45,
     bg: "#006d2c",
     text: "#ffffff",
+    recommendations: [
+      "Active-active configuration",
+      "Multiple availability zones",
+      "Automated failover",
+      "Real-time monitoring",
+    ],
   },
 };
 
-export const integrityOptions = { ...availabilityOptions };
-export const confidentialityOptions = { ...availabilityOptions };
+export const integrityOptions: Record<string, CIADetails> = {
+  None: {
+    description: "No data integrity requirements",
+    impact: "No impact from data corruption",
+    technical: "No technical controls required",
+    capex: 0,
+    opex: 0,
+    bg: "#ffffff",
+    text: "#000000",
+    recommendations: ["Document basic data quality practices"],
+  },
+  Low: {
+    description: "Basic data integrity needed",
+    impact: "Minor impact from data corruption",
+    technical: "Basic checksums and validation",
+    capex: 10,
+    opex: 5,
+    bg: "#e0ecf4",
+    text: "#1a535c",
+    recommendations: ["Implement input validation", "Use database constraints"],
+  },
+  Moderate: {
+    description: "Standard data integrity required",
+    impact: "Moderate impact from data corruption",
+    technical: "Advanced validation and access controls",
+    capex: 25,
+    opex: 15,
+    bg: "#9ebcda",
+    text: "#1a535c",
+    recommendations: [
+      "Data validation pipelines",
+      "Audit logging",
+      "Change tracking",
+    ],
+  },
+  High: {
+    description: "High data integrity essential",
+    impact: "Major impact from data corruption",
+    technical: "Digital signatures and advanced controls",
+    capex: 40,
+    opex: 30,
+    bg: "#8856a7",
+    text: "#ffffff",
+    recommendations: [
+      "Implement digital signatures",
+      "Blockchain for critical data",
+      "Comprehensive audit trails",
+    ],
+  },
+  "Very High": {
+    description: "Absolute data integrity required",
+    impact: "Critical impact from data corruption",
+    technical: "Cryptographic verification and tamper-proof systems",
+    capex: 60,
+    opex: 45,
+    bg: "#810f7c",
+    text: "#ffffff",
+    recommendations: [
+      "Zero-trust architecture",
+      "Multiple integrity verification methods",
+      "Automated testing and validation",
+    ],
+  },
+};
+
+export const confidentialityOptions: Record<string, CIADetails> = {
+  None: {
+    description: "No confidentiality requirements",
+    impact: "No impact from disclosure",
+    technical: "No technical controls required",
+    capex: 0,
+    opex: 0,
+    bg: "#ffffff",
+    text: "#000000",
+    recommendations: ["Document data classification policy"],
+  },
+  Low: {
+    description: "Limited confidentiality needed",
+    impact: "Minor impact from disclosure",
+    technical: "Basic access control",
+    capex: 10,
+    opex: 5,
+    bg: "#fee0d2",
+    text: "#1a535c",
+    recommendations: ["Implement user authentication", "Basic access controls"],
+  },
+  Moderate: {
+    description: "Standard confidentiality required",
+    impact: "Moderate impact from disclosure",
+    technical: "Encryption and strong access control",
+    capex: 25,
+    opex: 20,
+    bg: "#fc9272",
+    text: "#1a535c",
+    recommendations: [
+      "Data encryption at rest",
+      "Role-based access control",
+      "Regular access reviews",
+    ],
+  },
+  High: {
+    description: "High confidentiality essential",
+    impact: "Major impact from disclosure",
+    technical: "Advanced encryption and strict controls",
+    capex: 45,
+    opex: 35,
+    bg: "#de2d26",
+    text: "#ffffff",
+    recommendations: [
+      "End-to-end encryption",
+      "Data loss prevention tools",
+      "Advanced threat protection",
+    ],
+  },
+  "Very High": {
+    description: "Absolute confidentiality required",
+    impact: "Critical impact from disclosure",
+    technical: "Full security stack and isolation",
+    capex: 70,
+    opex: 50,
+    bg: "#a50f15",
+    text: "#ffffff",
+    recommendations: [
+      "Air-gapped systems",
+      "Secure enclaves",
+      "Multi-factor authentication",
+      "Comprehensive monitoring",
+    ],
+  },
+};
+
+// Export CIADetails for backward compatibility
+export type { CIADetails } from "../types/cia";

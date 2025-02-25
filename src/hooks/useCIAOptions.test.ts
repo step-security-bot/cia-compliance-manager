@@ -1,9 +1,9 @@
 import {
-  CIADetails,
   availabilityOptions,
   integrityOptions,
   confidentialityOptions,
 } from "./useCIAOptions";
+import { CIADetails } from "../types/cia";
 
 describe("useCIAOptions", () => {
   const validateOptionStructure = (option: CIADetails) => {
@@ -14,8 +14,10 @@ describe("useCIAOptions", () => {
     expect(option).toHaveProperty("opex");
     expect(option).toHaveProperty("bg");
     expect(option).toHaveProperty("text");
+    expect(option).toHaveProperty("recommendations");
     expect(typeof option.capex).toBe("number");
     expect(typeof option.opex).toBe("number");
+    expect(Array.isArray(option.recommendations)).toBe(true);
   };
 
   describe("Option Structures", () => {
@@ -29,6 +31,25 @@ describe("useCIAOptions", () => {
 
     it("validates all confidentiality options", () => {
       Object.values(confidentialityOptions).forEach(validateOptionStructure);
+    });
+  });
+
+  describe("Recommendations", () => {
+    it("ensures all options have recommendations", () => {
+      Object.values(availabilityOptions).forEach((option) => {
+        // Use optional chaining to handle potentially undefined recommendations
+        expect(option.recommendations?.length).toBeGreaterThan(0);
+      });
+
+      Object.values(integrityOptions).forEach((option) => {
+        // Use optional chaining to handle potentially undefined recommendations
+        expect(option.recommendations?.length).toBeGreaterThan(0);
+      });
+
+      Object.values(confidentialityOptions).forEach((option) => {
+        // Use optional chaining to handle potentially undefined recommendations
+        expect(option.recommendations?.length).toBeGreaterThan(0);
+      });
     });
   });
 
@@ -68,8 +89,9 @@ describe("useCIAOptions", () => {
       impact: "Test impact",
       technical: "Test technical",
       description: "Test description",
-      bg: "#ffffff", // Added missing property
-      text: "#000000", // Added missing property
+      bg: "#ffffff",
+      text: "#000000",
+      recommendations: ["Test recommendation"],
     };
     expect(testDetail).toBeDefined();
   });
