@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import DetailCard from './DetailCard';
+import DetailCard from './components/DetailCard';  // This should work now since both files are in the same directory
 
 // Define the type for our levels
 type Level = 'None' | 'Basic' | 'Moderate' | 'High' | 'Very High';
