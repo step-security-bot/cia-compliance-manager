@@ -112,12 +112,6 @@ jobs:
         with:
           path: artifacts
 
-      - name: Generate combined coverage report
-        run: |
-          npm install -g nyc
-          nyc merge artifacts/coverage-report coverage/coverage-final.json
-          nyc report --reporter=html --reporter=text
-
       - name: Upload combined reports
         uses: actions/upload-artifact@v4
         with:
