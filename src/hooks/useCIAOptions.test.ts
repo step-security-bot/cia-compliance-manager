@@ -1,41 +1,103 @@
-import { CIADetails, availabilityOptions, integrityOptions, confidentialityOptions } from './useCIAOptions';
+import {
+  CIADetails,
+  availabilityOptions,
+  integrityOptions,
+  confidentialityOptions,
+} from "./useCIAOptions";
 
-describe('useCIAOptions', () => {
-  test('CIADetails type should be defined and exported', () => {
+describe("useCIAOptions", () => {
+  const validateOptionStructure = (option: CIADetails) => {
+    expect(option).toHaveProperty("description");
+    expect(option).toHaveProperty("impact");
+    expect(option).toHaveProperty("technical");
+    expect(option).toHaveProperty("capex");
+    expect(option).toHaveProperty("opex");
+    expect(option).toHaveProperty("bg");
+    expect(option).toHaveProperty("text");
+    expect(typeof option.capex).toBe("number");
+    expect(typeof option.opex).toBe("number");
+  };
+
+  describe("Option Structures", () => {
+    it("validates all availability options", () => {
+      Object.values(availabilityOptions).forEach(validateOptionStructure);
+    });
+
+    it("validates all integrity options", () => {
+      Object.values(integrityOptions).forEach(validateOptionStructure);
+    });
+
+    it("validates all confidentiality options", () => {
+      Object.values(confidentialityOptions).forEach(validateOptionStructure);
+    });
+  });
+
+  describe("Option Values", () => {
+    it("ensures availability options have correct levels", () => {
+      expect(Object.keys(availabilityOptions)).toEqual([
+        "None",
+        "Low",
+        "Moderate",
+        "High",
+        "Very High",
+      ]);
+    });
+
+    it("validates cost calculations are within bounds", () => {
+      Object.values(availabilityOptions).forEach((option) => {
+        expect(option.capex).toBeGreaterThanOrEqual(0);
+        expect(option.capex).toBeLessThanOrEqual(100);
+        expect(option.opex).toBeGreaterThanOrEqual(0);
+        expect(option.opex).toBeLessThanOrEqual(100);
+      });
+    });
+
+    it("ensures color values are valid hex codes", () => {
+      const hexColorRegex = /^#[0-9A-Fa-f]{6}$/;
+      Object.values(availabilityOptions).forEach((option) => {
+        expect(option.bg).toMatch(hexColorRegex);
+        expect(option.text).toMatch(hexColorRegex);
+      });
+    });
+  });
+
+  test("CIADetails type should be defined and exported", () => {
     const testDetail: CIADetails = {
-      capex: 10,
-      opex: 20,
-      impact: 'Test impact',
-      technical: 'Test technical',
-      description: 'Test description',
+      capex: 20,
+      opex: 10,
+      impact: "Test impact",
+      technical: "Test technical",
+      description: "Test description",
+      bg: "#ffffff", // Added missing property
+      text: "#000000", // Added missing property
     };
     expect(testDetail).toBeDefined();
   });
 
-  test('availabilityOptions should be defined and have correct structure', () => {
+  test("availabilityOptions should be defined and have correct structure", () => {
     expect(availabilityOptions).toBeDefined();
-    expect(availabilityOptions.None).toHaveProperty('capex');
-    expect(availabilityOptions.None).toHaveProperty('opex');
-    expect(availabilityOptions.None).toHaveProperty('impact');
-    expect(availabilityOptions.None).toHaveProperty('technical');
-    expect(availabilityOptions.None).toHaveProperty('description');
+    expect(availabilityOptions.None).toHaveProperty("capex");
+    expect(availabilityOptions.None).toHaveProperty("opex");
+    expect(availabilityOptions.None).toHaveProperty("impact");
+    expect(availabilityOptions.None).toHaveProperty("technical");
+    expect(availabilityOptions.None).toHaveProperty("description");
   });
 
-  test('integrityOptions should be defined and have correct structure', () => {
+  test("integrityOptions should be defined and have correct structure", () => {
     expect(integrityOptions).toBeDefined();
-    expect(integrityOptions.None).toHaveProperty('capex');
-    expect(integrityOptions.None).toHaveProperty('opex');
-    expect(integrityOptions.None).toHaveProperty('impact');
-    expect(integrityOptions.None).toHaveProperty('technical');
-    expect(integrityOptions.None).toHaveProperty('description');
+    expect(integrityOptions.None).toHaveProperty("capex");
+    expect(integrityOptions.None).toHaveProperty("opex");
+    expect(integrityOptions.None).toHaveProperty("impact");
+    expect(integrityOptions.None).toHaveProperty("technical");
+    expect(integrityOptions.None).toHaveProperty("description");
   });
 
-  test('confidentialityOptions should be defined and have correct structure', () => {
+  test("confidentialityOptions should be defined and have correct structure", () => {
     expect(confidentialityOptions).toBeDefined();
-    expect(confidentialityOptions.None).toHaveProperty('capex');
-    expect(confidentialityOptions.None).toHaveProperty('opex');
-    expect(confidentialityOptions.None).toHaveProperty('impact');
-    expect(confidentialityOptions.None).toHaveProperty('technical');
-    expect(confidentialityOptions.None).toHaveProperty('description');
+    expect(confidentialityOptions.None).toHaveProperty("capex");
+    expect(confidentialityOptions.None).toHaveProperty("opex");
+    expect(confidentialityOptions.None).toHaveProperty("impact");
+    expect(confidentialityOptions.None).toHaveProperty("technical");
+    expect(confidentialityOptions.None).toHaveProperty("description");
   });
 });

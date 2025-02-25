@@ -1,57 +1,77 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import DetailCard from './components/DetailCard';  // This should work now since both files are in the same directory
+import React from "react";
+import { render, screen } from "./utils/test-utils";
+import "@testing-library/jest-dom";
+import DetailCard from "./components/DetailCard";
+import { CIADetails } from "./hooks/useCIAOptions";
 
-// Define the type for our levels
-type Level = 'None' | 'Basic' | 'Moderate' | 'High' | 'Very High';
+describe("DetailCard", () => {
+  const mockDetails: CIADetails = {
+    description: "Test description",
+    impact: "Test impact",
+    technical: "Test technical",
+    capex: 20,
+    opex: 10,
+    bg: "#ffffff",
+    text: "#000000",
+  };
 
-const levels = {
-  'None': {
-    bg: "#e5e7eb",
-    text: "#374151"
-  },
-  'Basic': {
-    bg: "#d1fae5",
-    text: "#065f46"
-  },
-  'Moderate': {
-    bg: "#fef3c7",
-    text: "#92400e"
-  },
-  'High': {
-    bg: "#ffedd5",
-    text: "#c2410c"
-  },
-  'Very High': {
-    bg: "#fee2e2",
-    text: "#991b1b"
-  }
-} as const;
+  it("renders all provided information", () => {
+    render(
+      <DetailCard category="Test Category" level="None" details={mockDetails} />
+    );
 
-const mockDetails = {
-  capex: 10,
-  opex: 5,
-  impact: "Test Impact",
-  technical: "Test Technical Details",
-  description: "Test Description"
-};
+    expect(screen.getByText(/Test description/)).toBeInTheDocument();
+    expect(screen.getByText(/Impact: Test impact/)).toBeInTheDocument();
+    expect(
+      screen.getByText(/Technical Controls: Test technical/)
+    ).toBeInTheDocument();
+  });
 
-describe('DetailCard', () => {
-  const validLevels = Object.keys(levels) as Level[];
+  it("applies correct styling", () => {
+    render(
+      <DetailCard category="Test Category" level="None" details={mockDetails} />
+    );
 
-  test('renders with all level options', () => {
-    validLevels.forEach((level) => {
-      render(<DetailCard category="Test Category" level={level} details={mockDetails} />);
-      const card = screen.getByText(new RegExp(`Test Category - ${level}`, 'i')).parentElement;
-      expect(card).toHaveStyle(`background-color: ${levels[level].bg}`);
-      expect(screen.getByText(new RegExp(`Test Category - ${level}`, 'i'))).toHaveStyle(`color: ${levels[level].text}`);
+    const container = screen.getByRole("region");
+    expect(container).toHaveStyle(`background-color: ${mockDetails.bg}`);
+    expect(container.querySelector("h3")).toHaveStyle(
+      `color: ${mockDetails.text}`
+    );
+  });
+
+  describe("Accessibility", () => {
+    it("has proper ARIA attributes", () => {
+      render(<DetailCard category="Test" level="None" details={mockDetails} />);
+      const card = screen.getByRole("region");
+      expect(card).toHaveAttribute("tabIndex", "0");
     });
   });
 
-  test('displays impact and technical details', () => {
-    render(<DetailCard category="Test Category" level="None" details={mockDetails} />);
-    expect(screen.getByText(/Test Impact/)).toBeInTheDocument();
-    expect(screen.getByText(/Test Technical Details/)).toBeInTheDocument();
+  describe("Content Display", () => {
+    it("formats category and level correctly", () => {
+      render(<DetailCard category="Test" level="High" details={mockDetails} />);
+      expect(screen.getByText("Test - High")).toBeInTheDocument();
+    });
+
+    it("displays all detail sections", () => {
+      render(<DetailCard category="Test" level="None" details={mockDetails} />);
+      expect(screen.getByText(/Description:/)).toBeInTheDocument();
+      expect(screen.getByText(/Impact:/)).toBeInTheDocument();
+      expect(screen.getByText(/Technical Controls:/)).toBeInTheDocument();
+    });
+  });
+
+  describe("Styling", () => {
+    it("applies dark mode classes correctly", () => {
+      render(<DetailCard category="Test" level="None" details={mockDetails} />);
+      const card = screen.getByRole("region");
+      expect(card).toHaveClass("dark:border-gray-700");
+    });
+
+    it("maintains consistent spacing", () => {
+      render(<DetailCard category="Test" level="None" details={mockDetails} />);
+      const card = screen.getByRole("region");
+      expect(card).toHaveClass("p-4");
+    });
   });
 });

@@ -5,14 +5,21 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "typescript": "^4.9.5"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "coverage": "react-scripts test --coverage"
+    "coverage": "react-scripts test --coverage",
+    "cypress:open": "xvfb-run -a cypress open",
+    "cypress:run": "xvfb-run -a cypress run",
+    "test:e2e": "start-server-and-test \"npm start\" http://localhost:3000 \"cypress run --reporter junit --reporter-options 'mochaFile=cypress/results/junit.xml'\"",
+    "pretest:e2e": "bash .devcontainer/init-xvfb.sh",
+    "cypress:install": "cypress install",
+    "cypress:verify": "cypress verify",
+    "test:ci": "cross-env JEST_JUNIT_OUTPUT_DIR=coverage JEST_JUNIT_OUTPUT_NAME=junit.xml CI=true react-scripts test --coverage --watchAll=false --testResultsProcessor=jest-junit"
   },
   "browserslist": {
     "production": [
@@ -27,10 +34,60 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.2.0",
-    "@types/jest": "^29.5.14",
-    "@types/react": "^19.0.10",
-    "@types/react-dom": "^19.0.4"
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.80",
+    "@types/react": "^18.2.55",
+    "@types/react-dom": "^18.2.19",
+    "cypress": "^13.6.4",
+    "@testing-library/cypress": "^10.0.1",
+    "start-server-and-test": "^2.0.3",
+    "jest-junit": "^15.0.0",
+    "cross-env": "^7.0.3"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.8.2"
+  },
+  "jest": {
+    "coverageReporters": [
+      "text",
+      "html",
+      "lcov",
+      "json",
+      "cobertura"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/**/*.d.ts",
+      "!src/index.tsx",
+      "!src/reportWebVitals.ts"
+    ],
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
+      "^.+\\.module\\.(css|sass|scss)$"
+    ]
+  },
+  "jest-junit": {
+    "outputDirectory": "coverage",
+    "outputName": "junit.xml",
+    "ancestorSeparator": " › ",
+    "uniqueOutputName": false,
+    "suiteNameTemplate": "{filepath}",
+    "classNameTemplate": "{classname}",
+    "titleTemplate": "{title}"
+  },
+  "overrides": {
+    "typescript": "^4.9.5"
+  },
+  "cypress": {
+    "baseUrl": "http://localhost:3000",
+    "supportFile": "cypress/support/e2e.ts",
+    "testFiles": "**/*.cy.{js,jsx,ts,tsx}",
+    "video": true,
+    "screenshotOnRunFailure": true,
+    "experimentalWebKitSupport": true
   }
 }

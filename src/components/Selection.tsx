@@ -6,50 +6,45 @@ interface SelectionProps {
   value: string;
   onChange: (value: string) => void;
   id: string;
+  "data-testid"?: string;
 }
 
-const Selection: React.FC<SelectionProps> = ({ label, options, value, onChange, id }) => {
-  // Ensure we have a valid option, fallback to first available option if value is invalid
-  const currentOption = options[value] || options[Object.keys(options)[0]];
-  
-  // Handle invalid value by resetting to "None"
-  const handleChange = (newValue: string) => {
-    if (options[newValue]) {
-      onChange(newValue);
-    } else {
-      onChange("None");
-    }
-  };
-
-  return (
-    <div className="flex flex-col">
-      <label htmlFor={id} className="mb-2 font-medium text-gray-700 dark:text-gray-300">
-        {label}
-      </label>
-      <select
-        id={id}
-        value={value}
-        onChange={(e) => handleChange(e.target.value)}
-        className="p-2 border border-gray-300 dark:border-gray-700 rounded-md"
-      >
-        {Object.keys(options).map((level) => (
-          <option
-            key={level}
-            value={level}
-            style={{
-              backgroundColor: options[level].bg,
-              color: options[level].text,
-            }}
-          >
-            {level} - {options[level].description}
-          </option>
-        ))}
-      </select>
-      <p className="mt-2 text-sm" style={{ color: currentOption.text }}>
-        Impact: {currentOption.impact}
-      </p>
+const Selection: React.FC<SelectionProps> = ({
+  label,
+  options,
+  value,
+  onChange,
+  id,
+  "data-testid": testId,
+}) => (
+  <div className="form-control">
+    <label
+      htmlFor={id}
+      id={`${id}-label`}
+      className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+    >
+      {label}
+    </label>
+    <select
+      id={id}
+      data-testid={testId}
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md"
+      aria-label={label}
+      aria-labelledby={`${id}-label`}
+      aria-describedby={`${id}-description`}
+    >
+      {Object.entries(options).map(([key, option]) => (
+        <option key={key} value={key}>
+          {key}
+        </option>
+      ))}
+    </select>
+    <div id={`${id}-description`} className="sr-only">
+      Select a {label.toLowerCase()}
     </div>
-  );
-};
+  </div>
+);
 
 export default Selection;

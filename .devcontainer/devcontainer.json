@@ -1,0 +1,61 @@
+{
+  "name": "CIA Compliance Manager Dev Container",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  // Update system dependencies
+  "onCreateCommand": "sudo apt-get update && sudo apt-get install -y libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libnss3 libxss1 libasound2 libxtst6 xauth xvfb dbus dbus-x11",
+  // Improve service initialization
+  "initializeCommand": {
+    "dbus": "sudo service dbus start"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "ms-vsliveshare.vsliveshare",
+        "streetsidesoftware.code-spell-checker",
+        "christian-kohler.npm-intellisense",
+        "ms-vscode.vscode-typescript-next",
+        "dsznajder.es7-react-js-snippets",
+        "formulahendry.auto-rename-tag",
+        "Orta.vscode-jest",
+        "VisualStudioExptTeam.vscodeintellicode",
+        "github.vscode-github-actions"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": true
+        },
+        "typescript.updateImportsOnFileMove.enabled": "always",
+        "javascript.updateImportsOnFileMove.enabled": "always",
+        "typescript.suggest.completeFunctionCalls": true
+      }
+    }
+  },
+  // Update post-create commands for better initialization
+  "postCreateCommand": [
+    "chmod +x .devcontainer/init-xvfb.sh",
+    "sudo mkdir -p /var/run/dbus",
+    "sudo dbus-daemon --system --fork",
+    "npm install -g npm@latest",
+    "npm install",
+    "npx cypress verify"
+  ],
+  "remoteUser": "node",
+  // Expand environment variables
+  "containerEnv": {
+    "CYPRESS_VERIFY_TIMEOUT": "100000",
+    "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/dbus/system_bus_socket"
+  },
+  // Remove X11-specific mounts and args
+  "runArgs": ["--privileged"],
+  // Update stop command to clean up processes
+  "postStopCommand": "pkill Xvfb || true"
+}

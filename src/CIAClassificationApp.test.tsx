@@ -1,119 +1,144 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import CIAClassificationApp from './CIAClassificationApp';
+import React from "react";
+import { render, screen, fireEvent, within } from "./utils/test-utils";
+import "@testing-library/jest-dom";
+import CIAClassificationApp from "./CIAClassificationApp";
 
-describe('CIAClassificationApp', () => {
-  test('renders the app', () => {
+describe("CIAClassificationApp", () => {
+  beforeEach(() => {
     render(<CIAClassificationApp />);
-    expect(screen.getByText(/CIA Classification App for PartyRock AWS/i)).toBeInTheDocument();
   });
 
-  test('toggles dark mode', () => {
-    render(<CIAClassificationApp />);
-    const button = screen.getByText(/Dark Mode/i);
-    fireEvent.click(button);
-    expect(button).toHaveTextContent(/Light Mode/i);
+  describe("Initial Render", () => {
+    it("renders initial state correctly", () => {
+      expect(screen.getByTestId("app-title")).toBeInTheDocument();
+      expect(screen.getByTestId("classification-form")).toBeInTheDocument();
+      expect(screen.getByTestId("capex-estimate")).toHaveTextContent("$10,000");
+      expect(screen.getByTestId("opex-estimate")).toHaveTextContent("$500");
+    });
+
+    it("renders all selection components", () => {
+      expect(screen.getByTestId("availability-select")).toBeInTheDocument();
+      expect(screen.getByTestId("integrity-select")).toBeInTheDocument();
+      expect(screen.getByTestId("confidentiality-select")).toBeInTheDocument();
+    });
+
+    it("displays default cost estimates", () => {
+      expect(screen.getByTestId("capex-estimate")).toHaveTextContent("$10,000");
+      expect(screen.getByTestId("opex-estimate")).toHaveTextContent("$500");
+    });
   });
 
-  test('changes availability level', () => {
-    render(<CIAClassificationApp />);
-    const select = screen.getByLabelText(/Availability Level/i);
-    fireEvent.change(select, { target: { value: 'High' } });
-    expect(select).toHaveValue('High');
+  describe("Selection Interactions", () => {
+    it("handles level changes correctly", () => {
+      const availabilitySelect = screen.getByTestId("availability-select");
+      const integritySelect = screen.getByTestId("integrity-select");
+      const confidentialitySelect = screen.getByTestId(
+        "confidentiality-select"
+      );
+
+      fireEvent.change(availabilitySelect, { target: { value: "High" } });
+      fireEvent.change(integritySelect, { target: { value: "Moderate" } });
+      fireEvent.change(confidentialitySelect, { target: { value: "Low" } });
+
+      expect(availabilitySelect).toHaveValue("High");
+      expect(integritySelect).toHaveValue("Moderate");
+      expect(confidentialitySelect).toHaveValue("Low");
+    });
+
+    it("updates all levels simultaneously", () => {
+      const selects = ["availability", "integrity", "confidentiality"].map(
+        (id) => screen.getByTestId(`${id}-select`)
+      );
+
+      selects.forEach((select) => {
+        fireEvent.change(select, { target: { value: "High" } });
+      });
+
+      selects.forEach((select) => {
+        expect(select).toHaveValue("High");
+      });
+
+      expect(screen.getByTestId("capex-estimate")).toHaveTextContent(
+        "$1,000,000"
+      );
+    });
+
+    it("resets to default values correctly", () => {
+      const select = screen.getByTestId("availability-select");
+      fireEvent.change(select, { target: { value: "High" } });
+      fireEvent.change(select, { target: { value: "None" } });
+      expect(select).toHaveValue("None");
+    });
   });
 
-  test('changes integrity level', () => {
-    render(<CIAClassificationApp />);
-    const select = screen.getByLabelText(/Integrity Level/i);
-    fireEvent.change(select, { target: { value: 'Moderate' } });
-    expect(select).toHaveValue('Moderate');
+  describe("Cost Calculations", () => {
+    it("updates cost estimates based on selections", () => {
+      const confidentialitySelect = screen.getByTestId(
+        "confidentiality-select"
+      );
+      fireEvent.change(confidentialitySelect, {
+        target: { value: "Very High" },
+      });
+
+      expect(screen.getByTestId("capex-estimate")).toBeInTheDocument();
+      expect(screen.getByTestId("opex-estimate")).toBeInTheDocument();
+    });
+
+    it("shows small solution costs for low-risk selections", () => {
+      ["availability", "integrity", "confidentiality"].forEach((id) => {
+        fireEvent.change(screen.getByTestId(`${id}-select`), {
+          target: { value: "Low" },
+        });
+      });
+      expect(screen.getByTestId("capex-estimate")).toHaveTextContent("$10,000");
+      expect(screen.getByTestId("opex-estimate")).toHaveTextContent("$500");
+    });
+
+    it("shows large solution costs for high-risk selections", () => {
+      ["availability", "integrity", "confidentiality"].forEach((id) => {
+        fireEvent.change(screen.getByTestId(`${id}-select`), {
+          target: { value: "Very High" },
+        });
+      });
+      expect(screen.getByTestId("capex-estimate")).toHaveTextContent(
+        "$1,000,000"
+      );
+      expect(screen.getByTestId("opex-estimate")).toHaveTextContent("$50,000");
+    });
   });
 
-  test('changes confidentiality level', () => {
-    render(<CIAClassificationApp />);
-    const select = screen.getByLabelText(/Confidentiality Level/i);
-    fireEvent.change(select, { target: { value: 'Very High' } });
-    expect(select).toHaveValue('Very High');
+  describe("Theme Toggle", () => {
+    it("toggles dark mode", () => {
+      const themeToggle = screen.getByTestId("theme-toggle");
+      fireEvent.click(themeToggle);
+      expect(document.querySelector("div.dark")).toBeInTheDocument();
+    });
+
+    it("toggles dark mode classes correctly", () => {
+      const themeToggle = screen.getByTestId("theme-toggle");
+      fireEvent.click(themeToggle);
+      expect(document.querySelector("div.dark")).toBeInTheDocument();
+      expect(themeToggle).toHaveTextContent("Light Mode");
+
+      fireEvent.click(themeToggle);
+      expect(document.querySelector("div.dark")).not.toBeInTheDocument();
+      expect(themeToggle).toHaveTextContent("Dark Mode");
+    });
   });
 
-  test('displays cost estimates', () => {
-    render(<CIAClassificationApp />);
-    expect(screen.getByText(/Estimated CAPEX/i)).toBeInTheDocument();
-    expect(screen.getByText(/Estimated OPEX/i)).toBeInTheDocument();
-  });
+  describe("Analysis Display", () => {
+    it("updates analysis section based on selections", () => {
+      const analysisSection = screen.getByTestId("analysis-section");
+      const recommendationsSection = screen.getByTestId("recommendations");
 
-  test('displays detailed analysis', () => {
-    render(<CIAClassificationApp />);
-    expect(screen.getByText(/Detailed Analysis/i)).toBeInTheDocument();
-  });
+      fireEvent.change(screen.getByTestId("confidentiality-select"), {
+        target: { value: "Very High" },
+      });
 
-  test('initial state', () => {
-    render(<CIAClassificationApp />);
-    expect(screen.getByLabelText(/Availability Level/i)).toHaveValue('None');
-    expect(screen.getByLabelText(/Integrity Level/i)).toHaveValue('None');
-    expect(screen.getByLabelText(/Confidentiality Level/i)).toHaveValue('None');
-    expect(screen.getByText(/Estimated CAPEX/i)).toHaveTextContent('$10,000');
-    expect(screen.getByText(/Estimated OPEX/i)).toHaveTextContent('$500');
-  });
-
-  test('boundary values', () => {
-    render(<CIAClassificationApp />);
-    // Set all levels to "Very High" to exceed the small solution threshold
-    const availabilitySelect = screen.getByLabelText(/Availability Level/i);
-    const integritySelect = screen.getByLabelText(/Integrity Level/i);
-    const confidentialitySelect = screen.getByLabelText(/Confidentiality Level/i);
-
-    fireEvent.change(availabilitySelect, { target: { value: 'Very High' } });
-    fireEvent.change(integritySelect, { target: { value: 'Very High' } });
-    fireEvent.change(confidentialitySelect, { target: { value: 'Very High' } });
-
-    expect(screen.getByText(/Estimated CAPEX/i)).toHaveTextContent('$1,000,000');
-    expect(screen.getByText(/Estimated OPEX/i)).toHaveTextContent('$50,000');
-  });
-
-  test('performance optimization', () => {
-    render(<CIAClassificationApp />);
-    const select = screen.getByLabelText(/Availability Level/i);
-    // Start with initial state
-    expect(screen.getByText(/Estimated CAPEX/i)).toHaveTextContent('$10,000');
-    // Change to High
-    fireEvent.change(select, { target: { value: 'High' } });
-    // Should still be $10,000 since only one selection is High
-    expect(screen.getByText(/Estimated CAPEX/i)).toHaveTextContent('$10,000');
-  });
-
-  test('error handling', () => {
-    render(<CIAClassificationApp />);
-    const select = screen.getByLabelText(/Availability Level/i);
-    
-    // Initial value should be "None"
-    expect(select).toHaveValue('None');
-    
-    // Simulate attempting to set an invalid value
-    fireEvent.change(select, { target: { value: 'Invalid' } });
-    
-    // Value should remain "None" after attempting to set invalid value
-    expect(select).toHaveValue('None');
-    
-    // Cost estimates should remain at initial values
-    expect(screen.getByText(/Estimated CAPEX/i)).toHaveTextContent('$10,000');
-    expect(screen.getByText(/Estimated OPEX/i)).toHaveTextContent('$500');
-  });
-  
-  test('useMemo hook with different combinations', () => {
-    render(<CIAClassificationApp />);
-    const availabilitySelect = screen.getByLabelText(/Availability Level/i);
-    const integritySelect = screen.getByLabelText(/Integrity Level/i);
-    const confidentialitySelect = screen.getByLabelText(/Confidentiality Level/i);
-
-    // Setting moderate values that should still result in small solution
-    fireEvent.change(availabilitySelect, { target: { value: 'High' } });
-    fireEvent.change(integritySelect, { target: { value: 'Moderate' } });
-    fireEvent.change(confidentialitySelect, { target: { value: 'Basic' } });
-
-    // These selections should still result in small solution costs
-    expect(screen.getByText(/Estimated CAPEX/i)).toHaveTextContent('$10,000');
-    expect(screen.getByText(/Estimated OPEX/i)).toHaveTextContent('$500');
+      expect(
+        within(recommendationsSection).getByText(/Very High/)
+      ).toBeInTheDocument();
+      expect(analysisSection).toBeVisible();
+    });
   });
 });

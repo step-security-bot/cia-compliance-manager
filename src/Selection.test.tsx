@@ -1,54 +1,78 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import Selection from './components/Selection';
-import { availabilityOptions } from './hooks/useCIAOptions';
+import React from "react";
+import { render, screen, fireEvent } from "./utils/test-utils";
+import "@testing-library/jest-dom";
+import Selection from "./components/Selection";
+import { availabilityOptions } from "./hooks/useCIAOptions";
 
-describe('Selection Component', () => {
-  test('renders the selection component with correct label', () => {
+describe("Selection Component", () => {
+  const mockOnChange = jest.fn();
+
+  beforeEach(() => {
     render(
       <Selection
         label="Availability Level"
         options={availabilityOptions}
         value="None"
-        onChange={() => {}}
+        onChange={mockOnChange}
         id="availability"
+        data-testid="availability-select"
       />
     );
-    expect(screen.getByText(/Availability Level/i)).toBeInTheDocument();
   });
 
-  test('renders the correct options', () => {
-    render(
-      <Selection
-        label="Availability Level"
-        options={availabilityOptions}
-        value="None"
-        onChange={() => {}}
-        id="availability"
-      />
-    );
-    expect(screen.getByText(/No Availability Controls/i)).toBeInTheDocument();
-    expect(screen.getByText(/Backup & Restore/i)).toBeInTheDocument();
-    expect(screen.getByText(/Pilot Light/i)).toBeInTheDocument();
-    expect(screen.getByText(/Warm Standby/i)).toBeInTheDocument();
-    expect(screen.getByText(/Multi-Site Active\/Active/i)).toBeInTheDocument();
+  it("renders with correct label", () => {
+    expect(screen.getByText("Availability Level")).toBeInTheDocument();
   });
 
-  test('handles option change', () => {
-    const handleChange = jest.fn();
-    render(
-      <Selection
-        label="Availability Level"
-        options={availabilityOptions}
-        value="None"
-        onChange={handleChange}
-        id="availability"
-      />
-    );
-    fireEvent.change(screen.getByLabelText(/Availability Level/i), {
-      target: { value: 'High' },
+  it("contains all option values", () => {
+    const select = screen.getByTestId("availability-select");
+    const options = Array.from(select.getElementsByTagName("option"));
+    expect(options).toHaveLength(Object.keys(availabilityOptions).length);
+    expect(options[0]).toHaveValue("None");
+  });
+
+  it("handles changes correctly", () => {
+    fireEvent.change(screen.getByTestId("availability-select"), {
+      target: { value: "High" },
     });
-    expect(handleChange).toHaveBeenCalledWith('High');
+    expect(mockOnChange).toHaveBeenCalledWith("High");
+  });
+
+  describe("Accessibility", () => {
+    it("maintains label-input association", () => {
+      const label = screen.getByText("Availability Level");
+      const select = screen.getByTestId("availability-select");
+      expect(label).toHaveAttribute("for", select.id);
+    });
+
+    it("has proper ARIA attributes", () => {
+      const select = screen.getByTestId("availability-select");
+      expect(select).toHaveAttribute("id");
+      expect(select).toHaveAttribute("aria-label", "Availability Level");
+    });
+  });
+
+  describe("Option Handling", () => {
+    it("displays correct number of options", () => {
+      const options = screen.getAllByRole("option");
+      expect(options).toHaveLength(Object.keys(availabilityOptions).length);
+    });
+
+    it("maintains option order", () => {
+      const options = screen.getAllByRole("option");
+      const expectedOrder = ["None", "Low", "Moderate", "High", "Very High"];
+      options.forEach((option, index) => {
+        expect(option).toHaveValue(expectedOrder[index]);
+      });
+    });
+  });
+
+  describe("Event Handling", () => {
+    it("calls onChange with correct value", () => {
+      const select = screen.getByTestId("availability-select");
+      fireEvent.change(select, { target: { value: "High" } });
+      expect(mockOnChange).toHaveBeenCalledWith("High");
+      expect(mockOnChange).toHaveBeenCalledTimes(1);
+    });
   });
 });
