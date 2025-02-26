@@ -32,7 +32,7 @@ jobs:
           sudo dbus-daemon --system --fork
 
       - name: Cache dependencies
-        uses: actions/cache@58c1e461ab4154b5b12d40cb0e84792b845ab8ba # v3.4.1
+        uses: actions/cache@0c907a75c2c80ebcb7f088228285e798b750cf8f # v4.2.1
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
@@ -43,7 +43,7 @@ jobs:
         run: npm install
 
       - name: Cache Cypress binary
-        uses: actions/cache@58c1e461ab4154b5b12d40cb0e84792b845ab8ba # v3.4.1
+        uses: actions/cache@0c907a75c2c80ebcb7f088228285e798b750cf8f # v4.2.1
         with:
           path: ~/.cache/Cypress
           key: cypress-${{ runner.os }}-${{ hashFiles('**/package.json') }}
