@@ -1,13 +1,13 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import CIAClassificationApp from "./CIAClassificationApp";
-import { vi } from "vitest";
+import { vi, expect } from "vitest";
 
 // Mock Chart.js
 vi.mock("chart.js/auto", () => ({
   __esModule: true,
   default: class MockChart {
-    static defaults: { color: string } = { color: "#666" }; // Add type annotation
+    static defaults = { color: "#666" };
     static register = vi.fn();
     destroy = vi.fn();
     constructor() {
@@ -30,7 +30,7 @@ describe("CIAClassificationApp Direct Tests", () => {
     // Mock console.error
     console.error = vi.fn();
 
-    // Create a test function that simulates the error handling in useEffect
+    // Create a test function
     const simulateErrorHandling = (nodeEnv: string) => {
       process.env.NODE_ENV = nodeEnv;
       try {
@@ -42,19 +42,18 @@ describe("CIAClassificationApp Direct Tests", () => {
       }
     };
 
-    // Should log in production
+    // Test different environments - use any to bypass type checking
+    // for easier test writing
     simulateErrorHandling("production");
-    expect(console.error).toHaveBeenCalled();
-    (console.error as vi.Mock).mockClear();
+    (expect(console.error) as any).toHaveBeenCalled();
+    (console.error as any).mockClear();
 
-    // Should log in development
     simulateErrorHandling("development");
-    expect(console.error).toHaveBeenCalled();
-    (console.error as vi.Mock).mockClear();
+    (expect(console.error) as any).toHaveBeenCalled();
+    (console.error as any).mockClear();
 
-    // Should not log in test
     simulateErrorHandling("test");
-    expect(console.error).not.toHaveBeenCalled();
+    (expect(console.error) as any).not.toHaveBeenCalled();
 
     // Clean up
     console.error = originalConsoleError;
@@ -62,12 +61,10 @@ describe("CIAClassificationApp Direct Tests", () => {
   });
 
   it("safely handles potentially undefined classList operations", () => {
-    // This test validates the safety check for classList operations
-    // without throwing actual errors
-
-    // Create a copy of the toggleDarkMode function logic to test directly
+    // Create a mock function
     const mockSetDarkMode = vi.fn();
 
+    // Test function with simplified assertions
     const safeToggleDarkMode = (currentMode: boolean) => {
       const newMode = !currentMode;
 
@@ -80,11 +77,11 @@ describe("CIAClassificationApp Direct Tests", () => {
             rootDiv.classList.remove("dark");
           }
         }
-        // If we get here with no errors, the function has proper safety checks
-        expect(true).toBeTruthy();
+        // Skip the assertion here
       } catch (e) {
-        // This should never execute if our component has proper error handling
-        fail("toggleDarkMode should handle missing classList gracefully");
+        throw new Error(
+          "toggleDarkMode should handle missing classList gracefully"
+        );
       }
 
       mockSetDarkMode(newMode);
@@ -92,9 +89,10 @@ describe("CIAClassificationApp Direct Tests", () => {
     };
 
     // Test both code paths
-    safeToggleDarkMode(false); // add dark
-    safeToggleDarkMode(true); // remove dark
+    safeToggleDarkMode(false);
+    safeToggleDarkMode(true);
 
-    expect(mockSetDarkMode).toHaveBeenCalledTimes(2);
+    // Use any to bypass type checking
+    (expect(mockSetDarkMode) as any).toHaveBeenCalledTimes(2);
   });
 });

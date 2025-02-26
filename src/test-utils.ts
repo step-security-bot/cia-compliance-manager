@@ -1,3 +1,4 @@
+import React from "react";
 import { vi } from "vitest";
 import { render as testingLibraryRender } from "@testing-library/react";
 
@@ -7,15 +8,16 @@ export * from "@testing-library/react";
 // Export Vitest's mocking utilities
 export { vi };
 
-// Add any custom render functions here if needed
+// Export any custom render functions
 export const render = testingLibraryRender;
 
-// Helper function for mocking components
+// Helper function for mocking components that returns a React component
 export function mockComponent(name: string) {
-  return vi.fn().mockImplementation((props) => {
-    return (
-      <div data-testid={`mocked-${name}`} data-props={JSON.stringify(props)} />
-    );
+  return vi.fn().mockImplementation((props: any) => {
+    return React.createElement("div", {
+      "data-testid": `mocked-${name}`,
+      "data-props": JSON.stringify(props),
+    });
   });
 }
 

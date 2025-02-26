@@ -2,7 +2,8 @@
   "compilerOptions": {
     "target": "es5",
     "lib": ["es5", "dom"],
-    "types": ["cypress", "@testing-library/cypress", "node"],
+    // Remove the problematic type references
+    "types": ["node"],
     "baseUrl": ".",
     "jsx": "react-jsx",
     "esModuleInterop": true,
@@ -14,7 +15,8 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true
+    "noEmit": true,
+    "typeRoots": ["./node_modules/@types", "./src/types", "./src/tests"]
   },
   "include": ["src", "cypress", "**/*.ts", "**/*.tsx"],
   "moduleFileExtensions": [

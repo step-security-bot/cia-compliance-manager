@@ -1,5 +1,7 @@
-import "@testing-library/jest-dom";
-import { vi } from "vitest";
+// Clean up imports and fix syntax errors
+
+import "@testing-library/jest-dom"; // This already extends expect
+import { vi, expect } from "vitest";
 import { configure } from "@testing-library/react";
 import { act } from "react";
 import { afterEach } from "vitest";
@@ -36,12 +38,13 @@ declare global {
 
 // Mock window.matchMedia
 Object.defineProperty(window, "matchMedia", {
+  writable: true,
   value: vi.fn().mockImplementation((query) => ({
     matches: false,
     media: query,
     onchange: null,
-    addListener: vi.fn(),
-    removeListener: vi.fn(),
+    addListener: vi.fn(), // deprecated
+    removeListener: vi.fn(), // deprecated
     addEventListener: vi.fn(),
     removeEventListener: vi.fn(),
     dispatchEvent: vi.fn(),
@@ -105,3 +108,38 @@ if (process.env.NODE_ENV === "test") {
   // Useful for environment checks like typeof window !== 'undefined'
   window.VITEST_COVERAGE = true;
 }
+
+// Fix for missing expect.toHaveBeenCalled etc.
+expect.extend({
+  toHaveBeenCalled: (received) => {
+    const pass = received.mock.calls.length > 0;
+    if (pass) {
+      return {
+        message: () =>
+          `expected ${received.mock.calls.length} not to have been called`,
+        pass: true,
+      };
+    } else {
+      return {
+        message: () => `expected to have been called at least once`,
+        pass: false,
+      };
+    }
+  },
+  toHaveBeenCalledTimes: (received, times) => {
+    const pass = received.mock.calls.length === times;
+    if (pass) {
+      return {
+        message: () =>
+          `expected ${received.mock.calls.length} not to equal ${times}`,
+        pass: true,
+      };
+    } else {
+      return {
+        message: () =>
+          `expected ${received.mock.calls.length} to equal ${times}`,
+        pass: false,
+      };
+    }
+  },
+});
