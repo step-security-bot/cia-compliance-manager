@@ -1,3 +1,6 @@
+/* First import Tailwind CSS v4 with the new syntax */
+@import "tailwindcss";
+
 /* Custom Global Styles */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 

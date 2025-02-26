@@ -1,24 +1,30 @@
 import React from "react";
-import { render, screen, fireEvent, within, cleanup } from "./utils/test-utils";
+import {
+  render,
+  screen,
+  fireEvent,
+  within,
+  cleanup,
+} from "@testing-library/react";
 import "@testing-library/jest-dom";
 import CIAClassificationApp from "./CIAClassificationApp";
 import { availabilityOptions } from "./hooks/useCIAOptions";
+import userEvent from "@testing-library/user-event";
+import { vi } from "vitest";
 
 // Mock getContext to prevent errors
-HTMLCanvasElement.prototype.getContext = jest.fn(() => null);
+HTMLCanvasElement.prototype.getContext = vi.fn(() => null);
 
 // Mock Chart.js
-jest.mock("chart.js/auto", () => {
-  return class Chart {
-    static defaults: { color: string } = { color: "#666" }; // Fix: Add type annotation
-    destroy = jest.fn();
+vi.mock("chart.js/auto", () => ({
+  __esModule: true,
+  default: class MockChart {
     constructor() {
-      return {
-        destroy: jest.fn(),
-      };
+      this.destroy = vi.fn();
     }
-  };
-});
+    destroy() {}
+  },
+}));
 
 describe("CIAClassificationApp", () => {
   beforeEach(() => {
@@ -250,12 +256,12 @@ describe("CIAClassificationApp", () => {
       // Mock matchMedia to return dark mode preference
       Object.defineProperty(window, "matchMedia", {
         writable: true,
-        value: jest.fn().mockImplementation((query) => ({
+        value: vi.fn().mockImplementation((query) => ({
           matches: true, // Simulate dark mode preference
           media: query,
           onchange: null,
-          addListener: jest.fn(),
-          removeListener: jest.fn(),
+          addListener: vi.fn(),
+          removeListener: vi.fn(),
         })),
       });
 
@@ -273,13 +279,13 @@ describe("CIAClassificationApp", () => {
       // Mock matchMedia to throw an error
       Object.defineProperty(window, "matchMedia", {
         writable: true,
-        value: jest.fn().mockImplementation(() => {
+        value: vi.fn().mockImplementation(() => {
           throw new Error("matchMedia error");
         }),
       });
 
       // Spy on console.error
-      const consoleErrorSpy = jest
+      const consoleErrorSpy = vi
         .spyOn(console, "error")
         .mockImplementation(() => {});
 
@@ -298,7 +304,7 @@ describe("CIAClassificationApp", () => {
 
       // Mock getElementById to return null
       const originalGetElementById = document.getElementById;
-      document.getElementById = jest.fn().mockReturnValue(null);
+      document.getElementById = vi.fn().mockReturnValue(null);
 
       // Render fresh component
       render(<CIAClassificationApp />);
@@ -313,7 +319,7 @@ describe("CIAClassificationApp", () => {
 
     it("handles error logging conditionally based on environment", () => {
       // Use a spy to test the console.error behavior
-      const consoleErrorSpy = jest
+      const consoleErrorSpy = vi
         .spyOn(console, "error")
         .mockImplementation(() => {});
 

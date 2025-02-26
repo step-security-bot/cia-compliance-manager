@@ -1,15 +1,15 @@
 import React from "react";
-import { render } from "@testing-library/react";
-import "@testing-library/jest-dom";
+import { render, screen } from "@testing-library/react";
 import CIAClassificationApp from "./CIAClassificationApp";
+import { vi } from "vitest";
 
 // Mock Chart.js
-jest.mock("chart.js/auto", () => ({
+vi.mock("chart.js/auto", () => ({
   __esModule: true,
   default: class MockChart {
     static defaults: { color: string } = { color: "#666" }; // Add type annotation
-    static register = jest.fn();
-    destroy = jest.fn();
+    static register = vi.fn();
+    destroy = vi.fn();
     constructor() {
       return this;
     }
@@ -18,8 +18,8 @@ jest.mock("chart.js/auto", () => ({
 
 describe("CIAClassificationApp Direct Tests", () => {
   beforeEach(() => {
-    jest.clearAllMocks();
-    HTMLCanvasElement.prototype.getContext = jest.fn();
+    vi.clearAllMocks();
+    HTMLCanvasElement.prototype.getContext = vi.fn();
   });
 
   it("handles node environment variations for error logging", () => {
@@ -28,7 +28,7 @@ describe("CIAClassificationApp Direct Tests", () => {
     const originalNodeEnv = process.env.NODE_ENV;
 
     // Mock console.error
-    console.error = jest.fn();
+    console.error = vi.fn();
 
     // Create a test function that simulates the error handling in useEffect
     const simulateErrorHandling = (nodeEnv: string) => {
@@ -45,12 +45,12 @@ describe("CIAClassificationApp Direct Tests", () => {
     // Should log in production
     simulateErrorHandling("production");
     expect(console.error).toHaveBeenCalled();
-    (console.error as jest.Mock).mockClear();
+    (console.error as vi.Mock).mockClear();
 
     // Should log in development
     simulateErrorHandling("development");
     expect(console.error).toHaveBeenCalled();
-    (console.error as jest.Mock).mockClear();
+    (console.error as vi.Mock).mockClear();
 
     // Should not log in test
     simulateErrorHandling("test");
@@ -66,7 +66,7 @@ describe("CIAClassificationApp Direct Tests", () => {
     // without throwing actual errors
 
     // Create a copy of the toggleDarkMode function logic to test directly
-    const mockSetDarkMode = jest.fn();
+    const mockSetDarkMode = vi.fn();
 
     const safeToggleDarkMode = (currentMode: boolean) => {
       const newMode = !currentMode;

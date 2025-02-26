@@ -1,22 +1,34 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import "@testing-library/jest-dom";
-
-// Create a simple spy-based mock for Chart.js
-jest.mock("chart.js/auto", () => ({
-  __esModule: true,
-  default: jest.fn(),
-}));
-
-// Import component after mock is set up
 import RadarChart from "./RadarChart";
+import { vi } from "vitest";
+
+// Track if the mock was called
+let mockCalled = false;
+
+// Create a mock for Chart.js using the factory function pattern
+vi.mock("chart.js/auto", () => {
+  return {
+    __esModule: true,
+    default: vi.fn().mockImplementation((...args) => {
+      // Set our flag when the mock is called
+      mockCalled = true;
+      return {
+        destroy: vi.fn(),
+        update: vi.fn(),
+      };
+    }),
+  };
+});
 
 describe("RadarChart Component", () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
+    // Reset our flag before each test
+    mockCalled = false;
 
     // Mock canvas context
-    HTMLCanvasElement.prototype.getContext = jest.fn().mockReturnValue({
+    HTMLCanvasElement.prototype.getContext = vi.fn().mockReturnValue({
       canvas: { width: 100, height: 100 },
     });
   });
@@ -39,9 +51,8 @@ describe("RadarChart Component", () => {
     // Verify getContext was called with '2d'
     expect(HTMLCanvasElement.prototype.getContext).toHaveBeenCalledWith("2d");
 
-    // Verify Chart constructor was called
-    const ChartConstructor = require("chart.js/auto").default;
-    expect(ChartConstructor).toHaveBeenCalled();
+    // Verify our mock was called (using the flag)
+    expect(mockCalled).toBe(true);
   });
 
   it("handles various security levels", () => {

@@ -1,4 +1,5 @@
 import "@testing-library/jest-dom";
+import { vi } from "vitest";
 import { configure } from "@testing-library/react";
 import { act } from "react";
 
@@ -33,34 +34,34 @@ declare global {
 
 // Mock window.matchMedia
 Object.defineProperty(window, "matchMedia", {
-  value: jest.fn().mockImplementation((query) => ({
+  value: vi.fn().mockImplementation((query) => ({
     matches: false,
     media: query,
     onchange: null,
-    addListener: jest.fn(),
-    removeListener: jest.fn(),
-    addEventListener: jest.fn(),
-    removeEventListener: jest.fn(),
-    dispatchEvent: jest.fn(),
+    addListener: vi.fn(),
+    removeListener: vi.fn(),
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    dispatchEvent: vi.fn(),
   })),
 });
 
 // Mock canvas with proper type assertions
-HTMLCanvasElement.prototype.getContext = jest.fn(() => {
+HTMLCanvasElement.prototype.getContext = vi.fn(() => {
   const mockContext = {
     canvas: { width: 100, height: 100 },
-    clearRect: jest.fn(),
-    beginPath: jest.fn(),
-    moveTo: jest.fn(),
-    lineTo: jest.fn(),
-    stroke: jest.fn(),
-    arc: jest.fn(),
-    fill: jest.fn(),
+    clearRect: vi.fn(),
+    beginPath: vi.fn(),
+    moveTo: vi.fn(),
+    lineTo: vi.fn(),
+    stroke: vi.fn(),
+    arc: vi.fn(),
+    fill: vi.fn(),
     // Add missing properties required by TypeScript for CanvasRenderingContext2D
     globalAlpha: 1,
     globalCompositeOperation: "source-over",
-    drawImage: jest.fn(),
-    clip: jest.fn(),
+    drawImage: vi.fn(),
+    clip: vi.fn(),
     // Add other required properties with mock values
     fillStyle: "#000",
     strokeStyle: "#000",
@@ -76,14 +77,14 @@ HTMLCanvasElement.prototype.getContext = jest.fn(() => {
   } as unknown as CanvasRenderingContext2D;
 
   return mockContext;
-}) as jest.Mock;
+}) as any;
 
 // Mock ResizeObserver
-global.ResizeObserver = jest.fn().mockImplementation(() => ({
-  observe: jest.fn(),
-  unobserve: jest.fn(),
-  disconnect: jest.fn(),
+global.ResizeObserver = vi.fn().mockImplementation(() => ({
+  observe: vi.fn(),
+  unobserve: vi.fn(),
+  disconnect: vi.fn(),
 }));
 
 // Silence console errors in tests
-console.error = jest.fn();
+console.error = vi.fn();

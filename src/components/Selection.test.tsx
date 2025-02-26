@@ -1,11 +1,16 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import "@testing-library/jest-dom";
+import userEvent from "@testing-library/user-event";
 import Selection from "./Selection";
+import { vi } from "vitest";
 import { availabilityOptions } from "../hooks/useCIAOptions";
 
 describe("Selection Component", () => {
-  const mockOnChange = jest.fn();
+  const mockOnChange = vi.fn();
+
+  beforeEach(() => {
+    mockOnChange.mockClear();
+  });
 
   beforeEach(() => {
     render(
@@ -21,7 +26,7 @@ describe("Selection Component", () => {
   });
 
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it("renders with correct label", () => {

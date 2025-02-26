@@ -1,66 +1,62 @@
 import React from "react";
 
 interface SelectionProps {
-  label: string;
-  options: Record<string, any>;
-  value: string;
-  onChange: (value: string) => void;
   id: string;
-  "data-testid"?: string;
+  label: string;
+  value: string;
+  options: Record<string, any>;
+  onChange: (value: string) => void;
+  [x: string]: any;
 }
 
-// Helper function to get icon for security level
-const getLevelIcon = (level: string): string => {
-  switch (level) {
-    case "Very High":
-      return "🔒"; // Locked
-    case "High":
-      return "🔐"; // Lock with key
-    case "Moderate":
-      return "⚠️"; // Warning
-    case "Low":
-      return "ℹ️"; // Info
-    default:
-      return "";
-  }
-};
-
 const Selection: React.FC<SelectionProps> = ({
-  label,
-  options,
-  value,
-  onChange,
   id,
-  "data-testid": testId,
-}) => (
-  <div className="form-control">
-    <label
-      htmlFor={id}
-      id={`${id}-label`}
-      className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-    >
-      {label}
-    </label>
-    <select
-      id={id}
-      data-testid={testId}
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md"
-      aria-label={label}
-      aria-labelledby={`${id}-label`}
-      aria-describedby={`${id}-description`}
-    >
-      {Object.entries(options).map(([key, option]) => (
-        <option key={key} value={key}>
-          {key} {getLevelIcon(key)}
-        </option>
-      ))}
-    </select>
-    <div id={`${id}-description`} className="sr-only">
-      Select a {label.toLowerCase()}
+  label,
+  value,
+  options,
+  onChange,
+  ...rest
+}) => {
+  const securityIcons: Record<string, string> = {
+    None: "📋",
+    Low: "ℹ️",
+    Moderate: "⚠️",
+    High: "🔐",
+    "Very High": "🔒",
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    onChange(e.target.value);
+  };
+
+  return (
+    <div className="mb-4">
+      <label
+        htmlFor={id}
+        className="block text-sm font-medium dark:text-gray-100 mb-1"
+      >
+        {label}
+      </label>
+      <select
+        id={id}
+        value={value}
+        onChange={handleChange}
+        className="block w-full p-2 border border-gray-300 rounded-md shadow-sm
+                focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-400
+                dark:focus:border-blue-400 dark:text-white dark:bg-gray-800
+                dark:border-gray-600"
+        aria-label={label}
+        {...rest}
+      >
+        {Object.keys(options).map((key) => (
+          <option key={key} value={key}>
+            {key in securityIcons ? `${securityIcons[key]} ` : ""}
+            {key}
+          </option>
+        ))}
+      </select>
     </div>
-  </div>
-);
+  );
+};
 
 export default Selection;

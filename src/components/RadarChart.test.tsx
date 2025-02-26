@@ -2,16 +2,17 @@ import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import RadarChart from "./RadarChart";
+import { vi } from "vitest";
 
 // Properly mock Chart.js
-jest.mock("chart.js/auto", () => {
+vi.mock("chart.js/auto", () => {
   return {
     __esModule: true,
     default: class MockChart {
       static defaults: { color: string } = { color: "#666" }; // Add type annotation
-      static register = jest.fn();
-      destroy = jest.fn();
-      update = jest.fn();
+      static register = vi.fn();
+      destroy = vi.fn();
+      update = vi.fn();
       constructor() {
         return this;
       }
@@ -21,7 +22,7 @@ jest.mock("chart.js/auto", () => {
 
 describe("RadarChart Component", () => {
   beforeEach(() => {
-    HTMLCanvasElement.prototype.getContext = jest.fn().mockReturnValue({
+    HTMLCanvasElement.prototype.getContext = vi.fn().mockReturnValue({
       canvas: { width: 100, height: 100 },
     });
   });
@@ -108,12 +109,12 @@ describe("RadarChart Component", () => {
     const canvasMock = document.createElement("canvas");
     const ctx = {
       canvas: canvasMock,
-      clearRect: jest.fn(),
-      save: jest.fn(),
-      restore: jest.fn(),
+      clearRect: vi.fn(),
+      save: vi.fn(),
+      restore: vi.fn(),
     };
 
-    HTMLCanvasElement.prototype.getContext = jest.fn().mockReturnValue(ctx);
+    HTMLCanvasElement.prototype.getContext = vi.fn().mockReturnValue(ctx);
 
     const { unmount, rerender } = render(
       <RadarChart
