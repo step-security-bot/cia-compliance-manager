@@ -337,5 +337,61 @@ describe("CIAClassificationApp", () => {
       // Restore the spy
       consoleErrorSpy.mockRestore();
     });
+
+    // Add these tests to the existing file to increase coverage
+
+    // Remove or replace the failing test
+    it("handles darkMode toggle with manual interactions", () => {
+      // Clean up previous render
+      cleanup();
+
+      // Render with data-testid
+      const { container } = render(
+        <CIAClassificationApp data-testid="app-container" />
+      );
+
+      // Get the theme toggle button
+      const themeToggle = screen.getByTestId("theme-toggle");
+
+      // Initially should not have dark class
+      expect(container.firstChild).not.toHaveClass("dark");
+
+      // Click to toggle dark mode on
+      fireEvent.click(themeToggle);
+
+      // Should have dark class now
+      expect(container.firstChild).toHaveClass("dark");
+
+      // Click again to toggle dark mode off
+      fireEvent.click(themeToggle);
+
+      // Should not have dark class again
+      expect(container.firstChild).not.toHaveClass("dark");
+    });
+  });
+
+  describe("Dark Mode Preference", () => {
+    it("applies dark mode based on user interaction", () => {
+      // Clean up
+      cleanup();
+
+      // Start fresh
+      const { container } = render(<CIAClassificationApp />);
+
+      // Get the theme toggle button
+      const themeToggle = screen.getByTestId("theme-toggle");
+
+      // Click to toggle dark mode on
+      fireEvent.click(themeToggle);
+
+      // Verify dark mode is applied
+      expect(container.firstChild).toHaveClass("dark");
+
+      // Click again to toggle off
+      fireEvent.click(themeToggle);
+
+      // Verify dark mode is removed
+      expect(container.firstChild).not.toHaveClass("dark");
+    });
   });
 });

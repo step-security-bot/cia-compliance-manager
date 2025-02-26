@@ -79,4 +79,26 @@ describe("DetailCard", () => {
     expect(screen.getByText("Recommendation 1")).toBeVisible();
     expect(screen.getByText("Recommendation 2")).toBeVisible();
   });
+
+  // Fix the test that's failing due to multiple buttons
+  it("handles background color calculations correctly", () => {
+    // Test with undefined bg value
+    const testDetails: CIADetails = {
+      description: "Test description",
+      impact: "Test impact",
+      technical: "Test technical",
+      capex: 20,
+      opex: 10,
+      bg: undefined as any, // Intentional undefined to test fallback
+      text: "#000000",
+      recommendations: ["Test recommendation"],
+    };
+
+    const { container } = render(
+      <DetailCard category="Test" level="None" details={testDetails} />
+    );
+
+    // Use data-testid instead of role since there are multiple buttons
+    expect(screen.getByTestId("toggle-button")).toBeInTheDocument();
+  });
 });

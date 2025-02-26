@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Selection from "./Selection";
 import { vi } from "vitest";
@@ -74,5 +74,42 @@ describe("Selection Component", () => {
         expect(option).toHaveValue(expectedOrder[index]);
       });
     });
+  });
+
+  // Add this test to cover options branch
+  it("handles options with no corresponding security icons", () => {
+    // Create custom options with a key not in the security icons mapping
+    const customOptions = {
+      "Custom Level": {
+        description: "Custom description",
+        impact: "Custom impact",
+        technical: "Custom technical",
+        capex: 10,
+        opex: 5,
+        bg: "#ffffff",
+        text: "#000000",
+        recommendations: ["Custom recommendation"],
+      },
+      ...availabilityOptions,
+    };
+
+    // Re-render with custom options
+    cleanup();
+    render(
+      <Selection
+        label="Custom Selection"
+        options={customOptions}
+        value="Custom Level"
+        onChange={vi.fn()}
+        id="custom"
+        data-testid="custom-select"
+      />
+    );
+
+    // The option should render without the icon prefix
+    const option = screen.getByRole("option", { name: /Custom Level/ });
+    expect(option).toBeInTheDocument();
+    expect(option).toHaveValue("Custom Level");
+    expect(option.textContent).toBe("Custom Level");
   });
 });
