@@ -15,6 +15,35 @@ const CIAClassificationApp: React.FC = () => {
   const [confidentiality, setConfidentiality] = useState<string>("None");
   const [darkMode, setDarkMode] = useState<boolean>(false);
 
+  // Add this section to handle test events
+  useEffect(() => {
+    // Add event listener for test:set-values to support Cypress tests
+    const testEventHandler = (e: Event) => {
+      if (
+        e instanceof CustomEvent &&
+        e.type === "test:set-values" &&
+        e.detail
+      ) {
+        const { availability: a, integrity: i, confidentiality: c } = e.detail;
+        if (a) setAvailability(a);
+        if (i) setIntegrity(i);
+        if (c) setConfidentiality(c);
+      }
+    };
+
+    document.addEventListener(
+      "test:set-values",
+      testEventHandler as EventListener
+    );
+
+    return () => {
+      document.removeEventListener(
+        "test:set-values",
+        testEventHandler as EventListener
+      );
+    };
+  }, []);
+
   // Check system preference on initial load
   useEffect(() => {
     // Check if we're in a browser environment and that matchMedia exists and is a function
@@ -152,7 +181,10 @@ const CIAClassificationApp: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             {/* Radar Chart Card */}
-            <div className="bg-white dark:bg-gray-800 shadow-lg rounded-xl p-6 transition-colors duration-300">
+            <div
+              className="bg-white dark:bg-gray-800 shadow-lg rounded-xl p-6 transition-colors duration-300"
+              data-testid="radar-chart-section"
+            >
               <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4 transition-colors duration-300">
                 Security Profile Visualization
               </h2>
@@ -164,14 +196,20 @@ const CIAClassificationApp: React.FC = () => {
             </div>
 
             {/* Cost Estimates Card */}
-            <div className="bg-white dark:bg-gray-800 shadow-lg rounded-xl p-6 transition-colors duration-300">
+            <div
+              className="bg-white dark:bg-gray-800 shadow-lg rounded-xl p-6 transition-colors duration-300"
+              data-testid="cost-estimates-section"
+            >
               <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4 transition-colors duration-300">
                 Cost Estimates
               </h2>
               <div className="space-y-4">
                 {/* Risk Metrics */}
                 <div className="grid grid-cols-2 gap-4 mb-4">
-                  <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-md transition-colors duration-300">
+                  <div
+                    className="bg-gray-50 dark:bg-gray-700 p-3 rounded-md transition-colors duration-300"
+                    data-testid="capex-risk"
+                  >
                     <p className="text-sm text-gray-500 dark:text-gray-400 mb-1 transition-colors duration-300">
                       Total CAPEX Risk
                     </p>
@@ -179,7 +217,10 @@ const CIAClassificationApp: React.FC = () => {
                       {totalCapex}%
                     </p>
                   </div>
-                  <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-md transition-colors duration-300">
+                  <div
+                    className="bg-gray-50 dark:bg-gray-700 p-3 rounded-md transition-colors duration-300"
+                    data-testid="opex-risk"
+                  >
                     <p className="text-sm text-gray-500 dark:text-gray-400 mb-1 transition-colors duration-300">
                       Total OPEX Risk
                     </p>

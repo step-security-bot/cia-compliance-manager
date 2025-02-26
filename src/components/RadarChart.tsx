@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import Chart from "chart.js/auto";
 
 interface RadarChartProps {
@@ -7,15 +7,22 @@ interface RadarChartProps {
   confidentiality: string;
 }
 
+// Helper function to convert level to numeric score
 const getLevelScore = (level: string): number => {
-  const scores: { [key: string]: number } = {
-    None: 0,
-    Low: 1,
-    Moderate: 2,
-    High: 3,
-    "Very High": 4,
-  };
-  return scores[level] || 0;
+  switch (level) {
+    case "None":
+      return 0;
+    case "Low":
+      return 1;
+    case "Moderate":
+      return 2;
+    case "High":
+      return 3;
+    case "Very High":
+      return 4;
+    default:
+      return 0;
+  }
 };
 
 const RadarChart: React.FC<RadarChartProps> = ({
@@ -40,49 +47,103 @@ const RadarChart: React.FC<RadarChartProps> = ({
       // Skip chart creation if context isn't available (like in test environment)
       if (!ctx) return;
 
+      const darkMode = document.documentElement.classList.contains("dark");
+      const textColor = darkMode
+        ? "rgba(255, 255, 255, 0.9)"
+        : "rgba(30, 41, 59, 0.9)";
+      const gridColor = darkMode
+        ? "rgba(255, 255, 255, 0.15)"
+        : "rgba(0, 0, 0, 0.1)";
+      const backgroundColor = darkMode
+        ? "rgba(59, 130, 246, 0.15)"
+        : "rgba(59, 130, 246, 0.1)";
+
       chartInstance.current = new Chart(ctx, {
         type: "radar",
         data: {
           labels: ["Availability", "Integrity", "Confidentiality"],
           datasets: [
             {
-              label: "CIA Levels",
+              label: "Security Levels",
               data: [
                 getLevelScore(availability),
                 getLevelScore(integrity),
                 getLevelScore(confidentiality),
               ],
-              backgroundColor: "rgba(54, 162, 235, 0.2)",
-              borderColor: "rgb(54, 162, 235)",
-              pointBackgroundColor: "rgb(54, 162, 235)",
+              backgroundColor: backgroundColor,
+              borderColor: "rgba(59, 130, 246, 0.8)",
+              borderWidth: 2,
+              pointBackgroundColor: "rgba(59, 130, 246, 1)",
+              pointBorderColor: "#fff",
+              pointHoverBackgroundColor: "#fff",
+              pointHoverBorderColor: "rgba(59, 130, 246, 1)",
+              pointRadius: 4,
             },
           ],
         },
         options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          plugins: {
+            legend: {
+              display: false,
+            },
+            tooltip: {
+              backgroundColor: darkMode
+                ? "rgba(0, 0, 0, 0.8)"
+                : "rgba(255, 255, 255, 0.95)",
+              titleColor: darkMode
+                ? "rgba(255, 255, 255, 0.95)"
+                : "rgba(0, 0, 0, 0.9)",
+              bodyColor: darkMode
+                ? "rgba(255, 255, 255, 0.8)"
+                : "rgba(0, 0, 0, 0.8)",
+              padding: 10,
+              cornerRadius: 4,
+            },
+          },
           scales: {
             r: {
               beginAtZero: true,
               max: 4,
               ticks: {
                 stepSize: 1,
+                display: false,
+              },
+              grid: {
+                color: gridColor,
+                circular: true,
+              },
+              angleLines: {
+                color: gridColor,
+                lineWidth: 1,
+              },
+              pointLabels: {
+                color: textColor,
+                font: {
+                  family: "'Inter', sans-serif",
+                  size: 12,
+                  weight: 500,
+                },
               },
             },
           },
         },
       });
     } catch (error) {
-      // Silently handle errors in test environment
       if (process.env.NODE_ENV !== "test") {
         console.error("Error initializing chart:", error);
       }
     }
 
     return () => {
-      if (chartInstance.current) {
+      if (
+        chartInstance.current &&
+        typeof chartInstance.current.destroy === "function"
+      ) {
         try {
           chartInstance.current.destroy();
         } catch (error) {
-          // Silently handle errors in test environment
           if (process.env.NODE_ENV !== "test") {
             console.error("Error destroying chart:", error);
           }
@@ -92,8 +153,13 @@ const RadarChart: React.FC<RadarChartProps> = ({
   }, [availability, integrity, confidentiality]);
 
   return (
-    <div className="w-full max-w-md mx-auto" data-testid="radar-chart">
-      <canvas ref={chartRef} />
+    <div
+      className="flex justify-center items-center h-full"
+      data-testid="radar-chart"
+    >
+      <div className="w-full max-w-xs mx-auto">
+        <canvas ref={chartRef} className="p-2" />
+      </div>
     </div>
   );
 };

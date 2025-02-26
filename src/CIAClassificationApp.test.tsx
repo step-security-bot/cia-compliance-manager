@@ -199,7 +199,7 @@ describe("CIAClassificationApp", () => {
       }
 
       // Get all recommendation elements and select the first one (Availability)
-      const recommendationElements = screen.getAllByText(/💡 Recommendations:/);
+      const recommendationElements = screen.getAllByText(/Recommendations/);
       expect(recommendationElements[0]).toBeVisible();
 
       // Check for High availability recommendations

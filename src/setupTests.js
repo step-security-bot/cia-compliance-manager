@@ -1,43 +1,35 @@
 import "@testing-library/jest-dom";
 
-// Mock window.matchMedia for tests - use a better implementation
-window.matchMedia =
-  window.matchMedia ||
-  function () {
-    return {
-      matches: false,
-      addListener: function () {},
-      removeListener: function () {},
-      addEventListener: function () {},
-      removeEventListener: function () {},
-      dispatchEvent: function () {},
-    };
-  };
+// Mock matchMedia for tests
+Object.defineProperty(window, "matchMedia", {
+  writable: true,
+  value: jest.fn().mockImplementation((query) => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: jest.fn(), // deprecated
+    removeListener: jest.fn(), // deprecated
+    addEventListener: jest.fn(),
+    removeEventListener: jest.fn(),
+    dispatchEvent: jest.fn(),
+  })),
+});
 
-// Silence specific console errors and warnings in tests
+// Mock canvas for Chart.js
+HTMLCanvasElement.prototype.getContext = jest.fn();
+
+// Suppress console errors during tests but save the original for important errors
 const originalError = console.error;
 console.error = (...args) => {
-  // Check for strings first to avoid undefined errors
-  if (args[0] && typeof args[0] === "string") {
-    const errorMsg = args[0];
-
-    // Canvas error - ignore
-    if (errorMsg.includes("HTMLCanvasElement.prototype.getContext")) {
-      return;
-    }
-
-    // Match Media error - ignore
-    if (errorMsg.includes("Error detecting color scheme preference")) {
-      return;
-    }
-
-    // React act warnings - ignore
-    if (
-      errorMsg.includes("ReactDOMTestUtils.act is deprecated") ||
-      errorMsg.includes("Warning: `ReactDOMTestUtils.act`")
-    ) {
-      return;
-    }
+  // Ignore certain errors that are expected during tests
+  if (
+    /Warning.*not wrapped in act/i.test(args[0]) ||
+    /Warning.*validateDOMNesting/i.test(args[0]) ||
+    /Warning.*ReactDOM.render is no longer supported/i.test(args[0]) ||
+    /Warning.*ReactDOMTestUtils\.act is deprecated/i.test(args[0]) || // Fixed regex pattern with escaped dot
+    /ReactDOMTestUtils\.act/i.test(args[0]) // Another pattern to catch the same warning
+  ) {
+    return;
   }
 
   originalError.apply(console, args);
@@ -45,15 +37,11 @@ console.error = (...args) => {
 
 // Mock Chart.js
 jest.mock("chart.js/auto", () => {
-  return class Chart {
-    static defaults = { color: "#666" };
-    static register = jest.fn();
-    destroy = jest.fn();
-    constructor() {
-      return {
-        destroy: jest.fn(),
-        update: jest.fn(),
-      };
-    }
+  return {
+    __esModule: true,
+    default: jest.fn().mockImplementation(() => ({
+      destroy: jest.fn(),
+      update: jest.fn(),
+    })),
   };
 });
