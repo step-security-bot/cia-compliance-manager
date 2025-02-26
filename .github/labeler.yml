@@ -1,0 +1,81 @@
+# Primary Feature Categories
+feature:
+- any:
+  - changed-files:
+    - any-glob-to-any-file: 
+      - 'feat/**'
+      - 'feature/**'
+      - '**/feature/**'
+      - '**/features/**'
+
+enhancement:
+- any:
+  - changed-files:
+    - any-glob-to-any-file: 
+      - 'enhance/**'
+      - 'improvement/**'
+      - '**/enhancement/**'
+
+visualization:
+- any:
+  - changed-files:
+    - any-glob-to-any-file: 
+      - '**/charts/**'
+      - '**/visualization/**'
+      - '**/graph/**'
+      - '**/dashboard/**'
+
+# Infrastructure
+infrastructure:
+- any:
+  - changed-files:
+    - any-glob-to-any-file: 
+      - '**/cloudformation/**'
+      - '**/deploy/**'
+      - '**/*.json'
+      - '**/config/**'
+      - '**/postgres/**'
+      - '**/.github/**'
+
+testing:
+- any:
+  - changed-files:
+    - any-glob-to-any-file: 
+      - '**/test/**'
+      - '**/*Test.java'
+      - '**/junit/**'
+      - '**/testing/**'
+
+# Documentation
+documentation:
+- any:
+  - changed-files:
+    - any-glob-to-any-file: 
+      - '**/*.md'
+      - '**/docs/**'
+      - '**/javadoc/**'
+      - '**/package-info.java'
+      - '**/module-info.java'
+      - '**/documentation/**'
+
+# Dependencies
+dependencies:
+- any:
+  - changed-files:
+    - any-glob-to-any-file: 
+      - 'build(deps)/**'
+      - '**/pom.xml'
+      - '**/dependencies/**'
+      - '**/dependency/**'
+
+# Build & CI
+build:
+- any:
+  - changed-files:
+    - any-glob-to-any-file: 
+      - '.github/workflows/**'
+      - '**/Dockerfile'
+      - '**/docker/**'
+      - '**/ci/**'
+      - '**/cd/**'
+      - 'pom.xml'
