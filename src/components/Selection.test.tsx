@@ -2,70 +2,72 @@ import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Selection from "./Selection";
+import { availabilityOptions } from "../hooks/useCIAOptions";
 
-describe("Selection", () => {
-  const mockOptions = {
-    None: { description: "No req" },
-    Low: { description: "Low req" },
-    "Very High": { description: "Very high req" },
-  };
+describe("Selection Component", () => {
+  const mockOnChange = jest.fn();
 
-  it("renders correctly with options", () => {
+  beforeEach(() => {
     render(
       <Selection
-        label="Test Label"
-        options={mockOptions}
-        value="None"
-        onChange={jest.fn()}
-        id="test"
-        data-testid="test-select"
-      />
-    );
-
-    expect(screen.getByLabelText("Test Label")).toBeInTheDocument();
-    expect(screen.getByTestId("test-select")).toHaveValue("None");
-
-    // Check for options by partial match to account for icons
-    expect(screen.getByRole("option", { name: /^None/ })).toBeInTheDocument();
-    expect(screen.getByRole("option", { name: /^Low/ })).toBeInTheDocument();
-    expect(
-      screen.getByRole("option", { name: /^Very High/ })
-    ).toBeInTheDocument();
-  });
-
-  it("calls onChange handler when selection changes", () => {
-    const mockOnChange = jest.fn();
-    render(
-      <Selection
-        label="Test Label"
-        options={mockOptions}
+        label="Availability Level"
+        options={availabilityOptions}
         value="None"
         onChange={mockOnChange}
-        id="test"
-        data-testid="test-select"
+        id="availability"
+        data-testid="availability-select"
       />
     );
-
-    fireEvent.change(screen.getByTestId("test-select"), {
-      target: { value: "Low" },
-    });
-    expect(mockOnChange).toHaveBeenCalledWith("Low");
   });
 
-  it("shows security icons on options", () => {
-    render(
-      <Selection
-        label="Test Label"
-        options={mockOptions}
-        value="None"
-        onChange={jest.fn()}
-        id="test"
-      />
-    );
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
 
-    // Use regex to find an option containing "Very High" followed by any characters
-    const veryHighOption = screen.getByRole("option", { name: /Very High/ });
-    expect(veryHighOption).toBeInTheDocument();
-    expect(veryHighOption.textContent).toContain("🔒");
+  it("renders with correct label", () => {
+    expect(screen.getByText("Availability Level")).toBeInTheDocument();
+  });
+
+  it("contains all option values", () => {
+    const select = screen.getByTestId("availability-select");
+    const options = Array.from(select.getElementsByTagName("option"));
+    expect(options).toHaveLength(Object.keys(availabilityOptions).length);
+    expect(options[0]).toHaveValue("None");
+  });
+
+  it("handles changes correctly", () => {
+    fireEvent.change(screen.getByTestId("availability-select"), {
+      target: { value: "High" },
+    });
+    expect(mockOnChange).toHaveBeenCalledWith("High");
+  });
+
+  describe("Accessibility", () => {
+    it("maintains label-input association", () => {
+      const label = screen.getByText("Availability Level");
+      const select = screen.getByTestId("availability-select");
+      expect(label).toHaveAttribute("for", select.id);
+    });
+
+    it("has proper ARIA attributes", () => {
+      const select = screen.getByTestId("availability-select");
+      expect(select).toHaveAttribute("id");
+      expect(select).toHaveAttribute("aria-label", "Availability Level");
+    });
+  });
+
+  describe("Option Handling", () => {
+    it("displays correct number of options", () => {
+      const options = screen.getAllByRole("option");
+      expect(options).toHaveLength(Object.keys(availabilityOptions).length);
+    });
+
+    it("maintains option order", () => {
+      const options = screen.getAllByRole("option");
+      const expectedOrder = ["None", "Low", "Moderate", "High", "Very High"];
+      options.forEach((option, index) => {
+        expect(option).toHaveValue(expectedOrder[index]);
+      });
+    });
   });
 });

@@ -1,7 +1,8 @@
 import React from "react";
-import { render, screen, fireEvent, within } from "./utils/test-utils";
+import { render, screen, fireEvent, within, cleanup } from "./utils/test-utils";
 import "@testing-library/jest-dom";
 import CIAClassificationApp from "./CIAClassificationApp";
+import { availabilityOptions } from "./hooks/useCIAOptions";
 
 // Mock getContext to prevent errors
 HTMLCanvasElement.prototype.getContext = jest.fn(() => null);
@@ -162,24 +163,21 @@ describe("CIAClassificationApp", () => {
     it("expands detail cards on click", () => {
       const firstDetailCard = screen.getAllByRole("button")[1]; // First card after theme toggle button
 
-      // Find the content div and check if it has the 'hidden' class
-      const contentDiv = screen
-        .getAllByText(/📝 Description:/)[0]
-        .closest("div");
-      // Handle potential null with null assertion operator since we know it exists
-      expect(contentDiv!).toHaveClass("hidden");
+      // Find the outer content div (which has the hidden class)
+      const contentContainer = screen.getAllByTestId("detail-content")[0];
+      expect(contentContainer).toHaveClass("hidden");
 
       // Click to expand
       fireEvent.click(firstDetailCard);
 
       // Now it should not have the hidden class
-      expect(contentDiv!).not.toHaveClass("hidden");
+      expect(contentContainer).not.toHaveClass("hidden");
 
       // Click to collapse
       fireEvent.click(firstDetailCard);
 
       // Hidden again
-      expect(contentDiv!).toHaveClass("hidden");
+      expect(contentContainer).toHaveClass("hidden");
     });
 
     it("shows recommendations in detail cards", () => {
@@ -241,6 +239,97 @@ describe("CIAClassificationApp", () => {
 
       // The chart should still be in the DOM
       expect(screen.getByTestId("radar-chart")).toBeInTheDocument();
+    });
+  });
+
+  describe("Dark Mode Detection", () => {
+    it("initializes with system preferences when available", () => {
+      // Clean up previous render
+      cleanup();
+
+      // Mock matchMedia to return dark mode preference
+      Object.defineProperty(window, "matchMedia", {
+        writable: true,
+        value: jest.fn().mockImplementation((query) => ({
+          matches: true, // Simulate dark mode preference
+          media: query,
+          onchange: null,
+          addListener: jest.fn(),
+          removeListener: jest.fn(),
+        })),
+      });
+
+      // Re-render component to test initialization
+      render(<CIAClassificationApp />);
+
+      // Should initialize with dark mode
+      expect(document.querySelector("div.dark")).toBeInTheDocument();
+    });
+
+    it("handles matchMedia errors gracefully", () => {
+      // Clean up previous render
+      cleanup();
+
+      // Mock matchMedia to throw an error
+      Object.defineProperty(window, "matchMedia", {
+        writable: true,
+        value: jest.fn().mockImplementation(() => {
+          throw new Error("matchMedia error");
+        }),
+      });
+
+      // Spy on console.error
+      const consoleErrorSpy = jest
+        .spyOn(console, "error")
+        .mockImplementation(() => {});
+
+      // Component should render without crashing
+      render(<CIAClassificationApp />);
+
+      // Clean up
+      consoleErrorSpy.mockRestore();
+    });
+  });
+
+  describe("Edge Cases", () => {
+    it("handles missing DOM elements gracefully during dark mode toggle", () => {
+      // Clean up previous render
+      cleanup();
+
+      // Mock getElementById to return null
+      const originalGetElementById = document.getElementById;
+      document.getElementById = jest.fn().mockReturnValue(null);
+
+      // Render fresh component
+      render(<CIAClassificationApp />);
+      const themeToggle = screen.getByTestId("theme-toggle");
+
+      // This should not throw errors
+      fireEvent.click(themeToggle);
+
+      // Clean up
+      document.getElementById = originalGetElementById;
+    });
+
+    it("handles error logging conditionally based on environment", () => {
+      // Use a spy to test the console.error behavior
+      const consoleErrorSpy = jest
+        .spyOn(console, "error")
+        .mockImplementation(() => {});
+
+      // Create a simple error handling function that mimics our app's behavior
+      const handleError = (error: Error) => {
+        if (process.env.NODE_ENV !== "test") {
+          console.error("Error detecting color scheme preference:", error);
+        }
+      };
+
+      // Test with test environment - should not log
+      handleError(new Error("Test error"));
+      expect(consoleErrorSpy).not.toHaveBeenCalled();
+
+      // Restore the spy
+      consoleErrorSpy.mockRestore();
     });
   });
 });

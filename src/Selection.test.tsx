@@ -38,6 +38,15 @@ describe("Selection Component", () => {
     expect(mockOnChange).toHaveBeenCalledWith("High");
   });
 
+  it("displays security icons for different levels", () => {
+    // Check if all options with security levels have their corresponding icons
+    const options = screen.getAllByRole("option");
+    expect(options[1].textContent).toContain("ℹ️"); // Low
+    expect(options[2].textContent).toContain("⚠️"); // Moderate
+    expect(options[3].textContent).toContain("🔐"); // High
+    expect(options[4].textContent).toContain("🔒"); // Very High
+  });
+
   describe("Accessibility", () => {
     it("maintains label-input association", () => {
       const label = screen.getByText("Availability Level");

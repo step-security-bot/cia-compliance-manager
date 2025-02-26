@@ -24,8 +24,8 @@ describe("DetailCard", () => {
     expect(screen.getByText(/Test Category - None/)).toBeInTheDocument();
 
     // The content should be hidden initially - need to check for hidden class
-    const contentDiv = screen.getByText(/📝 Description:/).closest("div");
-    expect(contentDiv).toHaveClass("hidden");
+    const contentContainer = screen.getByTestId("detail-content");
+    expect(contentContainer).toHaveClass("hidden");
   });
 
   it("expands and collapses when clicked", () => {
@@ -34,14 +34,14 @@ describe("DetailCard", () => {
     );
 
     // Before expanding - content is in the DOM but hidden
-    const contentDiv = screen.getByText(/📝 Description:/).closest("div");
-    expect(contentDiv).toHaveClass("hidden");
+    const contentContainer = screen.getByTestId("detail-content");
+    expect(contentContainer).toHaveClass("hidden");
 
     // Click to expand
     fireEvent.click(screen.getByRole("button"));
 
     // After expanding - should not have hidden class
-    expect(contentDiv).not.toHaveClass("hidden");
+    expect(contentContainer).not.toHaveClass("hidden");
     expect(screen.getByText(/Test description/)).toBeVisible();
     expect(screen.getByText("💥 Impact:")).toBeVisible();
     expect(screen.getByText("Test impact")).toBeVisible();
@@ -52,7 +52,7 @@ describe("DetailCard", () => {
     fireEvent.click(screen.getByRole("button"));
 
     // After collapsing - should have hidden class again
-    expect(contentDiv).toHaveClass("hidden");
+    expect(contentContainer).toHaveClass("hidden");
   });
 
   it("shows security lock icon for 'Very High' level", () => {
@@ -60,7 +60,13 @@ describe("DetailCard", () => {
       <DetailCard category="Test" level="Very High" details={mockDetails} />
     );
 
-    expect(screen.getByText("🔒")).toBeInTheDocument();
+    // Use a regex to find text containing the lock emoji
+    // This is more flexible than looking for the exact emoji string
+    expect(screen.getByText(/🔒/)).toBeInTheDocument();
+
+    // Alternative approach: check the heading text contains the icon
+    const heading = screen.getByRole("heading");
+    expect(heading.textContent).toContain("🔒");
   });
 
   it("displays recommendations when available", () => {
