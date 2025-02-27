@@ -16,15 +16,36 @@ vi.mock("chart.js/auto", () => {
   };
 });
 
-// Mock getContext
-HTMLCanvasElement.prototype.getContext = vi.fn(() => ({
-  // Minimal canvas context implementation
+// Properly cast the mock to avoid TypeScript errors
+const mockCanvasContext = {
   clearRect: vi.fn(),
   beginPath: vi.fn(),
   stroke: vi.fn(),
   moveTo: vi.fn(),
   lineTo: vi.fn(),
-}));
+  // Add additional required canvas context properties
+  canvas: document.createElement("canvas"),
+  save: vi.fn(),
+  restore: vi.fn(),
+  translate: vi.fn(),
+  rotate: vi.fn(),
+  scale: vi.fn(),
+  fillRect: vi.fn(),
+  strokeRect: vi.fn(),
+  fillText: vi.fn(),
+  strokeText: vi.fn(),
+  measureText: vi.fn(() => ({
+    width: 0,
+    actualBoundingBoxAscent: 0,
+    actualBoundingBoxDescent: 0,
+  })),
+  // Add more methods as needed
+} as unknown as CanvasRenderingContext2D;
+
+// Mock getContext with proper type casting
+HTMLCanvasElement.prototype.getContext = vi
+  .fn()
+  .mockImplementation(() => mockCanvasContext);
 
 describe("RadarChart Component", () => {
   it("renders correctly with provided security levels", () => {

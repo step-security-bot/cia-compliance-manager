@@ -9,63 +9,120 @@ const ImpactAnalysisWidget: React.FC<ImpactAnalysisWidgetProps> = ({
   category,
   level,
 }) => {
-  const impacts = {
-    Availability: {
-      Basic:
-        "Frequent outages (up to 5% downtime annually) could result in lost revenue during business hours, customer frustration, and inefficient operations.",
-      Moderate:
-        "Improved uptime (99% availability) limits disruptions to around 3.65 days per year, reducing lost revenue and maintaining operational continuity for most business functions.",
-      High: "Near-continuous service (99.9% uptime) limits disruptions to less than 9 hours annually, preserving revenue streams, maintaining brand reputation, and ensuring customer satisfaction.",
-      "Very High":
-        "Continuous operation (99.99% uptime) with less than 1 hour of downtime annually preserves mission-critical functions, maintains cash flow during crisis events, and protects market position.",
-      None: "No availability controls may lead to frequent and extended outages with significant business disruption.",
-    },
-    Integrity: {
-      Basic:
-        "Risk of data corruption or loss without proper backup could necessitate costly manual reconstruction, lead to erroneous business decisions, and potentially violate compliance requirements.",
-      Moderate:
-        "Automated validation helps prevent most data corruption issues, preserving decision quality and reducing error correction costs.",
-      High: "Immutable records and blockchain validation virtually eliminate data tampering and corruption risks, enabling high-confidence business decisions.",
-      "Very High":
-        "Advanced cryptographic validation through smart contracts creates tamper-proof operational environments, essential where data corruption could have catastrophic consequences.",
-      None: "No data integrity controls may result in corrupted data going undetected, leading to flawed analytics and decisions.",
-    },
-    Confidentiality: {
-      Basic:
-        "Limited protection means sensitive information could be exposed, leading to competitive disadvantage, customer trust erosion, and potential regulatory penalties.",
-      Moderate:
-        "Standard encryption and access controls protect sensitive internal data from common threats, helping meet basic compliance requirements.",
-      High: "Robust protection for sensitive data prevents most breaches, avoiding regulatory penalties that could reach millions of dollars.",
-      "Very High":
-        "Military-grade protection with quantum-safe encryption safeguards against even state-sponsored attackers, protecting intellectual property worth billions.",
-      None: "No confidentiality controls mean all data is effectively public and accessible to anyone.",
-    },
+  // Impact descriptions based on category and level
+  const getImpactDescription = () => {
+    switch (category) {
+      case "Availability":
+        switch (level) {
+          case "Very High":
+            return "99.99% uptime, ensuring continuous operations with less than 1 hour of annual downtime.";
+          case "High":
+            return "99.9% uptime, maintaining most operations with minimal disruptions.";
+          case "Moderate":
+            return "99% uptime, occasional disruptions affecting some business functions.";
+          case "Low":
+            return "95% uptime, frequent disruptions affecting operations.";
+          default:
+            return "No availability guarantees, significant downtime expected.";
+        }
+      case "Integrity":
+        switch (level) {
+          case "Very High":
+            return "Complete data accuracy with real-time validation through smart contracts.";
+          case "High":
+            return "Immutable data records with blockchain validation for high assurance.";
+          case "Moderate":
+            return "Automated validation providing reasonable data accuracy.";
+          case "Low":
+            return "Basic data checks with potential for errors.";
+          default:
+            return "No data integrity controls, high risk of corruption.";
+        }
+      case "Confidentiality":
+        switch (level) {
+          case "Very High":
+            return "Military-grade protection using quantum-safe encryption.";
+          case "High":
+            return "Strong protection with MFA, robust encryption, and continuous monitoring.";
+          case "Moderate":
+            return "Standard protection with AES-256 encryption and basic monitoring.";
+          case "Low":
+            return "Minimal protection suitable only for non-sensitive information.";
+          default:
+            return "No confidentiality controls, data is essentially public.";
+        }
+    }
   };
 
-  const icons = {
-    Availability: "🕒",
-    Integrity: "🛡️",
-    Confidentiality: "🔐",
+  const getBusinessImpact = () => {
+    switch (category) {
+      case "Availability":
+        switch (level) {
+          case "Very High":
+            return "Ensures business continuity even during major disruptions, supporting critical operations.";
+          case "High":
+            return "Maintains customer satisfaction and revenue streams with minimal interruptions.";
+          case "Moderate":
+            return "Acceptable for standard business operations with some tolerance for downtime.";
+          case "Low":
+            return "May result in customer frustration and revenue loss during outages.";
+          default:
+            return "High risk of significant business disruption and financial losses.";
+        }
+      case "Integrity":
+        switch (level) {
+          case "Very High":
+            return "Supports regulatory compliance and enables high-confidence business decisions.";
+          case "High":
+            return "Ensures accurate financial reporting and maintains data trustworthiness.";
+          case "Moderate":
+            return "Provides reasonable assurance for business processes with some validation.";
+          case "Low":
+            return "May lead to occasional errors in business decisions and reporting.";
+          default:
+            return "High risk of incorrect business decisions based on corrupt data.";
+        }
+      case "Confidentiality":
+        switch (level) {
+          case "Very High":
+            return "Protects highly sensitive information from sophisticated threats.";
+          case "High":
+            return "Safeguards customer data and intellectual property from most threats.";
+          case "Moderate":
+            return "Adequate for protecting internal business information.";
+          case "Low":
+            return "Minimal protection that may not meet regulatory requirements.";
+          default:
+            return "No protection for sensitive information, high risk of exposure.";
+        }
+    }
   };
-
-  const colorClasses = {
-    Availability: "bg-blue-50 dark:bg-blue-900/20",
-    Integrity: "bg-green-50 dark:bg-green-900/20",
-    Confidentiality: "bg-purple-50 dark:bg-purple-900/20",
-  };
-
-  const impact =
-    impacts[category][level as keyof typeof impacts.Availability] ||
-    impacts[category].None;
 
   return (
-    <div className="p-2">
-      <div className="flex items-center mb-3">
-        <span className="text-xl mr-2">{icons[category]}</span>
-        <h4 className="text-md font-medium">{category} Impact</h4>
+    <div className="space-y-3">
+      <div className="flex items-center mb-2">
+        <span
+          className={`inline-block w-3 h-3 rounded-full mr-2 ${
+            level === "Very High"
+              ? "bg-green-500"
+              : level === "High"
+              ? "bg-blue-500"
+              : level === "Moderate"
+              ? "bg-yellow-500"
+              : level === "Low"
+              ? "bg-orange-500"
+              : "bg-red-500"
+          }`}
+        ></span>
+        <span className="text-sm font-medium">
+          {level} {category}
+        </span>
       </div>
-      <div className={`${colorClasses[category]} p-3 rounded-md`}>
-        <p className="text-sm">{impact}</p>
+
+      <div className="text-sm text-gray-600 dark:text-gray-300">
+        <p className="mb-2">{getImpactDescription()}</p>
+        <p className="font-medium text-sm mt-2">Business Impact:</p>
+        <p>{getBusinessImpact()}</p>
       </div>
     </div>
   );

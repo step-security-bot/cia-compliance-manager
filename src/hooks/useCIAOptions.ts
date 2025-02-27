@@ -2,204 +2,253 @@ import { CIADetails } from "../types/cia";
 
 export const availabilityOptions: Record<string, CIADetails> = {
   None: {
-    description: "No specific requirement",
-    impact: "No impact",
-    technical: "No technical controls required",
+    description: "No availability controls implemented",
+    impact: "Business operations cannot be maintained during disruptions",
+    technical: "No redundancy, no backup systems, no recovery plans.",
     capex: 0,
     opex: 0,
-    bg: "#ffffff",
-    text: "#000000",
+    businessImpact:
+      "High risk of frequent outages and data loss with no recovery capability.",
+    bg: "#ff0000", // Red
+    text: "#ffffff", // White
     recommendations: [
-      "Consider baseline availability requirements for all systems",
-    ],
-  },
-  Low: {
-    description: "Minimal downtime acceptable",
-    impact: "Minor disruption",
-    technical: "Basic redundancy",
-    capex: 10,
-    opex: 5,
-    bg: "#e5f5e0",
-    text: "#1a535c",
-    recommendations: [
-      "Implement basic monitoring",
+      "Implement basic backup solutions",
       "Document recovery procedures",
     ],
   },
-  Moderate: {
-    description: "Limited downtime acceptable",
-    impact: "Moderate disruption",
-    technical: "Enhanced redundancy",
-    capex: 20,
-    opex: 15,
-    bg: "#a1d99b",
-    text: "#1a535c",
+  Low: {
+    description: "Basic backup & restore capability",
+    impact: "Business operations severely impacted during disruptions",
+    technical:
+      "Manual backup procedures, basic recovery documentation, no redundancy.",
+    capex: 5,
+    opex: 5,
+    businessImpact:
+      "Downtime of hours to days. ~95% uptime (18+ days of downtime per year).",
+    bg: "#ffa500", // Orange
+    text: "#000000", // Black
     recommendations: [
-      "Deploy load balancers",
-      "Implement automated backups",
-      "Create disaster recovery plan",
+      "Improve backup frequency",
+      "Implement disaster recovery planning",
+    ],
+  },
+  Moderate: {
+    description: "Pilot light recovery capability",
+    impact: "Some business operations can continue during minor disruptions",
+    technical:
+      "Core systems pre-configured with automated recovery scripts, limited redundancy.",
+    capex: 15,
+    opex: 15,
+    businessImpact:
+      "Downtime of minutes to hours. ~99% uptime (3-4 days of downtime per year).",
+    bg: "#ffff00", // Yellow
+    text: "#000000", // Black
+    recommendations: [
+      "Implement redundant infrastructure",
+      "Automate failover processes",
     ],
   },
   High: {
-    description: "Minimal downtime required",
-    impact: "Major disruption",
-    technical: "High availability",
-    capex: 40,
-    opex: 30,
-    bg: "#31a354",
-    text: "#ffffff",
+    description: "Warm standby with fast recovery",
+    impact: "Most business operations can continue during disruptions",
+    technical:
+      "Partially active redundant systems, real-time data replication, automated failover mechanisms.",
+    capex: 25,
+    opex: 40,
+    businessImpact:
+      "Minimal downtime. ~99.9% uptime (less than 9 hours of downtime per year).",
+    bg: "#0000ff", // Blue
+    text: "#ffffff", // White
     recommendations: [
-      "Multi-region deployment",
-      "Redundant infrastructure",
-      "24/7 monitoring",
+      "Add geo-redundancy",
+      "Implement continuous testing of recovery systems",
     ],
   },
   "Very High": {
-    description: "No downtime acceptable",
-    impact: "Critical disruption",
-    technical: "Fault tolerance",
+    description: "Multi-site active/active deployment",
+    impact: "Business operations continue seamlessly during disruptions",
+    technical:
+      "Fully redundant multi-region deployment, global load balancing, automatic failover with zero data loss.",
     capex: 60,
-    opex: 45,
-    bg: "#006d2c",
-    text: "#ffffff",
+    opex: 70,
+    businessImpact:
+      "Near-continuous operation. ~99.99% uptime (less than 1 hour of downtime per year).",
+    bg: "#00ff00", // Green
+    text: "#000000", // Black
     recommendations: [
-      "Active-active configuration",
-      "Multiple availability zones",
-      "Automated failover",
-      "Real-time monitoring",
+      "Regular chaos engineering testing",
+      "Implement advanced observability",
     ],
   },
 };
 
 export const integrityOptions: Record<string, CIADetails> = {
   None: {
-    description: "No data integrity requirements",
-    impact: "No impact from data corruption",
-    technical: "No technical controls required",
+    description: "No integrity controls implemented",
+    impact: "No assurance of data accuracy or validity",
+    technical: "No data validation, no checksums, no audit trails.",
     capex: 0,
     opex: 0,
-    bg: "#ffffff",
-    text: "#000000",
-    recommendations: ["Document basic data quality practices"],
+    businessImpact:
+      "High risk of data corruption, tampering, and undetected changes.",
+    bg: "#ff0000", // Red
+    text: "#ffffff", // White
+    recommendations: [
+      "Implement basic data validation",
+      "Start logging changes",
+    ],
   },
   Low: {
-    description: "Basic data integrity needed",
-    impact: "Minor impact from data corruption",
-    technical: "Basic checksums and validation",
-    capex: 10,
-    opex: 5,
-    bg: "#e0ecf4",
-    text: "#1a535c",
-    recommendations: ["Implement input validation", "Use database constraints"],
+    description: "Manual data validation",
+    impact: "Basic assurance of data accuracy",
+    technical:
+      "Manual data entry verification, basic access logs, simple backup strategies.",
+    capex: 5,
+    opex: 10,
+    businessImpact:
+      "Some protection against accidental data corruption but limited defense against deliberate tampering.",
+    bg: "#ffa500", // Orange
+    text: "#000000", // Black
+    recommendations: [
+      "Add automated data validation",
+      "Implement checksum verification",
+    ],
   },
   Moderate: {
-    description: "Standard data integrity required",
-    impact: "Moderate impact from data corruption",
-    technical: "Advanced validation and access controls",
-    capex: 25,
-    opex: 15,
-    bg: "#9ebcda",
-    text: "#1a535c",
+    description: "Automated data validation",
+    impact: "Moderate assurance of data accuracy and validity",
+    technical:
+      "Automated data validation rules, audit logging systems, error detection mechanisms.",
+    capex: 20,
+    opex: 20,
+    businessImpact:
+      "Good protection against most corruption scenarios with audit capabilities for compliance needs.",
+    bg: "#ffff00", // Yellow
+    text: "#000000", // Black
     recommendations: [
-      "Data validation pipelines",
-      "Audit logging",
-      "Change tracking",
+      "Implement cryptographic signing",
+      "Add comprehensive audit logging",
     ],
   },
   High: {
-    description: "High data integrity essential",
-    impact: "Major impact from data corruption",
-    technical: "Digital signatures and advanced controls",
-    capex: 40,
-    opex: 30,
-    bg: "#8856a7",
-    text: "#ffffff",
+    description: "Blockchain validation with immutable records",
+    impact: "High assurance of data accuracy and validity",
+    technical:
+      "Distributed ledger solutions, cryptographic verification, complete audit trails.",
+    capex: 35,
+    opex: 50,
+    businessImpact:
+      "High assurance of data integrity with tamper-evident records and full auditability.",
+    bg: "#0000ff", // Blue
+    text: "#ffffff", // White
     recommendations: [
-      "Implement digital signatures",
-      "Blockchain for critical data",
-      "Comprehensive audit trails",
+      "Implement zero-trust architecture",
+      "Add advanced threat detection",
     ],
   },
   "Very High": {
-    description: "Absolute data integrity required",
-    impact: "Critical impact from data corruption",
-    technical: "Cryptographic verification and tamper-proof systems",
+    description: "Smart contract validation",
+    impact: "Highest assurance of data accuracy and validity",
+    technical:
+      "Smart contract execution, automated governance rules, advanced cryptography, real-time compliance verification.",
     capex: 60,
-    opex: 45,
-    bg: "#810f7c",
-    text: "#ffffff",
+    opex: 70,
+    businessImpact:
+      "Highest level of data integrity with tamper-proof operations and real-time validation.",
+    bg: "#00ff00", // Green
+    text: "#000000", // Black
     recommendations: [
-      "Zero-trust architecture",
-      "Multiple integrity verification methods",
-      "Automated testing and validation",
+      "Regular cryptographic algorithm rotation",
+      "Implement quantum-resistant algorithms",
     ],
   },
 };
 
 export const confidentialityOptions: Record<string, CIADetails> = {
   None: {
-    description: "No confidentiality requirements",
-    impact: "No impact from disclosure",
-    technical: "No technical controls required",
+    description: "No confidentiality controls implemented",
+    impact: "No protection for sensitive information",
+    technical: "No encryption, no access controls, data fully accessible.",
     capex: 0,
     opex: 0,
-    bg: "#ffffff",
-    text: "#000000",
-    recommendations: ["Document data classification policy"],
+    businessImpact:
+      "All data is effectively public and can be accessed by anyone.",
+    bg: "#ff0000", // Red
+    text: "#ffffff", // White
+    recommendations: [
+      "Implement basic access controls",
+      "Add data classification",
+    ],
   },
   Low: {
-    description: "Limited confidentiality needed",
-    impact: "Minor impact from disclosure",
-    technical: "Basic access control",
-    capex: 10,
+    description: "Basic access controls",
+    impact: "Minimal protection for sensitive information",
+    technical: "Basic HTTPS, simple authentication, minimal access controls.",
+    capex: 5,
     opex: 5,
-    bg: "#fee0d2",
-    text: "#1a535c",
-    recommendations: ["Implement user authentication", "Basic access controls"],
+    businessImpact:
+      "Suitable only for public-facing information with minimal protection needs.",
+    bg: "#ffa500", // Orange
+    text: "#000000", // Black
+    recommendations: [
+      "Implement encryption at rest",
+      "Add multi-factor authentication",
+    ],
   },
   Moderate: {
-    description: "Standard confidentiality required",
-    impact: "Moderate impact from disclosure",
-    technical: "Encryption and strong access control",
-    capex: 25,
+    description: "Standard encryption and access management",
+    impact: "Moderate protection for sensitive information",
+    technical:
+      "Strong encryption at rest and in transit, role-based access control, security monitoring.",
+    capex: 15,
     opex: 20,
-    bg: "#fc9272",
-    text: "#1a535c",
+    businessImpact:
+      "Adequate for protecting most internal business information but not highly sensitive data.",
+    bg: "#ffff00", // Yellow
+    text: "#000000", // Black
     recommendations: [
-      "Data encryption at rest",
-      "Role-based access control",
-      "Regular access reviews",
+      "Implement data loss prevention",
+      "Add security information and event monitoring",
     ],
   },
   High: {
-    description: "High confidentiality essential",
-    impact: "Major impact from disclosure",
-    technical: "Advanced encryption and strict controls",
-    capex: 45,
-    opex: 35,
-    bg: "#de2d26",
-    text: "#ffffff",
+    description: "Enhanced security with MFA and monitoring",
+    impact: "High protection for sensitive information",
+    technical:
+      "Multi-factor authentication systems, advanced encryption, SIEM solutions, DLP controls, privileged access management.",
+    capex: 30,
+    opex: 40,
+    businessImpact:
+      "Strong protection for sensitive customer and financial data with good regulatory compliance.",
+    bg: "#0000ff", // Blue
+    text: "#ffffff", // White
     recommendations: [
-      "End-to-end encryption",
-      "Data loss prevention tools",
-      "Advanced threat protection",
+      "Implement zero trust network access",
+      "Add automated threat hunting",
     ],
   },
   "Very High": {
-    description: "Absolute confidentiality required",
-    impact: "Critical impact from disclosure",
-    technical: "Full security stack and isolation",
-    capex: 70,
-    opex: 50,
-    bg: "#a50f15",
-    text: "#ffffff",
+    description: "Military-grade protection",
+    impact: "Highest protection for sensitive information",
+    technical:
+      "Quantum-resistant algorithms, hardware security modules, air-gapped systems, advanced threat detection, physical security controls.",
+    capex: 50,
+    opex: 60,
+    businessImpact:
+      "Highest level of protection for classified or extremely valuable data against sophisticated attacks.",
+    bg: "#00ff00", // Green
+    text: "#000000", // Black
     recommendations: [
-      "Air-gapped systems",
-      "Secure enclaves",
-      "Multi-factor authentication",
-      "Comprehensive monitoring",
+      "Regular security posture assessment",
+      "Implement next-gen security operations",
     ],
   },
+};
+
+export default {
+  availabilityOptions,
+  integrityOptions,
+  confidentialityOptions,
 };
 
 // Export CIADetails for backward compatibility

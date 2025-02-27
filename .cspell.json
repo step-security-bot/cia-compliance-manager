@@ -1,0 +1,6 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": ["SIEM", "CAPEX", "OPEX", "DLP"],
+  "ignorePaths": ["node_modules/**", "dist/**"]
+}

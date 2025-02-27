@@ -12,6 +12,7 @@ describe("useCIAOptions", () => {
     expect(option).toHaveProperty("technical");
     expect(option).toHaveProperty("capex");
     expect(option).toHaveProperty("opex");
+    expect(option).toHaveProperty("businessImpact");
     expect(option).toHaveProperty("bg");
     expect(option).toHaveProperty("text");
     expect(option).toHaveProperty("recommendations");
@@ -22,15 +23,21 @@ describe("useCIAOptions", () => {
 
   describe("Option Structures", () => {
     it("validates all availability options", () => {
-      Object.values(availabilityOptions).forEach(validateOptionStructure);
+      Object.values(availabilityOptions).forEach((option) => {
+        validateOptionStructure(option as CIADetails);
+      });
     });
 
     it("validates all integrity options", () => {
-      Object.values(integrityOptions).forEach(validateOptionStructure);
+      Object.values(integrityOptions).forEach((option) => {
+        validateOptionStructure(option as CIADetails);
+      });
     });
 
     it("validates all confidentiality options", () => {
-      Object.values(confidentialityOptions).forEach(validateOptionStructure);
+      Object.values(confidentialityOptions).forEach((option) => {
+        validateOptionStructure(option as CIADetails);
+      });
     });
   });
 
@@ -76,6 +83,16 @@ describe("useCIAOptions", () => {
     it("ensures color values are valid hex codes", () => {
       const hexColorRegex = /^#[0-9A-Fa-f]{6}$/;
       Object.values(availabilityOptions).forEach((option) => {
+        expect(option.bg).toMatch(hexColorRegex);
+        expect(option.text).toMatch(hexColorRegex);
+      });
+
+      Object.values(integrityOptions).forEach((option) => {
+        expect(option.bg).toMatch(hexColorRegex);
+        expect(option.text).toMatch(hexColorRegex);
+      });
+
+      Object.values(confidentialityOptions).forEach((option) => {
         expect(option.bg).toMatch(hexColorRegex);
         expect(option.text).toMatch(hexColorRegex);
       });

@@ -7,78 +7,90 @@ interface SecuritySummaryWidgetProps {
 const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
   securityLevel,
 }) => {
-  const summaries = {
-    Basic: {
-      title: "Basic Security",
-      description:
-        "Minimal investment, low protection, high risk of downtime or data breaches.",
-      suitable: "Non-critical or public-facing systems",
-      impact: "Up to 5% downtime annually (18 days/year)",
-    },
-    Moderate: {
-      title: "Moderate Security",
-      description:
-        "Balanced approach to cost and protection for mid-sized companies.",
-      suitable:
-        "Standard business operations with some regulatory requirements",
-      impact: "Around 99% uptime (3.65 days downtime/year)",
-    },
-    High: {
-      title: "High Security",
-      description: "Enhanced protection for systems where CIA are critical.",
-      suitable: "Regulated industries like finance, healthcare, e-commerce",
-      impact: "99.9% uptime (less than 9 hours downtime/year)",
-    },
-    "Very High": {
-      title: "Very High Security",
-      description: "Maximum protection for mission-critical systems.",
-      suitable: "Defense, financial markets, critical infrastructure",
-      impact: "99.99% uptime (less than 1 hour downtime/year)",
-    },
-    None: {
-      title: "No Security Controls",
-      description: "No specific security controls implemented.",
-      suitable: "Not recommended for production systems",
-      impact: "Unprotected from threats and disruptions",
-    },
-  };
-
-  const summary =
-    summaries[securityLevel as keyof typeof summaries] || summaries.None;
-
-  const getSecurityIcon = (level: string) => {
-    switch (level) {
-      case "Basic":
-        return "ℹ️";
-      case "Moderate":
-        return "⚠️";
-      case "High":
-        return "🔐";
+  const getSummary = () => {
+    switch (securityLevel) {
       case "Very High":
-        return "🔒";
+        return {
+          title: "Very High Security",
+          description:
+            "Maximum protection with quantum-safe encryption, multi-site redundancy, and real-time validation.",
+          recommendation:
+            "Suitable for mission-critical systems handling top secret information.",
+          emoji: "🔒",
+          colorClass: "text-green-600 dark:text-green-400",
+        };
+      case "High":
+        return {
+          title: "High Security",
+          description:
+            "Robust protection with minimal single points of failure, blockchain validation, and strong encryption.",
+          recommendation:
+            "Appropriate for systems handling sensitive customer data or financial information.",
+          emoji: "🛡️",
+          colorClass: "text-blue-600 dark:text-blue-400",
+        };
+      case "Moderate":
+        return {
+          title: "Moderate Security",
+          description:
+            "Balanced protection with automated recovery, validation checks, and standard encryption.",
+          recommendation:
+            "Suitable for internal business systems with some regulatory requirements.",
+          emoji: "🔐",
+          colorClass: "text-yellow-600 dark:text-yellow-400",
+        };
+      case "Low":
+        return {
+          title: "Low Security",
+          description:
+            "Basic protection with minimal controls and manual processes.",
+          recommendation:
+            "Only appropriate for non-critical systems with public information.",
+          emoji: "🔓",
+          colorClass: "text-orange-600 dark:text-orange-400",
+        };
+      case "Basic":
+        return {
+          title: "Basic Security",
+          description:
+            "Basic protection with minimal controls and manual processes.",
+          recommendation:
+            "Only appropriate for non-critical systems with public information.",
+          emoji: "⚠️",
+          colorClass: "text-orange-600 dark:text-orange-400",
+        };
       default:
-        return "📋";
+        return {
+          title: "No Security",
+          description: "No security controls implemented.",
+          recommendation:
+            "Not recommended for any production system. Implement basic security controls immediately.",
+          emoji: "⚠️",
+          colorClass: "text-red-600 dark:text-red-400",
+        };
     }
   };
 
+  const summary = getSummary();
+
   return (
-    <div className="p-2">
-      <div className="flex items-center mb-3">
-        <span className="text-xl mr-2">{getSecurityIcon(securityLevel)}</span>
-        <h4 className="text-lg font-medium">{summary.title}</h4>
+    <div className="space-y-3">
+      <div
+        className={`text-lg font-medium ${summary.colorClass} flex items-center`}
+      >
+        <span className="mr-2 text-xl" data-testid="security-icon">
+          {summary.emoji}
+        </span>
+        {summary.title}
       </div>
-      <p className="mb-3 text-sm">{summary.description}</p>
-      <div className="space-y-2">
-        <div className="bg-gray-50 dark:bg-gray-700 p-2 rounded-md">
-          <p className="text-xs text-gray-500 dark:text-gray-400">Best for</p>
-          <p className="text-sm font-medium">{summary.suitable}</p>
-        </div>
-        <div className="bg-gray-50 dark:bg-gray-700 p-2 rounded-md">
-          <p className="text-xs text-gray-500 dark:text-gray-400">
-            Business Impact
-          </p>
-          <p className="text-sm font-medium">{summary.impact}</p>
-        </div>
+      <p className="text-sm text-gray-600 dark:text-gray-300">
+        {summary.description}
+      </p>
+      <div className="mt-4 pt-3 border-t border-gray-200 dark:border-gray-700">
+        <h4 className="text-sm font-medium mb-2">Recommendation:</h4>
+        <p className="text-sm text-gray-600 dark:text-gray-300">
+          {summary.recommendation}
+        </p>
       </div>
     </div>
   );

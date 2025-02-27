@@ -7,24 +7,20 @@ describe("ImpactAnalysisWidget", () => {
     const { rerender } = render(
       <ImpactAnalysisWidget category="Availability" level="None" />
     );
-    expect(screen.getByText(/No availability controls/)).toBeInTheDocument();
+    expect(screen.getByText(/No availability guarantees/)).toBeInTheDocument();
 
-    rerender(<ImpactAnalysisWidget category="Availability" level="Basic" />);
-    expect(screen.getByText(/Frequent outages/)).toBeInTheDocument();
-    expect(screen.getByText(/up to 5% downtime/)).toBeInTheDocument();
+    rerender(<ImpactAnalysisWidget category="Availability" level="Low" />);
+    expect(screen.getByText(/95% uptime/)).toBeInTheDocument();
 
     rerender(<ImpactAnalysisWidget category="Availability" level="Moderate" />);
-    expect(screen.getByText(/Improved uptime/)).toBeInTheDocument();
-    expect(screen.getByText(/99% availability/)).toBeInTheDocument();
+    expect(screen.getByText(/99% uptime/)).toBeInTheDocument();
 
     rerender(<ImpactAnalysisWidget category="Availability" level="High" />);
-    expect(screen.getByText(/Near-continuous service/)).toBeInTheDocument();
     expect(screen.getByText(/99.9% uptime/)).toBeInTheDocument();
 
     rerender(
       <ImpactAnalysisWidget category="Availability" level="Very High" />
     );
-    expect(screen.getByText(/Continuous operation/)).toBeInTheDocument();
     expect(screen.getByText(/99.99% uptime/)).toBeInTheDocument();
   });
 
@@ -34,19 +30,17 @@ describe("ImpactAnalysisWidget", () => {
     );
     expect(screen.getByText(/No data integrity controls/)).toBeInTheDocument();
 
-    rerender(<ImpactAnalysisWidget category="Integrity" level="Basic" />);
-    expect(screen.getByText(/Risk of data corruption/)).toBeInTheDocument();
+    rerender(<ImpactAnalysisWidget category="Integrity" level="Low" />);
+    expect(screen.getByText(/Basic data checks/)).toBeInTheDocument();
 
     rerender(<ImpactAnalysisWidget category="Integrity" level="Moderate" />);
     expect(screen.getByText(/Automated validation/)).toBeInTheDocument();
 
     rerender(<ImpactAnalysisWidget category="Integrity" level="High" />);
-    expect(screen.getByText(/Immutable records/)).toBeInTheDocument();
+    expect(screen.getByText(/Immutable data records/)).toBeInTheDocument();
 
     rerender(<ImpactAnalysisWidget category="Integrity" level="Very High" />);
-    expect(
-      screen.getByText(/Advanced cryptographic validation/)
-    ).toBeInTheDocument();
+    expect(screen.getByText(/Complete data accuracy/)).toBeInTheDocument();
   });
 
   it("renders Confidentiality impacts correctly", () => {
@@ -55,16 +49,32 @@ describe("ImpactAnalysisWidget", () => {
     );
     expect(screen.getByText(/No confidentiality controls/)).toBeInTheDocument();
 
-    rerender(<ImpactAnalysisWidget category="Confidentiality" level="Basic" />);
-    expect(screen.getByText(/Limited protection/)).toBeInTheDocument();
+    rerender(<ImpactAnalysisWidget category="Confidentiality" level="Low" />);
+
+    // Use getAllByText and check the first element instead
+    const protectionElements = screen.getAllByText((content, element) => {
+      return (
+        content.includes("Minimal protection") &&
+        element?.tagName.toLowerCase() === "p"
+      );
+    });
+
+    // Verify we found at least one element
+    expect(protectionElements.length).toBeGreaterThan(0);
+
+    // And check that one has the description we're looking for
+    const mainDescription = protectionElements.find((el) =>
+      el.textContent.includes("suitable only for non-sensitive information")
+    );
+    expect(mainDescription).toBeInTheDocument();
 
     rerender(
       <ImpactAnalysisWidget category="Confidentiality" level="Moderate" />
     );
-    expect(screen.getByText(/Standard encryption/)).toBeInTheDocument();
+    expect(screen.getByText(/Standard protection/)).toBeInTheDocument();
 
     rerender(<ImpactAnalysisWidget category="Confidentiality" level="High" />);
-    expect(screen.getByText(/Robust protection/)).toBeInTheDocument();
+    expect(screen.getByText(/Strong protection/)).toBeInTheDocument();
 
     rerender(
       <ImpactAnalysisWidget category="Confidentiality" level="Very High" />
@@ -72,31 +82,18 @@ describe("ImpactAnalysisWidget", () => {
     expect(screen.getByText(/Military-grade protection/)).toBeInTheDocument();
   });
 
-  it("displays appropriate icon for each category", () => {
-    const { rerender } = render(
-      <ImpactAnalysisWidget category="Availability" level="Basic" />
-    );
-    expect(screen.getByText("🕒")).toBeInTheDocument();
+  it("displays business impact for each level and category", () => {
+    render(<ImpactAnalysisWidget category="Availability" level="High" />);
 
-    rerender(<ImpactAnalysisWidget category="Integrity" level="Basic" />);
-    expect(screen.getByText("🛡️")).toBeInTheDocument();
-
-    rerender(<ImpactAnalysisWidget category="Confidentiality" level="Basic" />);
-    expect(screen.getByText("🔐")).toBeInTheDocument();
-  });
-
-  it("applies appropriate color styles for each category", () => {
-    render(<ImpactAnalysisWidget category="Availability" level="Basic" />);
-
-    const availabilityContainer = screen
-      .getByText(/Frequent outages/)
-      .closest("div");
-    expect(availabilityContainer).toHaveClass("bg-blue-50");
+    // Check for business impact section
+    expect(screen.getByText("Business Impact:")).toBeInTheDocument();
+    expect(
+      screen.getByText(/Maintains customer satisfaction/)
+    ).toBeInTheDocument();
   });
 
   it("falls back to None level when invalid level is provided", () => {
     render(<ImpactAnalysisWidget category="Availability" level="Invalid" />);
-
-    expect(screen.getByText(/No availability controls/)).toBeInTheDocument();
+    expect(screen.getByText(/No availability guarantees/)).toBeInTheDocument();
   });
 });
