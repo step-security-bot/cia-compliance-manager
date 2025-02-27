@@ -6,7 +6,6 @@ import {
 } from "./hooks/useCIAOptions";
 import Dashboard, { DashboardWidget } from "./components/Dashboard";
 import RadarChart from "./components/RadarChart";
-import DetailCard from "./components/DetailCard";
 import SecurityLevelWidget from "./components/widgets/SecurityLevelWidget";
 import CostEstimationWidget from "./components/widgets/CostEstimationWidget";
 import SecuritySummaryWidget from "./components/widgets/SecuritySummaryWidget";
