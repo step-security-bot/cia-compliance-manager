@@ -14,6 +14,7 @@ describe("CIADetails TypeScript Type Validation", () => {
       details.description.toLowerCase();
       details.impact.toLowerCase();
       details.technical.toLowerCase();
+      details.businessImpact.toLowerCase(); // Added businessImpact validation
       details.bg.startsWith("#");
       details.text.startsWith("#");
 
@@ -32,6 +33,7 @@ describe("CIADetails TypeScript Type Validation", () => {
       description: "Description",
       impact: "Impact description",
       technical: "Technical details",
+      businessImpact: "Business impact details",
       capex: 25,
       opex: 15,
       bg: "#ffffff",
@@ -47,11 +49,12 @@ describe("CIADetails TypeScript Type Validation", () => {
       description: "Min",
       impact: "Min",
       technical: "Min",
+      businessImpact: "Min",
       capex: 0,
       opex: 0,
       bg: "#fff",
       text: "#000",
-      // recommendations is optional
+      recommendations: [], // Add this as it's required, not optional
     };
 
     validateCIADetailsType(minimalDetails);

@@ -7,6 +7,7 @@ describe("CIADetails Type", () => {
       description: "Test Description",
       impact: "Test Impact",
       technical: "Test Technical Controls",
+      businessImpact: "Test Business Impact",
       capex: 50,
       opex: 30,
       bg: "#ffffff",
@@ -18,6 +19,7 @@ describe("CIADetails Type", () => {
     expect(details).toHaveProperty("description");
     expect(details).toHaveProperty("impact");
     expect(details).toHaveProperty("technical");
+    expect(details).toHaveProperty("businessImpact");
     expect(details).toHaveProperty("capex");
     expect(details).toHaveProperty("opex");
     expect(details).toHaveProperty("bg");
@@ -28,6 +30,7 @@ describe("CIADetails Type", () => {
     expect(typeof details.description).toBe("string");
     expect(typeof details.impact).toBe("string");
     expect(typeof details.technical).toBe("string");
+    expect(typeof details.businessImpact).toBe("string");
     expect(typeof details.capex).toBe("number");
     expect(typeof details.opex).toBe("number");
     expect(typeof details.bg).toBe("string");
@@ -41,11 +44,12 @@ describe("CIADetails Type", () => {
       description: "Test",
       impact: "Test",
       technical: "Test",
+      businessImpact: "Test",
       capex: 0,
       opex: 0,
       bg: "#000",
       text: "#fff",
-      // recommendations is optional in some cases
+      recommendations: [], // Added as it's required
     };
 
     expect(minimalDetails).toBeDefined();
@@ -64,6 +68,7 @@ describe("CIADetails Type", () => {
         description: `${level} description`,
         impact: `${level} impact`,
         technical: `${level} technical`,
+        businessImpact: `${level} business impact`,
         capex: 20,
         opex: 10,
         bg: "#ffffff",
@@ -80,6 +85,7 @@ describe("CIADetails Type", () => {
       expect(details).toHaveProperty("description");
       expect(details).toHaveProperty("impact");
       expect(details).toHaveProperty("technical");
+      expect(details).toHaveProperty("businessImpact");
       expect(details).toHaveProperty("capex");
       expect(details).toHaveProperty("opex");
       expect(details).toHaveProperty("bg");
@@ -94,6 +100,7 @@ describe("CIADetails Type", () => {
       description: "Test",
       impact: "Test",
       technical: "Test",
+      businessImpact: "Test",
       capex: 10,
       opex: 5,
       bg: "#ffffff",
@@ -107,6 +114,7 @@ describe("CIADetails Type", () => {
       description: "Test",
       impact: "Test",
       technical: "Test",
+      businessImpact: "Test",
       capex: 10,
       opex: 5,
       bg: "#ffffff",
@@ -117,6 +125,6 @@ describe("CIADetails Type", () => {
         "Recommendation 3",
       ],
     };
-    expect(multiRecDetails.recommendations?.length).toBe(3); // Add optional chaining
+    expect(multiRecDetails.recommendations?.length).toBe(3);
   });
 });
