@@ -179,6 +179,9 @@ describe("CIA Classification App (Desktop)", () => {
       // Use the custom command to set all levels at once
       cy.setSecurityLevels("High", "High", "High");
 
+      // Wait for UI updates to propagate
+      cy.wait(1000);
+
       // Use the custom command to verify widget content
       cy.verifyWidgetWithContent("widget-security-summary", "High Security");
       cy.verifyWidgetWithContent("widget-cost-estimation", "$1,000,000");

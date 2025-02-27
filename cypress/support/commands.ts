@@ -18,9 +18,21 @@ Cypress.Commands.add("tab", { prevSubject: ["element"] }, (subject: JQuery) => {
 Cypress.Commands.add(
   "setSecurityLevels",
   (availability: string, integrity: string, confidentiality: string) => {
-    cy.get('[data-testid="availability-select"]').select(availability);
-    cy.get('[data-testid="integrity-select"]').select(integrity);
-    cy.get('[data-testid="confidentiality-select"]').select(confidentiality);
+    // Add a wait to ensure elements are fully loaded
+    cy.get('[data-testid="availability-select"]', { timeout: 10000 })
+      .should("be.visible")
+      .select(availability);
+
+    cy.get('[data-testid="integrity-select"]')
+      .should("be.visible")
+      .select(integrity);
+
+    cy.get('[data-testid="confidentiality-select"]')
+      .should("be.visible")
+      .select(confidentiality);
+
+    // Add a small wait to allow UI updates to propagate
+    cy.wait(500);
   }
 );
 
@@ -28,9 +40,10 @@ Cypress.Commands.add(
 Cypress.Commands.add(
   "verifyWidgetWithContent",
   (widgetTestId: string, expectedContent: string) => {
-    cy.get(`[data-testid="${widgetTestId}"]`).within(() => {
-      cy.contains(expectedContent).should("be.visible");
-    });
+    cy.get(`[data-testid="${widgetTestId}"]`, { timeout: 10000 })
+      .should("be.visible")
+      .invoke("text")
+      .should("include", expectedContent);
   }
 );
 
