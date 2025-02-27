@@ -152,6 +152,7 @@ const CIAClassificationApp: React.FC = () => {
             </div>
 
             <Dashboard>
+              {/* Security Level Selection - Important control panel */}
               <DashboardWidget title="Security Level Selection" size="medium">
                 <SecurityLevelWidget
                   availability={availability}
@@ -166,45 +167,7 @@ const CIAClassificationApp: React.FC = () => {
                 />
               </DashboardWidget>
 
-              <DashboardWidget
-                title="Security Profile Visualization"
-                size="medium"
-              >
-                <RadarChart
-                  availability={availability}
-                  integrity={integrity}
-                  confidentiality={confidentiality}
-                />
-              </DashboardWidget>
-
-              <DashboardWidget title="Cost Estimation" size="medium">
-                <CostEstimationWidget
-                  totalCapex={totalCapex}
-                  totalOpex={totalOpex}
-                  capexEstimate={capexEstimate}
-                  opexEstimate={opexEstimate}
-                  isSmallSolution={isSmallSolution}
-                />
-              </DashboardWidget>
-
-              <DashboardWidget title="Security Summary" size="medium">
-                <SecuritySummaryWidget securityLevel={overallSecurityLevel} />
-              </DashboardWidget>
-
-              <DashboardWidget title="Compliance Status" size="medium">
-                <ComplianceStatusWidget
-                  securityLevels={{
-                    availability,
-                    integrity,
-                    confidentiality,
-                  }}
-                />
-              </DashboardWidget>
-
-              <DashboardWidget title="Value Creation" size="medium">
-                <ValueCreationWidget securityLevel={overallSecurityLevel} />
-              </DashboardWidget>
-
+              {/* Move impact analysis widgets to the top */}
               <DashboardWidget title="Availability Impact" size="medium">
                 <ImpactAnalysisWidget
                   category="Availability"
@@ -223,6 +186,49 @@ const CIAClassificationApp: React.FC = () => {
                 />
               </DashboardWidget>
 
+              {/* Security visualization and summary - High importance */}
+              <DashboardWidget
+                title="Security Profile Visualization"
+                size="medium"
+              >
+                <RadarChart
+                  availability={availability}
+                  integrity={integrity}
+                  confidentiality={confidentiality}
+                />
+              </DashboardWidget>
+
+              <DashboardWidget title="Security Summary" size="medium">
+                <SecuritySummaryWidget securityLevel={overallSecurityLevel} />
+              </DashboardWidget>
+
+              <DashboardWidget title="Compliance Status" size="medium">
+                <ComplianceStatusWidget
+                  securityLevels={{
+                    availability,
+                    integrity,
+                    confidentiality,
+                  }}
+                />
+              </DashboardWidget>
+
+              {/* Cost estimation - Medium importance */}
+              <DashboardWidget title="Cost Estimation" size="medium">
+                <CostEstimationWidget
+                  totalCapex={totalCapex}
+                  totalOpex={totalOpex}
+                  capexEstimate={capexEstimate}
+                  opexEstimate={opexEstimate}
+                  isSmallSolution={isSmallSolution}
+                />
+              </DashboardWidget>
+
+              {/* Value creation - Medium importance */}
+              <DashboardWidget title="Value Creation" size="medium">
+                <ValueCreationWidget securityLevel={overallSecurityLevel} />
+              </DashboardWidget>
+
+              {/* Technical implementation - Lower importance, but detailed */}
               <DashboardWidget title="Technical Implementation" size="large">
                 <div className="p-2 space-y-2">
                   <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
@@ -250,6 +256,7 @@ const CIAClassificationApp: React.FC = () => {
                 </div>
               </DashboardWidget>
 
+              {/* Business impact analysis - Full width, lower priority */}
               <DashboardWidget title="Business Impact Analysis" size="full">
                 <div className="p-2 space-y-4">
                   <p className="text-sm text-gray-600 dark:text-gray-300">
