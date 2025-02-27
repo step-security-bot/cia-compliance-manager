@@ -64,7 +64,10 @@ describe("ImpactAnalysisWidget", () => {
 
     // And check that one has the description we're looking for
     const mainDescription = protectionElements.find((el) =>
-      el.textContent.includes("suitable only for non-sensitive information")
+      // Add null check for textContent
+      el.textContent
+        ? el.textContent.includes("suitable only for non-sensitive information")
+        : false
     );
     expect(mainDescription).toBeInTheDocument();
 
