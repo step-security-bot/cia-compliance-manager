@@ -67,5 +67,11 @@ declare namespace Cypress {
      * @example cy.waitForAppStability()
      */
     waitForAppStability(timeout?: number): Chainable<Element>;
+
+    /**
+     * Custom command to log element details
+     * @example cy.logElementDetails('button.submit')
+     */
+    logElementDetails(selector: string): void;
   }
 }
