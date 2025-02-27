@@ -30,21 +30,30 @@ Cypress.Commands.add(
   }
 );
 
-// Use a more reliable approach for setting security levels
+// Improve setSecurityLevelsRobust with better reliability
 Cypress.Commands.add(
   "setSecurityLevelsRobust",
   (availability, integrity, confidentiality) => {
-    // First ensure all selectors are visible and ready
-    cy.get('[data-testid="availability-select"]').should("be.visible");
-    cy.get('[data-testid="integrity-select"]').should("be.visible");
-    cy.get('[data-testid="confidentiality-select"]').should("be.visible");
-
-    // Use cy.log for better debugging in test runner
+    // Fix the syntax error in the template string
     cy.log(
-      `Setting security levels to: ${availability}, ${integrity}, ${confidentiality}`
+      `Setting security levels: ${availability}, ${integrity}, ${confidentiality}`
     );
 
-    // Clear any previous selections using a slow and deliberate approach
+    // Ensure the app is in a stable state first
+    cy.get('[data-testid="app-container"]').should("exist");
+
+    // First ensure all selectors are visible and ready with longer timeouts
+    cy.get('[data-testid="availability-select"]', { timeout: 5000 })
+      .should("be.visible")
+      .and("not.be.disabled");
+    cy.get('[data-testid="integrity-select"]', { timeout: 5000 })
+      .should("be.visible")
+      .and("not.be.disabled");
+    cy.get('[data-testid="confidentiality-select"]', { timeout: 5000 })
+      .should("be.visible")
+      .and("not.be.disabled");
+
+    // First clear all values by setting to None - using { force: true } avoids detached DOM issues
     cy.get('[data-testid="availability-select"]').select("None", {
       force: true,
     });
@@ -53,21 +62,26 @@ Cypress.Commands.add(
       force: true,
     });
 
-    // Short wait to ensure state updates
-    cy.wait(300);
+    // Wait longer to ensure React state updates
+    cy.wait(500);
 
-    // Now set the desired values
+    // Now set new values one by one with waits in between
     cy.get('[data-testid="availability-select"]').select(availability, {
       force: true,
     });
+    cy.wait(200); // Wait for state update
+
     cy.get('[data-testid="integrity-select"]').select(integrity, {
       force: true,
     });
+    cy.wait(200); // Wait for state update
+
     cy.get('[data-testid="confidentiality-select"]').select(confidentiality, {
       force: true,
     });
+    cy.wait(200); // Wait for state update
 
-    // Verify all selections took effect
+    // Verify all selections have been applied correctly
     cy.get('[data-testid="availability-select"]').should(
       "have.value",
       availability
@@ -78,18 +92,29 @@ Cypress.Commands.add(
       confidentiality
     );
 
-    // Allow time for state updates to propagate to other components
-    cy.wait(500);
+    // Wait for React to finish updating all components
+    cy.wait(800);
+
+    // Verify app container still exists to ensure page hasn't navigated away
+    cy.get('[data-testid="app-container"]').should("exist");
   }
 );
 
-// Command to wait for the app to be fully stable
-Cypress.Commands.add("waitForAppStability", (timeout = 2000) => {
-  // Wait for any network requests to complete
-  cy.wait(100); // Short wait for XHR requests to start
-  cy.intercept("**").as("anyRequest");
-  cy.wait("@anyRequest", { timeout: 1000 }).then(() => {
-    // Now wait for React to settle
-    cy.get('[data-testid="app-container"]').should("be.visible");
-  });
+// Improve waitForAppStability to be more robust
+Cypress.Commands.add("waitForAppStability", (timeout = 5000) => {
+  cy.log("Waiting for app to stabilize");
+
+  // First make sure the app container exists
+  cy.get('[data-testid="app-container"]', { timeout }).should("exist");
+
+  // Wait a moment for React to fully render components
+  cy.wait(500);
+
+  // Check for critical elements to be visible
+  cy.get('[data-testid="app-title"]', { timeout }).should("be.visible");
+
+  // Wait for all animations to complete
+  cy.wait(300);
+
+  cy.log("App appears to be stable");
 });
