@@ -135,10 +135,12 @@ describe("CIA Classification App (Desktop)", () => {
         cy.get(`[data-testid="${control}-select"]`).select("Low");
       });
 
+      // Use the new data-testid attributes for the percentages
+      cy.get('[data-testid="capex-percentage"]').should("contain", "15%");
+      cy.get('[data-testid="opex-percentage"]').should("contain", "25%");
       cy.get('[data-testid="widget-cost-estimation"]')
         .invoke("text")
         .should("include", "$10,000");
-
       cy.get('[data-testid="widget-cost-estimation"]')
         .invoke("text")
         .should("include", "$500");
@@ -148,13 +150,42 @@ describe("CIA Classification App (Desktop)", () => {
         cy.get(`[data-testid="${control}-select"]`).select("Very High");
       });
 
+      // Wait for UI updates to propagate
+      cy.wait(500);
+
+      // Check percentage values using data-testids
+      cy.get('[data-testid="capex-percentage"]').should("contain", "75%");
+      cy.get('[data-testid="opex-percentage"]').should("contain", "120%");
       cy.get('[data-testid="widget-cost-estimation"]')
         .invoke("text")
         .should("include", "$1,000,000");
-
       cy.get('[data-testid="widget-cost-estimation"]')
         .invoke("text")
         .should("include", "$50,000");
+    });
+  });
+
+  describe("Security Summary", () => {
+    it("should update security summary based on selected levels", () => {
+      // Set all to None
+      cy.setSecurityLevels("None", "None", "None");
+      cy.get('[data-testid="security-icon"]')
+        .parent()
+        .should("contain", "No Security");
+
+      // Set all to Moderate
+      cy.setSecurityLevels("Moderate", "Moderate", "Moderate");
+      cy.wait(500); // Allow time for state updates
+      cy.get('[data-testid="security-icon"]')
+        .parent()
+        .should("contain", "Moderate Security");
+
+      // Set all to High
+      cy.setSecurityLevels("High", "High", "High");
+      cy.wait(500);
+      cy.get('[data-testid="security-icon"]')
+        .parent()
+        .should("contain", "High Security");
     });
   });
 
@@ -188,3 +219,33 @@ describe("CIA Classification App (Desktop)", () => {
     });
   });
 });
+
+// Add a custom command to make security level setting more reliable
+Cypress.Commands.add(
+  "setSecurityLevels",
+  (availability: string, integrity: string, confidentiality: string) => {
+    cy.get('[data-testid="availability-select"]').select(availability);
+    cy.get('[data-testid="integrity-select"]').select(integrity);
+    cy.get('[data-testid="confidentiality-select"]').select(confidentiality);
+    // Add a small delay to ensure state updates
+    cy.wait(300);
+  }
+);
+
+// Add a custom command to check widget content with better error messages
+Cypress.Commands.add(
+  "verifyWidgetWithContent",
+  (widgetTestId: string, expectedContent: string) => {
+    cy.get(`[data-testid="${widgetTestId}"]`)
+      .invoke("text")
+      .should("include", expectedContent)
+      .then(($text) => {
+        if (!$text.includes(expectedContent)) {
+          Cypress.log({
+            name: "CONTENT MISMATCH",
+            message: `Expected widget to contain "${expectedContent}", found: "${$text}"`,
+          });
+        }
+      });
+  }
+);
