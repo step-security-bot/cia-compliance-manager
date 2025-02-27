@@ -152,6 +152,15 @@ Each level includes specific controls, technical requirements, and implementatio
 | High      | Confidential Data: MFA, robust encryption, continuous monitoring | 30% / 40%    | Essential for industries handling customer or financial data (e.g., banking, healthcare). | **Technical Implementation**: Multi-factor authentication systems, advanced encryption, SIEM solutions, DLP controls, privileged access management.<br>**CAPEX Drivers**: Enterprise security tools, MFA infrastructure, monitoring systems, integration with existing systems.<br>**OPEX Drivers**: 24/7 security operations, regular penetration testing, compliance audits, security training, dedicated security staff.                                                                            |
 | Very High | Secret Data: Quantum-safe encryption, 24/7 monitoring            | 50% / 60%    | Required for highly classified data (e.g., military, government).                         | **Technical Implementation**: Quantum-resistant algorithms, hardware security modules, air-gapped systems, advanced threat detection, physical security controls.<br>**CAPEX Drivers**: Specialized encryption hardware, custom security solutions, secure facilities, advanced intrusion prevention systems.<br>**OPEX Drivers**: Dedicated security teams, continuous monitoring, regular security clearances, physical security staff, frequent algorithm updates, extensive compliance procedures. |
 
+### Compliance Framework Mapping
+
+For detailed mapping of all security controls to industry-standard frameworks (NIST 800-53 Rev. 5, NIST CSF 2.0, and ISO/IEC 27001:2022), see the [Control Mapping Documentation](docs/control-mapping.md). This comprehensive reference helps organizations:
+
+- Align implemented controls with regulatory requirements
+- Demonstrate compliance during audits
+- Identify control gaps for specific frameworks
+- Understand how technical controls satisfy multiple compliance needs simultaneously
+
 ### Technical Considerations
 
 - **Availability**: Understanding SPOFs and autoscaling is critical. Moving from Basic to High removes single points of failure and introduces real-time failover capabilities.
