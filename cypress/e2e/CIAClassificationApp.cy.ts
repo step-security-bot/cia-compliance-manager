@@ -1,4 +1,66 @@
-// Make this a module file to properly scope augmentations
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ...existing code...});  });      .should("be.visible");      .contains("$50,000")    cy.get('[data-testid="widget-cost-estimation"]')          .should("be.visible");      .contains("$1,000,000")    cy.get('[data-testid="widget-cost-estimation"]')    // Verify high cost estimates          .should('include', '120');      .invoke('text')      .should("be.visible")    cy.get('[data-testid="opex-percentage"]')          .should('include', '75');      .invoke('text')      .should("be.visible")    cy.get('[data-testid="capex-percentage"]')    // Use a better approach to verify UI changes with retries        cy.checkWidgetContent("widget-cost-estimation", "$1,000,000", { timeout: 5000 });    // Wait for state updates to complete using our custom command        cy.setSecurityLevelsRobust("Very High", "Very High", "Very High");    // Set high security levels      .should("be.visible");      .contains("$500")    cy.get('[data-testid="widget-cost-estimation"]')          .should("be.visible");      .contains("$10,000")    cy.get('[data-testid="widget-cost-estimation"]')    // Verify the cost estimates are displayed correctly          .should('include', '25');      .invoke('text')      .should("be.visible")    cy.get('[data-testid="opex-percentage"]')          .should('include', '15');      .invoke('text')      .should("be.visible")    cy.get('[data-testid="capex-percentage"]')    // Use more specific selectors for the percentage elements        cy.checkWidgetContent("widget-cost-estimation", "$10,000", { timeout: 5000 });    // Wait for the UI to update using the new checkWidgetContent command        cy.setSecurityLevelsRobust("Low", "Low", "Low");    // Set low security levels with a more robust approach        cy.waitForAppStability();    // Start with a clean state and wait for app to be stable  it("should correctly calculate costs for different security profiles", () => {describe("Cost Calculations", () => {// ...existing code...// Make this a module file to properly scope augmentations
 export {};
 
 // Define types for CIA levels for better type safety
@@ -152,7 +214,7 @@ describe("CIA Classification App (Desktop)", () => {
 
       // Wait for UI updates to propagate
       cy.wait(500);
-
+      
       // Check percentage values using data-testids
       cy.get('[data-testid="capex-percentage"]').should("contain", "75%");
       cy.get('[data-testid="opex-percentage"]').should("contain", "120%");
@@ -169,23 +231,17 @@ describe("CIA Classification App (Desktop)", () => {
     it("should update security summary based on selected levels", () => {
       // Set all to None
       cy.setSecurityLevels("None", "None", "None");
-      cy.get('[data-testid="security-icon"]')
-        .parent()
-        .should("contain", "No Security");
-
+      cy.get('[data-testid="security-icon"]').parent().should("contain", "No Security");
+      
       // Set all to Moderate
       cy.setSecurityLevels("Moderate", "Moderate", "Moderate");
       cy.wait(500); // Allow time for state updates
-      cy.get('[data-testid="security-icon"]')
-        .parent()
-        .should("contain", "Moderate Security");
-
+      cy.get('[data-testid="security-icon"]').parent().should("contain", "Moderate Security");
+      
       // Set all to High
       cy.setSecurityLevels("High", "High", "High");
       cy.wait(500);
-      cy.get('[data-testid="security-icon"]')
-        .parent()
-        .should("contain", "High Security");
+      cy.get('[data-testid="security-icon"]').parent().should("contain", "High Security");
     });
   });
 
