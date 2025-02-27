@@ -51,6 +51,8 @@
     "autoprefixer": "^10.4.20",
     "cross-env": "^7.0.3",
     "cypress": "^14.1.0",
+    "cypress-real-events": "1.14.0",
+    "cypress-wait-until": "1.7.2",
     "jsdom": "^26.0.0",
     "postcss": "^8.5.3",
     "start-server-and-test": "^2.0.10",

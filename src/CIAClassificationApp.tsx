@@ -1,13 +1,17 @@
 import React, { useState, useMemo, useEffect } from "react";
-import Selection from "./components/Selection";
-import DetailCard from "./components/DetailCard";
-import RadarChart from "./components/RadarChart";
 import {
   availabilityOptions,
   integrityOptions,
   confidentialityOptions,
 } from "./hooks/useCIAOptions";
-import { CIADetails } from "./types/cia";
+import Dashboard, { DashboardWidget } from "./components/Dashboard";
+import RadarChart from "./components/RadarChart";
+import SecurityLevelWidget from "./components/widgets/SecurityLevelWidget";
+import CostEstimationWidget from "./components/widgets/CostEstimationWidget";
+import SecuritySummaryWidget from "./components/widgets/SecuritySummaryWidget";
+import ValueCreationWidget from "./components/widgets/ValueCreationWidget";
+import ImpactAnalysisWidget from "./components/widgets/ImpactAnalysisWidget";
+import ComplianceStatusWidget from "./components/widgets/ComplianceStatusWidget";
 
 const CIAClassificationApp: React.FC = () => {
   const [availability, setAvailability] = useState<string>("None");
@@ -15,9 +19,7 @@ const CIAClassificationApp: React.FC = () => {
   const [confidentiality, setConfidentiality] = useState<string>("None");
   const [darkMode, setDarkMode] = useState<boolean>(false);
 
-  // Add this section to handle test events
   useEffect(() => {
-    // Add event listener for test:set-values to support Cypress tests
     const testEventHandler = (e: Event) => {
       if (
         e instanceof CustomEvent &&
@@ -44,9 +46,7 @@ const CIAClassificationApp: React.FC = () => {
     };
   }, []);
 
-  // Check system preference on initial load
   useEffect(() => {
-    // Check if we're in a browser environment and that matchMedia exists and is a function
     if (
       typeof window !== "undefined" &&
       window.matchMedia &&
@@ -62,7 +62,6 @@ const CIAClassificationApp: React.FC = () => {
           document.getElementById("root")?.classList.add("dark");
         }
       } catch (error) {
-        // Don't log in test environment
         if (process.env.NODE_ENV !== "test") {
           console.error("Error detecting color scheme preference:", error);
         }
@@ -73,7 +72,6 @@ const CIAClassificationApp: React.FC = () => {
   const toggleDarkMode = () => {
     setDarkMode((prev) => {
       const newMode = !prev;
-      // Apply dark mode class to root div
       const rootDiv = document.getElementById("root");
       if (rootDiv) {
         if (newMode) {
@@ -86,6 +84,18 @@ const CIAClassificationApp: React.FC = () => {
     });
   };
 
+  const overallSecurityLevel = useMemo(() => {
+    const levels = ["None", "Basic", "Moderate", "High", "Very High"];
+    const availabilityIndex = levels.indexOf(availability);
+    const integrityIndex = levels.indexOf(integrity);
+    const confidentialityIndex = levels.indexOf(confidentiality);
+
+    const avgIndex = Math.round(
+      (availabilityIndex + integrityIndex + confidentialityIndex) / 3
+    );
+    return levels[avgIndex] || "None";
+  }, [availability, integrity, confidentiality]);
+
   const availabilityDetail =
     availabilityOptions[availability] || availabilityOptions["None"];
   const integrityDetail =
@@ -93,7 +103,6 @@ const CIAClassificationApp: React.FC = () => {
   const confidentialityDetail =
     confidentialityOptions[confidentiality] || confidentialityOptions["None"];
 
-  // Memoize cost calculations to improve performance
   const { totalCapex, totalOpex } = useMemo(() => {
     const totalCapex =
       availabilityDetail.capex +
@@ -106,7 +115,6 @@ const CIAClassificationApp: React.FC = () => {
     return { totalCapex, totalOpex };
   }, [availabilityDetail, integrityDetail, confidentialityDetail]);
 
-  // Determine solution size based on total CAPEX percentage
   const isSmallSolution = totalCapex <= 60;
   const capexEstimate = isSmallSolution ? "$10,000" : "$1,000,000";
   const opexEstimate = isSmallSolution ? "$500" : "$50,000";
@@ -117,14 +125,14 @@ const CIAClassificationApp: React.FC = () => {
       data-testid="app-container"
     >
       <div className="min-h-screen bg-gray-100 dark:bg-gray-900 p-6 transition-colors duration-300">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className="bg-white dark:bg-gray-800 shadow-lg rounded-xl p-6 mb-6 transition-colors duration-300">
             <div className="flex items-center justify-between mb-6">
               <h1
                 data-testid="app-title"
                 className="text-2xl font-bold text-gray-800 dark:text-gray-100 transition-colors duration-300"
               >
-                CIA Classification App for PartyRock AWS
+                CIA Compliance Manager Dashboard
               </h1>
               <button
                 data-testid="theme-toggle"
@@ -143,152 +151,179 @@ const CIAClassificationApp: React.FC = () => {
               </button>
             </div>
 
-            <div className="border-b border-gray-200 dark:border-gray-700 pb-4 mb-6">
-              <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4 transition-colors duration-300">
-                Security Classification Settings
-              </h2>
-              <div
-                data-testid="classification-form"
-                className="grid grid-cols-1 md:grid-cols-3 gap-6"
+            <Dashboard>
+              {/* Security Level Selection - Important control panel */}
+              <DashboardWidget title="Security Level Selection" size="medium">
+                <SecurityLevelWidget
+                  availability={availability}
+                  integrity={integrity}
+                  confidentiality={confidentiality}
+                  setAvailability={setAvailability}
+                  setIntegrity={setIntegrity}
+                  setConfidentiality={setConfidentiality}
+                  availabilityOptions={availabilityOptions}
+                  integrityOptions={integrityOptions}
+                  confidentialityOptions={confidentialityOptions}
+                />
+              </DashboardWidget>
+
+              {/* Move impact analysis widgets to the top */}
+              <DashboardWidget title="Availability Impact" size="medium">
+                <ImpactAnalysisWidget
+                  category="Availability"
+                  level={availability}
+                />
+              </DashboardWidget>
+
+              <DashboardWidget title="Integrity Impact" size="medium">
+                <ImpactAnalysisWidget category="Integrity" level={integrity} />
+              </DashboardWidget>
+
+              <DashboardWidget title="Confidentiality Impact" size="medium">
+                <ImpactAnalysisWidget
+                  category="Confidentiality"
+                  level={confidentiality}
+                />
+              </DashboardWidget>
+
+              {/* Security visualization and summary - High importance */}
+              <DashboardWidget
+                title="Security Profile Visualization"
+                size="medium"
               >
-                <Selection
-                  label="Availability Level"
-                  options={availabilityOptions}
-                  value={availability}
-                  onChange={setAvailability}
-                  id="availability"
-                  data-testid="availability-select"
+                <RadarChart
+                  availability={availability}
+                  integrity={integrity}
+                  confidentiality={confidentiality}
                 />
-                <Selection
-                  label="Integrity Level"
-                  options={integrityOptions}
-                  value={integrity}
-                  onChange={setIntegrity}
-                  id="integrity"
-                  data-testid="integrity-select"
-                />
-                <Selection
-                  label="Confidentiality Level"
-                  options={confidentialityOptions}
-                  value={confidentiality}
-                  onChange={setConfidentiality}
-                  id="confidentiality"
-                  data-testid="confidentiality-select"
-                />
-              </div>
-            </div>
-          </div>
+              </DashboardWidget>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            {/* Radar Chart Card */}
-            <div
-              className="bg-white dark:bg-gray-800 shadow-lg rounded-xl p-6 transition-colors duration-300"
-              data-testid="radar-chart-section"
-            >
-              <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4 transition-colors duration-300">
-                Security Profile Visualization
-              </h2>
-              <RadarChart
-                availability={availability}
-                integrity={integrity}
-                confidentiality={confidentiality}
-              />
-            </div>
+              <DashboardWidget title="Security Summary" size="medium">
+                <SecuritySummaryWidget securityLevel={overallSecurityLevel} />
+              </DashboardWidget>
 
-            {/* Cost Estimates Card */}
-            <div
-              className="bg-white dark:bg-gray-800 shadow-lg rounded-xl p-6 transition-colors duration-300"
-              data-testid="cost-estimates-section"
-            >
-              <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4 transition-colors duration-300">
-                Cost Estimates
-              </h2>
-              <div className="space-y-4">
-                {/* Risk Metrics */}
-                <div className="grid grid-cols-2 gap-4 mb-4">
-                  <div
-                    className="bg-gray-50 dark:bg-gray-700 p-3 rounded-md transition-colors duration-300"
-                    data-testid="capex-risk"
-                  >
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-1 transition-colors duration-300">
-                      Total CAPEX Risk
-                    </p>
-                    <p className="text-lg font-bold text-gray-800 dark:text-gray-100 transition-colors duration-300">
-                      {totalCapex}%
-                    </p>
+              <DashboardWidget title="Compliance Status" size="medium">
+                <ComplianceStatusWidget
+                  securityLevels={{
+                    availability,
+                    integrity,
+                    confidentiality,
+                  }}
+                />
+              </DashboardWidget>
+
+              {/* Cost estimation - Medium importance */}
+              <DashboardWidget title="Cost Estimation" size="medium">
+                <CostEstimationWidget
+                  totalCapex={totalCapex}
+                  totalOpex={totalOpex}
+                  capexEstimate={capexEstimate}
+                  opexEstimate={opexEstimate}
+                  isSmallSolution={isSmallSolution}
+                />
+              </DashboardWidget>
+
+              {/* Value creation - Medium importance */}
+              <DashboardWidget title="Value Creation" size="medium">
+                <ValueCreationWidget securityLevel={overallSecurityLevel} />
+              </DashboardWidget>
+
+              {/* Technical implementation - Lower importance, but detailed */}
+              <DashboardWidget title="Technical Implementation" size="large">
+                <div className="p-2 space-y-2">
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
+                    Key technical implementation details for your selected
+                    security levels:
+                  </p>
+                  <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-md">
+                    <h4 className="text-sm font-medium mb-2">
+                      Availability: {availability}
+                    </h4>
+                    <p className="text-sm">{availabilityDetail.technical}</p>
                   </div>
-                  <div
-                    className="bg-gray-50 dark:bg-gray-700 p-3 rounded-md transition-colors duration-300"
-                    data-testid="opex-risk"
-                  >
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-1 transition-colors duration-300">
-                      Total OPEX Risk
-                    </p>
-                    <p className="text-lg font-bold text-gray-800 dark:text-gray-100 transition-colors duration-300">
-                      {totalOpex}%
-                    </p>
+                  <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-md">
+                    <h4 className="text-sm font-medium mb-2">
+                      Integrity: {integrity}
+                    </h4>
+                    <p className="text-sm">{integrityDetail.technical}</p>
+                  </div>
+                  <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-md">
+                    <h4 className="text-sm font-medium mb-2">
+                      Confidentiality: {confidentiality}
+                    </h4>
+                    <p className="text-sm">{confidentialityDetail.technical}</p>
                   </div>
                 </div>
+              </DashboardWidget>
 
-                {/* Cost Estimates */}
-                <div
-                  data-testid="capex-estimate"
-                  className="flex justify-between items-center p-3 bg-blue-50 dark:bg-blue-900/20 rounded-md transition-colors duration-300"
-                >
-                  <span className="font-medium text-gray-800 dark:text-gray-100 transition-colors duration-300">
-                    Estimated CAPEX:
-                  </span>
-                  <span className="font-bold text-blue-600 dark:text-blue-400 transition-colors duration-300">
-                    {capexEstimate}
-                  </span>
+              {/* Business impact analysis - Full width, lower priority */}
+              <DashboardWidget title="Business Impact Analysis" size="full">
+                <div className="p-2 space-y-4">
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    The Business Impact Analysis (BIA) helps identify critical
+                    business functions and their dependencies, quantify
+                    financial and operational impacts of security incidents, and
+                    establish recovery objectives. This analysis is crucial for
+                    prioritizing security investments based on business impact.
+                  </p>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-md">
+                      <h4 className="text-sm font-medium mb-2">Key Benefits</h4>
+                      <ul className="list-disc pl-5 space-y-1">
+                        <li className="text-sm">
+                          Clear visibility into security level requirements
+                        </li>
+                        <li className="text-sm">
+                          Quantifiable metrics for justifying security
+                          investments
+                        </li>
+                        <li className="text-sm">
+                          Risk-based approach to allocating security resources
+                        </li>
+                        <li className="text-sm">
+                          Documentation for compliance requirements
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-md">
+                      <h4 className="text-sm font-medium mb-2">
+                        Business Considerations
+                      </h4>
+                      <ul className="list-disc pl-5 space-y-1">
+                        <li className="text-sm">
+                          Potential revenue impact from downtime:{" "}
+                          {availability === "Very High"
+                            ? "Minimal"
+                            : availability === "High"
+                            ? "Low"
+                            : availability === "Moderate"
+                            ? "Moderate"
+                            : "High"}
+                        </li>
+                        <li className="text-sm">
+                          Operational efficiency impact:{" "}
+                          {availability === "Very High"
+                            ? "Optimized"
+                            : availability === "High"
+                            ? "Efficient"
+                            : availability === "Moderate"
+                            ? "Adequate"
+                            : "Reduced"}
+                        </li>
+                        <li className="text-sm">
+                          Regulatory risk level:{" "}
+                          {confidentiality === "Very High" ||
+                          confidentiality === "High"
+                            ? "Minimal"
+                            : "Significant"}
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
-
-                <div
-                  data-testid="opex-estimate"
-                  className="flex justify-between items-center p-3 bg-green-50 dark:bg-green-900/20 rounded-md transition-colors duration-300"
-                >
-                  <span className="font-medium text-gray-800 dark:text-gray-100 transition-colors duration-300">
-                    Estimated OPEX:
-                  </span>
-                  <span className="font-bold text-green-600 dark:text-green-400 transition-colors duration-300">
-                    {opexEstimate}
-                  </span>
-                </div>
-
-                <p className="text-sm text-gray-600 dark:text-gray-400 mt-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-md transition-colors duration-300">
-                  <span className="font-medium">Note:</span>{" "}
-                  {isSmallSolution
-                    ? "Small solution estimation based on lower risk classification."
-                    : "Enterprise-grade solution required for high security requirements."}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div
-            className="bg-white dark:bg-gray-800 shadow-lg rounded-xl p-6 transition-colors duration-300"
-            data-testid="analysis-section"
-          >
-            <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4 transition-colors duration-300">
-              Detailed Security Analysis & Recommendations
-            </h2>
-            <div data-testid="recommendations" className="space-y-6">
-              <DetailCard
-                category="Availability"
-                level={availability}
-                details={availabilityDetail}
-              />
-              <DetailCard
-                category="Integrity"
-                level={integrity}
-                details={integrityDetail}
-              />
-              <DetailCard
-                category="Confidentiality"
-                level={confidentiality}
-                details={confidentialityDetail}
-              />
-            </div>
+              </DashboardWidget>
+            </Dashboard>
           </div>
         </div>
       </div>

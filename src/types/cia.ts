@@ -10,11 +10,12 @@ export interface CIADetails {
   description: string;
   impact: string;
   technical: string;
-  recommendations?: string[];
   capex: number;
   opex: number;
-  bg: string; // Add background color property
-  text: string; // Add text color property
+  businessImpact: string;
+  bg: string;
+  text: string;
+  recommendations: string[];
 }
 
 export interface CIAOptions {
