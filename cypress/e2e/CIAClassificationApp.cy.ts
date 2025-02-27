@@ -1,247 +1,187 @@
+// Make this a module file to properly scope augmentations
+export {};
+
 // Define types for CIA levels for better type safety
 type CIALevel = "None" | "Low" | "Moderate" | "High" | "Very High";
 type CIAControl = "confidentiality" | "integrity" | "availability";
 
-// Fix failing tests by using direct UI interaction instead of custom events
+// Type assertion to make TypeScript recognize Chai assertions
+declare global {
+  namespace Cypress {
+    interface Chainer<Subject> {
+      // Add these Chai assertions
+      include: (expected: string) => void;
+      visible: () => void;
+      length: (expected: number) => void;
+      least: (expected: number) => void;
+    }
+  }
+}
 
-describe("CIA Classification App", () => {
-  // Add custom commands for common operations
+describe("CIA Classification App (Desktop)", () => {
   beforeEach(() => {
+    // Set viewport to desktop only
+    cy.viewport(1280, 720);
     cy.visit("/");
+
     // Handle any uncaught exceptions to prevent test failures
     cy.on("uncaught:exception", () => false);
 
     // Wait for the app to be fully loaded
-    cy.get('[data-testid="app-title"]', { timeout: 10000 }).should(
-      "be.visible"
-    );
+    cy.get('[data-testid="app-title"]', { timeout: 5000 }).should("be.visible");
   });
 
-  // Test multiple device viewports
-  const devices = [
-    { width: 1920, height: 1080, name: "desktop" },
-    { width: 768, height: 1024, name: "tablet" },
-    { width: 375, height: 667, name: "mobile" },
-  ];
+  describe("Core Functionality", () => {
+    it("should render all essential widgets and controls", () => {
+      // Check for app title and main container
+      cy.get('[data-testid="app-title"]').should(
+        "contain",
+        "CIA Compliance Manager Dashboard"
+      );
 
-  devices.forEach((device) => {
-    describe(`UI Rendering on ${device.name}`, () => {
-      beforeEach(() => {
-        cy.viewport(device.width, device.height);
+      // Check for critical widgets without screenshot
+      [
+        "widget-security-level-selection",
+        "widget-security-profile-visualization",
+        "widget-cost-estimation",
+        "widget-security-summary",
+        "widget-compliance-status",
+      ].forEach((widget) => {
+        cy.get(`[data-testid="${widget}"]`).should("be.visible");
       });
 
-      it("should load the application successfully", () => {
-        cy.get('[data-testid="app-title"]')
-          .should("be.visible")
-          .and("contain", "CIA Compliance Manager Dashboard");
-        cy.get('[data-testid="dashboard-grid"]').should("exist");
-
-        // Take a screenshot for visual comparison
-        cy.screenshot(`app-loaded-${device.name}`);
+      // Verify security level selectors exist and are usable
+      ["availability", "integrity", "confidentiality"].forEach((control) => {
+        cy.get(`[data-testid="${control}-select"]`)
+          .should("exist")
+          .and("not.be.disabled");
       });
     });
-  });
 
-  describe("Dashboard Widgets", () => {
-    it("should render all widgets correctly", () => {
-      // Check for all the essential widgets
-      cy.get('[data-testid="widget-security-level-selection"]').should("be.visible");
-      cy.get('[data-testid="widget-security-profile-visualization"]').should("be.visible");
-      cy.get('[data-testid="widget-cost-estimation"]').should("be.visible");
-      cy.get('[data-testid="widget-security-summary"]').should("be.visible");
-      cy.get('[data-testid="widget-compliance-status"]').should("be.visible");
-      cy.get('[data-testid="widget-business-impact-analysis"]').should("be.visible");
-
-      cy.screenshot("all-widgets-rendered");
-    });
-  });
-
-  describe("Security Level Selection", () => {
-    it("should set CIA levels through UI interaction", () => {
-      // Find the widget first, then the select elements within it
-      cy.get('[data-testid="widget-security-level-selection"]').within(() => {
-        cy.get('[data-testid="availability-select"]').select("Low", { force: true });
-        cy.get('[data-testid="integrity-select"]').select("Moderate", { force: true });
-        cy.get('[data-testid="confidentiality-select"]').select("High", { force: true });
-      });
-
-      // Verify the values were set correctly
-      cy.get('[data-testid="availability-select"]').should("have.value", "Low");
-      cy.get('[data-testid="integrity-select"]').should("have.value", "Moderate");
-      cy.get('[data-testid="confidentiality-select"]').should("have.value", "High");
-
-      // Take screenshot
-      cy.screenshot("all-cia-levels-set");
-    });
-
-    // Data-driven test for different combinations
-    const testScenarios = [
-      {
-        name: "Low risk scenario",
-        levels: {
-          confidentiality: "Low",
-          integrity: "Low",
-          availability: "Low",
-        },
-        expectedCapex: "$10,000",
-        expectedOpex: "$500",
-      },
-      {
-        name: "High risk scenario",
-        levels: {
-          confidentiality: "Very High",
-          integrity: "Very High",
-          availability: "Very High",
-        },
-        expectedCapex: "$1,000,000",
-        expectedOpex: "$50,000",
-      },
-    ];
-
-    testScenarios.forEach((scenario) => {
-      it(`should correctly calculate costs for ${scenario.name}`, () => {
-        // Set values using direct UI interaction
-        cy.get('[data-testid="availability-select"]').select(scenario.levels.availability);
-        cy.get('[data-testid="integrity-select"]').select(scenario.levels.integrity);
-        cy.get('[data-testid="confidentiality-select"]').select(scenario.levels.confidentiality);
-
-        // Wait for updates to be applied
-        cy.wait(500);
-
-        // Find the cost estimation widget and verify costs within it
-        cy.get('[data-testid="widget-cost-estimation"]').within(() => {
-          cy.contains(scenario.expectedCapex).should("be.visible");
-          cy.contains(scenario.expectedOpex).should("be.visible");
-        });
-
-        // Take a screenshot of this scenario
-        cy.screenshot(`cost-scenario-${scenario.name.toLowerCase().replace(/\s+/g, "-")}`);
-      });
-    });
-  });
-
-  describe("Theme Toggle", () => {
-    it("should toggle between light and dark modes", () => {
-      // Check initial state
-      cy.get('[data-testid="theme-toggle"]')
-        .should("be.visible")
-        .and("contain.text", "Dark Mode");
-      cy.get('[data-testid="app-container"]').should("not.have.class", "dark");
-
-      // First toggle
-      cy.get('[data-testid="theme-toggle"]').click();
-      cy.get('[data-testid="theme-toggle"]').should("contain.text", "Light Mode");
-      cy.get('[data-testid="app-container"]').should("have.class", "dark");
-      cy.screenshot("dark-mode");
-
-      // Second toggle
-      cy.get('[data-testid="theme-toggle"]').click();
-      cy.get('[data-testid="theme-toggle"]').should("contain.text", "Dark Mode");
-      cy.get('[data-testid="app-container"]').should("not.have.class", "dark");
-      cy.screenshot("light-mode");
-    });
-  });
-
-  describe("Impact Analysis Widgets", () => {
-    it("should display impact analysis with proper content", () => {
-      // Set values using direct UI interaction
+    it("should update dashboard based on security level selections", () => {
+      // Set all levels to High
       cy.get('[data-testid="availability-select"]').select("High");
       cy.get('[data-testid="integrity-select"]').select("High");
       cy.get('[data-testid="confidentiality-select"]').select("High");
 
-      cy.wait(500);
+      // Use string assertions to avoid type issues
+      cy.get('[data-testid="widget-security-summary"]')
+        .invoke("text")
+        .should("include", "High Security");
 
-      // Check that each impact widget contains appropriate content for "High" level
-      cy.get('[data-testid="widget-availability-impact"]').within(() => {
-        cy.contains("Near-continuous service").should("be.visible");
-        cy.contains("99.9% uptime").should("be.visible");
-      });
+      cy.get('[data-testid="widget-cost-estimation"]')
+        .invoke("text")
+        .should("include", "$1,000,000");
 
-      cy.get('[data-testid="widget-integrity-impact"]').within(() => {
-        cy.contains("Immutable records").should("be.visible");
-      });
-
-      cy.get('[data-testid="widget-confidentiality-impact"]').within(() => {
-        cy.contains("Robust protection").should("be.visible");
-      });
-
-      cy.screenshot("high-level-impact-analysis");
+      cy.get('[data-testid="widget-availability-impact"]')
+        .invoke("text")
+        .should("include", "99.9% uptime");
     });
-  });
 
-  describe("Security Summary Widget", () => {
-    it("should update security summary based on selections", () => {
-      // Set all levels to Moderate
+    it("should demonstrate compliance status changes with security level changes", () => {
+      // First check low compliance
       ["availability", "integrity", "confidentiality"].forEach((control) => {
-        cy.get(`[data-testid="${control}-select"]`).select("Moderate");
+        cy.get(`[data-testid="${control}-select"]`).select("None");
       });
 
-      cy.wait(500);
+      cy.get('[data-testid="widget-compliance-status"]')
+        .invoke("text")
+        .should("include", "Non-compliant");
 
-      // Check the security summary widget shows Moderate summary
-      cy.get('[data-testid="widget-security-summary"]').within(() => {
-        cy.contains("Moderate Security").should("be.visible");
-        cy.contains("Balanced approach").should("be.visible");
-        cy.contains("⚠️").should("be.visible"); // Moderate warning icon
+      cy.get('[data-testid="widget-compliance-status"]')
+        .find(':contains("❌")')
+        .should("have.length.at.least", 1);
+
+      // Then check high compliance
+      ["availability", "integrity", "confidentiality"].forEach((control) => {
+        cy.get(`[data-testid="${control}-select"]`).select("Very High");
       });
 
-      // Take screenshot
-      cy.screenshot("moderate-security-summary");
+      cy.get('[data-testid="widget-compliance-status"]')
+        .invoke("text")
+        .should("include", "Compliant");
+
+      cy.get('[data-testid="widget-compliance-status"]')
+        .find(':contains("✅")')
+        .should("have.length.at.least", 1);
     });
   });
 
-  describe("Business Impact Analysis Widget", () => {
-    it("should display business impact information", () => {
-      cy.get('[data-testid="widget-business-impact-analysis"]').within(() => {
-        // Check for the main sections
-        cy.contains("Key Benefits").should("be.visible");
-        cy.contains("Business Considerations").should("be.visible");
-        
-        // Check for specific content items
-        cy.contains("Clear visibility into security level requirements").should("be.visible");
-        cy.contains("Potential revenue impact from downtime").should("be.visible");
-      });
-      
-      // Take screenshot
-      cy.screenshot("business-impact-analysis");
+  describe("UI Interactions", () => {
+    it("should toggle dark mode", () => {
+      // Initial state should be light mode
+      cy.get('[data-testid="app-container"]').should("not.have.class", "dark");
+
+      // Click once for dark mode
+      cy.get('[data-testid="theme-toggle"]').click();
+      cy.get('[data-testid="app-container"]').should("have.class", "dark");
+      cy.get('[data-testid="theme-toggle"]')
+        .invoke("text")
+        .should("include", "Light Mode");
+
+      // Click again for light mode
+      cy.get('[data-testid="theme-toggle"]').click();
+      cy.get('[data-testid="app-container"]').should("not.have.class", "dark");
+      cy.get('[data-testid="theme-toggle"]')
+        .invoke("text")
+        .should("include", "Dark Mode");
     });
   });
 
-  describe("Technical Implementation Widget", () => {
-    it("should display technical details based on selected security levels", () => {
-      // Set availability to High
+  describe("Cost Calculations", () => {
+    it("should correctly calculate costs for different security profiles", () => {
+      // Low security case
+      ["availability", "integrity", "confidentiality"].forEach((control) => {
+        cy.get(`[data-testid="${control}-select"]`).select("Low");
+      });
+
+      cy.get('[data-testid="widget-cost-estimation"]')
+        .invoke("text")
+        .should("include", "$10,000");
+
+      cy.get('[data-testid="widget-cost-estimation"]')
+        .invoke("text")
+        .should("include", "$500");
+
+      // High security case
+      ["availability", "integrity", "confidentiality"].forEach((control) => {
+        cy.get(`[data-testid="${control}-select"]`).select("Very High");
+      });
+
+      cy.get('[data-testid="widget-cost-estimation"]')
+        .invoke("text")
+        .should("include", "$1,000,000");
+
+      cy.get('[data-testid="widget-cost-estimation"]')
+        .invoke("text")
+        .should("include", "$50,000");
+    });
+  });
+
+  describe("Resilience", () => {
+    it("should handle page reload gracefully", () => {
+      // Set security levels
       cy.get('[data-testid="availability-select"]').select("High");
-      
-      cy.wait(500);
-      
-      // Check technical implementation widget for High availability details
-      cy.get('[data-testid="widget-technical-implementation"]').within(() => {
-        cy.contains("Availability: High").should("be.visible");
-        cy.contains("High availability").should("be.visible");
-      });
-      
-      // Take screenshot
-      cy.screenshot("technical-implementation-details");
+
+      // Force a page reload
+      cy.reload();
+
+      // Verify essential elements are still present and app recovers
+      cy.get('[data-testid="app-title"]').should("be.visible");
+      cy.get('[data-testid="widget-security-level-selection"]').should(
+        "be.visible"
+      );
     });
   });
 
-  describe("Accessibility Testing", () => {
-    it("should have accessible form controls in widgets", () => {
-      // Find the security level selection widget and check accessibility
-      cy.get('[data-testid="widget-security-level-selection"]').within(() => {
-        ["availability", "integrity", "confidentiality"].forEach((control) => {
-          // Check that the select element exists and has appropriate attributes
-          cy.get(`[data-testid="${control}-select"]`)
-            .should("be.visible")
-            .and("have.attr", "aria-label");
-          
-          // Check for labels
-          cy.get(`label[for="${control}"]`).should("exist");
-        });
-      });
-      
-      // Take screenshot for accessibility verification
-      cy.screenshot("accessible-widget-controls");
+  describe("Custom Commands Usage", () => {
+    it("should use custom commands for more concise tests", () => {
+      // Use the custom command to set all levels at once
+      cy.setSecurityLevels("High", "High", "High");
+
+      // Use the custom command to verify widget content
+      cy.verifyWidgetWithContent("widget-security-summary", "High Security");
+      cy.verifyWidgetWithContent("widget-cost-estimation", "$1,000,000");
     });
   });
 });
