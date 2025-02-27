@@ -11,10 +11,74 @@ The CIA Compliance Manager is a comprehensive application designed to help organ
 
 ### Security Level Summary
 
-- **Basic**: Minimal investment, low protection, and high risk of downtime or data breaches. Suitable for non-critical or public-facing systems.
-- **Moderate**: A balanced approach to cost and protection, good for mid-sized companies that need compliance without overspending on redundant systems.
-- **High**: Required for businesses where data integrity, uptime, and confidentiality are critical. High costs, but justified in regulated industries like finance, healthcare, or e-commerce.
-- **Very High**: Over-the-top protection and availability designed for mission-critical systems, such as those in defense or high-security finance. Extremely high CAPEX and OPEX.
+#### Basic
+
+**Overview**: Minimal investment, low protection, and high risk of downtime or data breaches. Suitable for non-critical or public-facing systems.
+
+**Business Impact Analysis**:
+
+- **Availability Impact**: Frequent outages (up to 5% downtime annually) could result in lost revenue during business hours, customer frustration, and inefficient operations. For a medium-sized business, this could represent 18 days of disruption per year.
+- **Integrity Impact**: Risk of data corruption or loss without proper backup could necessitate costly manual reconstruction, lead to erroneous business decisions, and potentially violate basic compliance requirements.
+- **Confidentiality Impact**: Limited protection means sensitive information could be exposed, leading to competitive disadvantage, customer trust erosion, and potential regulatory penalties even for minimally regulated industries.
+
+**Value Creation**:
+
+- Satisfies minimum viable security for non-critical systems
+- Minimal upfront costs allow budget allocation to revenue-generating activities
+- Appropriate for public data and internal systems with negligible business impact if compromised
+
+#### Moderate
+
+**Overview**: A balanced approach to cost and protection, good for mid-sized companies that need compliance without overspending on redundant systems.
+
+**Business Impact Analysis**:
+
+- **Availability Impact**: Improved uptime (99% availability) limits disruptions to around 3.65 days per year, reducing lost revenue and maintaining operational continuity for most business functions. Recovery can typically be achieved within hours rather than days.
+- **Integrity Impact**: Automated validation helps prevent most data corruption issues, preserving decision quality and reducing error correction costs. Basic audit trails support regulatory compliance for standard business operations.
+- **Confidentiality Impact**: Standard encryption and access controls protect sensitive internal data from common threats, helping meet basic compliance requirements (GDPR, CCPA) and preserving customer trust.
+
+**Value Creation**:
+
+- Demonstrates security diligence to partners, customers, and regulators
+- Reduces operational disruptions by 80% compared to Basic level
+- Prevents common security incidents that could impact quarterly financial performance
+- Provides competitive advantage over businesses with sub-standard security
+
+#### High
+
+**Overview**: Required for businesses where data integrity, uptime, and confidentiality are critical. High costs, but justified in regulated industries like finance, healthcare, or e-commerce.
+
+**Business Impact Analysis**:
+
+- **Availability Impact**: Near-continuous service (99.9% uptime) limits disruptions to less than 9 hours annually, preserving revenue streams, maintaining brand reputation, and ensuring customer satisfaction. Fast recovery capabilities maintain operational efficiency even during incidents.
+- **Integrity Impact**: Immutable records and blockchain validation virtually eliminate data tampering and corruption risks, enabling high-confidence business decisions, supporting non-repudiation for transactions, and satisfying strict regulatory requirements.
+- **Confidentiality Impact**: Robust protection for sensitive data prevents most breaches, avoiding regulatory penalties that could reach millions of dollars, preserving market valuation, and maintaining customer loyalty in competitive markets.
+
+**Value Creation**:
+
+- Enables expansion into highly regulated markets and industries
+- Provides assurance to high-value customers with stringent security requirements
+- Reduces insurance premiums through demonstrated security controls
+- Minimizes breach-related costs that average $4.45 million per incident (2023 global average)
+- Supports premium service offerings where security is a differentiator
+
+#### Very High
+
+**Overview**: Over-the-top protection and availability designed for mission-critical systems, such as those in defense or high-security finance. Extremely high CAPEX and OPEX.
+
+**Business Impact Analysis**:
+
+- **Availability Impact**: Continuous operation (99.99% uptime) with less than 1 hour of downtime annually preserves mission-critical functions, maintains cash flow during crisis events, and protects market position even during widespread disruptions. Future-proof architecture maintains operational capabilities despite evolving threats.
+- **Integrity Impact**: Advanced cryptographic validation through smart contracts creates tamper-proof operational environments, essential for financial markets, defense systems, and critical infrastructure where data corruption could have catastrophic consequences including loss of life or national security implications.
+- **Confidentiality Impact**: Military-grade protection with quantum-safe encryption safeguards against even state-sponsored attackers, protecting intellectual property worth billions, preventing corporate espionage, and ensuring continued operations in highly competitive global markets.
+
+**Value Creation**:
+
+- Enables participation in classified or highly restricted business opportunities
+- Protects irreplaceable intellectual property and trade secrets that form company valuation
+- Creates long-term trust with stakeholders including governments and regulated entities
+- Provides resilience against catastrophic events that would destroy competitors
+- Supports premium pricing models based on exceptional security guarantees
 
 ### Choosing the Right Level for Your Business
 
