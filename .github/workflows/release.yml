@@ -118,7 +118,7 @@ jobs:
           artifact-name: cia-compliance-manager-${{ needs.prepare.outputs.version }}
 
       - name: Generate artifact attestation
-        uses: actions/attest-build-provenance@f9eaf234fc1c2e333c1eca18177db0f44fa6ba52 # v2.2.1
+        uses: actions/attest-build-provenance@bd77c077858b8d561b7a36cbe48ef4cc642ca39d # v2.2.2
         id: attest
         with:
           subject-path: dist/cia-compliance-manager-${{ needs.prepare.outputs.version }}.zip
