@@ -1,12 +1,24 @@
 // App constants used by both components and tests
 // Centralized to avoid duplication and make tests more stable
 
-import {
-  availabilityOptions,
-  integrityOptions,
-  confidentialityOptions,
-} from "../hooks/useCIAOptions";
+// Import from the shared risk constants file
+import { RISK_LEVELS, BUSINESS_IMPACT_CATEGORIES } from "./riskConstants";
 import { CIADetails } from "../types/cia";
+// Import the UI constants for backward compatibility
+import {
+  WIDGET_ICONS,
+  BUSINESS_IMPACT_ICONS,
+  SECURITY_LEVEL_COLORS,
+  CIA_COMPONENT_ICONS,
+} from "./uiConstants";
+
+// Re-export UI constants for backward compatibility
+export {
+  WIDGET_ICONS,
+  BUSINESS_IMPACT_ICONS,
+  SECURITY_LEVEL_COLORS,
+  CIA_COMPONENT_ICONS,
+};
 
 // SecurityLevelMap type for cleaner lookups
 export type SecurityLevelKey =
@@ -19,12 +31,7 @@ export type SecurityLevelMap<T> = Record<SecurityLevelKey, T>;
 
 /**
  * Maps CIA option values to constants with consistent naming (NONE, LOW, etc.)
- * Supports optional transform function to modify values during mapping
- *
- * @param options The source options object (e.g., availabilityOptions)
- * @param key The property key to extract from each option
- * @param transform Optional function to transform the extracted value
- * @returns An object with standardized security level keys
+ * Modified version to avoid circular dependencies
  */
 export const mapOptionsToConstants = <
   T extends keyof CIADetails,
@@ -33,17 +40,42 @@ export const mapOptionsToConstants = <
   options: Record<string, CIADetails>,
   key: T,
   transform?: (value: CIADetails[T], level: string) => R
-) => ({
-  NONE: transform ? transform(options.None[key], "None") : options.None[key],
-  LOW: transform ? transform(options.Low[key], "Low") : options.Low[key],
-  MODERATE: transform
-    ? transform(options.Moderate[key], "Moderate")
-    : options.Moderate[key],
-  HIGH: transform ? transform(options.High[key], "High") : options.High[key],
-  VERY_HIGH: transform
-    ? transform(options["Very High"][key], "Very High")
-    : options["Very High"][key],
-});
+) => {
+  if (!options) {
+    return {
+      NONE: undefined,
+      LOW: undefined,
+      MODERATE: undefined,
+      HIGH: undefined,
+      VERY_HIGH: undefined,
+    };
+  }
+
+  return {
+    NONE:
+      options.None &&
+      (transform ? transform(options.None[key], "None") : options.None[key]),
+    LOW:
+      options.Low &&
+      (transform ? transform(options.Low[key], "Low") : options.Low[key]),
+    MODERATE:
+      options.Moderate &&
+      (transform
+        ? transform(options.Moderate[key], "Moderate")
+        : options.Moderate[key]),
+    HIGH:
+      options.High &&
+      (transform ? transform(options.High[key], "High") : options.High[key]),
+    VERY_HIGH:
+      options["Very High"] &&
+      (transform
+        ? transform(options["Very High"][key], "Very High")
+        : options["Very High"][key]),
+  };
+};
+
+// Export the risk levels and business impact categories from here as well for consistency
+export { RISK_LEVELS, BUSINESS_IMPACT_CATEGORIES };
 
 /**
  * Creates a matcher function for testing that checks if text appears in an element with a specific class
@@ -163,38 +195,26 @@ export const SECURITY_DESCRIPTIONS = {
 
 // Technical descriptions - for more detailed tooltips - using the helper function
 export const TECHNICAL_DESCRIPTIONS = {
-  AVAILABILITY: mapOptionsToConstants(availabilityOptions, "technical"),
-  INTEGRITY: mapOptionsToConstants(integrityOptions, "technical"),
-  CONFIDENTIALITY: mapOptionsToConstants(confidentialityOptions, "technical"),
+  // Placeholder that will be populated by the actual components
+  AVAILABILITY: {} as Record<SecurityLevelKey, string>,
+  INTEGRITY: {} as Record<SecurityLevelKey, string>,
+  CONFIDENTIALITY: {} as Record<SecurityLevelKey, string>,
 };
 
 // Impact Analysis Descriptions using enhanced helper
 export const IMPACT_DESCRIPTIONS = {
-  AVAILABILITY: mapOptionsToConstants(
-    availabilityOptions,
-    "description",
-    (desc, level) => `${desc} - ${availabilityOptions[level].impact}`
-  ),
-  INTEGRITY: mapOptionsToConstants(
-    integrityOptions,
-    "description",
-    (desc, level) => `${desc} - ${integrityOptions[level].impact}`
-  ),
-  CONFIDENTIALITY: mapOptionsToConstants(
-    confidentialityOptions,
-    "description",
-    (desc, level) => `${desc} - ${confidentialityOptions[level].impact}`
-  ),
+  // Placeholder that will be populated by the actual components
+  AVAILABILITY: {} as Record<SecurityLevelKey, string>,
+  INTEGRITY: {} as Record<SecurityLevelKey, string>,
+  CONFIDENTIALITY: {} as Record<SecurityLevelKey, string>,
 };
 
 // Business Impact - using the helper
 export const BUSINESS_IMPACTS = {
-  AVAILABILITY: mapOptionsToConstants(availabilityOptions, "businessImpact"),
-  INTEGRITY: mapOptionsToConstants(integrityOptions, "businessImpact"),
-  CONFIDENTIALITY: mapOptionsToConstants(
-    confidentialityOptions,
-    "businessImpact"
-  ),
+  // Placeholder that will be populated by the actual components
+  AVAILABILITY: {} as Record<SecurityLevelKey, string>,
+  INTEGRITY: {} as Record<SecurityLevelKey, string>,
+  CONFIDENTIALITY: {} as Record<SecurityLevelKey, string>,
 };
 
 // Value Creation Points
@@ -373,35 +393,4 @@ export const TEST_DATA = {
       text: "#000000",
     },
   },
-};
-
-// Widget Icons - For consistent icon use across the application
-export const WIDGET_ICONS = {
-  SECURITY_LEVEL: "🛡️",
-  BUSINESS_IMPACT: "📊",
-  AVAILABILITY_IMPACT: "⚡",
-  INTEGRITY_IMPACT: "🔗",
-  CONFIDENTIALITY_IMPACT: "🔒",
-  VALUE_CREATION: "📈",
-  COST_ESTIMATION: "💰",
-  SECURITY_VISUALIZATION: "📡",
-  COMPLIANCE_STATUS: "✅",
-  SECURITY_SUMMARY: "🔍",
-  TECHNICAL_IMPLEMENTATION: "⚙️",
-};
-
-// Add specific CIA component icons
-export const CIA_COMPONENT_ICONS = {
-  AVAILABILITY: "⏱️", // Stopwatch for time/availability
-  INTEGRITY: "🔐", // Padlock with key for data integrity
-  CONFIDENTIALITY: "🔏", // Locked with pen for confidentiality
-};
-
-// Security level color scheme
-export const SECURITY_LEVEL_COLORS = {
-  NONE: "#e74c3c", // Red
-  LOW: "#f39c12", // Orange
-  MODERATE: "#f1c40f", // Yellow
-  HIGH: "#2ecc71", // Green
-  VERY_HIGH: "#3498db", // Blue
 };

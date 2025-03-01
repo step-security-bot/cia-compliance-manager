@@ -1,5 +1,9 @@
 import { useMemo } from "react";
 import { CIADetails } from "../types/cia";
+import {
+  RISK_LEVELS,
+  BUSINESS_IMPACT_CATEGORIES,
+} from "../constants/riskConstants";
 
 // Add enhanced contextual information to the CIA options
 export const availabilityOptions: Record<string, CIADetails> = {
@@ -16,6 +20,23 @@ export const availabilityOptions: Record<string, CIADetails> = {
     bg: "#ffcccc",
     text: "#800000",
     recommendations: ["Implement basic monitoring", "Create backup procedures"],
+    // Add enhanced business impact details
+    businessImpactDetails: {
+      financialImpact: {
+        description: "Complete revenue loss during outages",
+        riskLevel: RISK_LEVELS.CRITICAL,
+        annualRevenueLoss: ">20%",
+      },
+      operationalImpact: {
+        description: "Business operations completely halt during outages",
+        riskLevel: RISK_LEVELS.CRITICAL,
+        meanTimeToRecover: "Unpredictable",
+      },
+      reputationalImpact: {
+        description: "Severe customer dissatisfaction and churn",
+        riskLevel: RISK_LEVELS.HIGH,
+      },
+    },
   },
   Low: {
     description: "Basic availability with limited redundancy.",
@@ -28,6 +49,19 @@ export const availabilityOptions: Record<string, CIADetails> = {
     bg: "#ffe0cc",
     text: "#804000",
     recommendations: ["Implement automated alerts", "Create recovery plan"],
+    // Add enhanced business impact details
+    businessImpactDetails: {
+      financialImpact: {
+        description: "Significant revenue loss during frequent outages",
+        riskLevel: RISK_LEVELS.HIGH,
+        annualRevenueLoss: "10-20%",
+      },
+      operationalImpact: {
+        description: "Frequent disruptions to business operations",
+        riskLevel: RISK_LEVELS.HIGH,
+        meanTimeToRecover: "Hours to days",
+      },
+    },
   },
   Moderate: {
     description:
@@ -44,6 +78,19 @@ export const availabilityOptions: Record<string, CIADetails> = {
       "Configure active-passive redundancy",
       "Core systems pre-configured",
     ],
+    // Add enhanced business impact details
+    businessImpactDetails: {
+      financialImpact: {
+        description: "Limited revenue impact from occasional outages",
+        riskLevel: RISK_LEVELS.MEDIUM,
+        annualRevenueLoss: "3-10%",
+      },
+      operationalImpact: {
+        description: "Minimal business impact during standard operations",
+        riskLevel: RISK_LEVELS.MEDIUM,
+        meanTimeToRecover: "Minutes to hours",
+      },
+    },
   },
   High: {
     description: "Robust high availability with multiple redundancy.",
@@ -59,6 +106,23 @@ export const availabilityOptions: Record<string, CIADetails> = {
       "Implement geographic redundancy",
       "Partially active redundant systems",
     ],
+    // Add enhanced business impact details
+    businessImpactDetails: {
+      financialImpact: {
+        description: "Minimal revenue impact, even during incidents",
+        riskLevel: RISK_LEVELS.LOW,
+        annualRevenueLoss: "<3%",
+      },
+      operationalImpact: {
+        description: "Business continuity preserved in most scenarios",
+        riskLevel: RISK_LEVELS.LOW,
+        meanTimeToRecover: "Seconds to minutes",
+      },
+      strategicImpact: {
+        description: "Enables business in regulated industries",
+        riskLevel: RISK_LEVELS.LOW,
+      },
+    },
   },
   "Very High": {
     description: "Maximum availability with global redundancy.",
@@ -75,6 +139,27 @@ export const availabilityOptions: Record<string, CIADetails> = {
       "Full active-active implementation",
       "Real-time global load balancing",
     ],
+    // Add enhanced business impact details
+    businessImpactDetails: {
+      financialImpact: {
+        description: "Virtually no revenue impact from availability issues",
+        riskLevel: RISK_LEVELS.LOW,
+        annualRevenueLoss: "<1%",
+      },
+      operationalImpact: {
+        description: "Guaranteed business continuity with SLA protection",
+        riskLevel: RISK_LEVELS.LOW,
+        meanTimeToRecover: "Near instant",
+      },
+      strategicImpact: {
+        description: "Enables business in highly regulated markets",
+        riskLevel: RISK_LEVELS.LOW,
+      },
+      competitiveAdvantage: {
+        description: "Superior reliability as competitive differentiator",
+        value: "High",
+      },
+    },
   },
 };
 

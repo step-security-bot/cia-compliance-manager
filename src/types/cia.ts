@@ -21,6 +21,23 @@ export enum CIALevel {
 
 // CIA Types
 
+// New interface for detailed business impact information
+export interface BusinessImpactDetail {
+  description: string;
+  riskLevel?: string;
+  [key: string]: any; // Allow for flexible additional properties
+}
+
+export interface BusinessImpactDetails {
+  financialImpact?: BusinessImpactDetail;
+  operationalImpact?: BusinessImpactDetail;
+  reputationalImpact?: BusinessImpactDetail;
+  regulatoryImpact?: BusinessImpactDetail;
+  strategicImpact?: BusinessImpactDetail;
+  competitiveAdvantage?: BusinessImpactDetail;
+  [key: string]: BusinessImpactDetail | undefined; // Allow for additional impact types
+}
+
 // Base interface for CIA details
 export interface CIADetails {
   description: string;
@@ -38,6 +55,9 @@ export interface CIADetails {
   recommendations?: string[]; // Security recommendations
   bg?: string; // Background color for styling
   text?: string; // Text color for styling
+
+  // Add detailed business impact information
+  businessImpactDetails?: BusinessImpactDetails;
 }
 
 // Types for CIA ratings

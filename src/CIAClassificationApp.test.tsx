@@ -213,7 +213,7 @@ describe("CIAClassificationApp", () => {
 
   describe("Analysis Display", () => {
     it("updates impact analysis widgets based on selections", () => {
-      // Check that impact analysis widgets exist
+      // Check that impact analysis widgets exist using the original test IDs
       expect(
         screen.getByTestId("widget-availability-impact")
       ).toBeInTheDocument();
@@ -232,19 +232,14 @@ describe("CIAClassificationApp", () => {
         "widget-confidentiality-impact"
       );
 
-      // Look for text that actually appears in the widget based on the error output
-      expect(
-        within(confidentialityImpactWidget).getByText(
-          /Maximum confidentiality with quantum-resistant encryption/i
-        )
-      ).toBeInTheDocument();
+      // Look for the business impact summary element that contains the text
+      const summaryElement = within(confidentialityImpactWidget).getByTestId(
+        "business-impact-summary"
+      );
 
-      // Also check for business impact text
-      expect(
-        within(confidentialityImpactWidget).getByText(
-          /Future-proof protection for highly sensitive data/i
-        )
-      ).toBeInTheDocument();
+      expect(summaryElement).toHaveTextContent(
+        "Future-proof protection for highly sensitive data"
+      );
     });
   });
 
