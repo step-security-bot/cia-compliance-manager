@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import { UI_TEXT } from "../constants/appConstants";
 
 interface DashboardProps {
   children: ReactNode;
@@ -45,5 +46,8 @@ export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
     </div>
   );
 };
+
+// Export predefined widget titles
+export const WIDGET_TITLES = UI_TEXT.WIDGET_TITLES;
 
 export default Dashboard;

@@ -1,4 +1,11 @@
 import React from "react";
+import {
+  SECURITY_LEVELS,
+  VALUE_CREATION_POINTS,
+  ROI_ESTIMATES,
+  UI_TEXT,
+  DETAILED_VALUE_POINTS,
+} from "../../constants/appConstants";
 
 interface ValueCreationWidgetProps {
   securityLevel: string;
@@ -7,49 +14,32 @@ interface ValueCreationWidgetProps {
 const ValueCreationWidget: React.FC<ValueCreationWidgetProps> = ({
   securityLevel,
 }) => {
+  // Create a mapping to simplify the getValuePoints function
   const getValuePoints = () => {
-    switch (securityLevel) {
-      case "Very High":
-        return [
-          "Enables participation in classified or highly restricted business opportunities",
-          "Protects irreplaceable intellectual property worth billions",
-          "Creates long-term trust with stakeholders including governments",
-          "Provides resilience against catastrophic events",
-          "Supports premium pricing models based on security guarantees",
-        ];
-      case "High":
-        return [
-          "Enables expansion into regulated markets (healthcare, finance)",
-          "Provides assurance to high-value customers with stringent requirements",
-          "Reduces insurance premiums through demonstrated security",
-          "Minimizes breach-related costs (avg. $4.45M per incident)",
-          "Supports premium service offerings where security is a differentiator",
-        ];
-      case "Moderate":
-        return [
-          "Demonstrates security diligence to partners and customers",
-          "Reduces operational disruptions by 80% compared to Basic level",
-          "Prevents common security incidents affecting quarterly performance",
-          "Provides competitive advantage over businesses with sub-standard security",
-          "Meets requirements for standard business relationships",
-        ];
-      case "Low":
-        return [
-          "Satisfies minimum viable security for non-critical systems",
-          "Minimal upfront costs allow budget allocation elsewhere",
-          "Appropriate for public data and low-impact internal systems",
-          "Provides basic protection against common threats",
-          "Simple implementation with minimal maintenance overhead",
-        ];
-      default:
-        return [
-          "No security investment means all budget can go to other areas",
-          "No value creation from security perspective",
-          "High risk of security incidents with significant business impact",
-          "Limited ability to participate in business relationships requiring security",
-          "Potential regulatory issues in many industries",
-        ];
-    }
+    const levelMap: Record<string, string[]> = {
+      [SECURITY_LEVELS.VERY_HIGH]: [
+        VALUE_CREATION_POINTS.VERY_HIGH,
+        ...DETAILED_VALUE_POINTS.VERY_HIGH,
+      ],
+      [SECURITY_LEVELS.HIGH]: [
+        VALUE_CREATION_POINTS.HIGH,
+        ...DETAILED_VALUE_POINTS.HIGH,
+      ],
+      [SECURITY_LEVELS.MODERATE]: [
+        VALUE_CREATION_POINTS.MODERATE,
+        ...DETAILED_VALUE_POINTS.MODERATE,
+      ],
+      [SECURITY_LEVELS.LOW]: [
+        VALUE_CREATION_POINTS.LOW,
+        ...DETAILED_VALUE_POINTS.LOW,
+      ],
+      [SECURITY_LEVELS.NONE]: [
+        VALUE_CREATION_POINTS.NONE,
+        ...DETAILED_VALUE_POINTS.NONE,
+      ],
+    };
+
+    return levelMap[securityLevel] || levelMap[SECURITY_LEVELS.NONE];
   };
 
   const valuePoints = getValuePoints();
@@ -57,16 +47,16 @@ const ValueCreationWidget: React.FC<ValueCreationWidgetProps> = ({
   // Get ROI estimation based on security level
   const getROIEstimate = () => {
     switch (securityLevel) {
-      case "Very High":
-        return "5-10x for specialized high-security markets";
-      case "High":
-        return "3-5x when factoring in breach prevention";
-      case "Moderate":
-        return "2-3x for standard business operations";
-      case "Low":
-        return "1-2x for basic security implementation";
+      case SECURITY_LEVELS.VERY_HIGH:
+        return ROI_ESTIMATES.VERY_HIGH;
+      case SECURITY_LEVELS.HIGH:
+        return ROI_ESTIMATES.HIGH;
+      case SECURITY_LEVELS.MODERATE:
+        return ROI_ESTIMATES.MODERATE;
+      case SECURITY_LEVELS.LOW:
+        return ROI_ESTIMATES.LOW;
       default:
-        return "Negative (high risk of losses)";
+        return ROI_ESTIMATES.NONE;
     }
   };
 
@@ -75,13 +65,13 @@ const ValueCreationWidget: React.FC<ValueCreationWidgetProps> = ({
   // Color styling based on level
   const getLevelColorClass = () => {
     switch (securityLevel) {
-      case "Very High":
+      case SECURITY_LEVELS.VERY_HIGH:
         return "text-green-600 dark:text-green-400";
-      case "High":
+      case SECURITY_LEVELS.HIGH:
         return "text-blue-600 dark:text-blue-400";
-      case "Moderate":
+      case SECURITY_LEVELS.MODERATE:
         return "text-yellow-600 dark:text-yellow-400";
-      case "Low":
+      case SECURITY_LEVELS.LOW:
         return "text-orange-600 dark:text-orange-400";
       default:
         return "text-red-600 dark:text-red-400";
@@ -92,12 +82,12 @@ const ValueCreationWidget: React.FC<ValueCreationWidgetProps> = ({
     <div className="space-y-4">
       <div className="mb-3">
         <h3 className={`text-lg font-medium ${getLevelColorClass()}`}>
-          {securityLevel === "None"
-            ? "No Value Creation"
-            : `${securityLevel} Value Creation`}
+          {securityLevel === SECURITY_LEVELS.NONE
+            ? UI_TEXT.VALUE_CREATION.NONE_TITLE
+            : UI_TEXT.VALUE_CREATION.WITH_LEVEL(securityLevel)}
         </h3>
         <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
-          Business value derived from this security profile:
+          {UI_TEXT.LABELS.BUSINESS_VALUE}
         </p>
       </div>
 
@@ -115,7 +105,9 @@ const ValueCreationWidget: React.FC<ValueCreationWidgetProps> = ({
 
       <div className="mt-4 pt-3 border-t border-gray-200 dark:border-gray-700">
         <div className="flex justify-between items-center">
-          <span className="text-sm font-medium">Estimated ROI:</span>
+          <span className="text-sm font-medium">
+            {UI_TEXT.LABELS.ESTIMATED_ROI}
+          </span>
           <span className={`font-medium ${getLevelColorClass()}`}>
             {roiEstimate}
           </span>

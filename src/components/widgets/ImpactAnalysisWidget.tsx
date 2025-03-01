@@ -1,4 +1,11 @@
 import React from "react";
+import {
+  SECURITY_LEVELS,
+  IMPACT_DESCRIPTIONS,
+  BUSINESS_IMPACTS,
+  UI_TEXT,
+  SecurityLevelKey, // Import the type
+} from "../../constants/appConstants";
 
 interface ImpactAnalysisWidgetProps {
   category: "Availability" | "Integrity" | "Confidentiality";
@@ -9,93 +16,47 @@ const ImpactAnalysisWidget: React.FC<ImpactAnalysisWidgetProps> = ({
   category,
   level,
 }) => {
-  // Impact descriptions based on category and level
+  // Add these helper lookups to simplify the switch statements
   const getImpactDescription = () => {
-    switch (category) {
-      case "Availability":
-        switch (level) {
-          case "Very High":
-            return "99.99% uptime, ensuring continuous operations with less than 1 hour of annual downtime.";
-          case "High":
-            return "99.9% uptime, maintaining most operations with minimal disruptions.";
-          case "Moderate":
-            return "99% uptime, occasional disruptions affecting some business functions.";
-          case "Low":
-            return "95% uptime, frequent disruptions affecting operations.";
-          default:
-            return "No availability guarantees, significant downtime expected.";
-        }
-      case "Integrity":
-        switch (level) {
-          case "Very High":
-            return "Complete data accuracy with real-time validation through smart contracts.";
-          case "High":
-            return "Immutable data records with blockchain validation for high assurance.";
-          case "Moderate":
-            return "Automated validation providing reasonable data accuracy.";
-          case "Low":
-            return "Basic data checks with potential for errors.";
-          default:
-            return "No data integrity controls, high risk of corruption.";
-        }
-      case "Confidentiality":
-        switch (level) {
-          case "Very High":
-            return "Military-grade protection using quantum-safe encryption.";
-          case "High":
-            return "Strong protection with MFA, robust encryption, and continuous monitoring.";
-          case "Moderate":
-            return "Standard protection with AES-256 encryption and basic monitoring.";
-          case "Low":
-            return "Minimal protection suitable only for non-sensitive information.";
-          default:
-            return "No confidentiality controls, data is essentially public.";
-        }
-    }
+    // Strongly typed map of category to impact descriptions
+    const impactMap = {
+      Availability: IMPACT_DESCRIPTIONS.AVAILABILITY,
+      Integrity: IMPACT_DESCRIPTIONS.INTEGRITY,
+      Confidentiality: IMPACT_DESCRIPTIONS.CONFIDENTIALITY,
+    };
+
+    // Strongly typed map of security levels to keys
+    const levelMap: Record<string, SecurityLevelKey> = {
+      [SECURITY_LEVELS.VERY_HIGH]: "VERY_HIGH",
+      [SECURITY_LEVELS.HIGH]: "HIGH",
+      [SECURITY_LEVELS.MODERATE]: "MODERATE",
+      [SECURITY_LEVELS.LOW]: "LOW",
+      [SECURITY_LEVELS.NONE]: "NONE",
+    };
+
+    const safeLevel = levelMap[level] || "NONE";
+    return impactMap[category][safeLevel];
   };
 
   const getBusinessImpact = () => {
-    switch (category) {
-      case "Availability":
-        switch (level) {
-          case "Very High":
-            return "Ensures business continuity even during major disruptions, supporting critical operations.";
-          case "High":
-            return "Maintains customer satisfaction and revenue streams with minimal interruptions.";
-          case "Moderate":
-            return "Acceptable for standard business operations with some tolerance for downtime.";
-          case "Low":
-            return "May result in customer frustration and revenue loss during outages.";
-          default:
-            return "High risk of significant business disruption and financial losses.";
-        }
-      case "Integrity":
-        switch (level) {
-          case "Very High":
-            return "Supports regulatory compliance and enables high-confidence business decisions.";
-          case "High":
-            return "Ensures accurate financial reporting and maintains data trustworthiness.";
-          case "Moderate":
-            return "Provides reasonable assurance for business processes with some validation.";
-          case "Low":
-            return "May lead to occasional errors in business decisions and reporting.";
-          default:
-            return "High risk of incorrect business decisions based on corrupt data.";
-        }
-      case "Confidentiality":
-        switch (level) {
-          case "Very High":
-            return "Protects highly sensitive information from sophisticated threats.";
-          case "High":
-            return "Safeguards customer data and intellectual property from most threats.";
-          case "Moderate":
-            return "Adequate for protecting internal business information.";
-          case "Low":
-            return "Minimal protection that may not meet regulatory requirements.";
-          default:
-            return "No protection for sensitive information, high risk of exposure.";
-        }
-    }
+    // Strongly typed map of category to business impacts
+    const impactMap = {
+      Availability: BUSINESS_IMPACTS.AVAILABILITY,
+      Integrity: BUSINESS_IMPACTS.INTEGRITY,
+      Confidentiality: BUSINESS_IMPACTS.CONFIDENTIALITY,
+    };
+
+    // Strongly typed map of security levels to keys
+    const levelMap: Record<string, SecurityLevelKey> = {
+      [SECURITY_LEVELS.VERY_HIGH]: "VERY_HIGH",
+      [SECURITY_LEVELS.HIGH]: "HIGH",
+      [SECURITY_LEVELS.MODERATE]: "MODERATE",
+      [SECURITY_LEVELS.LOW]: "LOW",
+      [SECURITY_LEVELS.NONE]: "NONE",
+    };
+
+    const safeLevel = levelMap[level] || "NONE";
+    return impactMap[category][safeLevel];
   };
 
   return (
@@ -103,13 +64,13 @@ const ImpactAnalysisWidget: React.FC<ImpactAnalysisWidgetProps> = ({
       <div className="flex items-center mb-2">
         <span
           className={`inline-block w-3 h-3 rounded-full mr-2 ${
-            level === "Very High"
+            level === SECURITY_LEVELS.VERY_HIGH
               ? "bg-green-500"
-              : level === "High"
+              : level === SECURITY_LEVELS.HIGH
               ? "bg-blue-500"
-              : level === "Moderate"
+              : level === SECURITY_LEVELS.MODERATE
               ? "bg-yellow-500"
-              : level === "Low"
+              : level === SECURITY_LEVELS.LOW
               ? "bg-orange-500"
               : "bg-red-500"
           }`}
@@ -121,7 +82,9 @@ const ImpactAnalysisWidget: React.FC<ImpactAnalysisWidgetProps> = ({
 
       <div className="text-sm text-gray-600 dark:text-gray-300">
         <p className="mb-2">{getImpactDescription()}</p>
-        <p className="font-medium text-sm mt-2">Business Impact:</p>
+        <p className="font-medium text-sm mt-2">
+          {UI_TEXT.LABELS.BUSINESS_IMPACT}
+        </p>
         <p>{getBusinessImpact()}</p>
       </div>
     </div>

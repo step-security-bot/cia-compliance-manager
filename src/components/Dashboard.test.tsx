@@ -1,6 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import Dashboard, { DashboardWidget } from "./Dashboard";
+import Dashboard, { DashboardWidget, WIDGET_TITLES } from "./Dashboard";
+import { TEST_DATA } from "../constants/appConstants";
 
 describe("Dashboard Component", () => {
   it("renders children correctly", () => {
@@ -29,13 +30,13 @@ describe("Dashboard Component", () => {
 describe("DashboardWidget Component", () => {
   it("renders with appropriate title", () => {
     render(
-      <DashboardWidget title="Test Widget">
-        <div>Widget content</div>
+      <DashboardWidget title={TEST_DATA.WIDGET.TITLE}>
+        <div>{TEST_DATA.WIDGET.CONTENT}</div>
       </DashboardWidget>
     );
 
-    expect(screen.getByText("Test Widget")).toBeInTheDocument();
-    expect(screen.getByText("Widget content")).toBeInTheDocument();
+    expect(screen.getByText(TEST_DATA.WIDGET.TITLE)).toBeInTheDocument();
+    expect(screen.getByText(TEST_DATA.WIDGET.CONTENT)).toBeInTheDocument();
   });
 
   it("applies the correct size classes", () => {
@@ -90,11 +91,33 @@ describe("DashboardWidget Component", () => {
 
   it("accepts and applies additional classNames", () => {
     render(
-      <DashboardWidget title="Custom Class" className="test-class">
+      <DashboardWidget
+        title="Custom Class"
+        className={TEST_DATA.WIDGET.CUSTOM_CLASS}
+      >
         Content
       </DashboardWidget>
     );
 
-    expect(screen.getByTestId("widget-custom-class")).toHaveClass("test-class");
+    expect(screen.getByTestId("widget-custom-class")).toHaveClass(
+      TEST_DATA.WIDGET.CUSTOM_CLASS
+    );
+  });
+});
+
+describe("DashboardWidget Component with Constants", () => {
+  it("renders with constant-defined titles", () => {
+    render(
+      <DashboardWidget title={WIDGET_TITLES.SECURITY_SUMMARY}>
+        <div>Summary content</div>
+      </DashboardWidget>
+    );
+
+    expect(
+      screen.getByText(WIDGET_TITLES.SECURITY_SUMMARY)
+    ).toBeInTheDocument();
+
+    // Verify data-testid is generated correctly
+    expect(screen.getByTestId("widget-security-summary")).toBeInTheDocument();
   });
 });

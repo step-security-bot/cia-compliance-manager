@@ -1,11 +1,18 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["es5", "dom", "es2015"],
-    "types": ["cypress", "node"],
+    "target": "es2019",
+    "lib": ["es2019", "dom"],
+    "types": ["cypress", "node", "@testing-library/cypress"],
     "esModuleInterop": true,
-    "allowJs": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": false,
+    "jsx": "react-jsx",
+    "noEmit": true
   },
-  "include": ["**/*.ts", "support/*.ts", "support/*.d.ts"]
+  "include": ["**/*.ts"]
 }

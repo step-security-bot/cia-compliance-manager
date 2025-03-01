@@ -1,18 +1,21 @@
-import "@testing-library/cypress/add-commands";
+// Import commands.ts using ES2015 syntax:
 import "./commands";
+import { mount } from "cypress/react";
 
-declare global {
-  namespace Cypress {
-    interface Chainable {
-      checkTheme: (isDark: boolean) => void;
-      setAppState: (stateChanges: any) => void;
-      containsText: (text: string) => void;
-      logCurrentState: () => void;
-      selectSafe: (selector: string, value: string) => void;
-      logElementDetails: (selector: string) => void;
-    }
-  }
-}
+import "@testing-library/cypress/add-commands";
+import "./appConstantsHelper";
+
+// Prevents Cypress from failing tests when uncaught exceptions occur in the application
+Cypress.on("uncaught:exception", (err) => {
+  // returning false here prevents Cypress from failing the test
+  return false;
+});
+
+// Note: We don't need to redefine types here since they're in index.d.ts
+// Remove the conflicting type declarations
+
+// Add the mount command for component testing
+Cypress.Commands.add("mount", mount);
 
 // Keep existing theme checking command
 Cypress.Commands.add("checkTheme", (isDark: boolean) => {
@@ -25,46 +28,52 @@ Cypress.Commands.add("checkTheme", (isDark: boolean) => {
   }
 });
 
-// Fix the select command overwrite with proper types
-// Use explicit any type to avoid TypeScript errors with Cypress command overrides
-Cypress.Commands.overwrite("select", (originalFn: any, ...args: any) => {
-  // Use type-safe approach with any to handle the proper signature
-  const subject = args[0];
+// Add a safe select command instead of overwriting the built-in one
+Cypress.Commands.add(
+  "safeSelect",
+  { prevSubject: "element" },
+  (subject, value, options = {}) => {
+    // First scroll the element into view without returning a promise
+    cy.wrap(subject).scrollIntoView();
+    cy.wait(200); // Add a small wait for stability
 
-  // Wrap the subject safely to handle all element types
-  if (subject) {
-    // Use the simple version of scrollIntoView with no options
-    cy.wrap(subject, { log: false }).scrollIntoView();
+    // Use the regular select with force: true
+    return cy.wrap(subject).select(value, { force: true, ...options });
   }
+);
 
-  // Wait for scrolling, without extra options
-  cy.wait(200);
+// Update the setSecurityLevels command to match the type definition order
+Cypress.Commands.add(
+  "setSecurityLevels",
+  (availability, integrity, confidentiality) => {
+    cy.get('[data-testid="availability-select"]')
+      .scrollIntoView()
+      .select(availability, { force: true });
+    cy.wait(100);
 
-  // Call original function with all arguments and add force:true
-  if (args.length === 2) {
-    // If only subject and value/text provided
-    return originalFn(args[0], args[1], { force: true });
-  } else if (args.length >= 3 && args[2]) {
-    // If subject, value/text, and options provided
-    const options = { ...args[2], force: true };
-    return originalFn(args[0], args[1], options);
+    cy.get('[data-testid="integrity-select"]')
+      .scrollIntoView()
+      .select(integrity, { force: true });
+    cy.wait(100);
+
+    cy.get('[data-testid="confidentiality-select"]')
+      .scrollIntoView()
+      .select(confidentiality, { force: true });
+    cy.wait(100);
   }
+);
 
-  // Fallback to original function by calling it directly
-  // Convert args to proper array to appease TypeScript
-  const argsArray: any[] = Array.from(args);
-  return originalFn.apply(null, [args[0], ...argsArray.slice(1)]);
-});
+// Add ensureAppLoaded helper command
+Cypress.Commands.add("ensureAppLoaded", () => {
+  // Wait for the app to be ready
+  cy.get("body", { timeout: 10000 }).should("not.have.class", "loading");
 
-// Add logging for debugging
-Cypress.on("command:start", (command) => {
-  if (command.name === "log") {
-    // Use optional chaining for safer access to args
-    const logMessage = command.args?.[0];
-    if (logMessage) {
-      console.log(`Cypress log: ${logMessage}`);
-    }
-  }
+  // Check for a core element to confirm app is loaded
+  cy.get('[data-testid="widget-security-level-selection"]', {
+    timeout: 5000,
+  }).should("exist");
+
+  // No return statement needed, this matches the void return type in the declaration
 });
 
 // Use longer timeouts for all commands
@@ -138,15 +147,7 @@ before(() => {
   });
 });
 
-// Configure more optimal timeouts - shorter but still sufficient
-Cypress.config("defaultCommandTimeout", 5000);
-Cypress.config("pageLoadTimeout", 5000);
-Cypress.config("requestTimeout", 5000);
-Cypress.config("execTimeout", 5000);
-Cypress.config("taskTimeout", 5000);
-
 // Set a global command to allow direct state manipulation
-// This is much more reliable than UI interactions
 Cypress.Commands.add("setAppState", (stateChanges) => {
   cy.window().then((win) => {
     const event = new CustomEvent("test:set-values", {
@@ -161,37 +162,11 @@ Cypress.Commands.add("setAppState", (stateChanges) => {
 
 // More efficient shorthand for common text content checks
 Cypress.Commands.add("containsText", (text) => {
-  return cy.get("body").invoke("text").should("include", text);
+  // The type expects void return not a chainable
+  cy.get("body").invoke("text").should("include", text);
+
+  // No return statement needed, this matches the void return type in the declaration
 });
-
-// Configure longer timeouts for all commands
-Cypress.config("defaultCommandTimeout", 10000);
-Cypress.config("pageLoadTimeout", 15000);
-Cypress.config("requestTimeout", 12000);
-
-// Improve logging for better debugging
-Cypress.on("log:added", (attrs, log) => {
-  if (attrs.displayName === "script error" || attrs.name === "error") {
-    console.error("Cypress error:", attrs.message);
-  }
-});
-
-// Handle uncaught exceptions - keep existing implementation
-Cypress.on("uncaught:exception", (err) => {
-  console.log("Uncaught exception:", err.message);
-  return false;
-});
-
-// Simplify to prioritize stability over feature coverage
-Cypress.on("uncaught:exception", (err) => {
-  // Log but don't fail test
-  console.log("Uncaught exception:", err.message);
-  return false;
-});
-
-// Use shorter timeouts to fail faster when things go wrong
-Cypress.config("defaultCommandTimeout", 4000);
-Cypress.config("pageLoadTimeout", 10000);
 
 // Add debug command to help diagnose issues
 Cypress.Commands.add("logCurrentState", () => {
@@ -207,37 +182,9 @@ Cypress.Commands.add("logCurrentState", () => {
 Cypress.Commands.add("selectSafe", (selector, value) => {
   cy.get(selector, { timeout: 5000 })
     .should("exist")
-    .then(($select) => {
-      if ($select.length) {
-        cy.wrap($select).select(value, { force: true });
-        cy.wait(300); // Small wait for stability
-      } else {
-        cy.log(`WARNING: Could not find element: ${selector}`);
-      }
-    });
-});
-
-// Set up better failure handling
-Cypress.on("uncaught:exception", (err) => {
-  // Log but continue test execution
-  console.log(`Uncaught exception: ${err.message}`);
-  return false;
-});
-
-// Add more helpful debugging
-Cypress.on("fail", (err, runnable) => {
-  // Take a screenshot when a test fails
-  const testTitle = runnable.title || "unknown-test";
-  cy.screenshot(`FAIL-${testTitle}`, { capture: "runner" });
-
-  // Log detailed DOM state
-  cy.get("body").then(($body) => {
-    console.log("Page HTML at failure:");
-    console.log($body.html());
-  });
-
-  // Continue with failure
-  throw err;
+    .scrollIntoView()
+    .wait(100)
+    .select(value, { force: true });
 });
 
 // Add DOM debugging command
@@ -256,3 +203,12 @@ Cypress.Commands.add("logElementDetails", (selector) => {
     }
   });
 });
+
+// Reset JUnit results at the beginning of a test run
+before(() => {
+  cy.task("resetJunitResults");
+});
+
+// Import additional testing libraries
+import "cypress-wait-until";
+import "cypress-real-events";

@@ -1,77 +1,72 @@
 /// <reference types="cypress" />
-/// <reference types="cypress-wait-until" />
 
 declare namespace Cypress {
-  interface Chainable<Subject = any> {
+  interface Chainable {
     /**
-     * Custom command to set all CIA security levels at once
+     * Custom command to set all three security levels at once
      * @example cy.setSecurityLevels('High', 'Moderate', 'Low')
      */
     setSecurityLevels(
       availability: string,
       integrity: string,
       confidentiality: string
-    ): Chainable<Element>;
+    ): Chainable<void>;
 
     /**
-     * Custom command to verify widget content
-     * @example cy.verifyWidgetWithContent('widget-security-summary', 'Moderate Security')
+     * Custom command to check if the theme is dark or light
+     * @example cy.checkTheme(true) // checks if theme is dark
      */
-    verifyWidgetWithContent(
-      widgetTestId: string,
-      expectedContent: string
-    ): Chainable<Element>;
+    checkTheme(isDark: boolean): Chainable<void>;
 
     /**
-     * Custom command to press tab key on an element
-     * @example cy.get('input').tab()
+     * Custom command to set application state directly
+     * @example cy.setAppState({ darkMode: true })
      */
-    tab(): Chainable<JQuery<HTMLElement>>;
+    setAppState(stateChanges: any): Chainable<void>;
 
     /**
-     * Sets security levels with improved performance by reducing UI interactions
-     * @example cy.setSecurityLevelsQuickly('High', 'High', 'High')
+     * Custom command to check if body text contains the given string
+     * @example cy.containsText('Welcome')
      */
-    setSecurityLevelsQuickly(
-      availability: string,
-      integrity: string,
-      confidentiality: string
-    ): Chainable<Element>;
+    containsText(text: string): Chainable<void>;
 
     /**
-     * Sets security levels with additional validation for robustness
-     * @example cy.setSecurityLevelsRobust('High', 'High', 'High')
+     * Custom command to log current state of all select elements
+     * @example cy.logCurrentState()
      */
-    setSecurityLevelsRobust(
-      availability: string,
-      integrity: string,
-      confidentiality: string
-    ): Chainable<Element>;
+    logCurrentState(): Chainable<void>;
 
     /**
-     * Check widget content with automatic retries
-     * @example cy.checkWidgetContent('widget-security-summary', 'High Security')
+     * Custom command for safer select operations
+     * @example cy.selectSafe('#mySelect', 'Option 1')
      */
-    checkWidgetContent(
-      widgetId: string,
-      expectedContent: string,
-      options?: {
-        timeout?: number;
-        interval?: number;
-        retries?: number;
-      }
-    ): Chainable<Element>;
+    selectSafe(selector: string, value: string): Chainable<void>;
 
     /**
-     * Wait for the application to reach a stable state
-     * @example cy.waitForAppStability()
+     * Custom command to log details about an element
+     * @example cy.logElementDetails('.my-element')
      */
-    waitForAppStability(timeout?: number): Chainable<Element>;
+    logElementDetails(selector: string): Chainable<void>;
 
     /**
-     * Custom command to log element details
-     * @example cy.logElementDetails('button.submit')
+     * Custom command for component testing with React
+     * @example cy.mount(<MyComponent />)
      */
-    logElementDetails(selector: string): void;
+    mount(component: React.ReactNode): Chainable<any>;
+
+    /**
+     * Safe select command for dropdown interactions
+     * @example cy.get('select').safeSelect('Option 1')
+     */
+    safeSelect(
+      value: string,
+      options?: Partial<Cypress.SelectOptions>
+    ): Chainable<JQuery<HTMLElement>>;
+
+    /**
+     * Custom command to ensure the app is fully loaded before proceeding
+     * @example cy.ensureAppLoaded()
+     */
+    ensureAppLoaded(): Chainable<void>;
   }
 }

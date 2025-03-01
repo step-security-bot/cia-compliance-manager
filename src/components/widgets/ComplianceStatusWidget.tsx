@@ -1,4 +1,11 @@
 import React from "react";
+import {
+  SECURITY_LEVELS,
+  COMPLIANCE_STATUS,
+  UI_ICONS,
+  COMPLIANCE_FRAMEWORKS,
+  FRAMEWORK_DESCRIPTIONS,
+} from "../../constants/appConstants";
 
 interface ComplianceStatusWidgetProps {
   securityLevels: {
@@ -15,63 +22,79 @@ const ComplianceStatusWidget: React.FC<ComplianceStatusWidgetProps> = ({
 
   // Check if meets basic compliance (all at least Low)
   const meetsBasicCompliance =
-    availability !== "None" &&
-    integrity !== "None" &&
-    confidentiality !== "None";
+    availability !== SECURITY_LEVELS.NONE &&
+    integrity !== SECURITY_LEVELS.NONE &&
+    confidentiality !== SECURITY_LEVELS.NONE;
 
   // Check if meets standard compliance (all at least Moderate)
   const meetsStandardCompliance =
-    ["Moderate", "High", "Very High"].includes(availability) &&
-    ["Moderate", "High", "Very High"].includes(integrity) &&
-    ["Moderate", "High", "Very High"].includes(confidentiality);
+    [
+      SECURITY_LEVELS.MODERATE,
+      SECURITY_LEVELS.HIGH,
+      SECURITY_LEVELS.VERY_HIGH,
+    ].includes(availability) &&
+    [
+      SECURITY_LEVELS.MODERATE,
+      SECURITY_LEVELS.HIGH,
+      SECURITY_LEVELS.VERY_HIGH,
+    ].includes(integrity) &&
+    [
+      SECURITY_LEVELS.MODERATE,
+      SECURITY_LEVELS.HIGH,
+      SECURITY_LEVELS.VERY_HIGH,
+    ].includes(confidentiality);
 
   // Check if meets high compliance (all at least High)
   const meetsHighCompliance =
-    ["High", "Very High"].includes(availability) &&
-    ["High", "Very High"].includes(integrity) &&
-    ["High", "Very High"].includes(confidentiality);
+    [SECURITY_LEVELS.HIGH, SECURITY_LEVELS.VERY_HIGH].includes(availability) &&
+    [SECURITY_LEVELS.HIGH, SECURITY_LEVELS.VERY_HIGH].includes(integrity) &&
+    [SECURITY_LEVELS.HIGH, SECURITY_LEVELS.VERY_HIGH].includes(confidentiality);
 
   // List of compliance frameworks and if they're satisfied
   const complianceFrameworks = [
     {
-      name: "SOC 2 Type 1",
+      name: COMPLIANCE_FRAMEWORKS.SOC2,
       met: meetsBasicCompliance,
-      description: "Requires basic security controls across CIA triad",
+      description: FRAMEWORK_DESCRIPTIONS.SOC2,
     },
     {
-      name: "ISO 27001",
+      name: COMPLIANCE_FRAMEWORKS.ISO27001,
       met: meetsStandardCompliance,
-      description: "Requires moderate security controls and management system",
+      description: FRAMEWORK_DESCRIPTIONS.ISO27001,
     },
     {
-      name: "PCI DSS",
+      name: COMPLIANCE_FRAMEWORKS.PCI_DSS,
       met:
         meetsStandardCompliance &&
-        ["High", "Very High"].includes(confidentiality),
-      description: "Emphasis on strong confidentiality controls",
+        [SECURITY_LEVELS.HIGH, SECURITY_LEVELS.VERY_HIGH].includes(
+          confidentiality
+        ),
+      description: FRAMEWORK_DESCRIPTIONS.PCI_DSS,
     },
     {
-      name: "HIPAA",
+      name: COMPLIANCE_FRAMEWORKS.HIPAA,
       met:
         meetsStandardCompliance &&
-        ["High", "Very High"].includes(confidentiality),
-      description: "Requires protection of healthcare information",
+        [SECURITY_LEVELS.HIGH, SECURITY_LEVELS.VERY_HIGH].includes(
+          confidentiality
+        ),
+      description: FRAMEWORK_DESCRIPTIONS.HIPAA,
     },
     {
-      name: "NIST 800-53 High",
+      name: COMPLIANCE_FRAMEWORKS.NIST,
       met: meetsHighCompliance,
-      description: "High security controls for federal information systems",
+      description: FRAMEWORK_DESCRIPTIONS.NIST,
     },
   ];
 
   // Overall compliance status
   const overallStatus = meetsHighCompliance
-    ? "Compliant with all major frameworks"
+    ? COMPLIANCE_STATUS.FULL_COMPLIANCE
     : meetsStandardCompliance
-    ? "Compliant with standard frameworks"
+    ? COMPLIANCE_STATUS.STANDARD_COMPLIANCE
     : meetsBasicCompliance
-    ? "Meets basic compliance only"
-    : "Non-compliant";
+    ? COMPLIANCE_STATUS.BASIC_COMPLIANCE
+    : COMPLIANCE_STATUS.NON_COMPLIANT;
 
   // Styling based on compliance level
   const getStatusColor = () => {
@@ -82,10 +105,10 @@ const ComplianceStatusWidget: React.FC<ComplianceStatusWidgetProps> = ({
   };
 
   const getStatusIcon = () => {
-    if (meetsHighCompliance) return "✅";
-    if (meetsStandardCompliance) return "✓";
-    if (meetsBasicCompliance) return "⚠️";
-    return "❌";
+    if (meetsHighCompliance) return UI_ICONS.FULL_COMPLIANCE;
+    if (meetsStandardCompliance) return UI_ICONS.STANDARD_COMPLIANCE;
+    if (meetsBasicCompliance) return UI_ICONS.BASIC_COMPLIANCE;
+    return UI_ICONS.NON_COMPLIANT;
   };
 
   return (
@@ -113,7 +136,7 @@ const ComplianceStatusWidget: React.FC<ComplianceStatusWidgetProps> = ({
                     : "text-red-500 dark:text-red-400 mr-2"
                 }
               >
-                {framework.met ? "✓" : "✗"}
+                {framework.met ? UI_ICONS.STANDARD_COMPLIANCE : "✗"}
               </span>
               <span>{framework.name}</span>
             </div>

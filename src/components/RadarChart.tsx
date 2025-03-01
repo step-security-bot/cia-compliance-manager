@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import Chart from "chart.js/auto";
+import { UI_TEXT, SECURITY_LEVELS } from "../constants/appConstants";
 
 interface RadarChartProps {
   availability: string;
@@ -9,7 +10,7 @@ interface RadarChartProps {
 
 // Convert security level string to numeric value for the chart
 const getLevelScore = (level: string): number => {
-  const levels = ["None", "Low", "Moderate", "High", "Very High"];
+  const levels = Object.values(SECURITY_LEVELS);
   return levels.indexOf(level);
 };
 
@@ -57,10 +58,14 @@ const RadarChart: React.FC<RadarChartProps> = ({
       chartInstance.current = new Chart(ctx, {
         type: "radar",
         data: {
-          labels: ["Availability", "Integrity", "Confidentiality"],
+          labels: [
+            UI_TEXT.SECURITY_MEASURES.AVAILABILITY,
+            UI_TEXT.SECURITY_MEASURES.INTEGRITY,
+            UI_TEXT.SECURITY_MEASURES.CONFIDENTIALITY,
+          ],
           datasets: [
             {
-              label: "Security Levels",
+              label: UI_TEXT.CHART.LABEL_SECURITY_LEVELS,
               data: [
                 getLevelScore(availability),
                 getLevelScore(integrity),
@@ -97,7 +102,7 @@ const RadarChart: React.FC<RadarChartProps> = ({
               },
               title: {
                 display: true,
-                text: "Security Profile",
+                text: UI_TEXT.CHART.TITLE_SECURITY_PROFILE,
                 color: textColor,
                 font: {
                   size: 16,
@@ -188,13 +193,17 @@ const RadarChart: React.FC<RadarChartProps> = ({
         <div className="flex justify-center items-center space-x-4 mb-2">
           <div className="flex items-center">
             <div className="w-3 h-3 rounded-full bg-blue-500 mr-2"></div>
-            <span className="text-sm font-medium">Current Profile</span>
+            <span className="text-sm font-medium">
+              {UI_TEXT.LABELS.CURRENT_PROFILE}
+            </span>
           </div>
         </div>
         {/* Add current levels below chart for easy reference */}
         <div className="flex justify-around mt-2 text-center">
           <div className="flex flex-col">
-            <span className="text-xs">Availability</span>
+            <span className="text-xs">
+              {UI_TEXT.SECURITY_MEASURES.AVAILABILITY}
+            </span>
             <span
               className="text-sm font-semibold"
               data-testid="radar-availability-value"
@@ -203,7 +212,9 @@ const RadarChart: React.FC<RadarChartProps> = ({
             </span>
           </div>
           <div className="flex flex-col">
-            <span className="text-xs">Integrity</span>
+            <span className="text-xs">
+              {UI_TEXT.SECURITY_MEASURES.INTEGRITY}
+            </span>
             <span
               className="text-sm font-semibold"
               data-testid="radar-integrity-value"
@@ -212,7 +223,9 @@ const RadarChart: React.FC<RadarChartProps> = ({
             </span>
           </div>
           <div className="flex flex-col">
-            <span className="text-xs">Confidentiality</span>
+            <span className="text-xs">
+              {UI_TEXT.SECURITY_MEASURES.CONFIDENTIALITY}
+            </span>
             <span
               className="text-sm font-semibold"
               data-testid="radar-confidentiality-value"

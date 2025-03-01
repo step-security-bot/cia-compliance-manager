@@ -2,69 +2,25 @@ import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import SecurityLevelWidget from "./SecurityLevelWidget";
 import { vi } from "vitest";
+import { CIA_LABELS, TEST_DATA } from "../../constants/appConstants";
 
 describe("SecurityLevelWidget", () => {
   const mockAvailabilityOptions = {
-    None: {
-      description: "None",
-      impact: "None",
-      technical: "None",
-      capex: 0,
-      opex: 0,
-      bg: "#ffffff",
-      text: "#000000",
-    },
-    Low: {
-      description: "Low",
-      impact: "Low",
-      technical: "Low",
-      capex: 5,
-      opex: 5,
-      bg: "#ffffff",
-      text: "#000000",
-    },
+    None: TEST_DATA.MOCK_OPTIONS.BASE,
+    Low: TEST_DATA.MOCK_OPTIONS.LOW,
   };
 
   const mockIntegrityOptions = {
-    None: {
-      description: "None",
-      impact: "None",
-      technical: "None",
-      capex: 0,
-      opex: 0,
-      bg: "#ffffff",
-      text: "#000000",
-    },
+    None: TEST_DATA.MOCK_OPTIONS.BASE,
     Low: {
-      description: "Low",
-      impact: "Low",
-      technical: "Low",
-      capex: 5,
+      ...TEST_DATA.MOCK_OPTIONS.LOW,
       opex: 10,
-      bg: "#ffffff",
-      text: "#000000",
     },
   };
 
   const mockConfidentialityOptions = {
-    None: {
-      description: "None",
-      impact: "None",
-      technical: "None",
-      capex: 0,
-      opex: 0,
-      bg: "#ffffff",
-      text: "#000000",
-    },
-    Low: {
-      description: "Low",
-      impact: "Low",
-      technical: "Low",
-      capex: 5,
-      opex: 5,
-      bg: "#ffffff",
-      text: "#000000",
-    },
+    None: TEST_DATA.MOCK_OPTIONS.BASE,
+    Low: TEST_DATA.MOCK_OPTIONS.LOW,
   };
 
   const mockProps = {
@@ -79,12 +35,13 @@ describe("SecurityLevelWidget", () => {
     confidentialityOptions: mockConfidentialityOptions,
   };
 
-  it("renders all select components", () => {
+  it("renders all security level components", () => {
     render(<SecurityLevelWidget {...mockProps} />);
 
-    expect(screen.getByTestId("availability-select")).toBeInTheDocument();
-    expect(screen.getByTestId("integrity-select")).toBeInTheDocument();
-    expect(screen.getByTestId("confidentiality-select")).toBeInTheDocument();
+    expect(screen.getByTestId("security-level-controls")).toBeInTheDocument();
+    expect(screen.getByText(CIA_LABELS.AVAILABILITY)).toBeInTheDocument();
+    expect(screen.getByText(CIA_LABELS.INTEGRITY)).toBeInTheDocument();
+    expect(screen.getByText(CIA_LABELS.CONFIDENTIALITY)).toBeInTheDocument();
   });
 
   it("selects have default values", () => {
@@ -114,17 +71,42 @@ describe("SecurityLevelWidget", () => {
     expect(mockProps.setConfidentiality).toHaveBeenCalledWith("Low");
   });
 
-  it("displays informative text about selecting security levels", () => {
-    render(<SecurityLevelWidget {...mockProps} />);
+  it("displays descriptions from options", () => {
+    const propsWithDescriptions = {
+      ...mockProps,
+      availabilityOptions: {
+        ...mockAvailabilityOptions,
+        None: {
+          ...mockAvailabilityOptions.None,
+          description: TEST_DATA.MOCK_DESCRIPTIONS.AVAILABILITY,
+        },
+      },
+      integrityOptions: {
+        ...mockIntegrityOptions,
+        None: {
+          ...mockIntegrityOptions.None,
+          description: TEST_DATA.MOCK_DESCRIPTIONS.INTEGRITY,
+        },
+      },
+      confidentialityOptions: {
+        ...mockConfidentialityOptions,
+        None: {
+          ...mockConfidentialityOptions.None,
+          description: TEST_DATA.MOCK_DESCRIPTIONS.CONFIDENTIALITY,
+        },
+      },
+    };
 
-    // Instead of looking for text that isn't in the component,
-    // verify the component structure and existing text
-    expect(screen.getByText("Availability")).toBeInTheDocument();
-    expect(screen.getByText("Integrity")).toBeInTheDocument();
-    expect(screen.getByText("Confidentiality")).toBeInTheDocument();
+    render(<SecurityLevelWidget {...propsWithDescriptions} />);
 
-    // Check that we have 3 select elements for CIA components
-    const selects = screen.getAllByRole("combobox");
-    expect(selects).toHaveLength(3);
+    expect(
+      screen.getByText(TEST_DATA.MOCK_DESCRIPTIONS.AVAILABILITY)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(TEST_DATA.MOCK_DESCRIPTIONS.INTEGRITY)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(TEST_DATA.MOCK_DESCRIPTIONS.CONFIDENTIALITY)
+    ).toBeInTheDocument();
   });
 });
