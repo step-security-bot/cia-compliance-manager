@@ -12,6 +12,7 @@ import SecuritySummaryWidget from "./components/widgets/SecuritySummaryWidget";
 import ValueCreationWidget from "./components/widgets/ValueCreationWidget";
 import ImpactAnalysisWidget from "./components/widgets/ImpactAnalysisWidget";
 import ComplianceStatusWidget from "./components/widgets/ComplianceStatusWidget";
+import { WIDGET_ICONS } from "./constants/appConstants";
 
 const CIAClassificationApp: React.FC = () => {
   const [availability, setAvailability] = useState<string>("None");
@@ -153,7 +154,11 @@ const CIAClassificationApp: React.FC = () => {
 
             <Dashboard>
               {/* Security Level Selection - Important control panel */}
-              <DashboardWidget title="Security Level Selection" size="medium">
+              <DashboardWidget 
+                title="Security Level Selection" 
+                size="medium"
+                icon={WIDGET_ICONS.SECURITY_LEVEL}
+              >
                 <SecurityLevelWidget
                   availability={availability}
                   integrity={integrity}
@@ -167,8 +172,12 @@ const CIAClassificationApp: React.FC = () => {
                 />
               </DashboardWidget>
 
-              {/* Business Impact Analysis - Now positioned to the right of Security Level Selection */}
-              <DashboardWidget title="Business Impact Analysis" size="medium">
+              {/* Business Impact Analysis */}
+              <DashboardWidget 
+                title="Business Impact Analysis" 
+                size="medium"
+                icon={WIDGET_ICONS.BUSINESS_IMPACT}
+              >
                 <div className="p-2 space-y-4">
                   <p className="text-sm text-gray-600 dark:text-gray-300">
                     The Business Impact Analysis (BIA) helps identify critical
@@ -218,13 +227,14 @@ const CIAClassificationApp: React.FC = () => {
                   </div>
                 </div>
               </DashboardWidget>
-
-              {/* Impact analysis widgets - moved higher for visibility */}
+              
+              {/* Impact analysis widgets with icons */}
               <DashboardWidget
                 title="Availability Impact"
                 size="medium"
                 data-testid="widget-availability-impact"
-                className="overflow-visible" // Add overflow:visible to ensure test visibility
+                className="overflow-visible"
+                icon={WIDGET_ICONS.AVAILABILITY_IMPACT}
               >
                 <ImpactAnalysisWidget
                   category="Availability"
@@ -236,7 +246,8 @@ const CIAClassificationApp: React.FC = () => {
                 title="Integrity Impact"
                 size="medium"
                 data-testid="widget-integrity-impact"
-                className="overflow-visible" // Add overflow:visible to ensure test visibility
+                className="overflow-visible"
+                icon={WIDGET_ICONS.INTEGRITY_IMPACT}
               >
                 <ImpactAnalysisWidget category="Integrity" level={integrity} />
               </DashboardWidget>
@@ -245,7 +256,8 @@ const CIAClassificationApp: React.FC = () => {
                 title="Confidentiality Impact"
                 size="medium"
                 data-testid="widget-confidentiality-impact"
-                className="overflow-visible" // Add overflow:visible to ensure test visibility
+                className="overflow-visible"
+                icon={WIDGET_ICONS.CONFIDENTIALITY_IMPACT}
               >
                 <ImpactAnalysisWidget
                   category="Confidentiality"
@@ -253,12 +265,20 @@ const CIAClassificationApp: React.FC = () => {
                 />
               </DashboardWidget>
 
-              {/* Value Creation and Cost Estimation side by side */}
-              <DashboardWidget title="Value Creation" size="medium">
+              {/* Value Creation and Cost Estimation side by side with icons */}
+              <DashboardWidget 
+                title="Value Creation" 
+                size="medium"
+                icon={WIDGET_ICONS.VALUE_CREATION}
+              >
                 <ValueCreationWidget securityLevel={overallSecurityLevel} />
               </DashboardWidget>
 
-              <DashboardWidget title="Cost Estimation" size="medium">
+              <DashboardWidget 
+                title="Cost Estimation" 
+                size="medium"
+                icon={WIDGET_ICONS.COST_ESTIMATION}
+              >
                 <CostEstimationWidget
                   totalCapex={totalCapex}
                   totalOpex={totalOpex}
@@ -268,10 +288,11 @@ const CIAClassificationApp: React.FC = () => {
                 />
               </DashboardWidget>
 
-              {/* Security visualization and Compliance Status side by side */}
+              {/* Security visualization and Compliance Status */}
               <DashboardWidget
                 title="Security Profile Visualization"
                 size="medium"
+                icon={WIDGET_ICONS.SECURITY_VISUALIZATION}
               >
                 <RadarChart
                   availability={availability}
@@ -280,7 +301,11 @@ const CIAClassificationApp: React.FC = () => {
                 />
               </DashboardWidget>
 
-              <DashboardWidget title="Compliance Status" size="medium">
+              <DashboardWidget 
+                title="Compliance Status" 
+                size="medium"
+                icon={WIDGET_ICONS.COMPLIANCE_STATUS}
+              >
                 <ComplianceStatusWidget
                   securityLevels={{
                     availability,
@@ -291,12 +316,20 @@ const CIAClassificationApp: React.FC = () => {
               </DashboardWidget>
 
               {/* Security Summary widget */}
-              <DashboardWidget title="Security Summary" size="medium">
+              <DashboardWidget 
+                title="Security Summary" 
+                size="medium"
+                icon={WIDGET_ICONS.SECURITY_SUMMARY}
+              >
                 <SecuritySummaryWidget securityLevel={overallSecurityLevel} />
               </DashboardWidget>
 
               {/* Technical Implementation */}
-              <DashboardWidget title="Technical Implementation" size="full">
+              <DashboardWidget 
+                title="Technical Implementation" 
+                size="full"
+                icon={WIDGET_ICONS.TECHNICAL_IMPLEMENTATION}
+              >
                 <div className="p-2 space-y-2">
                   <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
                     Key technical implementation details for your selected
