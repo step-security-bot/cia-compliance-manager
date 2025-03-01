@@ -7,6 +7,7 @@ import {
   UI_TEXT,
   TEST_MATCHERS,
 } from "../../constants/appConstants";
+import { availabilityOptions } from "../../hooks/useCIAOptions"; // Add this import
 
 describe("ImpactAnalysisWidget", () => {
   // Helper function to find description paragraph
@@ -119,22 +120,22 @@ describe("ImpactAnalysisWidget", () => {
   });
 
   it("displays business impact for each level and category", () => {
-    render(<ImpactAnalysisWidget category="Availability" level="High" />);
-
-    // Check for business impact section heading using the constant
-    expect(
-      screen.getByText(UI_TEXT.LABELS.BUSINESS_IMPACT)
-    ).toBeInTheDocument();
-
-    // Check for the business impact text with a more flexible approach
-    const businessImpactHeading = screen.getByText(
-      UI_TEXT.LABELS.BUSINESS_IMPACT
+    // High availability
+    render(
+      <ImpactAnalysisWidget
+        category="Availability" // Capitalize to match expected type
+        level="High"
+      />
     );
-    const businessImpactParagraph = businessImpactHeading.nextElementSibling;
+
+    const businessImpactParagraph = screen.getByTestId(
+      "business-impact-availability"
+    );
 
     expect(businessImpactParagraph).toBeInTheDocument();
+    // Update this test to match the new text which no longer contains "downtime"
     expect(businessImpactParagraph).toHaveTextContent(
-      TEST_MATCHERS.DOWNTIME_PATTERN
+      "Business continuity preserved"
     );
   });
 

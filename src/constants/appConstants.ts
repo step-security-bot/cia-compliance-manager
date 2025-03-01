@@ -389,3 +389,19 @@ export const WIDGET_ICONS = {
   SECURITY_SUMMARY: "🔍",
   TECHNICAL_IMPLEMENTATION: "⚙️",
 };
+
+// Add specific CIA component icons
+export const CIA_COMPONENT_ICONS = {
+  AVAILABILITY: "⏱️", // Stopwatch for time/availability
+  INTEGRITY: "🔐", // Padlock with key for data integrity
+  CONFIDENTIALITY: "🔏", // Locked with pen for confidentiality
+};
+
+// Security level color scheme
+export const SECURITY_LEVEL_COLORS = {
+  NONE: "#e74c3c", // Red
+  LOW: "#f39c12", // Orange
+  MODERATE: "#f1c40f", // Yellow
+  HIGH: "#2ecc71", // Green
+  VERY_HIGH: "#3498db", // Blue
+};
