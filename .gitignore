@@ -135,34 +135,3 @@ cypress/videos
 cypress/screenshots
 cypress/downloads
 cypress/results
-
-# Coverage reports
-coverage
-.nyc_output
-
-# Node modules
-node_modules
-
-# Build files
-build
-dist
-
-# Logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Editor files
-.vscode
-.idea
-*.swp
-*.swo
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Old Jest files
-jest.setup.js
-jest.config.js
