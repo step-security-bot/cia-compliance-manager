@@ -1,3 +1,16 @@
+/* c8 ignore start */
+// This file contains TypeScript types that don't need test coverage
+
+export type SecurityLevel = "None" | "Low" | "Moderate" | "High" | "Very High";
+export type SecurityFunctionGroup =
+  | "Identify"
+  | "Protect"
+  | "Detect"
+  | "Respond"
+  | "Recover";
+export type SecurityFunction = "ID" | "PR" | "DE" | "RS" | "RC";
+/* c8 ignore end */
+
 export enum CIALevel {
   None = "None",
   Low = "Low",

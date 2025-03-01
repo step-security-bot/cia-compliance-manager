@@ -12,7 +12,11 @@
     "resolveJsonModule": true,
     "isolatedModules": false,
     "jsx": "react-jsx",
-    "noEmit": true
+    "noEmit": true,
+    "baseUrl": "../node_modules",
+    "paths": {
+      "@/*": ["../src/*"]
+    }
   },
   "include": ["**/*.ts"]
 }

@@ -12,59 +12,92 @@ describe("Assess Security Costs", () => {
     cy.ensureAppLoaded(); // Using our custom command
   });
 
-  it("shows cost estimation widget", () => {
-    // Check that the cost estimation widget exists
-    cy.get('[data-testid="widget-cost-estimation"]').should("exist");
+  it("shows cost estimation widget with test IDs", () => {
+    // Check that the cost estimation widget exists and has content
+    cy.get('[data-testid="cost-estimation-content"]').should("exist");
 
-    // Verify it has a header (without checking specific text)
-    cy.get('[data-testid="widget-cost-estimation"] .widget-header').should(
-      "exist"
-    );
+    // Verify estimated cost heading and labels
+    cy.get('[data-testid="estimated-cost-heading"]').should("exist");
+    cy.get('[data-testid="capex-label"]').should("exist");
+    cy.get('[data-testid="opex-label"]').should("exist");
   });
 
-  it("shows cost percentages", () => {
+  it("shows cost percentages using test IDs", () => {
     // Verify that cost percentages exist
     cy.get('[data-testid="capex-percentage"]').should("exist");
     cy.get('[data-testid="opex-percentage"]').should("exist");
+
+    // Verify progress bars
+    cy.get('[data-testid="capex-progress-bar"]').should("exist");
+    cy.get('[data-testid="opex-progress-bar"]').should("exist");
+
+    // Verify estimates
+    cy.get('[data-testid="capex-estimate"]').should("not.be.empty");
+    cy.get('[data-testid="opex-estimate"]').should("not.be.empty");
   });
 
-  it("shows value creation widget", () => {
-    // Check that the value creation widget exists
-    cy.get('[data-testid="widget-value-creation"]').should("exist");
-
-    // Verify it has a header (without checking specific text)
-    cy.get('[data-testid="widget-value-creation"] .widget-header').should(
-      "exist"
+  it("shows value creation widget with test IDs", () => {
+    // Set security levels to get value creation content
+    cy.setSecurityLevels(
+      SECURITY_LEVELS.MODERATE,
+      SECURITY_LEVELS.MODERATE,
+      SECURITY_LEVELS.MODERATE
     );
+    cy.wait(300);
+
+    // Verify value creation widget exists
+    cy.get('[data-testid="value-creation-content"]').should("exist");
+    cy.get('[data-testid="value-creation-title"]').should("exist");
+    cy.get('[data-testid="value-creation-subtitle"]').should("exist");
+
+    // Verify value points list exists and has items
+    cy.get('[data-testid="value-points-list"]').should("exist");
+    cy.get('[data-testid="value-point-0"]').should("exist");
+
+    // Verify ROI information
+    cy.get('[data-testid="roi-label"]').should("exist");
+    cy.get('[data-testid="roi-value"]').should("not.be.empty");
   });
 
-  it("shows cost information after setting security levels", () => {
-    // Set security levels using the proper parameter order (availability, integrity, confidentiality)
+  it("shows cost analysis section using test IDs", () => {
+    // Set security levels to high for detailed cost analysis
     cy.setSecurityLevels(
       SECURITY_LEVELS.HIGH,
       SECURITY_LEVELS.HIGH,
       SECURITY_LEVELS.HIGH
     );
-    cy.wait(500); // Wait for UI updates
+    cy.wait(500);
 
-    // Verify cost widgets exist
-    cy.get('[data-testid="widget-cost-estimation"]').should("exist");
-    cy.get('[data-testid="widget-value-creation"]').should("exist");
+    // Verify cost analysis section exists
+    cy.get('[data-testid="cost-analysis-section"]').should("exist");
+    cy.get('[data-testid="cost-analysis-heading"]').should("exist");
+    cy.get('[data-testid="cost-analysis-text"]').should("not.be.empty");
+  });
 
-    // Verify cost percentages exist
-    cy.get('[data-testid="capex-percentage"]').should("exist");
-    cy.get('[data-testid="opex-percentage"]').should("exist");
-
-    // Look for the container div that would hold the Cost Analysis section
-    // Using a class selector that matches without requiring specific text
-    cy.get(
-      '[data-testid="widget-cost-estimation"] .rounded-md.bg-blue-50, [data-testid="widget-cost-estimation"] .rounded-md.dark\\:bg-blue-900\\/20'
-    ).should("exist");
-
-    // Verify that the section contains some text (without checking specific content)
-    cy.get('[data-testid="widget-cost-estimation"] .rounded-md')
-      .find("p")
+  it("updates cost information when security levels change", () => {
+    // Get initial CAPEX percentage
+    let initialCapex = "";
+    cy.get('[data-testid="capex-percentage"]')
       .invoke("text")
-      .should("have.length.gt", 10); // Should have some substantial text
+      .then((text) => {
+        initialCapex = text;
+
+        // Change security levels
+        cy.setSecurityLevels(
+          SECURITY_LEVELS.HIGH,
+          SECURITY_LEVELS.HIGH,
+          SECURITY_LEVELS.HIGH
+        );
+        cy.wait(500);
+
+        // Verify CAPEX changed - fixed TypeScript error
+        cy.get('[data-testid="capex-percentage"]')
+          .invoke("text")
+          .should("not.eq", initialCapex);
+
+        // Verify other elements updated too
+        cy.get('[data-testid="cost-analysis-text"]').should("not.be.empty");
+        cy.get('[data-testid="value-creation-title"]').should("not.be.empty");
+      });
   });
 });
