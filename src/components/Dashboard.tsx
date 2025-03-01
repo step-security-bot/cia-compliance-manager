@@ -7,7 +7,10 @@ interface DashboardProps {
 
 const Dashboard: React.FC<DashboardProps> = ({ children }) => {
   return (
-    <div className="dashboard-grid" data-testid="dashboard-grid">
+    <div
+      className="dashboard-grid overflow-visible"
+      data-testid="dashboard-grid"
+    >
       {children}
     </div>
   );
