@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["es5", "dom", "es2015"],
-    "types": ["cypress", "node"],
+    "lib": ["es5", "dom"],
+    "types": ["cypress", "node", "cypress-wait-until"],
     "esModuleInterop": true,
     "allowJs": true,
     "skipLibCheck": true
   },
-  "include": ["**/*.ts", "support/*.ts", "support/*.d.ts"]
+  "include": ["**/*.ts"]
 }

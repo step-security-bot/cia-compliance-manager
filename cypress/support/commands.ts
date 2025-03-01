@@ -2,12 +2,9 @@
 export {};
 
 // Custom Cypress commands
-
 import { TEST_SELECTORS } from "./appConstantsHelper";
 
-// Add retry logic and improved selectors
-
-// Enhanced command for selecting security levels with fallbacks and retries
+// Enhanced command with fixed type errors
 Cypress.Commands.add(
   "selectSecurityLevelEnhanced",
   (
@@ -18,64 +15,56 @@ Cypress.Commands.add(
     if (category === "integrity") index = 1;
     if (category === "confidentiality") index = 2;
 
-    // First try data-testid
-    return cy
-      .get(`[data-testid="${category}-select"]`)
-      .then(($el) => {
-        if ($el.length) {
-          // Found by data-testid, use it
-          return cy.wrap($el).select(level, { force: true, timeout: 5000 });
-        } else {
-          // Fallback to index-based
-          cy.log(`Falling back to index-based select for ${category}`);
-          return cy
-            .get("select")
-            .eq(index)
-            .select(level, { force: true, timeout: 5000 })
-            .then(() => {
-              cy.log(`Set ${category} to ${level} using index ${index}`);
-            });
-        }
-      })
-      .catch((err) => {
-        // Log error but don't fail test
-        cy.log(`Error selecting ${category}: ${err.message}`);
-      });
+    // First try data-testid - with proper options
+    cy.get(`[data-testid="${category}-select"]`, {
+      log: false,
+      timeout: 5000,
+      // Remove the incorrect failOnStatusCode option
+    }).then(($el) => {
+      if ($el && $el.length) {
+        // Found by data-testid, use it
+        cy.wrap($el).select(level, { force: true });
+        cy.log(`Set ${category} to ${level} using data-testid`);
+      } else {
+        // Fallback to index-based
+        cy.log(`Falling back to index-based select for ${category}`);
+        cy.get("select", { timeout: 5000 })
+          .eq(index)
+          .select(level, { force: true })
+          .then(() => {
+            cy.log(`Set ${category} to ${level} using index ${index}`);
+          });
+      }
+    });
   }
 );
 
-// Command to try clicking a button matching text or pattern
+// Command to try clicking a button - fixed for TypeScript
 Cypress.Commands.add("tryClickButton", (textOrPattern: string | RegExp) => {
   const pattern =
     textOrPattern instanceof RegExp
       ? textOrPattern
       : new RegExp(textOrPattern, "i");
 
-  // Try to find button by text content
-  return cy
-    .get("button")
-    .then(($buttons) => {
-      // Find any button matching the pattern
-      const $matchingButton = $buttons.filter((_, el) => {
-        return pattern.test(el.textContent || "");
-      });
-
-      if ($matchingButton.length) {
-        cy.wrap($matchingButton).first().click({ force: true });
-        cy.log(`Successfully clicked button matching: ${textOrPattern}`);
-        return cy.wrap(true);
-      } else {
-        cy.log(`No button found matching: ${textOrPattern}`);
-        return cy.wrap(false);
-      }
-    })
-    .catch((err) => {
-      cy.log(`Error trying to click button: ${err.message}`);
-      return cy.wrap(false);
+  // Try to find button by text content with better error handling
+  cy.get("button", { timeout: 5000 }).then(($buttons) => {
+    // Find any button matching the pattern
+    const $matchingButton = $buttons.filter((_, el) => {
+      return pattern.test(el.textContent || "");
     });
+
+    if ($matchingButton.length) {
+      cy.wrap($matchingButton).first().click({ force: true });
+      cy.log(`Successfully clicked button matching: ${textOrPattern}`);
+      return true;
+    } else {
+      cy.log(`No button found matching: ${textOrPattern}`);
+      return false;
+    }
+  });
 });
 
-// Command to check for content in page with retry
+// Fix for waitForContent command - remove problematic catch blocks
 Cypress.Commands.add(
   "waitForContent",
   (contentPattern: string | RegExp, options = { timeout: 10000 }) => {
@@ -88,20 +77,16 @@ Cypress.Commands.add(
       return cy
         .get("body")
         .invoke("text")
-        .then((text) => {
-          return pattern.test(text);
-        });
+        .then((text) => pattern.test(text));
     };
 
-    return cy
-      .waitUntil(checkContent, {
-        timeout: options.timeout,
-        interval: 500,
-        errorMsg: `Timed out waiting for content matching: ${contentPattern}`,
-      })
-      .then((result) => {
-        expect(result).to.be.true;
-      });
+    // waitUntil is a custom command that must be installed separately
+    // cypress-wait-until plugin is required
+    return cy.waitUntil(checkContent, {
+      timeout: options.timeout,
+      interval: 500,
+      errorMsg: `Timed out waiting for content matching: ${contentPattern}`,
+    });
   }
 );
 
@@ -151,48 +136,117 @@ Cypress.Commands.add(
   }
 );
 
-// Add a command to wait for app to stabilize
+// Add a command to wait for app to stabilize - Fix return type
 Cypress.Commands.add("waitForAppStability", (timeout = 2000) => {
   // Wait for any animations to complete
-  return cy.wait(timeout);
+  cy.wait(timeout);
+  // Fix: return void to match expected type
+  return;
 });
 
-// Command to check if element exists, returns boolean
+// Fix doesExist command with proper type handling
 Cypress.Commands.add(
   "doesExist",
   { prevSubject: "optional" },
   (subject, selector) => {
-    const get = selector ? cy.get : cy.wrap;
-    const el = selector || subject;
-
-    return get(el)
-      .then(($el) => $el.length > 0)
-      .catch(() => false);
+    if (selector) {
+      // No subject, use selector
+      return cy.get("body").then(($body) => {
+        // Type-safe way to check existence
+        const elements = $body.find(selector);
+        return Boolean(elements && elements.length > 0);
+      });
+    } else if (subject) {
+      // Use subject with proper typing - Fix: use any type for safer type handling
+      return cy.wrap(subject).then((el: any) => {
+        // Now we use a more permissive type that won't cause TypeScript errors
+        return Boolean(el && el.length > 0);
+      });
+    } else {
+      // Neither provided, return false
+      return cy.wrap(false);
+    }
   }
 );
 
-// Add type definitions
+// Implement the missing containsAnyText command
+Cypress.Commands.add("containsAnyText", (patterns: Array<RegExp | string>) => {
+  return cy
+    .get("body")
+    .invoke("text")
+    .then((text) => {
+      // Check if any pattern matches the text
+      const matches = patterns.some((pattern) => {
+        if (typeof pattern === "string") {
+          return text.includes(pattern);
+        } else {
+          return pattern.test(text);
+        }
+      });
+
+      // Log the result for debugging
+      cy.log(`Text match found: ${matches}`);
+      return matches;
+    });
+});
+
+// Implement the ensureAppLoaded command
+Cypress.Commands.add("ensureAppLoaded", () => {
+  // Wait for basic content
+  cy.get("body", { timeout: 20000 }).should("not.be.empty");
+
+  // Extra wait for hydration
+  cy.wait(1000);
+
+  // Check if selects are available
+  cy.get("body").then(($body) => {
+    cy.log(`Found ${$body.find("select").length} select elements`);
+
+    // If no selects found, wait a bit longer
+    if ($body.find("select").length === 0) {
+      cy.wait(2000);
+    }
+  });
+
+  return cy.wrap(true);
+});
+
+// Type definitions with proper return types
 declare global {
   namespace Cypress {
-    interface Chainable {
+    interface Chainable<Subject = any> {
+      selectSecurityLevelEnhanced(
+        category: "availability" | "integrity" | "confidentiality",
+        level: string
+      ): void;
+
+      tryClickButton(textOrPattern: string | RegExp): Chainable<boolean>;
+
+      waitForContent(
+        contentPattern: string | RegExp,
+        options?: { timeout: number }
+      ): Chainable<boolean>;
+
+      tab(): Chainable<JQuery<HTMLElement>>;
+
       setSecurityLevels(
         availability: string,
         integrity: string,
         confidentiality: string
       ): Chainable<void>;
+
       verifyWidgetWithContent(
         widgetTestId: string,
         expectedContent: string
       ): Chainable<void>;
-      selectSecurityLevelEnhanced(
-        category: "availability" | "integrity" | "confidentiality",
-        level: string
-      ): Chainable<Element>;
-      tryClickButton(textOrPattern: string | RegExp): Chainable<boolean>;
-      waitForContent(
-        contentPattern: string | RegExp,
-        options?: { timeout: number }
-      ): Chainable<boolean>;
+
+      waitForAppStability(timeout?: number): Chainable<void>;
+
+      doesExist(selector?: string): Chainable<boolean>;
+
+      containsAnyText(patterns: Array<RegExp | string>): Chainable<boolean>;
+
+      ensureAppLoaded(): Chainable<boolean>;
     }
   }
 }

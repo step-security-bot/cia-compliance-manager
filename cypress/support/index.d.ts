@@ -11,7 +11,7 @@ declare namespace Cypress {
       availability: string,
       integrity: string,
       confidentiality: string
-    ): Chainable<Element>;
+    ): Chainable<void>;
 
     /**
      * Custom command to verify widget content
@@ -83,5 +83,21 @@ declare namespace Cypress {
       category: "availability" | "integrity" | "confidentiality",
       level: string
     ): Chainable<Element>;
+
+    /**
+     * Wait for the application to load and be ready for testing
+     */
+    ensureAppLoaded(): Chainable<void>;
+
+    /**
+     * Check if the body text contains any of the provided patterns
+     * @param patterns Array of RegExp or string patterns to check for
+     */
+    containsAnyText(patterns: Array<RegExp | string>): Chainable<boolean>;
+
+    /**
+     * Toggle the theme if a theme toggle button is available
+     */
+    toggleTheme(): Chainable<boolean>;
   }
 }
