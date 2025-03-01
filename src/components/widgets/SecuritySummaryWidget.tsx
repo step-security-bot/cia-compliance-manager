@@ -1,4 +1,12 @@
 import React from "react";
+import {
+  SECURITY_LEVELS,
+  SECURITY_SUMMARY_TITLES,
+  SECURITY_DESCRIPTIONS,
+  SECURITY_RECOMMENDATIONS,
+  UI_ICONS,
+  UI_TEXT,
+} from "../../constants/appConstants";
 
 interface SecuritySummaryWidgetProps {
   securityLevel: string;
@@ -9,63 +17,52 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
 }) => {
   const getSummary = () => {
     switch (securityLevel) {
-      case "Very High":
+      case SECURITY_LEVELS.VERY_HIGH:
         return {
-          title: "Very High Security",
-          description:
-            "Maximum protection with quantum-safe encryption, multi-site redundancy, and real-time validation.",
-          recommendation:
-            "Suitable for mission-critical systems handling top secret information.",
-          emoji: "🔒",
+          title: SECURITY_SUMMARY_TITLES.VERY_HIGH,
+          description: SECURITY_DESCRIPTIONS.VERY_HIGH,
+          recommendation: SECURITY_RECOMMENDATIONS.VERY_HIGH,
+          emoji: UI_ICONS.SECURITY_VERY_HIGH,
           colorClass: "text-green-600 dark:text-green-400",
         };
-      case "High":
+      case SECURITY_LEVELS.HIGH:
         return {
-          title: "High Security",
-          description:
-            "Robust protection with minimal single points of failure, blockchain validation, and strong encryption.",
-          recommendation:
-            "Appropriate for systems handling sensitive customer data or financial information.",
-          emoji: "🛡️",
+          title: SECURITY_SUMMARY_TITLES.HIGH,
+          description: SECURITY_DESCRIPTIONS.HIGH,
+          recommendation: SECURITY_RECOMMENDATIONS.HIGH,
+          emoji: UI_ICONS.SECURITY_HIGH,
           colorClass: "text-blue-600 dark:text-blue-400",
         };
-      case "Moderate":
+      case SECURITY_LEVELS.MODERATE:
         return {
-          title: "Moderate Security",
-          description:
-            "Balanced protection with automated recovery, validation checks, and standard encryption.",
-          recommendation:
-            "Suitable for internal business systems with some regulatory requirements.",
-          emoji: "🔐",
+          title: SECURITY_SUMMARY_TITLES.MODERATE,
+          description: SECURITY_DESCRIPTIONS.MODERATE,
+          recommendation: SECURITY_RECOMMENDATIONS.MODERATE,
+          emoji: UI_ICONS.SECURITY_MODERATE,
           colorClass: "text-yellow-600 dark:text-yellow-400",
         };
-      case "Low":
+      case SECURITY_LEVELS.LOW:
         return {
-          title: "Low Security",
-          description:
-            "Basic protection with minimal controls and manual processes.",
-          recommendation:
-            "Only appropriate for non-critical systems with public information.",
-          emoji: "🔓",
+          title: SECURITY_SUMMARY_TITLES.LOW,
+          description: SECURITY_DESCRIPTIONS.LOW,
+          recommendation: SECURITY_RECOMMENDATIONS.LOW,
+          emoji: UI_ICONS.SECURITY_LOW,
           colorClass: "text-orange-600 dark:text-orange-400",
         };
       case "Basic":
         return {
           title: "Basic Security",
-          description:
-            "Basic protection with minimal controls and manual processes.",
-          recommendation:
-            "Only appropriate for non-critical systems with public information.",
-          emoji: "⚠️",
+          description: SECURITY_DESCRIPTIONS.LOW,
+          recommendation: SECURITY_RECOMMENDATIONS.BASIC,
+          emoji: UI_ICONS.BASIC_COMPLIANCE,
           colorClass: "text-orange-600 dark:text-orange-400",
         };
       default:
         return {
-          title: "No Security",
-          description: "No security controls implemented.",
-          recommendation:
-            "Not recommended for any production system. Implement basic security controls immediately.",
-          emoji: "⚠️",
+          title: SECURITY_SUMMARY_TITLES.NONE,
+          description: SECURITY_DESCRIPTIONS.NONE,
+          recommendation: SECURITY_RECOMMENDATIONS.NONE,
+          emoji: UI_ICONS.SECURITY_NONE,
           colorClass: "text-red-600 dark:text-red-400",
         };
     }
@@ -87,7 +84,9 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
         {summary.description}
       </p>
       <div className="mt-4 pt-3 border-t border-gray-200 dark:border-gray-700">
-        <h4 className="text-sm font-medium mb-2">Recommendation:</h4>
+        <h4 className="text-sm font-medium mb-2">
+          {UI_TEXT.LABELS.RECOMMENDATION}:
+        </h4>
         <p className="text-sm text-gray-600 dark:text-gray-300">
           {summary.recommendation}
         </p>

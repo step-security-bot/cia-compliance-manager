@@ -1,4 +1,5 @@
 import React from "react";
+import { SECURITY_LEVELS } from "../constants/appConstants";
 
 interface SelectionProps {
   id: string;
@@ -17,12 +18,13 @@ const Selection: React.FC<SelectionProps> = ({
   onChange,
   ...rest
 }) => {
+  // Use constants for security level icons mapping
   const securityIcons: Record<string, string> = {
-    None: "📋",
-    Low: "ℹ️",
-    Moderate: "⚠️",
-    High: "🔐",
-    "Very High": "🔒",
+    [SECURITY_LEVELS.NONE]: "📋",
+    [SECURITY_LEVELS.LOW]: "ℹ️",
+    [SECURITY_LEVELS.MODERATE]: "⚠️",
+    [SECURITY_LEVELS.HIGH]: "🔐",
+    [SECURITY_LEVELS.VERY_HIGH]: "🔒",
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {

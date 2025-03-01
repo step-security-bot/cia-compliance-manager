@@ -1,6 +1,12 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import ComplianceStatusWidget from "./ComplianceStatusWidget";
+import {
+  COMPLIANCE_STATUS,
+  UI_ICONS,
+  TEST_MATCHERS,
+  COMPLIANCE_FRAMEWORKS,
+} from "../../constants/appConstants";
 
 describe("ComplianceStatusWidget", () => {
   it("shows non-compliant status for None security levels", () => {
@@ -14,8 +20,10 @@ describe("ComplianceStatusWidget", () => {
       />
     );
 
-    expect(screen.getByText("Non-compliant")).toBeInTheDocument();
-    expect(screen.getByText("❌")).toBeInTheDocument();
+    expect(
+      screen.getByText(COMPLIANCE_STATUS.NON_COMPLIANT)
+    ).toBeInTheDocument();
+    expect(screen.getByText(UI_ICONS.NON_COMPLIANT)).toBeInTheDocument();
   });
 
   it("shows basic compliance for Low security levels", () => {
@@ -29,8 +37,10 @@ describe("ComplianceStatusWidget", () => {
       />
     );
 
-    expect(screen.getByText("Meets basic compliance only")).toBeInTheDocument();
-    expect(screen.getByText("⚠️")).toBeInTheDocument();
+    expect(
+      screen.getByText(COMPLIANCE_STATUS.BASIC_COMPLIANCE)
+    ).toBeInTheDocument();
+    expect(screen.getByText(UI_ICONS.BASIC_COMPLIANCE)).toBeInTheDocument();
   });
 
   it("shows standard compliance for Moderate security levels", () => {
@@ -45,16 +55,16 @@ describe("ComplianceStatusWidget", () => {
     );
 
     expect(
-      screen.getByText("Compliant with standard frameworks")
+      screen.getByText(COMPLIANCE_STATUS.STANDARD_COMPLIANCE)
     ).toBeInTheDocument();
 
     // Use getAllByText since there are multiple checkmarks
-    const checkmarks = screen.getAllByText("✓");
+    const checkmarks = screen.getAllByText(UI_ICONS.STANDARD_COMPLIANCE);
     expect(checkmarks.length).toBeGreaterThan(0);
 
     // Verify the main status checkmark is in the right section
     const statusSection = screen.getByText(
-      "Compliant with standard frameworks"
+      COMPLIANCE_STATUS.STANDARD_COMPLIANCE
     ).parentElement;
 
     // Check if statusSection exists instead of using toBeNull
@@ -62,7 +72,7 @@ describe("ComplianceStatusWidget", () => {
 
     // Only check innerHTML if statusSection exists
     if (statusSection) {
-      expect(statusSection.innerHTML).toContain("✓");
+      expect(statusSection.innerHTML).toContain(UI_ICONS.STANDARD_COMPLIANCE);
     }
   });
 
@@ -78,9 +88,9 @@ describe("ComplianceStatusWidget", () => {
     );
 
     expect(
-      screen.getByText("Compliant with all major frameworks")
+      screen.getByText(COMPLIANCE_STATUS.FULL_COMPLIANCE)
     ).toBeInTheDocument();
-    expect(screen.getByText("✅")).toBeInTheDocument(); // Green checkmark
+    expect(screen.getByText(UI_ICONS.FULL_COMPLIANCE)).toBeInTheDocument();
   });
 
   it("correctly handles mixed security levels", () => {
@@ -96,12 +106,12 @@ describe("ComplianceStatusWidget", () => {
 
     // Should not meet high compliance requirements
     expect(
-      screen.queryByText("Compliant with all major frameworks")
+      screen.queryByText(COMPLIANCE_STATUS.FULL_COMPLIANCE)
     ).not.toBeInTheDocument();
 
-    // Get all framework elements
+    // Get all framework elements using the framework regex pattern
     const frameworks = screen.getAllByText(
-      /SOC 2|ISO 27001|NIST 800-53|PCI DSS|HIPAA/
+      TEST_MATCHERS.COMPLIANCE_FRAMEWORKS_REGEX
     );
 
     // Check each framework for compliance status
@@ -109,11 +119,13 @@ describe("ComplianceStatusWidget", () => {
       el.textContent?.includes("SOC 2")
     );
     const nistElement = frameworks.find((el) =>
-      el.textContent?.includes("NIST 800-53")
+      el.textContent?.includes("NIST")
     );
 
     // Check parent elements for compliance indicators
-    expect(soc2Element?.closest("div")?.textContent).toContain("✓");
+    expect(soc2Element?.closest("div")?.textContent).toContain(
+      UI_ICONS.STANDARD_COMPLIANCE
+    );
     expect(nistElement?.closest("div")?.textContent).toContain("✗");
   });
 });

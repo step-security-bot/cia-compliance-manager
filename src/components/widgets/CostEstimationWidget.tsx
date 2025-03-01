@@ -1,4 +1,5 @@
 import React from "react";
+import { COST_ANALYSIS, UI_TEXT } from "../../constants/appConstants";
 
 interface CostEstimationWidgetProps {
   totalCapex: number;
@@ -19,11 +20,11 @@ const CostEstimationWidget: React.FC<CostEstimationWidgetProps> = ({
     <div className="space-y-4">
       <div>
         <h4 className="text-sm font-medium mb-2">
-          Estimated Implementation Cost
+          {UI_TEXT.LABELS.ESTIMATED_COST}
         </h4>
         <div className="flex justify-between items-center mb-1">
           <span className="text-sm text-gray-600 dark:text-gray-300">
-            CAPEX:
+            {UI_TEXT.LABELS.CAPEX}
           </span>
           <span className="font-medium">{capexEstimate}</span>
         </div>
@@ -34,16 +35,15 @@ const CostEstimationWidget: React.FC<CostEstimationWidgetProps> = ({
           ></div>
         </div>
         <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-          {/* Keep percentage as a single text node */}
-          <span data-testid="capex-percentage">{totalCapex}%</span> of IT budget
-          as one-time capital expenditure
+          <span data-testid="capex-percentage">{totalCapex}%</span>{" "}
+          {UI_TEXT.BUDGET.IT_BUDGET_CAPEX}
         </p>
       </div>
 
       <div>
         <div className="flex justify-between items-center mb-1">
           <span className="text-sm text-gray-600 dark:text-gray-300">
-            OPEX:
+            {UI_TEXT.LABELS.OPEX}
           </span>
           <span className="font-medium">{opexEstimate}</span>
         </div>
@@ -54,20 +54,19 @@ const CostEstimationWidget: React.FC<CostEstimationWidgetProps> = ({
           ></div>
         </div>
         <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-          {/* Keep percentage as a single text node */}
-          <span data-testid="opex-percentage">{totalOpex}%</span> of IT budget
-          as annual operational expenses
+          <span data-testid="opex-percentage">{totalOpex}%</span>{" "}
+          {UI_TEXT.BUDGET.IT_BUDGET_OPEX}
         </p>
       </div>
 
       <div className="rounded-md bg-blue-50 dark:bg-blue-900/20 p-3 mt-4">
         <h4 className="text-sm font-medium text-blue-800 dark:text-blue-300 mb-2">
-          Cost Analysis
+          {UI_TEXT.LABELS.COST_ANALYSIS}
         </h4>
         <p className="text-sm text-blue-700 dark:text-blue-300">
           {isSmallSolution
-            ? "Basic security implementation with minimal investment. Suitable for small businesses or non-critical systems."
-            : "Comprehensive security solution requiring significant investment. Recommended for critical systems or regulated industries."}
+            ? COST_ANALYSIS.SMALL_SOLUTION
+            : COST_ANALYSIS.LARGE_SOLUTION}
         </p>
       </div>
     </div>
