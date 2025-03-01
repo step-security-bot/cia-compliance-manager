@@ -32,6 +32,7 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
         <label
           htmlFor="availability-select"
           className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+          data-testid="availability-label"
         >
           Availability
         </label>
@@ -48,7 +49,10 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
             </option>
           ))}
         </select>
-        <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+        <p
+          className="mt-1 text-xs text-gray-500 dark:text-gray-400"
+          data-testid="availability-description"
+        >
           {availabilityOptions[availability]?.description ||
             "No description available."}
         </p>
@@ -58,6 +62,7 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
         <label
           htmlFor="integrity-select"
           className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+          data-testid="integrity-label"
         >
           Integrity
         </label>
@@ -74,7 +79,10 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
             </option>
           ))}
         </select>
-        <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+        <p
+          className="mt-1 text-xs text-gray-500 dark:text-gray-400"
+          data-testid="integrity-description"
+        >
           {integrityOptions[integrity]?.description ||
             "No description available."}
         </p>
@@ -84,6 +92,7 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
         <label
           htmlFor="confidentiality-select"
           className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+          data-testid="confidentiality-label"
         >
           Confidentiality
         </label>
@@ -100,7 +109,10 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
             </option>
           ))}
         </select>
-        <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+        <p
+          className="mt-1 text-xs text-gray-500 dark:text-gray-400"
+          data-testid="confidentiality-description"
+        >
           {confidentialityOptions[confidentiality]?.description ||
             "No description available."}
         </p>

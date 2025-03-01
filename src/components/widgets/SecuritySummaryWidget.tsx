@@ -74,20 +74,30 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
     <div className="space-y-3">
       <div
         className={`text-lg font-medium ${summary.colorClass} flex items-center`}
+        data-testid="security-summary-title"
       >
         <span className="mr-2 text-xl" data-testid="security-icon">
           {summary.emoji}
         </span>
         {summary.title}
       </div>
-      <p className="text-sm text-gray-600 dark:text-gray-300">
+      <p
+        className="text-sm text-gray-600 dark:text-gray-300"
+        data-testid="security-summary-description"
+      >
         {summary.description}
       </p>
       <div className="mt-4 pt-3 border-t border-gray-200 dark:border-gray-700">
-        <h4 className="text-sm font-medium mb-2">
+        <h4
+          className="text-sm font-medium mb-2"
+          data-testid="recommendation-heading"
+        >
           {UI_TEXT.LABELS.RECOMMENDATION}:
         </h4>
-        <p className="text-sm text-gray-600 dark:text-gray-300">
+        <p
+          className="text-sm text-gray-600 dark:text-gray-300"
+          data-testid="security-recommendation"
+        >
           {summary.recommendation}
         </p>
       </div>

@@ -17,21 +17,30 @@ const CostEstimationWidget: React.FC<CostEstimationWidgetProps> = ({
   isSmallSolution,
 }) => {
   return (
-    <div className="space-y-4">
+    <div className="space-y-4" data-testid="cost-estimation-content">
       <div>
-        <h4 className="text-sm font-medium mb-2">
+        <h4
+          className="text-sm font-medium mb-2"
+          data-testid="estimated-cost-heading"
+        >
           {UI_TEXT.LABELS.ESTIMATED_COST}
         </h4>
         <div className="flex justify-between items-center mb-1">
-          <span className="text-sm text-gray-600 dark:text-gray-300">
+          <span
+            className="text-sm text-gray-600 dark:text-gray-300"
+            data-testid="capex-label"
+          >
             {UI_TEXT.LABELS.CAPEX}
           </span>
-          <span className="font-medium">{capexEstimate}</span>
+          <span className="font-medium" data-testid="capex-estimate">
+            {capexEstimate}
+          </span>
         </div>
         <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
           <div
             className="bg-blue-600 h-2.5 rounded-full"
             style={{ width: `${Math.min(totalCapex, 100)}%` }}
+            data-testid="capex-progress-bar"
           ></div>
         </div>
         <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
@@ -42,15 +51,21 @@ const CostEstimationWidget: React.FC<CostEstimationWidgetProps> = ({
 
       <div>
         <div className="flex justify-between items-center mb-1">
-          <span className="text-sm text-gray-600 dark:text-gray-300">
+          <span
+            className="text-sm text-gray-600 dark:text-gray-300"
+            data-testid="opex-label"
+          >
             {UI_TEXT.LABELS.OPEX}
           </span>
-          <span className="font-medium">{opexEstimate}</span>
+          <span className="font-medium" data-testid="opex-estimate">
+            {opexEstimate}
+          </span>
         </div>
         <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
           <div
             className="bg-green-500 h-2.5 rounded-full"
             style={{ width: `${Math.min(totalOpex, 100)}%` }}
+            data-testid="opex-progress-bar"
           ></div>
         </div>
         <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
@@ -59,11 +74,20 @@ const CostEstimationWidget: React.FC<CostEstimationWidgetProps> = ({
         </p>
       </div>
 
-      <div className="rounded-md bg-blue-50 dark:bg-blue-900/20 p-3 mt-4">
-        <h4 className="text-sm font-medium text-blue-800 dark:text-blue-300 mb-2">
+      <div
+        className="rounded-md bg-blue-50 dark:bg-blue-900/20 p-3 mt-4"
+        data-testid="cost-analysis-section"
+      >
+        <h4
+          className="text-sm font-medium text-blue-800 dark:text-blue-300 mb-2"
+          data-testid="cost-analysis-heading"
+        >
           {UI_TEXT.LABELS.COST_ANALYSIS}
         </h4>
-        <p className="text-sm text-blue-700 dark:text-blue-300">
+        <p
+          className="text-sm text-blue-700 dark:text-blue-300"
+          data-testid="cost-analysis-text"
+        >
           {isSmallSolution
             ? COST_ANALYSIS.SMALL_SOLUTION
             : COST_ANALYSIS.LARGE_SOLUTION}

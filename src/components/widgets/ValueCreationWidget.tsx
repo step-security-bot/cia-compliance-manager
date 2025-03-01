@@ -79,23 +79,30 @@ const ValueCreationWidget: React.FC<ValueCreationWidgetProps> = ({
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4" data-testid="value-creation-content">
       <div className="mb-3">
-        <h3 className={`text-lg font-medium ${getLevelColorClass()}`}>
+        <h3
+          className={`text-lg font-medium ${getLevelColorClass()}`}
+          data-testid="value-creation-title"
+        >
           {securityLevel === SECURITY_LEVELS.NONE
             ? UI_TEXT.VALUE_CREATION.NONE_TITLE
             : UI_TEXT.VALUE_CREATION.WITH_LEVEL(securityLevel)}
         </h3>
-        <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
+        <p
+          className="text-sm text-gray-600 dark:text-gray-300 mt-1"
+          data-testid="value-creation-subtitle"
+        >
           {UI_TEXT.LABELS.BUSINESS_VALUE}
         </p>
       </div>
 
-      <ul className="space-y-2 text-sm">
+      <ul className="space-y-2 text-sm" data-testid="value-points-list">
         {valuePoints.map((point, index) => (
           <li
             key={index}
             className="flex items-start text-gray-700 dark:text-gray-300"
+            data-testid={`value-point-${index}`}
           >
             <span className={`mr-2 ${getLevelColorClass()}`}>•</span>
             {point}
@@ -105,10 +112,13 @@ const ValueCreationWidget: React.FC<ValueCreationWidgetProps> = ({
 
       <div className="mt-4 pt-3 border-t border-gray-200 dark:border-gray-700">
         <div className="flex justify-between items-center">
-          <span className="text-sm font-medium">
+          <span className="text-sm font-medium" data-testid="roi-label">
             {UI_TEXT.LABELS.ESTIMATED_ROI}
           </span>
-          <span className={`font-medium ${getLevelColorClass()}`}>
+          <span
+            className={`font-medium ${getLevelColorClass()}`}
+            data-testid="roi-value"
+          >
             {roiEstimate}
           </span>
         </div>
