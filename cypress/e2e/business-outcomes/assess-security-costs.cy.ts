@@ -3,7 +3,7 @@
  *
  * Tests that cost estimations update based on security level selections.
  */
-import { SECURITY_LEVELS } from "../../support/appConstantsHelper";
+import { SECURITY_LEVELS, UI_TEXT } from "../../support/appConstantsHelper";
 import { assert } from "../common-imports";
 
 describe("Assess Security Costs", () => {
@@ -16,14 +16,14 @@ describe("Assess Security Costs", () => {
     // Check that the cost estimation widget exists
     cy.get('[data-testid="widget-cost-estimation"]').should("exist");
 
-    // Verify it has a header
+    // Verify it has the expected header
     cy.get('[data-testid="widget-cost-estimation"] .widget-header')
-      .contains("Cost Estimation")
+      .contains(UI_TEXT.HEADERS.COST_ESTIMATION)
       .should("exist");
   });
 
   it("shows cost percentages", () => {
-    // Verify just that the cost percentages exist
+    // Verify that cost percentages exist
     cy.get('[data-testid="capex-percentage"]').should("exist");
     cy.get('[data-testid="opex-percentage"]').should("exist");
   });
@@ -32,26 +32,32 @@ describe("Assess Security Costs", () => {
     // Check that the value creation widget exists
     cy.get('[data-testid="widget-value-creation"]').should("exist");
 
-    // Verify it has a header
+    // Verify it has the expected header
     cy.get('[data-testid="widget-value-creation"] .widget-header')
       .contains("Value Creation")
       .should("exist");
   });
 
-  it("changes security levels and costs exist", () => {
-    // Set security levels
-    cy.get('[data-testid="availability-select"]').select(SECURITY_LEVELS.HIGH);
-    cy.get('[data-testid="integrity-select"]').select(SECURITY_LEVELS.HIGH);
-    cy.get('[data-testid="confidentiality-select"]').select(
+  it("shows cost analysis after setting security levels", () => {
+    // Set security levels to High
+    cy.setSecurityLevels(
+      SECURITY_LEVELS.HIGH,
+      SECURITY_LEVELS.HIGH,
       SECURITY_LEVELS.HIGH
     );
+    cy.wait(500); // Wait for UI updates
 
-    // Just verify the widgets still exist after changing values
+    // Verify cost widgets exist
     cy.get('[data-testid="widget-cost-estimation"]').should("exist");
     cy.get('[data-testid="widget-value-creation"]').should("exist");
 
-    // And the cost percentages still exist
+    // Verify cost percentages exist
     cy.get('[data-testid="capex-percentage"]').should("exist");
     cy.get('[data-testid="opex-percentage"]').should("exist");
+
+    // Look for the cost analysis section using exact text from the UI_TEXT constant
+    cy.get('[data-testid="widget-cost-estimation"]')
+      .contains(UI_TEXT.HEADERS.COST_ANALYSIS)
+      .should("exist");
   });
 });

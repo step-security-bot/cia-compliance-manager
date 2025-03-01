@@ -9,7 +9,60 @@ export const SECURITY_LEVELS = {
   VERY_HIGH: "Very High",
 };
 
+// Description texts exactly as they appear in the application
+// These match the values in useCIAOptions.ts
+export const DESCRIPTIONS = {
+  AVAILABILITY: {
+    NONE: "No availability controls implemented",
+    LOW: "Basic backup & restore capability",
+    MODERATE: "Pilot light recovery capability",
+    HIGH: "Warm standby with fast recovery",
+    VERY_HIGH: "Multi-site active/active deployment",
+  },
+  INTEGRITY: {
+    NONE: "No integrity controls implemented",
+    LOW: "Manual data validation",
+    MODERATE: "Automated data validation",
+    HIGH: "Blockchain validation with immutable records",
+    VERY_HIGH: "Smart contract validation",
+  },
+  CONFIDENTIALITY: {
+    NONE: "No confidentiality controls implemented",
+    LOW: "Basic access controls",
+    MODERATE: "Standard encryption and access management",
+    HIGH: "Enhanced security with MFA and monitoring",
+    VERY_HIGH: "Military-grade protection",
+  },
+};
+
+// Cost percentage values from the application's options
+export const COST_VALUES = {
+  CAPEX: {
+    NONE: 0,
+    LOW: 5,
+    MODERATE: 15,
+    HIGH: 25, // For availability
+    HIGH_INTEGRITY: 35, // For integrity
+    HIGH_CONFIDENTIALITY: 30, // For confidentiality
+    VERY_HIGH: 60,
+  },
+  OPEX: {
+    NONE: 0,
+    LOW: 5,
+    MODERATE: 15,
+    HIGH: 40, // For availability
+    HIGH_INTEGRITY: 50, // For integrity
+    HIGH_CONFIDENTIALITY: 40, // For confidentiality
+    VERY_HIGH: 70,
+  },
+};
+
+// Common UI text in the application
 export const UI_TEXT = {
+  HEADERS: {
+    COST_ESTIMATION: "Cost Estimation",
+    COST_ANALYSIS: "Cost Analysis",
+  },
   // Multiple possibilities for app title
   APP_TITLES: [
     "CIA Compliance Manager",
