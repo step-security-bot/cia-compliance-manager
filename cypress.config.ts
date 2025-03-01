@@ -1,13 +1,14 @@
 import { defineConfig } from "cypress";
+import { junitMerger } from "./cypress/support/plugins/junit-merger";
 
 export default defineConfig({
   e2e: {
     baseUrl: "http://localhost:5173", // Updated to match Vite's default port
-    setupNodeEvents(
-      on: Cypress.PluginEvents,
-      config: Cypress.PluginConfigOptions
-    ): void {
-      // implement node event listeners here
+    setupNodeEvents(on, config) {
+      // Register the JUnit merger plugin
+      junitMerger(on, config);
+
+      // Don't explicitly return config to avoid TypeScript error
     },
     specPattern: "cypress/e2e/**/*.cy.{js,jsx,ts,tsx}",
     supportFile: "cypress/support/e2e.ts",
@@ -28,4 +29,11 @@ export default defineConfig({
     waitForAnimations: true,
     animationDistanceThreshold: 50,
   },
+  reporter: "junit",
+  reporterOptions: {
+    mochaFile: "cypress/results/junit.xml",
+    toConsole: true,
+  },
+  video: false,
+  screenshotOnRunFailure: true,
 });

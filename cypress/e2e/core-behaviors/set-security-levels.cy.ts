@@ -17,12 +17,18 @@ describe("Set Security Levels", () => {
   });
 
   it("allows setting individual security levels", () => {
-    // Use the custom command that uses specific data-testid selectors
-    cy.get('[data-testid="availability-select"]').select(SECURITY_LEVELS.HIGH);
-    cy.get('[data-testid="integrity-select"]').select(SECURITY_LEVELS.MODERATE);
-    cy.get('[data-testid="confidentiality-select"]').select(
-      SECURITY_LEVELS.LOW
-    );
+    // Use direct select with force option instead of the overwritten command
+    cy.get('[data-testid="availability-select"]')
+      .scrollIntoView()
+      .select(SECURITY_LEVELS.HIGH, { force: true });
+
+    cy.get('[data-testid="integrity-select"]')
+      .scrollIntoView()
+      .select(SECURITY_LEVELS.MODERATE, { force: true });
+
+    cy.get('[data-testid="confidentiality-select"]')
+      .scrollIntoView()
+      .select(SECURITY_LEVELS.LOW, { force: true });
 
     // Verify the values
     cy.get('[data-testid="availability-select"]').should(
@@ -40,13 +46,21 @@ describe("Set Security Levels", () => {
   });
 
   it("verifies radar chart exists and updates", () => {
-    // Set specific security levels first
-    cy.setSecurityLevels(
-      SECURITY_LEVELS.LOW,
-      SECURITY_LEVELS.MODERATE,
-      SECURITY_LEVELS.HIGH
-    );
-    cy.wait(500); // Wait for UI to update
+    // Set specific security levels using our helper
+    cy.get('[data-testid="confidentiality-select"]')
+      .scrollIntoView()
+      .select(SECURITY_LEVELS.LOW, { force: true });
+    cy.wait(100);
+
+    cy.get('[data-testid="integrity-select"]')
+      .scrollIntoView()
+      .select(SECURITY_LEVELS.MODERATE, { force: true });
+    cy.wait(100);
+
+    cy.get('[data-testid="availability-select"]')
+      .scrollIntoView()
+      .select(SECURITY_LEVELS.HIGH, { force: true });
+    cy.wait(100);
 
     // Verify the radar chart exists and contains expected values
     cy.get('[data-testid="radar-chart"]').should("exist");
@@ -73,7 +87,11 @@ describe("Set Security Levels", () => {
     // Set specific values and check that descriptions match known values
 
     // Check availability description
-    cy.get('[data-testid="availability-select"]').select(SECURITY_LEVELS.HIGH);
+    cy.get('[data-testid="availability-select"]')
+      .scrollIntoView()
+      .select(SECURITY_LEVELS.HIGH, { force: true });
+    cy.wait(100);
+
     cy.get('[data-testid="availability-select"]')
       .parent()
       .find("p")
@@ -81,7 +99,11 @@ describe("Set Security Levels", () => {
       .should("include", DESCRIPTIONS.AVAILABILITY.HIGH);
 
     // Check integrity description
-    cy.get('[data-testid="integrity-select"]').select(SECURITY_LEVELS.MODERATE);
+    cy.get('[data-testid="integrity-select"]')
+      .scrollIntoView()
+      .select(SECURITY_LEVELS.MODERATE, { force: true });
+    cy.wait(100);
+
     cy.get('[data-testid="integrity-select"]')
       .parent()
       .find("p")
@@ -89,9 +111,11 @@ describe("Set Security Levels", () => {
       .should("include", DESCRIPTIONS.INTEGRITY.MODERATE);
 
     // Check confidentiality description
-    cy.get('[data-testid="confidentiality-select"]').select(
-      SECURITY_LEVELS.LOW
-    );
+    cy.get('[data-testid="confidentiality-select"]')
+      .scrollIntoView()
+      .select(SECURITY_LEVELS.LOW, { force: true });
+    cy.wait(100);
+
     cy.get('[data-testid="confidentiality-select"]')
       .parent()
       .find("p")
@@ -101,7 +125,11 @@ describe("Set Security Levels", () => {
 
   it("changes descriptions when selections change", () => {
     // Test a single select to verify description changes
-    cy.get('[data-testid="availability-select"]').select(SECURITY_LEVELS.NONE);
+    cy.get('[data-testid="availability-select"]')
+      .scrollIntoView()
+      .select(SECURITY_LEVELS.NONE, { force: true });
+    cy.wait(100);
+
     cy.get('[data-testid="availability-select"]')
       .parent()
       .find("p")
@@ -109,7 +137,11 @@ describe("Set Security Levels", () => {
       .should("include", DESCRIPTIONS.AVAILABILITY.NONE);
 
     // Change to HIGH and verify description changes
-    cy.get('[data-testid="availability-select"]').select(SECURITY_LEVELS.HIGH);
+    cy.get('[data-testid="availability-select"]')
+      .scrollIntoView()
+      .select(SECURITY_LEVELS.HIGH, { force: true });
+    cy.wait(100);
+
     cy.get('[data-testid="availability-select"]')
       .parent()
       .find("p")

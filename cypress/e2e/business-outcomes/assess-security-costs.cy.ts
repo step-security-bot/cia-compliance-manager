@@ -39,7 +39,7 @@ describe("Assess Security Costs", () => {
   });
 
   it("shows cost information after setting security levels", () => {
-    // Set security levels to High
+    // Set security levels using the proper parameter order (availability, integrity, confidentiality)
     cy.setSecurityLevels(
       SECURITY_LEVELS.HIGH,
       SECURITY_LEVELS.HIGH,
