@@ -7,7 +7,10 @@ interface DashboardProps {
 
 const Dashboard: React.FC<DashboardProps> = ({ children }) => {
   return (
-    <div className="dashboard-grid" data-testid="dashboard-grid">
+    <div
+      className="dashboard-grid overflow-visible"
+      data-testid="dashboard-grid"
+    >
       {children}
     </div>
   );
@@ -18,6 +21,7 @@ interface DashboardWidgetProps {
   size?: "small" | "medium" | "large" | "full";
   children: ReactNode;
   className?: string;
+  icon?: ReactNode; // New prop for header icon
 }
 
 export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
@@ -25,6 +29,7 @@ export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
   size = "medium",
   children,
   className = "",
+  icon,
 }) => {
   // Map size to grid columns
   const sizeClasses = {
@@ -40,7 +45,17 @@ export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
       data-testid={`widget-${title.toLowerCase().replace(/\s+/g, "-")}`}
     >
       <div className="widget-header">
-        <h3 className="text-md font-semibold">{title}</h3>
+        <h3 className="text-md font-semibold flex items-center">
+          {icon && (
+            <span
+              className="mr-2 widget-icon"
+              data-testid={`icon-${title.toLowerCase().replace(/\s+/g, "-")}`}
+            >
+              {icon}
+            </span>
+          )}
+          {title}
+        </h3>
       </div>
       <div className="widget-body">{children}</div>
     </div>

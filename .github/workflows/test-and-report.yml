@@ -133,7 +133,6 @@ jobs:
           xvfb-run --auto-servernum --server-args="-screen 0 1280x720x24" npm run test:e2e
         env:
           CYPRESS_VIDEO: true
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 
       - name: Upload Cypress results
         if: always()

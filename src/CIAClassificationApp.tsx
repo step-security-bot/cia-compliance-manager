@@ -12,6 +12,7 @@ import SecuritySummaryWidget from "./components/widgets/SecuritySummaryWidget";
 import ValueCreationWidget from "./components/widgets/ValueCreationWidget";
 import ImpactAnalysisWidget from "./components/widgets/ImpactAnalysisWidget";
 import ComplianceStatusWidget from "./components/widgets/ComplianceStatusWidget";
+import { WIDGET_ICONS } from "./constants/appConstants";
 
 const CIAClassificationApp: React.FC = () => {
   const [availability, setAvailability] = useState<string>("None");
@@ -153,7 +154,11 @@ const CIAClassificationApp: React.FC = () => {
 
             <Dashboard>
               {/* Security Level Selection - Important control panel */}
-              <DashboardWidget title="Security Level Selection" size="medium">
+              <DashboardWidget
+                title="Security Level Selection"
+                size="medium"
+                icon={WIDGET_ICONS.SECURITY_LEVEL}
+              >
                 <SecurityLevelWidget
                   availability={availability}
                   integrity={integrity}
@@ -167,119 +172,28 @@ const CIAClassificationApp: React.FC = () => {
                 />
               </DashboardWidget>
 
-              {/* Move impact analysis widgets to the top */}
-              <DashboardWidget title="Availability Impact" size="medium">
-                <ImpactAnalysisWidget
-                  category="Availability"
-                  level={availability}
-                />
-              </DashboardWidget>
-
-              <DashboardWidget title="Integrity Impact" size="medium">
-                <ImpactAnalysisWidget category="Integrity" level={integrity} />
-              </DashboardWidget>
-
-              <DashboardWidget title="Confidentiality Impact" size="medium">
-                <ImpactAnalysisWidget
-                  category="Confidentiality"
-                  level={confidentiality}
-                />
-              </DashboardWidget>
-
-              {/* Security visualization and summary - High importance */}
+              {/* Business Impact Analysis */}
               <DashboardWidget
-                title="Security Profile Visualization"
+                title="Business Impact Analysis"
                 size="medium"
+                icon={WIDGET_ICONS.BUSINESS_IMPACT}
               >
-                <RadarChart
-                  availability={availability}
-                  integrity={integrity}
-                  confidentiality={confidentiality}
-                />
-              </DashboardWidget>
-
-              <DashboardWidget title="Security Summary" size="medium">
-                <SecuritySummaryWidget securityLevel={overallSecurityLevel} />
-              </DashboardWidget>
-
-              <DashboardWidget title="Compliance Status" size="medium">
-                <ComplianceStatusWidget
-                  securityLevels={{
-                    availability,
-                    integrity,
-                    confidentiality,
-                  }}
-                />
-              </DashboardWidget>
-
-              {/* Cost estimation - Medium importance */}
-              <DashboardWidget title="Cost Estimation" size="medium">
-                <CostEstimationWidget
-                  totalCapex={totalCapex}
-                  totalOpex={totalOpex}
-                  capexEstimate={capexEstimate}
-                  opexEstimate={opexEstimate}
-                  isSmallSolution={isSmallSolution}
-                />
-              </DashboardWidget>
-
-              {/* Value creation - Medium importance */}
-              <DashboardWidget title="Value Creation" size="medium">
-                <ValueCreationWidget securityLevel={overallSecurityLevel} />
-              </DashboardWidget>
-
-              {/* Technical implementation - Lower importance, but detailed */}
-              <DashboardWidget title="Technical Implementation" size="large">
-                <div className="p-2 space-y-2">
-                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
-                    Key technical implementation details for your selected
-                    security levels:
-                  </p>
-                  <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-md">
-                    <h4 className="text-sm font-medium mb-2">
-                      Availability: {availability}
-                    </h4>
-                    <p className="text-sm">{availabilityDetail.technical}</p>
-                  </div>
-                  <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-md">
-                    <h4 className="text-sm font-medium mb-2">
-                      Integrity: {integrity}
-                    </h4>
-                    <p className="text-sm">{integrityDetail.technical}</p>
-                  </div>
-                  <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-md">
-                    <h4 className="text-sm font-medium mb-2">
-                      Confidentiality: {confidentiality}
-                    </h4>
-                    <p className="text-sm">{confidentialityDetail.technical}</p>
-                  </div>
-                </div>
-              </DashboardWidget>
-
-              {/* Business impact analysis - Full width, lower priority */}
-              <DashboardWidget title="Business Impact Analysis" size="full">
                 <div className="p-2 space-y-4">
                   <p className="text-sm text-gray-600 dark:text-gray-300">
                     The Business Impact Analysis (BIA) helps identify critical
                     business functions and their dependencies, quantify
-                    financial and operational impacts of security incidents, and
-                    establish recovery objectives. This analysis is crucial for
-                    prioritizing security investments based on business impact.
+                    financial and operational impacts of security incidents.
                   </p>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-3">
                     <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-md">
                       <h4 className="text-sm font-medium mb-2">Key Benefits</h4>
                       <ul className="list-disc pl-5 space-y-1">
                         <li className="text-sm">
-                          Clear visibility into security level requirements
+                          Clear visibility into security requirements
                         </li>
                         <li className="text-sm">
-                          Quantifiable metrics for justifying security
-                          investments
-                        </li>
-                        <li className="text-sm">
-                          Risk-based approach to allocating security resources
+                          Quantifiable metrics for security investments
                         </li>
                         <li className="text-sm">
                           Documentation for compliance requirements
@@ -292,7 +206,7 @@ const CIAClassificationApp: React.FC = () => {
                       </h4>
                       <ul className="list-disc pl-5 space-y-1">
                         <li className="text-sm">
-                          Potential revenue impact from downtime:{" "}
+                          Revenue impact:{" "}
                           {availability === "Very High"
                             ? "Minimal"
                             : availability === "High"
@@ -302,23 +216,147 @@ const CIAClassificationApp: React.FC = () => {
                             : "High"}
                         </li>
                         <li className="text-sm">
-                          Operational efficiency impact:{" "}
-                          {availability === "Very High"
-                            ? "Optimized"
-                            : availability === "High"
-                            ? "Efficient"
-                            : availability === "Moderate"
-                            ? "Adequate"
-                            : "Reduced"}
-                        </li>
-                        <li className="text-sm">
-                          Regulatory risk level:{" "}
+                          Regulatory risk:{" "}
                           {confidentiality === "Very High" ||
                           confidentiality === "High"
                             ? "Minimal"
                             : "Significant"}
                         </li>
                       </ul>
+                    </div>
+                  </div>
+                </div>
+              </DashboardWidget>
+
+              {/* Security Summary widget - moved up */}
+              <DashboardWidget
+                title="Security Summary"
+                size="medium"
+                icon={WIDGET_ICONS.SECURITY_SUMMARY}
+              >
+                <SecuritySummaryWidget securityLevel={overallSecurityLevel} />
+              </DashboardWidget>
+
+              {/* Cost Estimation - moved up */}
+              <DashboardWidget
+                title="Cost Estimation"
+                size="medium"
+                icon={WIDGET_ICONS.COST_ESTIMATION}
+              >
+                <CostEstimationWidget
+                  totalCapex={totalCapex}
+                  totalOpex={totalOpex}
+                  capexEstimate={capexEstimate}
+                  opexEstimate={opexEstimate}
+                  isSmallSolution={isSmallSolution}
+                />
+              </DashboardWidget>
+
+              {/* Value Creation - moved up */}
+              <DashboardWidget
+                title="Value Creation"
+                size="medium"
+                icon={WIDGET_ICONS.VALUE_CREATION}
+              >
+                <ValueCreationWidget securityLevel={overallSecurityLevel} />
+              </DashboardWidget>
+
+              {/* Security visualization - moved up */}
+              <DashboardWidget
+                title="Security Profile Visualization"
+                size="medium"
+                icon={WIDGET_ICONS.SECURITY_VISUALIZATION}
+              >
+                <RadarChart
+                  availability={availability}
+                  integrity={integrity}
+                  confidentiality={confidentiality}
+                />
+              </DashboardWidget>
+
+              {/* Compliance Status */}
+              <DashboardWidget
+                title="Compliance Status"
+                size="medium"
+                icon={WIDGET_ICONS.COMPLIANCE_STATUS}
+              >
+                <ComplianceStatusWidget
+                  securityLevels={{
+                    availability,
+                    integrity,
+                    confidentiality,
+                  }}
+                />
+              </DashboardWidget>
+
+              {/* Impact analysis widgets - reordered and moved down */}
+              <DashboardWidget
+                title="Confidentiality Impact"
+                size="medium"
+                data-testid="widget-confidentiality-impact"
+                className="overflow-visible"
+                icon={WIDGET_ICONS.CONFIDENTIALITY_IMPACT}
+              >
+                <ImpactAnalysisWidget
+                  category="Confidentiality"
+                  level={confidentiality}
+                />
+              </DashboardWidget>
+
+              <DashboardWidget
+                title="Integrity Impact"
+                size="medium"
+                data-testid="widget-integrity-impact"
+                className="overflow-visible"
+                icon={WIDGET_ICONS.INTEGRITY_IMPACT}
+              >
+                <ImpactAnalysisWidget category="Integrity" level={integrity} />
+              </DashboardWidget>
+
+              <DashboardWidget
+                title="Availability Impact"
+                size="medium"
+                data-testid="widget-availability-impact"
+                className="overflow-visible"
+                icon={WIDGET_ICONS.AVAILABILITY_IMPACT}
+              >
+                <ImpactAnalysisWidget
+                  category="Availability"
+                  level={availability}
+                />
+              </DashboardWidget>
+
+              {/* Technical Implementation - remains last */}
+              <DashboardWidget
+                title="Technical Implementation"
+                size="full"
+                icon={WIDGET_ICONS.TECHNICAL_IMPLEMENTATION}
+              >
+                <div className="p-2 space-y-2">
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
+                    Key technical implementation details for your selected
+                    security levels:
+                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-md">
+                      <h4 className="text-sm font-medium mb-2">
+                        Availability: {availability}
+                      </h4>
+                      <p className="text-sm">{availabilityDetail.technical}</p>
+                    </div>
+                    <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-md">
+                      <h4 className="text-sm font-medium mb-2">
+                        Integrity: {integrity}
+                      </h4>
+                      <p className="text-sm">{integrityDetail.technical}</p>
+                    </div>
+                    <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-md">
+                      <h4 className="text-sm font-medium mb-2">
+                        Confidentiality: {confidentiality}
+                      </h4>
+                      <p className="text-sm">
+                        {confidentialityDetail.technical}
+                      </p>
                     </div>
                   </div>
                 </div>

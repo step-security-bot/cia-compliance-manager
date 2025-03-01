@@ -374,3 +374,18 @@ export const TEST_DATA = {
     },
   },
 };
+
+// Widget Icons - For consistent icon use across the application
+export const WIDGET_ICONS = {
+  SECURITY_LEVEL: "🛡️",
+  BUSINESS_IMPACT: "📊",
+  AVAILABILITY_IMPACT: "⚡",
+  INTEGRITY_IMPACT: "🔗",
+  CONFIDENTIALITY_IMPACT: "🔒",
+  VALUE_CREATION: "📈",
+  COST_ESTIMATION: "💰",
+  SECURITY_VISUALIZATION: "📡",
+  COMPLIANCE_STATUS: "✅",
+  SECURITY_SUMMARY: "🔍",
+  TECHNICAL_IMPLEMENTATION: "⚙️",
+};
