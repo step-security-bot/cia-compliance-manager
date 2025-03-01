@@ -11,33 +11,69 @@ describe("Review Security Impact", () => {
     cy.ensureAppLoaded(); // Using our custom command
   });
 
-  it("shows availability impact widget", () => {
-    // Check that impact widgets exist
-    cy.get('[data-testid="widget-availability-impact"]')
+  it("shows impact analysis widgets with test IDs", () => {
+    // Check for availability impact analysis widget using test ID
+    cy.get('[data-testid="impact-analysis-availability"]')
       .should("exist")
       .and("be.visible");
 
-    // Take screenshot of widget
-    cy.screenshot("availability-impact-widget");
+    // Check for integrity impact analysis widget using test ID
+    cy.get('[data-testid="impact-analysis-integrity"]')
+      .should("exist")
+      .and("be.visible");
+
+    // Check for confidentiality impact analysis widget using test ID
+    cy.get('[data-testid="impact-analysis-confidentiality"]')
+      .should("exist")
+      .and("be.visible");
   });
 
-  it("shows integrity impact widget", () => {
-    // Check that impact widgets exist
-    cy.get('[data-testid="widget-integrity-impact"]')
-      .should("exist")
-      .and("be.visible");
-
-    // Take screenshot of widget
-    cy.screenshot("integrity-impact-widget");
+  it("shows impact analysis content in availability widget", () => {
+    // Verify specific elements in the availability impact widget
+    cy.get('[data-testid="impact-level-indicator-availability"]').should(
+      "exist"
+    );
+    cy.get('[data-testid="impact-level-text-availability"]').should("exist");
+    cy.get('[data-testid="impact-description-availability"]').should(
+      "not.be.empty"
+    );
+    cy.get('[data-testid="business-impact-availability"]').should(
+      "not.be.empty"
+    );
   });
 
-  it("shows confidentiality impact widget", () => {
-    // Check that impact widgets exist
-    cy.get('[data-testid="widget-confidentiality-impact"]')
-      .should("exist")
-      .and("be.visible");
+  it("updates impact analysis when security levels change", () => {
+    // Store initial impact description
+    let initialDescription = "";
+    cy.get('[data-testid="impact-description-integrity"]')
+      .invoke("text")
+      .then((text) => {
+        initialDescription = text;
 
-    // Take screenshot of widget
-    cy.screenshot("confidentiality-impact-widget");
+        // Change security level
+        cy.get('[data-testid="integrity-select"]').select(
+          SECURITY_LEVELS.HIGH,
+          { force: true }
+        );
+        cy.wait(300);
+
+        // Verify description changed
+        cy.get('[data-testid="impact-description-integrity"]')
+          .invoke("text")
+          .should((newText) => {
+            expect(newText).not.to.eq(initialDescription);
+          });
+      });
+  });
+
+  it("shows business impact section in all widgets", () => {
+    cy.get('[data-testid="business-impact-heading"]').should("exist");
+    cy.get('[data-testid="business-impact-availability"]').should(
+      "not.be.empty"
+    );
+    cy.get('[data-testid="business-impact-integrity"]').should("not.be.empty");
+    cy.get('[data-testid="business-impact-confidentiality"]').should(
+      "not.be.empty"
+    );
   });
 });
