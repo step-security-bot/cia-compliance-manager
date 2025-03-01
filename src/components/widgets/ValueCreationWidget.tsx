@@ -14,25 +14,32 @@ interface ValueCreationWidgetProps {
 const ValueCreationWidget: React.FC<ValueCreationWidgetProps> = ({
   securityLevel,
 }) => {
+  // Create a mapping to simplify the getValuePoints function
   const getValuePoints = () => {
-    switch (securityLevel) {
-      case SECURITY_LEVELS.VERY_HIGH:
-        return [
-          VALUE_CREATION_POINTS.VERY_HIGH,
-          ...DETAILED_VALUE_POINTS.VERY_HIGH,
-        ];
-      case SECURITY_LEVELS.HIGH:
-        return [VALUE_CREATION_POINTS.HIGH, ...DETAILED_VALUE_POINTS.HIGH];
-      case SECURITY_LEVELS.MODERATE:
-        return [
-          VALUE_CREATION_POINTS.MODERATE,
-          ...DETAILED_VALUE_POINTS.MODERATE,
-        ];
-      case SECURITY_LEVELS.LOW:
-        return [VALUE_CREATION_POINTS.LOW, ...DETAILED_VALUE_POINTS.LOW];
-      default:
-        return [VALUE_CREATION_POINTS.NONE, ...DETAILED_VALUE_POINTS.NONE];
-    }
+    const levelMap: Record<string, string[]> = {
+      [SECURITY_LEVELS.VERY_HIGH]: [
+        VALUE_CREATION_POINTS.VERY_HIGH,
+        ...DETAILED_VALUE_POINTS.VERY_HIGH,
+      ],
+      [SECURITY_LEVELS.HIGH]: [
+        VALUE_CREATION_POINTS.HIGH,
+        ...DETAILED_VALUE_POINTS.HIGH,
+      ],
+      [SECURITY_LEVELS.MODERATE]: [
+        VALUE_CREATION_POINTS.MODERATE,
+        ...DETAILED_VALUE_POINTS.MODERATE,
+      ],
+      [SECURITY_LEVELS.LOW]: [
+        VALUE_CREATION_POINTS.LOW,
+        ...DETAILED_VALUE_POINTS.LOW,
+      ],
+      [SECURITY_LEVELS.NONE]: [
+        VALUE_CREATION_POINTS.NONE,
+        ...DETAILED_VALUE_POINTS.NONE,
+      ],
+    };
+
+    return levelMap[securityLevel] || levelMap[SECURITY_LEVELS.NONE];
   };
 
   const valuePoints = getValuePoints();

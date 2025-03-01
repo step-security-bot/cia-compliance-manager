@@ -4,6 +4,7 @@ import {
   IMPACT_DESCRIPTIONS,
   BUSINESS_IMPACTS,
   UI_TEXT,
+  SecurityLevelKey, // Import the type
 } from "../../constants/appConstants";
 
 interface ImpactAnalysisWidgetProps {
@@ -15,93 +16,47 @@ const ImpactAnalysisWidget: React.FC<ImpactAnalysisWidgetProps> = ({
   category,
   level,
 }) => {
-  // Impact descriptions based on category and level
+  // Add these helper lookups to simplify the switch statements
   const getImpactDescription = () => {
-    switch (category) {
-      case "Availability":
-        switch (level) {
-          case SECURITY_LEVELS.VERY_HIGH:
-            return IMPACT_DESCRIPTIONS.AVAILABILITY.VERY_HIGH;
-          case SECURITY_LEVELS.HIGH:
-            return IMPACT_DESCRIPTIONS.AVAILABILITY.HIGH;
-          case SECURITY_LEVELS.MODERATE:
-            return IMPACT_DESCRIPTIONS.AVAILABILITY.MODERATE;
-          case SECURITY_LEVELS.LOW:
-            return IMPACT_DESCRIPTIONS.AVAILABILITY.LOW;
-          default:
-            return IMPACT_DESCRIPTIONS.AVAILABILITY.NONE;
-        }
-      case "Integrity":
-        switch (level) {
-          case SECURITY_LEVELS.VERY_HIGH:
-            return IMPACT_DESCRIPTIONS.INTEGRITY.VERY_HIGH;
-          case SECURITY_LEVELS.HIGH:
-            return IMPACT_DESCRIPTIONS.INTEGRITY.HIGH;
-          case SECURITY_LEVELS.MODERATE:
-            return IMPACT_DESCRIPTIONS.INTEGRITY.MODERATE;
-          case SECURITY_LEVELS.LOW:
-            return IMPACT_DESCRIPTIONS.INTEGRITY.LOW;
-          default:
-            return IMPACT_DESCRIPTIONS.INTEGRITY.NONE;
-        }
-      case "Confidentiality":
-        switch (level) {
-          case SECURITY_LEVELS.VERY_HIGH:
-            return IMPACT_DESCRIPTIONS.CONFIDENTIALITY.VERY_HIGH;
-          case SECURITY_LEVELS.HIGH:
-            return IMPACT_DESCRIPTIONS.CONFIDENTIALITY.HIGH;
-          case SECURITY_LEVELS.MODERATE:
-            return IMPACT_DESCRIPTIONS.CONFIDENTIALITY.MODERATE;
-          case SECURITY_LEVELS.LOW:
-            return IMPACT_DESCRIPTIONS.CONFIDENTIALITY.LOW;
-          default:
-            return IMPACT_DESCRIPTIONS.CONFIDENTIALITY.NONE;
-        }
-    }
+    // Strongly typed map of category to impact descriptions
+    const impactMap = {
+      Availability: IMPACT_DESCRIPTIONS.AVAILABILITY,
+      Integrity: IMPACT_DESCRIPTIONS.INTEGRITY,
+      Confidentiality: IMPACT_DESCRIPTIONS.CONFIDENTIALITY,
+    };
+
+    // Strongly typed map of security levels to keys
+    const levelMap: Record<string, SecurityLevelKey> = {
+      [SECURITY_LEVELS.VERY_HIGH]: "VERY_HIGH",
+      [SECURITY_LEVELS.HIGH]: "HIGH",
+      [SECURITY_LEVELS.MODERATE]: "MODERATE",
+      [SECURITY_LEVELS.LOW]: "LOW",
+      [SECURITY_LEVELS.NONE]: "NONE",
+    };
+
+    const safeLevel = levelMap[level] || "NONE";
+    return impactMap[category][safeLevel];
   };
 
   const getBusinessImpact = () => {
-    switch (category) {
-      case "Availability":
-        switch (level) {
-          case SECURITY_LEVELS.VERY_HIGH:
-            return BUSINESS_IMPACTS.AVAILABILITY.VERY_HIGH;
-          case SECURITY_LEVELS.HIGH:
-            return BUSINESS_IMPACTS.AVAILABILITY.HIGH;
-          case SECURITY_LEVELS.MODERATE:
-            return BUSINESS_IMPACTS.AVAILABILITY.MODERATE;
-          case SECURITY_LEVELS.LOW:
-            return BUSINESS_IMPACTS.AVAILABILITY.LOW;
-          default:
-            return BUSINESS_IMPACTS.AVAILABILITY.NONE;
-        }
-      case "Integrity":
-        switch (level) {
-          case SECURITY_LEVELS.VERY_HIGH:
-            return BUSINESS_IMPACTS.INTEGRITY.VERY_HIGH;
-          case SECURITY_LEVELS.HIGH:
-            return BUSINESS_IMPACTS.INTEGRITY.HIGH;
-          case SECURITY_LEVELS.MODERATE:
-            return BUSINESS_IMPACTS.INTEGRITY.MODERATE;
-          case SECURITY_LEVELS.LOW:
-            return BUSINESS_IMPACTS.INTEGRITY.LOW;
-          default:
-            return BUSINESS_IMPACTS.INTEGRITY.NONE;
-        }
-      case "Confidentiality":
-        switch (level) {
-          case SECURITY_LEVELS.VERY_HIGH:
-            return BUSINESS_IMPACTS.CONFIDENTIALITY.VERY_HIGH;
-          case SECURITY_LEVELS.HIGH:
-            return BUSINESS_IMPACTS.CONFIDENTIALITY.HIGH;
-          case SECURITY_LEVELS.MODERATE:
-            return BUSINESS_IMPACTS.CONFIDENTIALITY.MODERATE;
-          case SECURITY_LEVELS.LOW:
-            return BUSINESS_IMPACTS.CONFIDENTIALITY.LOW;
-          default:
-            return BUSINESS_IMPACTS.CONFIDENTIALITY.NONE;
-        }
-    }
+    // Strongly typed map of category to business impacts
+    const impactMap = {
+      Availability: BUSINESS_IMPACTS.AVAILABILITY,
+      Integrity: BUSINESS_IMPACTS.INTEGRITY,
+      Confidentiality: BUSINESS_IMPACTS.CONFIDENTIALITY,
+    };
+
+    // Strongly typed map of security levels to keys
+    const levelMap: Record<string, SecurityLevelKey> = {
+      [SECURITY_LEVELS.VERY_HIGH]: "VERY_HIGH",
+      [SECURITY_LEVELS.HIGH]: "HIGH",
+      [SECURITY_LEVELS.MODERATE]: "MODERATE",
+      [SECURITY_LEVELS.LOW]: "LOW",
+      [SECURITY_LEVELS.NONE]: "NONE",
+    };
+
+    const safeLevel = levelMap[level] || "NONE";
+    return impactMap[category][safeLevel];
   };
 
   return (

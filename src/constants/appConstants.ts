@@ -8,19 +8,50 @@ import {
 } from "../hooks/useCIAOptions";
 import { CIADetails } from "../types/cia";
 
-// Helper to map option values to their corresponding constants
-export const mapOptionsToConstants = <T extends keyof CIADetails>(
+// SecurityLevelMap type for cleaner lookups
+export type SecurityLevelKey =
+  | "NONE"
+  | "LOW"
+  | "MODERATE"
+  | "HIGH"
+  | "VERY_HIGH";
+export type SecurityLevelMap<T> = Record<SecurityLevelKey, T>;
+
+/**
+ * Maps CIA option values to constants with consistent naming (NONE, LOW, etc.)
+ * Supports optional transform function to modify values during mapping
+ *
+ * @param options The source options object (e.g., availabilityOptions)
+ * @param key The property key to extract from each option
+ * @param transform Optional function to transform the extracted value
+ * @returns An object with standardized security level keys
+ */
+export const mapOptionsToConstants = <
+  T extends keyof CIADetails,
+  R = CIADetails[T]
+>(
   options: Record<string, CIADetails>,
-  key: T
+  key: T,
+  transform?: (value: CIADetails[T], level: string) => R
 ) => ({
-  NONE: options.None[key],
-  LOW: options.Low[key],
-  MODERATE: options.Moderate[key],
-  HIGH: options.High[key],
-  VERY_HIGH: options["Very High"][key],
+  NONE: transform ? transform(options.None[key], "None") : options.None[key],
+  LOW: transform ? transform(options.Low[key], "Low") : options.Low[key],
+  MODERATE: transform
+    ? transform(options.Moderate[key], "Moderate")
+    : options.Moderate[key],
+  HIGH: transform ? transform(options.High[key], "High") : options.High[key],
+  VERY_HIGH: transform
+    ? transform(options["Very High"][key], "Very High")
+    : options["Very High"][key],
 });
 
-// Helper for testing text elements with class selectors
+/**
+ * Creates a matcher function for testing that checks if text appears in an element with a specific class
+ *
+ * @param text Text to look for
+ * @param className CSS class the element should have
+ * @returns A function that returns true if the element matches both conditions
+ */
 export const getTextElementMatcher = (text: string, className: string) => {
   return (content: string, element: Element) =>
     element.className.includes(className) &&
@@ -119,7 +150,7 @@ export const FRAMEWORK_DESCRIPTIONS = {
   NIST: "High security controls for federal information systems",
 };
 
-// Security Descriptions - directly derived from useCIAOptions
+// Security Descriptions - direct hardcoded values to maintain test compatibility
 export const SECURITY_DESCRIPTIONS = {
   NONE: "No security controls implemented.",
   LOW: "Basic protection with minimal controls and manual processes.",
@@ -137,92 +168,33 @@ export const TECHNICAL_DESCRIPTIONS = {
   CONFIDENTIALITY: mapOptionsToConstants(confidentialityOptions, "technical"),
 };
 
-// Impact Analysis Descriptions - simplified versions derived from useCIAOptions
+// Impact Analysis Descriptions using enhanced helper
 export const IMPACT_DESCRIPTIONS = {
-  AVAILABILITY: {
-    NONE:
-      availabilityOptions.None.description +
-      " - " +
-      availabilityOptions.None.impact,
-    LOW:
-      availabilityOptions.Low.description +
-      " - " +
-      availabilityOptions.Low.impact,
-    MODERATE:
-      availabilityOptions.Moderate.description +
-      " - " +
-      availabilityOptions.Moderate.impact,
-    HIGH:
-      availabilityOptions.High.description +
-      " - " +
-      availabilityOptions.High.impact,
-    VERY_HIGH:
-      availabilityOptions["Very High"].description +
-      " - " +
-      availabilityOptions["Very High"].impact,
-  },
-  INTEGRITY: {
-    NONE:
-      integrityOptions.None.description + " - " + integrityOptions.None.impact,
-    LOW: integrityOptions.Low.description + " - " + integrityOptions.Low.impact,
-    MODERATE:
-      integrityOptions.Moderate.description +
-      " - " +
-      integrityOptions.Moderate.impact,
-    HIGH:
-      integrityOptions.High.description + " - " + integrityOptions.High.impact,
-    VERY_HIGH:
-      integrityOptions["Very High"].description +
-      " - " +
-      integrityOptions["Very High"].impact,
-  },
-  CONFIDENTIALITY: {
-    NONE:
-      confidentialityOptions.None.description +
-      " - " +
-      confidentialityOptions.None.impact,
-    LOW:
-      confidentialityOptions.Low.description +
-      " - " +
-      confidentialityOptions.Low.impact,
-    MODERATE:
-      confidentialityOptions.Moderate.description +
-      " - " +
-      confidentialityOptions.Moderate.impact,
-    HIGH:
-      confidentialityOptions.High.description +
-      " - " +
-      confidentialityOptions.High.impact,
-    VERY_HIGH:
-      confidentialityOptions["Very High"].description +
-      " - " +
-      confidentialityOptions["Very High"].impact,
-  },
+  AVAILABILITY: mapOptionsToConstants(
+    availabilityOptions,
+    "description",
+    (desc, level) => `${desc} - ${availabilityOptions[level].impact}`
+  ),
+  INTEGRITY: mapOptionsToConstants(
+    integrityOptions,
+    "description",
+    (desc, level) => `${desc} - ${integrityOptions[level].impact}`
+  ),
+  CONFIDENTIALITY: mapOptionsToConstants(
+    confidentialityOptions,
+    "description",
+    (desc, level) => `${desc} - ${confidentialityOptions[level].impact}`
+  ),
 };
 
-// Business Impact - directly using values from useCIAOptions
+// Business Impact - using the helper
 export const BUSINESS_IMPACTS = {
-  AVAILABILITY: {
-    NONE: availabilityOptions.None.businessImpact,
-    LOW: availabilityOptions.Low.businessImpact,
-    MODERATE: availabilityOptions.Moderate.businessImpact,
-    HIGH: availabilityOptions.High.businessImpact,
-    VERY_HIGH: availabilityOptions["Very High"].businessImpact,
-  },
-  INTEGRITY: {
-    NONE: integrityOptions.None.businessImpact,
-    LOW: integrityOptions.Low.businessImpact,
-    MODERATE: integrityOptions.Moderate.businessImpact,
-    HIGH: integrityOptions.High.businessImpact,
-    VERY_HIGH: integrityOptions["Very High"].businessImpact,
-  },
-  CONFIDENTIALITY: {
-    NONE: confidentialityOptions.None.businessImpact,
-    LOW: confidentialityOptions.Low.businessImpact,
-    MODERATE: confidentialityOptions.Moderate.businessImpact,
-    HIGH: confidentialityOptions.High.businessImpact,
-    VERY_HIGH: confidentialityOptions["Very High"].businessImpact,
-  },
+  AVAILABILITY: mapOptionsToConstants(availabilityOptions, "businessImpact"),
+  INTEGRITY: mapOptionsToConstants(integrityOptions, "businessImpact"),
+  CONFIDENTIALITY: mapOptionsToConstants(
+    confidentialityOptions,
+    "businessImpact"
+  ),
 };
 
 // Value Creation Points
