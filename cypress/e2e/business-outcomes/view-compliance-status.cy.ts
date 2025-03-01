@@ -4,6 +4,7 @@
  * Tests that the compliance status updates correctly based on the selected security levels.
  */
 import { SECURITY_LEVELS } from "../../support/appConstantsHelper";
+import { assert } from "../common-imports";
 
 describe("View Compliance Status", () => {
   beforeEach(() => {
@@ -11,68 +12,22 @@ describe("View Compliance Status", () => {
     cy.ensureAppLoaded(); // Using our custom command
   });
 
-  it("shows compliance status after setting security levels", () => {
-    // Set all levels to High
-    cy.setSecurityLevels(
-      SECURITY_LEVELS.HIGH,
-      SECURITY_LEVELS.HIGH,
-      SECURITY_LEVELS.HIGH
-    );
+  it("shows compliance status widget", () => {
+    // Check that compliance widget exists
+    cy.get('[data-testid="widget-compliance-status"]').should("exist");
 
-    // Look for compliance-related content
-    const compliancePatterns = [
-      /compliance/i,
-      /status/i,
-      /requirement/i,
-      /standard/i,
-      /regulation/i,
-    ];
-
-    // Check for content and take screenshot
-    cy.containsAnyText(compliancePatterns).then((found) => {
-      cy.log(`Found compliance-related content: ${found}`);
-    });
-
-    cy.screenshot("high-compliance-status");
+    // Verify widget header exists and contains text
+    cy.get('[data-testid="widget-compliance-status"] .widget-header')
+      .contains("Compliance Status")
+      .should("exist");
   });
 
-  it("updates compliance status when security levels change", () => {
-    // First set to Low security
-    cy.setSecurityLevels(
-      SECURITY_LEVELS.LOW,
-      SECURITY_LEVELS.LOW,
-      SECURITY_LEVELS.LOW
-    );
-
-    // Take screenshot with low security
-    cy.screenshot("low-compliance-status");
-
-    // Get low security text
-    cy.get("body")
-      .invoke("text")
-      .then((text) => {
-        const lowText = String(text || "");
-        const lowTextLength = lowText.length;
-        cy.log(`Low security text length: ${lowTextLength}`);
-
-        // Then set to High security
-        cy.setSecurityLevels(
-          SECURITY_LEVELS.HIGH,
-          SECURITY_LEVELS.HIGH,
-          SECURITY_LEVELS.HIGH
-        );
-
-        // Take screenshot with high security
-        cy.screenshot("high-compliance-status");
-
-        // Compare with new content
-        cy.get("body")
-          .invoke("text")
-          .then((highTextVal) => {
-            const highText = String(highTextVal || "");
-            cy.log(`High security text length: ${highText.length}`);
-            cy.log(`Length difference: ${highText.length - lowTextLength}`);
-          });
-      });
+  it("displays compliance information", () => {
+    // Just verify the compliance widget contains some compliance frameworks
+    cy.get('[data-testid="widget-compliance-status"]').within(() => {
+      // Look for some common compliance frameworks by text
+      cy.contains("SOC 2").should("exist");
+      cy.contains("ISO 27001").should("exist");
+    });
   });
 });

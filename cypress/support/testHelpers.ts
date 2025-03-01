@@ -48,32 +48,27 @@ export const selectByIndex = (index: number, value: string) => {
 };
 
 /**
- * Set all security levels at once
+ * Set all security levels at once using data-testid selectors
  */
 export const setAllLevels = (
   availability: string,
   integrity: string,
   confidentiality: string
 ) => {
-  cy.get("body").then(($body) => {
-    const selectCount = $body.find("select").length;
+  // Use data-testid selectors for more reliable selection
+  cy.get('[data-testid="availability-select"]', { timeout: 10000 })
+    .should("exist")
+    .select(availability, { force: true });
 
-    if (selectCount >= 3) {
-      // Use index-based selection
-      selectByIndex(0, availability);
-      selectByIndex(1, integrity);
-      selectByIndex(2, confidentiality);
-      cy.wait(500); // Longer wait after setting all levels
-    } else if (selectCount > 0) {
-      // Set what we can
-      cy.log(`Only found ${selectCount} selects, setting what's available`);
-      if (selectCount > 0) selectByIndex(0, availability);
-      if (selectCount > 1) selectByIndex(1, integrity);
-      cy.wait(500);
-    } else {
-      cy.log("No select elements found");
-    }
-  });
+  cy.get('[data-testid="integrity-select"]', { timeout: 10000 })
+    .should("exist")
+    .select(integrity, { force: true });
+
+  cy.get('[data-testid="confidentiality-select"]', { timeout: 10000 })
+    .should("exist")
+    .select(confidentiality, { force: true });
+
+  cy.wait(500); // Longer wait after setting all levels
 };
 
 /**
@@ -141,7 +136,7 @@ export const logPageElements = () => {
 };
 
 /**
- * Makes sure the application is fully loaded
+ * Makes sure the application is fully loaded with security controls
  */
 export const ensureAppLoaded = () => {
   // Wait for basic content
@@ -150,6 +145,20 @@ export const ensureAppLoaded = () => {
   // Extra wait for hydration
   cy.wait(1000);
 
+  // Specifically look for security level controls
+  cy.get("body").then(($body) => {
+    const hasControls =
+      $body.find('[data-testid="security-level-controls"]').length > 0;
+
+    if (hasControls) {
+      cy.log("Security level controls found by data-testid");
+    } else {
+      // If not found by data-testid, check for generic selects as fallback
+      const selectCount = $body.find("select").length;
+      cy.log(`Found ${selectCount} select elements`);
+    }
+  });
+
   // Log the current state
   logPageElements();
 
@@ -157,47 +166,14 @@ export const ensureAppLoaded = () => {
 };
 
 /**
- * Set security levels with maximum reliability
+ * Set security levels with maximum reliability using data-testid selectors
+ * This is a replacement for setSecurityLevelsReliably
  */
 export const setSecurityLevelsReliably = (
   availability: string,
   integrity: string,
   confidentiality: string
 ) => {
-  // First check if selects exist and what they support
-  cy.get("body").then(($body) => {
-    // Fix: Remove duplicate 'selects' declarations and incorrect type assertion
-    const selects = $body.find("select");
-
-    // Try multiple strategies
-    if (selects.length >= 3) {
-      // Strategy 1: Direct selection
-      try {
-        cy.get("select")
-          .eq(0)
-          .select(availability, { force: true, timeout: 1000 })
-          .then(() => cy.wait(300));
-
-        cy.get("select")
-          .eq(1)
-          .select(integrity, { force: true, timeout: 1000 })
-          .then(() => cy.wait(300));
-
-        cy.get("select")
-          .eq(2)
-          .select(confidentiality, { force: true, timeout: 1000 })
-          .then(() => cy.wait(500));
-
-        cy.log("Successfully set security levels using direct selection");
-      } catch (e) {
-        // Strategy 2: Use our more reliable selectByIndex approach
-        cy.log("Direct selection failed, using selectByIndex");
-        selectByIndex(0, availability);
-        selectByIndex(1, integrity);
-        selectByIndex(2, confidentiality);
-      }
-    } else {
-      cy.log(`Not enough selects found (${selects.length})`);
-    }
-  });
+  // Use the cy.setSecurityLevels custom command which uses data-testid selectors
+  cy.setSecurityLevels(availability, integrity, confidentiality);
 };

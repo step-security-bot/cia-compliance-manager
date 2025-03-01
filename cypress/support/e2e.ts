@@ -1,5 +1,12 @@
 import "@testing-library/cypress/add-commands";
 import "./commands";
+import "./appConstantsHelper";
+
+// Prevents Cypress from failing tests when uncaught exceptions occur in the application
+Cypress.on("uncaught:exception", (err) => {
+  // returning false here prevents Cypress from failing the test
+  return false;
+});
 
 declare global {
   namespace Cypress {

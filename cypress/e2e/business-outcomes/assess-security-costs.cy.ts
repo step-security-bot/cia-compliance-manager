@@ -4,6 +4,7 @@
  * Tests that cost estimations update based on security level selections.
  */
 import { SECURITY_LEVELS } from "../../support/appConstantsHelper";
+import { assert } from "../common-imports";
 
 describe("Assess Security Costs", () => {
   beforeEach(() => {
@@ -11,71 +12,46 @@ describe("Assess Security Costs", () => {
     cy.ensureAppLoaded(); // Using our custom command
   });
 
-  it("shows cost information after setting security levels", () => {
-    // Set all security levels to High
-    cy.setSecurityLevels(
-      SECURITY_LEVELS.HIGH,
-      SECURITY_LEVELS.HIGH,
+  it("shows cost estimation widget", () => {
+    // Check that the cost estimation widget exists
+    cy.get('[data-testid="widget-cost-estimation"]').should("exist");
+
+    // Verify it has a header
+    cy.get('[data-testid="widget-cost-estimation"] .widget-header')
+      .contains("Cost Estimation")
+      .should("exist");
+  });
+
+  it("shows cost percentages", () => {
+    // Verify just that the cost percentages exist
+    cy.get('[data-testid="capex-percentage"]').should("exist");
+    cy.get('[data-testid="opex-percentage"]').should("exist");
+  });
+
+  it("shows value creation widget", () => {
+    // Check that the value creation widget exists
+    cy.get('[data-testid="widget-value-creation"]').should("exist");
+
+    // Verify it has a header
+    cy.get('[data-testid="widget-value-creation"] .widget-header')
+      .contains("Value Creation")
+      .should("exist");
+  });
+
+  it("changes security levels and costs exist", () => {
+    // Set security levels
+    cy.get('[data-testid="availability-select"]').select(SECURITY_LEVELS.HIGH);
+    cy.get('[data-testid="integrity-select"]').select(SECURITY_LEVELS.HIGH);
+    cy.get('[data-testid="confidentiality-select"]').select(
       SECURITY_LEVELS.HIGH
     );
 
-    // Check for cost-related terms
-    const costPatterns = [
-      /cost/i,
-      /budget/i,
-      /capex/i,
-      /opex/i,
-      /estimate/i,
-      /%/, // Look for percentage symbols
-      /\$/, // Look for dollar signs
-    ];
+    // Just verify the widgets still exist after changing values
+    cy.get('[data-testid="widget-cost-estimation"]').should("exist");
+    cy.get('[data-testid="widget-value-creation"]').should("exist");
 
-    // Check for content
-    cy.containsAnyText(costPatterns).then((found) => {
-      cy.log(`Found cost-related content: ${found}`);
-    });
-
-    // Take screenshot for reference
-    cy.screenshot("high-security-costs");
-  });
-
-  it("updates cost estimates when security levels change", () => {
-    // First set to Low security
-    cy.setSecurityLevels(
-      SECURITY_LEVELS.LOW,
-      SECURITY_LEVELS.LOW,
-      SECURITY_LEVELS.LOW
-    );
-
-    // Take screenshot and get text with low security
-    cy.screenshot("low-security-costs");
-
-    // Get low security text length
-    cy.get("body")
-      .invoke("text")
-      .then((text) => {
-        const lowText = String(text || "");
-        const lowTextLength = lowText.length;
-        cy.log(`Low security text length: ${lowTextLength}`);
-
-        // Then set to High security
-        cy.setSecurityLevels(
-          SECURITY_LEVELS.HIGH,
-          SECURITY_LEVELS.HIGH,
-          SECURITY_LEVELS.HIGH
-        );
-
-        // Take screenshot of high security costs
-        cy.screenshot("high-security-costs");
-
-        // Compare with new content
-        cy.get("body")
-          .invoke("text")
-          .then((highTextVal) => {
-            const highText = String(highTextVal || "");
-            cy.log(`High security text length: ${highText.length}`);
-            cy.log(`Length difference: ${highText.length - lowTextLength}`);
-          });
-      });
+    // And the cost percentages still exist
+    cy.get('[data-testid="capex-percentage"]').should("exist");
+    cy.get('[data-testid="opex-percentage"]').should("exist");
   });
 });

@@ -48,6 +48,11 @@ export const TEST_SELECTORS = {
     BUTTONS: "button",
     WIDGETS: ".widget, [class*='widget'], [class*='card'], .card",
   },
+  SECURITY_WIDGET: '[data-testid="widget-security-level-selection"]',
+  SECURITY_CONTROLS: '[data-testid="security-level-controls"]',
+  AVAILABILITY_SELECT: '[data-testid="availability-select"]',
+  INTEGRITY_SELECT: '[data-testid="integrity-select"]',
+  CONFIDENTIALITY_SELECT: '[data-testid="confidentiality-select"]',
 };
 
 // Robust test commands with error handling

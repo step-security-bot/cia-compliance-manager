@@ -11,78 +11,33 @@ describe("Review Security Impact", () => {
     cy.ensureAppLoaded(); // Using our custom command
   });
 
-  it("shows availability impact analysis for different security levels", () => {
-    // Set availability to High
-    cy.setSecurityLevels(
-      SECURITY_LEVELS.HIGH,
-      SECURITY_LEVELS.MODERATE,
-      SECURITY_LEVELS.MODERATE
-    );
+  it("shows availability impact widget", () => {
+    // Check that impact widgets exist
+    cy.get('[data-testid="widget-availability-impact"]')
+      .should("exist")
+      .and("be.visible");
 
-    // Look for availability impact content
-    const availabilityPatterns = [
-      /availability/i,
-      /uptime/i,
-      /downtime/i,
-      /recovery/i,
-      /disruption/i,
-    ];
-
-    // Check for content and take screenshot
-    cy.containsAnyText(availabilityPatterns).then((found) => {
-      cy.log(`Found availability impact content: ${found}`);
-    });
-
-    cy.screenshot("high-availability-impact");
+    // Take screenshot of widget
+    cy.screenshot("availability-impact-widget");
   });
 
-  it("shows integrity impact analysis for different security levels", () => {
-    // Set integrity to High
-    cy.setSecurityLevels(
-      SECURITY_LEVELS.MODERATE,
-      SECURITY_LEVELS.HIGH,
-      SECURITY_LEVELS.MODERATE
-    );
+  it("shows integrity impact widget", () => {
+    // Check that impact widgets exist
+    cy.get('[data-testid="widget-integrity-impact"]')
+      .should("exist")
+      .and("be.visible");
 
-    // Look for integrity impact content
-    const integrityPatterns = [
-      /integrity/i,
-      /accuracy/i,
-      /valid/i,
-      /corrupt/i,
-      /tamper/i,
-    ];
-
-    // Check for content and take screenshot
-    cy.containsAnyText(integrityPatterns).then((found) => {
-      cy.log(`Found integrity impact content: ${found}`);
-    });
-
-    cy.screenshot("high-integrity-impact");
+    // Take screenshot of widget
+    cy.screenshot("integrity-impact-widget");
   });
 
-  it("shows confidentiality impact analysis for different security levels", () => {
-    // Set confidentiality to High
-    cy.setSecurityLevels(
-      SECURITY_LEVELS.MODERATE,
-      SECURITY_LEVELS.MODERATE,
-      SECURITY_LEVELS.HIGH
-    );
+  it("shows confidentiality impact widget", () => {
+    // Check that impact widgets exist
+    cy.get('[data-testid="widget-confidentiality-impact"]')
+      .should("exist")
+      .and("be.visible");
 
-    // Look for confidentiality impact content
-    const confidentialityPatterns = [
-      /confidential/i,
-      /sensitive/i,
-      /privacy/i,
-      /protect/i,
-      /access/i,
-    ];
-
-    // Check for content and take screenshot
-    cy.containsAnyText(confidentialityPatterns).then((found) => {
-      cy.log(`Found confidentiality impact content: ${found}`);
-    });
-
-    cy.screenshot("high-confidentiality-impact");
+    // Take screenshot of widget
+    cy.screenshot("confidentiality-impact-widget");
   });
 });

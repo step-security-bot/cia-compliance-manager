@@ -103,22 +103,22 @@ Cypress.Commands.add("tab", { prevSubject: ["element"] }, (subject: JQuery) => {
   return cy.focused();
 });
 
-// Custom command to set all security levels at once
+// Improved custom command to set all security levels at once
 Cypress.Commands.add(
   "setSecurityLevels",
   (availability: string, integrity: string, confidentiality: string) => {
     // Add a wait to ensure elements are fully loaded
     cy.get('[data-testid="availability-select"]', { timeout: 10000 })
       .should("be.visible")
-      .select(availability);
+      .select(availability, { force: true });
 
-    cy.get('[data-testid="integrity-select"]')
+    cy.get('[data-testid="integrity-select"]', { timeout: 10000 })
       .should("be.visible")
-      .select(integrity);
+      .select(integrity, { force: true });
 
-    cy.get('[data-testid="confidentiality-select"]')
+    cy.get('[data-testid="confidentiality-select"]', { timeout: 10000 })
       .should("be.visible")
-      .select(confidentiality);
+      .select(confidentiality, { force: true });
 
     // Add a small wait to allow UI updates to propagate
     cy.wait(500);
@@ -169,28 +169,27 @@ Cypress.Commands.add(
   }
 );
 
-// Implement the missing containsAnyText command
+// Fix the containsAnyText command implementation
 Cypress.Commands.add("containsAnyText", (patterns: Array<RegExp | string>) => {
-  return cy
-    .get("body")
-    .invoke("text")
-    .then((text) => {
-      // Check if any pattern matches the text
-      const matches = patterns.some((pattern) => {
-        if (typeof pattern === "string") {
-          return text.includes(pattern);
-        } else {
-          return pattern.test(text);
-        }
-      });
+  return cy.get("body").then(($body) => {
+    const bodyText = $body.text();
 
-      // Log the result for debugging
-      cy.log(`Text match found: ${matches}`);
-      return matches;
-    });
+    // Convert string patterns to RegExp
+    const regexPatterns = patterns.map((pattern) =>
+      typeof pattern === "string" ? new RegExp(pattern, "i") : pattern
+    );
+
+    // Check if any pattern matches
+    const foundMatch = regexPatterns.some((pattern) => pattern.test(bodyText));
+
+    // Log the result for debugging
+    cy.log(`Text match found: ${foundMatch ? "Yes" : "No"}`);
+
+    return cy.wrap(foundMatch);
+  });
 });
 
-// Implement the ensureAppLoaded command
+// Improved version of ensureAppLoaded to specifically check for security controls
 Cypress.Commands.add("ensureAppLoaded", () => {
   // Wait for basic content
   cy.get("body", { timeout: 20000 }).should("not.be.empty");
@@ -198,13 +197,23 @@ Cypress.Commands.add("ensureAppLoaded", () => {
   // Extra wait for hydration
   cy.wait(1000);
 
-  // Check if selects are available
+  // Specifically check for security level controls to be present
   cy.get("body").then(($body) => {
-    cy.log(`Found ${$body.find("select").length} select elements`);
+    // First try to find by data-testid
+    const hasControls =
+      $body.find('[data-testid="security-level-controls"]').length > 0;
 
-    // If no selects found, wait a bit longer
-    if ($body.find("select").length === 0) {
-      cy.wait(2000);
+    if (hasControls) {
+      cy.log("Security level controls found by data-testid");
+    } else {
+      // If not found, check for select elements
+      const selectCount = $body.find("select").length;
+      cy.log(`Found ${selectCount} select elements`);
+
+      // If no selects found, wait a bit longer
+      if (selectCount === 0) {
+        cy.wait(2000);
+      }
     }
   });
 
@@ -247,6 +256,8 @@ declare global {
       containsAnyText(patterns: Array<RegExp | string>): Chainable<boolean>;
 
       ensureAppLoaded(): Chainable<boolean>;
+
+      containsAnyText(patterns: RegExp[]): Chainable<boolean>;
     }
   }
 }
