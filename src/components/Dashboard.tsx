@@ -47,8 +47,8 @@ export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
       <div className="widget-header">
         <h3 className="text-md font-semibold flex items-center">
           {icon && (
-            <span 
-              className="mr-2 widget-icon" 
+            <span
+              className="mr-2 widget-icon"
               data-testid={`icon-${title.toLowerCase().replace(/\s+/g, "-")}`}
             >
               {icon}

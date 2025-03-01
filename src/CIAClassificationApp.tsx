@@ -154,8 +154,8 @@ const CIAClassificationApp: React.FC = () => {
 
             <Dashboard>
               {/* Security Level Selection - Important control panel */}
-              <DashboardWidget 
-                title="Security Level Selection" 
+              <DashboardWidget
+                title="Security Level Selection"
                 size="medium"
                 icon={WIDGET_ICONS.SECURITY_LEVEL}
               >
@@ -173,8 +173,8 @@ const CIAClassificationApp: React.FC = () => {
               </DashboardWidget>
 
               {/* Business Impact Analysis */}
-              <DashboardWidget 
-                title="Business Impact Analysis" 
+              <DashboardWidget
+                title="Business Impact Analysis"
                 size="medium"
                 icon={WIDGET_ICONS.BUSINESS_IMPACT}
               >
@@ -227,18 +227,79 @@ const CIAClassificationApp: React.FC = () => {
                   </div>
                 </div>
               </DashboardWidget>
-              
-              {/* Impact analysis widgets with icons */}
+
+              {/* Security Summary widget - moved up */}
               <DashboardWidget
-                title="Availability Impact"
+                title="Security Summary"
                 size="medium"
-                data-testid="widget-availability-impact"
+                icon={WIDGET_ICONS.SECURITY_SUMMARY}
+              >
+                <SecuritySummaryWidget securityLevel={overallSecurityLevel} />
+              </DashboardWidget>
+
+              {/* Cost Estimation - moved up */}
+              <DashboardWidget
+                title="Cost Estimation"
+                size="medium"
+                icon={WIDGET_ICONS.COST_ESTIMATION}
+              >
+                <CostEstimationWidget
+                  totalCapex={totalCapex}
+                  totalOpex={totalOpex}
+                  capexEstimate={capexEstimate}
+                  opexEstimate={opexEstimate}
+                  isSmallSolution={isSmallSolution}
+                />
+              </DashboardWidget>
+
+              {/* Value Creation - moved up */}
+              <DashboardWidget
+                title="Value Creation"
+                size="medium"
+                icon={WIDGET_ICONS.VALUE_CREATION}
+              >
+                <ValueCreationWidget securityLevel={overallSecurityLevel} />
+              </DashboardWidget>
+
+              {/* Security visualization - moved up */}
+              <DashboardWidget
+                title="Security Profile Visualization"
+                size="medium"
+                icon={WIDGET_ICONS.SECURITY_VISUALIZATION}
+              >
+                <RadarChart
+                  availability={availability}
+                  integrity={integrity}
+                  confidentiality={confidentiality}
+                />
+              </DashboardWidget>
+
+              {/* Compliance Status */}
+              <DashboardWidget
+                title="Compliance Status"
+                size="medium"
+                icon={WIDGET_ICONS.COMPLIANCE_STATUS}
+              >
+                <ComplianceStatusWidget
+                  securityLevels={{
+                    availability,
+                    integrity,
+                    confidentiality,
+                  }}
+                />
+              </DashboardWidget>
+
+              {/* Impact analysis widgets - reordered and moved down */}
+              <DashboardWidget
+                title="Confidentiality Impact"
+                size="medium"
+                data-testid="widget-confidentiality-impact"
                 className="overflow-visible"
-                icon={WIDGET_ICONS.AVAILABILITY_IMPACT}
+                icon={WIDGET_ICONS.CONFIDENTIALITY_IMPACT}
               >
                 <ImpactAnalysisWidget
-                  category="Availability"
-                  level={availability}
+                  category="Confidentiality"
+                  level={confidentiality}
                 />
               </DashboardWidget>
 
@@ -253,80 +314,21 @@ const CIAClassificationApp: React.FC = () => {
               </DashboardWidget>
 
               <DashboardWidget
-                title="Confidentiality Impact"
+                title="Availability Impact"
                 size="medium"
-                data-testid="widget-confidentiality-impact"
+                data-testid="widget-availability-impact"
                 className="overflow-visible"
-                icon={WIDGET_ICONS.CONFIDENTIALITY_IMPACT}
+                icon={WIDGET_ICONS.AVAILABILITY_IMPACT}
               >
                 <ImpactAnalysisWidget
-                  category="Confidentiality"
-                  level={confidentiality}
+                  category="Availability"
+                  level={availability}
                 />
               </DashboardWidget>
 
-              {/* Value Creation and Cost Estimation side by side with icons */}
-              <DashboardWidget 
-                title="Value Creation" 
-                size="medium"
-                icon={WIDGET_ICONS.VALUE_CREATION}
-              >
-                <ValueCreationWidget securityLevel={overallSecurityLevel} />
-              </DashboardWidget>
-
-              <DashboardWidget 
-                title="Cost Estimation" 
-                size="medium"
-                icon={WIDGET_ICONS.COST_ESTIMATION}
-              >
-                <CostEstimationWidget
-                  totalCapex={totalCapex}
-                  totalOpex={totalOpex}
-                  capexEstimate={capexEstimate}
-                  opexEstimate={opexEstimate}
-                  isSmallSolution={isSmallSolution}
-                />
-              </DashboardWidget>
-
-              {/* Security visualization and Compliance Status */}
+              {/* Technical Implementation - remains last */}
               <DashboardWidget
-                title="Security Profile Visualization"
-                size="medium"
-                icon={WIDGET_ICONS.SECURITY_VISUALIZATION}
-              >
-                <RadarChart
-                  availability={availability}
-                  integrity={integrity}
-                  confidentiality={confidentiality}
-                />
-              </DashboardWidget>
-
-              <DashboardWidget 
-                title="Compliance Status" 
-                size="medium"
-                icon={WIDGET_ICONS.COMPLIANCE_STATUS}
-              >
-                <ComplianceStatusWidget
-                  securityLevels={{
-                    availability,
-                    integrity,
-                    confidentiality,
-                  }}
-                />
-              </DashboardWidget>
-
-              {/* Security Summary widget */}
-              <DashboardWidget 
-                title="Security Summary" 
-                size="medium"
-                icon={WIDGET_ICONS.SECURITY_SUMMARY}
-              >
-                <SecuritySummaryWidget securityLevel={overallSecurityLevel} />
-              </DashboardWidget>
-
-              {/* Technical Implementation */}
-              <DashboardWidget 
-                title="Technical Implementation" 
+                title="Technical Implementation"
                 size="full"
                 icon={WIDGET_ICONS.TECHNICAL_IMPLEMENTATION}
               >
