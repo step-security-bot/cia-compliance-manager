@@ -1,64 +1,127 @@
 # CIA Compliance Manager Test Plan
 
+## Testing Strategy Overview
+
+The testing strategy follows a layered approach focusing on different aspects of the application:
+
+1. **Smoke Tests**: Basic application functionality verification
+2. **Core Behaviors**: Key user interactions
+3. **Business Outcomes**: Tests focusing on business value features
+
 ## Test Categories
 
 ### 1. Smoke Tests
 
-- Basic application loading
-- Navigation functionality
-- Theme toggling
-- Basic UI elements presence
+Basic tests to verify that the application loads and core functionality is available.
 
-### 2. Functional Tests
+| Test            | Description                             | File                          |
+| --------------- | --------------------------------------- | ----------------------------- |
+| Dashboard Loads | Verifies application loads successfully | `smoke/dashboard-loads.cy.ts` |
 
-- Security level configuration
-- Widget content updates
-- Form interactions
-- Data visualization accuracy
+### 2. Core Behaviors
 
-### 3. Integration Tests
+Tests that verify key user interactions and functionality.
 
-- Data flow between components
-- End-to-end workflow testing
-- State management verification
+| Test                 | Description                            | File                                        |
+| -------------------- | -------------------------------------- | ------------------------------------------- |
+| Toggle Display Theme | Verifies theme switching functionality | `core-behaviors/toggle-display-theme.cy.ts` |
+| Set Security Levels  | Tests setting CIA security levels      | `core-behaviors/set-security-levels.cy.ts`  |
 
-## Test Environment Setup
+### 3. Business Outcomes
 
-### Local Development
+Tests that focus on business value and key outcomes for users.
 
-- Run: `npm run test:e2e`
-- Interactive mode: `npm run cypress:open`
+| Test                   | Description                     | File                                             |
+| ---------------------- | ------------------------------- | ------------------------------------------------ |
+| View Compliance Status | Tests compliance status updates | `business-outcomes/view-compliance-status.cy.ts` |
+| Review Security Impact | Tests impact analysis features  | `business-outcomes/review-security-impact.cy.ts` |
+| Assess Security Costs  | Tests cost estimation features  | `business-outcomes/assess-security-costs.cy.ts`  |
+
+## Test Execution Environment
+
+### Local Development Environment
+
+```bash
+# Run all tests
+npm run test:e2e
+
+# Open Cypress UI for interactive testing
+npm run cypress:open
+
+# Run specific test category
+npm run cypress:run -- --spec "cypress/e2e/smoke/*.cy.ts"
+```
 
 ### CI Environment
 
-- Run: `npm run test:e2e:ci`
-- Uses cypress.ci.config.js with only the most reliable tests
+Cypress tests run automatically in GitHub Actions:
+
+- On pull requests to main branch
+- On pushes to main branch
 
 ## Test Data Strategy
 
-- Use fixtures for test data (securityProfiles.json)
-- Use constants from appConstantsHelper.ts for UI text verification
-- Use Page Object Model for UI interactions
+- **App Constants**: UI text and security level values in `appConstantsHelper.ts`
+- **Security Profiles**: Predefined security configurations in fixtures
+- **Dynamic Data**: Generated during test execution when needed
 
-## Test Maintenance
+## Test Reporting Mechanisms
 
-- Update page objects when UI structure changes
-- Keep test data in fixtures up to date
-- Maintain constants in appConstantsHelper.ts
+### Local Reports
 
-## Test Reporting
+- Terminal output
+- Videos in `cypress/videos`
+- Screenshots in `cypress/screenshots` (on failure)
 
-- CI: JUnit reporter output to cypress/results/junit.xml
-- Local: Console output and video recordings
+### CI Reports
 
-## Test Execution Strategy
+- GitHub Actions artifacts:
+  - Test videos
+  - Screenshots of failures
+  - JUnit report files
 
-1. Run smoke tests first
-2. Run functional tests if smoke tests pass
-3. Run integration tests if functional tests pass
+## Test Maintenance Guidelines
 
-## Test Failure Analysis
+### When to Update Tests
 
-- Check screenshot in cypress/screenshots
-- Check video in cypress/videos
-- Check console logs for errors
+- UI changes that affect selectors
+- Business rule changes that affect expected outcomes
+- New features that need test coverage
+
+### Best Practices
+
+1. **Use data-testid attributes** for stable selectors
+2. **Isolate tests** for independent execution
+3. **Group related assertions** within a single test case
+4. **Follow AAA pattern**:
+   - Arrange: Set up test data and conditions
+   - Act: Perform the action being tested
+   - Assert: Verify the expected outcome
+
+### Selector Priority
+
+Use selectors in this priority order:
+
+1. `data-testid` attributes (most preferred)
+2. ARIA roles with accessible names
+3. Semantic HTML elements with accessible names
+4. CSS classes with known stable patterns
+5. Element hierarchy/structure (least preferred)
+
+## Test Extension Plan
+
+Priority areas for future test coverage:
+
+1. **Accessibility Testing**: Verify WCAG compliance
+2. **Mobile Responsiveness**: Test on different viewport sizes
+3. **Edge Cases**: Invalid inputs, boundary conditions
+4. **Performance Metrics**: Load times, interaction responsiveness
+
+## Continuous Improvement
+
+The testing strategy will evolve with:
+
+- Regular test coverage reviews
+- Performance analysis of test execution
+- Flaky test identification and stabilization
+- Integration with code quality metrics
