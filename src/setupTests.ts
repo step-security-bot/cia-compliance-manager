@@ -1,60 +1,100 @@
-// Clean up imports and fix syntax errors
+process.env.NODE_ENV = "test";
 
-import "@testing-library/jest-dom"; // This already extends expect
-import { vi, expect } from "vitest";
-import { configure } from "@testing-library/react";
-import { act } from "react";
-import { afterEach } from "vitest";
+import "@testing-library/jest-dom";
+import { vi, expect, afterEach } from "vitest";
 import { cleanup } from "@testing-library/react";
+import { configure } from "@testing-library/react";
 
 // Configure testing library
 configure({
   asyncUtilTimeout: 5000,
   computedStyleSupportsPseudoElements: false,
-  defaultHidden: true,
 });
 
 // Suppress act warnings
 const originalError = console.error;
 console.error = (...args) => {
-  if (/Warning.*not wrapped in act/.test(args[0])) {
-    return;
-  }
-  if (/Warning.*ReactDOMTestUtils.act/.test(args[0])) {
+  if (
+    typeof args[0] === "string" &&
+    (args[0].includes("act(...)") ||
+      args[0].includes("Warning: An update to") ||
+      args[0].includes("was not wrapped in act") ||
+      args[0].includes("Failed to create chart") ||
+      args[0].includes("can't acquire context"))
+  ) {
     return;
   }
   originalError.call(console, ...args);
 };
 
-// Make act available globally
-declare global {
-  namespace NodeJS {
-    interface Global {
-      act: typeof act;
-    }
-  }
+// Define interface for Chart.js mock
+interface MockChartInstance {
+  ctx: CanvasRenderingContext2D | null;
+  config: any;
+  data: any;
+  options: any;
+  canvas: HTMLCanvasElement | null;
+  update: () => void;
+  destroy: () => void;
+  resize: () => void;
 }
-(global as any).act = act;
 
-// Mock window.matchMedia
-Object.defineProperty(window, "matchMedia", {
-  writable: true,
-  value: vi.fn().mockImplementation((query) => ({
-    matches: false,
-    media: query,
-    onchange: null,
-    addListener: vi.fn(), // deprecated
-    removeListener: vi.fn(), // deprecated
-    addEventListener: vi.fn(),
-    removeEventListener: vi.fn(),
-    dispatchEvent: vi.fn(),
-  })),
+// Better Chart.js mock with proper typing
+vi.mock("chart.js/auto", () => {
+  return {
+    default: class MockChart implements MockChartInstance {
+      static register(): void {}
+      static defaults = {
+        font: {},
+        plugins: {},
+      };
+
+      ctx: CanvasRenderingContext2D | null;
+      config: any;
+      data: any;
+      options: any;
+      canvas: HTMLCanvasElement | null;
+
+      constructor(ctx: CanvasRenderingContext2D | null, config: any) {
+        this.ctx = ctx;
+        this.config = config;
+        this.data = config?.data || { datasets: [] };
+        this.options = config?.options || {};
+        this.canvas = ctx ? ctx.canvas : null;
+      }
+
+      update(): void {
+        // Mock implementation
+      }
+
+      destroy(): void {
+        // Mock implementation
+      }
+
+      resize(): void {
+        // Mock implementation
+      }
+    },
+  };
 });
 
-// Mock canvas with proper type assertions
-HTMLCanvasElement.prototype.getContext = vi.fn(() => {
-  const mockContext = {
-    canvas: { width: 100, height: 100 },
+// Ensure tests are isolated from each other
+afterEach(() => {
+  // Always clean up React components
+  cleanup();
+
+  // Reset all mocks between tests
+  vi.resetAllMocks();
+
+  // Make sure we're always using real timers after each test
+  vi.useRealTimers();
+});
+
+// Create a more complete canvas context mock
+const createCanvasMock = (): CanvasRenderingContext2D => {
+  const canvas = document.createElement("canvas");
+  return {
+    canvas,
     clearRect: vi.fn(),
     beginPath: vi.fn(),
     moveTo: vi.fn(),
@@ -62,84 +102,88 @@ HTMLCanvasElement.prototype.getContext = vi.fn(() => {
     stroke: vi.fn(),
     arc: vi.fn(),
     fill: vi.fn(),
-    // Add missing properties required by TypeScript for CanvasRenderingContext2D
+    measureText: vi.fn(() => ({ width: 0 })),
+    fillText: vi.fn(),
+    setTransform: vi.fn(),
+    drawImage: vi.fn(),
+    scale: vi.fn(),
+    rotate: vi.fn(),
+    save: vi.fn(),
+    restore: vi.fn(),
+    createLinearGradient: vi.fn(() => ({
+      addColorStop: vi.fn(),
+    })),
+    getImageData: vi.fn(() => ({
+      data: new Uint8ClampedArray(4),
+    })),
+    putImageData: vi.fn(),
+    fillRect: vi.fn(),
+    translate: vi.fn(),
+    // Required properties to satisfy TS interface
     globalAlpha: 1,
     globalCompositeOperation: "source-over",
-    drawImage: vi.fn(),
-    clip: vi.fn(),
-    // Add other required properties with mock values
+    imageSmoothingEnabled: true,
+    imageSmoothingQuality: "low",
     fillStyle: "#000",
     strokeStyle: "#000",
+    shadowBlur: 0,
+    shadowColor: "#000",
+    shadowOffsetX: 0,
+    shadowOffsetY: 0,
     lineWidth: 1,
     lineCap: "butt",
     lineJoin: "miter",
     miterLimit: 10,
+    lineDashOffset: 0,
     font: "10px sans-serif",
     textAlign: "start",
     textBaseline: "alphabetic",
     direction: "ltr",
-    imageSmoothingEnabled: true,
+    clip: vi.fn(),
+    isPointInPath: vi.fn(),
+    isPointInStroke: vi.fn(),
+    createPattern: vi.fn(),
+    createRadialGradient: vi.fn(() => ({
+      addColorStop: vi.fn(),
+    })),
+    setLineDash: vi.fn(),
+    getLineDash: vi.fn(() => []),
+    closePath: vi.fn(),
+    ellipse: vi.fn(),
+    rect: vi.fn(),
+    quadraticCurveTo: vi.fn(),
+    bezierCurveTo: vi.fn(),
+    strokeText: vi.fn(),
+    strokeRect: vi.fn(),
+    resetTransform: vi.fn(),
+    getTransform: vi.fn(),
   } as unknown as CanvasRenderingContext2D;
+};
 
-  return mockContext;
-}) as any;
+// Fix the canvas getContext mock with proper typing
+HTMLCanvasElement.prototype.getContext = vi.fn(() => createCanvasMock()) as any;
+
+// Simple matchMedia mock
+Object.defineProperty(window, "matchMedia", {
+  writable: true,
+  value: vi.fn().mockImplementation((query) => ({
+    matches: false,
+    media: query,
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+  })),
+});
 
 // Mock ResizeObserver
-global.ResizeObserver = vi.fn().mockImplementation(() => ({
+window.ResizeObserver = vi.fn().mockImplementation(() => ({
   observe: vi.fn(),
   unobserve: vi.fn(),
   disconnect: vi.fn(),
 }));
 
-// Silence console errors in tests
-console.error = vi.fn();
-
-// Automatically clean up after each test
-afterEach(() => {
-  cleanup();
-  vi.resetAllMocks();
+// Simple RAF implementation that doesn't rely on timers
+window.requestAnimationFrame = vi.fn((callback) => {
+  callback(0);
+  return 1;
 });
-
-// Mark environment-dependent code as covered to improve coverage stats
-// This is equivalent to adding /* c8 ignore start */ and /* c8 ignore end */ comments
-// in your source code
-if (process.env.NODE_ENV === "test") {
-  // This allows us to mark certain browser APIs as "covered" even if tests can't reach them
-  // Useful for environment checks like typeof window !== 'undefined'
-  window.VITEST_COVERAGE = true;
-}
-
-// Fix for missing expect.toHaveBeenCalled etc.
-expect.extend({
-  toHaveBeenCalled: (received) => {
-    const pass = received.mock.calls.length > 0;
-    if (pass) {
-      return {
-        message: () =>
-          `expected ${received.mock.calls.length} not to have been called`,
-        pass: true,
-      };
-    } else {
-      return {
-        message: () => `expected to have been called at least once`,
-        pass: false,
-      };
-    }
-  },
-  toHaveBeenCalledTimes: (received, times) => {
-    const pass = received.mock.calls.length === times;
-    if (pass) {
-      return {
-        message: () =>
-          `expected ${received.mock.calls.length} not to equal ${times}`,
-        pass: true,
-      };
-    } else {
-      return {
-        message: () =>
-          `expected ${received.mock.calls.length} to equal ${times}`,
-        pass: false,
-      };
-    }
-  },
-});
+window.cancelAnimationFrame = vi.fn();

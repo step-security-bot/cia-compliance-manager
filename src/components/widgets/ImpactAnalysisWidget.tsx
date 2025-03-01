@@ -60,7 +60,10 @@ const ImpactAnalysisWidget: React.FC<ImpactAnalysisWidgetProps> = ({
   };
 
   return (
-    <div className="space-y-3">
+    <div
+      className="space-y-3"
+      data-testid={`impact-analysis-${category.toLowerCase()}`}
+    >
       <div className="flex items-center mb-2">
         <span
           className={`inline-block w-3 h-3 rounded-full mr-2 ${
@@ -74,18 +77,32 @@ const ImpactAnalysisWidget: React.FC<ImpactAnalysisWidgetProps> = ({
               ? "bg-orange-500"
               : "bg-red-500"
           }`}
+          data-testid={`impact-level-indicator-${category.toLowerCase()}`}
         ></span>
-        <span className="text-sm font-medium">
+        <span
+          className="text-sm font-medium"
+          data-testid={`impact-level-text-${category.toLowerCase()}`}
+        >
           {level} {category}
         </span>
       </div>
 
       <div className="text-sm text-gray-600 dark:text-gray-300">
-        <p className="mb-2">{getImpactDescription()}</p>
-        <p className="font-medium text-sm mt-2">
+        <p
+          className="mb-2"
+          data-testid={`impact-description-${category.toLowerCase()}`}
+        >
+          {getImpactDescription()}
+        </p>
+        <p
+          className="font-medium text-sm mt-2"
+          data-testid="business-impact-heading"
+        >
           {UI_TEXT.LABELS.BUSINESS_IMPACT}
         </p>
-        <p>{getBusinessImpact()}</p>
+        <p data-testid={`business-impact-${category.toLowerCase()}`}>
+          {getBusinessImpact()}
+        </p>
       </div>
     </div>
   );

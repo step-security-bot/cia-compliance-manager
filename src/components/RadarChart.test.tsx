@@ -1,8 +1,8 @@
 import React from "react";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import RadarChart from "./RadarChart";
-import { vi } from "vitest";
+import { vi, describe, it, expect } from "vitest";
 
 // Mock Chart.js
 vi.mock("chart.js/auto", () => {
@@ -88,19 +88,48 @@ describe("RadarChart Component", () => {
     expect(screen.getByTestId("radar-chart")).toBeInTheDocument();
   });
 
-  it("handles component updates with new values", async () => {
+  it("handles component updates with new values", () => {
+    // Create a simple render without using fake timers
     const { rerender } = render(
-      <RadarChart availability="Low" integrity="Low" confidentiality="Low" />
+      <RadarChart
+        confidentiality="Low"
+        integrity="Moderate"
+        availability="High"
+      />
     );
 
-    // Update with new props
+    // Verify initial render worked
+    expect(screen.getByTestId("radar-chart-canvas")).toBeInTheDocument();
+    expect(screen.getByTestId("radar-confidentiality-value")).toHaveTextContent(
+      "Low"
+    );
+    expect(screen.getByTestId("radar-integrity-value")).toHaveTextContent(
+      "Moderate"
+    );
+    expect(screen.getByTestId("radar-availability-value")).toHaveTextContent(
+      "High"
+    );
+
+    // Re-render with new props
     rerender(
-      <RadarChart availability="High" integrity="High" confidentiality="High" />
+      <RadarChart
+        confidentiality="Very High"
+        integrity="High"
+        availability="Very High"
+      />
     );
 
-    await waitFor(() => {
-      expect(screen.getByTestId("radar-chart")).toBeInTheDocument();
-    });
+    // Verify the component updated properly
+    expect(screen.getByTestId("radar-chart-canvas")).toBeInTheDocument();
+    expect(screen.getByTestId("radar-confidentiality-value")).toHaveTextContent(
+      "Very High"
+    );
+    expect(screen.getByTestId("radar-integrity-value")).toHaveTextContent(
+      "High"
+    );
+    expect(screen.getByTestId("radar-availability-value")).toHaveTextContent(
+      "Very High"
+    );
   });
 
   it("handles extreme values properly", () => {

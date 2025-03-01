@@ -114,19 +114,28 @@ const ComplianceStatusWidget: React.FC<ComplianceStatusWidgetProps> = ({
   return (
     <div className="space-y-4">
       <div className="flex items-center">
-        <span className={`text-xl mr-2 ${getStatusColor()}`}>
+        <span
+          className={`text-xl mr-2 ${getStatusColor()}`}
+          data-testid="compliance-status-icon"
+        >
           {getStatusIcon()}
         </span>
-        <span className={`font-medium ${getStatusColor()}`}>
+        <span
+          className={`font-medium ${getStatusColor()}`}
+          data-testid="compliance-status-text"
+        >
           {overallStatus}
         </span>
       </div>
 
-      <div className="space-y-2">
+      <div className="space-y-2" data-testid="compliance-frameworks-list">
         {complianceFrameworks.map((framework) => (
           <div
             key={framework.name}
             className="flex justify-between items-center text-sm border-b border-gray-100 dark:border-gray-700 pb-1"
+            data-testid={`framework-${framework.name
+              .replace(/\s+/g, "-")
+              .toLowerCase()}`}
           >
             <div className="flex items-center">
               <span
@@ -135,12 +144,26 @@ const ComplianceStatusWidget: React.FC<ComplianceStatusWidgetProps> = ({
                     ? "text-green-500 dark:text-green-400 mr-2"
                     : "text-red-500 dark:text-red-400 mr-2"
                 }
+                data-testid={`framework-status-${framework.name
+                  .replace(/\s+/g, "-")
+                  .toLowerCase()}`}
               >
                 {framework.met ? UI_ICONS.STANDARD_COMPLIANCE : "✗"}
               </span>
-              <span>{framework.name}</span>
+              <span
+                data-testid={`framework-name-${framework.name
+                  .replace(/\s+/g, "-")
+                  .toLowerCase()}`}
+              >
+                {framework.name}
+              </span>
             </div>
-            <div className="text-xs text-gray-500 dark:text-gray-400 max-w-[60%] text-right">
+            <div
+              className="text-xs text-gray-500 dark:text-gray-400 max-w-[60%] text-right"
+              data-testid={`framework-description-${framework.name
+                .replace(/\s+/g, "-")
+                .toLowerCase()}`}
+            >
               {framework.description}
             </div>
           </div>
