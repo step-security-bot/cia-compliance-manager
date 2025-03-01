@@ -90,12 +90,10 @@ describe("Assess Security Costs", () => {
         );
         cy.wait(500);
 
-        // Verify CAPEX changed
+        // Verify CAPEX changed - fixed TypeScript error
         cy.get('[data-testid="capex-percentage"]')
           .invoke("text")
-          .should((newText) => {
-            expect(newText).not.to.eq(initialCapex);
-          });
+          .should("not.eq", initialCapex);
 
         // Verify other elements updated too
         cy.get('[data-testid="cost-analysis-text"]').should("not.be.empty");

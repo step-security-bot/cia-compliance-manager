@@ -139,12 +139,10 @@ describe("Set Security Levels", () => {
           .select(SECURITY_LEVELS.HIGH, { force: true });
         cy.wait(100);
 
-        // Compare with new description
+        // Compare with new description - fixed TypeScript error
         cy.get('[data-testid="availability-description"]')
           .invoke("text")
-          .should((newText) => {
-            expect(newText).not.to.eq(firstDescription);
-          });
+          .should("not.eq", firstDescription);
       });
   });
 

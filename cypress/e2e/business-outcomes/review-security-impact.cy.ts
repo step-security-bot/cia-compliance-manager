@@ -57,12 +57,10 @@ describe("Review Security Impact", () => {
         );
         cy.wait(300);
 
-        // Verify description changed
+        // Verify description changed - fixed TypeScript error
         cy.get('[data-testid="impact-description-integrity"]')
           .invoke("text")
-          .should((newText) => {
-            expect(newText).not.to.eq(initialDescription);
-          });
+          .should("not.eq", initialDescription);
       });
   });
 
