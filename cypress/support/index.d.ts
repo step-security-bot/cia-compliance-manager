@@ -73,5 +73,15 @@ declare namespace Cypress {
      * @example cy.logElementDetails('button.submit')
      */
     logElementDetails(selector: string): void;
+
+    /**
+     * Select a security level for a specific category
+     * @param category - The security category (availability, integrity, confidentiality)
+     * @param level - The security level to select
+     */
+    selectSecurityLevel(
+      category: "availability" | "integrity" | "confidentiality",
+      level: string
+    ): Chainable<Element>;
   }
 }
