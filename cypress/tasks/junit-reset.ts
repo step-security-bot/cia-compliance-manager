@@ -7,6 +7,7 @@ export const resetJunitResults = async () => {
     console.log(
       `Successfully reset JUnit results directory: ${junitReportDir}`
     );
+    return null; // Return null to indicate task completion
   } catch (err) {
     console.error(`Failed to reset JUnit results directory: ${err}`);
     throw err;

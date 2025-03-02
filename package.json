@@ -19,7 +19,7 @@
     "coverage": "vitest run --coverage",
     "cypress:open": "xvfb-run -a cypress open",
     "cypress:run": "xvfb-run -a cypress run",
-    "test:e2e": "start-server-and-test \"npm start\" http://localhost:5173 \"cypress run --reporter junit --reporter-options 'mochaFile=cypress/results/junit.xml'\"",
+    "test:e2e": "start-server-and-test \"npm start\" http://localhost:5173 \"cypress run --reporter junit --reporter-options 'mochaFile=cypress/results/[spec].xml'\"",
     "pretest:e2e": "bash .devcontainer/init-xvfb.sh",
     "cypress:install": "cypress install",
     "cypress:verify": "cypress verify",
