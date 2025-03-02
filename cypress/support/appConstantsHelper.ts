@@ -9,6 +9,15 @@ export const SECURITY_LEVELS = {
   VERY_HIGH: "Very High",
 };
 
+// Add RISK_LEVELS if it doesn't already exist
+export const RISK_LEVELS = {
+  CRITICAL: "Critical",
+  HIGH: "High",
+  MEDIUM: "Medium",
+  LOW: "Low",
+  NEGLIGIBLE: "Negligible",
+};
+
 // Description texts exactly as they appear in the application
 // These match the values in useCIAOptions.ts
 export const DESCRIPTIONS = {
