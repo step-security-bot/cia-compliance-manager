@@ -251,3 +251,12 @@ See the section about [deployment](https://vitejs.dev/guide/static-deploy.html) 
 You can learn more in the [Vite documentation](https://vitejs.dev/guide/).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Project Governance
+
+We're committed to making this project accessible, inclusive, and secure. Please review these important documents:
+
+- [Contributing Guidelines](CONTRIBUTING.md) - How to contribute code and documentation
+- [Code of Conduct](CODE_OF_CONDUCT.md) - Our standards for project participation
+- [Security Policy](SECURITY.md) - How to report security vulnerabilities
+- [License](LICENSE.md) - Project license details and terms
