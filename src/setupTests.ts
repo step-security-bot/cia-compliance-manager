@@ -1,7 +1,7 @@
 process.env.NODE_ENV = "test";
 
 import "@testing-library/jest-dom";
-import { vi, expect, afterEach } from "vitest";
+import { vi, expect, afterEach, beforeAll, afterAll } from "vitest";
 import { cleanup } from "@testing-library/react";
 import { configure } from "@testing-library/react";
 
@@ -11,16 +11,21 @@ configure({
   computedStyleSupportsPseudoElements: false,
 });
 
-// Suppress act warnings
+// Suppress console errors during tests but save the original for important errors
 const originalError = console.error;
 console.error = (...args) => {
+  // Ignore certain errors that are expected during tests
   if (
     typeof args[0] === "string" &&
     (args[0].includes("act(...)") ||
       args[0].includes("Warning: An update to") ||
       args[0].includes("was not wrapped in act") ||
       args[0].includes("Failed to create chart") ||
-      args[0].includes("can't acquire context"))
+      args[0].includes("can't acquire context") ||
+      args[0].includes("Warning.*validateDOMNesting") ||
+      args[0].includes("Warning.*ReactDOM.render is no longer supported") ||
+      args[0].includes("Warning.*ReactDOMTestUtils.act is deprecated") ||
+      args[0].includes("ReactDOMTestUtils.act"))
   ) {
     return;
   }
@@ -42,6 +47,7 @@ interface MockChartInstance {
 // Better Chart.js mock with proper typing
 vi.mock("chart.js/auto", () => {
   return {
+    __esModule: true,
     default: class MockChart implements MockChartInstance {
       static register(): void {}
       static defaults = {
@@ -77,6 +83,17 @@ vi.mock("chart.js/auto", () => {
     },
   };
 });
+
+// Mock chart.js for older imports
+vi.mock("chart.js", () => ({
+  Chart: class MockChart {
+    constructor() {}
+    update() {}
+    destroy() {}
+  },
+  // Fixed the spelling warning - this is correct as it's Chart.js API terminology
+  registerables: [],
+}));
 
 // Ensure tests are isolated from each other
 afterEach(() => {
@@ -123,7 +140,8 @@ const createCanvasMock = (): CanvasRenderingContext2D => {
     globalAlpha: 1,
     globalCompositeOperation: "source-over",
     imageSmoothingEnabled: true,
-    imageSmoothingQuality: "low",
+    // Fixed: Changed CanvasImageSmoothingQuality to ImageSmoothingQuality
+    imageSmoothingQuality: "low" as ImageSmoothingQuality,
     fillStyle: "#000",
     strokeStyle: "#000",
     shadowBlur: 0,
@@ -131,14 +149,14 @@ const createCanvasMock = (): CanvasRenderingContext2D => {
     shadowOffsetX: 0,
     shadowOffsetY: 0,
     lineWidth: 1,
-    lineCap: "butt",
-    lineJoin: "miter",
+    lineCap: "butt" as CanvasLineCap,
+    lineJoin: "miter" as CanvasLineJoin,
     miterLimit: 10,
     lineDashOffset: 0,
     font: "10px sans-serif",
-    textAlign: "start",
-    textBaseline: "alphabetic",
-    direction: "ltr",
+    textAlign: "start" as CanvasTextAlign,
+    textBaseline: "alphabetic" as CanvasTextBaseline,
+    direction: "ltr" as CanvasDirection,
     clip: vi.fn(),
     isPointInPath: vi.fn(),
     isPointInStroke: vi.fn(),
@@ -169,8 +187,12 @@ Object.defineProperty(window, "matchMedia", {
   value: vi.fn().mockImplementation((query) => ({
     matches: false,
     media: query,
+    onchange: null,
+    addListener: vi.fn(),
+    removeListener: vi.fn(),
     addEventListener: vi.fn(),
     removeEventListener: vi.fn(),
+    dispatchEvent: vi.fn(),
   })),
 });
 
@@ -187,3 +209,29 @@ window.requestAnimationFrame = vi.fn((callback) => {
   return 1;
 });
 window.cancelAnimationFrame = vi.fn();
+
+// Mock environment variables
+vi.stubGlobal("APP_VERSION", "0.0.0-test");
+
+// Setup global test environment
+beforeAll(() => {
+  // Mock window.matchMedia
+  Object.defineProperty(window, "matchMedia", {
+    writable: true,
+    value: vi.fn().mockImplementation((query) => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addListener: vi.fn(),
+      removeListener: vi.fn(),
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+      dispatchEvent: vi.fn(),
+    })),
+  });
+});
+
+// Cleanup after all tests
+afterAll(() => {
+  vi.clearAllMocks();
+});
