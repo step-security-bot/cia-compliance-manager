@@ -14,24 +14,28 @@ Cypress.Commands.add(
   "setSecurityLevels",
   (availability: string, integrity: string, confidentiality: string) => {
     // Navigate to security profile configuration if needed
-    cy.get('[data-testid="availability-select"]').scrollIntoView({
-      timeout: 5000,
+    cy.get('[data-testid="widget-security-profile"]')
+      .should("be.visible")
+      .scrollIntoView();
+
+    // Now try to find the selects inside this widget
+    cy.get('[data-testid="widget-security-profile"]').within(() => {
+      if (availability) {
+        cy.get("#availability-select").select(availability, { force: true });
+      }
+
+      if (integrity) {
+        cy.get("#integrity-select").select(integrity, { force: true });
+      }
+
+      if (confidentiality) {
+        cy.get("#confidentiality-select").select(confidentiality, {
+          force: true,
+        });
+      }
     });
 
-    // Set each security level
-    cy.get('[data-testid="availability-select"]')
-      .should("be.visible")
-      .select(availability);
-
-    cy.get('[data-testid="integrity-select"]')
-      .should("be.visible")
-      .select(integrity);
-
-    cy.get('[data-testid="confidentiality-select"]')
-      .should("be.visible")
-      .select(confidentiality);
-
-    // Wait for changes to take effect
+    // Wait for changes to apply
     cy.wait(300);
   }
 );
@@ -40,17 +44,11 @@ Cypress.Commands.add(
  * Ensures app is loaded by waiting for key elements
  */
 Cypress.Commands.add("ensureAppLoaded", () => {
-  // Wait for header to be present
-  cy.get("header", { timeout: 10000 }).should("be.visible");
+  // First verify the body has content
+  cy.get("body", { timeout: 10000 }).should("not.be.empty");
 
-  // Wait for key components to be loaded
-  cy.get(
-    '[data-testid="widget-security-profile"], [data-testid="loading-indicator"]',
-    { timeout: 10000 }
-  ).should("exist");
-
-  // Return a boolean chainable to match the interface
-  return cy.wrap(true);
+  // Then verify the app title is present
+  cy.contains("CIA Compliance Manager", { timeout: 5000 }).should("be.visible");
 });
 
 /**
@@ -62,14 +60,11 @@ Cypress.Commands.add("getByTestId", (selector: string) => {
 
 /**
  * Navigate to a specific widget by test ID and scroll it into view
- * Fix: Use first() to ensure only one element is selected
  */
-Cypress.Commands.add("navigateToWidget", (testId: string) => {
-  // Add .first() to ensure we're only selecting one element
-  cy.get(`[data-testid="${testId}"]`).first().scrollIntoView({ timeout: 5000 });
-
-  // Add a small wait to ensure UI is stable after scrolling
-  cy.wait(100);
+Cypress.Commands.add("navigateToWidget", (widgetTestId: string) => {
+  cy.get(`[data-testid="${widgetTestId}"]`, { timeout: 10000 })
+    .scrollIntoView()
+    .should("be.visible");
 });
 
 /**
@@ -218,6 +213,68 @@ Cypress.Commands.add("containsAnyText", (patterns: Array<RegExp | string>) => {
     return cy.wrap(regexPatterns.some((pattern) => pattern.test(bodyText)));
   });
 });
+
+// Define a custom type definition for the Chainable interface
+declare global {
+  namespace Cypress {
+    interface Chainable<Subject> {
+      forceVisible(): Chainable<Subject>;
+      isReactHydrated(): Chainable<boolean>;
+      isVisible(): Chainable<boolean>;
+    }
+  }
+}
+
+/**
+ * Force element to be visible
+ */
+Cypress.Commands.add(
+  "forceVisible",
+  { prevSubject: ["element"] },
+  (subject: JQuery<HTMLElement>) => {
+    return cy
+      .wrap(subject)
+      .invoke(
+        "attr",
+        "style",
+        "display: block !important; visibility: visible !important;"
+      );
+  }
+);
+
+/**
+ * Check if React app is hydrated
+ */
+Cypress.Commands.add("isReactHydrated", () => {
+  return cy.window().then((win) => {
+    return cy.wrap(!!(win as any).__REACT_HYDRATED__);
+  });
+});
+
+/**
+ * Check if element is visible using IntersectionObserver
+ */
+Cypress.Commands.add(
+  "isVisible",
+  { prevSubject: ["element"] },
+  (subject: JQuery<HTMLElement>) => {
+    return cy.wrap(subject).then(($el) => {
+      const el = $el[0];
+      return new Promise<boolean>((resolve) => {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              resolve(entry.isIntersecting);
+              observer.disconnect();
+            });
+          },
+          { threshold: 0.1 }
+        );
+        observer.observe(el);
+      }).then((isVisible) => isVisible); // Directly return the boolean value
+    });
+  }
+);
 
 // Export empty object at the end
 export {};

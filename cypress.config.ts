@@ -1,39 +1,56 @@
 import { defineConfig } from "cypress";
-import { junitMerger } from "./cypress/support/plugins/junit-merger";
+import vitePreprocessor from "cypress-vite";
+import { resolve } from "path";
+import { resetJunitResults } from "./cypress/tasks/junit-reset";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = resolve(fileURLToPath(new URL(".", import.meta.url)));
 
 export default defineConfig({
+  experimentalMemoryManagement: true,
+  video: true,
+  screenshotOnRunFailure: true,
+  trashAssetsBeforeRuns: true,
+  viewportWidth: 1280,
+  viewportHeight: 720,
+  retries: {
+    runMode: 1,
+    openMode: 0,
+  },
   e2e: {
-    baseUrl: "http://localhost:5173", // Updated to match Vite's default port
-    setupNodeEvents(on, config) {
-      // Register the JUnit merger plugin
-      junitMerger(on, config);
-
-      // Don't explicitly return config to avoid TypeScript error
-    },
+    baseUrl: "http://localhost:5173",
     specPattern: "cypress/e2e/**/*.cy.{js,jsx,ts,tsx}",
     supportFile: "cypress/support/e2e.ts",
-    video: true,
-    screenshotOnRunFailure: true,
-    defaultCommandTimeout: 15000,
-    pageLoadTimeout: 30000,
-    requestTimeout: 15000,
-    responseTimeout: 30000,
-    chromeWebSecurity: false,
-    viewportWidth: 1280,
-    viewportHeight: 720,
-    retries: {
-      runMode: 2,
-      openMode: 0,
+    testIsolation: false,
+    setupNodeEvents(on, config) {
+      // implement node event listeners here
+      on("task", {
+        resetJunitResults: resetJunitResults,
+      });
+      on(
+        "file:preprocessor",
+        vitePreprocessor({
+          configFile: resolve(__dirname, "./vite.config.ts"),
+          // options passed to vite
+          // this is an example that shows how to configure Vite to pass
+          // command line arguments through to the test
+          // pass command line argument y through to the test like this:
+          // `cypress run --env y=true`
+          // and access it like this:
+          // `Cypress.env('y')`
+          // key: config.env.y,
+        })
+      );
     },
-    experimentalMemoryManagement: true,
-    waitForAnimations: true,
-    animationDistanceThreshold: 50,
   },
-  reporter: "junit",
-  reporterOptions: {
-    mochaFile: "cypress/results/junit.xml",
-    toConsole: true,
+  component: {
+    devServer: {
+      framework: "react",
+      bundler: "vite",
+    },
   },
-  video: false,
-  screenshotOnRunFailure: true,
+  // Add these configurations
+  waitForAnimations: false,
+  defaultCommandTimeout: 15000,
 });

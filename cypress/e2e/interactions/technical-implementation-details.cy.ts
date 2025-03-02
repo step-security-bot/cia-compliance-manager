@@ -37,20 +37,18 @@ describe("Technical Implementation Details", () => {
     cy.get('[data-testid="integrity-tab"]').click();
 
     // Should see integrity level indicator and technical details
-    cy.get('[data-testid$="-level-indicator-value"]').contains(
-      /low|moderate|high|none|very high/i,
-      { matchCase: false }
-    );
+    cy.get('[data-testid$="-level-indicator-value"]', { timeout: 10000 })
+      .should("be.visible") // Ensure the element is visible
+      .contains(/low|moderate|high|none|very high/i, { matchCase: false });
     cy.get('[data-testid="technical-description"]').should("be.visible");
 
     // Click on confidentiality tab
     cy.get('[data-testid="confidentiality-tab"]').click();
 
     // Should see confidentiality level indicator
-    cy.get('[data-testid$="-level-indicator-value"]').contains(
-      /low|moderate|high|none|very high/i,
-      { matchCase: false }
-    );
+    cy.get('[data-testid$="-level-indicator-value"]', { timeout: 10000 })
+      .should("be.visible") // Ensure the element is visible
+      .contains(/low|moderate|high|none|very high/i, { matchCase: false });
   });
 
   it("shows implementation steps", () => {
@@ -80,7 +78,8 @@ describe("Technical Implementation Details", () => {
 
     // Get initial technical description
     let initialDescription = "";
-    cy.get('[data-testid="technical-description"]')
+    cy.get('[data-testid="technical-description"]', { timeout: 10000 })
+      .should("be.visible") // Ensure the element is visible
       .invoke("text")
       .then((text) => {
         initialDescription = text;
@@ -96,12 +95,15 @@ describe("Technical Implementation Details", () => {
         cy.navigateToWidget("widget-technical-implementation");
 
         // Verify description changed
-        cy.get('[data-testid="technical-description"]')
+        cy.get('[data-testid="technical-description"]', { timeout: 10000 })
+          .should("be.visible") // Ensure the element is visible
           .invoke("text")
           .should("not.eq", initialDescription);
 
         // Check level indicator shows High
-        cy.get('[data-testid$="-level-indicator-value"]').contains("High");
+        cy.get('[data-testid$="-level-indicator-value"]', { timeout: 10000 })
+          .should("be.visible") // Ensure the element is visible
+          .contains("High");
       });
   });
 

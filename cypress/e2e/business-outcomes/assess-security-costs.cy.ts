@@ -47,7 +47,8 @@ describe("Assess Security Costs", () => {
 
     // Get initial CAPEX value
     let initialCapex = "";
-    cy.get('[data-testid="capex-estimate-value-value"]')
+    cy.get('[data-testid="capex-estimate-value-value"]', { timeout: 10000 })
+      .should("be.visible") // Ensure the element is visible
       .invoke("text")
       .then((text) => {
         initialCapex = text;
@@ -61,7 +62,8 @@ describe("Assess Security Costs", () => {
 
         // Navigate back to cost estimation and check values changed
         cy.navigateToWidget("widget-cost-estimation");
-        cy.get('[data-testid="capex-estimate-value-value"]')
+        cy.get('[data-testid="capex-estimate-value-value"]', { timeout: 10000 })
+          .should("be.visible") // Ensure the element is visible
           .invoke("text")
           .should("not.eq", initialCapex);
       });

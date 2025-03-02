@@ -15,7 +15,10 @@ describe("Widget Interactions", () => {
 
   it("verifies TechnicalDetailsWidget tab interactions", () => {
     // Use direct selector with first()
-    cy.get('[data-testid="widget-technical-implementation"]')
+    cy.get('[data-testid="widget-technical-implementation"]', {
+      timeout: 10000,
+    })
+      .should("be.visible") // Ensure the widget is visible
       .first()
       .scrollIntoView();
     cy.wait(300);
@@ -42,7 +45,10 @@ describe("Widget Interactions", () => {
 
   it("verifies BusinessImpactAnalysisWidget contents", () => {
     // Use direct selector with first()
-    cy.get('[data-testid="widget-business-impact-analysis"]')
+    cy.get('[data-testid="widget-business-impact-analysis"]', {
+      timeout: 10000,
+    })
+      .should("be.visible") // Ensure the widget is visible
       .first()
       .scrollIntoView();
     cy.wait(300);
