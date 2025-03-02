@@ -9,7 +9,7 @@ import {
   SECURITY_LEVEL_COLORS,
   SecurityLevelKey,
   ROI_ESTIMATES,
-  DETAILED_VALUE_POINTS, // Add this missing import
+  DETAILED_VALUE_POINTS,
 } from "../../constants/appConstants";
 import { BUSINESS_KEY_BENEFITS } from "../../constants";
 import {
@@ -245,6 +245,9 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
   const businessImpact = getBusinessImpact();
   const compositeDescription = getCompositeDescription();
 
+  // Display the ROI value in the component regardless of expanded state
+  const roiValueFormatted = roiEstimate || "N/A";
+
   return (
     <div className="space-y-4" data-testid="security-summary-container">
       {/* Title and security level indicator */}
@@ -305,6 +308,21 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
         >
           {compositeDescription}
         </p>
+
+        {/* Add a ROI summary here for easier testing */}
+        <div className="mt-3 pt-2 border-t border-gray-100 dark:border-gray-700">
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-500 dark:text-gray-400">
+              Est. ROI:
+            </span>
+            <span
+              className="text-sm font-medium"
+              data-testid="roi-estimate-summary"
+            >
+              {roiValueFormatted}
+            </span>
+          </div>
+        </div>
       </div>
 
       {/* Technical Implementation - Expandable */}
@@ -313,6 +331,7 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
           onClick={() => toggleSection("technical")}
           className="flex justify-between items-center w-full text-left text-sm font-medium text-gray-700 dark:text-gray-300"
           aria-expanded={expandedSections.technical}
+          data-testid="technical-section-toggle"
         >
           <div className="flex items-center">
             <span className="mr-2">⚙️</span>
@@ -331,26 +350,45 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
         </button>
 
         {expandedSections.technical && (
-          <div className="mt-3 space-y-3" style={animationStyles.fadeIn}>
+          <div
+            className="mt-3 space-y-3"
+            style={animationStyles.fadeIn}
+            data-testid="technical-details-section"
+          >
             <div className="p-3 bg-gray-50 dark:bg-gray-700 rounded border border-gray-100 dark:border-gray-600">
-              <h5 className="text-xs font-semibold mb-1 flex items-center">
+              <h5
+                className="text-xs font-semibold mb-1 flex items-center"
+                data-testid="availability-tech-heading"
+              >
                 <span className="mr-1">⏱️</span> Availability
               </h5>
-              <p className="text-sm">{technicalDetails.availability}</p>
+              <p className="text-sm" data-testid="availability-tech-details">
+                {technicalDetails.availability}
+              </p>
             </div>
 
             <div className="p-3 bg-gray-50 dark:bg-gray-700 rounded border border-gray-100 dark:border-gray-600">
-              <h5 className="text-xs font-semibold mb-1 flex items-center">
+              <h5
+                className="text-xs font-semibold mb-1 flex items-center"
+                data-testid="integrity-tech-heading"
+              >
                 <span className="mr-1">🔐</span> Integrity
               </h5>
-              <p className="text-sm">{technicalDetails.integrity}</p>
+              <p className="text-sm" data-testid="integrity-tech-details">
+                {technicalDetails.integrity}
+              </p>
             </div>
 
             <div className="p-3 bg-gray-50 dark:bg-gray-700 rounded border border-gray-100 dark:border-gray-600">
-              <h5 className="text-xs font-semibold mb-1 flex items-center">
+              <h5
+                className="text-xs font-semibold mb-1 flex items-center"
+                data-testid="confidentiality-tech-heading"
+              >
                 <span className="mr-1">🔏</span> Confidentiality
               </h5>
-              <p className="text-sm">{technicalDetails.confidentiality}</p>
+              <p className="text-sm" data-testid="confidentiality-tech-details">
+                {technicalDetails.confidentiality}
+              </p>
             </div>
           </div>
         )}
@@ -362,6 +400,7 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
           onClick={() => toggleSection("value")}
           className="flex justify-between items-center w-full text-left text-sm font-medium text-gray-700 dark:text-gray-300"
           aria-expanded={expandedSections.value}
+          data-testid="business-impact-toggle"
         >
           <div className="flex items-center">
             <span className="mr-2">📊</span>
@@ -380,26 +419,48 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
         </button>
 
         {expandedSections.value && (
-          <div className="mt-3 space-y-3" style={animationStyles.fadeIn}>
+          <div
+            className="mt-3 space-y-3"
+            style={animationStyles.fadeIn}
+            data-testid="business-impact-section"
+          >
             <div className="p-3 bg-gray-50 dark:bg-gray-700 rounded border border-gray-100 dark:border-gray-600">
-              <h5 className="text-xs font-semibold mb-1 flex items-center">
+              <h5
+                className="text-xs font-semibold mb-1 flex items-center"
+                data-testid="availability-impact-heading"
+              >
                 <span className="mr-1">⏱️</span> Availability Impact
               </h5>
-              <p className="text-sm">{businessImpact.availability}</p>
+              <p className="text-sm" data-testid="availability-impact-details">
+                {businessImpact.availability}
+              </p>
             </div>
 
             <div className="p-3 bg-gray-50 dark:bg-gray-700 rounded border border-gray-100 dark:border-gray-600">
-              <h5 className="text-xs font-semibold mb-1 flex items-center">
+              <h5
+                className="text-xs font-semibold mb-1 flex items-center"
+                data-testid="integrity-impact-heading"
+              >
                 <span className="mr-1">🔐</span> Integrity Impact
               </h5>
-              <p className="text-sm">{businessImpact.integrity}</p>
+              <p className="text-sm" data-testid="integrity-impact-details">
+                {businessImpact.integrity}
+              </p>
             </div>
 
             <div className="p-3 bg-gray-50 dark:bg-gray-700 rounded border border-gray-100 dark:border-gray-600">
-              <h5 className="text-xs font-semibold mb-1 flex items-center">
+              <h5
+                className="text-xs font-semibold mb-1 flex items-center"
+                data-testid="confidentiality-impact-heading"
+              >
                 <span className="mr-1">🔏</span> Confidentiality Impact
               </h5>
-              <p className="text-sm">{businessImpact.confidentiality}</p>
+              <p
+                className="text-sm"
+                data-testid="confidentiality-impact-details"
+              >
+                {businessImpact.confidentiality}
+              </p>
             </div>
           </div>
         )}
@@ -411,6 +472,7 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
           onClick={() => toggleSection("metrics")}
           className="flex justify-between items-center w-full text-left text-sm font-medium text-gray-700 dark:text-gray-300"
           aria-expanded={expandedSections.metrics}
+          data-testid="metrics-toggle"
         >
           <div className="flex items-center">
             <span className="mr-2">📈</span>
@@ -429,7 +491,11 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
         </button>
 
         {expandedSections.metrics && (
-          <div className="mt-3" style={animationStyles.fadeIn}>
+          <div
+            className="mt-3"
+            style={animationStyles.fadeIn}
+            data-testid="metrics-section"
+          >
             <div className="grid grid-cols-2 gap-2 mb-3">
               <div className="p-3 bg-gray-50 dark:bg-gray-700 rounded border border-gray-100 dark:border-gray-600">
                 <h5 className="text-xs text-gray-500 dark:text-gray-400">
@@ -482,15 +548,22 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
 
       {/* Key Benefits */}
       <div className="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
-        <h4 className="text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">
+        <h4
+          className="text-sm font-medium mb-2 text-gray-700 dark:text-gray-300"
+          data-testid="key-benefits-heading"
+        >
           Key Benefits
         </h4>
         {keyBenefits.length > 0 ? (
-          <ul className="list-disc pl-5 space-y-1">
+          <ul
+            className="list-disc pl-5 space-y-1"
+            data-testid="key-benefits-list"
+          >
             {keyBenefits.map((benefit, index) => (
               <li
                 key={index}
                 className="text-sm text-gray-600 dark:text-gray-300"
+                data-testid={`key-benefit-${index}`}
               >
                 {benefit}
               </li>
@@ -523,50 +596,80 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
           {/* Keep the existing badges */}
           {securityLevel === "None" && (
             <>
-              <span className="px-2 py-1 bg-red-100 text-red-800 text-xs font-medium rounded dark:bg-red-900 dark:text-red-300">
+              <span
+                className="px-2 py-1 bg-red-100 text-red-800 text-xs font-medium rounded dark:bg-red-900 dark:text-red-300"
+                data-testid="badge-high-risk"
+              >
                 High Risk
               </span>
-              <span className="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-medium rounded dark:bg-yellow-900 dark:text-yellow-300">
+              <span
+                className="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-medium rounded dark:bg-yellow-900 dark:text-yellow-300"
+                data-testid="badge-not-recommended"
+              >
                 Not Recommended
               </span>
             </>
           )}
           {securityLevel === "Low" && (
             <>
-              <span className="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-medium rounded dark:bg-yellow-900 dark:text-yellow-300">
+              <span
+                className="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-medium rounded dark:bg-yellow-900 dark:text-yellow-300"
+                data-testid="badge-limited-protection"
+              >
                 Limited Protection
               </span>
-              <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded dark:bg-blue-900 dark:text-blue-300">
+              <span
+                className="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded dark:bg-blue-900 dark:text-blue-300"
+                data-testid="badge-public-data-only"
+              >
                 Public Data Only
               </span>
             </>
           )}
           {securityLevel === "Moderate" && (
             <>
-              <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded dark:bg-blue-900 dark:text-blue-300">
+              <span
+                className="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded dark:bg-blue-900 dark:text-blue-300"
+                data-testid="badge-compliance-ready"
+              >
                 Compliance Ready
               </span>
-              <span className="px-2 py-1 bg-green-100 text-green-800 text-xs font-medium rounded dark:bg-green-900 dark:text-green-300">
+              <span
+                className="px-2 py-1 bg-green-100 text-green-800 text-xs font-medium rounded dark:bg-green-900 dark:text-green-300"
+                data-testid="badge-good-balance"
+              >
                 Good Balance
               </span>
             </>
           )}
           {securityLevel === "High" && (
             <>
-              <span className="px-2 py-1 bg-green-100 text-green-800 text-xs font-medium rounded dark:bg-green-900 dark:text-green-300">
+              <span
+                className="px-2 py-1 bg-green-100 text-green-800 text-xs font-medium rounded dark:bg-green-900 dark:text-green-300"
+                data-testid="badge-strong-protection"
+              >
                 Strong Protection
               </span>
-              <span className="px-2 py-1 bg-purple-100 text-purple-800 text-xs font-medium rounded dark:bg-purple-900 dark:text-purple-300">
+              <span
+                className="px-2 py-1 bg-purple-100 text-purple-800 text-xs font-medium rounded dark:bg-purple-900 dark:text-purple-300"
+                data-testid="badge-sensitive-data-ready"
+              >
                 Sensitive Data Ready
               </span>
             </>
           )}
           {securityLevel === "Very High" && (
             <>
-              <span className="px-2 py-1 bg-indigo-100 text-indigo-800 text-xs font-medium rounded dark:bg-indigo-900 dark:text-indigo-300">
+              <span
+                className="px-2 py-1 bg-indigo-100 text-indigo-800 text-xs font-medium rounded dark:bg-indigo-900 dark:text-indigo-300"
+                data-testid="badge-maximum-security"
+              >
                 Maximum Security
               </span>
-              <span className="px-2 py-1 bg-purple-100 text-purple-800 text-xs font-medium rounded dark:bg-purple-900 dark:text-purple-300">
+              <span
+                className="px-2 py-1 bg-purple-100 text-purple-800 text-xs font-medium rounded dark:bg-purple-900 dark:text-purple-300"
+                data-testid="badge-mission-critical"
+              >
                 Mission Critical
               </span>
             </>
