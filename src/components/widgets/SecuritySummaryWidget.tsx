@@ -369,6 +369,7 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
           className="flex justify-between items-center w-full text-left text-sm font-medium text-gray-700 dark:text-gray-300"
           aria-expanded={expandedSections.technical}
           data-testid="technical-section-toggle"
+          aria-controls="technical-details-section"
         >
           <div className="flex items-center">
             <span className="mr-2">⚙️</span>
@@ -391,6 +392,7 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
             className="mt-3 space-y-3"
             style={animationStyles.fadeIn}
             data-testid="technical-details-section"
+            id="technical-details-section"
           >
             <div className="p-3 bg-gray-50 dark:bg-gray-700 rounded border border-gray-100 dark:border-gray-600">
               <h5

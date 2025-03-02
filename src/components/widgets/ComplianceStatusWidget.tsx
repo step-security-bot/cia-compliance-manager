@@ -214,7 +214,8 @@ const ComplianceStatusWidget: React.FC<ComplianceStatusWidgetProps> = ({
             testId="compliance-status-badge"
             size="md"
           >
-            {overallStatus}
+            {/* Add this span with the required testId */}
+            <span data-testid="compliance-status-text">{overallStatus}</span>
           </StatusBadge>
         </div>
 
@@ -227,7 +228,11 @@ const ComplianceStatusWidget: React.FC<ComplianceStatusWidgetProps> = ({
       </div>
 
       {/* Add visual progress bar with improved styling */}
-      <div className="bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+      <div
+        className="bg-gray-200 dark:bg-gray-700 rounded-full h-2.5"
+        role="progressbar"
+        aria-label="Compliance level progress"
+      >
         <div
           className={`h-2.5 rounded-full ${
             meetsHighCompliance
@@ -243,8 +248,7 @@ const ComplianceStatusWidget: React.FC<ComplianceStatusWidgetProps> = ({
           aria-valuenow={getCompliancePercentage()}
           aria-valuemin={0}
           aria-valuemax={100}
-          aria-label="Compliance level progress indicator"
-          role="progressbar"
+          aria-label={`Compliance level: ${overallStatus} (${getCompliancePercentage()}%)`}
         ></div>
       </div>
 

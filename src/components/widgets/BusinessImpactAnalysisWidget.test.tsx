@@ -117,35 +117,49 @@ describe("BusinessImpactAnalysisWidget", () => {
     expect(screen.queryByTestId("business-benefits")).not.toBeInTheDocument();
   });
 
-  it("toggles between considerations and benefits tabs", async () => {
-    // Setup userEvent
+  it("toggles between considerations and benefits tabs with correct ARIA attributes", async () => {
     const user = userEvent.setup();
 
     render(
       <BusinessImpactAnalysisWidget
         category="Availability"
-        level="None"
+        level="Moderate" // Use a level that likely has both considerations and benefits
         options={availabilityOptions}
       />
     );
 
-    // First verify considerations tab is visible (default)
+    // Check initial ARIA attributes
+    const considerationsTab = screen.getByTestId("tab-considerations");
+    const benefitsTab = screen.getByTestId("tab-benefits");
+
+    expect(considerationsTab).toHaveAttribute("aria-selected", "true");
+    expect(benefitsTab).toHaveAttribute("aria-selected", "false");
+
+    // Initial panel visibility
     expect(screen.getByTestId("business-considerations")).toBeInTheDocument();
+    expect(screen.queryByTestId("business-benefits")).not.toBeInTheDocument();
 
-    // Click the benefits tab and wait for state update
-    await user.click(screen.getByTestId("tab-benefits"));
+    // Click benefits tab
+    await user.click(benefitsTab);
 
-    // Wait for the benefits tab content to appear
+    // Check updated ARIA attributes
+    expect(considerationsTab).toHaveAttribute("aria-selected", "false");
+    expect(benefitsTab).toHaveAttribute("aria-selected", "true");
+
+    // Check panel visibility after switching
     await waitFor(() => {
+      expect(
+        screen.queryByTestId("business-considerations")
+      ).not.toBeInTheDocument();
       expect(screen.getByTestId("business-benefits")).toBeInTheDocument();
     });
 
-    // Verify we can switch back to considerations
-    await user.click(screen.getByTestId("tab-considerations"));
-
-    await waitFor(() => {
-      expect(screen.getByTestId("business-considerations")).toBeInTheDocument();
-    });
+    // Check that the benefits tab content references the right ID
+    expect(screen.getByTestId("business-benefits")).toHaveAttribute(
+      "id",
+      "panel-benefits"
+    );
+    expect(benefitsTab).toHaveAttribute("aria-controls", "panel-benefits");
   });
 
   // New tests for better coverage

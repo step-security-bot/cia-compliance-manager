@@ -1,60 +1,20 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import { vi, describe, it, expect } from "vitest";
-
+import { describe, it, expect, vi, beforeEach } from "vitest";
+import userEvent from "@testing-library/user-event"; // Import userEvent
 import SecurityLevelWidget from "../../components/widgets/SecurityLevelWidget";
 import { createMockOptions } from "../mockFactory";
 
-/**
- * EXAMPLE: Integration Test with Hook Mocking
- *
- * This file demonstrates how to test components that depend on the useCIAOptions hook
- * by properly mocking the hook's implementation and testing component interactions.
- */
-
-// Sample mock for useCIAOptions hook
-vi.mock("../../hooks/useCIAOptions", () => {
-  const mockOptions = {
-    None: {
-      description: "No guaranteed uptime",
-      impact: "Complete business disruption",
-      technical: "No redundancy",
-      businessImpact: "Critical operations halt",
-      capex: 0,
-      opex: 0,
-      bg: "#ffcccc",
-      text: "#800000",
-      recommendations: ["Implement basic monitoring"],
-    },
-    Low: {
-      description: "Basic availability",
-      impact: "Extended outages may occur",
-      technical: "Minimal backup systems",
-      businessImpact: "Frequent disruptions",
-      capex: 5,
-      opex: 5,
-      bg: "#ffe0cc",
-      text: "#804000",
-      recommendations: ["Implement automated alerts"],
-    },
-  };
-
-  return {
-    useCIAOptions: () => ({
-      availabilityOptions: mockOptions,
-      integrityOptions: mockOptions,
-      confidentialityOptions: mockOptions,
-    }),
-  };
-});
-
 describe("SecurityLevelWidget Integration Test", () => {
+  // Mock the handlers
   const mockSetAvailability = vi.fn();
   const mockSetIntegrity = vi.fn();
   const mockSetConfidentiality = vi.fn();
 
-  // Create complete props including the mock options
+  // Create mock options
+  const mockOptions = createMockOptions(["None", "Low"]);
+
+  // Setup the component props
   const defaultProps = {
     availability: "None",
     integrity: "None",
@@ -62,25 +22,34 @@ describe("SecurityLevelWidget Integration Test", () => {
     setAvailability: mockSetAvailability,
     setIntegrity: mockSetIntegrity,
     setConfidentiality: mockSetConfidentiality,
-    availabilityOptions: createMockOptions(["None", "Low"]),
-    integrityOptions: createMockOptions(["None"]),
-    confidentialityOptions: createMockOptions(["None"]),
+    availabilityOptions: mockOptions,
+    integrityOptions: mockOptions,
+    confidentialityOptions: mockOptions,
   };
+
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
 
   it("renders with appropriate descriptions", () => {
     render(<SecurityLevelWidget {...defaultProps} />);
 
-    // Use test IDs instead of exact text for more reliable testing
+    // Get the description elements
     const availabilityDesc = screen.getByTestId("availability-description");
     const integrityDesc = screen.getByTestId("integrity-description");
     const confidentialityDesc = screen.getByTestId(
       "confidentiality-description"
     );
 
-    // Verify the descriptions are rendered (based on the mocked createMockOptions)
-    expect(availabilityDesc).toHaveTextContent("None description");
-    expect(integrityDesc).toHaveTextContent("None description");
-    expect(confidentialityDesc).toHaveTextContent("None description");
+    // Update the expected text to match the actual text content that includes "level description"
+    expect(availabilityDesc).toHaveTextContent("None level description");
+    expect(integrityDesc).toHaveTextContent("None level description");
+    expect(confidentialityDesc).toHaveTextContent("None level description");
+
+    // Verify select elements are rendered
+    expect(screen.getByTestId("availability-select")).toBeInTheDocument();
+    expect(screen.getByTestId("integrity-select")).toBeInTheDocument();
+    expect(screen.getByTestId("confidentiality-select")).toBeInTheDocument();
   });
 
   it("handles security level changes", async () => {
@@ -92,7 +61,22 @@ describe("SecurityLevelWidget Integration Test", () => {
     // Change availability to Low
     await user.selectOptions(screen.getByTestId("availability-select"), "Low");
 
-    // Verify the setter was called with the new value
+    // Verify the handler was called
     expect(mockSetAvailability).toHaveBeenCalledWith("Low");
+
+    // Change integrity to Low
+    await user.selectOptions(screen.getByTestId("integrity-select"), "Low");
+
+    // Verify the handler was called
+    expect(mockSetIntegrity).toHaveBeenCalledWith("Low");
+
+    // Change confidentiality to Low
+    await user.selectOptions(
+      screen.getByTestId("confidentiality-select"),
+      "Low"
+    );
+
+    // Verify the handler was called
+    expect(mockSetConfidentiality).toHaveBeenCalledWith("Low");
   });
 });

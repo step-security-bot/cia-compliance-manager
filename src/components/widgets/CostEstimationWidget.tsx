@@ -152,7 +152,7 @@ const CostEstimationWidget: React.FC<CostEstimationWidgetProps> = ({
                 value={formatCurrency(capexEstimate)}
                 variant="primary"
                 size="sm"
-                testId="capex-estimate"
+                testId="capex-estimate-value" // Ensure consistent testId with unique "-value" suffix
               />
             </div>
           }
@@ -199,7 +199,7 @@ const CostEstimationWidget: React.FC<CostEstimationWidgetProps> = ({
                 value={formatCurrency(opexEstimate)}
                 variant="primary"
                 size="sm"
-                testId="opex-estimate"
+                testId="opex-estimate-value" // Ensure consistent testId with unique "-value" suffix
               />
               {monthlyOpex && (
                 <span

@@ -130,8 +130,25 @@ const BusinessImpactAnalysisWidget: React.FC<
 
   // Helper to get icon for impact type
   const getImpactIcon = (type: string): string => {
-    const typeKey = type.toUpperCase() as keyof typeof BUSINESS_IMPACT_ICONS;
-    return BUSINESS_IMPACT_ICONS[typeKey] || BUSINESS_IMPACT_ICONS.NEUTRAL;
+    // Normalize the type string to handle different casings
+    const normalizedType = type.toUpperCase();
+
+    // Map to the appropriate icon
+    if (normalizedType.includes("FINANCIAL"))
+      return enhancedIcons.IMPACT_TYPES.FINANCIAL;
+    if (normalizedType.includes("OPERATION"))
+      return enhancedIcons.IMPACT_TYPES.OPERATIONAL;
+    if (normalizedType.includes("REPUTATION"))
+      return enhancedIcons.IMPACT_TYPES.REPUTATIONAL;
+    if (normalizedType.includes("REGUL"))
+      return enhancedIcons.IMPACT_TYPES.REGULATORY;
+    if (normalizedType.includes("STRATEGIC"))
+      return enhancedIcons.IMPACT_TYPES.STRATEGIC;
+    if (normalizedType.includes("SECURITY"))
+      return enhancedIcons.IMPACT_TYPES.SECURITY;
+
+    // Default icon if no match
+    return enhancedIcons.IMPACT_TYPES.OPERATIONAL;
   };
 
   const considerations = getBusinessConsiderations();

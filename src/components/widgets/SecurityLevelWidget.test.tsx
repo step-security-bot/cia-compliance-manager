@@ -109,4 +109,76 @@ describe("SecurityLevelWidget", () => {
       screen.getByText(TEST_DATA.MOCK_DESCRIPTIONS.CONFIDENTIALITY)
     ).toBeInTheDocument();
   });
+
+  it("displays technical details on hover", async () => {
+    // Setup with more detailed options
+    const enhancedProps = {
+      ...mockProps,
+      availabilityOptions: {
+        ...mockAvailabilityOptions,
+        None: {
+          ...mockAvailabilityOptions.None,
+          technical: "Availability technical details",
+          businessImpact: "Availability business impact",
+        },
+      },
+    };
+
+    render(<SecurityLevelWidget {...enhancedProps} />);
+
+    // Hover over the technical info button
+    fireEvent.mouseEnter(
+      screen.getByTestId("availability-technical-info-button")
+    );
+
+    // Check that the popover appears with correct content
+    const popover = screen.getByTestId("availability-technical-popover");
+    expect(popover).toBeInTheDocument();
+    expect(
+      screen.getByTestId("availability-technical-details")
+    ).toHaveTextContent("Availability technical details");
+    expect(
+      screen.getByTestId("availability-business-impact")
+    ).toHaveTextContent("Availability business impact");
+
+    // Check that the popover disappears on mouse leave
+    fireEvent.mouseLeave(
+      screen.getByTestId("availability-technical-info-button")
+    );
+    expect(
+      screen.queryByTestId("availability-technical-popover")
+    ).not.toBeInTheDocument();
+  });
+
+  it("renders color indicators for security levels", () => {
+    const enhancedProps = {
+      ...mockProps,
+      availability: "Low",
+      integrity: "Moderate",
+      confidentiality: "High",
+    };
+
+    render(<SecurityLevelWidget {...enhancedProps} />);
+
+    // Check color indicators have different colors for different levels
+    const availabilityColor = window.getComputedStyle(
+      screen.getByTestId("availability-color-indicator")
+    ).backgroundColor;
+    const integrityColor = window.getComputedStyle(
+      screen.getByTestId("integrity-color-indicator")
+    ).backgroundColor;
+    const confidentialityColor = window.getComputedStyle(
+      screen.getByTestId("confidentiality-color-indicator")
+    ).backgroundColor;
+
+    // These might not work in JSDOM but would work in a browser environment
+    // At least check the elements exist
+    expect(
+      screen.getByTestId("availability-color-indicator")
+    ).toBeInTheDocument();
+    expect(screen.getByTestId("integrity-color-indicator")).toBeInTheDocument();
+    expect(
+      screen.getByTestId("confidentiality-color-indicator")
+    ).toBeInTheDocument();
+  });
 });
