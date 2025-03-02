@@ -4,102 +4,87 @@
  * Tests the theme toggle functionality to ensure users can
  * adjust the display to their preference.
  */
-import { UI_TEXT } from "../../support/appConstantsHelper";
+import { CypressConstants } from "../../support/appConstantsHelper";
 import { logPageElements } from "../../support/testHelpers";
-import { assert } from "../common-imports";
+
+const { UI_TEXT } = CypressConstants;
 
 describe("Toggle Display Theme", () => {
   beforeEach(() => {
-    cy.visit("/", { timeout: 20000 });
-    cy.get("body", { timeout: 10000 }).should("not.be.empty");
+    cy.visit("/");
+    cy.ensureAppLoaded();
+  });
+
+  it("displays theme toggle button", () => {
+    // Look for theme toggle button using test ID
+    cy.get('[data-testid="theme-toggle"]').should("exist").and("be.visible");
   });
 
   it("switches between dark and light modes", () => {
-    // First, log page elements instead of using diagnostics
-    logPageElements();
+    // First check initial state
+    cy.get("html").then(($html) => {
+      const initialIsDark = $html.hasClass("dark");
+      cy.log(`Initial theme is ${initialIsDark ? "dark" : "light"}`);
 
-    // Find the theme toggle button with multiple strategies
-    cy.log("Looking for theme toggle button");
-    cy.get("body").then(($body) => {
-      // Try various selectors to find the theme button
-      const toggleButton = $body.find(
-        '[data-testid="theme-toggle"], button:contains("Dark"), button:contains("Light"), button:contains("Mode"), button:contains("🌙"), button:contains("☀️")'
-      );
+      // Click the toggle button
+      cy.get('[data-testid="theme-toggle"]').click();
 
-      if (toggleButton.length) {
-        cy.wrap(toggleButton).first().click({ force: true });
-        cy.log("Theme toggle clicked");
+      // Verify the theme changed
+      cy.get("html").should(($html) => {
+        const newIsDark = $html.hasClass("dark");
+        expect(newIsDark).to.not.equal(initialIsDark);
+      });
 
-        // Verify some change happened (class or attribute-based)
-        cy.get("html").then(($html) => {
-          // Check for common dark mode class or attribute changes
-          const before = $html.attr("class") || $html.attr("data-theme") || "";
-          cy.log(`Before theme class/attr: ${before}`);
-
-          // Wait for theme change to take effect
-          cy.wait(500);
-
-          // Get the updated classes/attributes
-          cy.get("html").then(($updatedHtml) => {
-            const after =
-              $updatedHtml.attr("class") ||
-              $updatedHtml.attr("data-theme") ||
-              "";
-            cy.log(`After theme class/attr: ${after}`);
-
-            // The test passes if we see any change or if we find dark/light indicators
-            const hasChanged = before !== after;
-            const hasDarkIndicator =
-              after.includes("dark") || after.includes("night");
-            const hasLightIndicator =
-              after.includes("light") || after.includes("day");
-
-            assert.equal(
-              hasChanged || hasDarkIndicator || hasLightIndicator,
-              true
-            );
-          });
-        });
-      } else {
-        // If we can't find a theme toggle, the test should still pass
-        // (maybe theme toggle isn't implemented yet)
-        cy.log("No theme toggle button found - test passed conditionally");
-        assert.equal(true, true);
-      }
+      // Check that button text changed appropriately
+      cy.get('[data-testid="theme-toggle"]').should(($btn) => {
+        if ($btn.text().includes("Light")) {
+          expect($html.hasClass("dark")).to.be.true;
+        } else {
+          expect($html.hasClass("dark")).to.be.false;
+        }
+      });
     });
   });
 
-  it("persists theme preference", () => {
-    // Find and click theme toggle
-    cy.get("body").then(($body) => {
-      const toggleButton = $body.find(
-        '[data-testid="theme-toggle"], button:contains("Dark"), button:contains("Light"), button:contains("Mode"), button:contains("🌙"), button:contains("☀️")'
-      );
-
-      if (toggleButton.length) {
-        // Click to toggle theme
-        cy.wrap(toggleButton).first().click({ force: true });
-
-        // Get the current theme state
-        const currentTheme = $body.find("html").attr("class") || "";
-        cy.log(`Current theme: ${currentTheme}`);
-
-        // Reload the page
-        cy.reload();
-
-        // Check if theme persisted
-        cy.get("html").then(($html) => {
-          const reloadedTheme = $html.attr("class") || "";
-          cy.log(`Reloaded theme: ${reloadedTheme}`);
-
-          // Very flexible check - just verify some theme-related class exists
-          // This test always passes but logs useful information
-          assert.equal(true, true);
-        });
-      } else {
-        cy.log("No theme toggle found - test passed conditionally");
-        assert.equal(true, true);
+  it("shows gaming-inspired styles in dark mode", () => {
+    // Ensure we're in dark mode
+    cy.get("html").then(($html) => {
+      if (!$html.hasClass("dark")) {
+        cy.get('[data-testid="theme-toggle"]').click();
       }
     });
+
+    // Wait for transition
+    cy.wait(500);
+
+    // Verify dark mode specific styles
+    cy.get('[data-testid="theme-toggle"]').should("contain", "Light");
+
+    // Check for Ingress-inspired styling
+    cy.get("html.dark").should("exist");
+
+    // Take a screenshot for visual verification
+    cy.screenshot("dark-mode-gaming-style");
+  });
+
+  it("shows corporate style in light mode", () => {
+    // Ensure we're in light mode
+    cy.get("html").then(($html) => {
+      if ($html.hasClass("dark")) {
+        cy.get('[data-testid="theme-toggle"]').click();
+      }
+    });
+
+    // Wait for transition
+    cy.wait(500);
+
+    // Verify light mode specific styles
+    cy.get('[data-testid="theme-toggle"]').should("contain", "Dark");
+
+    // Check that dark mode class is removed
+    cy.get("html").should("not.have.class", "dark");
+
+    // Take a screenshot for visual verification
+    cy.screenshot("light-mode-corporate-style");
   });
 });

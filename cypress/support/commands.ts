@@ -1,3 +1,74 @@
+// ***********************************************
+// Custom Cypress commands
+// ***********************************************
+import { CypressConstants } from "./appConstantsHelper";
+
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      /**
+       * Custom command to set all security levels
+       */
+      setSecurityLevels(
+        availability: string,
+        integrity: string,
+        confidentiality: string
+      ): Chainable<Element>;
+
+      /**
+       * Ensures app is loaded by waiting for key elements
+       */
+      ensureAppLoaded(): Chainable<Element>;
+
+      /**
+       * Retrieves a test ID with proper escaping
+       */
+      getByTestId(selector: string): Chainable<Element>;
+    }
+  }
+}
+
+// Command to set all security levels
+Cypress.Commands.add(
+  "setSecurityLevels",
+  (availability: string, integrity: string, confidentiality: string) => {
+    cy.get(
+      `[data-testid="${CypressConstants.TEST_IDS.SELECTORS.AVAILABILITY}"]`
+    )
+      .scrollIntoView()
+      .select(availability, { force: true });
+    cy.wait(100);
+
+    cy.get(`[data-testid="${CypressConstants.TEST_IDS.SELECTORS.INTEGRITY}"]`)
+      .scrollIntoView()
+      .select(integrity, { force: true });
+    cy.wait(100);
+
+    cy.get(
+      `[data-testid="${CypressConstants.TEST_IDS.SELECTORS.CONFIDENTIALITY}"]`
+    )
+      .scrollIntoView()
+      .select(confidentiality, { force: true });
+    cy.wait(100);
+  }
+);
+
+// Command to ensure app is loaded
+Cypress.Commands.add("ensureAppLoaded", () => {
+  // Check for key app elements
+  cy.get("body", { timeout: 10000 }).should("not.be.empty");
+
+  // Wait for React to render important elements
+  cy.get("[data-testid]", { timeout: 5000 }).should("exist");
+});
+
+// Fix: Update getByTestId to return the correct type
+// Command to get element by test ID with proper escaping
+Cypress.Commands.add("getByTestId", (selector: string) => {
+  // Return the result directly without any chaining
+  return cy.get(`[data-testid="${selector}"]`);
+});
+
 // Enhanced commands with better error handling and resilience
 export {};
 

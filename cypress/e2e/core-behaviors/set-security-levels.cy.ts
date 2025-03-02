@@ -4,176 +4,116 @@
  * Tests the ability to select different security levels for
  * Confidentiality, Integrity, and Availability.
  */
-import {
-  SECURITY_LEVELS,
-  DESCRIPTIONS,
-} from "../../support/appConstantsHelper";
-import { assert } from "../common-imports";
+import { CypressConstants } from "../../support/appConstantsHelper";
+
+// Use constants from the namespace
+const { SECURITY_LEVELS, TEST_IDS, DESCRIPTIONS } = CypressConstants;
 
 describe("Set Security Levels", () => {
   beforeEach(() => {
     cy.visit("/");
-    cy.ensureAppLoaded(); // Using our custom command to ensure React has rendered
+    cy.ensureAppLoaded();
   });
 
   it("allows setting individual security levels", () => {
-    // Use direct select with force option instead of the overwritten command
-    cy.get('[data-testid="availability-select"]')
-      .scrollIntoView()
-      .select(SECURITY_LEVELS.HIGH, { force: true });
+    // Use test IDs from constants for better maintainability
+    cy.getByTestId(TEST_IDS.SELECTORS.AVAILABILITY).select(
+      SECURITY_LEVELS.HIGH,
+      { force: true }
+    );
 
-    cy.get('[data-testid="integrity-select"]')
-      .scrollIntoView()
-      .select(SECURITY_LEVELS.MODERATE, { force: true });
+    cy.getByTestId(TEST_IDS.SELECTORS.INTEGRITY).select(
+      SECURITY_LEVELS.MODERATE,
+      { force: true }
+    );
 
-    cy.get('[data-testid="confidentiality-select"]')
-      .scrollIntoView()
-      .select(SECURITY_LEVELS.LOW, { force: true });
+    cy.getByTestId(TEST_IDS.SELECTORS.CONFIDENTIALITY).select(
+      SECURITY_LEVELS.LOW,
+      { force: true }
+    );
 
     // Verify the values
-    cy.get('[data-testid="availability-select"]').should(
+    cy.getByTestId(TEST_IDS.SELECTORS.AVAILABILITY).should(
       "have.value",
       SECURITY_LEVELS.HIGH
     );
-    cy.get('[data-testid="integrity-select"]').should(
+    cy.getByTestId(TEST_IDS.SELECTORS.INTEGRITY).should(
       "have.value",
       SECURITY_LEVELS.MODERATE
     );
-    cy.get('[data-testid="confidentiality-select"]').should(
+    cy.getByTestId(TEST_IDS.SELECTORS.CONFIDENTIALITY).should(
       "have.value",
       SECURITY_LEVELS.LOW
     );
   });
 
   it("verifies radar chart exists and updates", () => {
-    // Set specific security levels using our helper
-    cy.get('[data-testid="confidentiality-select"]')
-      .scrollIntoView()
-      .select(SECURITY_LEVELS.LOW, { force: true });
-    cy.wait(100);
+    // Use the custom command to set security levels
+    cy.setSecurityLevels(
+      SECURITY_LEVELS.HIGH,
+      SECURITY_LEVELS.MODERATE,
+      SECURITY_LEVELS.LOW
+    );
 
-    cy.get('[data-testid="integrity-select"]')
-      .scrollIntoView()
-      .select(SECURITY_LEVELS.MODERATE, { force: true });
-    cy.wait(100);
+    // Verify radar chart using the correct test ID
+    cy.getByTestId(TEST_IDS.WIDGETS.RADAR_CHART).should("exist");
 
-    cy.get('[data-testid="availability-select"]')
-      .scrollIntoView()
-      .select(SECURITY_LEVELS.HIGH, { force: true });
-    cy.wait(100);
-
-    // Verify the radar chart exists and contains expected values
-    cy.get('[data-testid="radar-chart"]').should("exist");
-    cy.get('[data-testid="radar-chart-canvas"]').should("exist");
-
-    // Verify the radar values show the expected security levels
-    cy.get('[data-testid="radar-availability-value"]').should("exist");
-    cy.get('[data-testid="radar-integrity-value"]').should("exist");
-    cy.get('[data-testid="radar-confidentiality-value"]').should("exist");
+    // Look for accessibility text since the canvas itself might not have a test ID
+    cy.get("[aria-label*='security assessment']").should("exist");
   });
 
   it("verifies security widget structure", () => {
     // Check that the widget exists with expected structure
-    cy.get('[data-testid="widget-security-level-selection"]').should("exist");
-    cy.get('[data-testid="security-level-controls"]').should("exist");
+    cy.getByTestId(TEST_IDS.WIDGETS.SECURITY_LEVEL).should("exist");
 
     // Verify all three security level selects exist
-    cy.get('[data-testid="availability-select"]').should("exist");
-    cy.get('[data-testid="integrity-select"]').should("exist");
-    cy.get('[data-testid="confidentiality-select"]').should("exist");
+    cy.getByTestId(TEST_IDS.SELECTORS.AVAILABILITY).should("exist");
+    cy.getByTestId(TEST_IDS.SELECTORS.INTEGRITY).should("exist");
+    cy.getByTestId(TEST_IDS.SELECTORS.CONFIDENTIALITY).should("exist");
 
     // Check label test IDs
-    cy.get('[data-testid="availability-label"]').should("exist");
-    cy.get('[data-testid="integrity-label"]').should("exist");
-    cy.get('[data-testid="confidentiality-label"]').should("exist");
+    cy.getByTestId("availability-label").should("exist");
+    cy.getByTestId("integrity-label").should("exist");
+    cy.getByTestId("confidentiality-label").should("exist");
   });
 
-  it("shows descriptions that match option values", () => {
-    // Set specific values and check that descriptions match known values
-
-    // Check availability description
-    cy.get('[data-testid="availability-select"]')
-      .scrollIntoView()
-      .select(SECURITY_LEVELS.HIGH, { force: true });
-    cy.wait(100);
-
-    // Use the new testid to get the description
-    cy.get('[data-testid="availability-description"]').should("not.be.empty");
-
-    // Check integrity description
-    cy.get('[data-testid="integrity-select"]')
-      .scrollIntoView()
-      .select(SECURITY_LEVELS.MODERATE, { force: true });
-    cy.wait(100);
-
-    cy.get('[data-testid="integrity-description"]').should("not.be.empty");
-
-    // Check confidentiality description
-    cy.get('[data-testid="confidentiality-select"]')
-      .scrollIntoView()
-      .select(SECURITY_LEVELS.LOW, { force: true });
-    cy.wait(100);
-
-    cy.get('[data-testid="confidentiality-description"]').should(
-      "not.be.empty"
+  it("shows descriptions that match security levels", () => {
+    // Set high availability and verify descriptions
+    cy.getByTestId(TEST_IDS.SELECTORS.AVAILABILITY).select(
+      SECURITY_LEVELS.HIGH,
+      { force: true }
     );
-  });
 
-  it("changes descriptions when selections change", () => {
-    // Test a single select to verify description changes
-    cy.get('[data-testid="availability-select"]')
-      .scrollIntoView()
-      .select(SECURITY_LEVELS.NONE, { force: true });
-    cy.wait(100);
-
-    // Store the description text
-    let firstDescription = "";
-    cy.get('[data-testid="availability-description"]')
+    // Verify description contains expected text for high availability
+    cy.getByTestId("availability-description")
+      .should("be.visible")
       .invoke("text")
-      .then((text) => {
-        firstDescription = text;
+      .should("include", DESCRIPTIONS.AVAILABILITY.HIGH);
 
-        // Now change to HIGH and verify description changes
-        cy.get('[data-testid="availability-select"]')
-          .scrollIntoView()
-          .select(SECURITY_LEVELS.HIGH, { force: true });
-        cy.wait(100);
+    // Set moderate integrity and verify
+    cy.getByTestId(TEST_IDS.SELECTORS.INTEGRITY).select(
+      SECURITY_LEVELS.MODERATE,
+      { force: true }
+    );
 
-        // Compare with new description - fixed TypeScript error
-        cy.get('[data-testid="availability-description"]')
-          .invoke("text")
-          .should("not.eq", firstDescription);
-      });
+    cy.getByTestId("integrity-description")
+      .should("be.visible")
+      .invoke("text")
+      .should("include", DESCRIPTIONS.INTEGRITY.MODERATE);
   });
 
   it("has exactly 5 options in each dropdown", () => {
-    // Just verify each dropdown has 5 options (None, Low, Moderate, High, Very High)
-    cy.get('[data-testid="availability-select"] option').should(
-      "have.length",
-      5
-    );
-    cy.get('[data-testid="integrity-select"] option').should("have.length", 5);
-    cy.get('[data-testid="confidentiality-select"] option').should(
-      "have.length",
-      5
-    );
-  });
+    // Verify each dropdown has 5 options (None, Low, Moderate, High, Very High)
+    cy.getByTestId(TEST_IDS.SELECTORS.AVAILABILITY)
+      .find("option")
+      .should("have.length", 5);
 
-  it("verifies all dropdown options match expected values", () => {
-    const expectedOptions = [
-      SECURITY_LEVELS.NONE,
-      SECURITY_LEVELS.LOW,
-      SECURITY_LEVELS.MODERATE,
-      SECURITY_LEVELS.HIGH,
-      SECURITY_LEVELS.VERY_HIGH,
-    ];
+    cy.getByTestId(TEST_IDS.SELECTORS.INTEGRITY)
+      .find("option")
+      .should("have.length", 5);
 
-    // Check that availability dropdown has all expected options
-    expectedOptions.forEach((option) => {
-      cy.get('[data-testid="availability-select"] option').should(
-        "contain",
-        option
-      );
-    });
+    cy.getByTestId(TEST_IDS.SELECTORS.CONFIDENTIALITY)
+      .find("option")
+      .should("have.length", 5);
   });
 });

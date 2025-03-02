@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App"; // Change to PascalCase to match component naming standards
-import "./styles/valueStyles.css";
+import App from "./App";
+import "./index.css"; // Ensure main CSS is imported first
+import "./styles/valueStyles.css"; // Then import value styles
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
