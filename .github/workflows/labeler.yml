@@ -1,23 +1,62 @@
-name: "Pull Request Labeler"
+name: "Pull Request Automatic Labeler"
+
 on:
-- pull_request_target
+  pull_request_target:
+    types: [opened, synchronize, reopened, edited]
 
 permissions:
   contents: read
+  pull-requests: write
 
 jobs:
   labeler:
-    permissions:
-      contents: read
-      pull-requests: write
+    name: Label Pull Request
     runs-on: ubuntu-latest
     steps:
-    - name: Harden the runner (Audit all outbound calls)
-      uses: step-security/harden-runner@4d991eb9b905ef189e4c376166672c3f2f230481 # v2.11.0
-      with:
-        egress-policy: audit
-    - name: "Checkout code"
-      uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      with:
-        persist-credentials: false    
-    - uses: actions/labeler@8558fd74291d67161a8a78ce36a881fa63b766a9 # v5.0.0
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@4d991eb9b905ef189e4c376166672c3f2f230481 # v2.11.0
+        with:
+          egress-policy: audit
+
+      - name: Apply PR Labels
+        uses: actions/labeler@8558fd74291d67161a8a78ce36a881fa63b766a9 # v5.0.0
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          sync-labels: true
+          configuration-path: .github/labeler.yml
+
+      - name: PR Conventional Title Check
+        if: ${{ github.event.pull_request.draft == false }}
+        uses: amannn/action-semantic-pull-request@c3cd5d1ea3580753008872425915e343e351ab54 # v5.4.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          validateSingleCommit: true
+          validateSingleCommitMatchesPrTitle: true
+          types:
+            - feat
+            - fix
+            - docs
+            - style
+            - refactor
+            - perf
+            - test
+            - build
+            - ci
+            - chore
+            - revert
+            - security
+            - deps
+
+      - name: Add Coverage Comment
+        if: ${{ contains(github.event.pull_request.labels.*.name, 'needs-tests') }}
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '⚠️ **Test Coverage Alert**: This PR modifies files with lower test coverage.\n\nPlease consider adding or improving tests for the affected components:\n- SecurityLevelWidget (84% stmt, 52% branch, 30% func coverage)\n- RadarChart (89% stmt, 66% branch coverage)\n- CostEstimation (91% stmt coverage)\n- useCIAOptions (0% func coverage)\n\nImproving test coverage helps maintain application quality and security.'
+            })
