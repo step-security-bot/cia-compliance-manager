@@ -25,13 +25,12 @@
         "ms-vsliveshare.vsliveshare",
 
         // Vite Specific
-        "antfu.vite",
+      
         "vitest.explorer",
 
         // React/TypeScript
         "bradlc.vscode-tailwindcss",
         "ms-vscode.vscode-typescript-next",
-        "dsznajder.es7-react-js-snippets",
         "styled-components.vscode-styled-components",
         "csstools.postcss",
 
