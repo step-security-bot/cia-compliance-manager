@@ -57,7 +57,7 @@ export default defineConfig(({ mode }): UserConfig => {
       ),
     },
     test: {
-      globals: true,
+      globals: true, // This makes Vitest globals available without imports
       environment: "jsdom",
       setupFiles: ["./src/setupTests.ts"],
       testTimeout: 15000, // Increase timeout to avoid flaky tests (from JS version)
