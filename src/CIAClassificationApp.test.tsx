@@ -213,7 +213,7 @@ describe("CIAClassificationApp", () => {
 
   describe("Analysis Display", () => {
     it("updates impact analysis widgets based on selections", () => {
-      // Check that impact analysis widgets exist
+      // Check that impact analysis widgets exist using the original test IDs
       expect(
         screen.getByTestId("widget-availability-impact")
       ).toBeInTheDocument();
@@ -231,11 +231,15 @@ describe("CIAClassificationApp", () => {
       const confidentialityImpactWidget = screen.getByTestId(
         "widget-confidentiality-impact"
       );
-      expect(
-        within(confidentialityImpactWidget).getByText(
-          /Military-grade protection/
-        )
-      ).toBeInTheDocument();
+
+      // Look for the business impact summary element that contains the text
+      const summaryElement = within(confidentialityImpactWidget).getByTestId(
+        "business-impact-summary"
+      );
+
+      expect(summaryElement).toHaveTextContent(
+        "Future-proof protection for highly sensitive data"
+      );
     });
   });
 
@@ -438,7 +442,9 @@ describe("CIAClassificationApp", () => {
 
       // Check for the actual implementation details text that exists in the component
       expect(
-        within(techWidget).getByText(/Partially active redundant systems/)
+        within(techWidget).getByText(
+          /redundant systems with automated recovery/
+        )
       ).toBeInTheDocument();
     });
 
@@ -476,7 +482,9 @@ describe("CIAClassificationApp", () => {
       // Verify the technical implementation details are updated too
       const techWidget = screen.getByTestId("widget-technical-implementation");
       expect(
-        within(techWidget).getByText(/Core systems pre-configured/)
+        within(techWidget).getByText(
+          /Hash verification and automated validation/
+        )
       ).toBeInTheDocument();
 
       // Similarly, verify that "Balanced protection" text appears somewhere in the app

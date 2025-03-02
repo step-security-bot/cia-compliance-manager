@@ -15,15 +15,17 @@ describe("CIADetails TypeScript Type Validation", () => {
       details.impact.toLowerCase();
       details.technical.toLowerCase();
       details.businessImpact.toLowerCase(); // Added businessImpact validation
-      details.bg.startsWith("#");
-      details.text.startsWith("#");
+
+      // Optional string fields - use optional chaining to handle undefined
+      details.bg?.startsWith("#");
+      details.text?.startsWith("#");
 
       // Number fields
       details.capex.toFixed(2);
       details.opex.toFixed(2);
 
       // Array field (might be undefined)
-      details.recommendations?.forEach((rec) => {
+      details.recommendations?.forEach((rec: string) => {
         rec.toLowerCase();
       });
     };

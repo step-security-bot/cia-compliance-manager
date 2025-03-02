@@ -10,7 +10,6 @@ import SecurityLevelWidget from "./components/widgets/SecurityLevelWidget";
 import CostEstimationWidget from "./components/widgets/CostEstimationWidget";
 import SecuritySummaryWidget from "./components/widgets/SecuritySummaryWidget";
 import ValueCreationWidget from "./components/widgets/ValueCreationWidget";
-import ImpactAnalysisWidget from "./components/widgets/ImpactAnalysisWidget";
 import ComplianceStatusWidget from "./components/widgets/ComplianceStatusWidget";
 import { WIDGET_ICONS } from "./constants/appConstants";
 
@@ -152,7 +151,11 @@ const CIAClassificationApp: React.FC = () => {
               </button>
             </div>
 
-            <Dashboard>
+            <Dashboard
+              availability={availability}
+              integrity={integrity}
+              confidentiality={confidentiality}
+            >
               {/* Security Level Selection - Important control panel */}
               <DashboardWidget
                 title="Security Level Selection"
@@ -228,13 +231,18 @@ const CIAClassificationApp: React.FC = () => {
                 </div>
               </DashboardWidget>
 
-              {/* Security Summary widget - moved up */}
+              {/* Security Summary widget */}
               <DashboardWidget
                 title="Security Summary"
                 size="medium"
                 icon={WIDGET_ICONS.SECURITY_SUMMARY}
               >
-                <SecuritySummaryWidget securityLevel={overallSecurityLevel} />
+                <SecuritySummaryWidget
+                  securityLevel={overallSecurityLevel}
+                  availabilityLevel={availability}
+                  integrityLevel={integrity}
+                  confidentialityLevel={confidentiality}
+                />
               </DashboardWidget>
 
               {/* Cost Estimation - moved up */}
@@ -286,43 +294,6 @@ const CIAClassificationApp: React.FC = () => {
                     integrity,
                     confidentiality,
                   }}
-                />
-              </DashboardWidget>
-
-              {/* Impact analysis widgets - reordered and moved down */}
-              <DashboardWidget
-                title="Confidentiality Impact"
-                size="medium"
-                data-testid="widget-confidentiality-impact"
-                className="overflow-visible"
-                icon={WIDGET_ICONS.CONFIDENTIALITY_IMPACT}
-              >
-                <ImpactAnalysisWidget
-                  category="Confidentiality"
-                  level={confidentiality}
-                />
-              </DashboardWidget>
-
-              <DashboardWidget
-                title="Integrity Impact"
-                size="medium"
-                data-testid="widget-integrity-impact"
-                className="overflow-visible"
-                icon={WIDGET_ICONS.INTEGRITY_IMPACT}
-              >
-                <ImpactAnalysisWidget category="Integrity" level={integrity} />
-              </DashboardWidget>
-
-              <DashboardWidget
-                title="Availability Impact"
-                size="medium"
-                data-testid="widget-availability-impact"
-                className="overflow-visible"
-                icon={WIDGET_ICONS.AVAILABILITY_IMPACT}
-              >
-                <ImpactAnalysisWidget
-                  category="Availability"
-                  level={availability}
                 />
               </DashboardWidget>
 

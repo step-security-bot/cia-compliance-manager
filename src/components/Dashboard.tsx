@@ -1,17 +1,68 @@
 import React, { ReactNode } from "react";
-import { UI_TEXT } from "../constants/appConstants";
+import { UI_TEXT, WIDGET_ICONS } from "../constants/appConstants";
+import BusinessImpactAnalysisWidget from "./widgets/BusinessImpactAnalysisWidget";
+import {
+  availabilityOptions,
+  integrityOptions,
+  confidentialityOptions,
+} from "../hooks/useCIAOptions";
 
 interface DashboardProps {
   children: ReactNode;
+  availability: string;
+  integrity: string;
+  confidentiality: string;
 }
 
-const Dashboard: React.FC<DashboardProps> = ({ children }) => {
+const Dashboard: React.FC<DashboardProps> = ({
+  children,
+  availability,
+  integrity,
+  confidentiality,
+}) => {
   return (
     <div
       className="dashboard-grid overflow-visible"
       data-testid="dashboard-grid"
     >
       {children}
+
+      {/* Use original testIds for backward compatibility with Cypress tests */}
+      <DashboardWidget
+        title="Availability Impact"
+        icon={WIDGET_ICONS.AVAILABILITY_IMPACT}
+        testId="widget-availability-impact"
+      >
+        <BusinessImpactAnalysisWidget
+          category="Availability"
+          level={availability}
+          options={availabilityOptions}
+        />
+      </DashboardWidget>
+
+      <DashboardWidget
+        title="Integrity Impact"
+        icon={WIDGET_ICONS.INTEGRITY_IMPACT}
+        testId="widget-integrity-impact"
+      >
+        <BusinessImpactAnalysisWidget
+          category="Integrity"
+          level={integrity}
+          options={integrityOptions}
+        />
+      </DashboardWidget>
+
+      <DashboardWidget
+        title="Confidentiality Impact"
+        icon={WIDGET_ICONS.CONFIDENTIALITY_IMPACT}
+        testId="widget-confidentiality-impact"
+      >
+        <BusinessImpactAnalysisWidget
+          category="Confidentiality"
+          level={confidentiality}
+          options={confidentialityOptions}
+        />
+      </DashboardWidget>
     </div>
   );
 };
@@ -21,7 +72,8 @@ interface DashboardWidgetProps {
   size?: "small" | "medium" | "large" | "full";
   children: ReactNode;
   className?: string;
-  icon?: ReactNode; // New prop for header icon
+  icon?: ReactNode;
+  testId?: string; // Add testId prop to fix TS error
 }
 
 export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
@@ -30,6 +82,7 @@ export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
   children,
   className = "",
   icon,
+  testId, // Add to component parameters
 }) => {
   // Map size to grid columns
   const sizeClasses = {
@@ -42,7 +95,9 @@ export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
   return (
     <div
       className={`widget ${sizeClasses[size]} ${className}`}
-      data-testid={`widget-${title.toLowerCase().replace(/\s+/g, "-")}`}
+      data-testid={
+        testId || `widget-${title.toLowerCase().replace(/\s+/g, "-")}`
+      }
     >
       <div className="widget-header">
         <h3 className="text-md font-semibold flex items-center">
