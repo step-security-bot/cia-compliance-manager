@@ -231,13 +231,18 @@ const CIAClassificationApp: React.FC = () => {
                 </div>
               </DashboardWidget>
 
-              {/* Security Summary widget - moved up */}
+              {/* Security Summary widget */}
               <DashboardWidget
                 title="Security Summary"
                 size="medium"
                 icon={WIDGET_ICONS.SECURITY_SUMMARY}
               >
-                <SecuritySummaryWidget securityLevel={overallSecurityLevel} />
+                <SecuritySummaryWidget
+                  securityLevel={overallSecurityLevel}
+                  availabilityLevel={availability}
+                  integrityLevel={integrity}
+                  confidentialityLevel={confidentiality}
+                />
               </DashboardWidget>
 
               {/* Cost Estimation - moved up */}
