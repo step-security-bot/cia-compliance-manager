@@ -8,6 +8,7 @@ import SecuritySummaryWidget from "./components/widgets/SecuritySummaryWidget";
 import ValueCreationWidget from "./components/widgets/ValueCreationWidget";
 import CostEstimationWidget from "./components/widgets/CostEstimationWidget";
 import RadarChart from "./components/RadarChart";
+import { WIDGET_ICONS } from "./constants/appConstants";
 
 const App: React.FC = () => {
   const { availabilityOptions, integrityOptions, confidentialityOptions } =
@@ -127,14 +128,25 @@ const App: React.FC = () => {
             setConfidentiality={setConfidentiality}
           />
 
-          {/* Add Radar Chart in its own widget box */}
-          <div className="mt-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600">
-            <h3 className="text-lg font-medium mb-3">Security Visualization</h3>
-            <div className="flex justify-center">
+          {/* Fix: Add a properly styled widget box for RadarChart */}
+          <div
+            className="mt-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700"
+            data-testid="radar-widget-container"
+          >
+            <div className="p-3 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700">
+              <h3 className="text-md font-semibold flex items-center">
+                <span className="mr-2">
+                  {WIDGET_ICONS.SECURITY_VISUALIZATION}
+                </span>
+                Security Visualization
+              </h3>
+            </div>
+            <div className="p-4">
               <RadarChart
                 availability={availability}
                 integrity={integrity}
                 confidentiality={confidentiality}
+                className="max-h-[250px]"
               />
             </div>
           </div>

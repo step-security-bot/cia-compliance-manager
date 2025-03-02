@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import App from "./App";
-import { vi } from "vitest";
+import { vi } from "vitest"; // Remove SpyInstance import
 
 // Mock Chart.js
 vi.mock("chart.js/auto", () => ({
@@ -23,6 +23,7 @@ vi.mock("./hooks/useCIAOptions", async () => {
       opex: 0,
       bg: "#ccc",
       text: "#000",
+      recommendations: ["None recommendation"],
     },
     Low: {
       description: "Low level",
@@ -33,6 +34,7 @@ vi.mock("./hooks/useCIAOptions", async () => {
       opex: 5,
       bg: "#ffe",
       text: "#000",
+      recommendations: ["Low recommendation"],
     },
   };
 
@@ -74,24 +76,33 @@ vi.mock("./components/widgets/CostEstimationWidget", () => ({
   ),
 }));
 
+vi.mock("./components/RadarChart", () => ({
+  default: () => <div data-testid="radar-chart">Radar Chart Mock</div>,
+}));
+
 describe("App Component", () => {
+  // Fix: Use the correct type for console spy
+  let consoleErrorSpy: ReturnType<typeof vi.spyOn>;
+
   beforeEach(() => {
     // Silence the expected console errors from Chart.js
-    vi.spyOn(console, "error").mockImplementation((message) => {
-      if (
-        typeof message === "string" &&
-        (message.includes("Failed to create chart") ||
-          message.includes("can't acquire context"))
-      ) {
-        return;
-      }
-      // Log other errors normally
-      console.log(message);
-    });
+    consoleErrorSpy = vi
+      .spyOn(console, "error")
+      .mockImplementation((message) => {
+        if (
+          typeof message === "string" &&
+          (message.includes("Failed to create chart") ||
+            message.includes("can't acquire context"))
+        ) {
+          return;
+        }
+        // Log other errors normally
+        console.log(message);
+      });
   });
 
   afterEach(() => {
-    vi.restoreAllMocks();
+    consoleErrorSpy.mockRestore();
   });
 
   it("renders app dashboard correctly", () => {
@@ -123,15 +134,37 @@ describe("App Component", () => {
 });
 
 describe("App", () => {
+  // Fix: Use the correct type for console spy
+  let consoleErrorSpy: ReturnType<typeof vi.spyOn>;
+
+  beforeEach(() => {
+    // Silence the expected console errors
+    consoleErrorSpy = vi
+      .spyOn(console, "error")
+      .mockImplementation((message) => {
+        if (
+          typeof message === "string" &&
+          (message.includes("Failed to create chart") ||
+            message.includes("canvas context"))
+        ) {
+          return;
+        }
+        // Log other errors normally
+        console.log(message);
+      });
+  });
+
+  afterEach(() => {
+    consoleErrorSpy.mockRestore();
+  });
+
   it("renders the application title", () => {
     render(<App />);
-    // Updated to match the actual title in the current component
     expect(screen.getByText("CIA Compliance Manager")).toBeInTheDocument();
   });
 
   it("renders the dashboard by default", () => {
     render(<App />);
-    // Updated to check for elements that are actually rendered
     expect(screen.getByRole("main")).toBeInTheDocument();
   });
 });

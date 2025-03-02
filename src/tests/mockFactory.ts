@@ -1,148 +1,102 @@
 import { vi } from "vitest";
-import React from "react"; // Add explicit React import
-import { render } from "@testing-library/react";
-import { ReactElement } from "react";
+import React from "react";
 import type { SecurityLevel } from "../constants/appConstants";
 import type { CIADetails } from "../types/cia";
 
 /**
- * Creates mock CIA options for testing
- * @returns A properly structured Record<string, CIADetails> object
+ * Factory functions for creating consistent test mocks
  */
-export function createMockOptions(
+export const createMockOptions = (
   levels: string[] = ["None", "Low", "Moderate", "High", "Very High"]
-): Record<string, CIADetails> {
+): Record<string, CIADetails> => {
   const options: Record<string, CIADetails> = {};
 
-  levels.forEach((level, index) => {
+  levels.forEach((level) => {
     options[level] = {
       description: `${level} level description`,
-      technical: `${level} level technical details`,
-      businessImpact: `${level} level business impact`,
-      impact: level === "None" ? "None" : `${level} impact`,
-      capex: level === "None" ? 0 : 10 * index,
-      opex: level === "None" ? 0 : 5 * index,
-      uptime: level === "None" ? "N/A" : `${95 + index * 1}%`,
-      validationMethod:
-        level === "None" ? "None" : `${level} validation method`,
-      protectionMethod:
-        level === "None" ? "None" : `${level} protection method`,
+      technical: `Technical details for ${level}`,
+      businessImpact: `Business impact for ${level}`,
+      impact: level,
+      capex:
+        level === "None"
+          ? 0
+          : level === "Low"
+          ? 10
+          : level === "Moderate"
+          ? 25
+          : level === "High"
+          ? 50
+          : 75,
+      opex:
+        level === "None"
+          ? 0
+          : level === "Low"
+          ? 5
+          : level === "Moderate"
+          ? 15
+          : level === "High"
+          ? 30
+          : 45,
       bg: "#cccccc",
       text: "#000000",
-      recommendations: [`${level} recommendation`],
-    } as CIADetails;
+      // Add the missing recommendations property required by CIADetails type
+      recommendations: [`Recommendation for ${level} security level`],
+    };
   });
 
   return options;
-}
+};
 
 /**
- * Creates a mock component render wrapper with common props
+ * Creates mock event handlers for component props
  */
-export function createComponentWrapper<P extends object>(
-  Component: React.ComponentType<P>,
-  defaultProps: Partial<P> = {}
-) {
-  return (props: Partial<P> = {}) => {
-    const mergedProps = { ...defaultProps, ...props } as P;
-    return React.createElement(Component, mergedProps);
-  };
-}
+export const createMockHandlers = () => ({
+  setAvailability: vi.fn(),
+  setIntegrity: vi.fn(),
+  setConfidentiality: vi.fn(),
+  onClick: vi.fn(),
+  onChange: vi.fn(),
+  onSelect: vi.fn(),
+  onToggle: vi.fn(),
+});
 
 /**
- * Creates a test wrapper with common providers
+ * Creates a complete mock security level info object
  */
-export function createTestWrapper(component: ReactElement) {
-  return render(component);
-}
-
-/**
- * Creates mock event handlers
- */
-export function createMockHandlers() {
+export const createMockSecurityLevelInfo = () => {
   return {
-    setAvailability: vi.fn(),
-    setIntegrity: vi.fn(),
-    setConfidentiality: vi.fn(),
-    onClick: vi.fn(),
-    onChange: vi.fn(),
-    onSelect: vi.fn(),
-    onToggle: vi.fn(),
-  };
-}
-
-/**
- * Creates a mock SecurityLevelInfo object
- */
-export function createMockSecurityLevelInfo() {
-  // Create an object that matches whatever structure is needed by the components
-  return {
-    level: "Moderate",
-    description: "Mock security level description",
-    recommendations: ["Recommendation 1", "Recommendation 2"],
-    complianceFrameworks: ["SOC 2", "ISO 27001"],
     None: {
-      description: "None level description",
-      impact: "None impact",
-      technical: "None technical",
-      businessImpact: "None business impact",
-      capex: 0,
-      opex: 5,
-      bg: "#cccccc",
-      text: "#000000",
-      recommendations: ["None recommendation"],
+      description: "No security measures in place",
+      technical: "No technical implementation required",
+      businessImpact: "High risk of data loss and breaches",
     },
     Low: {
-      description: "Low level description",
-      impact: "Low impact",
-      technical: "Low technical",
-      businessImpact: "Low business impact",
-      capex: 5,
-      opex: 10,
-      bg: "#cccccc",
-      text: "#000000",
-      recommendations: ["Low recommendation"],
+      description: "Basic security measures",
+      technical: "Simple password protection",
+      businessImpact: "Moderate risk of data exposure",
     },
     Moderate: {
-      description: "Moderate level description",
-      impact: "Moderate impact",
-      technical: "Moderate technical",
-      businessImpact: "Moderate business impact",
-      capex: 10,
-      opex: 15,
-      bg: "#cccccc",
-      text: "#000000",
-      recommendations: ["Moderate recommendation"],
+      description: "Standard security controls",
+      technical: "Encryption and authorization",
+      businessImpact: "Reduced risk with acceptable protection",
     },
     High: {
-      description: "High level description",
-      impact: "High impact",
-      technical: "High technical",
-      businessImpact: "High business impact",
-      capex: 15,
-      opex: 20,
-      bg: "#cccccc",
-      text: "#000000",
-      recommendations: ["High recommendation"],
+      description: "Advanced security measures",
+      technical: "Multi-factor authentication and encryption",
+      businessImpact: "Low risk with strong protection",
     },
     "Very High": {
-      description: "Very High level description",
-      impact: "Very High impact",
-      technical: "Very High technical",
-      businessImpact: "Very High business impact",
-      capex: 20,
-      opex: 25,
-      bg: "#cccccc",
-      text: "#000000",
-      recommendations: ["Very High recommendation"],
+      description: "Maximum security implementation",
+      technical: "End-to-end encryption, MFA, and continuous monitoring",
+      businessImpact: "Minimal risk with comprehensive protection",
     },
   };
-}
+};
 
 /**
  * Creates a mock business impact data object
  */
-export function createMockBusinessImpactDetails() {
+export const createMockBusinessImpactDetails = () => {
   return {
     financialImpact: {
       description: "Financial impact description",
@@ -158,4 +112,40 @@ export function createMockBusinessImpactDetails() {
       severity: "MEDIUM",
     },
   };
+};
+
+/**
+ * Create a test wrapper component for testing context providers
+ * Fixed JSX syntax issues by using createElement instead of JSX
+ */
+export const createTestWrapper = (
+  WrappedComponent: React.ComponentType,
+  props?: Record<string, any>
+) => {
+  return function TestWrapper({ children }: { children?: React.ReactNode }) {
+    // Use React.createElement instead of JSX to avoid TS errors
+    return React.createElement(WrappedComponent, props, children);
+  };
+};
+
+/**
+ * Creates a mock component render wrapper with common props
+ */
+export function createComponentWrapper<P extends object>(
+  Component: React.ComponentType<P>,
+  defaultProps: Partial<P> = {}
+) {
+  return (props: Partial<P> = {}) => {
+    const mergedProps = { ...defaultProps, ...props } as P;
+    return React.createElement(Component, mergedProps);
+  };
 }
+
+export default {
+  createMockOptions,
+  createMockHandlers,
+  createMockSecurityLevelInfo,
+  createTestWrapper,
+  createComponentWrapper,
+  createMockBusinessImpactDetails,
+};

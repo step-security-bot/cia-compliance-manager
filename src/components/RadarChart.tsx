@@ -1,242 +1,205 @@
 import React, { useEffect, useRef, useState } from "react";
 import Chart from "chart.js/auto";
-import type {
-  ChartConfiguration,
-  ChartData,
-  ChartOptions,
-  TooltipItem,
-} from "chart.js";
-import {
-  SECURITY_LEVEL_COLORS,
-  SecurityLevelKey,
-  SECURITY_LEVELS,
-} from "../constants/appConstants";
+import { SECURITY_LEVELS } from "../constants/appConstants";
 
 interface RadarChartProps {
   availability: string;
   integrity: string;
   confidentiality: string;
   className?: string;
-  height?: string;
-  width?: string;
 }
-
-// Map security levels to numeric values for the radar chart
-const levelToValue = (level: string): number => {
-  switch (level.toUpperCase()) {
-    case "NONE":
-      return 0;
-    case "LOW":
-      return 1;
-    case "MODERATE":
-      return 2;
-    case "HIGH":
-      return 3;
-    case "VERY HIGH":
-      return 4;
-    default:
-      return 0;
-  }
-};
-
-// Convert numeric value back to level name for accessibility and tooltips
-const valueToLevel = (value: number): string => {
-  switch (value) {
-    case 0:
-      return SECURITY_LEVELS.NONE;
-    case 1:
-      return SECURITY_LEVELS.LOW;
-    case 2:
-      return SECURITY_LEVELS.MODERATE;
-    case 3:
-      return SECURITY_LEVELS.HIGH;
-    case 4:
-      return SECURITY_LEVELS.VERY_HIGH;
-    default:
-      return SECURITY_LEVELS.NONE;
-  }
-};
-
-// Get normalized level key for consistent color mapping
-const getNormalizedLevel = (level: string): SecurityLevelKey => {
-  return level.toUpperCase().replace(/\s+/g, "_") as SecurityLevelKey;
-};
 
 const RadarChart: React.FC<RadarChartProps> = ({
   availability,
   integrity,
   confidentiality,
   className = "",
-  height = "16rem",
-  width = "100%",
 }) => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const chartRef = useRef<Chart | null>(null);
-  const [renderError, setRenderError] = useState<string | null>(null);
+  const chartRef = useRef<HTMLCanvasElement | null>(null);
+  const chartInstanceRef = useRef<Chart | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  // Generate text summary of the data for accessibility
-  const getAccessibleSummary = (): string => {
-    return `Security assessment chart showing: Availability at ${availability} level, Integrity at ${integrity} level, and Confidentiality at ${confidentiality} level.`;
+  // Helper function to convert security level to numeric value for chart
+  const getSecurityLevelValue = (level: string): number => {
+    switch (level) {
+      case "Very High":
+        return 4;
+      case "High":
+        return 3;
+      case "Moderate":
+        return 2;
+      case "Low":
+        return 1;
+      default:
+        return 0;
+    }
   };
 
   useEffect(() => {
-    if (!canvasRef.current) {
-      setRenderError("Canvas element not available");
-      return;
-    }
-
-    const ctx = canvasRef.current.getContext("2d");
-    if (!ctx) {
-      setRenderError("Canvas context not available");
-      return;
-    }
-
-    // Destroy existing chart if it exists
-    if (chartRef.current) {
-      chartRef.current.destroy();
-    }
+    if (!chartRef.current) return;
 
     try {
-      // Get colors based on security levels
-      const availabilityColor =
-        SECURITY_LEVEL_COLORS[getNormalizedLevel(availability)] || "#cccccc";
-      const integrityColor =
-        SECURITY_LEVEL_COLORS[getNormalizedLevel(integrity)] || "#cccccc";
-      const confidentialityColor =
-        SECURITY_LEVEL_COLORS[getNormalizedLevel(confidentiality)] || "#cccccc";
+      // Get values for radar chart
+      const availabilityValue = getSecurityLevelValue(availability);
+      const integrityValue = getSecurityLevelValue(integrity);
+      const confidentialityValue = getSecurityLevelValue(confidentiality);
 
-      // Data values based on security levels
-      const availabilityValue = levelToValue(availability);
-      const integrityValue = levelToValue(integrity);
-      const confidentialityValue = levelToValue(confidentiality);
+      // Clean up any existing chart
+      if (chartInstanceRef.current) {
+        chartInstanceRef.current.destroy();
+        chartInstanceRef.current = null;
+      }
 
-      // Define chart data with proper typing
-      const chartData: ChartData = {
-        labels: ["Availability", "Integrity", "Confidentiality"],
-        datasets: [
-          {
-            label: "Security Level",
-            data: [availabilityValue, integrityValue, confidentialityValue],
-            backgroundColor: "rgba(75, 192, 192, 0.2)",
-            borderColor: "rgba(75, 192, 192, 1)",
-            borderWidth: 2,
-            pointBackgroundColor: [
-              availabilityColor,
-              integrityColor,
-              confidentialityColor,
-            ],
-            pointBorderColor: "#fff",
-            pointHoverBackgroundColor: "#fff",
-            pointHoverBorderColor: "rgba(75, 192, 192, 1)",
-            pointRadius: 6,
-          },
-        ],
+      // Create the radar chart with improved styling
+      const ctx = chartRef.current.getContext("2d");
+      if (!ctx) {
+        throw new Error("Could not get canvas context");
+      }
+
+      // Helper function to get colors based on dark mode
+      const isDarkMode = document.documentElement.classList.contains("dark");
+      const getChartColors = () => {
+        return {
+          backgroundColor: isDarkMode
+            ? "rgba(0, 204, 102, 0.2)"
+            : "rgba(54, 162, 235, 0.2)",
+          borderColor: isDarkMode ? "rgb(0, 204, 102)" : "rgb(54, 162, 235)",
+          textColor: isDarkMode ? "#e2e8f0" : "#2d3748",
+          gridColor: isDarkMode
+            ? "rgba(255, 255, 255, 0.1)"
+            : "rgba(0, 0, 0, 0.1)",
+          pointBackgroundColor: isDarkMode
+            ? "rgb(0, 235, 117)"
+            : "rgb(54, 162, 235)",
+        };
       };
 
-      // Define chart options with proper typing
-      const chartOptions: ChartOptions = {
-        scales: {
-          r: {
-            angleLines: {
-              display: true,
-              color: "rgba(0,0,0,0.1)",
+      const colors = getChartColors();
+
+      chartInstanceRef.current = new Chart(ctx, {
+        type: "radar",
+        data: {
+          labels: ["Availability", "Integrity", "Confidentiality"],
+          datasets: [
+            {
+              label: "Security Level",
+              data: [availabilityValue, integrityValue, confidentialityValue],
+              backgroundColor: colors.backgroundColor,
+              borderColor: colors.borderColor,
+              borderWidth: 2,
+              pointBackgroundColor: colors.pointBackgroundColor,
+              pointBorderColor: "#fff",
+              pointHoverBackgroundColor: "#fff",
+              pointHoverBorderColor: colors.borderColor,
+              pointRadius: 4,
             },
-            suggestedMin: 0,
-            suggestedMax: 4,
-            ticks: {
-              stepSize: 1,
-              // Remove max property which doesn't exist in RadialTickOptions
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          scales: {
+            r: {
+              min: 0,
+              max: 4,
+              ticks: {
+                stepSize: 1,
+                showLabelBackdrop: false,
+                color: colors.textColor,
+                z: 1,
+              },
+              grid: {
+                color: colors.gridColor,
+              },
+              pointLabels: {
+                color: colors.textColor,
+                font: {
+                  weight: "bold",
+                },
+              },
+              angleLines: {
+                color: colors.gridColor,
+              },
+            },
+          },
+          plugins: {
+            legend: {
               display: false,
             },
-            pointLabels: {
-              font: {
-                size: 14,
-                weight: "bold",
-              },
-              color: ctx?.canvas?.closest?.(".dark") ? "#e5e7eb" : "#374151",
-            },
-          },
-        },
-        plugins: {
-          legend: {
-            display: true,
-            position: "bottom",
-            labels: {
-              boxWidth: 12,
-              padding: 15,
-              usePointStyle: true,
-              color: ctx?.canvas?.closest?.(".dark") ? "#e5e7eb" : "#374151",
-            },
-          },
-          tooltip: {
-            callbacks: {
-              label: function (context: TooltipItem<"radar">) {
-                const value = context.parsed.r;
-                return `Level: ${valueToLevel(value)}`;
-              },
-              title: function (tooltipItems: TooltipItem<"radar">[]) {
-                // Fix the possibly undefined error with optional chaining
-                return tooltipItems[0]?.label || "";
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  const labels = [
+                    "None",
+                    "Low",
+                    "Moderate",
+                    "High",
+                    "Very High",
+                  ];
+                  const value = context.raw as number;
+                  return `${context.label}: ${labels[value] || "Unknown"}`;
+                },
               },
             },
           },
         },
-        responsive: true,
-        maintainAspectRatio: false,
-        animation: {
-          duration: 1000,
-          easing: "easeOutQuart",
-        },
-      };
+      });
 
-      // Define chart configuration with proper typing
-      const chartConfig: ChartConfiguration = {
-        type: "radar",
-        data: chartData,
-        options: chartOptions,
-      };
-
-      // Create chart instance
-      chartRef.current = new Chart(ctx, chartConfig);
-      setRenderError(null);
-    } catch (error) {
-      setRenderError("Error rendering chart");
-      console.error("Error rendering radar chart:", error);
+      setError(null);
+    } catch (err) {
+      console.error("Failed to create chart:", err);
+      setError("Could not render security chart");
     }
-
-    // Cleanup function to destroy chart on unmount
-    return () => {
-      if (chartRef.current) {
-        chartRef.current.destroy();
-      }
-    };
   }, [availability, integrity, confidentiality]);
 
+  // Clean up chart on component unmount
+  useEffect(() => {
+    // Return cleanup function
+    return () => {
+      if (chartInstanceRef.current) {
+        chartInstanceRef.current.destroy();
+        chartInstanceRef.current = null;
+      }
+    };
+  }, []);
+
+  // Add fallback or error display
+  if (error) {
+    return (
+      <div
+        className="border border-red-300 rounded-md p-2 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-sm"
+        data-testid="radar-chart-error"
+      >
+        {error}
+      </div>
+    );
+  }
+
+  // Apply proper wrapper classes to ensure the chart fits in its box correctly
   return (
     <div
-      className={`radar-chart-container ${className}`}
-      style={{ height, width }}
-      aria-label="Security Radar Chart"
-      role="img"
+      className={`radar-chart-container ${className} w-full flex flex-col items-center justify-center relative max-h-[300px]`}
+      data-testid="radar-chart"
     >
-      {renderError ? (
-        <div className="h-full flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg p-4">
-          <p className="text-red-500 dark:text-red-400 text-sm">
-            Unable to render chart: {renderError}
-          </p>
+      <div
+        className="w-full h-full flex items-center justify-center"
+        style={{ minHeight: "250px" }}
+      >
+        <canvas
+          ref={chartRef}
+          aria-label="CIA security assessment radar chart"
+          data-testid="radar-chart-canvas"
+          className="max-w-full"
+        />
+      </div>
+      {/* Add value display labels below chart */}
+      <div className="flex justify-around w-full mt-2 text-xs text-gray-600 dark:text-gray-400">
+        <div data-testid="radar-availability-value">A: {availability}</div>
+        <div data-testid="radar-integrity-value">I: {integrity}</div>
+        <div data-testid="radar-confidentiality-value">
+          C: {confidentiality}
         </div>
-      ) : (
-        <>
-          <canvas
-            ref={canvasRef}
-            data-testid="radar-chart"
-            aria-label={getAccessibleSummary()}
-          ></canvas>
-          <div className="sr-only" data-testid="accessible-description">
-            {getAccessibleSummary()}
-          </div>
-        </>
-      )}
+      </div>
     </div>
   );
 };

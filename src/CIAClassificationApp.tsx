@@ -185,18 +185,19 @@ const CIAClassificationApp: React.FC = () => {
                 />
               </DashboardWidget>
 
-              {/* Security visualization in its own widget */}
+              {/* Fix: Update RadarChart widget with better styling */}
               <DashboardWidget
                 title="Security Profile Visualization"
                 size="medium"
                 icon={WIDGET_ICONS.SECURITY_VISUALIZATION}
                 testId="widget-radar-chart"
               >
-                <div className="p-4 flex items-center justify-center">
+                <div className="p-2 flex items-center justify-center h-full">
                   <RadarChart
                     availability={availability}
                     integrity={integrity}
                     confidentiality={confidentiality}
+                    className="max-h-[250px]"
                   />
                 </div>
               </DashboardWidget>

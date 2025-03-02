@@ -4,6 +4,10 @@ import "@testing-library/jest-dom";
 import { vi, expect, afterEach, beforeAll, afterAll } from "vitest";
 import { cleanup } from "@testing-library/react";
 import { configure } from "@testing-library/react";
+import {
+  suppressCanvasErrors,
+  mockCanvasContext,
+} from "./tests/testSetupHelpers";
 
 // Configure testing library
 configure({
@@ -214,7 +218,16 @@ window.cancelAnimationFrame = vi.fn();
 vi.stubGlobal("APP_VERSION", "0.0.0-test");
 
 // Setup global test environment
+// Fix: Use the correct type for console spy
+let consoleErrorSpy: ReturnType<typeof vi.spyOn> | undefined;
+
 beforeAll(() => {
+  // Suppress expected canvas errors
+  consoleErrorSpy = suppressCanvasErrors();
+
+  // Mock canvas context for all tests
+  mockCanvasContext();
+
   // Mock window.matchMedia
   Object.defineProperty(window, "matchMedia", {
     writable: true,
@@ -234,4 +247,6 @@ beforeAll(() => {
 // Cleanup after all tests
 afterAll(() => {
   vi.clearAllMocks();
+  // Restore console.error after all tests
+  consoleErrorSpy?.mockRestore();
 });

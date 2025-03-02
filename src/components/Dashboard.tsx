@@ -92,6 +92,7 @@ export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
     full: "widget-col-12",
   };
 
+  // Ensure consistent box styling across all widgets
   return (
     <div
       className={`widget ${sizeClasses[size]} ${className} bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm transition-shadow hover:shadow-md`}
@@ -112,7 +113,7 @@ export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
           {title}
         </h3>
       </div>
-      <div className="widget-body p-3">{children}</div>
+      <div className="widget-body p-3 overflow-hidden">{children}</div>
     </div>
   );
 };
