@@ -163,4 +163,12 @@ export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
 // Export predefined widget titles
 export const WIDGET_TITLES = UI_TEXT.WIDGET_TITLES;
 
+// Export the fixed column sizes to ensure proper grid layout
+export const GRID_SIZES = {
+  SMALL: "widget-col-3",
+  MEDIUM: "widget-col-4",
+  LARGE: "widget-col-6",
+  FULL: "widget-col-12",
+};
+
 export default Dashboard;

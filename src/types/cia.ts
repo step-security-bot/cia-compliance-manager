@@ -56,6 +56,7 @@ export interface CIADetails {
   uptime?: string;
   validationMethod?: string;
   protectionMethod?: string;
+  implementationSteps?: string[]; // Add this property to the interface
 }
 
 // Types for CIA ratings

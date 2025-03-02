@@ -56,6 +56,18 @@ vi.mock("./components/widgets/CostEstimationWidget", () => ({
   default: () => <div data-testid="mock-cost-estimation">Cost Estimation</div>,
 }));
 
+vi.mock("./components/widgets/BusinessImpactAnalysisWidget", () => ({
+  default: () => (
+    <div data-testid="mock-business-impact">Business Impact Analysis</div>
+  ),
+}));
+
+vi.mock("./components/widgets/TechnicalDetailsWidget", () => ({
+  default: () => (
+    <div data-testid="mock-technical-details">Technical Implementation</div>
+  ),
+}));
+
 vi.mock("./hooks/useCIAOptions", () => ({
   useCIAOptions: () => ({
     availabilityOptions: { Moderate: { capex: 10, opex: 5 } },
@@ -124,6 +136,15 @@ describe("App Component", () => {
     ).toBeInTheDocument();
     expect(
       screen.getByTestId("mock-widget-cost-estimation")
+    ).toBeInTheDocument();
+
+    // Fix: Use the correct test ID for the Business Impact Analysis widget
+    expect(
+      screen.getByTestId("mock-widget-business-impact-analysis")
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByTestId("mock-widget-technical-implementation")
     ).toBeInTheDocument();
   });
 });

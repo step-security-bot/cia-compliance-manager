@@ -12,6 +12,8 @@ import ComplianceStatusWidget from "./components/widgets/ComplianceStatusWidget"
 import ValueCreationWidget from "./components/widgets/ValueCreationWidget";
 import CostEstimationWidget from "./components/widgets/CostEstimationWidget";
 import { DashboardWidget } from "./components/Dashboard";
+import BusinessImpactAnalysisWidget from "./components/widgets/BusinessImpactAnalysisWidget";
+import TechnicalDetailsWidget from "./components/widgets/TechnicalDetailsWidget";
 
 // Fix function with proper null checks for the header elements
 const applyWidgetStyling = () => {
@@ -202,14 +204,21 @@ const App: React.FC = () => {
 
       <main className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
         <div className="bg-white dark:bg-gray-800 rounded-lg p-4 mb-6 shadow-md">
-          <SecurityLevelSelector
-            availability={availability}
-            integrity={integrity}
-            confidentiality={confidentiality}
-            setAvailability={setAvailability}
-            setIntegrity={setIntegrity}
-            setConfidentiality={setConfidentiality}
-          />
+          {/* Wrap security level controls in a widget container */}
+          <DashboardWidget
+            title="Security Profile Configuration"
+            icon={WIDGET_ICONS.SECURITY_LEVEL}
+            testId="widget-security-profile"
+          >
+            <SecurityLevelSelector
+              availability={availability}
+              integrity={integrity}
+              confidentiality={confidentiality}
+              setAvailability={setAvailability}
+              setIntegrity={setIntegrity}
+              setConfidentiality={setConfidentiality}
+            />
+          </DashboardWidget>
 
           {/* Fix: Use WidgetContainer for consistent styling */}
           <WidgetContainer
@@ -300,6 +309,35 @@ const App: React.FC = () => {
                   ? "1-3 months"
                   : "3-6 months"
               }
+            />
+          </DashboardWidget>
+
+          {/* Add the missing Business Impact Analysis widget */}
+          <DashboardWidget
+            title="Business Impact Analysis"
+            icon={WIDGET_ICONS.BUSINESS_IMPACT}
+            testId="widget-business-impact"
+          >
+            <BusinessImpactAnalysisWidget
+              category="Availability"
+              level={availability}
+              options={availabilityOptions}
+            />
+          </DashboardWidget>
+
+          {/* Add the new Technical Implementation Details widget */}
+          <DashboardWidget
+            title="Technical Implementation"
+            icon={WIDGET_ICONS.TECHNICAL_IMPLEMENTATION}
+            testId="widget-technical-implementation"
+          >
+            <TechnicalDetailsWidget
+              availability={availability}
+              integrity={integrity}
+              confidentiality={confidentiality}
+              availabilityOptions={availabilityOptions}
+              integrityOptions={integrityOptions}
+              confidentialityOptions={confidentialityOptions}
             />
           </DashboardWidget>
         </Dashboard>

@@ -5,16 +5,17 @@
 // Widget Icons - For consistent icon use across the application
 export const WIDGET_ICONS = {
   SECURITY_LEVEL: "🛡️",
-  BUSINESS_IMPACT: "📊",
-  AVAILABILITY_IMPACT: "⚡",
-  INTEGRITY_IMPACT: "🔗",
-  CONFIDENTIALITY_IMPACT: "🔒",
-  VALUE_CREATION: "📈",
-  COST_ESTIMATION: "💰",
+  SECURITY_SUMMARY: "🔍",
   SECURITY_VISUALIZATION: "📡",
   COMPLIANCE_STATUS: "✅",
-  SECURITY_SUMMARY: "🔍",
-  TECHNICAL_IMPLEMENTATION: "⚙️",
+  VALUE_CREATION: "📈",
+  COST_ESTIMATION: "💰",
+  BUSINESS_IMPACT: "📊",
+  TECHNICAL_IMPLEMENTATION: "⚙️", // Add this icon for technical implementation
+  // Add missing icons
+  AVAILABILITY_IMPACT: "⏱️",
+  INTEGRITY_IMPACT: "🔐",
+  CONFIDENTIALITY_IMPACT: "🔏",
 };
 
 // Business impact icons
