@@ -5,118 +5,75 @@
  */
 import { SECURITY_LEVELS } from "../../support/appConstantsHelper";
 
-// Helper function to ensure elements are visible
-const ensureElementVisible = (
-  selector: string
-): Cypress.Chainable<JQuery<HTMLElement>> => {
-  return (
-    cy
-      .get(selector)
-      .scrollIntoView()
-      .should("be.visible")
-      // Force visibility if still not visible due to overflow issues
-      .then(($el) => {
-        if (!Cypress.dom.isVisible($el)) {
-          return cy
-            .wrap($el)
-            .invoke("css", "position", "relative")
-            .invoke("css", "visibility", "visible")
-            .invoke("css", "overflow", "visible");
-        }
-        return cy.wrap($el);
-      })
-  );
-};
-
 describe("Review Security Impact", () => {
   beforeEach(() => {
     cy.visit("/");
-    cy.ensureAppLoaded(); // Using our custom command
+    cy.ensureAppLoaded();
     // Make the viewport larger to reveal more content
     cy.viewport(1200, 1200);
   });
 
-  // Restore original tests that target the widget containers
-  it("shows availability impact widget", () => {
-    ensureElementVisible('[data-testid="widget-availability-impact"]');
+  it("shows business impact analysis widget", () => {
+    // Find and scroll to the business impact analysis widget
+    cy.get('[data-testid="widget-business-impact-analysis"]')
+      .scrollIntoView()
+      .should("be.visible");
+
+    // Verify the combined business impact widget is present
+    cy.get('[data-testid="combined-business-impact"]').should("be.visible");
   });
 
-  it("shows integrity impact widget", () => {
-    ensureElementVisible('[data-testid="widget-integrity-impact"]');
+  it("shows all three impact sections", () => {
+    // Find business impact widget
+    cy.get('[data-testid="widget-business-impact-analysis"]')
+      .scrollIntoView()
+      .should("be.visible");
+
+    // Check that all three sections are present
+    cy.contains("Availability Impact").should("be.visible");
+    cy.contains("Integrity Impact").should("be.visible");
+    cy.contains("Confidentiality Impact").should("be.visible");
   });
 
-  it("shows confidentiality impact widget", () => {
-    ensureElementVisible('[data-testid="widget-confidentiality-impact"]');
+  it("shows introduction text for business impact analysis", () => {
+    // Find business impact widget
+    cy.get('[data-testid="widget-business-impact-analysis"]')
+      .scrollIntoView()
+      .should("be.visible");
+
+    // Verify introduction text exists
+    cy.contains("Business Impact Analysis (BIA) helps").should("be.visible");
+    cy.contains("Key Benefits").should("be.visible");
+    cy.contains("Business Considerations").should("be.visible");
   });
 
-  // Keep new tests with enhanced assertions
-  it("shows impact analysis content", () => {
-    // First ensure widgets are visible
-    ensureElementVisible('[data-testid="widget-availability-impact"]');
-    ensureElementVisible('[data-testid="widget-integrity-impact"]');
-    ensureElementVisible('[data-testid="widget-confidentiality-impact"]');
+  it("updates impact analysis information when security levels change", () => {
+    // Find business impact widget
+    cy.get('[data-testid="widget-business-impact-analysis"]')
+      .scrollIntoView()
+      .should("be.visible");
 
-    // Then check for internal elements
-    cy.get('[data-testid="impact-analysis-availability"]').should("exist");
-    cy.get('[data-testid="impact-analysis-integrity"]').should("exist");
-    cy.get('[data-testid="impact-analysis-confidentiality"]').should("exist");
-  });
-
-  it("shows impact analysis content in availability widget", () => {
-    // First ensure widget is visible
-    ensureElementVisible('[data-testid="widget-availability-impact"]');
-
-    // Verify specific elements in the availability impact widget
-    cy.get('[data-testid="impact-level-indicator-availability"]').should(
-      "exist"
-    );
-    cy.get('[data-testid="impact-level-text-availability"]').should("exist");
-    cy.get('[data-testid="impact-description-availability"]').should(
-      "not.be.empty"
-    );
-    cy.get('[data-testid="business-impact-availability"]').should(
-      "not.be.empty"
-    );
-  });
-
-  it("updates impact analysis when security levels change", () => {
-    // First ensure widget is visible
-    ensureElementVisible('[data-testid="widget-integrity-impact"]');
-
-    // Store initial impact description
-    let initialDescription = "";
-    cy.get('[data-testid="impact-description-integrity"]')
+    // Get the initial text content
+    cy.get('[data-testid="combined-business-impact"]')
       .invoke("text")
-      .then((text) => {
-        initialDescription = text;
-
-        // Change security level
-        cy.get('[data-testid="integrity-select"]').select(
+      .then((initialText) => {
+        // Change security levels
+        cy.setSecurityLevels(
           SECURITY_LEVELS.HIGH,
-          { force: true }
+          SECURITY_LEVELS.HIGH,
+          SECURITY_LEVELS.HIGH
         );
-        cy.wait(300);
+        cy.wait(500);
 
-        // Verify description changed
-        cy.get('[data-testid="impact-description-integrity"]')
+        // Verify text content has changed
+        cy.get('[data-testid="combined-business-impact"]')
           .invoke("text")
-          .should("not.eq", initialDescription);
+          .should("not.eq", initialText);
+
+        // Verify High level text appears
+        cy.contains("High Availability").should("be.visible");
+        cy.contains("High Integrity").should("be.visible");
+        cy.contains("High Confidentiality").should("be.visible");
       });
-  });
-
-  it("shows business impact section in all widgets", () => {
-    // Ensure widgets are visible first
-    ensureElementVisible('[data-testid="widget-availability-impact"]');
-    ensureElementVisible('[data-testid="widget-integrity-impact"]');
-    ensureElementVisible('[data-testid="widget-confidentiality-impact"]');
-
-    cy.get('[data-testid="business-impact-heading"]').should("exist");
-    cy.get('[data-testid="business-impact-availability"]').should(
-      "not.be.empty"
-    );
-    cy.get('[data-testid="business-impact-integrity"]').should("not.be.empty");
-    cy.get('[data-testid="business-impact-confidentiality"]').should(
-      "not.be.empty"
-    );
   });
 });

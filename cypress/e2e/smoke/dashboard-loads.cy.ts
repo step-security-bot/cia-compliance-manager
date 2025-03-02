@@ -16,33 +16,41 @@ describe("Dashboard Loads", () => {
   });
 
   it("displays the application title", () => {
-    // Look for application title using flexible matching
-    cy.contains(new RegExp(UI_TEXT.APP_TITLES[0], "i")).should("be.visible");
+    // Look for application title
+    cy.contains("CIA Compliance Manager").should("be.visible");
   });
 
   it("shows security selection controls", () => {
+    // Check for the security profile widget by test ID
+    cy.get('[data-testid="widget-security-profile"]').should("exist");
+
     // Check that selection controls are present
-    cy.get("select").should("exist");
-    cy.contains(/security|level|cia|compliance/i).should("be.visible");
+    cy.get(
+      '[data-testid^="availability-select"], [data-testid^="integrity-select"], [data-testid^="confidentiality-select"]'
+    ).should("exist");
   });
 
   it("has basic layout structure", () => {
-    // Verify the basic page structure exists
-    cy.get('header, nav, main, div[class*="container"]').should("exist");
+    // Verify dashboard grid exists
+    cy.get('[data-testid="dashboard-grid"]').should("exist");
+
+    // Verify header exists
+    cy.get("header").should("exist");
+
+    // Verify theme toggle exists
+    cy.get('[data-testid="theme-toggle"]').should("exist");
   });
 
   it("shows all required widgets", () => {
-    // Check for widget areas with flexible selectors
-    cy.get("body").then(($body) => {
-      // Log what's on the page for diagnostics
-      cy.log(`Page contains ${$body.find("div").length} div elements`);
+    // Check for all required widgets by test ID
+    cy.get('[data-testid="widget-security-summary"]').should("exist");
+    cy.get('[data-testid="widget-compliance-status"]').should("exist");
+    cy.get('[data-testid="widget-value-creation"]').should("exist");
+    cy.get('[data-testid="widget-cost-estimation"]').should("exist");
+    cy.get('[data-testid="widget-business-impact-analysis"]').should("exist");
+    cy.get('[data-testid="widget-technical-implementation"]').should("exist");
 
-      // Look for widgets with flexible matching
-      [/security/i, /compliance/i, /cost/i, /value/i, /impact/i].forEach(
-        (pattern) => {
-          cy.contains(pattern).should("exist");
-        }
-      );
-    });
+    // Check for visualization widget
+    cy.get('[data-testid="radar-widget-container"]').should("exist");
   });
 });

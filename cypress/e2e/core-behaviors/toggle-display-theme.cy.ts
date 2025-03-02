@@ -4,10 +4,6 @@
  * Tests the theme toggle functionality to ensure users can
  * adjust the display to their preference.
  */
-import { CypressConstants } from "../../support/appConstantsHelper";
-import { logPageElements } from "../../support/testHelpers";
-
-const { UI_TEXT } = CypressConstants;
 
 describe("Toggle Display Theme", () => {
   beforeEach(() => {
@@ -16,12 +12,12 @@ describe("Toggle Display Theme", () => {
   });
 
   it("displays theme toggle button", () => {
-    // Look for theme toggle button using test ID
+    // Check theme toggle button exists
     cy.get('[data-testid="theme-toggle"]').should("exist").and("be.visible");
   });
 
   it("switches between dark and light modes", () => {
-    // First check initial state
+    // Check initial state of the document
     cy.get("html").then(($html) => {
       const initialIsDark = $html.hasClass("dark");
       cy.log(`Initial theme is ${initialIsDark ? "dark" : "light"}`);
@@ -35,9 +31,10 @@ describe("Toggle Display Theme", () => {
         expect(newIsDark).to.not.equal(initialIsDark);
       });
 
-      // Check that button text changed appropriately
+      // Check button text changed appropriately
       cy.get('[data-testid="theme-toggle"]').should(($btn) => {
-        if ($btn.text().includes("Light")) {
+        const btnText = $btn.text();
+        if (btnText.includes("LIGHT MODE")) {
           expect($html.hasClass("dark")).to.be.true;
         } else {
           expect($html.hasClass("dark")).to.be.false;
@@ -46,45 +43,20 @@ describe("Toggle Display Theme", () => {
     });
   });
 
-  it("shows gaming-inspired styles in dark mode", () => {
-    // Ensure we're in dark mode
+  it("persists theme choice after page reload", () => {
+    // Set to dark mode if not already
     cy.get("html").then(($html) => {
       if (!$html.hasClass("dark")) {
         cy.get('[data-testid="theme-toggle"]').click();
+        cy.get("html").should("have.class", "dark");
       }
     });
 
-    // Wait for transition
-    cy.wait(500);
+    // Reload the page
+    cy.reload();
+    cy.ensureAppLoaded();
 
-    // Verify dark mode specific styles
-    cy.get('[data-testid="theme-toggle"]').should("contain", "Light");
-
-    // Check for Ingress-inspired styling
-    cy.get("html.dark").should("exist");
-
-    // Take a screenshot for visual verification
-    cy.screenshot("dark-mode-gaming-style");
-  });
-
-  it("shows corporate style in light mode", () => {
-    // Ensure we're in light mode
-    cy.get("html").then(($html) => {
-      if ($html.hasClass("dark")) {
-        cy.get('[data-testid="theme-toggle"]').click();
-      }
-    });
-
-    // Wait for transition
-    cy.wait(500);
-
-    // Verify light mode specific styles
-    cy.get('[data-testid="theme-toggle"]').should("contain", "Dark");
-
-    // Check that dark mode class is removed
-    cy.get("html").should("not.have.class", "dark");
-
-    // Take a screenshot for visual verification
-    cy.screenshot("light-mode-corporate-style");
+    // Verify dark mode is still active
+    cy.get("html").should("have.class", "dark");
   });
 });

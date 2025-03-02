@@ -13,43 +13,57 @@ describe("Widget Interactions", () => {
     cy.viewport(1200, 900); // Large enough to see multiple widgets
   });
 
-  it("verifies SecuritySummaryWidget expandable sections", () => {
-    // Find the security summary widget
-    cy.contains("h3", /Security Summary|Security Overview/).scrollIntoView();
+  it("verifies TechnicalDetailsWidget tab interactions", () => {
+    // Find the technical implementation widget
+    cy.get('[data-testid="widget-technical-implementation"]')
+      .scrollIntoView()
+      .should("be.visible");
 
-    // Find and click the technical details toggle
-    cy.get('[data-testid="technical-section-toggle"]').click();
+    // Check that the component renders with tabs
+    cy.get('[data-testid="technical-details-widget"]').within(() => {
+      // Verify tabs are present
+      cy.get('[data-testid="availability-tab"]').should("be.visible");
+      cy.get('[data-testid="integrity-tab"]').should("be.visible");
+      cy.get('[data-testid="confidentiality-tab"]').should("be.visible");
 
-    // Verify the technical details are displayed
-    cy.get('[data-testid="technical-details-section"]').should("be.visible");
-    cy.get('[data-testid="availability-tech-heading"]').should("be.visible");
-    cy.get('[data-testid="integrity-tech-heading"]').should("be.visible");
-    cy.get('[data-testid="confidentiality-tech-heading"]').should("be.visible");
+      // Click on tabs and verify content changes
+      cy.get('[data-testid="integrity-tab"]').click();
+      cy.get('[data-testid="technical-description"]').should("be.visible");
 
-    // Collapse section and verify
-    cy.get('[data-testid="technical-section-toggle"]').click();
-    cy.get('[data-testid="technical-details-section"]').should("not.exist");
+      // Click on confidentiality tab
+      cy.get('[data-testid="confidentiality-tab"]').click();
+      cy.get('[data-testid="technical-description"]').should("be.visible");
 
-    // Test business impact section
-    cy.get('[data-testid="business-impact-toggle"]').click();
-    cy.get('[data-testid="business-impact-section"]').should("be.visible");
-    cy.get('[data-testid="availability-impact-heading"]').should("be.visible");
+      // Verify implementation steps are visible
+      cy.get('[data-testid="implementation-step-0"]').should("exist");
+    });
+  });
 
-    // Test metrics section
-    cy.get('[data-testid="metrics-toggle"]').click();
-    cy.get('[data-testid="metrics-section"]').should("be.visible");
+  it("verifies BusinessImpactAnalysisWidget contents", () => {
+    // Find the business impact analysis widget
+    cy.get('[data-testid="widget-business-impact-analysis"]')
+      .scrollIntoView()
+      .should("be.visible");
+
+    // Check the combined impact widget is present
+    cy.get('[data-testid="combined-business-impact"]').should("be.visible");
+
+    // Verify all three impact sections are displayed
+    cy.contains("Availability Impact").should("be.visible");
+    cy.contains("Integrity Impact").should("be.visible");
+    cy.contains("Confidentiality Impact").should("be.visible");
   });
 
   it("verifies ROI estimates display", () => {
-    // Find the security summary widget
-    cy.contains("h3", /Security Summary|Security Overview/).scrollIntoView();
+    // Find the cost estimation widget
+    cy.get('[data-testid="widget-cost-estimation"]').scrollIntoView();
 
     // Check that ROI estimate is displayed
-    cy.get('[data-testid="roi-estimate-summary"]').should("be.visible");
+    cy.get('[data-testid="roi-estimate"]').should("exist");
 
     // Change security level and verify ROI updates
     let initialRoi = "";
-    cy.get('[data-testid="roi-estimate-summary"]')
+    cy.get('[data-testid="roi-estimate"]')
       .invoke("text")
       .then((text) => {
         initialRoi = text;
@@ -63,17 +77,14 @@ describe("Widget Interactions", () => {
         cy.wait(300);
 
         // Verify ROI estimate updated
-        cy.get('[data-testid="roi-estimate-summary"]')
+        cy.get('[data-testid="roi-estimate"]')
           .invoke("text")
           .should("not.eq", initialRoi);
       });
   });
 
-  it("verifies recommendation badges displayed", () => {
-    // Find the security summary widget
-    cy.contains("h3", /Security Summary|Security Overview/).scrollIntoView();
-
-    // Set to None level to see high risk badges
+  it("verifies compliance status changes with security levels", () => {
+    // Set to None level to see non-compliant status
     cy.setSecurityLevels(
       SECURITY_LEVELS.NONE,
       SECURITY_LEVELS.NONE,
@@ -81,11 +92,11 @@ describe("Widget Interactions", () => {
     );
     cy.wait(300);
 
-    // Check high risk badges
-    cy.get('[data-testid="badge-high-risk"]').should("be.visible");
-    cy.get('[data-testid="badge-not-recommended"]').should("be.visible");
+    // Check compliance widget
+    cy.get('[data-testid="widget-compliance-status"]').scrollIntoView();
+    cy.get('[data-testid="compliance-status-text"]').contains("Non-Compliant");
 
-    // Set to High level to see different badges
+    // Set to High level to see compliant status
     cy.setSecurityLevels(
       SECURITY_LEVELS.HIGH,
       SECURITY_LEVELS.HIGH,
@@ -93,51 +104,30 @@ describe("Widget Interactions", () => {
     );
     cy.wait(300);
 
-    // Check for high level badges
-    cy.get('[data-testid="badge-strong-protection"]').should("be.visible");
-    cy.get('[data-testid="badge-sensitive-data-ready"]').should("be.visible");
+    // Check for compliant status
+    cy.get('[data-testid="compliance-status-text"]').contains("Compliant");
+    cy.get('[data-testid="compliance-percentage"]').should("exist");
   });
 
-  it("verifies level indicator colors match security levels", () => {
-    // Test each security level and verify indicator color
-    const levels = [
-      SECURITY_LEVELS.NONE,
-      SECURITY_LEVELS.LOW,
-      SECURITY_LEVELS.MODERATE,
-      SECURITY_LEVELS.HIGH,
-      SECURITY_LEVELS.VERY_HIGH,
-    ];
+  it("verifies security summary content updates", () => {
+    // Find the security summary widget
+    cy.get('[data-testid="widget-security-summary"]').scrollIntoView();
 
-    // Fix: Only test the first level instead of a loop to reduce complexity and failures
-    // Select None level
-    cy.get('[data-testid="availability-select"]').select(SECURITY_LEVELS.NONE, {
-      force: true,
+    // Verify content exists
+    cy.get('[data-testid="widget-security-summary"]').within(() => {
+      cy.get("h3").should("be.visible"); // Header should exist
+      cy.get("p").should("be.visible"); // Description should exist
     });
-    cy.wait(500);
 
-    // Make sure the element containing impact indicators is visible first
-    cy.get('[data-testid^="impact-analysis-availability"]')
-      .scrollIntoView()
-      .should("be.visible");
-
-    cy.wait(500);
-
-    // Instead of checking visibility of the indicator which may be 0-width,
-    // just verify the element exists and has a background color class
-    cy.get('[data-testid="impact-level-indicator-availability"]').should(
-      "exist"
+    // Change security levels and verify content updates
+    cy.setSecurityLevels(
+      SECURITY_LEVELS.HIGH,
+      SECURITY_LEVELS.HIGH,
+      SECURITY_LEVELS.HIGH
     );
+    cy.wait(300);
 
-    // Check that the level text reflects our selection
-    cy.get('[data-testid="impact-level-text-availability"]').should(
-      "contain",
-      SECURITY_LEVELS.NONE
-    );
-
-    // Verify the color through CSS property of the indicator - but without requiring it to be visible
-    cy.get('[data-testid="impact-level-indicator-availability"]').should(
-      "have.css",
-      "background-color"
-    );
+    // Verify content changes - check for High level text
+    cy.get('[data-testid="widget-security-summary"]').should("contain", "High");
   });
 });
