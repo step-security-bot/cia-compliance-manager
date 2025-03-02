@@ -14,6 +14,7 @@ import CostEstimationWidget from "./components/widgets/CostEstimationWidget";
 import { DashboardWidget } from "./components/Dashboard";
 import BusinessImpactAnalysisWidget from "./components/widgets/BusinessImpactAnalysisWidget";
 import TechnicalDetailsWidget from "./components/widgets/TechnicalDetailsWidget";
+import CombinedBusinessImpactWidget from "./components/widgets/CombinedBusinessImpactWidget";
 
 // Fix function with proper null checks for the header elements
 const applyWidgetStyling = () => {
@@ -312,16 +313,20 @@ const App: React.FC = () => {
             />
           </DashboardWidget>
 
-          {/* Add the missing Business Impact Analysis widget */}
+          {/* Replace the single BusinessImpactAnalysisWidget with the Combined version */}
           <DashboardWidget
             title="Business Impact Analysis"
             icon={WIDGET_ICONS.BUSINESS_IMPACT}
-            testId="widget-business-impact"
+            testId="widget-business-impact-analysis"
+            size="large" // Make this widget larger to fit all content
           >
-            <BusinessImpactAnalysisWidget
-              category="Availability"
-              level={availability}
-              options={availabilityOptions}
+            <CombinedBusinessImpactWidget
+              availability={availability}
+              integrity={integrity}
+              confidentiality={confidentiality}
+              availabilityOptions={availabilityOptions}
+              integrityOptions={integrityOptions}
+              confidentialityOptions={confidentialityOptions}
             />
           </DashboardWidget>
 
