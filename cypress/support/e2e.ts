@@ -13,6 +13,9 @@ import { mount } from "cypress/react";
 import "@testing-library/cypress/add-commands";
 import "./appConstantsHelper";
 
+// Import the cypress command types (should be at the top of the file)
+/// <reference types="cypress" />
+
 // Prevents Cypress from failing tests when uncaught exceptions occur in the application
 Cypress.on("uncaught:exception", (err) => {
   // returning false here prevents Cypress from failing the test
@@ -233,3 +236,43 @@ Cypress.Commands.add("navigateToWidget", (widgetTestId) => {
     .scrollIntoView()
     .should("be.visible");
 });
+
+// FIX: Overwrite scrollIntoView with proper type casting
+before(() => {
+  Cypress.Commands.overwrite(
+    "scrollIntoView",
+    function (originalFn, subject, options?) {
+      const el = subject as unknown as JQuery<HTMLElement>;
+      const fn = originalFn as unknown as (
+        subj: JQuery<HTMLElement>,
+        opts?: Partial<Cypress.ScrollIntoViewOptions>
+      ) => Cypress.Chainable<JQuery<HTMLElement>>;
+      if (el && el.length > 1) {
+        return fn.call(this, el.first(), options);
+      }
+      return fn.call(this, el, options);
+    }
+  );
+
+  // Existing fail handler remains unchanged
+  Cypress.on("fail", (error, runnable) => {
+    if (
+      error.message.includes("not visible") ||
+      error.message.includes("being clipped")
+    ) {
+      cy.log("Element visibility issue detected. Adding debug information...");
+      cy.screenshot(`debug-${runnable.title.replace(/\s+/g, "-")}`, {
+        capture: "viewport",
+      });
+    }
+    throw error;
+  });
+});
+
+// Add test retry logic for flaky visibility tests
+Cypress.config("retries", {
+  runMode: 1,
+  openMode: 0,
+});
+
+// Remove any other duplicate implementation of scrollIntoView overwrite

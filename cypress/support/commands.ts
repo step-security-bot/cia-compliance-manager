@@ -62,9 +62,13 @@ Cypress.Commands.add("getByTestId", (selector: string) => {
 
 /**
  * Navigate to a specific widget by test ID and scroll it into view
+ * Fix: Use first() to ensure only one element is selected
  */
 Cypress.Commands.add("navigateToWidget", (testId: string) => {
-  cy.get(`[data-testid="${testId}"]`).scrollIntoView();
+  // Add .first() to ensure we're only selecting one element
+  cy.get(`[data-testid="${testId}"]`).first().scrollIntoView({ timeout: 5000 });
+
+  // Add a small wait to ensure UI is stable after scrolling
   cy.wait(100);
 });
 
