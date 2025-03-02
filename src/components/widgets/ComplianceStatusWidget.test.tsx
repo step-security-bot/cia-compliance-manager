@@ -267,9 +267,13 @@ describe("ComplianceStatusWidget", () => {
     expect(screen.getByTestId("compliance-status-text")).toHaveTextContent(
       COMPLIANCE_STATUS.STANDARD_COMPLIANCE
     );
-    
+
     // Verify that all frameworks that require moderate level are compliant
-    expect(screen.getByTestId("framework-status-soc-2-type-1")).toHaveTextContent("✓");
-    expect(screen.getByTestId("framework-status-iso-27001")).toHaveTextContent("✓");
+    expect(
+      screen.getByTestId("framework-status-soc-2-type-1")
+    ).toHaveTextContent("✓");
+    expect(screen.getByTestId("framework-status-iso-27001")).toHaveTextContent(
+      "✓"
+    );
   });
 });

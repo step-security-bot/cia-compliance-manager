@@ -75,18 +75,20 @@ const ComplianceStatusWidget: React.FC<ComplianceStatusWidgetProps> = ({
       name: COMPLIANCE_FRAMEWORKS.PCI_DSS,
       met:
         meetsStandardCompliance &&
-        [SECURITY_LEVELS.HIGH.toUpperCase(), SECURITY_LEVELS.VERY_HIGH.toUpperCase()].includes(
-          confidentiality.toUpperCase()
-        ),
+        [
+          SECURITY_LEVELS.HIGH.toUpperCase(),
+          SECURITY_LEVELS.VERY_HIGH.toUpperCase(),
+        ].includes(confidentiality.toUpperCase()),
       description: FRAMEWORK_DESCRIPTIONS.PCI_DSS,
     },
     {
       name: COMPLIANCE_FRAMEWORKS.HIPAA,
       met:
         meetsStandardCompliance &&
-        [SECURITY_LEVELS.HIGH.toUpperCase(), SECURITY_LEVELS.VERY_HIGH.toUpperCase()].includes(
-          confidentiality.toUpperCase()
-        ),
+        [
+          SECURITY_LEVELS.HIGH.toUpperCase(),
+          SECURITY_LEVELS.VERY_HIGH.toUpperCase(),
+        ].includes(confidentiality.toUpperCase()),
       description: FRAMEWORK_DESCRIPTIONS.HIPAA,
     },
     {

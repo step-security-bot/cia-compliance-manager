@@ -119,7 +119,9 @@ describe("CostEstimationWidget", () => {
     expect(screen.getByText(UI_TEXT.LABELS.COST_ANALYSIS)).toBeInTheDocument();
     expect(
       screen.getByText((content) =>
-        content.includes(getPartialTextMatcher(COST_ANALYSIS.SMALL_SOLUTION, 25))
+        content.includes(
+          getPartialTextMatcher(COST_ANALYSIS.SMALL_SOLUTION, 25)
+        )
       )
     ).toBeInTheDocument();
   });
@@ -138,7 +140,9 @@ describe("CostEstimationWidget", () => {
     expect(screen.getByText(UI_TEXT.LABELS.COST_ANALYSIS)).toBeInTheDocument();
     expect(
       screen.getByText((content) =>
-        content.includes(getPartialTextMatcher(COST_ANALYSIS.LARGE_SOLUTION, 25))
+        content.includes(
+          getPartialTextMatcher(COST_ANALYSIS.LARGE_SOLUTION, 25)
+        )
       )
     ).toBeInTheDocument();
   });
