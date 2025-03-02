@@ -11,9 +11,24 @@ vi.mock("./components/SecurityLevelSelector", () => ({
   ),
 }));
 
+// Fix: Include the DashboardWidget named export in the Dashboard mock
 vi.mock("./components/Dashboard", () => ({
   default: ({ children }: { children: React.ReactNode }) => (
     <div data-testid="mock-dashboard">{children}</div>
+  ),
+  // Add the missing DashboardWidget export
+  DashboardWidget: ({
+    children,
+    title,
+  }: {
+    children: React.ReactNode;
+    title: string;
+  }) => (
+    <div
+      data-testid={`mock-widget-${title?.toLowerCase().replace(/\s+/g, "-")}`}
+    >
+      {children}
+    </div>
   ),
 }));
 
@@ -97,9 +112,18 @@ describe("App Component", () => {
   it("renders all dashboard widgets", () => {
     render(<App />);
 
-    expect(screen.getByTestId("mock-security-summary")).toBeInTheDocument();
-    expect(screen.getByTestId("mock-compliance-status")).toBeInTheDocument();
-    expect(screen.getByTestId("mock-value-creation")).toBeInTheDocument();
-    expect(screen.getByTestId("mock-cost-estimation")).toBeInTheDocument();
+    // Check that all the widgets are rendered
+    expect(
+      screen.getByTestId("mock-widget-security-summary")
+    ).toBeInTheDocument();
+    expect(
+      screen.getByTestId("mock-widget-compliance-status")
+    ).toBeInTheDocument();
+    expect(
+      screen.getByTestId("mock-widget-value-creation")
+    ).toBeInTheDocument();
+    expect(
+      screen.getByTestId("mock-widget-cost-estimation")
+    ).toBeInTheDocument();
   });
 });

@@ -11,6 +11,7 @@ import SecuritySummaryWidget from "./components/widgets/SecuritySummaryWidget";
 import ComplianceStatusWidget from "./components/widgets/ComplianceStatusWidget";
 import ValueCreationWidget from "./components/widgets/ValueCreationWidget";
 import CostEstimationWidget from "./components/widgets/CostEstimationWidget";
+import { DashboardWidget } from "./components/Dashboard";
 
 // Fix function with proper null checks for the header elements
 const applyWidgetStyling = () => {
@@ -230,50 +231,77 @@ const App: React.FC = () => {
           integrity={integrity}
           confidentiality={confidentiality}
         >
-          <SecuritySummaryWidget
-            securityLevel={securityLevel}
-            availabilityLevel={availability}
-            integrityLevel={integrity}
-            confidentialityLevel={confidentiality}
-          />
-          <ComplianceStatusWidget
-            securityLevels={{
-              availability,
-              integrity,
-              confidentiality,
-            }}
-          />
-          <ValueCreationWidget securityLevel={securityLevel} />
-          <CostEstimationWidget
-            totalCapex={totalCapex}
-            totalOpex={totalOpex}
-            capexEstimate={`${Math.round(totalCapex * 5000)}`}
-            opexEstimate={`${Math.round(totalOpex * 2000)}`}
-            isSmallSolution={true}
-            roi={`${Math.round(
-              120 +
-                (securityLevel === "None"
-                  ? 0
+          <DashboardWidget
+            title="Security Summary"
+            icon={WIDGET_ICONS.SECURITY_SUMMARY}
+            testId="widget-security-summary"
+          >
+            <SecuritySummaryWidget
+              securityLevel={securityLevel}
+              availabilityLevel={availability}
+              integrityLevel={integrity}
+              confidentialityLevel={confidentiality}
+            />
+          </DashboardWidget>
+
+          <DashboardWidget
+            title="Compliance Status"
+            icon={WIDGET_ICONS.COMPLIANCE_STATUS}
+            testId="widget-compliance-status"
+          >
+            <ComplianceStatusWidget
+              securityLevels={{
+                availability,
+                integrity,
+                confidentiality,
+              }}
+            />
+          </DashboardWidget>
+
+          <DashboardWidget
+            title="Value Creation"
+            icon={WIDGET_ICONS.VALUE_CREATION}
+            testId="widget-value-creation"
+          >
+            <ValueCreationWidget securityLevel={securityLevel} />
+          </DashboardWidget>
+
+          <DashboardWidget
+            title="Cost Estimation"
+            icon={WIDGET_ICONS.COST_ESTIMATION}
+            testId="widget-cost-estimation"
+          >
+            <CostEstimationWidget
+              totalCapex={totalCapex}
+              totalOpex={totalOpex}
+              capexEstimate={`${Math.round(totalCapex * 5000)}`}
+              opexEstimate={`${Math.round(totalOpex * 2000)}`}
+              isSmallSolution={true}
+              roi={`${Math.round(
+                120 +
+                  (securityLevel === "None"
+                    ? 0
+                    : securityLevel === "Low"
+                    ? 40
+                    : securityLevel === "Moderate"
+                    ? 80
+                    : securityLevel === "High"
+                    ? 120
+                    : 160)
+              )}%`}
+              implementationTime={
+                securityLevel === "None"
+                  ? "N/A"
                   : securityLevel === "Low"
-                  ? 40
+                  ? "1-2 weeks"
                   : securityLevel === "Moderate"
-                  ? 80
+                  ? "2-4 weeks"
                   : securityLevel === "High"
-                  ? 120
-                  : 160)
-            )}%`}
-            implementationTime={
-              securityLevel === "None"
-                ? "N/A"
-                : securityLevel === "Low"
-                ? "1-2 weeks"
-                : securityLevel === "Moderate"
-                ? "2-4 weeks"
-                : securityLevel === "High"
-                ? "1-3 months"
-                : "3-6 months"
-            }
-          />
+                  ? "1-3 months"
+                  : "3-6 months"
+              }
+            />
+          </DashboardWidget>
         </Dashboard>
       </main>
     </div>
