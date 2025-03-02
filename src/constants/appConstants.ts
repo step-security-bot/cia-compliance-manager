@@ -130,7 +130,7 @@ export const CIA_LABELS = {
 
 // Compliance Status Text
 export const COMPLIANCE_STATUS = {
-  NON_COMPLIANT: "Non-compliant",
+  NON_COMPLIANT: "Non-Compliant",
   BASIC_COMPLIANCE: "Meets basic compliance only",
   STANDARD_COMPLIANCE: "Compliant with standard frameworks",
   FULL_COMPLIANCE: "Compliant with all major frameworks",

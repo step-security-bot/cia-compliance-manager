@@ -18,6 +18,14 @@ export const RISK_LEVELS = {
   NEGLIGIBLE: "Negligible",
 };
 
+// Add the missing COMPLIANCE_STATUS export
+export const COMPLIANCE_STATUS = {
+  NON_COMPLIANT: "Non-Compliant",
+  BASIC_COMPLIANCE: "Basic Compliance",
+  STANDARD_COMPLIANCE: "Standard Compliance",
+  FULL_COMPLIANCE: "Full Compliance",
+};
+
 // Description texts exactly as they appear in the application
 // These match the values in useCIAOptions.ts
 export const DESCRIPTIONS = {

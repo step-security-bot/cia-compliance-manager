@@ -99,9 +99,53 @@ const BusinessImpactAnalysisWidget: React.FC<
     return `No specific business impact data available for ${level} ${category}.`;
   };
 
+  // Add these enhanced icon definitions for better visual appeal
+  const enhancedIcons = {
+    IMPACT_TYPES: {
+      FINANCIAL: "💰", // Money bag for financial
+      OPERATIONAL: "⚙️", // Gear for operational
+      REPUTATIONAL: "🏆", // Trophy for reputation
+      REGULATORY: "⚖️", // Scales for regulatory
+      STRATEGIC: "🎯", // Target for strategic
+      SECURITY: "🔒", // Lock for security
+    },
+    TABS: {
+      CONSIDERATIONS: "⚠️", // Warning for considerations
+      BENEFITS: "✅", // Check mark for benefits
+    },
+    METRICS: {
+      FINANCIAL: "📊", // Chart for financial metrics
+      OPERATIONAL: "⏱️", // Stopwatch for operational/time metrics
+      RECOVERY: "🔄", // Cycle for recovery processes
+      REVENUE: "💵", // Dollar bill for revenue
+    },
+    SEVERITY: {
+      CRITICAL: "🔴", // Red circle for critical
+      HIGH: "🟠", // Orange circle for high
+      MEDIUM: "🟡", // Yellow circle for medium
+      LOW: "🟢", // Green circle for low
+    },
+  };
+
   // Improved container with better testids and ARIA attributes
   return (
-    <div data-testid={`business-impact-analysis-${category.toLowerCase()}`}>
+    <div
+      data-testid={`business-impact-analysis-${category.toLowerCase()}`}
+      className="relative"
+    >
+      {/* Add an icon indicator for the category */}
+      <div
+        className="absolute -top-2 -right-2 w-6 h-6 rounded-full flex items-center justify-center bg-white dark:bg-gray-800 shadow-md"
+        data-testid={`category-icon-${category.toLowerCase()}`}
+        aria-hidden="true"
+      >
+        {category === "Availability"
+          ? "⏱️"
+          : category === "Integrity"
+          ? "🔐"
+          : "🔏"}
+      </div>
+
       {/* Impact Analysis Summary - Add clearer test IDs */}
       <div
         data-testid={`impact-analysis-${category.toLowerCase()}`}
@@ -246,7 +290,8 @@ const BusinessImpactAnalysisWidget: React.FC<
                       <div className="flex items-center justify-between">
                         <span className="flex items-center text-sm font-medium">
                           <span className="mr-2" aria-hidden="true">
-                            {getImpactIcon(item.type)}
+                            {getImpactIcon(item.type) ||
+                              enhancedIcons.IMPACT_TYPES.OPERATIONAL}
                           </span>
                           <span data-testid={`impact-type-${index}`}>
                             {item.type} Impact
@@ -258,6 +303,9 @@ const BusinessImpactAnalysisWidget: React.FC<
                           )}`}
                           data-testid={`risk-level-${index}`}
                         >
+                          {enhancedIcons.SEVERITY[
+                            item.risk as keyof typeof enhancedIcons.SEVERITY
+                          ] || ""}{" "}
                           {item.risk}
                         </span>
                       </div>
