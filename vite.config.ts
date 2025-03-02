@@ -57,9 +57,9 @@ export default defineConfig(({ mode }): UserConfig => {
       ),
     },
     test: {
-      globals: true, // This makes Vitest globals available without imports
+      globals: true, // Important: Makes Vitest globals available without imports
       environment: "jsdom",
-      setupFiles: ["./src/setupTests.ts"],
+      setupFiles: ["./src/tests/setupVitest.ts"], // Updated path to setup file
       testTimeout: 15000, // Increase timeout to avoid flaky tests (from JS version)
       pool: "forks", // Use separate process for each test file (from JS version)
       isolate: true, // Isolate tests to prevent interference (from JS version)
@@ -67,6 +67,9 @@ export default defineConfig(({ mode }): UserConfig => {
         jsdom: {
           resources: "usable", // From JS version
         },
+      },
+      deps: {
+        inline: ["vitest-canvas-mock", "@testing-library/jest-dom"], // Inline test-specific dependencies
       },
       coverage: {
         provider: "v8",

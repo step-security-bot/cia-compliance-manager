@@ -46,18 +46,16 @@ export interface CIADetails {
   businessImpact: string;
   capex: number;
   opex: number;
-  // Add new properties for enhanced display
-  uptime?: string; // For availability options
-  validationMethod?: string; // For integrity options
-  protectionMethod?: string; // For confidentiality options
-
-  // Add properties required by tests
-  recommendations?: string[]; // Security recommendations
-  bg?: string; // Background color for styling
-  text?: string; // Text color for styling
-
-  // Add detailed business impact information
-  businessImpactDetails?: BusinessImpactDetails;
+  bg: string;
+  text: string;
+  recommendations: string[];
+  // Optional fields that might be present in some implementations
+  businessImpactDetails?: {
+    [key: string]: any;
+  };
+  uptime?: string;
+  validationMethod?: string;
+  protectionMethod?: string;
 }
 
 // Types for CIA ratings
@@ -92,7 +90,15 @@ export interface SecurityLevelInfo {
   level: string;
   description: string;
   recommendations: string[];
-  complianceFrameworks: string[];
+  complianceFrameworks?: string[];
+  // Direct keyed access to security levels
+  None: CIADetails;
+  Low: CIADetails;
+  Moderate: CIADetails;
+  High: CIADetails;
+  "Very High": CIADetails;
+  // Add any other properties needed by your components
+  [key: string]: any; // Allow other properties for flexibility
 }
 
 // Interface for CIA widget props

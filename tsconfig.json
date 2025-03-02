@@ -4,7 +4,7 @@
     "target": "es2022",
     // Modern language features for Vite, React 19, etc.
     "lib": ["es2022", "dom", "dom.iterable"],
-    // Fix: Removed vitest/globals that's causing the error
+    // Remove problematic vitest/globals reference
     "types": ["node", "vite/client"],
     // Base path for imports
     "baseUrl": ".",
