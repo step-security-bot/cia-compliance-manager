@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import { SecurityLevelKey } from "../../constants/appConstants";
+// Update the imports to use the index file
 import {
   WIDGET_ICONS,
   BUSINESS_IMPACT_ICONS,
   SECURITY_LEVEL_COLORS,
-} from "../../constants/uiConstants";
-import {
   BUSINESS_CONSIDERATIONS,
   BUSINESS_KEY_BENEFITS,
-} from "../../constants/businessConstants";
-import { RISK_LEVELS } from "../../constants/riskConstants";
+  RISK_LEVELS,
+} from "../../constants";
 import { CIADetails } from "../../types/cia";
 import { BusinessConsiderationItem } from "../../types/businessImpact";
 
