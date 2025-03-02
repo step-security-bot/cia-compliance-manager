@@ -1,14 +1,14 @@
 import React from "react";
-import { SECURITY_LEVELS } from "../constants/appConstants";
+import ValueDisplay from "./common/ValueDisplay";
 
 interface SelectionProps {
-  id: string;
+  id?: string;
   label: string;
   value: string;
   options: Record<string, any>;
   onChange: (value: string) => void;
   contextInfo?: string;
-  [x: string]: any;
+  "data-testid"?: string;
 }
 
 const Selection: React.FC<SelectionProps> = ({
@@ -18,27 +18,38 @@ const Selection: React.FC<SelectionProps> = ({
   options,
   onChange,
   contextInfo,
-  ...rest
+  "data-testid": testId,
 }) => {
-  // Use constants for security level icons mapping
-  const securityIcons: Record<string, string> = {
-    [SECURITY_LEVELS.NONE]: "📋",
-    [SECURITY_LEVELS.LOW]: "ℹ️",
-    [SECURITY_LEVELS.MODERATE]: "⚠️",
-    [SECURITY_LEVELS.HIGH]: "🔐",
-    [SECURITY_LEVELS.VERY_HIGH]: "🔒",
-  };
-
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     onChange(e.target.value);
   };
 
+  // Get appropriate variant based on current value
+  const getValueVariant = (
+    level: string
+  ): "success" | "warning" | "danger" | "info" | "primary" => {
+    switch (level.toUpperCase()) {
+      case "NONE":
+        return "danger";
+      case "LOW":
+        return "warning";
+      case "MODERATE":
+        return "info";
+      case "HIGH":
+        return "success";
+      case "VERY HIGH":
+        return "primary";
+      default:
+        return "info";
+    }
+  };
+
   return (
-    <div className="mb-4">
+    <div className="mb-2">
       {label && (
         <label
           htmlFor={id}
-          className="block text-sm font-medium dark:text-gray-100 mb-1"
+          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
         >
           {label}
         </label>
@@ -49,29 +60,27 @@ const Selection: React.FC<SelectionProps> = ({
           id={id}
           value={value}
           onChange={handleChange}
-          className="block w-full p-2 border border-gray-300 rounded-md shadow-sm
-                  focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-400
-                  dark:focus:border-blue-400 dark:text-white dark:bg-gray-800
-                  dark:border-gray-600"
-          aria-label={label}
-          {...rest}
+          className="block w-full pl-3 pr-10 py-2 text-base border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md bg-white dark:bg-gray-700 dark:text-white"
+          data-testid={testId}
         >
           {Object.keys(options).map((key) => (
             <option key={key} value={key}>
-              {key in securityIcons ? `${securityIcons[key]} ` : ""}
               {key}
-              {/* We could add contextual info here but it would clutter dropdown display */}
             </option>
           ))}
         </select>
-
-        {/* Display context info below select if provided */}
-        {contextInfo && (
-          <div className="mt-1.5 text-xs text-gray-600 dark:text-gray-400">
-            {contextInfo}
-          </div>
-        )}
       </div>
+
+      {contextInfo && (
+        <div className="mt-1 flex justify-end">
+          <ValueDisplay
+            value={contextInfo}
+            variant={getValueVariant(value)}
+            size="sm"
+            testId={`${testId}-context-info`}
+          />
+        </div>
+      )}
     </div>
   );
 };

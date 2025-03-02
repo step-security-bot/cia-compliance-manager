@@ -55,6 +55,117 @@ vi.mock("chart.js/auto", () => {
   };
 });
 
+vi.mock("./hooks/useCIAOptions", () => ({
+  useCIAOptions: () => ({
+    availabilityOptions: {
+      None: {
+        description: "None desc",
+        technical: "None tech",
+        businessImpact: "None impact",
+      },
+      Low: {
+        description: "Low desc",
+        technical: "Low tech",
+        businessImpact: "Low impact",
+      },
+      Moderate: {
+        description: "Moderate desc",
+        technical: "Moderate tech",
+        businessImpact: "Moderate impact",
+      },
+      High: {
+        description: "High desc",
+        technical: "High tech",
+        businessImpact: "High impact",
+      },
+      "Very High": {
+        description: "Very High desc",
+        technical: "Very High tech",
+        businessImpact: "Very High impact",
+      },
+    },
+    integrityOptions: {
+      None: {
+        description: "None desc",
+        technical: "None tech",
+        businessImpact: "None impact",
+      },
+      Low: {
+        description: "Low desc",
+        technical: "Low tech",
+        businessImpact: "Low impact",
+      },
+      Moderate: {
+        description: "Moderate desc",
+        technical: "Moderate tech",
+        businessImpact: "Moderate impact",
+      },
+      High: {
+        description: "High desc",
+        technical: "High tech",
+        businessImpact: "High impact",
+      },
+      "Very High": {
+        description: "Very High desc",
+        technical: "Very High tech",
+        businessImpact: "Very High impact",
+      },
+    },
+    confidentialityOptions: {
+      None: {
+        description: "None desc",
+        technical: "None tech",
+        businessImpact: "None impact",
+      },
+      Low: {
+        description: "Low desc",
+        technical: "Low tech",
+        businessImpact: "Low impact",
+      },
+      Moderate: {
+        description: "Moderate desc",
+        technical: "Moderate tech",
+        businessImpact: "Moderate impact",
+      },
+      High: {
+        description: "High desc",
+        technical: "High tech",
+        businessImpact: "High impact",
+      },
+      "Very High": {
+        description: "Very High desc",
+        technical: "Very High tech",
+        businessImpact: "Very High impact",
+      },
+    },
+  }),
+}));
+
+// Mock components that might cause issues
+vi.mock("./components/widgets/SecuritySummaryWidget", () => ({
+  default: () => (
+    <div data-testid="security-summary-widget">Security Summary Mock</div>
+  ),
+}));
+
+vi.mock("./components/widgets/ComplianceStatusWidget", () => ({
+  default: () => (
+    <div data-testid="compliance-status-widget">Compliance Status Mock</div>
+  ),
+}));
+
+vi.mock("./components/widgets/ValueCreationWidget", () => ({
+  default: () => (
+    <div data-testid="value-creation-widget">Value Creation Mock</div>
+  ),
+}));
+
+vi.mock("./components/widgets/CostEstimationWidget", () => ({
+  default: () => (
+    <div data-testid="cost-estimation-widget">Cost Estimation Mock</div>
+  ),
+}));
+
 describe("App Component", () => {
   beforeEach(() => {
     // Silence the expected console errors from Chart.js
@@ -103,5 +214,17 @@ describe("App Component", () => {
       screen.getByTestId("widget-security-level-selection")
     ).toBeInTheDocument();
     expect(screen.getByTestId("widget-security-summary")).toBeInTheDocument();
+  });
+});
+
+describe("App", () => {
+  it("renders the application title", () => {
+    render(<App />);
+    expect(screen.getByText("CIA Compliance Manager")).toBeInTheDocument();
+  });
+
+  it("renders the dashboard by default", () => {
+    render(<App />);
+    expect(screen.getByText("Dashboard")).toBeInTheDocument();
   });
 });

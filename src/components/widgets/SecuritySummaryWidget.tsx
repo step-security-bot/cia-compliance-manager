@@ -17,6 +17,10 @@ import {
   integrityOptions,
   confidentialityOptions,
 } from "../../hooks/useCIAOptions";
+import ValueDisplay from "../common/ValueDisplay";
+import StatusBadge from "../common/StatusBadge";
+import KeyValuePair from "../common/KeyValuePair";
+import MetricsCard from "../common/MetricsCard";
 
 // Add CSS animation classes at the top
 const animationStyles = {
@@ -233,6 +237,24 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
     return `Mixed security profile with ${actualAvailabilityLevel} Availability, ${actualIntegrityLevel} Integrity, and ${actualConfidentialityLevel} Confidentiality. This non-uniform approach creates an unbalanced security posture that may require additional scrutiny.`;
   };
 
+  // Get variant based on security level for ValueDisplay
+  const getLevelVariant = (
+    level: string
+  ): "default" | "primary" | "success" | "warning" | "danger" | "info" => {
+    switch (level) {
+      case SECURITY_LEVELS.VERY_HIGH:
+        return "success";
+      case SECURITY_LEVELS.HIGH:
+        return "primary";
+      case SECURITY_LEVELS.MODERATE:
+        return "info";
+      case SECURITY_LEVELS.LOW:
+        return "warning";
+      default:
+        return "danger";
+    }
+  };
+
   const summary = getSummary();
   const normalizedLevel = getNormalizedLevel(
     securityLevel === "Basic" ? "LOW" : securityLevel
@@ -269,16 +291,29 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
         {(actualAvailabilityLevel !== securityLevel ||
           actualIntegrityLevel !== securityLevel ||
           actualConfidentialityLevel !== securityLevel) && (
-          <div className="mt-2 text-xs text-gray-600 dark:text-gray-400">
-            Security components:
-            <span className="ml-1 font-medium">
-              A:{actualAvailabilityLevel}
-            </span>{" "}
-            /<span className="ml-1 font-medium">I:{actualIntegrityLevel}</span>{" "}
-            /
-            <span className="ml-1 font-medium">
-              C:{actualConfidentialityLevel}
-            </span>
+          <div className="mt-2 text-xs text-gray-600 dark:text-gray-400 flex flex-wrap gap-2">
+            <span>Security components:</span>
+            <ValueDisplay
+              value={actualAvailabilityLevel}
+              label="A"
+              variant="primary"
+              size="sm"
+              testId="availability-level-pill"
+            />
+            <ValueDisplay
+              value={actualIntegrityLevel}
+              label="I"
+              variant="success"
+              size="sm"
+              testId="integrity-level-pill"
+            />
+            <ValueDisplay
+              value={actualConfidentialityLevel}
+              label="C"
+              variant="info"
+              size="sm"
+              testId="confidentiality-level-pill"
+            />
           </div>
         )}
 
@@ -293,6 +328,7 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
             aria-valuenow={summary.progressPercent}
             aria-valuemin={0}
             aria-valuemax={100}
+            data-testid="security-level-progress-bar"
           ></div>
         </div>
       </div>
@@ -311,17 +347,18 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
 
         {/* Add a ROI summary here for easier testing */}
         <div className="mt-3 pt-2 border-t border-gray-100 dark:border-gray-700">
-          <div className="flex justify-between items-center">
-            <span className="text-xs text-gray-500 dark:text-gray-400">
-              Est. ROI:
-            </span>
-            <span
-              className="text-sm font-medium"
-              data-testid="roi-estimate-summary"
-            >
-              {roiValueFormatted}
-            </span>
-          </div>
+          <KeyValuePair
+            label="Est. ROI"
+            value={
+              <ValueDisplay
+                value={roiValueFormatted}
+                variant={getLevelVariant(securityLevel)}
+                size="sm"
+                testId="roi-estimate-summary"
+              />
+            }
+            testId="roi-estimate-pair"
+          />
         </div>
       </div>
 
@@ -555,17 +592,16 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
           Key Benefits
         </h4>
         {keyBenefits.length > 0 ? (
-          <ul
-            className="list-disc pl-5 space-y-1"
-            data-testid="key-benefits-list"
-          >
+          <ul className="space-y-1" data-testid="key-benefits-list">
             {keyBenefits.map((benefit, index) => (
               <li
                 key={index}
-                className="text-sm text-gray-600 dark:text-gray-300"
+                className="text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700 p-2 rounded-md"
                 data-testid={`key-benefit-${index}`}
               >
-                {benefit}
+                <StatusBadge status="success" size="xs">
+                  <span className="ml-1">{benefit}</span>
+                </StatusBadge>
               </li>
             ))}
           </ul>
@@ -585,93 +621,62 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
           {UI_TEXT.LABELS.RECOMMENDATION}
         </h4>
         <p
-          className="text-sm text-gray-600 dark:text-gray-300 mb-3"
+          className="text-sm text-gray-600 dark:text-gray-300 mb-3 font-medium bg-gray-50 dark:bg-gray-700 p-2 rounded-md border border-gray-200 dark:border-gray-600"
           data-testid="security-recommendation"
         >
           {summary.recommendation}
         </p>
 
-        {/* Recommendation badges */}
+        {/* Replace recommendation badges with StatusBadge */}
         <div className="flex flex-wrap gap-2 mt-2">
-          {/* Keep the existing badges */}
           {securityLevel === "None" && (
             <>
-              <span
-                className="px-2 py-1 bg-red-100 text-red-800 text-xs font-medium rounded dark:bg-red-900 dark:text-red-300"
-                data-testid="badge-high-risk"
-              >
+              <StatusBadge status="error" testId="badge-high-risk">
                 High Risk
-              </span>
-              <span
-                className="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-medium rounded dark:bg-yellow-900 dark:text-yellow-300"
-                data-testid="badge-not-recommended"
-              >
+              </StatusBadge>
+              <StatusBadge status="warning" testId="badge-not-recommended">
                 Not Recommended
-              </span>
+              </StatusBadge>
             </>
           )}
           {securityLevel === "Low" && (
             <>
-              <span
-                className="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-medium rounded dark:bg-yellow-900 dark:text-yellow-300"
-                data-testid="badge-limited-protection"
-              >
+              <StatusBadge status="warning" testId="badge-limited-protection">
                 Limited Protection
-              </span>
-              <span
-                className="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded dark:bg-blue-900 dark:text-blue-300"
-                data-testid="badge-public-data-only"
-              >
+              </StatusBadge>
+              <StatusBadge status="info" testId="badge-public-data-only">
                 Public Data Only
-              </span>
+              </StatusBadge>
             </>
           )}
           {securityLevel === "Moderate" && (
             <>
-              <span
-                className="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded dark:bg-blue-900 dark:text-blue-300"
-                data-testid="badge-compliance-ready"
-              >
+              <StatusBadge status="info" testId="badge-compliance-ready">
                 Compliance Ready
-              </span>
-              <span
-                className="px-2 py-1 bg-green-100 text-green-800 text-xs font-medium rounded dark:bg-green-900 dark:text-green-300"
-                data-testid="badge-good-balance"
-              >
+              </StatusBadge>
+              <StatusBadge status="success" testId="badge-good-balance">
                 Good Balance
-              </span>
+              </StatusBadge>
             </>
           )}
           {securityLevel === "High" && (
             <>
-              <span
-                className="px-2 py-1 bg-green-100 text-green-800 text-xs font-medium rounded dark:bg-green-900 dark:text-green-300"
-                data-testid="badge-strong-protection"
-              >
+              <StatusBadge status="success" testId="badge-strong-protection">
                 Strong Protection
-              </span>
-              <span
-                className="px-2 py-1 bg-purple-100 text-purple-800 text-xs font-medium rounded dark:bg-purple-900 dark:text-purple-300"
-                data-testid="badge-sensitive-data-ready"
-              >
+              </StatusBadge>
+              <StatusBadge status="info" testId="badge-sensitive-data-ready">
                 Sensitive Data Ready
-              </span>
+              </StatusBadge>
             </>
           )}
           {securityLevel === "Very High" && (
             <>
-              <span
-                className="px-2 py-1 bg-indigo-100 text-indigo-800 text-xs font-medium rounded dark:bg-indigo-900 dark:text-indigo-300"
-                data-testid="badge-maximum-security"
-              >
+              <StatusBadge status="success" testId="badge-maximum-security">
                 Maximum Security
-              </span>
-              <span
-                className="px-2 py-1 bg-purple-100 text-purple-800 text-xs font-medium rounded dark:bg-purple-900 dark:text-purple-300"
-                data-testid="badge-mission-critical"
-              >
+              </StatusBadge>
+              <StatusBadge status="info" testId="badge-mission-critical">
                 Mission Critical
-              </span>
+              </StatusBadge>
             </>
           )}
         </div>

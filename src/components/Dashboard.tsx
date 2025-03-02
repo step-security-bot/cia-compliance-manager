@@ -94,12 +94,12 @@ export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
 
   return (
     <div
-      className={`widget ${sizeClasses[size]} ${className}`}
+      className={`widget ${sizeClasses[size]} ${className} bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm transition-shadow hover:shadow-md`}
       data-testid={
         testId || `widget-${title.toLowerCase().replace(/\s+/g, "-")}`
       }
     >
-      <div className="widget-header">
+      <div className="widget-header p-3 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-750 rounded-t-lg">
         <h3 className="text-md font-semibold flex items-center">
           {icon && (
             <span
@@ -112,7 +112,7 @@ export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
           {title}
         </h3>
       </div>
-      <div className="widget-body">{children}</div>
+      <div className="widget-body p-3">{children}</div>
     </div>
   );
 };

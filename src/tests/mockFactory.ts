@@ -1,51 +1,59 @@
 import { vi } from "vitest";
-import React from "react";
-import { SecurityLevel } from "../constants/appConstants";
-import type { CIADetails, SecurityLevelInfo } from "../types/cia";
+import React from "react"; // Add explicit React import
+import { render } from "@testing-library/react";
+import { ReactElement } from "react";
+import type { SecurityLevel } from "../constants/appConstants";
+import type { CIADetails } from "../types/cia";
 
 /**
  * Creates mock CIA options for testing
- * @returns A properly structured SecurityLevelInfo object
+ * @returns A properly structured Record<string, CIADetails> object
  */
 export function createMockOptions(
-  levels: SecurityLevel[] = ["None", "Low", "Moderate", "High", "Very High"]
+  levels: string[] = ["None", "Low", "Moderate", "High", "Very High"]
 ): Record<string, CIADetails> {
-  // Changed return type to match actual structure
-  const result: Record<string, CIADetails> = {};
+  const options: Record<string, CIADetails> = {};
 
   levels.forEach((level, index) => {
-    result[level] = {
-      description: `${level} description`,
-      impact: `${level} impact`,
-      technical: `${level} technical details`,
-      businessImpact: `${level} business impact`,
-      capex: index * 5,
-      opex: index * 5 + 5,
+    options[level] = {
+      description: `${level} level description`,
+      technical: `${level} level technical details`,
+      businessImpact: `${level} level business impact`,
+      impact: level === "None" ? "None" : `${level} impact`,
+      capex: level === "None" ? 0 : 10 * index,
+      opex: level === "None" ? 0 : 5 * index,
+      uptime: level === "None" ? "N/A" : `${95 + index * 1}%`,
+      validationMethod:
+        level === "None" ? "None" : `${level} validation method`,
+      protectionMethod:
+        level === "None" ? "None" : `${level} protection method`,
       bg: "#cccccc",
       text: "#000000",
       recommendations: [`${level} recommendation`],
-    };
+    } as CIADetails;
   });
 
-  return result; // Removed the type assertion that was causing the error
+  return options;
 }
 
 /**
  * Creates a mock component render wrapper with common props
  */
-export function createTestWrapper<P extends object>(
-  // Use 'extends object' constraint for better type compatibility
+export function createComponentWrapper<P extends object>(
   Component: React.ComponentType<P>,
   defaultProps: Partial<P> = {}
 ) {
   return (props: Partial<P> = {}) => {
     const mergedProps = { ...defaultProps, ...props } as P;
-    // Fix createElement type compatibility issue
-    return React.createElement(
-      Component as React.ComponentType<any>,
-      mergedProps
-    );
+    return React.createElement(Component, mergedProps);
   };
+}
+
+/**
+ * Creates a test wrapper with common providers
+ */
+export function createTestWrapper(component: ReactElement) {
+  return render(component);
 }
 
 /**
@@ -58,6 +66,8 @@ export function createMockHandlers() {
     setConfidentiality: vi.fn(),
     onClick: vi.fn(),
     onChange: vi.fn(),
+    onSelect: vi.fn(),
+    onToggle: vi.fn(),
   };
 }
 
@@ -71,8 +81,6 @@ export function createMockSecurityLevelInfo() {
     description: "Mock security level description",
     recommendations: ["Recommendation 1", "Recommendation 2"],
     complianceFrameworks: ["SOC 2", "ISO 27001"],
-    // If SecurityLevelInfo doesn't have options, structure the object differently
-    // based on your actual type definition
     None: {
       description: "None level description",
       impact: "None impact",
@@ -127,6 +135,27 @@ export function createMockSecurityLevelInfo() {
       bg: "#cccccc",
       text: "#000000",
       recommendations: ["Very High recommendation"],
+    },
+  };
+}
+
+/**
+ * Creates a mock business impact data object
+ */
+export function createMockBusinessImpactDetails() {
+  return {
+    financialImpact: {
+      description: "Financial impact description",
+      riskLevel: "HIGH",
+      annualRevenueLoss: "$500,000",
+    },
+    operationalImpact: {
+      description: "Operational impact description",
+      meanTimeToRecover: "24 hours",
+    },
+    reputationalImpact: {
+      description: "Reputational impact description",
+      severity: "MEDIUM",
     },
   };
 }

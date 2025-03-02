@@ -10,7 +10,7 @@ let mockCalled = false;
 vi.mock("chart.js/auto", () => {
   return {
     __esModule: true,
-    default: vi.fn().mockImplementation((...args) => {
+    default: vi.fn().mockImplementation((...args: any[]) => {
       // Set our flag when the mock is called
       mockCalled = true;
       return {
