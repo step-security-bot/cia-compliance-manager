@@ -214,6 +214,19 @@ Cypress.Commands.add("containsAnyText", (patterns: Array<RegExp | string>) => {
   });
 });
 
+/**
+ * Safe scrollIntoView that properly handles the force option
+ * without TypeScript errors
+ */
+Cypress.Commands.add(
+  "safeScrollIntoView",
+  { prevSubject: "element" },
+  (subject, options = {}) => {
+    // Use "as any" to bypass TypeScript checking
+    return cy.wrap(subject).scrollIntoView(options as any);
+  }
+);
+
 // Define a custom type definition for the Chainable interface
 declare global {
   namespace Cypress {

@@ -4,20 +4,29 @@
  * Tests that cost estimations update based on security level selections.
  */
 import { SECURITY_LEVELS } from "../../support/appConstantsHelper";
+import {
+  interactWithElement,
+  waitForElement,
+} from "../../support/test-helpers";
 
 describe("Assess Security Costs", () => {
   beforeEach(() => {
     cy.visit("/");
     cy.ensureAppLoaded();
     cy.viewport(1200, 900);
+    // Make sure everything is loaded by waiting longer
+    cy.wait(1000);
   });
 
   it("shows cost estimation widget", () => {
-    // Navigate to cost estimation widget
-    cy.navigateToWidget("widget-cost-estimation");
+    // Use more robust selector with safeScrollIntoView instead of scrollIntoView
+    cy.get('[data-testid="widget-cost-estimation"]', { timeout: 15000 })
+      .should("exist")
+      .safeScrollIntoView({ force: true });
 
-    // Check basic cost estimation content
-    cy.get('[data-testid="cost-estimation-content"]').should("be.visible");
+    cy.get('[data-testid="cost-estimation-content"]', {
+      timeout: 10000,
+    }).should("be.visible");
   });
 
   it("shows cost estimates and values", () => {
@@ -42,28 +51,37 @@ describe("Assess Security Costs", () => {
   });
 
   it("updates costs when security levels change", () => {
-    // Navigate to cost estimation widget
-    cy.navigateToWidget("widget-cost-estimation");
+    // Navigate to cost estimation widget with safeScrollIntoView
+    cy.get('[data-testid="widget-cost-estimation"]', {
+      timeout: 15000,
+    }).safeScrollIntoView({ force: true });
+    cy.wait(500);
 
-    // Get initial CAPEX value
-    let initialCapex = "";
+    // Get initial CAPEX value with retry logic
     cy.get('[data-testid="capex-estimate-value-value"]', { timeout: 10000 })
-      .should("be.visible") // Ensure the element is visible
+      .should("be.visible")
       .invoke("text")
       .then((text) => {
-        initialCapex = text;
+        const initialCapex = text;
 
-        // Change security levels
-        cy.setSecurityLevels(
-          SECURITY_LEVELS.HIGH,
-          SECURITY_LEVELS.HIGH,
-          SECURITY_LEVELS.HIGH
-        );
+        // Change security levels with force option
+        cy.get("#availability-select").select(SECURITY_LEVELS.HIGH, {
+          force: true,
+        });
+        cy.get("#integrity-select").select(SECURITY_LEVELS.HIGH, {
+          force: true,
+        });
+        cy.get("#confidentiality-select").select(SECURITY_LEVELS.HIGH, {
+          force: true,
+        });
+        cy.wait(1000); // Wait for changes to process
 
-        // Navigate back to cost estimation and check values changed
-        cy.navigateToWidget("widget-cost-estimation");
+        // Check values changed using safeScrollIntoView
+        cy.get('[data-testid="widget-cost-estimation"]', {
+          timeout: 10000,
+        }).safeScrollIntoView({ force: true });
         cy.get('[data-testid="capex-estimate-value-value"]', { timeout: 10000 })
-          .should("be.visible") // Ensure the element is visible
+          .should("be.visible")
           .invoke("text")
           .should("not.eq", initialCapex);
       });

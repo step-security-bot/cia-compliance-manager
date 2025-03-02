@@ -1,7 +1,23 @@
-// Add this declaration to your Cypress types file
+/// <reference types="cypress" />
 
 declare namespace Cypress {
-  interface Chainable {
+  interface ScrollIntoViewOptions extends ScrollIntoViewOptionsBase {
+    /**
+     * Whether to force the action even if element is hidden, disabled etc.
+     * @default false
+     */
+    force?: boolean;
+  }
+
+  interface Chainable<Subject = any> {
+    /**
+     * Custom implementation of scrollIntoView that supports the force option
+     * @param options - The options for scrolling into view
+     */
+    safeScrollIntoView(
+      options?: Partial<ScrollIntoViewOptions>
+    ): Chainable<Subject>;
+
     // Update the parameter types to require non-nullable strings
     setSecurityLevels(
       availability: string,
