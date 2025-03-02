@@ -87,9 +87,9 @@ describe("App Component", () => {
     render(<App />);
 
     // Check for selection labels
-    expect(screen.getByLabelText(/availability/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/integrity/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/confidentiality/i)).toBeInTheDocument();
+    expect(screen.getByTestId("availability-label")).toBeInTheDocument();
+    expect(screen.getByTestId("integrity-label")).toBeInTheDocument();
+    expect(screen.getByTestId("confidentiality-label")).toBeInTheDocument();
   });
 
   it("renders dashboard structure correctly", () => {

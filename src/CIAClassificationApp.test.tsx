@@ -215,11 +215,13 @@ describe("CIAClassificationApp", () => {
     it("updates impact analysis widgets based on selections", () => {
       // Check that impact analysis widgets exist using the original test IDs
       expect(
-        screen.getByTestId("widget-availability-impact")
+        screen.getByTestId("business-impact-analysis-availability")
       ).toBeInTheDocument();
-      expect(screen.getByTestId("widget-integrity-impact")).toBeInTheDocument();
       expect(
-        screen.getByTestId("widget-confidentiality-impact")
+        screen.getByTestId("business-impact-analysis-integrity")
+      ).toBeInTheDocument();
+      expect(
+        screen.getByTestId("business-impact-analysis-confidentiality")
       ).toBeInTheDocument();
 
       // Change confidentiality to Very High
