@@ -4,6 +4,7 @@ import App from "./App";
 import "./index.css";
 import "./styles/valueStyles.css";
 import "./styles/widgetStyles.css"; // Import the widget styles for consistent widget appearance
+import GlobalWidgetStyler from "./components/common/GlobalWidgetStyler";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -11,6 +12,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
+    <GlobalWidgetStyler />
     <App />
   </React.StrictMode>
 );

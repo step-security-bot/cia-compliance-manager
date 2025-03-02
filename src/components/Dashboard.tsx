@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import { UI_TEXT, WIDGET_ICONS } from "../constants/appConstants";
-import BusinessImpactAnalysisWidget from "./widgets/BusinessImpactAnalysisWidget";
+import { WidgetContainer } from "./common";
+import widgetRegistry from "../utils/widgetRegistry";
 import {
   availabilityOptions,
   integrityOptions,
@@ -12,6 +13,7 @@ interface DashboardProps {
   availability: string;
   integrity: string;
   confidentiality: string;
+  useRegistry?: boolean; // Flag to use widget registry instead of children
 }
 
 const Dashboard: React.FC<DashboardProps> = ({
@@ -19,53 +21,113 @@ const Dashboard: React.FC<DashboardProps> = ({
   availability,
   integrity,
   confidentiality,
+  useRegistry = false,
 }) => {
+  // Prepare props for business impact widgets
+  const impactWidgetProps = {
+    "availability-impact": {
+      level: availability,
+      options: availabilityOptions,
+    },
+    "integrity-impact": {
+      level: integrity,
+      options: integrityOptions,
+    },
+    "confidentiality-impact": {
+      level: confidentiality,
+      options: confidentialityOptions,
+    },
+  };
+
+  // Common props for security widgets
+  const securityProps = {
+    securityLevel: calculateOverallLevel(
+      availability,
+      integrity,
+      confidentiality
+    ),
+    availabilityLevel: availability,
+    integrityLevel: integrity,
+    confidentialityLevel: confidentiality,
+  };
+
+  // Props for each registered widget
+  const widgetProps = {
+    "security-summary": securityProps,
+    "compliance-status": {
+      securityLevels: {
+        availability,
+        integrity,
+        confidentiality,
+      },
+    },
+    "value-creation": {
+      securityLevel: securityProps.securityLevel,
+    },
+    "cost-estimation": calculateCostProps(
+      availability,
+      integrity,
+      confidentiality
+    ),
+    ...impactWidgetProps,
+  };
+
   return (
     <div
       className="dashboard-grid overflow-visible"
       data-testid="dashboard-grid"
     >
-      {children}
-
-      {/* Use original testIds for backward compatibility with Cypress tests */}
-      <DashboardWidget
-        title="Availability Impact"
-        icon={WIDGET_ICONS.AVAILABILITY_IMPACT}
-        testId="widget-availability-impact"
-      >
-        <BusinessImpactAnalysisWidget
-          category="Availability"
-          level={availability}
-          options={availabilityOptions}
-        />
-      </DashboardWidget>
-
-      <DashboardWidget
-        title="Integrity Impact"
-        icon={WIDGET_ICONS.INTEGRITY_IMPACT}
-        testId="widget-integrity-impact"
-      >
-        <BusinessImpactAnalysisWidget
-          category="Integrity"
-          level={integrity}
-          options={integrityOptions}
-        />
-      </DashboardWidget>
-
-      <DashboardWidget
-        title="Confidentiality Impact"
-        icon={WIDGET_ICONS.CONFIDENTIALITY_IMPACT}
-        testId="widget-confidentiality-impact"
-      >
-        <BusinessImpactAnalysisWidget
-          category="Confidentiality"
-          level={confidentiality}
-          options={confidentialityOptions}
-        />
-      </DashboardWidget>
+      {useRegistry
+        ? widgetRegistry.renderWidgets(undefined, widgetProps)
+        : children}
     </div>
   );
 };
+
+// Helper function to calculate overall security level
+function calculateOverallLevel(
+  availability: string,
+  integrity: string,
+  confidentiality: string
+): string {
+  const levels = ["None", "Low", "Moderate", "High", "Very High"];
+  const availabilityIndex = levels.indexOf(availability);
+  const integrityIndex = levels.indexOf(integrity);
+  const confidentialityIndex = levels.indexOf(confidentiality);
+
+  const avgIndex = Math.round(
+    (availabilityIndex + integrityIndex + confidentialityIndex) / 3
+  );
+
+  return levels[avgIndex] || "None";
+}
+
+// Helper function to calculate cost props
+function calculateCostProps(
+  availability: string,
+  integrity: string,
+  confidentiality: string
+) {
+  // This is a simplified version - you would replace with your actual calculation logic
+  const totalCapex =
+    (availabilityOptions[availability]?.capex || 0) +
+    (integrityOptions[integrity]?.capex || 0) +
+    (confidentialityOptions[confidentiality]?.capex || 0);
+
+  const totalOpex =
+    (availabilityOptions[availability]?.opex || 0) +
+    (integrityOptions[integrity]?.opex || 0) +
+    (confidentialityOptions[confidentiality]?.opex || 0);
+
+  return {
+    totalCapex,
+    totalOpex,
+    capexEstimate: `${totalCapex * 5000}`,
+    opexEstimate: `${totalOpex * 2000}`,
+    isSmallSolution: totalCapex <= 60,
+    roi: `${Math.round(200 + totalCapex / 2)}%`,
+  };
+}
 
 interface DashboardWidgetProps {
   title: string;
@@ -73,48 +135,28 @@ interface DashboardWidgetProps {
   children: ReactNode;
   className?: string;
   icon?: ReactNode;
-  testId?: string; // Add testId prop to fix TS error
+  testId?: string;
 }
 
+// Keep the original DashboardWidget for backward compatibility
 export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
   title,
   size = "medium",
   children,
   className = "",
   icon,
-  testId, // Add to component parameters
+  testId,
 }) => {
-  // Map size to grid columns
-  const sizeClasses = {
-    small: "widget-col-2",
-    medium: "widget-col-4",
-    large: "widget-col-6",
-    full: "widget-col-12",
-  };
-
-  // Ensure consistent box styling across all widgets
   return (
-    <div
-      className={`widget ${sizeClasses[size]} ${className} bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm transition-shadow hover:shadow-md`}
-      data-testid={
-        testId || `widget-${title.toLowerCase().replace(/\s+/g, "-")}`
-      }
+    <WidgetContainer
+      title={title}
+      size={size}
+      className={className}
+      icon={icon}
+      testId={testId || `widget-${title.toLowerCase().replace(/\s+/g, "-")}`}
     >
-      <div className="widget-header p-3 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-750 rounded-t-lg">
-        <h3 className="text-md font-semibold flex items-center">
-          {icon && (
-            <span
-              className="mr-2 widget-icon"
-              data-testid={`icon-${title.toLowerCase().replace(/\s+/g, "-")}`}
-            >
-              {icon}
-            </span>
-          )}
-          {title}
-        </h3>
-      </div>
-      <div className="widget-body p-3 overflow-hidden">{children}</div>
-    </div>
+      {children}
+    </WidgetContainer>
   );
 };
 

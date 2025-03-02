@@ -13,7 +13,7 @@ interface WidgetContainerProps {
  * Standard Widget Container component to ensure consistent styling across all widgets.
  * This component provides a consistent layout with a header and body for widget content.
  */
-const WidgetContainer: React.FC<WidgetContainerProps> = ({
+export const WidgetContainer: React.FC<WidgetContainerProps> = ({
   title,
   icon,
   children,

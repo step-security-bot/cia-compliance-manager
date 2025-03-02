@@ -3,12 +3,84 @@ import Dashboard from "./components/Dashboard";
 import "./styles/valueStyles.css";
 import { useCIAOptions } from "./hooks/useCIAOptions";
 import SecurityLevelSelector from "./components/SecurityLevelSelector";
-import ComplianceStatusWidget from "./components/widgets/ComplianceStatusWidget";
-import SecuritySummaryWidget from "./components/widgets/SecuritySummaryWidget";
-import ValueCreationWidget from "./components/widgets/ValueCreationWidget";
-import CostEstimationWidget from "./components/widgets/CostEstimationWidget";
+import { WidgetContainer } from "./components/common";
 import RadarChart from "./components/RadarChart";
 import { WIDGET_ICONS } from "./constants/appConstants";
+// Import missing widget components
+import SecuritySummaryWidget from "./components/widgets/SecuritySummaryWidget";
+import ComplianceStatusWidget from "./components/widgets/ComplianceStatusWidget";
+import ValueCreationWidget from "./components/widgets/ValueCreationWidget";
+import CostEstimationWidget from "./components/widgets/CostEstimationWidget";
+
+// Fix function with proper null checks for the header elements
+const applyWidgetStyling = () => {
+  // Target elements that should be widgets but might not have the class
+  const potentialWidgets = document.querySelectorAll(
+    '[data-testid^="widget-"], [data-testid="radar-widget-container"]'
+  );
+
+  potentialWidgets.forEach((widget) => {
+    // Add the widget class if it doesn't exist
+    if (!widget.classList.contains("widget")) {
+      widget.classList.add("widget");
+    }
+
+    // Look for header and body elements
+    let header = widget.querySelector('[class*="header"]');
+    let body = widget.querySelector('[class*="body"]');
+
+    // If no header is found, look for the first heading
+    if (!header) {
+      header = widget.querySelector("h3, h4");
+      // Add null check for header and its parentElement
+      if (
+        header &&
+        header.parentElement &&
+        !header.parentElement.classList.contains("widget-header")
+      ) {
+        // Wrap the header in a proper widget-header div
+        const headerWrapper = document.createElement("div");
+        headerWrapper.className =
+          "widget-header p-3 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-750 rounded-t-lg";
+        // Add null check for parentNode
+        if (header.parentNode) {
+          header.parentNode.insertBefore(headerWrapper, header);
+          headerWrapper.appendChild(header);
+        }
+      }
+    }
+
+    // If header exists but doesn't have the widget-header class
+    if (header && !header.classList.contains("widget-header")) {
+      header.classList.add("widget-header");
+    }
+
+    // If no body is found, wrap all content after the header
+    if (!body) {
+      // Find all content after the header
+      const headerElement = widget.querySelector(".widget-header");
+      if (headerElement) {
+        const bodyWrapper = document.createElement("div");
+        bodyWrapper.className = "widget-body p-3 overflow-hidden";
+
+        // Move all elements after the header into the body wrapper
+        let nextSibling = headerElement.nextSibling;
+        while (nextSibling) {
+          const current = nextSibling;
+          nextSibling = nextSibling.nextSibling;
+          bodyWrapper.appendChild(current);
+        }
+
+        widget.appendChild(bodyWrapper);
+      }
+    }
+
+    // If body exists but doesn't have the widget-body class
+    if (body && !body.classList.contains("widget-body")) {
+      body.classList.add("widget-body");
+    }
+  });
+};
 
 const App: React.FC = () => {
   const { availabilityOptions, integrityOptions, confidentialityOptions } =
@@ -76,6 +148,16 @@ const App: React.FC = () => {
   const totalCapex = calculateTotalCapex();
   const totalOpex = calculateTotalOpex();
 
+  // Apply widget styling after component mounts
+  useEffect(() => {
+    // Use a timeout to ensure DOM is fully rendered
+    const timer = setTimeout(() => {
+      applyWidgetStyling();
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div
       className={`min-h-screen bg-gray-100 dark:bg-gray-900 ${
@@ -128,28 +210,19 @@ const App: React.FC = () => {
             setConfidentiality={setConfidentiality}
           />
 
-          {/* Fix: Add a properly styled widget box for RadarChart */}
-          <div
-            className="mt-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700"
-            data-testid="radar-widget-container"
+          {/* Fix: Use WidgetContainer for consistent styling */}
+          <WidgetContainer
+            title="Security Visualization"
+            icon={WIDGET_ICONS.SECURITY_VISUALIZATION}
+            testId="radar-widget-container"
           >
-            <div className="p-3 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700">
-              <h3 className="text-md font-semibold flex items-center">
-                <span className="mr-2">
-                  {WIDGET_ICONS.SECURITY_VISUALIZATION}
-                </span>
-                Security Visualization
-              </h3>
-            </div>
-            <div className="p-4">
-              <RadarChart
-                availability={availability}
-                integrity={integrity}
-                confidentiality={confidentiality}
-                className="max-h-[250px]"
-              />
-            </div>
-          </div>
+            <RadarChart
+              availability={availability}
+              integrity={integrity}
+              confidentiality={confidentiality}
+              className="max-h-[250px]"
+            />
+          </WidgetContainer>
         </div>
 
         <Dashboard

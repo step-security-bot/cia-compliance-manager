@@ -1,170 +1,105 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { vi } from "vitest";
 import App from "./App";
-import { vi } from "vitest"; // Remove SpyInstance import
 
-// Mock Chart.js
-vi.mock("chart.js/auto", () => ({
-  default: vi.fn(() => ({
-    destroy: vi.fn(),
-    update: vi.fn(),
-  })),
+// Mock components and hooks
+vi.mock("./components/SecurityLevelSelector", () => ({
+  default: () => (
+    <div data-testid="mock-security-selector">Security Selector</div>
+  ),
 }));
 
-// Mock the useCIAOptions hook
-vi.mock("./hooks/useCIAOptions", async () => {
-  const mockOptions = {
-    None: {
-      description: "None level",
-      technical: "Technical details",
-      businessImpact: "Business impact",
-      impact: "None",
-      capex: 0,
-      opex: 0,
-      bg: "#ccc",
-      text: "#000",
-      recommendations: ["None recommendation"],
-    },
-    Low: {
-      description: "Low level",
-      technical: "Technical details",
-      businessImpact: "Business impact",
-      impact: "Low",
-      capex: 10,
-      opex: 5,
-      bg: "#ffe",
-      text: "#000",
-      recommendations: ["Low recommendation"],
-    },
-  };
+vi.mock("./components/Dashboard", () => ({
+  default: ({ children }: { children: React.ReactNode }) => (
+    <div data-testid="mock-dashboard">{children}</div>
+  ),
+}));
 
-  return {
-    useCIAOptions: () => ({
-      availabilityOptions: mockOptions,
-      integrityOptions: mockOptions,
-      confidentialityOptions: mockOptions,
-    }),
-    // Export these directly as required by the components
-    availabilityOptions: mockOptions,
-    integrityOptions: mockOptions,
-    confidentialityOptions: mockOptions,
-  };
-});
+vi.mock("./components/RadarChart", () => ({
+  default: () => <div data-testid="mock-radar-chart">Radar Chart</div>,
+}));
 
-// Mock any components that might cause issues
 vi.mock("./components/widgets/SecuritySummaryWidget", () => ({
   default: () => (
-    <div data-testid="security-summary-widget">Security Summary Mock</div>
+    <div data-testid="mock-security-summary">Security Summary</div>
   ),
 }));
 
 vi.mock("./components/widgets/ComplianceStatusWidget", () => ({
   default: () => (
-    <div data-testid="compliance-status-widget">Compliance Status Mock</div>
+    <div data-testid="mock-compliance-status">Compliance Status</div>
   ),
 }));
 
 vi.mock("./components/widgets/ValueCreationWidget", () => ({
-  default: () => (
-    <div data-testid="value-creation-widget">Value Creation Mock</div>
-  ),
+  default: () => <div data-testid="mock-value-creation">Value Creation</div>,
 }));
 
 vi.mock("./components/widgets/CostEstimationWidget", () => ({
-  default: () => (
-    <div data-testid="cost-estimation-widget">Cost Estimation Mock</div>
-  ),
+  default: () => <div data-testid="mock-cost-estimation">Cost Estimation</div>,
 }));
 
-vi.mock("./components/RadarChart", () => ({
-  default: () => <div data-testid="radar-chart">Radar Chart Mock</div>,
+vi.mock("./hooks/useCIAOptions", () => ({
+  useCIAOptions: () => ({
+    availabilityOptions: { Moderate: { capex: 10, opex: 5 } },
+    integrityOptions: { Moderate: { capex: 15, opex: 7 } },
+    confidentialityOptions: { Moderate: { capex: 20, opex: 10 } },
+  }),
+}));
+
+// Mock the applyWidgetStyling function
+vi.mock("./utils/widgetUtils", () => ({
+  applyWidgetStyling: vi.fn(),
 }));
 
 describe("App Component", () => {
-  // Fix: Use the correct type for console spy
-  let consoleErrorSpy: ReturnType<typeof vi.spyOn>;
-
   beforeEach(() => {
-    // Silence the expected console errors from Chart.js
-    consoleErrorSpy = vi
-      .spyOn(console, "error")
-      .mockImplementation((message) => {
-        if (
-          typeof message === "string" &&
-          (message.includes("Failed to create chart") ||
-            message.includes("can't acquire context"))
-        ) {
-          return;
-        }
-        // Log other errors normally
-        console.log(message);
-      });
+    vi.clearAllMocks();
+    // Mock matchMedia for theme detection
+    Object.defineProperty(window, "matchMedia", {
+      writable: true,
+      value: vi.fn().mockImplementation((query) => ({
+        matches: false,
+        media: query,
+        onchange: null,
+        addListener: vi.fn(),
+        removeListener: vi.fn(),
+        addEventListener: vi.fn(),
+        removeEventListener: vi.fn(),
+        dispatchEvent: vi.fn(),
+      })),
+    });
   });
 
-  afterEach(() => {
-    consoleErrorSpy.mockRestore();
-  });
-
-  it("renders app dashboard correctly", () => {
-    render(<App />);
-    // Updated test to check for dashboard-grid that is actually rendered
-    expect(screen.getByRole("main")).toBeInTheDocument();
-  });
-
-  it("renders selection components with proper labels", () => {
+  it("renders without crashing", () => {
     render(<App />);
 
-    // FIX: Use data-testid selectors instead of text content to be more specific
-    expect(screen.getByTestId("availability-kv-label")).toBeInTheDocument();
-    expect(screen.getByTestId("integrity-kv-label")).toBeInTheDocument();
-    expect(screen.getByTestId("confidentiality-kv-label")).toBeInTheDocument();
-
-    // Alternative approach: Use getAllByText and check the length if needed
-    expect(screen.getAllByText("Availability").length).toBeGreaterThan(0);
-    expect(screen.getAllByText("Integrity").length).toBeGreaterThan(0);
-    expect(screen.getAllByText("Confidentiality").length).toBeGreaterThan(0);
-  });
-
-  it("renders dashboard structure correctly", () => {
-    render(<App />);
-    // Updated to look for elements that are actually in the rendered output
-    expect(screen.getByText("Security Profile")).toBeInTheDocument();
-    expect(screen.getByRole("main")).toBeInTheDocument();
-  });
-});
-
-describe("App", () => {
-  // Fix: Use the correct type for console spy
-  let consoleErrorSpy: ReturnType<typeof vi.spyOn>;
-
-  beforeEach(() => {
-    // Silence the expected console errors
-    consoleErrorSpy = vi
-      .spyOn(console, "error")
-      .mockImplementation((message) => {
-        if (
-          typeof message === "string" &&
-          (message.includes("Failed to create chart") ||
-            message.includes("canvas context"))
-        ) {
-          return;
-        }
-        // Log other errors normally
-        console.log(message);
-      });
-  });
-
-  afterEach(() => {
-    consoleErrorSpy.mockRestore();
-  });
-
-  it("renders the application title", () => {
-    render(<App />);
     expect(screen.getByText("CIA Compliance Manager")).toBeInTheDocument();
+    expect(screen.getByTestId("mock-security-selector")).toBeInTheDocument();
+    expect(screen.getByTestId("mock-radar-chart")).toBeInTheDocument();
+    expect(screen.getByTestId("mock-dashboard")).toBeInTheDocument();
   });
 
-  it("renders the dashboard by default", () => {
+  it("toggles dark mode when button is clicked", async () => {
     render(<App />);
-    expect(screen.getByRole("main")).toBeInTheDocument();
+
+    const toggleButton = screen.getByTestId("theme-toggle");
+    expect(toggleButton).toBeInTheDocument();
+
+    await userEvent.click(toggleButton);
+
+    // Check that the dark class is added
+    expect(screen.getByText("LIGHT MODE")).toBeInTheDocument();
+  });
+
+  it("renders all dashboard widgets", () => {
+    render(<App />);
+
+    expect(screen.getByTestId("mock-security-summary")).toBeInTheDocument();
+    expect(screen.getByTestId("mock-compliance-status")).toBeInTheDocument();
+    expect(screen.getByTestId("mock-value-creation")).toBeInTheDocument();
+    expect(screen.getByTestId("mock-cost-estimation")).toBeInTheDocument();
   });
 });
