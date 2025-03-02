@@ -8,6 +8,7 @@ import {
   ROI_ESTIMATES,
 } from "../../constants/appConstants";
 import { BUSINESS_KEY_BENEFITS } from "../../constants";
+import { ensureArray } from "../../utils/typeGuards";
 
 // Create wrapper components instead of mocking React.useState
 const TechnicalExpandedWrapper: React.FC = () => (
@@ -208,14 +209,14 @@ describe("SecuritySummaryWidget", () => {
 
     // Test Moderate level benefits
     const moderateBenefits = BUSINESS_KEY_BENEFITS.MODERATE;
-    moderateBenefits.forEach((benefit: string) => {
+    ensureArray(moderateBenefits).forEach((benefit: string) => {
       expect(screen.getByText(benefit)).toBeInTheDocument();
     });
 
     // Check High level benefits
     rerender(<SecuritySummaryWidget securityLevel="High" />);
     const highBenefits = BUSINESS_KEY_BENEFITS.HIGH;
-    highBenefits.forEach((benefit: string) => {
+    ensureArray(highBenefits).forEach((benefit: string) => {
       expect(screen.getByText(benefit)).toBeInTheDocument();
     });
   });

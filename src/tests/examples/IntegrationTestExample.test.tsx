@@ -1,17 +1,21 @@
-/// <reference types="vitest" />
-
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { vi, describe, it, expect } from "vitest"; // Explicit imports
+import { vi, describe, it, expect } from "vitest";
 
-// Import the component you want to test
-import SecurityLevelWidget from "../components/widgets/SecurityLevelWidget";
-import { createMockOptions } from "./mockFactory";
+import SecurityLevelWidget from "../../components/widgets/SecurityLevelWidget";
+import { createMockOptions } from "../mockFactory";
+
+/**
+ * EXAMPLE: Integration Test with Hook Mocking
+ *
+ * This file demonstrates how to test components that depend on the useCIAOptions hook
+ * by properly mocking the hook's implementation and testing component interactions.
+ */
 
 // Sample mock for useCIAOptions hook
-vi.mock("../hooks/useCIAOptions", () => {
-  const mockAvailabilityOptions = {
+vi.mock("../../hooks/useCIAOptions", () => {
+  const mockOptions = {
     None: {
       description: "No guaranteed uptime",
       impact: "Complete business disruption",
@@ -36,39 +40,11 @@ vi.mock("../hooks/useCIAOptions", () => {
     },
   };
 
-  const mockIntegrityOptions = {
-    None: {
-      description: "No data integrity controls",
-      impact: "Data corruption may go undetected",
-      technical: "No validation processes",
-      businessImpact: "Decisions based on corrupt data",
-      capex: 0,
-      opex: 0,
-      bg: "#ffcccc",
-      text: "#800000",
-      recommendations: ["Implement basic validation"],
-    },
-  };
-
-  const mockConfidentialityOptions = {
-    None: {
-      description: "No confidentiality controls",
-      impact: "Data accessible to anyone",
-      technical: "No access control",
-      businessImpact: "No protection for information",
-      capex: 0,
-      opex: 0,
-      bg: "#ffcccc",
-      text: "#800000",
-      recommendations: ["Implement access controls"],
-    },
-  };
-
   return {
     useCIAOptions: () => ({
-      availabilityOptions: mockAvailabilityOptions,
-      integrityOptions: mockIntegrityOptions,
-      confidentialityOptions: mockConfidentialityOptions,
+      availabilityOptions: mockOptions,
+      integrityOptions: mockOptions,
+      confidentialityOptions: mockOptions,
     }),
   };
 });
@@ -78,7 +54,7 @@ describe("SecurityLevelWidget Integration Test", () => {
   const mockSetIntegrity = vi.fn();
   const mockSetConfidentiality = vi.fn();
 
-  // Create complete props with all required properties
+  // Create complete props including the mock options
   const defaultProps = {
     availability: "None",
     integrity: "None",
@@ -86,19 +62,25 @@ describe("SecurityLevelWidget Integration Test", () => {
     setAvailability: mockSetAvailability,
     setIntegrity: mockSetIntegrity,
     setConfidentiality: mockSetConfidentiality,
-    // Add the missing required properties
     availabilityOptions: createMockOptions(["None", "Low"]),
     integrityOptions: createMockOptions(["None"]),
     confidentialityOptions: createMockOptions(["None"]),
   };
 
-  it("renders with data from useCIAOptions hook", () => {
+  it("renders with appropriate descriptions", () => {
     render(<SecurityLevelWidget {...defaultProps} />);
 
-    // Verify descriptions from mocked hook data are displayed
-    expect(screen.getByText("No guaranteed uptime")).toBeInTheDocument();
-    expect(screen.getByText("No data integrity controls")).toBeInTheDocument();
-    expect(screen.getByText("No confidentiality controls")).toBeInTheDocument();
+    // Use test IDs instead of exact text for more reliable testing
+    const availabilityDesc = screen.getByTestId("availability-description");
+    const integrityDesc = screen.getByTestId("integrity-description");
+    const confidentialityDesc = screen.getByTestId(
+      "confidentiality-description"
+    );
+
+    // Verify the descriptions are rendered (based on the mocked createMockOptions)
+    expect(availabilityDesc).toHaveTextContent("None description");
+    expect(integrityDesc).toHaveTextContent("None description");
+    expect(confidentialityDesc).toHaveTextContent("None description");
   });
 
   it("handles security level changes", async () => {

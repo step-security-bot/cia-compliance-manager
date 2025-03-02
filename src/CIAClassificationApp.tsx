@@ -12,6 +12,7 @@ import SecuritySummaryWidget from "./components/widgets/SecuritySummaryWidget";
 import ValueCreationWidget from "./components/widgets/ValueCreationWidget";
 import ComplianceStatusWidget from "./components/widgets/ComplianceStatusWidget";
 import { WIDGET_ICONS } from "./constants/appConstants";
+import { safeAccess } from "./utils/typeGuards";
 
 const CIAClassificationApp: React.FC = () => {
   const [availability, setAvailability] = useState<string>("None");
@@ -105,13 +106,13 @@ const CIAClassificationApp: React.FC = () => {
 
   const { totalCapex, totalOpex } = useMemo(() => {
     const totalCapex =
-      availabilityDetail.capex +
-      integrityDetail.capex +
-      confidentialityDetail.capex;
+      safeAccess(availabilityDetail, "capex", 0) +
+      safeAccess(integrityDetail, "capex", 0) +
+      safeAccess(confidentialityDetail, "capex", 0);
     const totalOpex =
-      availabilityDetail.opex +
-      integrityDetail.opex +
-      confidentialityDetail.opex;
+      safeAccess(availabilityDetail, "opex", 0) +
+      safeAccess(integrityDetail, "opex", 0) +
+      safeAccess(confidentialityDetail, "opex", 0);
     return { totalCapex, totalOpex };
   }, [availabilityDetail, integrityDetail, confidentialityDetail]);
 
@@ -313,20 +314,24 @@ const CIAClassificationApp: React.FC = () => {
                       <h4 className="text-sm font-medium mb-2">
                         Availability: {availability}
                       </h4>
-                      <p className="text-sm">{availabilityDetail.technical}</p>
+                      <p className="text-sm">
+                        {safeAccess(availabilityDetail, "technical", "")}
+                      </p>
                     </div>
                     <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-md">
                       <h4 className="text-sm font-medium mb-2">
                         Integrity: {integrity}
                       </h4>
-                      <p className="text-sm">{integrityDetail.technical}</p>
+                      <p className="text-sm">
+                        {safeAccess(integrityDetail, "technical", "")}
+                      </p>
                     </div>
                     <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-md">
                       <h4 className="text-sm font-medium mb-2">
                         Confidentiality: {confidentiality}
                       </h4>
                       <p className="text-sm">
-                        {confidentialityDetail.technical}
+                        {safeAccess(confidentialityDetail, "technical", "")}
                       </p>
                     </div>
                   </div>

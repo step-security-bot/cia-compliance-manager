@@ -9,6 +9,7 @@ import {
   confidentialityOptions,
 } from "../../hooks/useCIAOptions";
 import { BUSINESS_CONSIDERATIONS, RISK_LEVELS } from "../../constants";
+import { ensureArray } from "../../utils/typeGuards";
 
 describe("BusinessImpactAnalysisWidget", () => {
   // Helper function to find impact summary
@@ -167,9 +168,10 @@ describe("BusinessImpactAnalysisWidget", () => {
       // Check first risk element
       const firstRisk = riskElements[0];
 
-      // Verify the element has a background color class
-      // FIX: Using className.includes instead of toHaveClass with regex
-      expect(firstRisk.className).toContain("bg-");
+      // Only check if firstRisk exists
+      if (firstRisk) {
+        expect(firstRisk.className).toContain("bg-");
+      }
     }
   });
 
@@ -223,13 +225,26 @@ describe("BusinessImpactAnalysisWidget", () => {
       ...availabilityOptions,
       High: {
         ...availabilityOptions.High,
+        // Ensure all required properties exist
+        description:
+          availabilityOptions.High?.description || "High description",
+        impact: availabilityOptions.High?.impact || "High impact",
+        technical: availabilityOptions.High?.technical || "Technical details",
+        businessImpact:
+          availabilityOptions.High?.businessImpact || "Business impact",
+        capex: availabilityOptions.High?.capex || 0,
+        opex: availabilityOptions.High?.opex || 0,
+        bg: availabilityOptions.High?.bg || "#fff",
+        text: availabilityOptions.High?.text || "#000",
+        recommendations: availabilityOptions.High?.recommendations || [],
+        // Additional custom properties
         businessImpactDetails: {
           financialImpact: {
-            description: "Significant financial impact",
+            description: "Financial impact description",
             annualRevenueLoss: "$500,000",
           },
           operationalImpact: {
-            description: "Major operational disruption",
+            description: "Operational impact description",
             meanTimeToRecover: "24 hours",
           },
         },

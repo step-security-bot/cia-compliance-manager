@@ -33,7 +33,9 @@
     // No emit - Vite handles this
     "noEmit": true,
     // Type definition locations
-    "typeRoots": ["./node_modules/@types", "./src/types"]
+    "typeRoots": ["./node_modules/@types", "./src/types"],
+    // Skip type checking of declaration files in node_modules
+    "skipLibCheck": true
   },
   // Don't include Cypress files in main config
   "include": ["src/**/*.ts", "src/**/*.tsx", "vite.config.ts"],

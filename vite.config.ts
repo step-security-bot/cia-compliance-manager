@@ -4,6 +4,9 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import { resolve } from "path";
 import type { UserConfig } from "vitest/config";
 
+// Remove the conflicting global declaration
+// ImportMetaEnv is already defined in vite-env.d.ts
+
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }): UserConfig => {
   // Load env variables
@@ -52,8 +55,9 @@ export default defineConfig(({ mode }): UserConfig => {
       },
     },
     define: {
+      // Use non-null assertion since we provide a default value
       "import.meta.env.APP_VERSION": JSON.stringify(
-        process.env.VITE_APP_VERSION || "0.0.0"
+        env.VITE_APP_VERSION || process.env.VITE_APP_VERSION || "0.0.0"
       ),
     },
     test: {
@@ -68,8 +72,13 @@ export default defineConfig(({ mode }): UserConfig => {
           resources: "usable", // From JS version
         },
       },
+      // Fix: Update deprecated deps.inline configuration
       deps: {
-        inline: ["vitest-canvas-mock", "@testing-library/jest-dom"], // Inline test-specific dependencies
+        optimizer: {
+          web: {
+            include: ["vitest-canvas-mock", "@testing-library/jest-dom"],
+          },
+        },
       },
       coverage: {
         provider: "v8",

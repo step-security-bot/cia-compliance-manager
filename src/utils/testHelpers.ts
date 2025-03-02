@@ -30,23 +30,50 @@ export const waitForElementTransition = (
   });
 };
 
+// Define the missing levelScores variable
+const levelScores: Record<string, number> = {
+  None: 0,
+  Low: 25,
+  Moderate: 50,
+  High: 75,
+  "Very High": 100,
+};
+
 export const getScoreForSecurityLevels = (
   availability: string,
   integrity: string,
   confidentiality: string
 ): number => {
-  const levelScores: Record<string, number> = {
-    None: 0,
-    Low: 25,
-    Moderate: 50,
-    High: 75,
-    "Very High": 100,
+  // Create safe accessor for the scores
+  const getScore = (level: string): number => {
+    return levelScores[level] || 0; // Default to 0 for unknown levels
   };
 
   return Math.round(
-    (levelScores[availability] +
-      levelScores[integrity] +
-      levelScores[confidentiality]) /
+    (getScore(availability) + getScore(integrity) + getScore(confidentiality)) /
       3
+  );
+};
+
+// Fix potentially undefined levelScores
+const getAverageSecurityScore = (
+  availability: string,
+  integrity: string,
+  confidentiality: string
+): number => {
+  // Create a safe version of levelScores with defaults
+  const scores = {
+    None: 0,
+    Low: 1,
+    Moderate: 2,
+    High: 3,
+    "Very High": 4,
+  };
+
+  return (
+    (scores[availability as keyof typeof scores] +
+      scores[integrity as keyof typeof scores] +
+      scores[confidentiality as keyof typeof scores]) /
+    3
   );
 };

@@ -6,6 +6,7 @@ import {
   UI_TEXT,
   DETAILED_VALUE_POINTS,
 } from "../../constants/appConstants";
+import { ensureArray } from "../../utils/typeGuards";
 
 interface ValueCreationWidgetProps {
   securityLevel: string;
@@ -98,7 +99,7 @@ const ValueCreationWidget: React.FC<ValueCreationWidgetProps> = ({
       </div>
 
       <ul className="space-y-2 text-sm" data-testid="value-points-list">
-        {valuePoints.map((point, index) => (
+        {ensureArray(valuePoints).map((point, index) => (
           <li
             key={index}
             className="flex items-start text-gray-700 dark:text-gray-300"

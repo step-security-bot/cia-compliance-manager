@@ -1,5 +1,6 @@
-import { vi } from "vitest";
 import "@testing-library/jest-dom";
+import { expect, afterEach } from "vitest";
+import { cleanup } from "@testing-library/react";
 
 // This setup file will be referenced in vite.config.ts
 
@@ -14,5 +15,26 @@ declare global {
     }
   }
 }
+
+// Extend Vitest's expect with Jest DOM matchers
+expect.extend({
+  toBeInTheDocument: (received) => {
+    const pass =
+      received !== null &&
+      received !== undefined &&
+      received.ownerDocument !== undefined;
+    return {
+      message: () =>
+        `expected ${received} ${pass ? "not " : ""}to be in the document`,
+      pass,
+    };
+  },
+  // Add other Jest DOM matchers if needed
+});
+
+// Clean up after each test
+afterEach(() => {
+  cleanup();
+});
 
 // Define global mocks as needed

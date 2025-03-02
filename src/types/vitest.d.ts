@@ -1,5 +1,4 @@
 import "@testing-library/jest-dom";
-import { expect, Assertion } from "vitest";
 
 // Add missing Jest DOM matchers
 declare module "vitest" {
@@ -22,28 +21,13 @@ declare module "vitest" {
     toContainElement(element: Element | null): T;
     toBeChecked(): T;
 
-    // Vitest expectation matchers we need
-    toBe(expected: any): T;
-    toBeDefined(): T;
-    toBeTruthy(): T;
-    toBeFalsy(): T;
-    toEqual(expected: any): T;
-    toStrictEqual(expected: any): T;
-    toHaveLength(expected: number): T;
-    toHaveProperty(key: string): T;
-    toBeGreaterThan(n: number): T;
-    toBeGreaterThanOrEqual(n: number): T;
-    toBeLessThan(n: number): T;
-    toBeLessThanOrEqual(n: number): T;
-    toMatch(pattern: RegExp | string): T;
-
-    // Spy/mock matchers
-    toHaveBeenCalled(): T;
-    toHaveBeenCalledTimes(times: number): T;
-    toHaveBeenCalledWith(...args: any[]): T;
-    toHaveBeenNthCalledWith(n: number, ...args: any[]): T;
-    toHaveReturned(): T;
+    // Other matchers (already defined by Vitest, so we don't need to redefine)
   }
+}
+
+// Fix Cypress type issues
+interface Chainable<Subject = any> {
+  tab(subject?: any): Chainable<Element>;
 }
 
 // Extend the Window interface for our custom property
@@ -52,3 +36,6 @@ declare global {
     VITEST_COVERAGE?: boolean;
   }
 }
+
+// Export nothing - this is just for type declarations
+export {};
