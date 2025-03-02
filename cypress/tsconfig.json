@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
     // Modern compilation target for Node 20+ and Cypress 14
-    "target": "es2022",
-    "lib": ["es2022", "dom", "dom.iterable"],
+    "target": "es5",
+    "lib": ["es5", "dom"],
     // Cypress-specific types
-    "types": ["cypress", "node", "@testing-library/cypress"],
+    "types": ["cypress", "node"],
     // Module interoperability
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -27,5 +27,5 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx"]
+  "include": ["**/*.ts", "**/*.tsx", "index.d.ts"]
 }

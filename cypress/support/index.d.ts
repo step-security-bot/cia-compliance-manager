@@ -1,16 +1,16 @@
 /// <reference types="cypress" />
 
 declare namespace Cypress {
-  interface Chainable {
+  interface Chainable<Subject> {
     /**
      * Custom command to set all three security levels at once
      * @example cy.setSecurityLevels('High', 'Moderate', 'Low')
      */
     setSecurityLevels(
-      availability: string,
-      integrity: string,
-      confidentiality: string
-    ): Chainable<void>;
+      availability: string | null,
+      integrity: string | null,
+      confidentiality: string | null
+    ): Chainable<JQuery<HTMLElement>>;
 
     /**
      * Custom command to check if the theme is dark or light
@@ -67,6 +67,12 @@ declare namespace Cypress {
      * Custom command to ensure the app is fully loaded before proceeding
      * @example cy.ensureAppLoaded()
      */
-    ensureAppLoaded(): Chainable<void>;
+    ensureAppLoaded(): Chainable<JQuery<HTMLElement>>;
+
+    /**
+     * Custom command to navigate to a widget by its test ID
+     * @example cy.navigateToWidget('widget-security-summary')
+     */
+    navigateToWidget(testId: string): Chainable<JQuery<HTMLElement>>;
   }
 }

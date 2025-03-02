@@ -9,20 +9,20 @@ describe("Assess Security Costs", () => {
   beforeEach(() => {
     cy.visit("/");
     cy.ensureAppLoaded();
+    cy.viewport(1200, 900);
   });
 
   it("shows cost estimation widget", () => {
-    // Find and scroll to the cost estimation widget
-    cy.get('[data-testid="widget-cost-estimation"]')
-      .scrollIntoView()
-      .should("be.visible");
+    // Navigate to cost estimation widget
+    cy.navigateToWidget("widget-cost-estimation");
+
+    // Check basic cost estimation content
+    cy.get('[data-testid="cost-estimation-content"]').should("be.visible");
   });
 
   it("shows cost estimates and values", () => {
-    // Find the cost estimation widget
-    cy.get('[data-testid="widget-cost-estimation"]')
-      .scrollIntoView()
-      .should("be.visible");
+    // Navigate to cost estimation widget
+    cy.navigateToWidget("widget-cost-estimation");
 
     // Check for CAPEX and OPEX sections
     cy.get('[data-testid="capex-section"]').should("exist");
@@ -34,45 +34,46 @@ describe("Assess Security Costs", () => {
   });
 
   it("shows value creation widget", () => {
-    // Find and scroll to the value creation widget
-    cy.get('[data-testid="widget-value-creation"]')
-      .scrollIntoView()
-      .should("be.visible");
+    // Navigate to value creation widget
+    cy.navigateToWidget("widget-value-creation");
+
+    // Check value creation content
+    cy.get('[data-testid="value-creation-content"]').should("be.visible");
   });
 
   it("updates costs when security levels change", () => {
-    // Find cost estimation widget
-    cy.get('[data-testid="widget-cost-estimation"]')
-      .scrollIntoView()
-      .should("be.visible");
+    // Navigate to cost estimation widget
+    cy.navigateToWidget("widget-cost-estimation");
 
-    // Store initial CAPEX value
-    cy.get('[data-testid="capex-estimate-value"]')
+    // Get initial CAPEX value
+    let initialCapex = "";
+    cy.get('[data-testid="capex-estimate-value-value"]')
       .invoke("text")
-      .then((initialCapex) => {
+      .then((text) => {
+        initialCapex = text;
+
         // Change security levels
         cy.setSecurityLevels(
           SECURITY_LEVELS.HIGH,
           SECURITY_LEVELS.HIGH,
           SECURITY_LEVELS.HIGH
         );
-        cy.wait(500);
 
-        // Verify CAPEX value has changed
-        cy.get('[data-testid="capex-estimate-value"]')
+        // Navigate back to cost estimation and check values changed
+        cy.navigateToWidget("widget-cost-estimation");
+        cy.get('[data-testid="capex-estimate-value-value"]')
           .invoke("text")
           .should("not.eq", initialCapex);
       });
   });
 
   it("shows ROI estimate", () => {
-    // Find cost estimation widget
-    cy.get('[data-testid="widget-cost-estimation"]')
-      .scrollIntoView()
-      .should("be.visible");
+    // Navigate to cost estimation widget
+    cy.navigateToWidget("widget-cost-estimation");
 
-    // Check ROI section exists
+    // Check ROI section
     cy.get('[data-testid="roi-section"]').should("exist");
     cy.get('[data-testid="roi-estimate"]').should("exist");
+    cy.get('[data-testid="roi-estimate-value"]').should("be.visible");
   });
 });

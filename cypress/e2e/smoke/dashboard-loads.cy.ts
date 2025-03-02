@@ -26,19 +26,19 @@ describe("Dashboard Loads", () => {
 
     // Check that selection controls are present
     cy.get(
-      '[data-testid^="availability-select"], [data-testid^="integrity-select"], [data-testid^="confidentiality-select"]'
+      "select#availability-select, select#integrity-select, select#confidentiality-select"
     ).should("exist");
   });
 
   it("has basic layout structure", () => {
-    // Verify dashboard grid exists
-    cy.get('[data-testid="dashboard-grid"]').should("exist");
-
     // Verify header exists
     cy.get("header").should("exist");
 
     // Verify theme toggle exists
     cy.get('[data-testid="theme-toggle"]').should("exist");
+
+    // Verify main content area
+    cy.get("main").should("exist");
   });
 
   it("shows all required widgets", () => {

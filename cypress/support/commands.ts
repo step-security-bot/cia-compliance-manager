@@ -1,55 +1,106 @@
 // ***********************************************
 // Custom Cypress commands
 // ***********************************************
+
+// Import constants and type definitions
 import { CypressConstants } from "./appConstantsHelper";
 
+// Type definitions for custom commands
 declare global {
   namespace Cypress {
     interface Chainable {
       /**
        * Custom command to set all security levels
+       * @example cy.setSecurityLevels('High', 'Moderate', 'Low')
        */
       setSecurityLevels(
-        availability: string,
-        integrity: string,
-        confidentiality: string
-      ): Chainable<Element>;
+        availability: string | undefined,
+        integrity: string | undefined,
+        confidentiality: string | undefined
+      ): Chainable<void>;
 
       /**
        * Ensures app is loaded by waiting for key elements
+       * @example cy.ensureAppLoaded()
        */
-      ensureAppLoaded(): Chainable<Element>;
+      ensureAppLoaded(): Chainable<boolean>;
 
       /**
        * Retrieves a test ID with proper escaping
+       * @example cy.getByTestId('my-element')
        */
-      getByTestId(selector: string): Chainable<Element>;
+      getByTestId(selector: string): Chainable<JQuery<HTMLElement>>;
+
+      /**
+       * Navigate to a specific widget by test ID and scroll it into view
+       * @example cy.navigateToWidget('widget-security-summary')
+       */
+      navigateToWidget(testId: string): Chainable<JQuery<HTMLElement>>;
+
+      // ...other command definitions...
+
+      // Fix type definitions for other commands
+      selectSecurityLevelEnhanced(
+        category: "availability" | "integrity" | "confidentiality",
+        level: string
+      ): Chainable<void>;
+
+      tryClickButton(textOrPattern: string | RegExp): Chainable<boolean>;
+
+      waitForContent(
+        contentPattern: string | RegExp,
+        options?: { timeout: number }
+      ): Chainable<boolean>;
+
+      tab(): Chainable<JQuery<HTMLElement>>;
+
+      verifyWidgetWithContent(
+        widgetTestId: string,
+        expectedContent: string
+      ): Chainable<void>;
+
+      waitForAppStability(timeout?: number): Chainable<void>;
+
+      doesExist(selector?: string): Chainable<boolean>;
+
+      containsAnyText(patterns: Array<RegExp | string>): Chainable<boolean>;
     }
   }
 }
 
-// Command to set all security levels
+// Fix: Command to set all security levels - use undefined instead of null
 Cypress.Commands.add(
   "setSecurityLevels",
-  (availability: string, integrity: string, confidentiality: string) => {
-    cy.get(
-      `[data-testid="${CypressConstants.TEST_IDS.SELECTORS.AVAILABILITY}"]`
-    )
-      .scrollIntoView()
-      .select(availability, { force: true });
-    cy.wait(100);
+  (
+    availability: string | undefined,
+    integrity: string | undefined,
+    confidentiality: string | undefined
+  ) => {
+    // Use if to check for undefined values instead of using null
+    if (availability !== undefined) {
+      cy.get(
+        `[data-testid="${CypressConstants.TEST_IDS.SELECTORS.AVAILABILITY}"]`
+      )
+        .scrollIntoView()
+        .select(availability, { force: true });
+      cy.wait(100);
+    }
 
-    cy.get(`[data-testid="${CypressConstants.TEST_IDS.SELECTORS.INTEGRITY}"]`)
-      .scrollIntoView()
-      .select(integrity, { force: true });
-    cy.wait(100);
+    if (integrity !== undefined) {
+      cy.get(`[data-testid="${CypressConstants.TEST_IDS.SELECTORS.INTEGRITY}"]`)
+        .scrollIntoView()
+        .select(integrity, { force: true });
+      cy.wait(100);
+    }
 
-    cy.get(
-      `[data-testid="${CypressConstants.TEST_IDS.SELECTORS.CONFIDENTIALITY}"]`
-    )
-      .scrollIntoView()
-      .select(confidentiality, { force: true });
-    cy.wait(100);
+    if (confidentiality !== undefined) {
+      cy.get(
+        `[data-testid="${CypressConstants.TEST_IDS.SELECTORS.CONFIDENTIALITY}"]`
+      )
+        .scrollIntoView()
+        .select(confidentiality, { force: true });
+      cy.wait(100);
+    }
   }
 );
 
@@ -177,7 +228,11 @@ Cypress.Commands.add("tab", { prevSubject: ["element"] }, (subject: JQuery) => {
 // Improved custom command to set all security levels at once
 Cypress.Commands.add(
   "setSecurityLevels",
-  (availability: string, integrity: string, confidentiality: string) => {
+  (
+    availability: string | undefined,
+    integrity: string | undefined,
+    confidentiality: string | undefined
+  ) => {
     // Add a wait to ensure elements are fully loaded
     cy.get('[data-testid="availability-select"]', { timeout: 10000 })
       .should("be.visible")
@@ -291,6 +346,78 @@ Cypress.Commands.add("ensureAppLoaded", () => {
   return cy.wrap(true);
 });
 
+// Custom command implementations
+
+/**
+ * Navigate to a specific widget by test ID and scroll it into view
+ *
+ * @example cy.navigateToWidget('widget-security-summary')
+ */
+Cypress.Commands.add("navigateToWidget", (testId: string) => {
+  // Find the widget by data-testid and scroll it into view
+  return cy.get(`[data-testid="${testId}"]`).scrollIntoView();
+
+  // Add a small wait to ensure UI is stable after scrolling
+  cy.wait(100);
+});
+
+/**
+ * Ensures the application is fully loaded by checking for key elements
+ *
+ * @example cy.ensureAppLoaded()
+ */
+Cypress.Commands.add("ensureAppLoaded", () => {
+  // Wait for header to be present
+  cy.get("header", { timeout: 10000 }).should("be.visible");
+
+  // Wait for key components to be loaded (either the dashboard or loading indicator)
+  cy.get(
+    '[data-testid="widget-security-profile"], [data-testid="loading-indicator"]',
+    { timeout: 10000 }
+  ).should("exist");
+
+  // Return a boolean chainable to match the interface
+  return cy.wrap(true);
+});
+
+/**
+ * Set security levels for CIA components
+ *
+ * @example cy.setSecurityLevels('High', 'Moderate', 'Low')
+ */
+Cypress.Commands.add(
+  "setSecurityLevels",
+  (
+    availability: string | undefined,
+    integrity: string | undefined,
+    confidentiality: string | undefined
+  ) => {
+    // Navigate to security profile configuration
+    cy.get('[data-testid="widget-security-profile"]').scrollIntoView();
+
+    // Set each level if provided
+    if (availability !== undefined) {
+      cy.get("#availability-select").select(availability, { force: true });
+      cy.wait(100); // Small wait for UI to update
+    }
+
+    if (integrity !== undefined) {
+      cy.get("#integrity-select").select(integrity, { force: true });
+      cy.wait(100);
+    }
+
+    if (confidentiality !== undefined) {
+      cy.get("#confidentiality-select").select(confidentiality, {
+        force: true,
+      });
+      cy.wait(100);
+    }
+
+    // Final wait for changes to take effect
+    cy.wait(200);
+  }
+);
+
 // Type definitions with proper return types
 declare global {
   namespace Cypress {
@@ -329,6 +456,8 @@ declare global {
       ensureAppLoaded(): Chainable<boolean>;
 
       containsAnyText(patterns: RegExp[]): Chainable<boolean>;
+
+      navigateToWidget(testId: string): Chainable<void>;
     }
   }
 }

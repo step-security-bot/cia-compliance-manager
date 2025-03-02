@@ -1,3 +1,11 @@
+// ***********************************************************
+// This file is processed and loaded automatically
+// before your test files.
+//
+// This is a great place to put global configuration and
+// behavior that modifies Cypress.
+// ***********************************************************
+
 // Import commands.ts using ES2015 syntax:
 import "./commands";
 import { mount } from "cypress/react";
@@ -46,34 +54,40 @@ Cypress.Commands.add(
 Cypress.Commands.add(
   "setSecurityLevels",
   (availability, integrity, confidentiality) => {
-    cy.get('[data-testid="availability-select"]')
-      .scrollIntoView()
-      .select(availability, { force: true });
-    cy.wait(100);
+    // Navigate to the security profile widget first
+    cy.get('[data-testid="widget-security-profile"]')
+      .should("be.visible")
+      .scrollIntoView();
 
-    cy.get('[data-testid="integrity-select"]')
-      .scrollIntoView()
-      .select(integrity, { force: true });
-    cy.wait(100);
+    // Now try to find the selects inside this widget
+    cy.get('[data-testid="widget-security-profile"]').within(() => {
+      if (availability) {
+        cy.get("#availability-select").select(availability, { force: true });
+      }
 
-    cy.get('[data-testid="confidentiality-select"]')
-      .scrollIntoView()
-      .select(confidentiality, { force: true });
-    cy.wait(100);
+      if (integrity) {
+        cy.get("#integrity-select").select(integrity, { force: true });
+      }
+
+      if (confidentiality) {
+        cy.get("#confidentiality-select").select(confidentiality, {
+          force: true,
+        });
+      }
+    });
+
+    // Wait for changes to apply
+    cy.wait(300);
   }
 );
 
 // Add ensureAppLoaded helper command
 Cypress.Commands.add("ensureAppLoaded", () => {
-  // Wait for the app to be ready
-  cy.get("body", { timeout: 10000 }).should("not.have.class", "loading");
+  // First verify the body has content
+  cy.get("body", { timeout: 10000 }).should("not.be.empty");
 
-  // Check for a core element to confirm app is loaded
-  cy.get('[data-testid="widget-security-level-selection"]', {
-    timeout: 5000,
-  }).should("exist");
-
-  // No return statement needed, this matches the void return type in the declaration
+  // Then verify the app title is present
+  cy.contains("CIA Compliance Manager", { timeout: 5000 }).should("be.visible");
 });
 
 // Use longer timeouts for all commands
@@ -212,3 +226,10 @@ before(() => {
 // Import additional testing libraries
 import "cypress-wait-until";
 import "cypress-real-events";
+
+// Helper for navigating to specific widgets
+Cypress.Commands.add("navigateToWidget", (widgetTestId) => {
+  cy.get(`[data-testid="${widgetTestId}"]`, { timeout: 10000 })
+    .scrollIntoView()
+    .should("be.visible");
+});

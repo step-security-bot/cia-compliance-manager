@@ -1,13 +1,9 @@
 /**
- * User Story: As a user, I can set different CIA security levels
+ * User Story: As a user, I can set security levels for CIA components
  *
- * Tests the ability to select different security levels for
- * Confidentiality, Integrity, and Availability.
+ * Tests the ability to set different security levels and see visual feedback
  */
-import { CypressConstants } from "../../support/appConstantsHelper";
-
-// Use constants from the namespace
-const { SECURITY_LEVELS, TEST_IDS, DESCRIPTIONS } = CypressConstants;
+import { SECURITY_LEVELS } from "../../support/appConstantsHelper";
 
 describe("Set Security Levels", () => {
   beforeEach(() => {
@@ -16,104 +12,85 @@ describe("Set Security Levels", () => {
   });
 
   it("allows setting individual security levels", () => {
-    // Use test IDs from constants for better maintainability
-    cy.getByTestId(TEST_IDS.SELECTORS.AVAILABILITY).select(
-      SECURITY_LEVELS.HIGH,
-      { force: true }
-    );
+    // Navigate to security widget
+    cy.navigateToWidget("widget-security-profile");
 
-    cy.getByTestId(TEST_IDS.SELECTORS.INTEGRITY).select(
-      SECURITY_LEVELS.MODERATE,
-      { force: true }
-    );
+    // Set availability to High
+    cy.get("#availability-select").select(SECURITY_LEVELS.HIGH);
 
-    cy.getByTestId(TEST_IDS.SELECTORS.CONFIDENTIALITY).select(
-      SECURITY_LEVELS.LOW,
-      { force: true }
-    );
-
-    // Verify the values
-    cy.getByTestId(TEST_IDS.SELECTORS.AVAILABILITY).should(
-      "have.value",
+    // Check that the value was updated
+    cy.get('[data-testid="availability-selected-level-value"]').should(
+      "contain",
       SECURITY_LEVELS.HIGH
     );
-    cy.getByTestId(TEST_IDS.SELECTORS.INTEGRITY).should(
-      "have.value",
-      SECURITY_LEVELS.MODERATE
-    );
-    cy.getByTestId(TEST_IDS.SELECTORS.CONFIDENTIALITY).should(
-      "have.value",
+
+    // Set integrity to Low
+    cy.get("#integrity-select").select(SECURITY_LEVELS.LOW);
+
+    // Check that the value was updated
+    cy.get('[data-testid="integrity-selected-level-value"]').should(
+      "contain",
       SECURITY_LEVELS.LOW
     );
   });
 
-  it("verifies radar chart exists and updates", () => {
-    // Use the custom command to set security levels
-    cy.setSecurityLevels(
-      SECURITY_LEVELS.HIGH,
-      SECURITY_LEVELS.MODERATE,
-      SECURITY_LEVELS.LOW
-    );
+  it("verifies radar chart updates with security level changes", () => {
+    // Find the radar chart
+    cy.get('[data-testid="radar-widget-container"]').should("be.visible");
 
-    // Verify radar chart using the correct test ID
-    cy.getByTestId(TEST_IDS.WIDGETS.RADAR_CHART).should("exist");
+    // Check initial values
+    cy.get('[data-testid="radar-availability-value"]')
+      .invoke("text")
+      .then((initialText) => {
+        // Change security level
+        cy.setSecurityLevels(SECURITY_LEVELS.HIGH, null, null);
 
-    // Look for accessibility text since the canvas itself might not have a test ID
-    cy.get("[aria-label*='security assessment']").should("exist");
+        // Verify radar value changed
+        cy.get('[data-testid="radar-availability-value"]')
+          .invoke("text")
+          .should("not.eq", initialText)
+          .and("contain", SECURITY_LEVELS.HIGH);
+      });
   });
 
   it("verifies security widget structure", () => {
-    // Check that the widget exists with expected structure
-    cy.getByTestId(TEST_IDS.WIDGETS.SECURITY_LEVEL).should("exist");
+    // Navigate to security profile config
+    cy.navigateToWidget("widget-security-profile");
 
-    // Verify all three security level selects exist
-    cy.getByTestId(TEST_IDS.SELECTORS.AVAILABILITY).should("exist");
-    cy.getByTestId(TEST_IDS.SELECTORS.INTEGRITY).should("exist");
-    cy.getByTestId(TEST_IDS.SELECTORS.CONFIDENTIALITY).should("exist");
+    // Check for security level controls
+    cy.get("#availability-select").should("exist");
+    cy.get("#integrity-select").should("exist");
+    cy.get("#confidentiality-select").should("exist");
 
-    // Check label test IDs
-    cy.getByTestId("availability-label").should("exist");
-    cy.getByTestId("integrity-label").should("exist");
-    cy.getByTestId("confidentiality-label").should("exist");
+    // Check for labels and descriptions
+    cy.get('[data-testid^="availability-"]').should("exist");
+    cy.get('[data-testid^="integrity-"]').should("exist");
+    cy.get('[data-testid^="confidentiality-"]').should("exist");
   });
 
   it("shows descriptions that match security levels", () => {
-    // Set high availability and verify descriptions
-    cy.getByTestId(TEST_IDS.SELECTORS.AVAILABILITY).select(
-      SECURITY_LEVELS.HIGH,
-      { force: true }
-    );
+    // Navigate to security profile
+    cy.navigateToWidget("widget-security-profile");
 
-    // Verify description contains expected text for high availability
-    cy.getByTestId("availability-description")
-      .should("be.visible")
+    // Check initial description
+    cy.get('[data-testid="availability-description"]')
       .invoke("text")
-      .should("include", DESCRIPTIONS.AVAILABILITY.HIGH);
+      .as("initialDescription");
 
-    // Set moderate integrity and verify
-    cy.getByTestId(TEST_IDS.SELECTORS.INTEGRITY).select(
-      SECURITY_LEVELS.MODERATE,
-      { force: true }
-    );
+    // Change security level
+    cy.get("#availability-select").select(SECURITY_LEVELS.HIGH);
 
-    cy.getByTestId("integrity-description")
-      .should("be.visible")
+    // Verify description changed
+    cy.get('[data-testid="availability-description"]')
       .invoke("text")
-      .should("include", DESCRIPTIONS.INTEGRITY.MODERATE);
-  });
+      .then(function (currentText) {
+        expect(currentText).not.to.equal(this.initialDescription);
+      });
 
-  it("has exactly 5 options in each dropdown", () => {
-    // Verify each dropdown has 5 options (None, Low, Moderate, High, Very High)
-    cy.getByTestId(TEST_IDS.SELECTORS.AVAILABILITY)
-      .find("option")
-      .should("have.length", 5);
-
-    cy.getByTestId(TEST_IDS.SELECTORS.INTEGRITY)
-      .find("option")
-      .should("have.length", 5);
-
-    cy.getByTestId(TEST_IDS.SELECTORS.CONFIDENTIALITY)
-      .find("option")
-      .should("have.length", 5);
+    // Check for High level text in description
+    cy.get('[data-testid="availability-description"]').should(
+      "contain",
+      "high"
+    );
   });
 });

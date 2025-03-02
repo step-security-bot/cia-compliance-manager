@@ -12,28 +12,32 @@ describe("View Compliance Status", () => {
   });
 
   it("shows compliance status widget", () => {
-    // Check that compliance widget exists
-    cy.get('[data-testid="widget-compliance-status"]')
-      .scrollIntoView()
-      .should("exist");
+    // Navigate to compliance widget
+    cy.navigateToWidget("widget-compliance-status");
 
-    // Verify widget has proper structure
-    cy.get('[data-testid="widget-compliance-status"] h3').should("exist");
+    // Verify basic structure
     cy.get('[data-testid="compliance-status-widget"]').should("exist");
+    cy.get('[data-testid="widget-compliance-status"] h3').should("exist");
   });
 
   it("displays compliance information using test IDs", () => {
-    // Verify compliance status elements using test IDs
+    // Navigate to compliance widget
+    cy.navigateToWidget("widget-compliance-status");
+
+    // Check for compliance status elements
     cy.get('[data-testid="compliance-status-text"]').should("exist");
     cy.get('[data-testid="compliance-percentage"]').should("exist");
     cy.get('[data-testid="compliance-progress-bar"]').should("exist");
   });
 
   it("displays framework status based on security levels", () => {
-    // First, verify the frameworks list exists
+    // Navigate to compliance widget
+    cy.navigateToWidget("widget-compliance-status");
+
+    // Check that frameworks list exists
     cy.get('[data-testid="compliance-frameworks-list"]').should("exist");
 
-    // Set security levels to high for all components
+    // Set to high security and verify appropriate statuses
     cy.setSecurityLevels(
       SECURITY_LEVELS.HIGH,
       SECURITY_LEVELS.HIGH,
@@ -41,21 +45,20 @@ describe("View Compliance Status", () => {
     );
     cy.wait(500);
 
-    // Verify compliance status shows compliance
+    // Check compliance status changed
+    cy.navigateToWidget("widget-compliance-status");
     cy.get('[data-testid="compliance-status-text"]').should(
       "contain",
       "Compliant"
     );
 
-    // Verify the component requirements section exists
+    // Check component requirements
     cy.get('[data-testid="component-requirements-heading"]').should("exist");
-
-    // Check status displays for components
     cy.get('[data-testid="availability-status"]').should("exist");
     cy.get('[data-testid="integrity-status"]').should("exist");
     cy.get('[data-testid="confidentiality-status"]').should("exist");
 
-    // Change to low security and verify status changes
+    // Set to low security and verify percentage changes
     cy.setSecurityLevels(
       SECURITY_LEVELS.LOW,
       SECURITY_LEVELS.LOW,
@@ -63,13 +66,15 @@ describe("View Compliance Status", () => {
     );
     cy.wait(500);
 
-    // Verify compliance changes
-    cy.get('[data-testid="compliance-status-text"]').should("exist");
-    cy.get('[data-testid="compliance-percentage"]')
+    // Navigate back to compliance widget
+    cy.navigateToWidget("widget-compliance-status");
+
+    // Verify compliance changed
+    cy.get('[data-testid="compliance-percentage-value"]')
       .invoke("text")
       .then((text) => {
-        // Should be less than 100% for Low security
-        expect(parseInt(text)).to.be.lessThan(100);
+        const percentage = parseInt(text);
+        expect(percentage).to.be.lessThan(100);
       });
   });
 });

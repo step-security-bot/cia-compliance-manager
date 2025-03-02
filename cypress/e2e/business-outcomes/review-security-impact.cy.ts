@@ -14,63 +14,63 @@ describe("Review Security Impact", () => {
   });
 
   it("shows business impact analysis widget", () => {
-    // Find and scroll to the business impact analysis widget
-    cy.get('[data-testid="widget-business-impact-analysis"]')
-      .scrollIntoView()
-      .should("be.visible");
+    // Find and navigate to business impact analysis widget
+    cy.navigateToWidget("widget-business-impact-analysis");
 
-    // Verify the combined business impact widget is present
+    // Verify it has the combined business impact container
     cy.get('[data-testid="combined-business-impact"]').should("be.visible");
   });
 
   it("shows all three impact sections", () => {
-    // Find business impact widget
-    cy.get('[data-testid="widget-business-impact-analysis"]')
-      .scrollIntoView()
-      .should("be.visible");
+    // Navigate to business impact widget
+    cy.navigateToWidget("widget-business-impact-analysis");
 
-    // Check that all three sections are present
+    // Check for all three impact sections
     cy.contains("Availability Impact").should("be.visible");
     cy.contains("Integrity Impact").should("be.visible");
     cy.contains("Confidentiality Impact").should("be.visible");
   });
 
   it("shows introduction text for business impact analysis", () => {
-    // Find business impact widget
-    cy.get('[data-testid="widget-business-impact-analysis"]')
-      .scrollIntoView()
-      .should("be.visible");
+    // Navigate to business impact widget
+    cy.navigateToWidget("widget-business-impact-analysis");
 
-    // Verify introduction text exists
-    cy.contains("Business Impact Analysis (BIA) helps").should("be.visible");
-    cy.contains("Key Benefits").should("be.visible");
-    cy.contains("Business Considerations").should("be.visible");
+    // Verify intro text exists
+    cy.get('[data-testid="combined-business-impact"]').within(() => {
+      cy.contains(/Business Impact Analysis.*helps identify/).should(
+        "be.visible"
+      );
+      cy.contains("Key Benefits").should("be.visible");
+      cy.contains("Business Considerations").should("be.visible");
+    });
   });
 
   it("updates impact analysis information when security levels change", () => {
-    // Find business impact widget
-    cy.get('[data-testid="widget-business-impact-analysis"]')
-      .scrollIntoView()
-      .should("be.visible");
+    // Navigate to business impact widget
+    cy.navigateToWidget("widget-business-impact-analysis");
 
-    // Get the initial text content
+    // Get initial content
+    let initialContent = "";
     cy.get('[data-testid="combined-business-impact"]')
       .invoke("text")
-      .then((initialText) => {
+      .then((text) => {
+        initialContent = text;
+
         // Change security levels
         cy.setSecurityLevels(
           SECURITY_LEVELS.HIGH,
           SECURITY_LEVELS.HIGH,
           SECURITY_LEVELS.HIGH
         );
-        cy.wait(500);
+        cy.wait(500); // Give time for updates
 
-        // Verify text content has changed
+        // Check content changed
+        cy.navigateToWidget("widget-business-impact-analysis");
         cy.get('[data-testid="combined-business-impact"]')
           .invoke("text")
-          .should("not.eq", initialText);
+          .should("not.eq", initialContent);
 
-        // Verify High level text appears
+        // Verify specific high level text appears
         cy.contains("High Availability").should("be.visible");
         cy.contains("High Integrity").should("be.visible");
         cy.contains("High Confidentiality").should("be.visible");
