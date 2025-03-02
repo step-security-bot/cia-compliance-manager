@@ -9,9 +9,11 @@
     }
   },
   // Update system dependencies
-  "onCreateCommand": "sudo apt-get update && sudo apt-get install -y libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libnss3 libxss1 libasound2t64 libxtst6 xauth xvfb dbus dbus-x11",
+  "onCreateCommand": "sudo apt-get update && sudo apt-get install -y libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libnss3 libxss1 libasound2 libxtst6 xauth xvfb dbus dbus-x11",
   // Improve service initialization
-  "initializeCommand": "sudo service dbus start",
+  "initializeCommand": {
+    "dbus": "sudo service dbus start"
+  },
   "customizations": {
     "vscode": {
       "extensions": [
@@ -24,7 +26,7 @@
 
         // Vite Specific
         "antfu.vite",
-        "ZixuanChen.vitest-explorer",
+        "vitest.explorer",
 
         // React/TypeScript
         "bradlc.vscode-tailwindcss",
@@ -59,7 +61,7 @@
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.codeActionsOnSave": {
-          "source.fixAll.eslint": "true" // Changed from boolean to string
+          "source.fixAll.eslint": true
         },
         "typescript.updateImportsOnFileMove.enabled": "always",
         "javascript.updateImportsOnFileMove.enabled": "always",
@@ -84,9 +86,9 @@
         "typescript.preferences.importModuleSpecifier": "shortest",
         "javascript.preferences.importModuleSpecifier": "shortest",
 
-        // Improved error visualization - Fix: Convert array to string
-        "errorLens.enabledDiagnosticLevels": "error, warning, info",
-        "errorLens.exclude": "never used"
+        // Improved error visualization
+        "errorLens.enabledDiagnosticLevels": ["error", "warning", "info"],
+        "errorLens.exclude": ["never used"]
       }
     }
   },
@@ -101,6 +103,6 @@
   },
   // Use privileged mode for X11 and Cypress
   "runArgs": ["--privileged"],
-  // Fix: Remove unsupported postStopCommand
+  // Fix: Use proper shutdown action instead of postStopCommand
   "shutdownAction": "none"
 }
