@@ -226,6 +226,60 @@ The application provides both aggregated and detailed views of cost estimates, a
 - **Reporting and Documentation**: Generate comprehensive reports for stakeholders at technical and executive levels
 - **ROI Calculator**: Measure return on investment for security implementations against potential breach costs
 
+
+# Project Technology Stack Overview
+
+This document provides a high-level overview of the key technologies used within the CIA (Confidentiality, Integrity, Availability) Impact Analysis application. Each technology plays a vital role in supporting the application's security assessment capabilities.
+
+## Technology Stack
+
+| Category | Technologies | Support Status | Latest Version | EOL Notes |
+|----------|-------------|----------------|----------------|-----------|
+| Core Framework | React | Active | 19.x | No official EOL policy, but typically supports N-2 versions |
+|  | TypeScript | Active | 5.x | Older versions receive support for ~12 months |
+| Data Visualization | Chart.js | Active | 4.x | Community maintained, no formal EOL policy |
+| UI/Styling | TailwindCSS | Active | 4.x | Major versions typically maintained for 1-2 years |
+|  | PostCSS | Active | 8.x | Community maintained, no formal EOL policy |
+| Build Tools | Vite | Active | 6.x | Follows semver, minor versions supported until next minor |
+| Testing | Vitest | Active | 3.x | Actively maintained with Vite compatibility |
+|  | Cypress | Active | 14.x | Regular updates, typically supports N-1 version |
+|  | Testing Library | Active | 16.x | Community maintained, regular updates |
+| Development Utilities | Cross-env | Active | 7.x | Stable utility, minimal updates needed |
+|  | Start-server-and-test | Active | 2.x | Utility package, stable API |
+| Runtime Requirements | Node.js | Required | ≥20.0.0 | Node 20 EOL: April 2026 |
+|  | npm | Required | ≥10.8.2 | Follows Node.js support lifecycle |
+
+## Stack Summary
+
+This stack comprises:
+
+### Core Framework
+- **React**: Powers the UI with component-based architecture, providing a responsive and interactive user experience for security impact visualization.
+- **TypeScript**: Adds strong typing to JavaScript, enhancing code quality and developer experience while reducing runtime errors.
+
+### Data Visualization
+- **Chart.js**: Provides flexible charting capabilities for visualizing security impact assessments across availability, integrity, and confidentiality domains.
+
+### UI/Styling
+- **TailwindCSS**: Offers utility-first CSS framework for rapid UI development and consistent styling across components.
+- **PostCSS**: Processes CSS with plugins like Autoprefixer for optimal browser compatibility.
+
+### Build Tools
+- **Vite**: Serves as the next-generation frontend tooling, providing fast development and optimized production builds with efficient HMR.
+
+### Testing
+- **Vitest**: Provides a Vite-native unit testing framework with Jest compatibility for component and unit testing.
+- **Cypress**: Enables robust end-to-end testing for validating security impact analysis functionality and user workflows.
+- **Testing Library**: Offers utilities for testing React components in a user-centric way, focusing on accessibility and user interactions.
+
+### Development Utilities
+- **Cross-env**: Sets environment variables across platforms for consistent testing environments.
+- **Start-server-and-test**: Simplifies the process of starting a server before running tests in CI/CD pipelines.
+
+## Environment Requirements
+- **Node.js**: ≥20.0.0 (Support until April 2026)
+- **npm**: ≥10.8.2 (Follows Node.js support lifecycle)
+
 ## Installation
 
 ### `npm start`
