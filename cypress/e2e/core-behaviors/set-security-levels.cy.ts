@@ -11,76 +11,78 @@ describe("Set Security Levels", () => {
     cy.ensureAppLoaded();
   });
 
-  // Re-enable this test but with minimal validation
   it("allows setting individual security levels", () => {
-    // Only check that the dropdown exists and can be changed - no assertions
-    cy.get("#availability-select").should("exist");
-    cy.get("#integrity-select").should("exist");
+    // Verify the default value is Moderate (this is safer than assuming None)
+    cy.get("#availability-select").should(
+      "have.value",
+      SECURITY_LEVELS.MODERATE
+    );
+    cy.get("#integrity-select").should("have.value", SECURITY_LEVELS.MODERATE);
 
-    // No expectations on what happens after selection
+    // Change security levels and verify the select values change
     cy.get("#availability-select").select(SECURITY_LEVELS.LOW);
-    cy.get("#integrity-select").select(SECURITY_LEVELS.LOW);
+    cy.get("#availability-select").should("have.value", SECURITY_LEVELS.LOW);
+
+    cy.get("#integrity-select").select(SECURITY_LEVELS.HIGH);
+    cy.get("#integrity-select").should("have.value", SECURITY_LEVELS.HIGH);
   });
 
-  // Unchanged
   it("verifies radar chart updates with security level changes", () => {
-    // Find the radar chart
-    cy.get('[data-testid="radar-widget-container"]').should("be.visible");
+    // Check initial radar values using data-testvalue attribute
+    cy.get('[data-testid="radar-availability-value"]').should(
+      "contain",
+      SECURITY_LEVELS.MODERATE
+    );
 
-    // Check initial values
-    cy.get('[data-testid="radar-availability-value"]')
-      .invoke("text")
-      .then((initialText) => {
-        // Change security level
-        cy.setSecurityLevels(SECURITY_LEVELS.HIGH, null, null);
+    // Change security level using helper function
+    cy.get("#availability-select").select(SECURITY_LEVELS.HIGH);
 
-        // Verify radar value changed
-        cy.get('[data-testid="radar-availability-value"]')
-          .invoke("text")
-          .should("not.eq", initialText);
-      });
+    // Verify radar value changed using contains (more reliable than text comparison)
+    cy.get('[data-testid="radar-availability-value"]').should(
+      "contain",
+      SECURITY_LEVELS.HIGH
+    );
   });
 
-  // Unchanged
   it("verifies security widget structure", () => {
-    // Navigate to security profile config
-    cy.navigateToWidget("widget-security-profile");
-
     // Check for security level controls
+    cy.get('[data-testid="security-level-controls"]').should("exist");
+
+    // Check for all three select elements
     cy.get("#availability-select").should("exist");
     cy.get("#integrity-select").should("exist");
     cy.get("#confidentiality-select").should("exist");
 
-    // Check for labels and descriptions
-    cy.get('[data-testid^="availability-"]').should("exist");
-    cy.get('[data-testid^="integrity-"]').should("exist");
-    cy.get('[data-testid^="confidentiality-"]').should("exist");
+    // Very minimal check for descriptions - just verify they exist
+    cy.get('[data-testid="availability-description"]').should("exist");
+    cy.get('[data-testid="integrity-description"]').should("exist");
+    cy.get('[data-testid="confidentiality-description"]').should("exist");
   });
 
-  // Ultra-minimal verification that just checks the select value changed
   it("shows descriptions that match security levels", () => {
-    // Navigate to security widget with generous timeout
-    cy.get('[data-testid="widget-security-profile"]', { timeout: 20000 })
-      .should("exist")
-      .scrollIntoView();
-    cy.wait(1000); // Longer wait for widget to fully load
+    // First verify default values are "Moderate" using data-testvalue attributes
+    cy.get('[data-testid="availability-color-indicator"]').should(
+      "have.attr",
+      "data-testvalue",
+      SECURITY_LEVELS.MODERATE
+    );
 
-    // Just get the current value of the select
-    cy.get("#availability-select").invoke("val").as("initialLevel");
+    // Change security level
+    cy.get("#availability-select").select(SECURITY_LEVELS.LOW, { force: true });
+    cy.wait(300);
 
-    // Change the security level with force and longer timeout
-    cy.get("#availability-select").select(SECURITY_LEVELS.HIGH, {
-      force: true,
-      timeout: 10000,
-    });
-    cy.wait(1500); // Much longer wait time for updates
+    // Verify the data-testvalue attribute was updated to "Low"
+    cy.get('[data-testid="availability-color-indicator"]').should(
+      "have.attr",
+      "data-testvalue",
+      SECURITY_LEVELS.LOW
+    );
 
-    // Only verify that the select value changed - don't check other DOM updates
-    cy.get("#availability-select")
-      .should("have.value", SECURITY_LEVELS.HIGH)
-      .then(function (selectEl) {
-        // Verify it's different from initial value
-        expect(selectEl.val()).to.not.equal(this.initialLevel);
-      });
+    // Also verify the data-testlevel attribute was updated on description
+    cy.get('[data-testid="availability-description"]').should(
+      "have.attr",
+      "data-testlevel",
+      SECURITY_LEVELS.LOW
+    );
   });
 });
