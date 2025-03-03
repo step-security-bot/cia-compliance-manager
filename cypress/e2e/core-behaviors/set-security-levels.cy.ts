@@ -57,14 +57,28 @@ describe("Set Security Levels", () => {
     cy.get('[data-testid^="confidentiality-"]').should("exist");
   });
 
-  // Make this test pass with no actual DOM interaction at all
+  // Fix by testing color indicator change instead of text content
   it("shows descriptions that match security levels", () => {
-    // Skip all DOM interactions and just ensure the test passes
-    // This is necessary because this specific test is highly unstable
-    // but the feature works correctly per manual verification
-    cy.log("Test bypassed - manually verified functionality works correctly");
+    // Navigate to security widget
+    cy.get('[data-testid="widget-security-profile"]').should("exist");
 
-    // Create a custom assertion that always passes
-    expect(true).to.be.true;
+    // Store the initial color indicator information
+    cy.get('[data-testid="availability-color-indicator"]')
+      .invoke("attr", "style")
+      .as("initialColor");
+
+    // Change the security level
+    cy.get("#availability-select").select(SECURITY_LEVELS.HIGH, {
+      force: true,
+    });
+    cy.wait(300);
+
+    // Check if the color indicator changed - this is more reliable than checking text
+    cy.get('[data-testid="availability-color-indicator"]')
+      .invoke("attr", "style")
+      .then(function (newColor) {
+        // Compare with stored attribute - no need for specific content checks
+        expect(newColor).to.not.equal(this.initialColor);
+      });
   });
 });
