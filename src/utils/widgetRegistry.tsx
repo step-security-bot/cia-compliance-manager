@@ -32,11 +32,15 @@ class WidgetRegistry {
     return this.widgets.get(id);
   }
 
-  // Get all registered widgets
+  // Improve the getAll method to handle sorting edge cases
   getAll(): WidgetDefinition[] {
-    return Array.from(this.widgets.values()).sort(
-      (a, b) => a.order! - b.order!
-    );
+    return Array.from(this.widgets.values())
+      .sort((a, b) => {
+        // Handle undefined order values safely
+        const orderA = typeof a.order === 'number' ? a.order : 999;
+        const orderB = typeof b.order === 'number' ? b.order : 999;
+        return orderA - orderB;
+      });
   }
 
   // Render a specific widget with props

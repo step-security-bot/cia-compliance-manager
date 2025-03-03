@@ -94,7 +94,7 @@ describe("CIAImpactSummaryWidget", () => {
     expect(screen.getByTestId("cia-impact-summary")).toBeInTheDocument();
     expect(
       screen.getByTestId("cia-impact-summary-availability-level")
-    ).toHaveTextContent(" Availability");
+    ).toHaveTextContent(/^\s*Availability$/);
     expect(
       screen.getByTestId("cia-impact-summary-integrity-level")
     ).toHaveTextContent("Invalid Value Integrity");

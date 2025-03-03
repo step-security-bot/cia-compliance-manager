@@ -25,10 +25,10 @@ const KeyValuePair: React.FC<KeyValuePairProps> = ({
   return (
     <div
       className={`flex justify-between items-center ${
-        highlighted
+        highlighted ?? false
           ? "bg-gray-50 dark:bg-gray-700 p-2 rounded-md border border-gray-200 dark:border-gray-600"
           : ""
-      } ${className}`}
+      } ${className ?? ""}`}
       data-testid={testId || "key-value-pair"}
     >
       <span

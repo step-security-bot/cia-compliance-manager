@@ -58,16 +58,16 @@ const RadarChart: React.FC<RadarChartProps> = ({
         chartInstanceRef.current.destroy();
       }
 
-      const availabilityValue = mapLevelToValue(availability);
-      const integrityValue = mapLevelToValue(integrity);
-      const confidentialityValue = mapLevelToValue(confidentiality);
-
-      // Get the drawing context
-      const ctx = chartRef.current.getContext("2d");
+      // Add null checking for chart context
+      const ctx = chartRef.current?.getContext("2d");
       if (!ctx) {
         setRenderError("Could not get canvas context");
         return;
       }
+
+      const availabilityValue = mapLevelToValue(availability);
+      const integrityValue = mapLevelToValue(integrity);
+      const confidentialityValue = mapLevelToValue(confidentiality);
 
       // Determine if we're in dark mode
       const isDarkMode = document.documentElement.classList.contains("dark");

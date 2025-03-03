@@ -130,25 +130,25 @@ const BusinessImpactAnalysisWidget: React.FC<
 
   // Helper to get icon for impact type
   const getImpactIcon = (type: string): string => {
-    // Normalize the type string to handle different casings
     const normalizedType = type.toUpperCase();
-
-    // Map to the appropriate icon
-    if (normalizedType.includes("FINANCIAL"))
-      return enhancedIcons.IMPACT_TYPES.FINANCIAL;
-    if (normalizedType.includes("OPERATION"))
-      return enhancedIcons.IMPACT_TYPES.OPERATIONAL;
-    if (normalizedType.includes("REPUTATION"))
-      return enhancedIcons.IMPACT_TYPES.REPUTATIONAL;
-    if (normalizedType.includes("REGUL"))
-      return enhancedIcons.IMPACT_TYPES.REGULATORY;
-    if (normalizedType.includes("STRATEGIC"))
-      return enhancedIcons.IMPACT_TYPES.STRATEGIC;
-    if (normalizedType.includes("SECURITY"))
-      return enhancedIcons.IMPACT_TYPES.SECURITY;
-
-    // Default icon if no match
-    return enhancedIcons.IMPACT_TYPES.OPERATIONAL;
+    const icons = enhancedIcons.IMPACT_TYPES;
+    
+    // Use a lookup map instead of if/else chain
+    const typeIconMap: Record<string, string> = {
+      "FINANCIAL": icons.FINANCIAL,
+      "OPERATION": icons.OPERATIONAL,
+      "REPUTATION": icons.REPUTATIONAL,
+      "REGUL": icons.REGULATORY,
+      "STRATEGIC": icons.STRATEGIC,
+      "SECURITY": icons.SECURITY
+    };
+    
+    // Find the matching type
+    for (const [key, icon] of Object.entries(typeIconMap)) {
+      if (normalizedType.includes(key)) return icon;
+    }
+    
+    return icons.OPERATIONAL; // Default
   };
 
   const considerations = getBusinessConsiderations();
