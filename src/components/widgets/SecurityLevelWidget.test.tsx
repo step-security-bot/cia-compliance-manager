@@ -3,6 +3,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import SecurityLevelWidget from "./SecurityLevelWidget";
 import { vi } from "vitest";
 import { CIA_LABELS, TEST_DATA } from "../../constants/appConstants";
+import userEvent from "@testing-library/user-event";
 
 describe("SecurityLevelWidget", () => {
   const mockAvailabilityOptions = {
@@ -180,5 +181,43 @@ describe("SecurityLevelWidget", () => {
     expect(
       screen.getByTestId("confidentiality-color-indicator")
     ).toBeInTheDocument();
+  });
+
+  // Add test for hover functionality to improve function coverage
+  it("shows technical details when hovering over info button", async () => {
+    const user = userEvent.setup();
+
+    render(
+      <SecurityLevelWidget
+        availability="High"
+        integrity="Moderate"
+        confidentiality="Low"
+        setAvailability={vi.fn()}
+        setIntegrity={vi.fn()}
+        setConfidentiality={vi.fn()}
+        availabilityOptions={mockAvailabilityOptions}
+        integrityOptions={mockIntegrityOptions}
+        confidentialityOptions={mockConfidentialityOptions}
+      />
+    );
+
+    // Find the info button and hover over it
+    const infoButton = screen.getByTestId("availability-technical-info-button");
+
+    // Trigger mouseEnter
+    await user.hover(infoButton);
+
+    // Check that technical details popover appears
+    expect(
+      screen.getByTestId("availability-technical-popover")
+    ).toBeInTheDocument();
+
+    // Trigger mouseLeave
+    await user.unhover(infoButton);
+
+    // Check that technical details popover disappears
+    expect(
+      screen.queryByTestId("availability-technical-popover")
+    ).not.toBeInTheDocument();
   });
 });

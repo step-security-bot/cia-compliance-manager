@@ -74,4 +74,68 @@ describe("CombinedBusinessImpactWidget", () => {
       screen.getByTestId("mock-business-impact-confidentiality")
     ).toBeInTheDocument();
   });
+
+  // Add these tests to improve branch coverage
+  it("renders with different levels of confidentiality to test branch coverage", () => {
+    // Test Very High confidentiality case for regulatory risk conditional
+    const veryHighProps = {
+      ...defaultProps,
+      confidentiality: "Very High",
+    };
+
+    const { rerender } = render(
+      <CombinedBusinessImpactWidget {...veryHighProps} />
+    );
+
+    // Find the regulatory risk text and verify it shows "Minimal"
+    const riskText = screen.getByText(/regulatory risk:/i);
+    expect(riskText).toBeInTheDocument();
+    expect(riskText.textContent).toContain("Minimal");
+
+    // Test Low confidentiality case
+    const lowProps = {
+      ...defaultProps,
+      confidentiality: "Low",
+    };
+
+    rerender(<CombinedBusinessImpactWidget {...lowProps} />);
+
+    // Verify it now shows "Significant"
+    expect(screen.getByText(/regulatory risk:/i).textContent).toContain(
+      "Significant"
+    );
+  });
+
+  it("renders with different levels of availability to test branch coverage", () => {
+    // Test Very High availability branch
+    const veryHighProps = {
+      ...defaultProps,
+      availability: "Very High",
+    };
+
+    const { rerender } = render(
+      <CombinedBusinessImpactWidget {...veryHighProps} />
+    );
+
+    // Find the revenue impact text and verify it shows "Minimal"
+    const impactText = screen.getByText(/revenue impact:/i);
+    expect(impactText).toBeInTheDocument();
+    expect(impactText.textContent).toContain("Minimal");
+
+    // Test other branches (High, Moderate, Low)
+    const testCases = [
+      { level: "High", expected: "Low" },
+      { level: "Moderate", expected: "Moderate" },
+      { level: "Low", expected: "High" },
+    ];
+
+    testCases.forEach(({ level, expected }) => {
+      rerender(
+        <CombinedBusinessImpactWidget {...defaultProps} availability={level} />
+      );
+      expect(screen.getByText(/revenue impact:/i).textContent).toContain(
+        expected
+      );
+    });
+  });
 });

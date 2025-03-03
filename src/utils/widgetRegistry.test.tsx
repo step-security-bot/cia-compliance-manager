@@ -221,13 +221,16 @@ describe("widgetRegistry", () => {
   test("getAll returns widgets sorted by order", () => {
     const widgets = widgetRegistry.getAll();
 
-    // Check if ordered correctly - Fix the TypeScript errors by adding null coalescing operators
-    for (let i = 1; i < widgets.length; i++) {
-      // Use nullish coalescing to ensure order is a number even if undefined
-      const prevOrder = widgets[i - 1]?.order ?? 0;
-      const currOrder = widgets[i]?.order ?? 0;
+    // Skip the test if there are fewer than 2 widgets
+    if (widgets.length < 2) {
+      return;
+    }
 
-      expect(prevOrder).toBeLessThanOrEqual(currOrder);
+    // Verify sorting by checking consecutive pairs
+    for (let i = 1; i < widgets.length; i++) {
+      const prevOrderValue = widgets[i - 1]?.order ?? 0;
+      const currOrderValue = widgets[i]?.order ?? 0;
+      expect(prevOrderValue).toBeLessThanOrEqual(currOrderValue);
     }
   });
 

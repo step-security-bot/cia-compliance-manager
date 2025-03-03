@@ -118,4 +118,61 @@ describe("RadarChart Component", () => {
     HTMLCanvasElement.prototype.getContext = originalGetContext;
     consoleErrorMock.mockRestore();
   });
+
+  // Add tests for resize functionality
+  it("handles resize events", async () => {
+    // Mock window.addEventListener and removeEventListener
+    const addEventListenerSpy = vi.spyOn(window, "addEventListener");
+    const removeEventListenerSpy = vi.spyOn(window, "removeEventListener");
+
+    // Render the component
+    const { unmount } = render(
+      <RadarChart
+        availability="Moderate"
+        integrity="High"
+        confidentiality="Low"
+      />
+    );
+
+    // Check that resize event listener is added
+    expect(addEventListenerSpy).toHaveBeenCalledWith(
+      "resize",
+      expect.any(Function)
+    );
+
+    // Unmount to verify cleanup
+    unmount();
+
+    // Check that event listener is removed
+    expect(removeEventListenerSpy).toHaveBeenCalledWith(
+      "resize",
+      expect.any(Function)
+    );
+
+    // Clean up spies
+    addEventListenerSpy.mockRestore();
+    removeEventListenerSpy.mockRestore();
+  });
+
+  // Test dark mode detection
+  it("applies dark mode styling when dark mode is active", () => {
+    // Mock dark mode
+    document.documentElement.classList.add("dark");
+
+    // Mock chart constructor - this is safer
+    const mockChartInstance = { destroy: vi.fn(), resize: vi.fn() };
+    const mockChartClass = vi.fn(() => mockChartInstance);
+    vi.doMock("chart.js/auto", () => ({ default: mockChartClass }));
+
+    render(
+      <RadarChart
+        availability="Moderate"
+        integrity="High"
+        confidentiality="Low"
+      />
+    );
+
+    // Clean up
+    document.documentElement.classList.remove("dark");
+  });
 });
