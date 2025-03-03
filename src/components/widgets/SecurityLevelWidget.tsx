@@ -164,14 +164,18 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
             className="w-4 h-4 rounded-full mr-2"
             style={{ backgroundColor: getLevelColor(availability) }}
             data-testid="availability-color-indicator"
+            data-testvalue={availability} // Add data-testvalue attribute for easier testing
             aria-hidden="true"
           ></div>
           <p
             className="text-sm text-gray-700 dark:text-gray-300 flex-grow"
             data-testid="availability-description"
+            data-testlevel={availability} // Add level information for test verification
           >
-            {availabilityOptions[availability]?.description ||
-              "No description available."}
+            <span data-testid="availability-description-text">
+              {availabilityOptions[availability]?.description ||
+                "No description available."}
+            </span>
             {availabilityOptions[availability]?.uptime && (
               <StatusBadge
                 status="info"
@@ -260,14 +264,18 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
             className="w-4 h-4 rounded-full mr-2"
             style={{ backgroundColor: getLevelColor(integrity) }}
             data-testid="integrity-color-indicator"
+            data-testvalue={integrity} // Add data-testvalue attribute
             aria-hidden="true"
           ></div>
           <p
             className="text-sm text-gray-700 dark:text-gray-300 flex-grow"
             data-testid="integrity-description"
+            data-testlevel={integrity} // Add level information
           >
-            {integrityOptions[integrity]?.description ||
-              "No description available."}
+            <span data-testid="integrity-description-text">
+              {integrityOptions[integrity]?.description ||
+                "No description available."}
+            </span>
             {integrityOptions[integrity]?.validationMethod && (
               <StatusBadge
                 status="success"
@@ -355,14 +363,18 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
             className="w-4 h-4 rounded-full mr-2"
             style={{ backgroundColor: getLevelColor(confidentiality) }}
             data-testid="confidentiality-color-indicator"
+            data-testvalue={confidentiality} // Add data-testvalue attribute
             aria-hidden="true"
           ></div>
           <p
             className="text-sm text-gray-700 dark:text-gray-300 flex-grow"
             data-testid="confidentiality-description"
+            data-testlevel={confidentiality} // Add level information
           >
-            {confidentialityOptions[confidentiality]?.description ||
-              "No description available."}
+            <span data-testid="confidentiality-description-text">
+              {confidentialityOptions[confidentiality]?.description ||
+                "No description available."}
+            </span>
             {confidentialityOptions[confidentiality]?.protectionMethod && (
               <StatusBadge
                 status="info"
