@@ -1,5 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event"; // Add userEvent import
 import SecuritySummaryWidget from "./SecuritySummaryWidget";
 import {
   SECURITY_SUMMARY_TITLES,
@@ -8,6 +9,7 @@ import {
   ROI_ESTIMATES,
 } from "../../constants/appConstants";
 import { BUSINESS_KEY_BENEFITS } from "../../constants";
+import { ensureArray } from "../../utils/typeGuards";
 
 // Create wrapper components instead of mocking React.useState
 const TechnicalExpandedWrapper: React.FC = () => (
@@ -208,14 +210,14 @@ describe("SecuritySummaryWidget", () => {
 
     // Test Moderate level benefits
     const moderateBenefits = BUSINESS_KEY_BENEFITS.MODERATE;
-    moderateBenefits.forEach((benefit: string) => {
+    ensureArray(moderateBenefits).forEach((benefit: string) => {
       expect(screen.getByText(benefit)).toBeInTheDocument();
     });
 
     // Check High level benefits
     rerender(<SecuritySummaryWidget securityLevel="High" />);
     const highBenefits = BUSINESS_KEY_BENEFITS.HIGH;
-    highBenefits.forEach((benefit: string) => {
+    ensureArray(highBenefits).forEach((benefit: string) => {
       expect(screen.getByText(benefit)).toBeInTheDocument();
     });
   });
@@ -314,4 +316,68 @@ describe("SecuritySummaryWidget", () => {
     expect(screen.getByText(/Strong Protection/i)).toBeInTheDocument();
     expect(screen.getByText(/Sensitive Data Ready/i)).toBeInTheDocument();
   });
+
+  // Adding additional test cases to improve coverage
+
+  it("handles expandable sections correctly with keyboard interaction", async () => {
+    render(<SecuritySummaryWidget securityLevel="Moderate" />);
+
+    const technicalSectionButton = screen.getByTestId(
+      "technical-section-toggle"
+    );
+
+    // Use userEvent instead of fireEvent for more realistic interaction
+    const user = userEvent.setup();
+    await user.click(technicalSectionButton);
+
+    // Wait for the section to expand
+    await waitFor(
+      () => {
+        expect(
+          screen.getByTestId("technical-details-section")
+        ).toBeInTheDocument();
+      },
+      { timeout: 1500 }
+    ); // Increase timeout for slower test environments
+
+    // Test closing the section
+    await user.click(technicalSectionButton);
+
+    // Wait for the section to close
+    await waitFor(
+      () => {
+        expect(
+          screen.queryByTestId("technical-details-section")
+        ).not.toBeInTheDocument();
+      },
+      { timeout: 1500 }
+    ); // Increase timeout for slower test environments
+  });
+
+  it("applies the correct variant for different security levels", () => {
+    const { rerender } = render(<SecuritySummaryWidget securityLevel="None" />);
+
+    // We'll check for the value content instead of class since ValueDisplay uses different classes
+    expect(screen.getByTestId("roi-estimate-summary-value")).toHaveTextContent(
+      ROI_ESTIMATES.NONE
+    );
+
+    const levels = ["None", "Low", "Moderate", "High", "Very High"];
+
+    levels.forEach((level) => {
+      rerender(<SecuritySummaryWidget securityLevel={level} />);
+
+      // For each level, check that the correct ROI message is shown
+      const keyForROI = level
+        .toUpperCase()
+        .replace(/\s+/g, "_") as keyof typeof ROI_ESTIMATES;
+      const expectedROI = ROI_ESTIMATES[keyForROI] || "Unknown";
+
+      expect(
+        screen.getByTestId("roi-estimate-summary-value")
+      ).toHaveTextContent(expectedROI);
+    });
+  });
+
+  // ... rest of the existing code ...
 });

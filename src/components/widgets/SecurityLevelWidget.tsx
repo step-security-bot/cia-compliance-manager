@@ -7,6 +7,9 @@ import {
   SECURITY_LEVEL_COLORS,
   SecurityLevelKey,
 } from "../../constants/appConstants";
+import ValueDisplay from "../common/ValueDisplay";
+import StatusBadge from "../common/StatusBadge";
+import KeyValuePair from "../common/KeyValuePair";
 
 interface SecurityLevelWidgetProps {
   availability: string;
@@ -73,6 +76,42 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
     }
   };
 
+  // Get variant based on component type
+  const getComponentVariant = (
+    component: string
+  ): "primary" | "success" | "info" => {
+    switch (component) {
+      case "availability":
+        return "primary";
+      case "integrity":
+        return "success";
+      case "confidentiality":
+        return "info";
+      default:
+        return "primary";
+    }
+  };
+
+  // Get variant based on security level
+  const getLevelVariant = (
+    level: string
+  ): "success" | "warning" | "danger" | "info" | "primary" => {
+    switch (level) {
+      case "None":
+        return "danger";
+      case "Low":
+        return "warning";
+      case "Moderate":
+        return "info";
+      case "High":
+        return "success";
+      case "Very High":
+        return "primary";
+      default:
+        return "info";
+    }
+  };
+
   return (
     <div className="space-y-4" data-testid="security-level-controls">
       {/* Widget Header */}
@@ -81,7 +120,7 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
         <h2 className="text-xl font-bold">Security Level Selection</h2>
       </div>
 
-      {/* Availability Selection */}
+      {/* Availability Section - Updated to use ValueDisplay */}
       <div className="mb-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
         <div className="flex items-center mb-3">
           <span className="text-xl mr-2" aria-hidden="true">
@@ -94,6 +133,15 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
           >
             {CIA_LABELS.AVAILABILITY}
           </label>
+          {/* Replace custom div with ValueDisplay */}
+          <div className="ml-auto">
+            <ValueDisplay
+              value={availability}
+              variant="primary"
+              size="sm"
+              testId="availability-selected-level"
+            />
+          </div>
         </div>
 
         <Selection
@@ -115,17 +163,28 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
           <div
             className="w-4 h-4 rounded-full mr-2"
             style={{ backgroundColor: getLevelColor(availability) }}
+            data-testid="availability-color-indicator"
+            data-testvalue={availability} // Add data-testvalue attribute for easier testing
+            aria-hidden="true"
           ></div>
           <p
             className="text-sm text-gray-700 dark:text-gray-300 flex-grow"
             data-testid="availability-description"
+            data-testlevel={availability} // Add level information for test verification
           >
-            {availabilityOptions[availability]?.description ||
-              "No description available."}
+            <span data-testid="availability-description-text">
+              {availabilityOptions[availability]?.description ||
+                "No description available."}
+            </span>
             {availabilityOptions[availability]?.uptime && (
-              <span className="ml-1 text-xs font-semibold bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-0.5 rounded">
+              <StatusBadge
+                status="info"
+                size="xs"
+                testId="availability-uptime-badge"
+                className="ml-1"
+              >
                 {availabilityOptions[availability].uptime} uptime
-              </span>
+              </StatusBadge>
             )}
           </p>
           <button
@@ -133,27 +192,36 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
             onMouseEnter={() => setHoveredTechnical("availability")}
             onMouseLeave={() => setHoveredTechnical(null)}
             aria-label="Show technical details"
+            data-testid="availability-technical-info-button"
           >
             {WIDGET_ICONS.TECHNICAL_IMPLEMENTATION}
           </button>
         </div>
 
-        {/* Technical details popover */}
+        {/* Technical details popover - Updated with KeyValuePair */}
         {hoveredTechnical === "availability" && (
-          <div className="mt-2 p-3 bg-white dark:bg-gray-700 rounded-md shadow-lg border border-gray-200 dark:border-gray-600 text-sm">
-            <strong>Technical Implementation:</strong>{" "}
-            {getTechnicalDetails(availabilityOptions, availability)}
+          <div
+            className="mt-2 p-3 bg-white dark:bg-gray-700 rounded-md shadow-lg border border-gray-200 dark:border-gray-600 text-sm"
+            data-testid="availability-technical-popover"
+          >
+            <KeyValuePair
+              label="Technical Implementation"
+              value={getTechnicalDetails(availabilityOptions, availability)}
+              testId="availability-technical-details"
+            />
             {availabilityOptions[availability]?.businessImpact && (
-              <div className="mt-1">
-                <strong>Business Impact:</strong>{" "}
-                {availabilityOptions[availability].businessImpact}
-              </div>
+              <KeyValuePair
+                label="Business Impact"
+                value={availabilityOptions[availability].businessImpact}
+                testId="availability-business-impact"
+                className="mt-1"
+              />
             )}
           </div>
         )}
       </div>
 
-      {/* Integrity Selection */}
+      {/* Integrity Section - Updated similarly to Availability section */}
       <div className="mb-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
         <div className="flex items-center mb-3">
           <span className="text-xl mr-2" aria-hidden="true">
@@ -166,6 +234,14 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
           >
             {CIA_LABELS.INTEGRITY}
           </label>
+          <div className="ml-auto">
+            <ValueDisplay
+              value={integrity}
+              variant="success"
+              size="sm"
+              testId="integrity-selected-level"
+            />
+          </div>
         </div>
 
         <Selection
@@ -187,17 +263,28 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
           <div
             className="w-4 h-4 rounded-full mr-2"
             style={{ backgroundColor: getLevelColor(integrity) }}
+            data-testid="integrity-color-indicator"
+            data-testvalue={integrity} // Add data-testvalue attribute
+            aria-hidden="true"
           ></div>
           <p
             className="text-sm text-gray-700 dark:text-gray-300 flex-grow"
             data-testid="integrity-description"
+            data-testlevel={integrity} // Add level information
           >
-            {integrityOptions[integrity]?.description ||
-              "No description available."}
+            <span data-testid="integrity-description-text">
+              {integrityOptions[integrity]?.description ||
+                "No description available."}
+            </span>
             {integrityOptions[integrity]?.validationMethod && (
-              <span className="ml-1 text-xs font-semibold bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-2 py-0.5 rounded">
+              <StatusBadge
+                status="success"
+                size="xs"
+                testId="integrity-validation-badge"
+                className="ml-1"
+              >
                 {integrityOptions[integrity].validationMethod}
-              </span>
+              </StatusBadge>
             )}
           </p>
           <button
@@ -205,27 +292,35 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
             onMouseEnter={() => setHoveredTechnical("integrity")}
             onMouseLeave={() => setHoveredTechnical(null)}
             aria-label="Show technical details"
+            data-testid="integrity-technical-info-button"
           >
             {WIDGET_ICONS.TECHNICAL_IMPLEMENTATION}
           </button>
         </div>
 
-        {/* Technical details popover */}
         {hoveredTechnical === "integrity" && (
-          <div className="mt-2 p-3 bg-white dark:bg-gray-700 rounded-md shadow-lg border border-gray-200 dark:border-gray-600 text-sm">
-            <strong>Technical Implementation:</strong>{" "}
-            {getTechnicalDetails(integrityOptions, integrity)}
+          <div
+            className="mt-2 p-3 bg-white dark:bg-gray-700 rounded-md shadow-lg border border-gray-200 dark:border-gray-600 text-sm"
+            data-testid="integrity-technical-popover"
+          >
+            <KeyValuePair
+              label="Technical Implementation"
+              value={getTechnicalDetails(integrityOptions, integrity)}
+              testId="integrity-technical-details"
+            />
             {integrityOptions[integrity]?.businessImpact && (
-              <div className="mt-1">
-                <strong>Business Impact:</strong>{" "}
-                {integrityOptions[integrity].businessImpact}
-              </div>
+              <KeyValuePair
+                label="Business Impact"
+                value={integrityOptions[integrity].businessImpact}
+                testId="integrity-business-impact"
+                className="mt-1"
+              />
             )}
           </div>
         )}
       </div>
 
-      {/* Confidentiality Selection */}
+      {/* Confidentiality Section - Updated similarly */}
       <div className="mb-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
         <div className="flex items-center mb-3">
           <span className="text-xl mr-2" aria-hidden="true">
@@ -238,6 +333,14 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
           >
             {CIA_LABELS.CONFIDENTIALITY}
           </label>
+          <div className="ml-auto">
+            <ValueDisplay
+              value={confidentiality}
+              variant="info"
+              size="sm"
+              testId="confidentiality-selected-level"
+            />
+          </div>
         </div>
 
         <Selection
@@ -259,17 +362,28 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
           <div
             className="w-4 h-4 rounded-full mr-2"
             style={{ backgroundColor: getLevelColor(confidentiality) }}
+            data-testid="confidentiality-color-indicator"
+            data-testvalue={confidentiality} // Add data-testvalue attribute
+            aria-hidden="true"
           ></div>
           <p
             className="text-sm text-gray-700 dark:text-gray-300 flex-grow"
             data-testid="confidentiality-description"
+            data-testlevel={confidentiality} // Add level information
           >
-            {confidentialityOptions[confidentiality]?.description ||
-              "No description available."}
+            <span data-testid="confidentiality-description-text">
+              {confidentialityOptions[confidentiality]?.description ||
+                "No description available."}
+            </span>
             {confidentialityOptions[confidentiality]?.protectionMethod && (
-              <span className="ml-1 text-xs font-semibold bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 px-2 py-0.5 rounded">
+              <StatusBadge
+                status="info"
+                size="xs"
+                testId="confidentiality-protection-badge"
+                className="ml-1"
+              >
                 {confidentialityOptions[confidentiality].protectionMethod}
-              </span>
+              </StatusBadge>
             )}
           </p>
           <button
@@ -277,21 +391,32 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
             onMouseEnter={() => setHoveredTechnical("confidentiality")}
             onMouseLeave={() => setHoveredTechnical(null)}
             aria-label="Show technical details"
+            data-testid="confidentiality-technical-info-button"
           >
             {WIDGET_ICONS.TECHNICAL_IMPLEMENTATION}
           </button>
         </div>
 
-        {/* Technical details popover */}
         {hoveredTechnical === "confidentiality" && (
-          <div className="mt-2 p-3 bg-white dark:bg-gray-700 rounded-md shadow-lg border border-gray-200 dark:border-gray-600 text-sm">
-            <strong>Technical Implementation:</strong>{" "}
-            {getTechnicalDetails(confidentialityOptions, confidentiality)}
+          <div
+            className="mt-2 p-3 bg-white dark:bg-gray-700 rounded-md shadow-lg border border-gray-200 dark:border-gray-600 text-sm"
+            data-testid="confidentiality-technical-popover"
+          >
+            <KeyValuePair
+              label="Technical Implementation"
+              value={getTechnicalDetails(
+                confidentialityOptions,
+                confidentiality
+              )}
+              testId="confidentiality-technical-details"
+            />
             {confidentialityOptions[confidentiality]?.businessImpact && (
-              <div className="mt-1">
-                <strong>Business Impact:</strong>{" "}
-                {confidentialityOptions[confidentiality].businessImpact}
-              </div>
+              <KeyValuePair
+                label="Business Impact"
+                value={confidentialityOptions[confidentiality].businessImpact}
+                testId="confidentiality-business-impact"
+                className="mt-1"
+              />
             )}
           </div>
         )}

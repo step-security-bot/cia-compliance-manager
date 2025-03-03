@@ -186,4 +186,82 @@ describe("CostEstimationWidget", () => {
     expect(progressBars.length).toBe(2);
     // Note: We're not testing the actual width because JSDOM doesn't compute styles
   });
+
+  // Adding tests for currency formatting and monthly calculation
+
+  it("formats currency values correctly", () => {
+    const { unmount } = render(
+      <CostEstimationWidget
+        totalCapex={30}
+        totalOpex={20}
+        capexEstimate="1000"
+        opexEstimate="500"
+        isSmallSolution={true}
+      />
+    );
+
+    // Check that values are formatted with $ prefix using getAllByTestId
+    const capexElements = screen.getAllByTestId("capex-estimate-value-value");
+    expect(capexElements[0]).toHaveTextContent("$1000");
+
+    const opexElements = screen.getAllByTestId("opex-estimate-value-value");
+    expect(opexElements[0]).toHaveTextContent("$500");
+
+    // Clean up before testing again
+    unmount();
+
+    // Rerender with values that already have $ prefix
+    render(
+      <CostEstimationWidget
+        totalCapex={30}
+        totalOpex={20}
+        capexEstimate="$1000"
+        opexEstimate="$500"
+        isSmallSolution={true}
+      />
+    );
+
+    // Check that values don't get double $ prefix using getAllByTestId
+    const updatedCapexElements = screen.getAllByTestId(
+      "capex-estimate-value-value"
+    );
+    expect(updatedCapexElements[0]).toHaveTextContent("$1000");
+
+    const updatedOpexElements = screen.getAllByTestId(
+      "opex-estimate-value-value"
+    );
+    expect(updatedOpexElements[0]).toHaveTextContent("$500");
+  });
+
+  it("calculates monthly OPEX correctly", () => {
+    render(
+      <CostEstimationWidget
+        totalCapex={30}
+        totalOpex={20}
+        capexEstimate="$1000"
+        opexEstimate="$12000"
+        isSmallSolution={true}
+      />
+    );
+
+    // Check that monthly OPEX calculation is displayed correctly (12000/12 = 1000)
+    expect(screen.getByTestId("monthly-opex")).toHaveTextContent(
+      "$1,000/month"
+    );
+  });
+
+  it("calculates 3-year total cost correctly", () => {
+    render(
+      <CostEstimationWidget
+        totalCapex={30}
+        totalOpex={20}
+        capexEstimate="$10000"
+        opexEstimate="$5000"
+        isSmallSolution={true}
+      />
+    );
+
+    // CAPEX + (3 * OPEX) = 10000 + (3 * 5000) = 25000
+    expect(screen.getByTestId("three-year-total")).toHaveTextContent("$25,000");
+  });
 });

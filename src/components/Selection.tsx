@@ -1,5 +1,5 @@
 import React from "react";
-import { SECURITY_LEVELS } from "../constants/appConstants";
+import { SecurityLevelKey, UI_ICONS } from "../constants/appConstants";
 
 interface SelectionProps {
   id: string;
@@ -7,8 +7,9 @@ interface SelectionProps {
   value: string;
   options: Record<string, any>;
   onChange: (value: string) => void;
+  className?: string;
   contextInfo?: string;
-  [x: string]: any;
+  "data-testid"?: string; // Allow custom testIds
 }
 
 const Selection: React.FC<SelectionProps> = ({
@@ -17,61 +18,54 @@ const Selection: React.FC<SelectionProps> = ({
   value,
   options,
   onChange,
+  className = "",
   contextInfo,
-  ...rest
+  "data-testid": testId,
 }) => {
-  // Use constants for security level icons mapping
-  const securityIcons: Record<string, string> = {
-    [SECURITY_LEVELS.NONE]: "📋",
-    [SECURITY_LEVELS.LOW]: "ℹ️",
-    [SECURITY_LEVELS.MODERATE]: "⚠️",
-    [SECURITY_LEVELS.HIGH]: "🔐",
-    [SECURITY_LEVELS.VERY_HIGH]: "🔒",
+  // Add the normalized level key function
+  const getNormalizedLevel = (level: string): SecurityLevelKey => {
+    return (level || "NONE")
+      .toUpperCase()
+      .replace(/\s+/g, "_") as SecurityLevelKey;
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    onChange(e.target.value);
+  // Get security level icon based on level
+  const getSecurityLevelIcon = (level: string): string => {
+    const normalizedLevel = getNormalizedLevel(level);
+    // Use UI_ICONS instead of SECURITY_LEVEL_ICONS which doesn't exist
+    return UI_ICONS[`SECURITY_${normalizedLevel}`] || "🔒"; // Default to a lock icon
   };
 
   return (
-    <div className="mb-4">
-      {label && (
-        <label
-          htmlFor={id}
-          className="block text-sm font-medium dark:text-gray-100 mb-1"
-        >
-          {label}
-        </label>
-      )}
-
+    <div className={`mb-2 ${className}`}>
       <div className="relative">
         <select
           id={id}
+          className="block w-full pl-3 pr-10 py-2 text-base border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md bg-white dark:bg-gray-700 dark:text-white"
           value={value}
-          onChange={handleChange}
-          className="block w-full p-2 border border-gray-300 rounded-md shadow-sm
-                  focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-400
-                  dark:focus:border-blue-400 dark:text-white dark:bg-gray-800
-                  dark:border-gray-600"
-          aria-label={label}
-          {...rest}
+          onChange={(e) => onChange(e.target.value)}
+          data-testid={testId}
+          aria-label={label ? `${label} Level` : undefined} // Add aria-label only if label is provided
         >
-          {Object.keys(options).map((key) => (
-            <option key={key} value={key}>
-              {key in securityIcons ? `${securityIcons[key]} ` : ""}
-              {key}
-              {/* We could add contextual info here but it would clutter dropdown display */}
+          {Object.keys(options).map((level) => (
+            <option key={level} value={level} data-testid={`option-${level}`}>
+              {level}
             </option>
           ))}
         </select>
-
-        {/* Display context info below select if provided */}
-        {contextInfo && (
-          <div className="mt-1.5 text-xs text-gray-600 dark:text-gray-400">
-            {contextInfo}
-          </div>
-        )}
+        <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+          <span className="text-gray-500">{getSecurityLevelIcon(value)}</span>
+        </div>
       </div>
+
+      {contextInfo && (
+        <div
+          className="text-xs text-gray-500 dark:text-gray-400 mt-1"
+          data-testid="context-info"
+        >
+          {contextInfo}
+        </div>
+      )}
     </div>
   );
 };

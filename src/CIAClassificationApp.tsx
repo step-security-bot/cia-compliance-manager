@@ -12,6 +12,7 @@ import SecuritySummaryWidget from "./components/widgets/SecuritySummaryWidget";
 import ValueCreationWidget from "./components/widgets/ValueCreationWidget";
 import ComplianceStatusWidget from "./components/widgets/ComplianceStatusWidget";
 import { WIDGET_ICONS } from "./constants/appConstants";
+import { safeAccess } from "./utils/typeGuards";
 
 const CIAClassificationApp: React.FC = () => {
   const [availability, setAvailability] = useState<string>("None");
@@ -59,6 +60,7 @@ const CIAClassificationApp: React.FC = () => {
         setDarkMode(prefersDark);
 
         if (prefersDark) {
+          document.documentElement.classList.add("dark");
           document.getElementById("root")?.classList.add("dark");
         }
       } catch (error) {
@@ -72,13 +74,13 @@ const CIAClassificationApp: React.FC = () => {
   const toggleDarkMode = () => {
     setDarkMode((prev) => {
       const newMode = !prev;
-      const rootDiv = document.getElementById("root");
-      if (rootDiv) {
-        if (newMode) {
-          rootDiv.classList.add("dark");
-        } else {
-          rootDiv.classList.remove("dark");
-        }
+      // Apply dark mode class to HTML element (more standard approach)
+      if (newMode) {
+        document.documentElement.classList.add("dark");
+        document.getElementById("root")?.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+        document.getElementById("root")?.classList.remove("dark");
       }
       return newMode;
     });
@@ -105,13 +107,13 @@ const CIAClassificationApp: React.FC = () => {
 
   const { totalCapex, totalOpex } = useMemo(() => {
     const totalCapex =
-      availabilityDetail.capex +
-      integrityDetail.capex +
-      confidentialityDetail.capex;
+      safeAccess(availabilityDetail, "capex", 0) +
+      safeAccess(integrityDetail, "capex", 0) +
+      safeAccess(confidentialityDetail, "capex", 0);
     const totalOpex =
-      availabilityDetail.opex +
-      integrityDetail.opex +
-      confidentialityDetail.opex;
+      safeAccess(availabilityDetail, "opex", 0) +
+      safeAccess(integrityDetail, "opex", 0) +
+      safeAccess(confidentialityDetail, "opex", 0);
     return { totalCapex, totalOpex };
   }, [availabilityDetail, integrityDetail, confidentialityDetail]);
 
@@ -121,7 +123,7 @@ const CIAClassificationApp: React.FC = () => {
 
   return (
     <div
-      className={`app-container ${darkMode ? "dark" : ""}`}
+      className={`app-container ${darkMode ? "dark bg-pattern" : ""}`}
       data-testid="app-container"
     >
       <div className="min-h-screen bg-gray-100 dark:bg-gray-900 p-6 transition-colors duration-300">
@@ -137,11 +139,18 @@ const CIAClassificationApp: React.FC = () => {
               <button
                 data-testid="theme-toggle"
                 onClick={toggleDarkMode}
-                className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md flex items-center transition-all duration-300"
+                className={`px-4 py-2 rounded-md flex items-center transition-all duration-300 ${
+                  darkMode
+                    ? "bg-black border border-green-500 hover:border-green-400 hover:bg-gray-900"
+                    : "bg-blue-500 hover:bg-blue-600 text-white"
+                }`}
               >
                 {darkMode ? (
                   <>
-                    <span className="mr-2">☀️</span> Light Mode
+                    <span className="mr-2 text-green-400">☀️</span>
+                    <span className="text-green-400 font-mono tracking-wide text-sm uppercase">
+                      Light Mode
+                    </span>
                   </>
                 ) : (
                   <>
@@ -161,6 +170,7 @@ const CIAClassificationApp: React.FC = () => {
                 title="Security Level Selection"
                 size="medium"
                 icon={WIDGET_ICONS.SECURITY_LEVEL}
+                testId="widget-security-level-selection"
               >
                 <SecurityLevelWidget
                   availability={availability}
@@ -175,11 +185,29 @@ const CIAClassificationApp: React.FC = () => {
                 />
               </DashboardWidget>
 
+              {/* Fix: Update RadarChart widget with better styling */}
+              <DashboardWidget
+                title="Security Profile Visualization"
+                size="medium"
+                icon={WIDGET_ICONS.SECURITY_VISUALIZATION}
+                testId="widget-radar-chart"
+              >
+                <div className="p-2 flex items-center justify-center h-full">
+                  <RadarChart
+                    availability={availability}
+                    integrity={integrity}
+                    confidentiality={confidentiality}
+                    className="max-h-[250px]"
+                  />
+                </div>
+              </DashboardWidget>
+
               {/* Business Impact Analysis */}
               <DashboardWidget
                 title="Business Impact Analysis"
                 size="medium"
                 icon={WIDGET_ICONS.BUSINESS_IMPACT}
+                testId="widget-business-impact"
               >
                 <div className="p-2 space-y-4">
                   <p className="text-sm text-gray-600 dark:text-gray-300">
@@ -236,6 +264,7 @@ const CIAClassificationApp: React.FC = () => {
                 title="Security Summary"
                 size="medium"
                 icon={WIDGET_ICONS.SECURITY_SUMMARY}
+                testId="widget-security-summary"
               >
                 <SecuritySummaryWidget
                   securityLevel={overallSecurityLevel}
@@ -250,6 +279,7 @@ const CIAClassificationApp: React.FC = () => {
                 title="Cost Estimation"
                 size="medium"
                 icon={WIDGET_ICONS.COST_ESTIMATION}
+                testId="widget-cost-estimation"
               >
                 <CostEstimationWidget
                   totalCapex={totalCapex}
@@ -265,21 +295,9 @@ const CIAClassificationApp: React.FC = () => {
                 title="Value Creation"
                 size="medium"
                 icon={WIDGET_ICONS.VALUE_CREATION}
+                testId="widget-value-creation"
               >
                 <ValueCreationWidget securityLevel={overallSecurityLevel} />
-              </DashboardWidget>
-
-              {/* Security visualization - moved up */}
-              <DashboardWidget
-                title="Security Profile Visualization"
-                size="medium"
-                icon={WIDGET_ICONS.SECURITY_VISUALIZATION}
-              >
-                <RadarChart
-                  availability={availability}
-                  integrity={integrity}
-                  confidentiality={confidentiality}
-                />
               </DashboardWidget>
 
               {/* Compliance Status */}
@@ -287,6 +305,7 @@ const CIAClassificationApp: React.FC = () => {
                 title="Compliance Status"
                 size="medium"
                 icon={WIDGET_ICONS.COMPLIANCE_STATUS}
+                testId="widget-compliance-status"
               >
                 <ComplianceStatusWidget
                   securityLevels={{
@@ -302,6 +321,7 @@ const CIAClassificationApp: React.FC = () => {
                 title="Technical Implementation"
                 size="full"
                 icon={WIDGET_ICONS.TECHNICAL_IMPLEMENTATION}
+                testId="widget-technical-implementation"
               >
                 <div className="p-2 space-y-2">
                   <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
@@ -313,20 +333,24 @@ const CIAClassificationApp: React.FC = () => {
                       <h4 className="text-sm font-medium mb-2">
                         Availability: {availability}
                       </h4>
-                      <p className="text-sm">{availabilityDetail.technical}</p>
+                      <p className="text-sm">
+                        {safeAccess(availabilityDetail, "technical", "")}
+                      </p>
                     </div>
                     <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-md">
                       <h4 className="text-sm font-medium mb-2">
                         Integrity: {integrity}
                       </h4>
-                      <p className="text-sm">{integrityDetail.technical}</p>
+                      <p className="text-sm">
+                        {safeAccess(integrityDetail, "technical", "")}
+                      </p>
                     </div>
                     <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-md">
                       <h4 className="text-sm font-medium mb-2">
                         Confidentiality: {confidentiality}
                       </h4>
                       <p className="text-sm">
-                        {confidentialityDetail.technical}
+                        {safeAccess(confidentialityDetail, "technical", "")}
                       </p>
                     </div>
                   </div>

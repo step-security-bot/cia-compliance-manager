@@ -1,0 +1,80 @@
+/* Value Display Animation */
+@keyframes highlight-value {
+  0% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(59, 130, 246, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+}
+
+.highlight-new-value {
+  animation: highlight-value 1.5s ease-out;
+}
+
+/* Dynamic Values */
+.dynamic-value {
+  transition: all 0.2s ease-in-out;
+}
+
+.dynamic-value.changed {
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+/* Value Sizes */
+.value-xs {
+  font-size: 0.75rem;
+  padding: 0.1rem 0.3rem;
+}
+
+.value-sm {
+  font-size: 0.875rem;
+  padding: 0.2rem 0.5rem;
+}
+
+.value-md {
+  font-size: 1rem;
+  padding: 0.25rem 0.75rem;
+}
+
+.value-lg {
+  font-size: 1.125rem;
+  padding: 0.3rem 1rem;
+}
+
+/* Value Types */
+.value-currency {
+  font-family: monospace;
+}
+
+.value-percentage::after {
+  content: "%";
+}
+
+.value-time {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Dark Mode Enhancements */
+.dark .value-display {
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .value-display {
+    border-width: 2px !important;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .value-display {
+    background: none !important;
+    border: 1px solid #ccc !important;
+    color: #000 !important;
+  }
+}

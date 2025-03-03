@@ -19,7 +19,32 @@ vi.mock("chart.js/auto", () => ({
 describe("CIAClassificationApp Direct Tests", () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    HTMLCanvasElement.prototype.getContext = vi.fn();
+    // Replace the problematic mock with a more specific type-safe mock
+    HTMLCanvasElement.prototype.getContext = vi
+      .fn()
+      .mockImplementation(
+        (contextId: string, options?: any): CanvasRenderingContext2D | null => {
+          // Return a mock 2D context
+          if (contextId === "2d") {
+            return {
+              // Implement the minimal required interface for the tests
+              canvas: document.createElement("canvas"),
+              clearRect: vi.fn(),
+              fillRect: vi.fn(),
+              beginPath: vi.fn(),
+              arc: vi.fn(),
+              fill: vi.fn(),
+              moveTo: vi.fn(),
+              lineTo: vi.fn(),
+              stroke: vi.fn(),
+              fillText: vi.fn(),
+              measureText: vi.fn().mockReturnValue({ width: 10 }),
+              // Add other methods/properties needed for the test
+            } as unknown as CanvasRenderingContext2D;
+          }
+          return null;
+        }
+      );
   });
 
   it("handles node environment variations for error logging", () => {

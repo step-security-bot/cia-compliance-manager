@@ -1,5 +1,8 @@
 import React from "react";
 import { COST_ANALYSIS, UI_TEXT, UI_ICONS } from "../../constants/appConstants";
+import ValueDisplay from "../common/ValueDisplay";
+import KeyValuePair from "../common/KeyValuePair";
+import MetricsCard from "../common/MetricsCard";
 
 interface CostEstimationWidgetProps {
   totalCapex: number;
@@ -124,142 +127,142 @@ const CostEstimationWidget: React.FC<CostEstimationWidgetProps> = ({
         </h4>
 
         {implementationTime && (
-          <span
-            className="text-xs text-gray-500 dark:text-gray-400 flex items-center"
-            data-testid="implementation-time"
-          >
-            <span className="mr-1" aria-hidden="true">
-              ⏱️
-            </span>{" "}
-            {implementationTime}
-          </span>
+          <ValueDisplay
+            value={implementationTime}
+            variant="info"
+            size="sm"
+            testId="implementation-time"
+          />
         )}
       </div>
 
       <div>
-        <div className="flex justify-between items-center mb-1">
-          <span
-            className="text-sm text-gray-600 dark:text-gray-300 flex items-center"
-            data-testid="capex-label"
-          >
-            <span className="mr-1" aria-hidden="true">
-              💰
-            </span>{" "}
-            {UI_TEXT.LABELS.CAPEX}
-          </span>
-          <span
-            className="font-medium flex items-center"
-            data-testid="capex-estimate"
-          >
-            <span
-              className="mr-1"
-              aria-hidden="true"
-              data-testid="capex-severity-icon"
-            >
-              {getCostIcon(totalCapex)}
-            </span>
-            {formatCurrency(capexEstimate)}
-          </span>
-        </div>
-        <div
-          className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5"
-          role="progressbar"
-          aria-valuenow={Math.min(totalCapex, 100)}
-          aria-valuemin={0}
-          aria-valuemax={100}
-          aria-label={`Capital expenditure: ${totalCapex}% of IT budget`}
-        >
+        <KeyValuePair
+          label={UI_TEXT.LABELS.CAPEX}
+          value={
+            <div className="flex items-center">
+              <span
+                className="mr-1"
+                aria-hidden="true"
+                data-testid="capex-severity-icon"
+              >
+                {getCostIcon(totalCapex)}
+              </span>
+              <ValueDisplay
+                value={formatCurrency(capexEstimate)}
+                variant="primary"
+                size="sm"
+                testId="capex-estimate-value" // Ensure consistent testId with unique "-value" suffix
+              />
+            </div>
+          }
+          testId="capex-section"
+        />
+
+        <div className="mt-2">
           <div
-            className={`${getCapexColorClass()} h-2.5 rounded-full`}
-            style={{ width: `${Math.min(totalCapex, 100)}%` }}
-            data-testid="capex-progress-bar"
-          ></div>
+            className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5"
+            role="progressbar"
+            aria-valuenow={Math.min(totalCapex, 100)}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-label={`Capital expenditure: ${totalCapex}% of IT budget`}
+          >
+            <div
+              className={`${getCapexColorClass()} h-2.5 rounded-full`}
+              style={{ width: `${Math.min(totalCapex, 100)}%` }}
+              data-testid="capex-progress-bar"
+            ></div>
+          </div>
+          <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+            <span className="font-bold" data-testid="capex-percentage">
+              {totalCapex}%
+            </span>{" "}
+            {UI_TEXT.BUDGET.IT_BUDGET_CAPEX}
+          </p>
         </div>
-        <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-          <span data-testid="capex-percentage">{totalCapex}%</span>{" "}
-          {UI_TEXT.BUDGET.IT_BUDGET_CAPEX}
-        </p>
       </div>
 
       <div>
-        <div className="flex justify-between items-center mb-1">
-          <span
-            className="text-sm text-gray-600 dark:text-gray-300 flex items-center"
-            data-testid="opex-label"
-          >
-            <span className="mr-1" aria-hidden="true">
-              🔄
-            </span>{" "}
-            {UI_TEXT.LABELS.OPEX}
-          </span>
-          <span
-            className="font-medium flex items-center"
-            data-testid="opex-estimate"
-          >
-            <span
-              className="mr-1"
-              aria-hidden="true"
-              data-testid="opex-severity-icon"
-            >
-              {getCostIcon(totalOpex)}
-            </span>
-            {formatCurrency(opexEstimate)}
-            {monthlyOpex && (
+        <KeyValuePair
+          label={UI_TEXT.LABELS.OPEX}
+          value={
+            <div className="flex items-center">
               <span
-                className="ml-1 text-xs text-gray-500"
-                data-testid="monthly-opex"
+                className="mr-1"
+                aria-hidden="true"
+                data-testid="opex-severity-icon"
               >
-                (~{monthlyOpex})
+                {getCostIcon(totalOpex)}
               </span>
-            )}
-          </span>
-        </div>
-        <div
-          className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5"
-          role="progressbar"
-          aria-valuenow={Math.min(totalOpex, 100)}
-          aria-valuemin={0}
-          aria-valuemax={100}
-          aria-label={`Operational expenditure: ${totalOpex}% of IT budget`}
-        >
+              <ValueDisplay
+                value={formatCurrency(opexEstimate)}
+                variant="primary"
+                size="sm"
+                testId="opex-estimate-value" // Ensure consistent testId with unique "-value" suffix
+              />
+              {monthlyOpex && (
+                <span
+                  className="ml-1 text-xs text-gray-500 font-normal"
+                  data-testid="monthly-opex"
+                >
+                  (~{monthlyOpex})
+                </span>
+              )}
+            </div>
+          }
+          testId="opex-section"
+        />
+
+        <div className="mt-2">
           <div
-            className={`${getOpexColorClass()} h-2.5 rounded-full`}
-            style={{ width: `${Math.min(totalOpex, 100)}%` }}
-            data-testid="opex-progress-bar"
-          ></div>
+            className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5"
+            role="progressbar"
+            aria-valuenow={Math.min(totalOpex, 100)}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-label={`Operational expenditure: ${totalOpex}% of IT budget`}
+          >
+            <div
+              className={`${getOpexColorClass()} h-2.5 rounded-full`}
+              style={{ width: `${Math.min(totalOpex, 100)}%` }}
+              data-testid="opex-progress-bar"
+            ></div>
+          </div>
+          <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+            <span className="font-bold" data-testid="opex-percentage">
+              {totalOpex}%
+            </span>{" "}
+            {UI_TEXT.BUDGET.IT_BUDGET_OPEX}
+          </p>
         </div>
-        <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-          <span data-testid="opex-percentage">{totalOpex}%</span>{" "}
-          {UI_TEXT.BUDGET.IT_BUDGET_OPEX}
-        </p>
       </div>
 
       <div
         className="bg-gray-50 dark:bg-gray-800 p-3 border border-gray-200 dark:border-gray-700 rounded-md"
         data-testid="total-cost-summary"
       >
-        <div className="flex justify-between items-center">
-          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-            3-Year Total Cost
-          </span>
-          <span className="font-bold text-md" data-testid="three-year-total">
-            {totalCost}
-          </span>
-        </div>
+        <MetricsCard
+          title="3-Year Total Cost"
+          value={totalCost}
+          testId="three-year-total"
+          className="bg-transparent border-0 p-0"
+        />
 
         {roi && (
           <div className="mt-2 pt-2 border-t border-gray-200 dark:border-gray-600">
-            <div className="flex justify-between items-center">
-              <span className="text-sm text-gray-600 dark:text-gray-400">
-                Estimated ROI:
-              </span>
-              <span
-                className="text-sm font-medium text-green-600 dark:text-green-400"
-                data-testid="roi-estimate"
-              >
-                {roi}
-              </span>
-            </div>
+            <KeyValuePair
+              label="Estimated ROI"
+              value={
+                <ValueDisplay
+                  value={roi}
+                  variant="success"
+                  size="sm"
+                  testId="roi-estimate"
+                />
+              }
+              testId="roi-section"
+            />
           </div>
         )}
       </div>

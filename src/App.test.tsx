@@ -1,107 +1,150 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import "@testing-library/jest-dom";
-import App from "./App";
+import userEvent from "@testing-library/user-event";
 import { vi } from "vitest";
+import App from "./App";
 
-// Define interface for Chart.js mock
-interface MockChartInstance {
-  ctx: CanvasRenderingContext2D | null;
-  config: any;
-  data: any;
-  options: any;
-  canvas: HTMLCanvasElement | null;
-  update: () => void;
-  destroy: () => void;
-  resize: () => void;
-}
+// Mock components and hooks
+vi.mock("./components/SecurityLevelSelector", () => ({
+  default: () => (
+    <div data-testid="mock-security-selector">Security Selector</div>
+  ),
+}));
 
-// Better mock for Chart.js with TypeScript support
-vi.mock("chart.js/auto", () => {
-  return {
-    default: class MockChart implements MockChartInstance {
-      static register(): void {}
-      static defaults = {
-        font: {},
-        plugins: {},
-      };
+// Fix: Include the DashboardWidget named export in the Dashboard mock
+vi.mock("./components/Dashboard", () => ({
+  default: ({ children }: { children: React.ReactNode }) => (
+    <div data-testid="mock-dashboard">{children}</div>
+  ),
+  // Add the missing DashboardWidget export
+  DashboardWidget: ({
+    children,
+    title,
+  }: {
+    children: React.ReactNode;
+    title: string;
+  }) => (
+    <div
+      data-testid={`mock-widget-${title?.toLowerCase().replace(/\s+/g, "-")}`}
+    >
+      {children}
+    </div>
+  ),
+}));
 
-      ctx: CanvasRenderingContext2D | null;
-      config: any;
-      data: any;
-      options: any;
-      canvas: HTMLCanvasElement | null;
+vi.mock("./components/RadarChart", () => ({
+  default: () => <div data-testid="mock-radar-chart">Radar Chart</div>,
+}));
 
-      constructor(ctx: CanvasRenderingContext2D | null, config: any) {
-        this.ctx = ctx;
-        this.config = config || {};
-        this.data = config?.data || { datasets: [] };
-        this.options = config?.options || {};
-        this.canvas = ctx ? ctx.canvas : null;
-      }
+vi.mock("./components/widgets/SecuritySummaryWidget", () => ({
+  default: () => (
+    <div data-testid="mock-security-summary">Security Summary</div>
+  ),
+}));
 
-      update(): void {
-        // Mock implementation
-      }
+vi.mock("./components/widgets/ComplianceStatusWidget", () => ({
+  default: () => (
+    <div data-testid="mock-compliance-status">Compliance Status</div>
+  ),
+}));
 
-      destroy(): void {
-        // Mock implementation
-      }
+vi.mock("./components/widgets/ValueCreationWidget", () => ({
+  default: () => <div data-testid="mock-value-creation">Value Creation</div>,
+}));
 
-      resize(): void {
-        // Mock implementation
-      }
-    },
-  };
-});
+vi.mock("./components/widgets/CostEstimationWidget", () => ({
+  default: () => <div data-testid="mock-cost-estimation">Cost Estimation</div>,
+}));
+
+vi.mock("./components/widgets/BusinessImpactAnalysisWidget", () => ({
+  default: () => (
+    <div data-testid="mock-business-impact">Business Impact Analysis</div>
+  ),
+}));
+
+vi.mock("./components/widgets/TechnicalDetailsWidget", () => ({
+  default: () => (
+    <div data-testid="mock-technical-details">Technical Implementation</div>
+  ),
+}));
+
+vi.mock("./hooks/useCIAOptions", () => ({
+  useCIAOptions: () => ({
+    availabilityOptions: { Moderate: { capex: 10, opex: 5 } },
+    integrityOptions: { Moderate: { capex: 15, opex: 7 } },
+    confidentialityOptions: { Moderate: { capex: 20, opex: 10 } },
+  }),
+}));
+
+// Mock the applyWidgetStyling function
+vi.mock("./utils/widgetUtils", () => ({
+  applyWidgetStyling: vi.fn(),
+}));
 
 describe("App Component", () => {
   beforeEach(() => {
-    // Silence the expected console errors from Chart.js
-    vi.spyOn(console, "error").mockImplementation((message) => {
-      if (
-        typeof message === "string" &&
-        (message.includes("Failed to create chart") ||
-          message.includes("can't acquire context"))
-      ) {
-        return;
-      }
-      // Log other errors normally
-      console.log(message);
+    vi.clearAllMocks();
+    // Mock matchMedia for theme detection
+    Object.defineProperty(window, "matchMedia", {
+      writable: true,
+      value: vi.fn().mockImplementation((query) => ({
+        matches: false,
+        media: query,
+        onchange: null,
+        addListener: vi.fn(),
+        removeListener: vi.fn(),
+        addEventListener: vi.fn(),
+        removeEventListener: vi.fn(),
+        dispatchEvent: vi.fn(),
+      })),
     });
   });
 
-  afterEach(() => {
-    vi.restoreAllMocks();
+  it("renders without crashing", () => {
+    render(<App />);
+
+    expect(screen.getByText("CIA Compliance Manager")).toBeInTheDocument();
+    expect(screen.getByTestId("mock-security-selector")).toBeInTheDocument();
+    expect(screen.getByTestId("mock-radar-chart")).toBeInTheDocument();
+    expect(screen.getByTestId("mock-dashboard")).toBeInTheDocument();
   });
 
-  it("renders app dashboard correctly", () => {
+  it("toggles dark mode when button is clicked", async () => {
     render(<App />);
-    expect(screen.getByTestId("app-container")).toBeInTheDocument();
+
+    const toggleButton = screen.getByTestId("theme-toggle");
+    expect(toggleButton).toBeInTheDocument();
+
+    await userEvent.click(toggleButton);
+
+    // Check that the dark class is added
+    expect(screen.getByText("LIGHT MODE")).toBeInTheDocument();
+  });
+
+  it("renders all dashboard widgets", () => {
+    render(<App />);
+
+    // Check that all the widgets are rendered
     expect(
-      screen.getByText(/CIA Compliance Manager Dashboard/i)
+      screen.getByTestId("mock-widget-security-summary")
     ).toBeInTheDocument();
-  });
-
-  it("renders selection components with proper labels", () => {
-    render(<App />);
-
-    // Check for selection labels
-    expect(screen.getByTestId("availability-label")).toBeInTheDocument();
-    expect(screen.getByTestId("integrity-label")).toBeInTheDocument();
-    expect(screen.getByTestId("confidentiality-label")).toBeInTheDocument();
-  });
-
-  it("renders dashboard structure correctly", () => {
-    render(<App />);
-
-    // Verify dashboard grid exists
-    expect(screen.getByTestId("dashboard-grid")).toBeInTheDocument();
-
-    // Check for key widgets
     expect(
-      screen.getByTestId("widget-security-level-selection")
+      screen.getByTestId("mock-widget-compliance-status")
     ).toBeInTheDocument();
-    expect(screen.getByTestId("widget-security-summary")).toBeInTheDocument();
+    expect(
+      screen.getByTestId("mock-widget-value-creation")
+    ).toBeInTheDocument();
+    expect(
+      screen.getByTestId("mock-widget-cost-estimation")
+    ).toBeInTheDocument();
+
+    // Fix: Use the correct test ID for the Business Impact Analysis widget
+    expect(
+      screen.getByTestId("mock-widget-business-impact-analysis")
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByTestId("mock-widget-technical-implementation")
+    ).toBeInTheDocument();
   });
 });

@@ -1,246 +1,204 @@
-import React, { useRef, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Chart from "chart.js/auto";
-import { UI_TEXT, SECURITY_LEVELS } from "../constants/appConstants";
+import { SECURITY_LEVELS } from "../constants/appConstants";
 
 interface RadarChartProps {
   availability: string;
   integrity: string;
   confidentiality: string;
+  className?: string;
 }
-
-// Convert security level string to numeric value for the chart
-const getLevelScore = (level: string): number => {
-  const levels = Object.values(SECURITY_LEVELS);
-  return levels.indexOf(level);
-};
 
 const RadarChart: React.FC<RadarChartProps> = ({
   availability,
   integrity,
   confidentiality,
+  className = "",
 }) => {
-  const chartRef = useRef<HTMLCanvasElement>(null);
-  const chartInstance = useRef<Chart | null>(null);
+  const chartRef = useRef<HTMLCanvasElement | null>(null);
+  const chartInstanceRef = useRef<Chart | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  // Helper function to convert security level to numeric value for chart
+  const getSecurityLevelValue = (level: string): number => {
+    switch (level) {
+      case "Very High":
+        return 4;
+      case "High":
+        return 3;
+      case "Moderate":
+        return 2;
+      case "Low":
+        return 1;
+      default:
+        return 0;
+    }
+  };
 
   useEffect(() => {
-    // Only run in a browser environment with Canvas support
-    if (!chartRef.current || typeof window === "undefined") return;
+    if (!chartRef.current) return;
 
     try {
-      // Safely destroy existing chart instance if it exists
-      if (
-        chartInstance.current &&
-        typeof chartInstance.current.destroy === "function"
-      ) {
-        chartInstance.current.destroy();
+      // Get values for radar chart
+      const availabilityValue = getSecurityLevelValue(availability);
+      const integrityValue = getSecurityLevelValue(integrity);
+      const confidentialityValue = getSecurityLevelValue(confidentiality);
+
+      // Clean up any existing chart
+      if (chartInstanceRef.current) {
+        chartInstanceRef.current.destroy();
+        chartInstanceRef.current = null;
       }
 
+      // Create the radar chart with improved styling
       const ctx = chartRef.current.getContext("2d");
+      if (!ctx) {
+        throw new Error("Could not get canvas context");
+      }
 
-      // Skip chart creation if context isn't available (like in test environment)
-      if (!ctx) return;
+      // Helper function to get colors based on dark mode
+      const isDarkMode = document.documentElement.classList.contains("dark");
+      const getChartColors = () => {
+        return {
+          backgroundColor: isDarkMode
+            ? "rgba(0, 204, 102, 0.2)"
+            : "rgba(54, 162, 235, 0.2)",
+          borderColor: isDarkMode ? "rgb(0, 204, 102)" : "rgb(54, 162, 235)",
+          textColor: isDarkMode ? "#e2e8f0" : "#2d3748",
+          gridColor: isDarkMode
+            ? "rgba(255, 255, 255, 0.1)"
+            : "rgba(0, 0, 0, 0.1)",
+          pointBackgroundColor: isDarkMode
+            ? "rgb(0, 235, 117)"
+            : "rgb(54, 162, 235)",
+        };
+      };
 
-      const darkMode = document.documentElement.classList.contains("dark");
+      const colors = getChartColors();
 
-      // Improved text color for better visibility in both modes
-      const textColor = darkMode
-        ? "rgba(255, 255, 255, 1)" // Brighter white in dark mode
-        : "rgba(0, 0, 0, 0.9)"; // Darker black in light mode
-
-      const gridColor = darkMode
-        ? "rgba(255, 255, 255, 0.2)" // More visible grid in dark mode
-        : "rgba(0, 0, 0, 0.15)"; // Slightly darker grid in light mode
-
-      const backgroundColor = darkMode
-        ? "rgba(59, 130, 246, 0.25)" // More visible background in dark mode
-        : "rgba(59, 130, 246, 0.15)"; // Slightly more visible in light mode
-
-      chartInstance.current = new Chart(ctx, {
+      chartInstanceRef.current = new Chart(ctx, {
         type: "radar",
         data: {
-          labels: [
-            UI_TEXT.SECURITY_MEASURES.AVAILABILITY,
-            UI_TEXT.SECURITY_MEASURES.INTEGRITY,
-            UI_TEXT.SECURITY_MEASURES.CONFIDENTIALITY,
-          ],
+          labels: ["Availability", "Integrity", "Confidentiality"],
           datasets: [
             {
-              label: UI_TEXT.CHART.LABEL_SECURITY_LEVELS,
-              data: [
-                getLevelScore(availability),
-                getLevelScore(integrity),
-                getLevelScore(confidentiality),
-              ],
-              backgroundColor: backgroundColor,
-              borderColor: darkMode
-                ? "rgba(59, 180, 246, 0.9)" // Brighter blue in dark mode
-                : "rgba(59, 130, 246, 0.9)", // Standard blue in light mode
+              label: "Security Level",
+              data: [availabilityValue, integrityValue, confidentialityValue],
+              backgroundColor: colors.backgroundColor,
+              borderColor: colors.borderColor,
               borderWidth: 2,
-              pointBackgroundColor: darkMode
-                ? "rgba(59, 180, 246, 1)"
-                : "rgba(59, 130, 246, 1)",
+              pointBackgroundColor: colors.pointBackgroundColor,
               pointBorderColor: "#fff",
               pointHoverBackgroundColor: "#fff",
-              pointHoverBorderColor: "rgba(59, 130, 246, 1)",
-              pointRadius: 5, // Larger points
+              pointHoverBorderColor: colors.borderColor,
+              pointRadius: 4,
             },
           ],
         },
         options: {
           responsive: true,
           maintainAspectRatio: true,
-          plugins: {
-            legend: {
-              display: true, // Show the legend
-              position: "top",
-              labels: {
-                color: textColor,
-                font: {
-                  size: 14,
-                  weight: 600, // Changed from '600' to 600 (number)
-                },
-              },
-              title: {
-                display: true,
-                text: UI_TEXT.CHART.TITLE_SECURITY_PROFILE,
-                color: textColor,
-                font: {
-                  size: 16,
-                  weight: 700, // Changed from '700' to 700 (number)
-                },
-              },
-            },
-            tooltip: {
-              backgroundColor: darkMode
-                ? "rgba(0, 0, 0, 0.8)"
-                : "rgba(255, 255, 255, 0.95)",
-              titleColor: darkMode
-                ? "rgba(255, 255, 255, 0.95)"
-                : "rgba(0, 0, 0, 0.9)",
-              bodyColor: darkMode
-                ? "rgba(255, 255, 255, 0.8)"
-                : "rgba(0, 0, 0, 0.8)",
-              padding: 10,
-              cornerRadius: 4,
-              callbacks: {
-                label: function (context) {
-                  let label = "";
-                  if (context.dataIndex === 0) {
-                    label = `Availability: ${availability}`;
-                  } else if (context.dataIndex === 1) {
-                    label = `Integrity: ${integrity}`;
-                  } else if (context.dataIndex === 2) {
-                    label = `Confidentiality: ${confidentiality}`;
-                  }
-                  return label;
-                },
-              },
-            },
-          },
           scales: {
             r: {
-              beginAtZero: true,
+              min: 0,
               max: 4,
               ticks: {
                 stepSize: 1,
-                display: false,
+                showLabelBackdrop: false,
+                color: colors.textColor,
+                z: 1,
               },
               grid: {
-                color: gridColor,
-                circular: true,
-                lineWidth: 1.5, // Thicker grid lines
-              },
-              angleLines: {
-                color: gridColor,
-                lineWidth: 1.5, // Thicker angle lines
+                color: colors.gridColor,
               },
               pointLabels: {
-                color: textColor,
+                color: colors.textColor,
                 font: {
-                  size: 14, // Larger font size
-                  weight: 600, // Changed from '600' to 600 (number)
+                  weight: "bold",
                 },
-                padding: 12, // More padding around labels
+              },
+              angleLines: {
+                color: colors.gridColor,
+              },
+            },
+          },
+          plugins: {
+            legend: {
+              display: false,
+            },
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  const labels = [
+                    "None",
+                    "Low",
+                    "Moderate",
+                    "High",
+                    "Very High",
+                  ];
+                  const value = context.raw as number;
+                  return `${context.label}: ${labels[value] || "Unknown"}`;
+                },
               },
             },
           },
         },
       });
-    } catch (error) {
-      if (process.env.NODE_ENV !== "test") {
-        console.error("Error initializing chart:", error);
-      }
-    }
 
-    return () => {
-      // Safely destroy chart on unmount
-      if (
-        chartInstance.current &&
-        typeof chartInstance.current.destroy === "function"
-      ) {
-        chartInstance.current.destroy();
-      }
-    };
+      setError(null);
+    } catch (err) {
+      console.error("Failed to create chart:", err);
+      setError("Could not render security chart");
+    }
   }, [availability, integrity, confidentiality]);
 
+  // Clean up chart on component unmount
+  useEffect(() => {
+    // Return cleanup function
+    return () => {
+      if (chartInstanceRef.current) {
+        chartInstanceRef.current.destroy();
+        chartInstanceRef.current = null;
+      }
+    };
+  }, []);
+
+  // Add fallback or error display
+  if (error) {
+    return (
+      <div
+        className="border border-red-300 rounded-md p-2 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-sm"
+        data-testid="radar-chart-error"
+      >
+        {error}
+      </div>
+    );
+  }
+
+  // Apply proper wrapper classes to ensure the chart fits in its box correctly
   return (
     <div
-      className="flex flex-col justify-center items-center h-full"
+      className={`radar-chart-container ${className} w-full flex flex-col items-center justify-center relative max-h-[300px]`}
       data-testid="radar-chart"
     >
-      <div className="w-full mb-4">
-        {/* Add legend key above chart */}
-        <div className="flex justify-center items-center space-x-4 mb-2">
-          <div className="flex items-center">
-            <div className="w-3 h-3 rounded-full bg-blue-500 mr-2"></div>
-            <span className="text-sm font-medium">
-              {UI_TEXT.LABELS.CURRENT_PROFILE}
-            </span>
-          </div>
-        </div>
-        {/* Add current levels below chart for easy reference */}
-        <div className="flex justify-around mt-2 text-center">
-          <div className="flex flex-col">
-            <span className="text-xs">
-              {UI_TEXT.SECURITY_MEASURES.AVAILABILITY}
-            </span>
-            <span
-              className="text-sm font-semibold"
-              data-testid="radar-availability-value"
-            >
-              {availability}
-            </span>
-          </div>
-          <div className="flex flex-col">
-            <span className="text-xs">
-              {UI_TEXT.SECURITY_MEASURES.INTEGRITY}
-            </span>
-            <span
-              className="text-sm font-semibold"
-              data-testid="radar-integrity-value"
-            >
-              {integrity}
-            </span>
-          </div>
-          <div className="flex flex-col">
-            <span className="text-xs">
-              {UI_TEXT.SECURITY_MEASURES.CONFIDENTIALITY}
-            </span>
-            <span
-              className="text-sm font-semibold"
-              data-testid="radar-confidentiality-value"
-            >
-              {confidentiality}
-            </span>
-          </div>
-        </div>
-      </div>
-      <div className="w-full max-w-xs mx-auto">
+      <div
+        className="w-full h-full flex items-center justify-center"
+        style={{ minHeight: "250px" }}
+      >
         <canvas
           ref={chartRef}
-          className="p-2"
+          aria-label="CIA security assessment radar chart"
           data-testid="radar-chart-canvas"
-        ></canvas>
+          className="max-w-full"
+        />
+      </div>
+      {/* Add value display labels below chart */}
+      <div className="flex justify-around w-full mt-2 text-xs text-gray-600 dark:text-gray-400">
+        <div data-testid="radar-availability-value">A: {availability}</div>
+        <div data-testid="radar-integrity-value">I: {integrity}</div>
+        <div data-testid="radar-confidentiality-value">
+          C: {confidentiality}
+        </div>
       </div>
     </div>
   );

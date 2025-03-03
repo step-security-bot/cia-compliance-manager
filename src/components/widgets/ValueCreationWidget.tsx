@@ -6,6 +6,9 @@ import {
   UI_TEXT,
   DETAILED_VALUE_POINTS,
 } from "../../constants/appConstants";
+import { ensureArray } from "../../utils/typeGuards";
+import ValueDisplay from "../common/ValueDisplay";
+import KeyValuePair from "../common/KeyValuePair";
 
 interface ValueCreationWidgetProps {
   securityLevel: string;
@@ -63,6 +66,22 @@ const ValueCreationWidget: React.FC<ValueCreationWidgetProps> = ({
   const roiEstimate = getROIEstimate();
 
   // Color styling based on level
+  const getLevelVariant = () => {
+    switch (securityLevel) {
+      case SECURITY_LEVELS.VERY_HIGH:
+        return "success";
+      case SECURITY_LEVELS.HIGH:
+        return "primary";
+      case SECURITY_LEVELS.MODERATE:
+        return "info";
+      case SECURITY_LEVELS.LOW:
+        return "warning";
+      default:
+        return "danger";
+    }
+  };
+
+  // Get text color class based on security level
   const getLevelColorClass = () => {
     switch (securityLevel) {
       case SECURITY_LEVELS.VERY_HIGH:
@@ -97,31 +116,34 @@ const ValueCreationWidget: React.FC<ValueCreationWidgetProps> = ({
         </p>
       </div>
 
-      <ul className="space-y-2 text-sm" data-testid="value-points-list">
-        {valuePoints.map((point, index) => (
+      <ul className="space-y-2" data-testid="value-points-list">
+        {ensureArray(valuePoints).map((point, index) => (
           <li
             key={index}
-            className="flex items-start text-gray-700 dark:text-gray-300"
+            className="flex items-start bg-gray-50 dark:bg-gray-800 p-2.5 rounded-md border border-gray-100 dark:border-gray-700"
             data-testid={`value-point-${index}`}
           >
             <span className={`mr-2 ${getLevelColorClass()}`}>•</span>
-            {point}
+            <span className="font-medium text-sm text-gray-700 dark:text-gray-300">
+              {point}
+            </span>
           </li>
         ))}
       </ul>
 
       <div className="mt-4 pt-3 border-t border-gray-200 dark:border-gray-700">
-        <div className="flex justify-between items-center">
-          <span className="text-sm font-medium" data-testid="roi-label">
-            {UI_TEXT.LABELS.ESTIMATED_ROI}
-          </span>
-          <span
-            className={`font-medium ${getLevelColorClass()}`}
-            data-testid="roi-value"
-          >
-            {roiEstimate}
-          </span>
-        </div>
+        <KeyValuePair
+          label={UI_TEXT.LABELS.ESTIMATED_ROI}
+          value={
+            <ValueDisplay
+              value={roiEstimate}
+              variant={getLevelVariant()}
+              testId="roi-value"
+            />
+          }
+          testId="roi-section"
+          highlighted={true}
+        />
       </div>
     </div>
   );

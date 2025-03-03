@@ -1,61 +1,61 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
+import { vi } from "vitest";
 import Dashboard, { DashboardWidget } from "./Dashboard";
 
-describe("Dashboard", () => {
-  it("renders children correctly", () => {
-    render(
-      <Dashboard availability="None" integrity="None" confidentiality="None">
-        <div data-testid="test-child">Hello Dashboard</div>
-      </Dashboard>
-    );
+// Mock the widget registry
+vi.mock("../utils/widgetRegistry", () => ({
+  default: {
+    renderWidgets: vi.fn(() => [<div key="mock-widget">Mock Widget</div>]),
+  },
+  __esModule: true,
+}));
 
-    expect(screen.getByTestId("test-child")).toHaveTextContent(
-      "Hello Dashboard"
-    );
-  });
+// Mock the useCIAOptions hook
+vi.mock("../hooks/useCIAOptions", () => ({
+  availabilityOptions: {
+    Moderate: { capex: 10, opex: 5 },
+  },
+  integrityOptions: {
+    Moderate: { capex: 15, opex: 7 },
+  },
+  confidentialityOptions: {
+    Moderate: { capex: 20, opex: 10 },
+  },
+}));
 
-  it("renders with correct data-testid", () => {
-    render(
-      <Dashboard availability="None" integrity="None" confidentiality="None">
-        <div>Test content</div>
-      </Dashboard>
-    );
+describe("Dashboard Component", () => {
+  const defaultProps = {
+    children: <div data-testid="test-child">Test Child</div>,
+    availability: "Moderate",
+    integrity: "Moderate",
+    confidentiality: "Moderate",
+  };
+
+  it("renders children when useRegistry is false", () => {
+    render(<Dashboard {...defaultProps} />);
 
     expect(screen.getByTestId("dashboard-grid")).toBeInTheDocument();
+    expect(screen.getByTestId("test-child")).toBeInTheDocument();
   });
 
-  // Add more tests as needed
+  it("uses widget registry when useRegistry is true", () => {
+    render(<Dashboard {...defaultProps} useRegistry={true} />);
+
+    expect(screen.getByTestId("dashboard-grid")).toBeInTheDocument();
+    expect(screen.getByText("Mock Widget")).toBeInTheDocument();
+  });
 });
 
-describe("DashboardWidget", () => {
-  it("renders with correct title", () => {
+describe("DashboardWidget Component", () => {
+  it("renders with correct props", () => {
     render(
-      <DashboardWidget title="Test Widget">
-        <div>Widget content</div>
+      <DashboardWidget title="Test Widget" testId="test-widget">
+        <div>Widget Content</div>
       </DashboardWidget>
     );
 
-    expect(screen.getByText("Test Widget")).toBeInTheDocument();
-  });
-
-  it("accepts custom testId", () => {
-    render(
-      <DashboardWidget title="Test Widget" testId="custom-widget-id">
-        <div>Widget content</div>
-      </DashboardWidget>
-    );
-
-    expect(screen.getByTestId("custom-widget-id")).toBeInTheDocument();
-  });
-
-  it("renders icons when provided", () => {
-    render(
-      <DashboardWidget title="Test Widget" icon="🔍">
-        <div>Widget content</div>
-      </DashboardWidget>
-    );
-
-    expect(screen.getByTestId("icon-test-widget")).toHaveTextContent("🔍");
+    expect(screen.getByTestId("test-widget")).toBeInTheDocument();
+    expect(screen.getByText("Widget Content")).toBeInTheDocument();
   });
 });

@@ -1,22 +1,28 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import CIAClassificationApp from "./CIAClassificationApp";
-import "./index.css"; // Optional: your global styles
+import App from "./App";
+import "./index.css";
+import "./styles/valueStyles.css";
+import "./styles/widgetStyles.css"; // Import the widget styles for consistent widget appearance
+import GlobalWidgetStyler from "./components/common/GlobalWidgetStyler";
 
-// Get the root element from the public/index.html file
-const container = document.getElementById("root");
-
-// Ensure the container exists
-if (!container) {
-  throw new Error("Root element not found");
+// Extend the Window interface
+declare global {
+  interface Window {
+    __REACT_HYDRATED__?: boolean;
+  }
 }
 
-// Create a root.
-const root = ReactDOM.createRoot(container);
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
 
-// Initial render
 root.render(
   <React.StrictMode>
-    <CIAClassificationApp />
+    <GlobalWidgetStyler />
+    <App />
   </React.StrictMode>
 );
+
+// Add this line to signal React hydration
+window.__REACT_HYDRATED__ = true;

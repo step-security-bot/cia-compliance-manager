@@ -6,6 +6,10 @@ import {
   COMPLIANCE_FRAMEWORKS,
   FRAMEWORK_DESCRIPTIONS,
 } from "../../constants/appConstants";
+import StatusBadge from "../common/StatusBadge";
+import ValueDisplay from "../common/ValueDisplay";
+import MetricsCard from "../common/MetricsCard";
+import KeyValuePair from "../common/KeyValuePair";
 
 interface ComplianceStatusWidgetProps {
   securityLevels: {
@@ -176,6 +180,19 @@ const ComplianceStatusWidget: React.FC<ComplianceStatusWidgetProps> = ({
     return "SOC2"; // Default
   };
 
+  // Convert status to our StatusBadge status type
+  const getStatusBadgeType = ():
+    | "success"
+    | "warning"
+    | "error"
+    | "info"
+    | "neutral" => {
+    if (meetsHighCompliance) return "success";
+    if (meetsStandardCompliance) return "info";
+    if (meetsBasicCompliance) return "warning";
+    return "error";
+  };
+
   return (
     <div
       className="space-y-4"
@@ -183,7 +200,7 @@ const ComplianceStatusWidget: React.FC<ComplianceStatusWidgetProps> = ({
       aria-label="Compliance Status Information"
     >
       {/* Overall Status Header with Icon */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between bg-gray-50 dark:bg-gray-800 p-3 rounded-lg border border-gray-200 dark:border-gray-700">
         <div className="flex items-center">
           <span
             className={`text-xl mr-2 ${getStatusColor()}`}
@@ -192,25 +209,30 @@ const ComplianceStatusWidget: React.FC<ComplianceStatusWidgetProps> = ({
           >
             {getStatusIcon()}
           </span>
-          <span
-            className={`font-medium ${getStatusColor()}`}
-            data-testid="compliance-status-text"
+          <StatusBadge
+            status={getStatusBadgeType()}
+            testId="compliance-status-badge"
+            size="md"
           >
-            {overallStatus}
-          </span>
+            {/* Add this span with the required testId */}
+            <span data-testid="compliance-status-text">{overallStatus}</span>
+          </StatusBadge>
         </div>
 
-        {/* Add compliance level percentage */}
-        <span
-          className="text-sm text-gray-500 dark:text-gray-400"
-          data-testid="compliance-percentage"
-        >
-          {getCompliancePercentage()}% Compliant
-        </span>
+        {/* Add compliance level percentage using metrics card */}
+        <MetricsCard
+          title="Compliance Level"
+          value={`${getCompliancePercentage()}%`}
+          testId="compliance-percentage"
+        />
       </div>
 
-      {/* Add visual progress bar */}
-      <div className="bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+      {/* Add visual progress bar with improved styling */}
+      <div
+        className="bg-gray-200 dark:bg-gray-700 rounded-full h-2.5"
+        role="progressbar"
+        aria-label="Compliance level progress"
+      >
         <div
           className={`h-2.5 rounded-full ${
             meetsHighCompliance
@@ -226,37 +248,41 @@ const ComplianceStatusWidget: React.FC<ComplianceStatusWidgetProps> = ({
           aria-valuenow={getCompliancePercentage()}
           aria-valuemin={0}
           aria-valuemax={100}
-          role="progressbar"
+          aria-label={`Compliance level: ${overallStatus} (${getCompliancePercentage()}%)`}
         ></div>
       </div>
 
       {/* Next Level Requirements */}
       <div
-        className="text-sm text-gray-600 dark:text-gray-300 bg-gray-50 dark:bg-gray-800 p-2 rounded-md border border-gray-200 dark:border-gray-700"
+        className="text-sm text-gray-700 dark:text-gray-200 bg-gray-50 dark:bg-gray-800 p-3 rounded-md border border-gray-200 dark:border-gray-700 font-medium"
         data-testid="next-level-requirements"
       >
         <p>{getNextLevelRequirements()}</p>
       </div>
 
-      {/* Framework Compliance Table */}
+      {/* Framework Compliance Table with enhanced styling */}
       <div
-        className="space-y-2 mt-2"
+        className="mt-4 bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-200 dark:border-gray-700"
         data-testid="compliance-frameworks-list"
         aria-label="Compliance Framework Status"
         role="table"
       >
         <div
-          className="flex justify-between items-center text-xs font-medium text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 pb-1"
+          className="flex justify-between items-center text-xs font-medium text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 pb-2 mb-2"
           role="row"
         >
-          <span role="columnheader">Framework</span>
-          <span role="columnheader">Status</span>
+          <span role="columnheader" className="font-semibold">
+            Framework
+          </span>
+          <span role="columnheader" className="font-semibold">
+            Status
+          </span>
         </div>
 
         {complianceFrameworks.map((framework) => (
           <div
             key={framework.name}
-            className="flex justify-between items-center text-sm border-b border-gray-100 dark:border-gray-700 pb-1"
+            className="flex justify-between items-center text-sm border-b border-gray-100 dark:border-gray-700 py-2"
             data-testid={`framework-${framework.name
               .replace(/\s+/g, "-")
               .toLowerCase()}`}
@@ -264,31 +290,24 @@ const ComplianceStatusWidget: React.FC<ComplianceStatusWidgetProps> = ({
           >
             <div className="flex items-center" role="cell">
               <span
-                className={
-                  framework.met
-                    ? "text-green-500 dark:text-green-400 mr-2"
-                    : "text-red-500 dark:text-red-400 mr-2"
-                }
+                className="mr-2 flex items-center"
                 data-testid={`framework-status-${framework.name
                   .replace(/\s+/g, "-")
                   .toLowerCase()}`}
                 aria-label={framework.met ? "Compliant" : "Non-compliant"}
               >
-                {framework.met ? UI_ICONS.STANDARD_COMPLIANCE : "✗"}
-
-                {/* Add framework-specific icon */}
-                <span
-                  className="ml-1"
-                  aria-hidden="true"
-                  data-testid={`framework-icon-${framework.name
-                    .replace(/\s+/g, "-")
-                    .toLowerCase()}`}
-                >
-                  {complianceIcons.FRAMEWORK[getFrameworkKey(framework.name)] ||
-                    "📄"}
-                </span>
+                {framework.met ? (
+                  <StatusBadge status="success" size="xs">
+                    {complianceIcons.FRAMEWORK[getFrameworkKey(framework.name)]}
+                  </StatusBadge>
+                ) : (
+                  <StatusBadge status="error" size="xs">
+                    ✗
+                  </StatusBadge>
+                )}
               </span>
               <span
+                className="font-medium"
                 data-testid={`framework-name-${framework.name
                   .replace(/\s+/g, "-")
                   .toLowerCase()}`}
@@ -296,21 +315,20 @@ const ComplianceStatusWidget: React.FC<ComplianceStatusWidgetProps> = ({
                 {framework.name}
               </span>
             </div>
-            <div
-              className="text-xs text-gray-500 dark:text-gray-400 max-w-[60%] text-right"
-              data-testid={`framework-description-${framework.name
+            <KeyValuePair
+              label=""
+              value={framework.description}
+              valueClassName="text-xs bg-gray-50 dark:bg-gray-700 p-1.5 rounded text-gray-600 dark:text-gray-300 max-w-[60%] text-right"
+              testId={`framework-description-${framework.name
                 .replace(/\s+/g, "-")
                 .toLowerCase()}`}
-              role="cell"
-            >
-              {framework.description}
-            </div>
+            />
           </div>
         ))}
       </div>
 
-      {/* Component Requirements Summary */}
-      <div className="mt-4 pt-2 border-t border-gray-200 dark:border-gray-700">
+      {/* Component Requirements Summary with enhanced styling */}
+      <div className="mt-4 pt-3 border-t border-gray-200 dark:border-gray-700">
         <h4
           className="text-sm font-medium mb-2"
           data-testid="component-requirements-heading"
@@ -319,37 +337,70 @@ const ComplianceStatusWidget: React.FC<ComplianceStatusWidgetProps> = ({
         </h4>
         <div className="grid grid-cols-3 gap-2 text-xs">
           <div
-            className={`p-1.5 rounded ${
+            className={`p-2 rounded ${
               availability === SECURITY_LEVELS.NONE
                 ? "bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300"
                 : "bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300"
+            } border ${
+              availability === SECURITY_LEVELS.NONE
+                ? "border-red-200 dark:border-red-800"
+                : "border-green-200 dark:border-green-800"
             }`}
             data-testid="availability-status"
           >
             <div className="font-medium">Availability</div>
-            <div>{availability}</div>
+            <ValueDisplay
+              value={availability}
+              variant={
+                availability === SECURITY_LEVELS.NONE ? "danger" : "success"
+              }
+              size="sm"
+              testId="availability-level-display"
+            />
           </div>
           <div
-            className={`p-1.5 rounded ${
+            className={`p-2 rounded ${
               integrity === SECURITY_LEVELS.NONE
                 ? "bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300"
                 : "bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300"
+            } border ${
+              integrity === SECURITY_LEVELS.NONE
+                ? "border-red-200 dark:border-red-800"
+                : "border-green-200 dark:border-green-800"
             }`}
             data-testid="integrity-status"
           >
             <div className="font-medium">Integrity</div>
-            <div>{integrity}</div>
+            <ValueDisplay
+              value={integrity}
+              variant={
+                integrity === SECURITY_LEVELS.NONE ? "danger" : "success"
+              }
+              size="sm"
+              testId="integrity-level-display"
+            />
           </div>
           <div
-            className={`p-1.5 rounded ${
+            className={`p-2 rounded ${
               confidentiality === SECURITY_LEVELS.NONE
                 ? "bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300"
                 : "bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300"
+            } border ${
+              confidentiality === SECURITY_LEVELS.NONE
+                ? "border-red-200 dark:border-red-800"
+                : "border-green-200 dark:border-green-800"
             }`}
             data-testid="confidentiality-status"
           >
             <div className="font-medium">Confidentiality</div>
-            <div>{confidentiality}</div>
+            <ValueDisplay
+              value={confidentiality}
+              variant={
+                confidentiality === SECURITY_LEVELS.NONE ? "danger" : "success"
+              }
+              size="sm"
+              testId="confidentiality-level-display"
+            />
           </div>
         </div>
       </div>

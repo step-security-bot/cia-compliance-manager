@@ -1,81 +1,318 @@
-# Primary Feature Categories
+# Label definitions aligned with PR template and release notes
+
+# 🚀 Features and Enhancements
 feature:
-- any:
-  - changed-files:
-    - any-glob-to-any-file: 
-      - 'feat/**'
-      - 'feature/**'
-      - '**/feature/**'
-      - '**/features/**'
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - "src/**/feature/**"
+              - "src/**/feat/**"
+      - title: "feat:*"
+      - title: "feature:*"
+      - title: "add:*"
+      - body: "- [x] 🚀 New Feature/Enhancement"
 
 enhancement:
-- any:
-  - changed-files:
-    - any-glob-to-any-file: 
-      - 'enhance/**'
-      - 'improvement/**'
-      - '**/enhancement/**'
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - "src/**/enhance/**"
+              - "src/**/improvement/**"
+      - title: "enhance:*"
+      - title: "improvement:*"
+      - body: "- [x] 🚀 New Feature/Enhancement"
+
+# 🐛 Bug Fixes
+bug:
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - "src/**/fix/**"
+              - "src/**/bug/**"
+      - title: "fix:*"
+      - title: "bug:*"
+      - body: "- [x] 🐛 Bug Fix"
+
+# 📈 Analytics and Visualization
+analytics:
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - "src/**/analytics/**"
+              - "src/**/stats/**"
+              - "src/**/metrics/**"
+      - title: "analytics:*"
+      - body: "- [x] 📈 Analytics & Visualization"
 
 visualization:
-- any:
-  - changed-files:
-    - any-glob-to-any-file: 
-      - '**/charts/**'
-      - '**/visualization/**'
-      - '**/graph/**'
-      - '**/dashboard/**'
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - "src/**/charts/**"
+              - "src/**/visualization/**"
+              - "src/**/graph/**"
+              - "src/**/dashboard/**"
+      - title: "visualization:*"
+      - title: "chart:*"
+      - body: "- [x] 📈 Analytics & Visualization"
 
-# Infrastructure
+# 🎨 UI/UX Improvements
+ui:
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - "src/**/components/**"
+              - "src/**/ui/**"
+              - "src/**/*.css"
+              - "src/**/*.scss"
+              - "src/**/*.less"
+              - "src/**/*.styles.*"
+              - "src/**/theme/**"
+              - "public/**/*.svg"
+              - "public/**/*.png"
+              - "public/**/*.jpg"
+      - title: "ui:*"
+      - title: "style:*"
+      - title: "design:*"
+      - body: "- [x] 🎨 UI/UX Improvements"
+
+# 🏗️ Infrastructure & Performance
 infrastructure:
-- any:
-  - changed-files:
-    - any-glob-to-any-file: 
-      - '**/cloudformation/**'
-      - '**/deploy/**'
-      - '**/*.json'
-      - '**/config/**'
-      - '**/postgres/**'
-      - '**/.github/**'
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - ".github/**"
+              - "configs/**"
+              - "scripts/**"
+              - "docker/**"
+              - "**/*.json"
+              - "**/vite.config.*"
+              - "**/tsconfig.json"
+              - ".env*"
+      - title: "infra:*"
+      - title: "ci:*"
+      - title: "cd:*"
+      - body: "- [x] 🏗️ Infrastructure & Performance"
+
+performance:
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - "src/**/perf/**"
+              - "src/**/performance/**"
+              - "src/**/optimize/**"
+      - title: "perf:*"
+      - title: "optimize:*"
+      - body: "- [x] 🏗️ Infrastructure & Performance"
+
+# 🔄 Code Quality & Refactoring
+refactor:
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - "src/**/refactor/**"
+      - title: "refactor:*"
+      - body: "- [x] 🔄 Code Quality & Refactoring"
 
 testing:
-- any:
-  - changed-files:
-    - any-glob-to-any-file: 
-      - '**/test/**'
-      - '**/*Test.java'
-      - '**/junit/**'
-      - '**/testing/**'
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - "src/**/*.test.*"
+              - "src/**/*.spec.*"
+              - "cypress/**"
+              - "test/**"
+              - "__tests__/**"
+              - "src/**/__tests__/**"
+              - "src/**/*.cy.*"
+      - title: "test:*"
+      - body: "- [x] 🔄 Code Quality & Refactoring"
 
-# Documentation
+# 🔒 Security & Compliance
+security:
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - "src/**/security/**"
+              - "src/**/auth/**"
+              - "src/**/compliance/**"
+              - ".github/workflows/codeql.yml"
+              - ".github/workflows/scorecards.yml"
+              - "security/**"
+      - title: "security:*"
+      - title: "auth:*"
+      - title: "fix-vuln:*"
+      - body: "- [x] 🔒 Security & Compliance"
+
+compliance:
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - "src/**/compliance/**"
+              - "src/**/cia/**"
+              - "src/**/audit/**"
+              - "src/**/report/**"
+      - title: "compliance:*"
+      - title: "audit:*"
+      - body: "- [x] 🔒 Security & Compliance"
+
+# 📝 Documentation
 documentation:
-- any:
-  - changed-files:
-    - any-glob-to-any-file: 
-      - '**/*.md'
-      - '**/docs/**'
-      - '**/javadoc/**'
-      - '**/package-info.java'
-      - '**/module-info.java'
-      - '**/documentation/**'
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - "**/*.md"
+              - "docs/**"
+              - "LICENSE"
+              - "**/*.mdx"
+      - title: "docs:*"
+      - title: "doc:*"
+      - body: "- [x] 📝 Documentation"
 
-# Dependencies
+# 📦 Dependencies
 dependencies:
-- any:
-  - changed-files:
-    - any-glob-to-any-file: 
-      - 'build(deps)/**'
-      - '**/pom.xml'
-      - '**/dependencies/**'
-      - '**/dependency/**'
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - "package.json"
+              - "package-lock.json"
+              - "yarn.lock"
+              - "pnpm-lock.yaml"
+      - title: "build(deps):*"
+      - title: "deps:*"
+      - title: "dependency:*"
+      - title: "dependencies:*"
+      - body: "- [x] 📦 Dependencies Update"
 
-# Build & CI
-build:
-- any:
+# Coverage-driven labels (based on test coverage report)
+needs-tests:
   - changed-files:
-    - any-glob-to-any-file: 
-      - '.github/workflows/**'
-      - '**/Dockerfile'
-      - '**/docker/**'
-      - '**/ci/**'
-      - '**/cd/**'
-      - 'pom.xml'
+      - any-glob-to-any-file:
+          - "src/components/widgets/SecurityLevelWidget.tsx"
+          - "src/components/RadarChart.tsx"
+          - "src/components/widgets/CostEstimationWidget.tsx"
+          - "src/hooks/useCIAOptions.ts"
+          - "src/CIAClassificationApp.tsx"
+
+high-coverage:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "src/App.tsx"
+          - "src/components/Dashboard.tsx"
+          - "src/components/Selection.tsx"
+          - "src/components/widgets/BusinessImpactAnalysisWidget.tsx"
+          - "src/components/widgets/ComplianceStatusWidget.tsx"
+          - "src/components/widgets/SecuritySummaryWidget.tsx"
+          - "src/components/widgets/ValueCreationWidget.tsx"
+          - "src/constants/businessConstants.ts"
+          - "src/constants/riskConstants.ts"
+          - "src/constants/uiConstants.ts"
+
+# Component-specific labels for targeted reviews
+component-radar:
+  - changed-files:
+      - any-glob-to-any-file: "src/components/RadarChart.tsx"
+
+component-dashboard:
+  - changed-files:
+      - any-glob-to-any-file: "src/components/Dashboard.tsx"
+
+component-security-level:
+  - changed-files:
+      - any-glob-to-any-file: "src/components/widgets/SecurityLevelWidget.tsx"
+
+component-business-impact:
+  - changed-files:
+      - any-glob-to-any-file: "src/components/widgets/BusinessImpactAnalysisWidget.tsx"
+
+component-compliance:
+  - changed-files:
+      - any-glob-to-any-file: "src/components/widgets/ComplianceStatusWidget.tsx"
+
+component-cost:
+  - changed-files:
+      - any-glob-to-any-file: "src/components/widgets/CostEstimationWidget.tsx"
+
+component-security-summary:
+  - changed-files:
+      - any-glob-to-any-file: "src/components/widgets/SecuritySummaryWidget.tsx"
+
+component-value-creation:
+  - changed-files:
+      - any-glob-to-any-file: "src/components/widgets/ValueCreationWidget.tsx"
+
+# Core application logic
+core-app:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "src/App.tsx"
+          - "src/CIAClassificationApp.tsx"
+          - "src/hooks/**"
+
+# Data and constants
+data-model:
+  - changed-files:
+      - any-glob-to-any-file: "src/constants/**"
+
+# Risk-based labels (critical code paths)
+critical-security-code:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "src/components/widgets/SecurityLevelWidget.tsx"
+          - "src/components/widgets/ComplianceStatusWidget.tsx"
+          - "src/components/widgets/SecuritySummaryWidget.tsx"
+          - "src/constants/riskConstants.ts"
+
+critical-business-code:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "src/components/widgets/BusinessImpactAnalysisWidget.tsx"
+          - "src/components/widgets/CostEstimationWidget.tsx"
+          - "src/components/widgets/ValueCreationWidget.tsx"
+          - "src/constants/businessConstants.ts"
+
+test-coverage-impact:
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - "**/*.test.{ts,tsx}"
+              - "**/__tests__/**"
+
+branches-coverage-impact:
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - "src/CIAClassificationApp.tsx"
+              - "src/components/RadarChart.tsx"
+              - "src/components/widgets/SecurityLevelWidget.tsx"
+
+function-coverage-impact:
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - "src/components/widgets/SecurityLevelWidget.tsx"
+              - "src/components/RadarChart.tsx"
+              - "src/hooks/useCIAOptions.ts"
+
+# CIA Impact Areas - Special labels for CIA triad
+confidentiality:
+  - body: "- [x] Confidentiality"
+
+integrity:
+  - body: "- [x] Integrity"
+
+availability:
+  - body: "- [x] Availability"
+
+# Security Level Impact - Special labels for security levels
+security-basic:
+  - body: "- [x] Basic"
+
+security-moderate:
+  - body: "- [x] Moderate"
+
+security-high:
+  - body: "- [x] High"
+
+security-very-high:
+  - body: "- [x] Very High"

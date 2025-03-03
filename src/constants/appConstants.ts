@@ -394,3 +394,38 @@ export const TEST_DATA = {
     },
   },
 };
+
+// Add to the constants file
+export const IMPLEMENTATION_COSTS: {
+  [key: string]: {
+    developmentEffort: string;
+    maintenance: string;
+    expertise: string;
+  };
+} = {
+  None: {
+    developmentEffort: "Minimal",
+    maintenance: "None",
+    expertise: "Basic",
+  },
+  Low: {
+    developmentEffort: "Days",
+    maintenance: "Monthly checks",
+    expertise: "Junior",
+  },
+  Moderate: {
+    developmentEffort: "Weeks",
+    maintenance: "Weekly checks",
+    expertise: "Mid-level",
+  },
+  High: {
+    developmentEffort: "1-2 Months",
+    maintenance: "Daily monitoring",
+    expertise: "Senior",
+  },
+  "Very High": {
+    developmentEffort: "2-6 Months",
+    maintenance: "Continuous monitoring",
+    expertise: "Expert",
+  },
+};

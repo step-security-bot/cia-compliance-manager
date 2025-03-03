@@ -156,3 +156,99 @@ export const TEST_COMMANDS = {
       );
   },
 };
+
+/**
+ * Constants for Cypress tests to ensure alignment with application constants
+ * Avoids importing directly from application code to prevent potential conflicts
+ */
+
+// Export as namespaces to avoid redeclaration errors
+export namespace CypressConstants {
+  // Security Levels
+  export const SECURITY_LEVELS = {
+    NONE: "None",
+    LOW: "Low",
+    MODERATE: "Moderate",
+    HIGH: "High",
+    VERY_HIGH: "Very High",
+  };
+
+  // UI Text Constants
+  export const UI_TEXT = {
+    APP_TITLES: ["CIA Compliance Manager", "CIA Compliance Manager Dashboard"],
+    LABELS: {
+      SECURITY: "Security",
+      AVAILABILITY: "Availability",
+      INTEGRITY: "Integrity",
+      CONFIDENTIALITY: "Confidentiality",
+      COMPLIANCE: "Compliance",
+      IMPACT: "Impact",
+      COSTS: "Cost",
+      BUSINESS_VALUE: "Value",
+    },
+    THEMES: {
+      DARK: "Dark Mode",
+      LIGHT: "Light Mode",
+    },
+    STATUSES: {
+      NON_COMPLIANT: "Meets no compliance requirements",
+      BASIC_COMPLIANCE: "Meets basic compliance only",
+      STANDARD_COMPLIANCE: "Meets standard compliance",
+      FULL_COMPLIANCE: "Compliant with all major frameworks",
+    },
+    SECURITY_SUMMARY: {
+      NONE: "None Security",
+      LOW: "Low Security",
+      MODERATE: "Moderate Security",
+      HIGH: "High Security",
+      VERY_HIGH: "Very High Security",
+    },
+  };
+
+  // Test Element IDs
+  export const TEST_IDS = {
+    WIDGETS: {
+      SECURITY_LEVEL: "security-level-controls",
+      COMPLIANCE_STATUS: "compliance-status-widget",
+      RADAR_CHART: "radar-chart",
+      SECURITY_SUMMARY: "security-summary-container",
+      TECHNICAL_IMPLEMENTATION: "widget-technical-implementation",
+      COST_ESTIMATION: "cost-estimation-content",
+      BUSINESS_IMPACT: "business-impact-analysis",
+    },
+    SELECTORS: {
+      AVAILABILITY: "availability-select",
+      INTEGRITY: "integrity-select",
+      CONFIDENTIALITY: "confidentiality-select",
+    },
+    STATUS: {
+      COMPLIANCE_TEXT: "compliance-status-text",
+      COMPLIANCE_PERCENTAGE: "compliance-percentage",
+      PROGRESS_BAR: "compliance-progress-bar",
+    },
+    FRAMEWORKS: {
+      LIST: "compliance-frameworks-list",
+      SOC2: "framework-status-soc-2-type-1",
+      ISO27001: "framework-status-iso-27001",
+      PCI_DSS: "framework-status-pci-dss",
+      HIPAA: "framework-status-hipaa",
+      NIST: "framework-status-nist-800-53-high",
+    },
+  };
+
+  // Description Text Samples
+  export const DESCRIPTIONS = {
+    AVAILABILITY: {
+      HIGH: "Systems remain available with redundant components",
+    },
+    INTEGRITY: {
+      MODERATE: "Hash verification and automated validation",
+    },
+    CONFIDENTIALITY: {
+      LOW: "Basic access controls and limited encryption",
+    },
+  };
+}
+
+// Export all constants as a default object for easier importing
+export default CypressConstants;

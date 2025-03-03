@@ -1,52 +1,89 @@
-name-template: 'Release $RESOLVED_VERSION'
-tag-template: '$RESOLVED_VERSION'
+name-template: "Release $RESOLVED_VERSION"
+tag-template: "$RESOLVED_VERSION"
 categories:
-  - title: '🚀 New Features'
+  - title: "🚀 New Features"
     labels:
-      - 'feature'
-      - 'enhancement'
+      - "feature"
+      - "enhancement"
 
-  - title: '📈 Analytics & Data'
+  - title: "📈 Analytics & Data"
     labels:
-      - 'analytics'
-      - 'visualization'
-      - 'database'
+      - "analytics"
+      - "visualization"
+      - "database"
 
-  - title: '🎨 UI/UX Improvements'
+  - title: "🎨 UI/UX Improvements"
     labels:
-      - 'ui'
+      - "ui"
+      - "design"
+      - "style"
 
-  - title: '🏗️ Infrastructure & Performance'
+  - title: "🏗️ Infrastructure & Performance"
     labels:
-      - 'infrastructure'
-      - 'performance'
-      - 'build'
+      - "infrastructure"
+      - "performance"
+      - "build"
 
-  - title: '🔄 Code Quality & Refactoring'
+  - title: "🔄 Code Quality & Refactoring"
     labels:
-      - 'refactor'
-      - 'testing'
+      - "refactor"
+      - "testing"
 
-  - title: '🔒 Security & Compliance'
+  - title: "🔒 Security & Compliance"
     labels:
-      - 'security'
+      - "security"
+      - "compliance"
+      - "confidentiality"
+      - "integrity"
+      - "availability"
 
-  - title: '📝 Documentation'
+  - title: "📝 Documentation"
     labels:
-      - 'documentation'
+      - "documentation"
 
-  - title: '📦 Dependencies'
+  - title: "📦 Dependencies"
     labels:
-      - 'dependencies'
+      - "dependencies"
 
-  - title: '🐛 Bug Fixes'
+  - title: "🐛 Bug Fixes"
     labels:
-      - 'bug'
+      - "bug"
+      - "fix"
 
-change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
+  - title: "🧪 Test Coverage Improvements"
+    labels:
+      - "test-coverage-impact"
+      - "needs-tests"
+      - "branches-coverage-impact"
+      - "function-coverage-impact"
 
+  - title: "🔍 Component Updates"
+    labels:
+      - "component-radar"
+      - "component-dashboard"
+      - "component-security-level"
+      - "component-business-impact"
+      - "component-compliance"
+      - "component-cost"
+      - "component-security-summary"
+      - "component-value-creation"
+
+  - title: "⚙️ Core Application Changes"
+    labels:
+      - "core-app"
+      - "data-model"
+      - "critical-security-code"
+      - "critical-business-code"
+
+change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
 exclude-labels:
-  - 'skip-changelog'
+  - "skip-changelog"
+
+include-paths:
+  - "src"
+  - "public"
+  - "docs"
+  - ".github"
 
 template: |
   # Highlights
@@ -63,41 +100,51 @@ template: |
 version-resolver:
   major:
     labels:
-      - 'major'
-      - 'breaking'
+      - "major"
+      - "breaking"
   minor:
     labels:
-      - 'feature'
-      - 'enhancement'
+      - "feature"
+      - "enhancement"
   patch:
     labels:
-      - 'bug'
-      - 'security'
-      - 'dependencies'
+      - "bug"
+      - "security"
+      - "dependencies"
+      - "documentation"
+      - "performance"
+    # Detect patch version from conventional commit messages
+    pattern: '^(fix|refactor|perf|security|build\(deps\)|docs|chore)(\([^)]+\))?:'
   default: patch
 
 autolabeler:
-  - label: 'feature'
+  - label: "feature"
     title:
       - '/^feat(\([^)]+\))?:/i'
-  - label: 'bug'
+  - label: "bug"
     title:
       - '/^fix(\([^)]+\))?:/i'
-  - label: 'documentation'
+  - label: "documentation"
     title:
       - '/^docs(\([^)]+\))?:/i'
-  - label: 'enhancement'
+  - label: "enhancement"
     title:
       - '/^enhance(\([^)]+\))?:/i'
-  - label: 'dependencies'
+  - label: "ui"
+    title:
+      - '/^style(\([^)]+\))?:/i'
+      - '/^ui(\([^)]+\))?:/i'
+      - '/^design(\([^)]+\))?:/i'
+  - label: "dependencies"
     title:
       - '/^build\(deps\):/i'
-  - label: 'security'
+      - '/^deps(\([^)]+\))?:/i'
+  - label: "security"
     title:
       - '/^security(\([^)]+\))?:/i'
-  - label: 'performance'
+  - label: "performance"
     title:
       - '/^perf(\([^)]+\))?:/i'
-  - label: 'refactor'
+  - label: "refactor"
     title:
       - '/^refactor(\([^)]+\))?:/i'
