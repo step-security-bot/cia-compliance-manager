@@ -209,7 +209,7 @@ jobs:
           if-no-files-found: error
 
       - name: Generate SBOM
-        uses: anchore/sbom-action@8da1ef974cfe3366a0b2b22d4a8e26b11747ca89 # v0.16.0
+        uses: anchore/sbom-action@v0.18.0 # v0.18.0
         id: sbom
         with:
           format: spdx-json
