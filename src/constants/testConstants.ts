@@ -1,8 +1,5 @@
-// Import from businessConstants instead of coreConstants since SECURITY_DESCRIPTIONS is defined there
-import {
-  SECURITY_DESCRIPTIONS,
-  COMPLIANCE_FRAMEWORKS,
-} from "./businessConstants";
+// Import from coreConstants instead of businessConstants
+import { SECURITY_DESCRIPTIONS, COMPLIANCE_FRAMEWORKS } from "./coreConstants";
 
 // Format constants for consistent display
 export const DISPLAY_FORMAT = {

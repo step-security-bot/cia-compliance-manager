@@ -59,6 +59,10 @@ export const WIDGET_TITLES = {
   TECHNICAL_IMPLEMENTATION: "Technical Implementation",
   SECURITY_PROFILE: "CIA Security Profile",
   SECURITY_RESOURCES: "Security Resources",
+  // Add these missing properties:
+  AVAILABILITY_IMPACT: "Availability Impact",
+  INTEGRITY_IMPACT: "Integrity Impact",
+  CONFIDENTIALITY_IMPACT: "Confidentiality Impact",
 };
 
 // Implementation details
@@ -124,6 +128,9 @@ export const UI_TEXT = {
     NONE_TITLE: "No Value Creation",
     WITH_LEVEL: (level: string) => `${level} Value Creation`,
   },
+
+  // Add WIDGET_TITLES
+  WIDGET_TITLES: WIDGET_TITLES, // Reference the already defined WIDGET_TITLES constant
 };
 
 // Security level type helpers
