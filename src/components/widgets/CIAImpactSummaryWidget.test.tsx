@@ -65,4 +65,38 @@ describe("CIAImpactSummaryWidget", () => {
     expect(integrityValue.className).toContain("bg-red"); // danger variant
     expect(confidentialityValue.className).toContain("bg-purple"); // info variant
   });
+
+  // Add a test for the default test ID behavior:
+  it("uses default testId when not provided", () => {
+    render(
+      <CIAImpactSummaryWidget
+        availability="Moderate"
+        integrity="High"
+        confidentiality="Low"
+      />
+    );
+
+    // Check for default testId
+    expect(screen.getByTestId("cia-impact-summary")).toBeInTheDocument();
+  });
+
+  // Test for edge cases with empty or unexpected values
+  it("handles empty or unexpected values gracefully", () => {
+    render(
+      <CIAImpactSummaryWidget
+        availability=""
+        integrity="Invalid Value"
+        confidentiality={undefined as any} // Testing with undefined
+      />
+    );
+
+    // Should still render without crashing
+    expect(screen.getByTestId("cia-impact-summary")).toBeInTheDocument();
+    expect(
+      screen.getByTestId("cia-impact-summary-availability-level")
+    ).toHaveTextContent(" Availability");
+    expect(
+      screen.getByTestId("cia-impact-summary-integrity-level")
+    ).toHaveTextContent("Invalid Value Integrity");
+  });
 });

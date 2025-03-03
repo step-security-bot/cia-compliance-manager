@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, act } from "@testing-library/react";
 import { vi } from "vitest";
 import CIAClassificationApp from "./CIAClassificationApp";
 
@@ -188,10 +188,12 @@ describe("CIAClassificationApp Component", () => {
       },
     });
 
-    // Use dispatchEvent directly on document
-    document.dispatchEvent(testEvent);
+    // Use act to wrap the event dispatch
+    act(() => {
+      document.dispatchEvent(testEvent);
+    });
 
-    // Add required waitFor to handle the asynchronous state update
+    // Wait for component to update using findBy instead of getBy
     await screen.findByText("High");
 
     // Now check the updated values

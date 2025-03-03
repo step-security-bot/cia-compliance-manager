@@ -212,4 +212,48 @@ describe("widgetRegistry", () => {
     const result = widgetRegistry.renderWidget("non-existent-widget");
     expect(result).toBeNull();
   });
+
+  test("renderWidget returns null for non-existent widget", () => {
+    const widget = widgetRegistry.renderWidget("non-existent-widget");
+    expect(widget).toBeNull();
+  });
+
+  test("getAll returns widgets sorted by order", () => {
+    const widgets = widgetRegistry.getAll();
+
+    // Check if ordered correctly - Fix the TypeScript errors by adding null coalescing operators
+    for (let i = 1; i < widgets.length; i++) {
+      // Use nullish coalescing to ensure order is a number even if undefined
+      const prevOrder = widgets[i - 1]?.order ?? 0;
+      const currOrder = widgets[i]?.order ?? 0;
+
+      expect(prevOrder).toBeLessThanOrEqual(currOrder);
+    }
+  });
+
+  test("registry handles props correctly when rendering widgets", () => {
+    // Register a test component with testID to verify props
+    const TestComponent = ({ testValue }: { testValue: string }) => (
+      <div data-testid="test-component-value">{testValue}</div>
+    );
+
+    widgetRegistry.register({
+      id: "test-props-widget",
+      title: "Test Props Widget",
+      component: TestComponent,
+      defaultProps: { testValue: "default" },
+    });
+
+    // Render with overriding props
+    const { getByTestId } = render(
+      <div>
+        {widgetRegistry.renderWidget("test-props-widget", {
+          testValue: "override",
+        })}
+      </div>
+    );
+
+    // Verify the props were properly overridden
+    expect(getByTestId("test-component-value")).toHaveTextContent("override");
+  });
 });

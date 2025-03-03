@@ -59,7 +59,7 @@ const MetricsCard: React.FC<MetricsCardProps> = ({
       <div className="flex items-center justify-between">
         <span
           className="text-xs text-gray-500 dark:text-gray-400 flex items-center"
-          data-testid={`${testId}-title`}
+          data-testid={`${testId || "metrics-card"}-title`}
         >
           {icon && <span className="mr-1">{icon}</span>}
           {title}
@@ -67,14 +67,17 @@ const MetricsCard: React.FC<MetricsCardProps> = ({
         {trend && (
           <span
             className={`text-xs flex items-center ${getTrendClasses()}`}
-            data-testid={`${testId}-trend`}
+            data-testid={`${testId || "metrics-card"}-trend`}
           >
             <span className="mr-0.5">{getTrendIcon()}</span>
             {trend.value}
           </span>
         )}
       </div>
-      <div className="mt-1 font-bold text-lg" data-testid={`${testId}-value`}>
+      <div
+        className="mt-1 font-bold text-lg"
+        data-testid={`${testId || "metrics-card"}-value`}
+      >
         {value}
       </div>
     </div>
