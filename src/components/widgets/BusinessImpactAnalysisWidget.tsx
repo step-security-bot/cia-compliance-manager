@@ -132,22 +132,22 @@ const BusinessImpactAnalysisWidget: React.FC<
   const getImpactIcon = (type: string): string => {
     const normalizedType = type.toUpperCase();
     const icons = enhancedIcons.IMPACT_TYPES;
-    
+
     // Use a lookup map instead of if/else chain
     const typeIconMap: Record<string, string> = {
-      "FINANCIAL": icons.FINANCIAL,
-      "OPERATION": icons.OPERATIONAL,
-      "REPUTATION": icons.REPUTATIONAL,
-      "REGUL": icons.REGULATORY,
-      "STRATEGIC": icons.STRATEGIC,
-      "SECURITY": icons.SECURITY
+      FINANCIAL: icons.FINANCIAL,
+      OPERATION: icons.OPERATIONAL,
+      REPUTATION: icons.REPUTATIONAL,
+      REGUL: icons.REGULATORY,
+      STRATEGIC: icons.STRATEGIC,
+      SECURITY: icons.SECURITY,
     };
-    
+
     // Find the matching type
     for (const [key, icon] of Object.entries(typeIconMap)) {
       if (normalizedType.includes(key)) return icon;
     }
-    
+
     return icons.OPERATIONAL; // Default
   };
 

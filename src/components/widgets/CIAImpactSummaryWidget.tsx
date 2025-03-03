@@ -59,7 +59,9 @@ const CIAImpactSummaryWidget: React.FC<CIAImpactSummaryWidgetProps> = ({
         >
           <span className="text-sm">{CIA_LABELS.AVAILABILITY}:</span>
           <ValueDisplay
-            value={`${availability ? availability + " " : ""}${CIA_LABELS.AVAILABILITY}`}
+            value={`${availability ? availability + " " : ""}${
+              CIA_LABELS.AVAILABILITY
+            }`}
             variant={getVariant(availability)}
             testId={`${testId}-availability-level`}
           />

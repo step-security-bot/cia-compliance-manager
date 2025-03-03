@@ -34,13 +34,12 @@ class WidgetRegistry {
 
   // Improve the getAll method to handle sorting edge cases
   getAll(): WidgetDefinition[] {
-    return Array.from(this.widgets.values())
-      .sort((a, b) => {
-        // Handle undefined order values safely
-        const orderA = typeof a.order === 'number' ? a.order : 999;
-        const orderB = typeof b.order === 'number' ? b.order : 999;
-        return orderA - orderB;
-      });
+    return Array.from(this.widgets.values()).sort((a, b) => {
+      // Handle undefined order values safely
+      const orderA = typeof a.order === "number" ? a.order : 999;
+      const orderB = typeof b.order === "number" ? b.order : 999;
+      return orderA - orderB;
+    });
   }
 
   // Render a specific widget with props
