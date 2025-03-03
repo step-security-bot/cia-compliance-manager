@@ -1,16 +1,7 @@
 import React, { ReactNode } from "react";
 import { WidgetContainer } from "../components/common";
 import { WIDGET_ICONS } from "../constants/appConstants";
-
-export interface WidgetDefinition {
-  id: string;
-  title: string;
-  component: React.ComponentType<any>;
-  defaultProps?: object;
-  icon?: ReactNode;
-  size?: "small" | "medium" | "large" | "full";
-  order?: number;
-}
+import { UI_TEXT } from "../constants";
 
 // Class to manage available widgets and their configurations
 class WidgetRegistry {
@@ -99,7 +90,7 @@ import BusinessImpactAnalysisWidget from "../components/widgets/BusinessImpactAn
 // Pre-register core widgets
 widgetRegistry.register({
   id: "security-summary",
-  title: "Security Summary",
+  title: UI_TEXT.WIDGET_TITLES.SECURITY_SUMMARY,
   component: SecuritySummaryWidget,
   icon: WIDGET_ICONS.SECURITY_SUMMARY,
   size: "medium",
@@ -108,7 +99,7 @@ widgetRegistry.register({
 
 widgetRegistry.register({
   id: "compliance-status",
-  title: "Compliance Status",
+  title: UI_TEXT.WIDGET_TITLES.COMPLIANCE_STATUS,
   component: ComplianceStatusWidget,
   icon: WIDGET_ICONS.COMPLIANCE_STATUS,
   size: "medium",
@@ -117,7 +108,7 @@ widgetRegistry.register({
 
 widgetRegistry.register({
   id: "value-creation",
-  title: "Value Creation",
+  title: UI_TEXT.WIDGET_TITLES.VALUE_CREATION,
   component: ValueCreationWidget,
   icon: WIDGET_ICONS.VALUE_CREATION,
   size: "medium",
@@ -126,7 +117,7 @@ widgetRegistry.register({
 
 widgetRegistry.register({
   id: "cost-estimation",
-  title: "Cost Estimation",
+  title: UI_TEXT.WIDGET_TITLES.COST_ESTIMATION,
   component: CostEstimationWidget,
   icon: WIDGET_ICONS.COST_ESTIMATION,
   size: "medium",
@@ -135,7 +126,7 @@ widgetRegistry.register({
 
 widgetRegistry.register({
   id: "availability-impact",
-  title: "Availability Impact",
+  title: UI_TEXT.WIDGET_TITLES.AVAILABILITY_IMPACT,
   component: BusinessImpactAnalysisWidget,
   defaultProps: { category: "Availability" },
   icon: WIDGET_ICONS.AVAILABILITY_IMPACT,
@@ -145,7 +136,7 @@ widgetRegistry.register({
 
 widgetRegistry.register({
   id: "integrity-impact",
-  title: "Integrity Impact",
+  title: UI_TEXT.WIDGET_TITLES.INTEGRITY_IMPACT,
   component: BusinessImpactAnalysisWidget,
   defaultProps: { category: "Integrity" },
   icon: WIDGET_ICONS.INTEGRITY_IMPACT,
@@ -155,7 +146,7 @@ widgetRegistry.register({
 
 widgetRegistry.register({
   id: "confidentiality-impact",
-  title: "Confidentiality Impact",
+  title: UI_TEXT.WIDGET_TITLES.CONFIDENTIALITY_IMPACT,
   component: BusinessImpactAnalysisWidget,
   defaultProps: { category: "Confidentiality" },
   icon: WIDGET_ICONS.CONFIDENTIALITY_IMPACT,

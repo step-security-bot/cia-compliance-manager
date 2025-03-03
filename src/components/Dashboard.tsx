@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
-import { UI_TEXT, WIDGET_ICONS } from "../constants/appConstants";
+// Remove WIDGET_TITLES from import
+import { WIDGET_ICONS } from "../constants";
 import { WidgetContainer } from "./common";
 import widgetRegistry from "../utils/widgetRegistry";
 import {
@@ -7,6 +8,8 @@ import {
   integrityOptions,
   confidentialityOptions,
 } from "../hooks/useCIAOptions";
+// Import UI_TEXT
+import { UI_TEXT } from "../constants";
 
 interface DashboardProps {
   children: ReactNode;
@@ -174,7 +177,8 @@ export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
 };
 
 // Export predefined widget titles
-export const WIDGET_TITLES = UI_TEXT.WIDGET_TITLES;
+// Remove this line:
+// export const WIDGET_TITLES = UI_TEXT.WIDGET_TITLES;
 
 // Export the fixed column sizes to ensure proper grid layout
 export const GRID_SIZES = {

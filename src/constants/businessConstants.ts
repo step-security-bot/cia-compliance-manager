@@ -251,6 +251,37 @@ export const BUSINESS_KEY_BENEFITS: BusinessKeyBenefits = {
   ],
 };
 
+// Value Creation Points
+export const VALUE_CREATION_POINTS = {
+  NONE: "No security investment means all budget can go to other areas",
+  LOW: "Satisfies minimum viable security for non-critical systems",
+  MODERATE: "Demonstrates security diligence",
+  HIGH: "Enables expansion into regulated markets",
+  VERY_HIGH: "Enables participation in classified",
+};
+
+// Detailed value creation points by security level
+export const DETAILED_VALUE_POINTS = {
+  NONE: [
+    "No value creation from security perspective",
+    "High risk of security incidents with significant business impact",
+    "Limited ability to participate in business relationships requiring security",
+    "Potential regulatory issues in many industries",
+  ],
+  // ... rest of existing detailed value points ...
+};
+
+// Security Descriptions
+export const SECURITY_DESCRIPTIONS = {
+  NONE: "No security controls implemented.",
+  LOW: "Basic protection with minimal controls and manual processes.",
+  MODERATE:
+    "Balanced protection with automated recovery, validation checks, and standard encryption.",
+  HIGH: "Robust protection with minimal single points of failure, blockchain validation, and strong encryption.",
+  VERY_HIGH:
+    "Maximum protection with quantum-safe encryption, multi-site redundancy, and real-time validation.",
+};
+
 // Business value metrics - new addition to make the widget more comprehensive
 export const BUSINESS_VALUE_METRICS = {
   ROI_ESTIMATES: {

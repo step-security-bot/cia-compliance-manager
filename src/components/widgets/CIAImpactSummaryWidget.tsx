@@ -1,6 +1,6 @@
 import React from "react";
 import ValueDisplay from "../common/ValueDisplay";
-import { WIDGET_ICONS } from "../../constants/appConstants";
+import { WIDGET_ICONS, CIA_LABELS } from "../../constants";
 
 interface CIAImpactSummaryWidgetProps {
   availability: string;
@@ -57,9 +57,9 @@ const CIAImpactSummaryWidget: React.FC<CIAImpactSummaryWidgetProps> = ({
           className="flex justify-between items-center"
           data-testid={`${testId}-availability-row`}
         >
-          <span className="text-sm">Availability:</span>
+          <span className="text-sm">{CIA_LABELS.AVAILABILITY}:</span>
           <ValueDisplay
-            value={`${availability} Availability`}
+            value={`${availability} ${CIA_LABELS.AVAILABILITY}`}
             variant={getVariant(availability)}
             testId={`${testId}-availability-level`}
           />
@@ -70,9 +70,9 @@ const CIAImpactSummaryWidget: React.FC<CIAImpactSummaryWidgetProps> = ({
           className="flex justify-between items-center"
           data-testid={`${testId}-integrity-row`}
         >
-          <span className="text-sm">Integrity:</span>
+          <span className="text-sm">{CIA_LABELS.INTEGRITY}:</span>
           <ValueDisplay
-            value={`${integrity} Integrity`}
+            value={`${integrity} ${CIA_LABELS.INTEGRITY}`}
             variant={getVariant(integrity)}
             testId={`${testId}-integrity-level`}
           />
@@ -83,9 +83,9 @@ const CIAImpactSummaryWidget: React.FC<CIAImpactSummaryWidgetProps> = ({
           className="flex justify-between items-center"
           data-testid={`${testId}-confidentiality-row`}
         >
-          <span className="text-sm">Confidentiality:</span>
+          <span className="text-sm">{CIA_LABELS.CONFIDENTIALITY}:</span>
           <ValueDisplay
-            value={`${confidentiality} Confidentiality`}
+            value={`${confidentiality} ${CIA_LABELS.CONFIDENTIALITY}`}
             variant={getVariant(confidentiality)}
             testId={`${testId}-confidentiality-level`}
           />
