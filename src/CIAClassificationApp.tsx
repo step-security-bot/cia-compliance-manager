@@ -11,6 +11,7 @@ import CostEstimationWidget from "./components/widgets/CostEstimationWidget";
 import SecuritySummaryWidget from "./components/widgets/SecuritySummaryWidget";
 import ValueCreationWidget from "./components/widgets/ValueCreationWidget";
 import ComplianceStatusWidget from "./components/widgets/ComplianceStatusWidget";
+import CombinedBusinessImpactWidget from "./components/widgets/CombinedBusinessImpactWidget";
 import { WIDGET_ICONS } from "./constants/appConstants";
 import { safeAccess } from "./utils/typeGuards";
 
@@ -165,7 +166,9 @@ const CIAClassificationApp: React.FC = () => {
               integrity={integrity}
               confidentiality={confidentiality}
             >
-              {/* Security Level Selection - Important control panel */}
+              {/* All widgets now consistently use medium size (1/3 width) */}
+
+              {/* Row 1: Configuration & Summary */}
               <DashboardWidget
                 title="Security Level Selection"
                 size="medium"
@@ -185,81 +188,32 @@ const CIAClassificationApp: React.FC = () => {
                 />
               </DashboardWidget>
 
-              {/* Fix: Update RadarChart widget with better styling */}
               <DashboardWidget
-                title="Security Profile Visualization"
+                title="Cost Estimation"
                 size="medium"
-                icon={WIDGET_ICONS.SECURITY_VISUALIZATION}
-                testId="widget-radar-chart"
+                icon={WIDGET_ICONS.COST_ESTIMATION}
+                testId="widget-cost-estimation"
               >
-                <div className="p-2 flex items-center justify-center h-full">
-                  <RadarChart
-                    availability={availability}
-                    integrity={integrity}
-                    confidentiality={confidentiality}
-                    className="max-h-[250px]"
-                  />
-                </div>
+                <CostEstimationWidget
+                  totalCapex={totalCapex}
+                  totalOpex={totalOpex}
+                  capexEstimate={capexEstimate}
+                  opexEstimate={opexEstimate}
+                  isSmallSolution={isSmallSolution}
+                  roi={`${Math.round(200 + totalCapex / 2)}%`}
+                />
               </DashboardWidget>
 
-              {/* Business Impact Analysis */}
               <DashboardWidget
-                title="Business Impact Analysis"
+                title="Value Creation"
                 size="medium"
-                icon={WIDGET_ICONS.BUSINESS_IMPACT}
-                testId="widget-business-impact"
+                icon={WIDGET_ICONS.VALUE_CREATION}
+                testId="widget-value-creation"
               >
-                <div className="p-2 space-y-4">
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
-                    The Business Impact Analysis (BIA) helps identify critical
-                    business functions and their dependencies, quantify
-                    financial and operational impacts of security incidents.
-                  </p>
-
-                  <div className="space-y-3">
-                    <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-md">
-                      <h4 className="text-sm font-medium mb-2">Key Benefits</h4>
-                      <ul className="list-disc pl-5 space-y-1">
-                        <li className="text-sm">
-                          Clear visibility into security requirements
-                        </li>
-                        <li className="text-sm">
-                          Quantifiable metrics for security investments
-                        </li>
-                        <li className="text-sm">
-                          Documentation for compliance requirements
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-md">
-                      <h4 className="text-sm font-medium mb-2">
-                        Business Considerations
-                      </h4>
-                      <ul className="list-disc pl-5 space-y-1">
-                        <li className="text-sm">
-                          Revenue impact:{" "}
-                          {availability === "Very High"
-                            ? "Minimal"
-                            : availability === "High"
-                            ? "Low"
-                            : availability === "Moderate"
-                            ? "Moderate"
-                            : "High"}
-                        </li>
-                        <li className="text-sm">
-                          Regulatory risk:{" "}
-                          {confidentiality === "Very High" ||
-                          confidentiality === "High"
-                            ? "Minimal"
-                            : "Significant"}
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
+                <ValueCreationWidget securityLevel={overallSecurityLevel} />
               </DashboardWidget>
 
-              {/* Security Summary widget */}
+              {/* Row 2: Security & Visualization */}
               <DashboardWidget
                 title="Security Summary"
                 size="medium"
@@ -274,33 +228,40 @@ const CIAClassificationApp: React.FC = () => {
                 />
               </DashboardWidget>
 
-              {/* Cost Estimation - moved up */}
               <DashboardWidget
-                title="Cost Estimation"
+                title="Business Impact Analysis"
                 size="medium"
-                icon={WIDGET_ICONS.COST_ESTIMATION}
-                testId="widget-cost-estimation"
+                icon={WIDGET_ICONS.BUSINESS_IMPACT}
+                testId="widget-business-impact"
               >
-                <CostEstimationWidget
-                  totalCapex={totalCapex}
-                  totalOpex={totalOpex}
-                  capexEstimate={capexEstimate}
-                  opexEstimate={opexEstimate}
-                  isSmallSolution={isSmallSolution}
+                <CombinedBusinessImpactWidget
+                  availability={availability}
+                  integrity={integrity}
+                  confidentiality={confidentiality}
+                  availabilityOptions={availabilityOptions}
+                  integrityOptions={integrityOptions}
+                  confidentialityOptions={confidentialityOptions}
                 />
               </DashboardWidget>
 
-              {/* Value Creation - moved up */}
               <DashboardWidget
-                title="Value Creation"
+                title="Security Profile Visualization"
                 size="medium"
-                icon={WIDGET_ICONS.VALUE_CREATION}
-                testId="widget-value-creation"
+                icon={WIDGET_ICONS.SECURITY_VISUALIZATION}
+                testId="widget-radar-chart"
               >
-                <ValueCreationWidget securityLevel={overallSecurityLevel} />
+                <div className="p-2 flex items-center justify-center h-full">
+                  <RadarChart
+                    availability={availability}
+                    integrity={integrity}
+                    confidentiality={confidentiality}
+                    className="max-h-[250px] w-full"
+                    testId="radar-chart-visualization"
+                  />
+                </div>
               </DashboardWidget>
 
-              {/* Compliance Status */}
+              {/* Row 3: Compliance, Implementation & Resources */}
               <DashboardWidget
                 title="Compliance Status"
                 size="medium"
@@ -316,19 +277,18 @@ const CIAClassificationApp: React.FC = () => {
                 />
               </DashboardWidget>
 
-              {/* Technical Implementation - remains last */}
               <DashboardWidget
                 title="Technical Implementation"
-                size="full"
+                size="medium"
                 icon={WIDGET_ICONS.TECHNICAL_IMPLEMENTATION}
                 testId="widget-technical-implementation"
               >
-                <div className="p-2 space-y-2">
+                <div className="p-2 space-y-2 overflow-auto h-full">
                   <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
                     Key technical implementation details for your selected
                     security levels:
                   </p>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 gap-4">
                     <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-md">
                       <h4 className="text-sm font-medium mb-2">
                         Availability: {availability}
@@ -353,6 +313,34 @@ const CIAClassificationApp: React.FC = () => {
                         {safeAccess(confidentialityDetail, "technical", "")}
                       </p>
                     </div>
+                  </div>
+                </div>
+              </DashboardWidget>
+
+              {/* Security Resources widget added to balance the layout (3x3 grid) */}
+              <DashboardWidget
+                title="Security Resources"
+                size="medium"
+                icon="📚" // Use emoji directly instead of WIDGET_ICONS.SECURITY_RESOURCES
+                testId="widget-security-resources"
+              >
+                <div
+                  className="p-2 space-y-4"
+                  data-testid="security-resources-content"
+                >
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    Access security implementation guides and best practices for
+                    your selected security levels.
+                  </p>
+                  <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-md">
+                    <h4 className="text-sm font-medium mb-2">Documentation</h4>
+                    <ul className="list-disc pl-5 space-y-1">
+                      <li className="text-sm">Security Implementation Guide</li>
+                      <li className="text-sm">
+                        Compliance Reporting Templates
+                      </li>
+                      <li className="text-sm">Risk Assessment Framework</li>
+                    </ul>
                   </div>
                 </div>
               </DashboardWidget>

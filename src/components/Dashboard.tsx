@@ -147,16 +147,29 @@ export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
   icon,
   testId,
 }) => {
+  // Map widget sizes to grid column spans - all standard widgets now use the same size
+  const sizeClasses = {
+    small: "widget-col-4", // Changed to be the same as medium
+    medium: "widget-col-4", // Standard 1/3 width widget
+    large: "widget-col-4", // Changed to be the same as medium
+    full: "widget-col-12", // Only full remains different
+  };
+
   return (
-    <WidgetContainer
-      title={title}
-      size={size}
-      className={className}
-      icon={icon}
-      testId={testId || `widget-${title.toLowerCase().replace(/\s+/g, "-")}`}
+    <div
+      className={`widget ${sizeClasses[size]}`}
+      data-testid={
+        testId || `widget-${title.toLowerCase().replace(/\s+/g, "-")}`
+      }
     >
-      {children}
-    </WidgetContainer>
+      <div className="widget-header">
+        <h3 className="text-sm font-semibold">
+          {icon && <span className="widget-icon mr-2">{icon}</span>}
+          {title}
+        </h3>
+      </div>
+      <div className="widget-body">{children}</div>
+    </div>
   );
 };
 

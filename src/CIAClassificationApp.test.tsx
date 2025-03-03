@@ -1,10 +1,11 @@
 import React from "react";
-import { render, screen, act } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { vi } from "vitest";
 import CIAClassificationApp from "./CIAClassificationApp";
 
-// Mock components and hooks
+// Improve mock setup to avoid JSDOM errors
+
+// Mock Dashboard component with a simpler implementation
 vi.mock("./components/Dashboard", () => ({
   default: ({ children }: { children: React.ReactNode }) => (
     <div data-testid="mock-dashboard">{children}</div>
@@ -12,143 +13,196 @@ vi.mock("./components/Dashboard", () => ({
   DashboardWidget: ({
     children,
     title,
+    testId,
   }: {
     children: React.ReactNode;
     title: string;
+    testId?: string;
   }) => (
     <div
-      data-testid={`mock-widget-${title.toLowerCase().replace(/\s+/g, "-")}`}
+      data-testid={
+        testId || `mock-widget-${title.toLowerCase().replace(/\s+/g, "-")}`
+      }
     >
-      {children}
+      <h3>{title}</h3>
+      <div className="widget-content">{children}</div>
     </div>
   ),
 }));
 
+// Better mock for SecurityLevelWidget
 vi.mock("./components/widgets/SecurityLevelWidget", () => ({
   default: () => (
     <div data-testid="mock-security-level">Security Level Widget</div>
   ),
 }));
 
-vi.mock("./components/RadarChart", () => ({
-  default: () => <div data-testid="mock-radar-chart">Radar Chart</div>,
+// Mock other widget components that might cause issues
+vi.mock("./components/widgets/CostEstimationWidget", () => ({
+  default: () => <div data-testid="mock-cost-estimation">Cost Estimation</div>,
 }));
 
-vi.mock("./hooks/useCIAOptions", () => {
-  const actual = vi.importActual("./hooks/useCIAOptions");
-  return {
-    ...actual,
-    availabilityOptions: { Moderate: { capex: 10, opex: 5 } },
-    integrityOptions: { Moderate: { capex: 15, opex: 7 } },
-    confidentialityOptions: { Moderate: { capex: 20, opex: 10 } },
-  };
-});
+vi.mock("./components/widgets/SecuritySummaryWidget", () => ({
+  default: () => (
+    <div data-testid="mock-security-summary">Security Summary</div>
+  ),
+}));
 
-// Mock document methods for theme toggle
-const mockDocumentMethodsForThemeToggle = () => {
+vi.mock("./components/widgets/ValueCreationWidget", () => ({
+  default: () => <div data-testid="mock-value-creation">Value Creation</div>,
+}));
+
+vi.mock("./components/widgets/ComplianceStatusWidget", () => ({
+  default: () => (
+    <div data-testid="mock-compliance-status">Compliance Status</div>
+  ),
+}));
+
+vi.mock("./components/widgets/CombinedBusinessImpactWidget", () => ({
+  default: () => <div data-testid="mock-business-impact">Business Impact</div>,
+}));
+
+// More reliable RadarChart mock
+vi.mock("./components/RadarChart", () => ({
+  default: ({
+    availability,
+    integrity,
+    confidentiality,
+  }: {
+    availability: string;
+    integrity: string;
+    confidentiality: string;
+    className?: string;
+  }) => (
+    <div data-testid="mock-radar-chart">
+      <div data-testid="mock-radar-availability">{availability}</div>
+      <div data-testid="mock-radar-integrity">{integrity}</div>
+      <div data-testid="mock-radar-confidentiality">{confidentiality}</div>
+    </div>
+  ),
+}));
+
+// Simplified mock for useCIAOptions
+vi.mock("./hooks/useCIAOptions", () => ({
+  availabilityOptions: {
+    None: { capex: 0, opex: 0 },
+    Moderate: { capex: 10, opex: 5, technical: "Test" },
+  },
+  integrityOptions: {
+    None: { capex: 0, opex: 0 },
+    Moderate: { capex: 15, opex: 7, technical: "Test" },
+  },
+  confidentialityOptions: {
+    None: { capex: 0, opex: 0 },
+    Moderate: { capex: 20, opex: 10, technical: "Test" },
+  },
+}));
+
+// Mock document methods safely
+beforeEach(() => {
+  // Create a proper mock for document.documentElement
   Object.defineProperty(document, "documentElement", {
     writable: true,
     value: {
       classList: {
         add: vi.fn(),
         remove: vi.fn(),
+        contains: vi.fn().mockReturnValue(false),
       },
     },
   });
 
-  Object.defineProperty(document, "getElementById", {
+  // Mock getElementById safely
+  document.getElementById = vi.fn().mockImplementation(() => ({
+    classList: {
+      add: vi.fn(),
+      remove: vi.fn(),
+    },
+  }));
+
+  // Mock matchMedia safely
+  Object.defineProperty(window, "matchMedia", {
     writable: true,
-    value: vi.fn().mockImplementation(() => ({
-      classList: {
-        add: vi.fn(),
-        remove: vi.fn(),
-      },
+    value: vi.fn().mockImplementation((query) => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addListener: vi.fn(),
+      removeListener: vi.fn(),
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+      dispatchEvent: vi.fn(),
     })),
   });
-};
+});
 
 describe("CIAClassificationApp Component", () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
-    mockDocumentMethodsForThemeToggle();
-
-    // Properly spy on document.addEventListener
-    vi.spyOn(document, "addEventListener");
-    vi.spyOn(document, "dispatchEvent");
-
-    // Mock matchMedia
-    Object.defineProperty(window, "matchMedia", {
-      writable: true,
-      value: vi.fn().mockImplementation((query) => ({
-        matches: false,
-        media: query,
-        onchange: null,
-        addListener: vi.fn(),
-        removeListener: vi.fn(),
-        addEventListener: vi.fn(),
-        removeEventListener: vi.fn(),
-        dispatchEvent: vi.fn(),
-      })),
-    });
-  });
-
   it("renders without crashing", () => {
     render(<CIAClassificationApp />);
-
     expect(screen.getByTestId("app-container")).toBeInTheDocument();
     expect(
       screen.getByText("CIA Compliance Manager Dashboard")
     ).toBeInTheDocument();
   });
 
-  it("toggles dark mode when button is clicked", async () => {
+  it("toggles dark mode when button is clicked", () => {
     render(<CIAClassificationApp />);
-
     const toggleButton = screen.getByTestId("theme-toggle");
-    expect(toggleButton).toBeInTheDocument();
 
-    await userEvent.click(toggleButton);
+    // Initial state should not be dark (mocked)
+    const appContainer = screen.getByTestId("app-container");
+    expect(appContainer.className).not.toContain("dark");
 
-    // Check that the dark mode is toggled
+    // Click toggle button
+    fireEvent.click(toggleButton);
+
+    // After clicking, should be in dark mode
+    expect(appContainer.className).toContain("dark");
     expect(document.documentElement.classList.add).toHaveBeenCalledWith("dark");
   });
 
   it("renders security level widget", () => {
     render(<CIAClassificationApp />);
-
     expect(screen.getByTestId("mock-security-level")).toBeInTheDocument();
   });
 
   it("renders radar chart", () => {
     render(<CIAClassificationApp />);
-
     expect(screen.getByTestId("mock-radar-chart")).toBeInTheDocument();
   });
 
-  it("responds to test events", () => {
-    // Use act to wrap the render and event dispatch
-    act(() => {
-      render(<CIAClassificationApp />);
+  it("responds to test events", async () => {
+    render(<CIAClassificationApp />);
+
+    // Initially "None" (default)
+    expect(screen.getByTestId("mock-radar-availability")).toHaveTextContent(
+      "None"
+    );
+
+    // Create and dispatch a custom event
+    const testEvent = new CustomEvent("test:set-values", {
+      detail: {
+        availability: "High",
+        integrity: "Moderate",
+        confidentiality: "Low",
+      },
     });
 
-    // Use act to wrap the event dispatch that triggers state updates
-    act(() => {
-      // Dispatch a test event to update security levels
-      document.dispatchEvent(
-        new CustomEvent("test:set-values", {
-          detail: {
-            availability: "High",
-            integrity: "High",
-            confidentiality: "High",
-          },
-        })
-      );
-    });
+    // Use dispatchEvent directly on document
+    document.dispatchEvent(testEvent);
 
-    // Now we can verify the event listener was properly set up
-    expect(document.addEventListener).toHaveBeenCalledWith(
-      "test:set-values",
-      expect.any(Function)
+    // Add required waitFor to handle the asynchronous state update
+    await screen.findByText("High");
+
+    // Now check the updated values
+    expect(screen.getByTestId("mock-radar-availability")).toHaveTextContent(
+      "High"
+    );
+    expect(screen.getByTestId("mock-radar-integrity")).toHaveTextContent(
+      "Moderate"
+    );
+    expect(screen.getByTestId("mock-radar-confidentiality")).toHaveTextContent(
+      "Low"
     );
   });
 });

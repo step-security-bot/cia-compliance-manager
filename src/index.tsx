@@ -1,10 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
+import CIAClassificationApp from "./CIAClassificationApp"; // Assuming this is your main app component
 import "./index.css";
 import "./styles/valueStyles.css";
-import "./styles/widgetStyles.css"; // Import the widget styles for consistent widget appearance
-import GlobalWidgetStyler from "./components/common/GlobalWidgetStyler";
+import "./styles/widgetStyles.css";
 
 // Extend the Window interface
 declare global {
@@ -19,8 +18,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <GlobalWidgetStyler />
-    <App />
+    <CIAClassificationApp />
   </React.StrictMode>
 );
 

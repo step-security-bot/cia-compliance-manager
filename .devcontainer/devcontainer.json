@@ -19,42 +19,18 @@
       "extensions": [
         // Core Development
         "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode",
+
+        // GitHub extensions
         "GitHub.copilot",
         "GitHub.copilot-chat",
-        "ms-vsliveshare.vsliveshare",
-
-        // Vite Specific
-      
-        "vitest.explorer",
-
-        // React/TypeScript
-        "bradlc.vscode-tailwindcss",
-        "ms-vscode.vscode-typescript-next",
-        "styled-components.vscode-styled-components",
-        "csstools.postcss",
-
-        // Testing Tools
-        "hbenl.vscode-test-explorer",
-        "ryanluker.vscode-coverage-gutters",
-
-        // Developer Experience
-        "streetsidesoftware.code-spell-checker",
-        "christian-kohler.npm-intellisense",
-        "christian-kohler.path-intellisense",
-        "formulahendry.auto-rename-tag",
-        "usernamehw.errorlens",
-        "wix.vscode-import-cost",
-        "eamodio.gitlens",
-        "oderwat.indent-rainbow",
-
-        // Security & Accessibility
-        "deque-systems.vscode-axe-linter",
-        "stackbreak.comment-divider",
-
-        // Git & GitHub
         "github.vscode-github-actions",
-        "mhutchie.git-graph"
+
+        // TypeScript/Node support
+        "ms-vscode.vscode-typescript-next",
+        "christian-kohler.npm-intellisense",
+
+        // Keep minimal formatting support
+        "esbenp.prettier-vscode"
       ],
       "settings": {
         "editor.formatOnSave": true,
@@ -66,28 +42,9 @@
         "javascript.updateImportsOnFileMove.enabled": "always",
         "typescript.suggest.completeFunctionCalls": true,
 
-        // Add Vitest settings
-        "vitest.enable": true,
-        "vitest.commandLine": "npx vitest",
-
-        // Add Tailwind settings
-        "tailwindCSS.includeLanguages": {
-          "typescript": "javascript",
-          "typescriptreact": "javascript"
-        },
-        "tailwindCSS.emmetCompletions": true,
-
-        // Add Coverage settings
-        "coverage-gutters.showLineCoverage": true,
-        "coverage-gutters.showRulerCoverage": true,
-
         // Better import organization
         "typescript.preferences.importModuleSpecifier": "shortest",
-        "javascript.preferences.importModuleSpecifier": "shortest",
-
-        // Improved error visualization
-        "errorLens.enabledDiagnosticLevels": ["error", "warning", "info"],
-        "errorLens.exclude": ["never used"]
+        "javascript.preferences.importModuleSpecifier": "shortest"
       }
     }
   },
