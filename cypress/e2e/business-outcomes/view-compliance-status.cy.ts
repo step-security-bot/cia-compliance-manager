@@ -9,7 +9,7 @@ describe("View Compliance Status", () => {
   beforeEach(() => {
     cy.visit("/");
     cy.ensureAppLoaded();
-    cy.viewport(1200, 3000);
+    cy.viewport(2000, 3000);
   });
 
   it("shows compliance status widget", () => {
@@ -40,19 +40,19 @@ describe("View Compliance Status", () => {
     cy.wait(500);
 
     // Check that frameworks list exists
-    cy.get('[data-testid="compliance-frameworks-list"]').should("exist");
+    cy.get('[data-testid="compliant-frameworks-list"]').should("exist");
 
     // Store initial compliance text for comparison
-    cy.get('[data-testid="compliance-status-text"]')
+    cy.get('[data-testid="compliance-status-badge"]')
       .invoke("text")
       .as("initialComplianceText");
 
     // Set to high security with more reliable approach
-    cy.get("#availability-select").select(SECURITY_LEVELS.HIGH, {
+    cy.get("#availability-select").select("High", {
       force: true,
     });
-    cy.get("#integrity-select").select(SECURITY_LEVELS.HIGH, { force: true });
-    cy.get("#confidentiality-select").select(SECURITY_LEVELS.HIGH, {
+    cy.get("#integrity-select").select("High", { force: true });
+    cy.get("#confidentiality-select").select("High", {
       force: true,
     });
     cy.wait(1000); // Longer wait for changes to apply
@@ -64,15 +64,15 @@ describe("View Compliance Status", () => {
     cy.wait(500);
 
     // Check compliance status changed using more flexible approach
-    cy.get('[data-testid="compliance-status-text"]').then(function ($el) {
+    cy.get('[data-testid="compliance-status-badge"]').then(function ($el) {
       const newText = $el.text();
       expect(newText).not.to.eq(this.initialComplianceText);
     });
 
     // Set to low security with more reliable approach
-    cy.get("#availability-select").select(SECURITY_LEVELS.LOW, { force: true });
-    cy.get("#integrity-select").select(SECURITY_LEVELS.LOW, { force: true });
-    cy.get("#confidentiality-select").select(SECURITY_LEVELS.LOW, {
+    cy.get("#availability-select").select("Low", { force: true });
+    cy.get("#integrity-select").select("Low", { force: true });
+    cy.get("#confidentiality-select").select("Low", {
       force: true,
     });
     cy.wait(1000);

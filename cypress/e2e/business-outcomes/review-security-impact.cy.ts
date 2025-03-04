@@ -10,7 +10,7 @@ describe("Review Security Impact", () => {
     cy.visit("/");
     cy.ensureAppLoaded();
     // Make the viewport larger to reveal more content
-    cy.viewport(1200, 1800);
+    cy.viewport(2000, 2000);
   });
 
   it("shows business impact analysis widget", () => {

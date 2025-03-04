@@ -10,7 +10,7 @@ describe("Set Security Levels", () => {
     cy.visit("/");
     cy.ensureAppLoaded();
     // Make the viewport larger to reveal more content
-    cy.viewport(1200, 1800);
+    cy.viewport(2000, 2000);
   });
 
   it("allows setting individual security levels", () => {
