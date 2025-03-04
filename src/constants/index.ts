@@ -1,28 +1,15 @@
-// Centralized export point for all constants
+// Centralized export point for all constants - simplified and organized
 
-// Use named exports instead of wildcard exports to avoid ambiguity
-
-// Import core constants
+// Import from individual constant files
 import * as coreConstants from "./coreConstants";
-
-// Import business constants
 import * as businessConstants from "./businessConstants";
-
-// Import risk constants
 import * as riskConstants from "./riskConstants";
-
-// Import app constants
-import * as appConstants from "./appConstants";
-
-// Import app labels
+import * as uiConstants from "./uiConstants";
 import * as appLabels from "./appLabels";
 
-// Re-export everything from riskConstants directly since it's small and fundamental
-export * from "./riskConstants";
-
-// Export specific constants from each file with explicit resolution
-// Core constants - Prefer these versions over duplicates
+// Re-export all constants with clear namespacing
 export const {
+  // Core constant exports
   WIDGET_ICONS,
   WIDGET_TITLES,
   SECURITY_LEVELS,
@@ -36,34 +23,33 @@ export const {
   UI_TEXT,
 } = coreConstants;
 
-// Add type exports separately:
-export type { SecurityLevelKey, SecurityLevelMap } from "./coreConstants";
-
-// Business constants - No duplication with core constants
 export const {
+  // Business constants
   BUSINESS_CONSIDERATIONS,
   BUSINESS_KEY_BENEFITS,
   BUSINESS_VALUE_METRICS,
+  VALUE_CREATION_POINTS,
+  DETAILED_VALUE_POINTS,
 } = businessConstants;
 
-// App constants - Specific testing and app utilities
 export const {
-  getTextElementMatcher,
-  getPartialTextMatcher,
-  createRegexMatcher,
-  createValuePointMatcher,
-  mapOptionsToConstants,
-  BUSINESS_IMPACT_ICONS,
-  TEST_MATCHERS,
-  TEST_DATA,
-  DISPLAY_FORMAT,
-} = appConstants;
+  // Risk constants
+  RISK_LEVELS,
+  BUSINESS_IMPACT_CATEGORIES,
+} = riskConstants;
 
-// App labels - Only export if needed elsewhere
-export const { UI_LABELS } = appLabels;
+// Add missing UI constants if needed
+export const { BUSINESS_IMPACT_ICONS } = uiConstants;
 
-// Only export these if they are uniquely defined in their respective files
-// and not already exported above
-export const { VALUE_CREATION_POINTS, DETAILED_VALUE_POINTS } =
-  // Prefer business constants version, but fallback to app constants
-  businessConstants.VALUE_CREATION_POINTS ? businessConstants : appConstants;
+// Export types
+export type { SecurityLevelKey, SecurityLevelMap } from "./coreConstants";
+
+// Testing helpers - expose these so they're available for tests
+export const TEST_CONSTANTS = {
+  // Add test-specific constants here
+  DISPLAY_FORMAT: {
+    CURRENCY_PREFIX: "$",
+    PERCENTAGE_SUFFIX: "%",
+    DECIMAL_PLACES: 2,
+  },
+};

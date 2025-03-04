@@ -2,8 +2,15 @@ import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import SecurityLevelWidget from "./SecurityLevelWidget";
 import { vi } from "vitest";
-import { CIA_LABELS, TEST_DATA } from "../../constants/appConstants";
 import userEvent from "@testing-library/user-event";
+import {
+  TEST_DATA,
+  CIA_TEST_IDS,
+  TEST_HELPERS,
+  TEST_CIA_LEVELS,
+} from "../../constants/testConstants";
+import { SECURITY_LEVELS } from "../../constants";
+import { CIA_LABELS } from "../../constants";
 
 describe("SecurityLevelWidget", () => {
   const mockAvailabilityOptions = {
@@ -57,19 +64,21 @@ describe("SecurityLevelWidget", () => {
     render(<SecurityLevelWidget {...mockProps} />);
 
     fireEvent.change(screen.getByTestId("availability-select"), {
-      target: { value: "Low" },
+      target: { value: TEST_CIA_LEVELS.LOW },
     });
-    expect(mockProps.setAvailability).toHaveBeenCalledWith("Low");
+    expect(mockProps.setAvailability).toHaveBeenCalledWith(TEST_CIA_LEVELS.LOW);
 
     fireEvent.change(screen.getByTestId("integrity-select"), {
-      target: { value: "Low" },
+      target: { value: TEST_CIA_LEVELS.LOW },
     });
-    expect(mockProps.setIntegrity).toHaveBeenCalledWith("Low");
+    expect(mockProps.setIntegrity).toHaveBeenCalledWith(TEST_CIA_LEVELS.LOW);
 
     fireEvent.change(screen.getByTestId("confidentiality-select"), {
-      target: { value: "Low" },
+      target: { value: TEST_CIA_LEVELS.LOW },
     });
-    expect(mockProps.setConfidentiality).toHaveBeenCalledWith("Low");
+    expect(mockProps.setConfidentiality).toHaveBeenCalledWith(
+      TEST_CIA_LEVELS.LOW
+    );
   });
 
   it("displays descriptions from options", () => {
@@ -219,5 +228,131 @@ describe("SecurityLevelWidget", () => {
     expect(
       screen.queryByTestId("availability-technical-popover")
     ).not.toBeInTheDocument();
+  });
+
+  // Add these tests to improve branch coverage
+
+  it("correctly handles hover state for technical details of integrity and confidentiality", async () => {
+    const user = userEvent.setup();
+    const customProps = {
+      ...mockProps,
+      integrityOptions: {
+        ...mockIntegrityOptions,
+        None: {
+          ...mockIntegrityOptions.None,
+          technical: "Integrity technical details",
+          businessImpact: "Integrity business impact",
+        },
+      },
+      confidentialityOptions: {
+        ...mockConfidentialityOptions,
+        None: {
+          ...mockConfidentialityOptions.None,
+          technical: "Confidentiality technical details",
+          businessImpact: "Confidentiality business impact",
+        },
+      },
+    };
+
+    render(<SecurityLevelWidget {...customProps} />);
+
+    // Test integrity hover
+    const integrityButton = screen.getByTestId(
+      "integrity-technical-info-button"
+    );
+    await user.hover(integrityButton);
+
+    // Check popover appears
+    expect(
+      screen.getByTestId("integrity-technical-popover")
+    ).toBeInTheDocument();
+    expect(screen.getByTestId("integrity-technical-details")).toHaveTextContent(
+      "Integrity technical details"
+    );
+
+    // Mouse leave integrity
+    await user.unhover(integrityButton);
+    expect(
+      screen.queryByTestId("integrity-technical-popover")
+    ).not.toBeInTheDocument();
+
+    // Test confidentiality hover
+    const confidentialityButton = screen.getByTestId(
+      "confidentiality-technical-info-button"
+    );
+    await user.hover(confidentialityButton);
+
+    // Check popover appears
+    expect(
+      screen.getByTestId("confidentiality-technical-popover")
+    ).toBeInTheDocument();
+    expect(
+      screen.getByTestId("confidentiality-technical-details")
+    ).toHaveTextContent("Confidentiality technical details");
+
+    // Mouse leave confidentiality
+    await user.unhover(confidentialityButton);
+    expect(
+      screen.queryByTestId("confidentiality-technical-popover")
+    ).not.toBeInTheDocument();
+  });
+
+  it("displays validation method and protection method badges when available", () => {
+    const customProps = {
+      ...mockProps,
+      integrity: "Low",
+      integrityOptions: {
+        ...mockIntegrityOptions,
+        Low: {
+          ...mockIntegrityOptions.Low,
+          validationMethod: "Hash Validation",
+        },
+      },
+      confidentiality: "Low",
+      confidentialityOptions: {
+        ...mockConfidentialityOptions,
+        Low: {
+          ...mockConfidentialityOptions.Low,
+          protectionMethod: "Basic Encryption",
+        },
+      },
+    };
+
+    render(<SecurityLevelWidget {...customProps} />);
+
+    expect(
+      screen.getByTestId("integrity-validation-badge")
+    ).toBeInTheDocument();
+    expect(screen.getByTestId("integrity-validation-badge")).toHaveTextContent(
+      "Hash Validation"
+    );
+
+    expect(
+      screen.getByTestId("confidentiality-protection-badge")
+    ).toBeInTheDocument();
+    expect(
+      screen.getByTestId("confidentiality-protection-badge")
+    ).toHaveTextContent("Basic Encryption");
+  });
+
+  it("handles rendering with availability uptime information", () => {
+    const customProps = {
+      ...mockProps,
+      availability: "Low",
+      availabilityOptions: {
+        ...mockAvailabilityOptions,
+        Low: {
+          ...mockAvailabilityOptions.Low,
+          uptime: "99.5% uptime",
+        },
+      },
+    };
+
+    render(<SecurityLevelWidget {...customProps} />);
+
+    expect(screen.getByTestId("availability-uptime-badge")).toBeInTheDocument();
+    expect(screen.getByTestId("availability-uptime-badge")).toHaveTextContent(
+      "99.5% uptime"
+    );
   });
 });
