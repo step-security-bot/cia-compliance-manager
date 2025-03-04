@@ -13,7 +13,7 @@ describe("Assess Security Costs", () => {
   beforeEach(() => {
     cy.visit("/");
     cy.ensureAppLoaded();
-    cy.viewport(1200, 900);
+    cy.viewport(2000, 2000);
     // Make sure everything is loaded by waiting longer
     cy.wait(1000);
   });

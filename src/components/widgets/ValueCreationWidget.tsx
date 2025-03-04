@@ -10,7 +10,12 @@ import { ensureArray } from "../../utils/typeGuards";
 import ValueDisplay from "../common/ValueDisplay";
 import KeyValuePair from "../common/KeyValuePair";
 
+// Update the interface to include CIA level props
 interface ValueCreationWidgetProps {
+  // Add these props to fix type errors
+  availability?: string;
+  integrity?: string;
+  confidentiality?: string;
   securityLevel: string;
 }
 

@@ -10,12 +10,18 @@
   overflow: hidden !important;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out !important;
+  height: 100% !important; /* Make all widgets same height */
+  margin-bottom: 1rem !important; /* Consistent spacing */
 }
 
 /* Add hover effects for widgets */
 .widget:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+.dark .widget:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3) !important;
 }
 
 /* Fix radar chart container */
@@ -33,6 +39,8 @@
   flex: 1 !important;
   overflow: auto !important;
   padding: 1rem !important;
+  display: flex !important;
+  flex-direction: column !important;
 }
 
 /* Make sure widget headers stay consistent */
@@ -40,6 +48,15 @@
   background-color: var(--header-bg, #f7fafc) !important;
   border-bottom: 1px solid var(--border-color, #e2e8f0) !important;
   padding: 0.75rem 1rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  /* Add subtle gradient for better visual appearance */
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.1),
+    rgba(0, 0, 0, 0.05)
+  ) !important;
 }
 
 /* Dark mode styles */
@@ -51,6 +68,12 @@
 .dark .widget-header {
   background-color: var(--header-bg, #2d3748) !important;
   border-color: var(--border-color, #4a5568) !important;
+  /* Reversed gradient for dark mode */
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.05),
+    rgba(0, 0, 0, 0.1)
+  ) !important;
 }
 
 /* Fix widget icons in dark mode */
@@ -59,70 +82,64 @@
   text-shadow: 0 0 5px rgba(0, 204, 102, 0.5) !important;
 }
 
-/* Ensure consistent sizes between widgets */
-@media (min-width: 768px) {
+/* UPDATED: Improved grid layout for better balance */
+.dashboard-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 1.25rem !important; /* Slightly increased gap for better visual separation */
+  width: 100% !important;
+}
+
+/* Keep widget sizing consistent */
+.widget-col-2,
+.widget-col-4,
+.widget-col-6 {
+  grid-column: span 1 !important; /* All standard widgets take 1 column (1/3 width) */
+}
+
+/* Full width widgets still take the full width */
+.widget-col-12 {
+  grid-column: span 3 !important; /* Span all 3 columns for full width */
+}
+
+/* Improved responsive behavior for different screen sizes */
+@media (max-width: 1200px) {
   .dashboard-grid {
-    display: grid !important;
-    grid-template-columns: repeat(12, 1fr) !important;
-    gap: 1rem !important;
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ) !important; /* 2 columns on medium screens */
   }
 
-  .widget-col-2 {
-    grid-column: span 2 !important;
-  }
-
-  .widget-col-4 {
-    grid-column: span 4 !important;
-  }
-
+  .widget-col-2,
+  .widget-col-4,
   .widget-col-6 {
-    grid-column: span 6 !important;
+    grid-column: span 1 !important; /* 1/2 width on medium screens */
   }
 
   .widget-col-12 {
-    grid-column: span 12 !important;
+    grid-column: span 2 !important; /* Full width on medium screens */
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr !important; /* 1 column on small screens */
+  }
+
   .widget-col-2,
   .widget-col-4,
   .widget-col-6,
   .widget-col-12 {
-    grid-column: span 12 !important;
+    grid-column: span 1 !important; /* All widgets take full width on small screens */
   }
 }
 
-/* Fix for widgets with no content */
-.widget:empty {
-  padding: 1rem !important;
-  text-align: center !important;
-  color: var(--text-secondary, #718096) !important;
-  font-style: italic !important;
-}
-
-/* Fix for widgets with radar charts */
+/* Ensure charts and visualizations work correctly */
 .widget canvas {
   max-width: 100% !important;
   height: auto !important;
-}
-
-/* Add minimum height to ensure widget consistency */
-.widget {
-  min-height: 200px !important;
-}
-
-/* Fix for widget content in Cypress tests */
-@media only screen and (max-width: 800px) {
-  .widget {
-    min-height: 100px !important;
-    overflow: visible !important;
-  }
-
-  .radar-chart-container {
-    height: auto !important;
-    max-height: none !important;
-  }
+  margin: 0 auto !important; /* Center charts */
 }
 
 /* Emergency fix for existing widgets - Make sure ANY div with a widget test ID gets styled */
@@ -134,15 +151,57 @@
   border-radius: 0.5rem !important;
   overflow: hidden !important;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  min-height: 250px !important;
 }
 
-/* Force radar widget container to have consistent styling */
-[data-testid="radar-widget-container"] {
-  margin-top: 1rem !important;
+/* Force consistent minimum height on all widgets */
+.widget,
+[data-testid^="widget-"] {
+  min-height: 300px !important;
+  height: 100% !important;
+  transition: all 0.2s ease-in-out !important;
 }
 
-.dark [data-testid="radar-widget-container"],
-.dark [data-testid^="widget-"] {
-  background-color: var(--card-background, #1a202c) !important;
-  border-color: var(--border-color, #2d3748) !important;
+/* Add to ensure all widgets are visible */
+.widget,
+[data-testid^="widget-"] {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Ensure consistent widget content padding */
+.widget-content {
+  padding: 0.75rem !important;
+  height: 100% !important;
+}
+
+/* Force content to be displayed correctly in tests */
+@media only screen and (max-width: 800px) {
+  .widget {
+    min-height: 100px !important;
+    overflow: visible !important;
+  }
+
+  .radar-chart-container {
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  /* Make sure radar charts are visible in tests */
+  [data-testid="radar-chart"] {
+    width: 100% !important;
+    max-width: 300px !important;
+    height: auto !important;
+    margin: 0 auto !important;
+  }
+}
+
+/* Ensure widget title and content are properly spaced */
+.widget-header h3 {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
 }

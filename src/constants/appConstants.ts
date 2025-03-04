@@ -6,19 +6,13 @@ import { RISK_LEVELS, BUSINESS_IMPACT_CATEGORIES } from "./riskConstants";
 import { CIADetails } from "../types/cia";
 // Import the UI constants for backward compatibility
 import {
-  WIDGET_ICONS,
   BUSINESS_IMPACT_ICONS,
   SECURITY_LEVEL_COLORS,
   CIA_COMPONENT_ICONS,
 } from "./uiConstants";
 
-// Re-export UI constants for backward compatibility
-export {
-  WIDGET_ICONS,
-  BUSINESS_IMPACT_ICONS,
-  SECURITY_LEVEL_COLORS,
-  CIA_COMPONENT_ICONS,
-};
+// Re-export UI constants for backward compatibility, except WIDGET_ICONS
+export { BUSINESS_IMPACT_ICONS, SECURITY_LEVEL_COLORS, CIA_COMPONENT_ICONS };
 
 // SecurityLevelMap type for cleaner lookups
 export type SecurityLevelKey =
@@ -307,6 +301,9 @@ export const UI_TEXT = {
     ESTIMATED_ROI: "Estimated ROI:",
     SECURITY_PROFILE: "Security Profile",
     CURRENT_PROFILE: "Current Profile",
+    AVAILABILITY: "Availability",
+    INTEGRITY: "Integrity",
+    CONFIDENTIALITY: "Confidentiality",
   },
 
   // Widget titles
@@ -318,6 +315,8 @@ export const UI_TEXT = {
     COMPLIANCE_STATUS: "Compliance Status",
     VALUE_CREATION: "Value Creation",
     IMPACT_ANALYSIS: "Impact Analysis",
+    SECURITY_PROFILE: "CIA Security Profile",
+    SECURITY_RESOURCES: "Security Resources",
   },
 
   // Budget related text
@@ -428,4 +427,19 @@ export const IMPLEMENTATION_COSTS: {
     maintenance: "Continuous monitoring",
     expertise: "Expert",
   },
+};
+
+export const WIDGET_ICONS = {
+  SECURITY_LEVEL: "🛡️",
+  SECURITY_SUMMARY: "📊",
+  SECURITY_VISUALIZATION: "📈",
+  COMPLIANCE_STATUS: "✅",
+  VALUE_CREATION: "💹",
+  COST_ESTIMATION: "💰",
+  BUSINESS_IMPACT: "🏢",
+  TECHNICAL_IMPLEMENTATION: "⚙️",
+  AVAILABILITY_IMPACT: "⏱️",
+  INTEGRITY_IMPACT: "🔐",
+  CONFIDENTIALITY_IMPACT: "🔒",
+  SECURITY_RESOURCES: "📚",
 };

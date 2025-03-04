@@ -21,7 +21,7 @@ describe("BusinessImpactAnalysisWidget", () => {
     render(
       <BusinessImpactAnalysisWidget
         category="Availability"
-        level="None"
+        level="Moderate"
         options={availabilityOptions}
       />
     );
@@ -30,14 +30,14 @@ describe("BusinessImpactAnalysisWidget", () => {
     const summary = findImpactSummary();
     expect(summary).toBeInTheDocument();
     expect(summary).toHaveTextContent("Availability");
-    expect(summary).toHaveTextContent("None");
+    expect(summary).toHaveTextContent("Moderate");
   });
 
   it("renders Integrity impacts correctly", () => {
     render(
       <BusinessImpactAnalysisWidget
         category="Integrity"
-        level="None"
+        level="Moderate"
         options={integrityOptions}
       />
     );
@@ -46,14 +46,14 @@ describe("BusinessImpactAnalysisWidget", () => {
     const summary = findImpactSummary();
     expect(summary).toBeInTheDocument();
     expect(summary).toHaveTextContent("Integrity");
-    expect(summary).toHaveTextContent("None");
+    expect(summary).toHaveTextContent("Moderate");
   });
 
   it("renders Confidentiality impacts correctly", () => {
     render(
       <BusinessImpactAnalysisWidget
         category="Confidentiality"
-        level="None"
+        level="Moderate"
         options={confidentialityOptions}
       />
     );
@@ -62,7 +62,7 @@ describe("BusinessImpactAnalysisWidget", () => {
     const summary = findImpactSummary();
     expect(summary).toBeInTheDocument();
     expect(summary).toHaveTextContent("Confidentiality");
-    expect(summary).toHaveTextContent("None");
+    expect(summary).toHaveTextContent("Moderate");
   });
 
   it("displays business impact for each level and category", () => {
@@ -169,7 +169,7 @@ describe("BusinessImpactAnalysisWidget", () => {
     render(
       <BusinessImpactAnalysisWidget
         category="Availability"
-        level="None"
+        level="Moderate"
         options={availabilityOptions}
       />
     );

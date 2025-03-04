@@ -1,15 +1,12 @@
 import React, { useState } from "react";
-import { SecurityLevelKey } from "../../constants/appConstants";
-// Update the imports to use the index file
 import {
   WIDGET_ICONS,
-  BUSINESS_IMPACT_ICONS,
   SECURITY_LEVEL_COLORS,
   BUSINESS_CONSIDERATIONS,
   BUSINESS_KEY_BENEFITS,
   RISK_LEVELS,
 } from "../../constants";
-import { CIADetails } from "../../types/cia";
+import { CIADetails } from "../../types/cia"; // Removed SecurityLevelKey import
 import { BusinessConsiderationItem } from "../../types/businessImpact";
 import StatusBadge from "../common/StatusBadge";
 import ValueDisplay from "../common/ValueDisplay";
@@ -29,27 +26,35 @@ const BusinessImpactAnalysisWidget: React.FC<
     "considerations"
   );
 
-  // Helper function to get normalized security level key
-  const getNormalizedLevel = (level: string): SecurityLevelKey => {
-    return level.toUpperCase().replace(/\s+/g, "_") as SecurityLevelKey;
+  // Change getNormalizedLevel to return a string instead of a custom type
+  const getNormalizedLevel = (level: string): string => {
+    return level.toUpperCase().replace(/\s+/g, "_");
   };
 
   // Get business considerations for this category and level
   const getBusinessConsiderations = () => {
     const categoryKey =
       category.toUpperCase() as keyof typeof BUSINESS_CONSIDERATIONS;
-    const levelKey = getNormalizedLevel(
-      level
-    ) as keyof (typeof BUSINESS_CONSIDERATIONS)[keyof typeof BUSINESS_CONSIDERATIONS];
+    const levelKey = getNormalizedLevel(level);
 
     // Return the considerations if they exist, otherwise return empty array
-    return BUSINESS_CONSIDERATIONS[categoryKey]?.[levelKey] || [];
+
+    // Return the considerations if they exist, otherwise return empty array
+    return (
+      BUSINESS_CONSIDERATIONS[categoryKey]?.[
+        levelKey as keyof (typeof BUSINESS_CONSIDERATIONS)[typeof categoryKey]
+      ] || []
+    );
   };
 
   // Get business benefits for this level
   const getBusinessBenefits = () => {
     const levelKey = getNormalizedLevel(level);
-    return BUSINESS_KEY_BENEFITS[levelKey] || [];
+    // Use type assertion when indexing BUSINESS_KEY_BENEFITS
+    return (
+      BUSINESS_KEY_BENEFITS[levelKey as keyof typeof BUSINESS_KEY_BENEFITS] ||
+      []
+    );
   };
 
   // Helper to get risk status for StatusBadge
@@ -130,10 +135,9 @@ const BusinessImpactAnalysisWidget: React.FC<
 
   // Helper to get icon for impact type
   const getImpactIcon = (type: string): string => {
-    // Normalize the type string to handle different casings
     const normalizedType = type.toUpperCase();
 
-    // Map to the appropriate icon
+    // Direct mapping is simpler and more testable
     if (normalizedType.includes("FINANCIAL"))
       return enhancedIcons.IMPACT_TYPES.FINANCIAL;
     if (normalizedType.includes("OPERATION"))
@@ -147,7 +151,7 @@ const BusinessImpactAnalysisWidget: React.FC<
     if (normalizedType.includes("SECURITY"))
       return enhancedIcons.IMPACT_TYPES.SECURITY;
 
-    // Default icon if no match
+    // Default fallback
     return enhancedIcons.IMPACT_TYPES.OPERATIONAL;
   };
 
@@ -307,7 +311,11 @@ const BusinessImpactAnalysisWidget: React.FC<
               className="inline-block w-4 h-4 rounded-full"
               style={{
                 backgroundColor:
-                  SECURITY_LEVEL_COLORS[getNormalizedLevel(level)] || "#6c757d",
+                  SECURITY_LEVEL_COLORS[
+                    getNormalizedLevel(
+                      level
+                    ) as keyof typeof SECURITY_LEVEL_COLORS
+                  ] || "#6c757d",
               }}
               aria-hidden="true"
               data-testid={`level-indicator-color-${level.toLowerCase()}`}

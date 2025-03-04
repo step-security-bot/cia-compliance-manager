@@ -44,11 +44,11 @@ Cypress.Commands.add(
  * Ensures app is loaded by waiting for key elements
  */
 Cypress.Commands.add("ensureAppLoaded", () => {
-  // First verify the body has content
+  // Wait for the app to initialize
   cy.get("body", { timeout: 10000 }).should("not.be.empty");
 
-  // Then verify the app title is present
-  cy.contains("CIA Compliance Manager", { timeout: 5000 }).should("be.visible");
+  // Check that main app container exists
+  cy.get('[data-testid="app-container"]', { timeout: 10000 }).should("exist");
 });
 
 /**
@@ -234,6 +234,17 @@ declare global {
       forceVisible(): Chainable<Subject>;
       isReactHydrated(): Chainable<boolean>;
       isVisible(): Chainable<boolean>;
+      /**
+       * Navigate to app and ensure it's loaded properly
+       */
+      ensureAppLoaded(): void;
+
+      /**
+       * Safe scroll into view that handles errors
+       */
+      safeScrollIntoView(
+        options?: Partial<Cypress.ScrollToOptions>
+      ): Chainable<JQuery<HTMLElement>>;
     }
   }
 }

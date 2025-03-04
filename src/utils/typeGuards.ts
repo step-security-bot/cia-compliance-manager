@@ -4,7 +4,7 @@ import { CIADetails } from "../types/cia";
  * Type guard to check if a CIA detail object exists
  */
 export function isValidCIADetail(
-  detail: CIADetails | undefined
+  detail: CIADetails | undefined | null
 ): detail is CIADetails {
   return detail !== undefined && detail !== null;
 }
@@ -12,33 +12,58 @@ export function isValidCIADetail(
 /**
  * Type guard to check if a value is a non-null object
  */
-function isObject(
+export function isObject(
   value: unknown
 ): value is Record<string | number | symbol, unknown> {
   return typeof value === "object" && value !== null;
 }
 
 /**
- * Safe accessor for possibly undefined objects
- * @param obj The object to access safely
- * @param property The property to access
- * @param defaultValue Default value if object or property is undefined
+ * Safely access a nested property in an object using a dot notation path
+ * @param obj The object to access
+ * @param path The path to the property, e.g. 'a.b.c' or 'a[0].b.c'
+ * @param defaultValue The default value to return if the property doesn't exist
+ * @returns The value at the path or the default value
  */
-export function safeAccess<T extends object, K extends keyof T>(
-  obj: T | undefined | null,
-  property: K,
-  defaultValue: T[K]
-): T[K] {
-  if (!isObject(obj)) {
-    return defaultValue;
+export function safeAccess<T = any>(
+  obj: any,
+  path: string | (string | number)[],
+  defaultValue?: T
+): T {
+  if (obj == null) {
+    return defaultValue as T;
   }
 
-  return property in obj ? obj[property] : defaultValue;
+  const parts = Array.isArray(path)
+    ? path
+    : path.replace(/\[(\d+)\]/g, ".$1").split(".");
+  let current = obj;
+
+  for (const part of parts) {
+    if (current == null) {
+      return defaultValue as T;
+    }
+
+    if (typeof current !== "object") {
+      return defaultValue as T;
+    }
+
+    current = current[part];
+  }
+
+  return current !== undefined ? current : (defaultValue as T);
 }
 
 /**
- * Ensures an array exists, returning empty array if undefined
+ * Ensures the value is an array. If it's already an array, returns it.
+ * If it's null or undefined, returns an empty array. Otherwise wraps it in an array.
+ * @param value The value to ensure is an array
+ * @returns An array
  */
-export function ensureArray<T>(arr: T[] | undefined | null): T[] {
-  return arr || [];
+export function ensureArray<T>(value: T[] | T | null | undefined): T[] {
+  if (value === null || value === undefined) {
+    return [];
+  }
+
+  return Array.isArray(value) ? value : [value as T];
 }

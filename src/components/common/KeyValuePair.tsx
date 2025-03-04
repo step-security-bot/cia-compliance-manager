@@ -7,7 +7,7 @@ interface KeyValuePairProps {
   labelClassName?: string;
   valueClassName?: string;
   highlighted?: boolean;
-  className?: string; // Add className prop to fix the TypeScript errors
+  className?: string; // May consider removing if not needed across app
 }
 
 /**
@@ -20,7 +20,7 @@ const KeyValuePair: React.FC<KeyValuePairProps> = ({
   labelClassName = "",
   valueClassName = "",
   highlighted = false,
-  className = "", // Add default value for className
+  className = "",
 }) => {
   return (
     <div

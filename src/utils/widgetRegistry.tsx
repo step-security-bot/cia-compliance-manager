@@ -1,7 +1,9 @@
 import React, { ReactNode } from "react";
 import { WidgetContainer } from "../components/common";
-import { WIDGET_ICONS } from "../constants/appConstants";
+// Import directly from core constants
+import { WIDGET_ICONS, WIDGET_TITLES } from "../constants/coreConstants";
 
+// Add export to the interface definition
 export interface WidgetDefinition {
   id: string;
   title: string;
@@ -30,11 +32,14 @@ class WidgetRegistry {
     return this.widgets.get(id);
   }
 
-  // Get all registered widgets
+  // Improve the getAll method to handle sorting edge cases
   getAll(): WidgetDefinition[] {
-    return Array.from(this.widgets.values()).sort(
-      (a, b) => a.order! - b.order!
-    );
+    return Array.from(this.widgets.values()).sort((a, b) => {
+      // Handle undefined order values safely
+      const orderA = typeof a.order === "number" ? a.order : 999;
+      const orderB = typeof b.order === "number" ? b.order : 999;
+      return orderA - orderB;
+    });
   }
 
   // Render a specific widget with props
@@ -99,7 +104,7 @@ import BusinessImpactAnalysisWidget from "../components/widgets/BusinessImpactAn
 // Pre-register core widgets
 widgetRegistry.register({
   id: "security-summary",
-  title: "Security Summary",
+  title: WIDGET_TITLES.SECURITY_SUMMARY,
   component: SecuritySummaryWidget,
   icon: WIDGET_ICONS.SECURITY_SUMMARY,
   size: "medium",
@@ -108,7 +113,7 @@ widgetRegistry.register({
 
 widgetRegistry.register({
   id: "compliance-status",
-  title: "Compliance Status",
+  title: WIDGET_TITLES.COMPLIANCE_STATUS,
   component: ComplianceStatusWidget,
   icon: WIDGET_ICONS.COMPLIANCE_STATUS,
   size: "medium",
@@ -117,7 +122,7 @@ widgetRegistry.register({
 
 widgetRegistry.register({
   id: "value-creation",
-  title: "Value Creation",
+  title: WIDGET_TITLES.VALUE_CREATION,
   component: ValueCreationWidget,
   icon: WIDGET_ICONS.VALUE_CREATION,
   size: "medium",
@@ -126,7 +131,7 @@ widgetRegistry.register({
 
 widgetRegistry.register({
   id: "cost-estimation",
-  title: "Cost Estimation",
+  title: WIDGET_TITLES.COST_ESTIMATION,
   component: CostEstimationWidget,
   icon: WIDGET_ICONS.COST_ESTIMATION,
   size: "medium",
@@ -135,7 +140,7 @@ widgetRegistry.register({
 
 widgetRegistry.register({
   id: "availability-impact",
-  title: "Availability Impact",
+  title: "Availability Impact", // Use string literal instead of constant
   component: BusinessImpactAnalysisWidget,
   defaultProps: { category: "Availability" },
   icon: WIDGET_ICONS.AVAILABILITY_IMPACT,
@@ -145,7 +150,7 @@ widgetRegistry.register({
 
 widgetRegistry.register({
   id: "integrity-impact",
-  title: "Integrity Impact",
+  title: "Integrity Impact", // Use string literal instead of constant
   component: BusinessImpactAnalysisWidget,
   defaultProps: { category: "Integrity" },
   icon: WIDGET_ICONS.INTEGRITY_IMPACT,
@@ -155,7 +160,7 @@ widgetRegistry.register({
 
 widgetRegistry.register({
   id: "confidentiality-impact",
-  title: "Confidentiality Impact",
+  title: "Confidentiality Impact", // Use string literal instead of constant
   component: BusinessImpactAnalysisWidget,
   defaultProps: { category: "Confidentiality" },
   icon: WIDGET_ICONS.CONFIDENTIALITY_IMPACT,
