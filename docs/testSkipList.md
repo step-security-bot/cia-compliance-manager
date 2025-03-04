@@ -36,6 +36,7 @@ All tests have been skipped as basic layout and title structure may have changed
 ## Root Causes
 
 Most skipped tests fall into these categories:
+
 1. Tests that look for DOM elements that no longer exist in the same form
 2. Tests that rely on hidden elements not accessible to Cypress
 3. Tests that are too brittle due to UI changes
@@ -44,6 +45,7 @@ Most skipped tests fall into these categories:
 ## Plan to Address
 
 Consider implementing these improvements:
+
 1. Add data-testid attributes to all elements needed for testing
 2. Make radar chart values accessible for testing via CSS overrides
 3. Use more resilient selectors that can adapt to UI changes

@@ -23,7 +23,7 @@ describe("Technical Implementation Details", () => {
   it.skip("updates technical details when security levels change", () => {
     // Skip test as dynamic updates may work differently
   });
-  
+
   it.skip("shows complexity indicators and technology recommendations", () => {
     // Skip test as these elements may have changed
   });
