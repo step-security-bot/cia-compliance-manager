@@ -269,11 +269,9 @@ const CIAClassificationApp: React.FC = () => {
                 testId="widget-compliance-status"
               >
                 <ComplianceStatusWidget
-                  securityLevels={{
-                    availability,
-                    integrity,
-                    confidentiality,
-                  }}
+                  availability={availability}
+                  integrity={integrity}
+                  confidentiality={confidentiality}
                 />
               </DashboardWidget>
 

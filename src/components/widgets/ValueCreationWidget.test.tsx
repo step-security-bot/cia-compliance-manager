@@ -20,6 +20,7 @@ describe("ValueCreationWidget", () => {
         availability={TEST_CIA_LEVELS.NONE}
         integrity={TEST_CIA_LEVELS.NONE}
         confidentiality={TEST_CIA_LEVELS.NONE}
+        securityLevel={TEST_CIA_LEVELS.NONE}
       />
     );
 
@@ -36,6 +37,7 @@ describe("ValueCreationWidget", () => {
         availability={TEST_CIA_LEVELS.HIGH}
         integrity={TEST_CIA_LEVELS.HIGH}
         confidentiality={TEST_CIA_LEVELS.HIGH}
+        securityLevel={TEST_CIA_LEVELS.HIGH}
       />
     );
 
@@ -63,6 +65,7 @@ describe("ValueCreationWidget", () => {
         availability={TEST_CIA_LEVELS.MODERATE}
         integrity={TEST_CIA_LEVELS.MODERATE}
         confidentiality={TEST_CIA_LEVELS.MODERATE}
+        securityLevel={TEST_CIA_LEVELS.MODERATE}
       />
     );
 
@@ -80,6 +83,7 @@ describe("ValueCreationWidget", () => {
         availability={TEST_CIA_LEVELS.LOW}
         integrity={TEST_CIA_LEVELS.LOW}
         confidentiality={TEST_CIA_LEVELS.LOW}
+        securityLevel={TEST_CIA_LEVELS.LOW}
       />
     );
 
@@ -100,6 +104,7 @@ describe("ValueCreationWidget", () => {
         availability={TEST_CIA_LEVELS.HIGH}
         integrity={TEST_CIA_LEVELS.HIGH}
         confidentiality={TEST_CIA_LEVELS.HIGH}
+        securityLevel={TEST_CIA_LEVELS.HIGH}
       />
     );
 

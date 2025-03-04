@@ -260,11 +260,7 @@ const App: React.FC = () => {
             testId="widget-compliance-status"
           >
             <ComplianceStatusWidget
-              securityLevels={{
-                availability,
-                integrity,
-                confidentiality,
-              }}
+              {...{ availability, integrity, confidentiality }}
             />
           </DashboardWidget>
 
