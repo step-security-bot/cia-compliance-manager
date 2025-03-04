@@ -1,7 +1,53 @@
 /**
- * Simple test helper functions for more reliable testing
+ * Test helpers to make Cypress tests more resilient and less brittle
  */
+
 import { SECURITY_LEVELS } from "./appConstantsHelper";
+
+/**
+ * Wait for an element with fallback selectors
+ * @param primarySelector Primary selector to try first
+ * @param fallbackSelector Fallback selector if primary doesn't exist
+ * @param timeout Timeout in ms
+ */
+export const waitForElement = (
+  primarySelector: string,
+  fallbackSelector?: string,
+  timeout = 10000
+): Cypress.Chainable => {
+  return cy.get("body").then(($body) => {
+    if ($body.find(primarySelector).length) {
+      return cy.get(primarySelector, { timeout });
+    } else if (fallbackSelector) {
+      return cy.get(fallbackSelector, { timeout });
+    }
+    return cy.get(primarySelector, { timeout });
+  });
+};
+
+/**
+ * Safely interact with an element that may not be visible or may need scrolling
+ * @param selector Element selector
+ * @param action Action to perform ('click', 'check', 'uncheck', 'select' = 'click')
+ * @param options Additional options for the action
+ */
+export const interactWithElement = (
+  selector: string,
+  action: "click" | "check" | "uncheck" | "select" = "click",
+  options?: any
+): Cypress.Chainable => {
+  return cy
+    .get(selector, { timeout: 10000 })
+    .should("exist")
+    .then(($el) => {
+      if ($el.is(":visible")) {
+        return cy.wrap($el)[action](options);
+      } else {
+        // Try force option for elements that may be covered/hidden
+        return cy.wrap($el)[action]({ ...options, force: true });
+      }
+    });
+};
 
 /**
  * Safely select a value from a dropdown by index
@@ -69,6 +115,37 @@ export const setAllLevels = (
     .select(confidentiality, { force: true });
 
   cy.wait(500); // Longer wait after setting all levels
+};
+
+/**
+ * Set security levels for CIA triad
+ * @param availabilityLevel Availability security level
+ * @param integrityLevel Integrity security level
+ * @param confidentialityLevel Confidentiality security level
+ */
+export const setSecurityLevels = (
+  availabilityLevel: string,
+  integrityLevel: string,
+  confidentialityLevel: string
+): void => {
+  // Navigate to security selections if not already visible
+  cy.get("body").then(($body) => {
+    if (!$body.find("#availability-select").is(":visible")) {
+      cy.get(
+        '[data-testid="widget-security-level-selection"]'
+      ).scrollIntoView();
+    }
+  });
+
+  // Set individual levels with force option to handle any overlay issues
+  cy.get("#availability-select").select(availabilityLevel, { force: true });
+  cy.get("#integrity-select").select(integrityLevel, { force: true });
+  cy.get("#confidentiality-select").select(confidentialityLevel, {
+    force: true,
+  });
+
+  // Wait for changes to take effect
+  cy.wait(500);
 };
 
 /**
@@ -177,3 +254,42 @@ export const setSecurityLevelsReliably = (
   // Use the cy.setSecurityLevels custom command which uses data-testid selectors
   cy.setSecurityLevels(availability, integrity, confidentiality);
 };
+
+/**
+ * Helper to navigate to a specific widget
+ * @param widgetTestId The data-testid of the widget
+ */
+export const navigateToWidget = (widgetTestId: string): void => {
+  cy.get(`[data-testid="${widgetTestId}"]`, { timeout: 10000 })
+    .scrollIntoView({ easing: "linear", duration: 100 })
+    .should("be.visible");
+};
+
+/**
+ * Check if text exists anywhere in the document
+ * @param text Text to search for
+ */
+export const textExistsAnywhere = (
+  text: string
+): Cypress.Chainable<boolean> => {
+  return cy.get("body").then(($body) => {
+    const content = $body.text();
+    return content.includes(text);
+  });
+};
+
+/**
+ * Safe scroll into view that handles errors
+ */
+Cypress.Commands.add(
+  "safeScrollIntoView",
+  { prevSubject: true },
+  (subject, options = {}) => {
+    try {
+      return cy.wrap(subject).scrollIntoView(options);
+    } catch (error) {
+      cy.log("Error during scrollIntoView, continuing test");
+      return cy.wrap(subject);
+    }
+  }
+);

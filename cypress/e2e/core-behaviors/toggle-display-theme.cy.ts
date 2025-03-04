@@ -5,6 +5,8 @@
  * adjust the display to their preference.
  */
 
+// ...existing imports...
+
 describe("Toggle Display Theme", () => {
   beforeEach(() => {
     cy.visit("/");

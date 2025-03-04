@@ -8,10 +8,7 @@ import { UI_TEXT } from "../../support/appConstantsHelper";
 
 describe("Dashboard Loads", () => {
   beforeEach(() => {
-    // Visit the app with increased timeout for CI environments
     cy.visit("/", { timeout: 20000 });
-
-    // Wait for the app to load by checking for any content
     cy.get("body", { timeout: 10000 }).should("not.be.empty");
   });
 
