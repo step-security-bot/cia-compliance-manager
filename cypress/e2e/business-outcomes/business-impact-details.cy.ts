@@ -14,15 +14,10 @@ describe("Business Impact Details", () => {
   });
 
   it("shows detailed business impact analysis components", () => {
-    // Use cy.get() followed by scrollIntoView() on a single element
-    cy.get('[data-testid="widget-business-impact-analysis"]')
-      .first()
-      .scrollIntoView();
-
-    // Check that the combined impact component exists
-    cy.get('[data-testid="combined-business-impact"]').should("exist");
-
-    // Check for all three CIA sections using contains() which is more forgiving
+    // Use updated test ID for the outer business impact widget
+    cy.get('[data-testid="widget-business-impact"]').first().scrollIntoView();
+    // Verify the combined impact component is present
+    cy.get('[data-testid="combined-business-impact-widget"]').should("exist");
     cy.contains("Availability Impact").should("exist");
     cy.contains("Integrity Impact").should("exist");
     cy.contains("Confidentiality Impact").should("exist");

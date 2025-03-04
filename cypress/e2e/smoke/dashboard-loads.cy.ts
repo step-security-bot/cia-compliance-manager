@@ -21,10 +21,8 @@ describe("Dashboard Loads", () => {
   });
 
   it("shows security selection controls", () => {
-    // Check for the security profile widget by test ID
-    cy.get('[data-testid="widget-security-profile"]').should("exist");
-
-    // Check that selection controls are present
+    // Use updated test ID for the security profile widget
+    cy.get('[data-testid="widget-security-level-selection"]').should("exist");
     cy.get(
       "select#availability-select, select#integrity-select, select#confidentiality-select"
     ).should("exist");
@@ -42,15 +40,16 @@ describe("Dashboard Loads", () => {
   });
 
   it("shows all required widgets", () => {
-    // Check for all required widgets by test ID
     cy.get('[data-testid="widget-security-summary"]').should("exist");
     cy.get('[data-testid="widget-compliance-status"]').should("exist");
     cy.get('[data-testid="widget-value-creation"]').should("exist");
     cy.get('[data-testid="widget-cost-estimation"]').should("exist");
-    cy.get('[data-testid="widget-business-impact-analysis"]').should("exist");
+    // Use the outer business impact widget test ID
+    cy.get('[data-testid="widget-business-impact"]').should("exist");
     cy.get('[data-testid="widget-technical-implementation"]').should("exist");
-
-    // Check for visualization widget
-    cy.get('[data-testid="radar-widget-container"]').should("exist");
+    // Update the radar container test ID
+    cy.get('[data-testid="radar-chart-visualization-container"]').should(
+      "exist"
+    );
   });
 });

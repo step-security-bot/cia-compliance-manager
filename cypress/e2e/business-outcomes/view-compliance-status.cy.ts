@@ -24,9 +24,10 @@ describe("View Compliance Status", () => {
     // Navigate to compliance widget
     cy.navigateToWidget("widget-compliance-status");
 
-    // Check for compliance status elements
-    cy.get('[data-testid="compliance-status-text"]').should("exist");
-    cy.get('[data-testid="compliance-percentage"]').should("exist");
+    // Instead of 'compliance-status-text', check for the badge
+    cy.get('[data-testid="compliance-status-badge"]').should("exist");
+    // Use the percentage value test ID if available
+    cy.get('[data-testid="compliance-percentage-value"]').should("exist");
     cy.get('[data-testid="compliance-progress-bar"]').should("exist");
   });
 
