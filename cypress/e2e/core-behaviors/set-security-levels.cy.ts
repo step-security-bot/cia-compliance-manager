@@ -9,6 +9,8 @@ describe("Set Security Levels", () => {
   beforeEach(() => {
     cy.visit("/");
     cy.ensureAppLoaded();
+    // Make the viewport larger to reveal more content
+    cy.viewport(1200, 1800);
   });
 
   it("allows setting individual security levels", () => {

@@ -9,6 +9,7 @@ describe("Toggle Display Theme", () => {
   beforeEach(() => {
     cy.visit("/");
     cy.ensureAppLoaded();
+    cy.viewport(1200, 1800);
   });
 
   it("displays theme toggle button", () => {

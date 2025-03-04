@@ -10,7 +10,7 @@ describe("Technical Implementation Details", () => {
   beforeEach(() => {
     cy.visit("/");
     cy.ensureAppLoaded();
-    cy.viewport(1200, 900);
+    cy.viewport(1200, 1800);
     // Add extra wait time
     cy.wait(1000);
   });

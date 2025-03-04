@@ -9,6 +9,7 @@ describe("View Compliance Status", () => {
   beforeEach(() => {
     cy.visit("/");
     cy.ensureAppLoaded();
+    cy.viewport(1200, 3000);
   });
 
   it("shows compliance status widget", () => {
