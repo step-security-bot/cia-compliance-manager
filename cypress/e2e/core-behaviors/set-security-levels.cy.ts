@@ -12,9 +12,9 @@ describe("Set Security Levels", () => {
   });
 
   it("allows setting individual security levels", () => {
-    // Check default values (assumed to be Moderate in this case)
-    cy.get("#availability-select").should("have.value", "Moderate");
-    cy.get("#integrity-select").should("have.value", "Moderate");
+    // Check default values are "None" as per DOM
+    cy.get("#availability-select").should("have.value", "None");
+    cy.get("#integrity-select").should("have.value", "None");
     // Change security levels
     cy.get("#availability-select").select("Low");
     cy.get("#availability-select").should("have.value", "Low");
@@ -23,19 +23,21 @@ describe("Set Security Levels", () => {
   });
 
   it("verifies radar chart updates with security level changes", () => {
-    // Assure the radar chart exists using the updated test ID
+    // Assert the radar chart container exists
     cy.get('[data-testid="radar-chart-visualization-container"]').should(
       "exist"
     );
-    // Capture initial value (hidden text) and expect it to change when security level changes
+    // Capture initial radar availability text (e.g.: "A: None")
     cy.get('[data-testid="radar-availability-value"]')
       .invoke("text")
       .as("initialRadarValue");
+    // Change availability to "High"
     cy.get("#availability-select").select("High");
     cy.wait(500);
     cy.get('[data-testid="radar-availability-value"]')
       .invoke("text")
       .then(function (newValue) {
+        // Verify that the value has updated from "None" to something else like "A: High"
         expect(newValue).not.to.eq(this.initialRadarValue);
       });
   });
@@ -43,13 +45,11 @@ describe("Set Security Levels", () => {
   it("verifies security widget structure", () => {
     // Check for security level controls
     cy.get('[data-testid="security-level-controls"]').should("exist");
-
     // Check for all three select elements
     cy.get("#availability-select").should("exist");
     cy.get("#integrity-select").should("exist");
     cy.get("#confidentiality-select").should("exist");
-
-    // Very minimal check for descriptions - just verify they exist
+    // Minimal check for descriptions
     cy.get('[data-testid="availability-description"]').should("exist");
     cy.get('[data-testid="integrity-description"]').should("exist");
     cy.get('[data-testid="confidentiality-description"]').should("exist");
@@ -60,6 +60,7 @@ describe("Set Security Levels", () => {
     cy.get('[data-testid="availability-description"]').should("exist");
     cy.get("#availability-select").select("Low", { force: true });
     cy.wait(300);
+    // The attribute "data-testlevel" should update to "Low"
     cy.get('[data-testid="availability-description"]').should(
       "have.attr",
       "data-testlevel",
