@@ -3,6 +3,7 @@ import { render, screen } from "@testing-library/react";
 import ValueCreationWidget from "./ValueCreationWidget";
 import { SECURITY_LEVELS, VALUE_CREATION_POINTS } from "../../constants";
 import { UI_TEXT } from "../../constants/coreConstants";
+import { WIDGET_TEST_IDS } from "../../constants/testIds";
 
 // Define test constants locally instead of importing them
 const TEST_SECURITY_LEVELS = {
@@ -17,10 +18,10 @@ describe("ValueCreationWidget", () => {
   it("renders the widget with None level", () => {
     render(<ValueCreationWidget securityLevel={TEST_SECURITY_LEVELS.NONE} />);
 
-    // Instead of checking for "None", we check that the title matches the constant
-    expect(screen.getByTestId("value-creation-title")).toHaveTextContent(
-      UI_TEXT.VALUE_CREATION.NONE_TITLE
-    );
+    // Use constant for testId instead of hardcoded string
+    expect(
+      screen.getByTestId(WIDGET_TEST_IDS.VALUE_CREATION_TITLE)
+    ).toHaveTextContent(UI_TEXT.VALUE_CREATION.NONE_TITLE);
     expect(
       screen.getByText(/Business value derived from this security profile/i)
     ).toBeInTheDocument();
@@ -48,7 +49,9 @@ describe("ValueCreationWidget", () => {
   // Remove outdated percentage expectation; instead, check ROI ends with "x"
   it("calculates ROI correctly", () => {
     render(<ValueCreationWidget securityLevel={TEST_SECURITY_LEVELS.NONE} />);
-    const roiText = screen.getByTestId("roi-value").textContent || "";
+    // Use constant for testId
+    const roiText =
+      screen.getByTestId(WIDGET_TEST_IDS.ROI_VALUE).textContent || "";
     const capexValue = 100; // Assuming these are the values that lead to negative ROI
     const opexValue = 50;
     const valueCreation = 20; // Value too low compared to costs
