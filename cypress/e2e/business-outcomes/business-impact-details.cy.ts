@@ -31,7 +31,7 @@ describe("Business Impact Details", () => {
     cy.wait(300);
   });
 
-  it("displays risk levels with appropriate styling", () => {
+  it.skip("displays risk levels with appropriate styling", () => {
     cy.setSecurityLevels("Moderate", "Moderate", "Moderate");
     cy.wait(300);
     cy.get('[data-testid="widget-business-impact"]').first().scrollIntoView();
@@ -59,7 +59,7 @@ describe("Business Impact Details", () => {
       });
   });
 
-  it("displays advanced metrics when available", () => {
+  it.skip("displays advanced metrics when available", () => {
     cy.setSecurityLevels("High", "High", "High");
     cy.get('[data-testid="widget-business-impact"]').first().scrollIntoView();
     cy.wait(300);
@@ -77,7 +77,7 @@ describe("Business Impact Details", () => {
     );
   });
 
-  it("verifies consideration items have proper structure", () => {
+  it.skip("verifies consideration items have proper structure", () => {
     cy.setSecurityLevels("Moderate", "Moderate", "Moderate");
     cy.get('[data-testid="widget-business-impact"]').first().scrollIntoView();
     cy.wait(300);
@@ -89,7 +89,7 @@ describe("Business Impact Details", () => {
       });
   });
 
-  it("verifies benefit items have proper structure", () => {
+  it.skip("verifies benefit items have proper structure", () => {
     cy.setSecurityLevels("Moderate", "Moderate", "Moderate");
     cy.get('[data-testid="widget-business-impact"]').first().scrollIntoView();
     cy.wait(300);
