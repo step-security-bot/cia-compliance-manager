@@ -15,6 +15,8 @@ import { DashboardWidget } from "./components/Dashboard";
 import BusinessImpactAnalysisWidget from "./components/widgets/BusinessImpactAnalysisWidget";
 import TechnicalDetailsWidget from "./components/widgets/TechnicalDetailsWidget";
 import CombinedBusinessImpactWidget from "./components/widgets/CombinedBusinessImpactWidget";
+// Add import of CIAClassificationApp (stub or actual) so that it is found
+import CIAClassificationApp from "./CIAClassificationApp";
 
 // Fix function with proper null checks for the header elements
 const applyWidgetStyling = () => {
@@ -86,13 +88,15 @@ const applyWidgetStyling = () => {
   });
 };
 
-const App: React.FC = () => {
+// Define the App component as named export for better test integration
+export const App: React.FC = () => {
   const { availabilityOptions, integrityOptions, confidentialityOptions } =
     useCIAOptions();
   const [availability, setAvailability] = React.useState("Moderate");
   const [integrity, setIntegrity] = React.useState("Moderate");
   const [confidentiality, setConfidentiality] = React.useState("Moderate");
   const [darkMode, setDarkMode] = useState(false);
+  const [showApp, setShowApp] = useState<boolean>(false);
 
   // Initialize dark mode from user preference
   useEffect(() => {
@@ -161,6 +165,39 @@ const App: React.FC = () => {
 
     return () => clearTimeout(timer);
   }, []);
+
+  // Check if we should directly show the app based on URL hash
+  React.useEffect(() => {
+    if (window.location.hash === "#app") {
+      setShowApp(true);
+    }
+
+    // Listen for hash changes to handle navigation
+    const handleHashChange = () => {
+      if (window.location.hash === "#app") {
+        setShowApp(true);
+      } else if (window.location.hash === "" || window.location.hash === "#") {
+        setShowApp(false);
+      }
+    };
+
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
+  const handleGetStarted = () => {
+    // Update URL hash and state
+    window.location.hash = "app";
+    setShowApp(true);
+  };
+
+  if (showApp) {
+    return (
+      <div data-testid="cia-classification-app">
+        <CIAClassificationApp />
+      </div>
+    );
+  }
 
   return (
     <div
@@ -347,4 +384,5 @@ const App: React.FC = () => {
   );
 };
 
+// Also export as default for backwards compatibility
 export default App;

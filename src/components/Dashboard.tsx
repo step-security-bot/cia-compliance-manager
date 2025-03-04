@@ -8,8 +8,6 @@ import {
   integrityOptions,
   confidentialityOptions,
 } from "../hooks/useCIAOptions";
-// Import UI_TEXT
-import { UI_TEXT } from "../constants";
 
 interface DashboardProps {
   children: ReactNode;
