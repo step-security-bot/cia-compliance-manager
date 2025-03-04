@@ -7,19 +7,15 @@ import { UI_TEXT } from "../../constants/coreConstants";
 // Define test constants locally instead of importing them
 const TEST_SECURITY_LEVELS = {
   NONE: "None",
-  LOW: "Low", 
+  LOW: "Low",
   MODERATE: "Moderate",
   HIGH: "High",
-  VERY_HIGH: "Very High"
+  VERY_HIGH: "Very High",
 };
 
 describe("ValueCreationWidget", () => {
   it("renders the widget with None level", () => {
-    render(
-      <ValueCreationWidget
-        securityLevel={TEST_SECURITY_LEVELS.NONE}
-      />
-    );
+    render(<ValueCreationWidget securityLevel={TEST_SECURITY_LEVELS.NONE} />);
 
     // Instead of checking for "None", we check that the title matches the constant
     expect(screen.getByTestId("value-creation-title")).toHaveTextContent(
@@ -31,11 +27,7 @@ describe("ValueCreationWidget", () => {
   });
 
   it("renders the widget with High level", () => {
-    render(
-      <ValueCreationWidget
-        securityLevel={TEST_SECURITY_LEVELS.HIGH}
-      />
-    );
+    render(<ValueCreationWidget securityLevel={TEST_SECURITY_LEVELS.HIGH} />);
 
     // Expect title to match widget output – for example, "High Value Creation"
     expect(screen.getByText("High Value Creation")).toBeInTheDocument();
@@ -55,11 +47,7 @@ describe("ValueCreationWidget", () => {
 
   // Remove outdated percentage expectation; instead, check ROI ends with "x"
   it("calculates ROI correctly", () => {
-    render(
-      <ValueCreationWidget
-        securityLevel={TEST_SECURITY_LEVELS.NONE}
-      />
-    );
+    render(<ValueCreationWidget securityLevel={TEST_SECURITY_LEVELS.NONE} />);
     const roiText = screen.getByTestId("roi-value").textContent || "";
     const capexValue = 100; // Assuming these are the values that lead to negative ROI
     const opexValue = 50;
@@ -76,9 +64,7 @@ describe("ValueCreationWidget", () => {
 
   it("displays different value propositions based on security levels", () => {
     const { rerender } = render(
-      <ValueCreationWidget
-        securityLevel={TEST_SECURITY_LEVELS.LOW}
-      />
+      <ValueCreationWidget securityLevel={TEST_SECURITY_LEVELS.LOW} />
     );
 
     // For Low security, check specific value propositions
@@ -93,11 +79,7 @@ describe("ValueCreationWidget", () => {
     }
 
     // Now test High security
-    rerender(
-      <ValueCreationWidget
-        securityLevel={TEST_SECURITY_LEVELS.HIGH}
-      />
-    );
+    rerender(<ValueCreationWidget securityLevel={TEST_SECURITY_LEVELS.HIGH} />);
 
     // For High security, check specific value propositions
     const highValuePoints =
