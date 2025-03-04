@@ -37,6 +37,9 @@ describe("Dashboard Loads", () => {
 
     // Verify main content area
     cy.get("main").should("exist");
+
+    // Additionally, verify that the dashboard grid container exists
+    cy.get('[data-testid="dashboard-grid"]').should("exist");
   });
 
   it("shows all required widgets", () => {

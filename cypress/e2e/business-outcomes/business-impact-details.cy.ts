@@ -10,12 +10,12 @@ describe("Business Impact Details", () => {
   beforeEach(() => {
     cy.visit("/");
     cy.ensureAppLoaded();
-    cy.viewport(2000, 2000);
+    cy.viewport(1200, 900);
   });
 
   it("shows detailed business impact analysis components", () => {
     cy.get('[data-testid="widget-business-impact"]').first().scrollIntoView();
-    // Verify combined business impact component appears
+    // Verify combined impact component exists
     cy.get('[data-testid="combined-business-impact-widget"]').should("exist");
     cy.contains("Availability Impact").should("exist");
     cy.contains("Integrity Impact").should("exist");
@@ -59,10 +59,11 @@ describe("Business Impact Details", () => {
       });
   });
 
-  it("shows advanced metrics when available", () => {
+  it("displays advanced metrics when available", () => {
     cy.setSecurityLevels("High", "High", "High");
     cy.get('[data-testid="widget-business-impact"]').first().scrollIntoView();
     cy.wait(300);
+    // Look for metrics using the test ID already rendered in DOM
     cy.get('[data-testid="impact-metrics-section"]').should("exist");
     cy.get('[data-testid="financial-impact-metrics"]').should("exist");
     cy.get('[data-testid="operational-impact-metrics"]').should("exist");
@@ -94,7 +95,7 @@ describe("Business Impact Details", () => {
     cy.wait(300);
     cy.get('[data-testid="tab-benefits"]').first().click();
     cy.wait(100);
-    // Benefit items existence check
+    // Expect benefit items with a prefix; update the selector if benefit items have been added in your code.
     cy.get('[data-testid^="benefit-item-"]').should("exist");
   });
 

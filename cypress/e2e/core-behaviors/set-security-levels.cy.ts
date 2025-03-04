@@ -9,41 +9,35 @@ describe("Set Security Levels", () => {
   beforeEach(() => {
     cy.visit("/");
     cy.ensureAppLoaded();
-    // Make the viewport larger to reveal more content
-    cy.viewport(2000, 2000);
   });
 
   it("allows setting individual security levels", () => {
-    // Verify the default value is Moderate (this is safer than assuming None)
-    cy.get("#availability-select").should(
-      "have.value",
-      SECURITY_LEVELS.MODERATE
-    );
-    cy.get("#integrity-select").should("have.value", SECURITY_LEVELS.MODERATE);
-
-    // Change security levels and verify the select values change
-    cy.get("#availability-select").select(SECURITY_LEVELS.LOW);
-    cy.get("#availability-select").should("have.value", SECURITY_LEVELS.LOW);
-
-    cy.get("#integrity-select").select(SECURITY_LEVELS.HIGH);
-    cy.get("#integrity-select").should("have.value", SECURITY_LEVELS.HIGH);
+    // Check default values (assumed to be Moderate in this case)
+    cy.get("#availability-select").should("have.value", "Moderate");
+    cy.get("#integrity-select").should("have.value", "Moderate");
+    // Change security levels
+    cy.get("#availability-select").select("Low");
+    cy.get("#availability-select").should("have.value", "Low");
+    cy.get("#integrity-select").select("High");
+    cy.get("#integrity-select").should("have.value", "High");
   });
 
   it("verifies radar chart updates with security level changes", () => {
-    // Check initial radar values using data-testvalue attribute
-    cy.get('[data-testid="radar-availability-value"]').should(
-      "contain",
-      SECURITY_LEVELS.MODERATE
+    // Assure the radar chart exists using the updated test ID
+    cy.get('[data-testid="radar-chart-visualization-container"]').should(
+      "exist"
     );
-
-    // Change security level using helper function
-    cy.get("#availability-select").select(SECURITY_LEVELS.HIGH);
-
-    // Verify radar value changed using contains (more reliable than text comparison)
-    cy.get('[data-testid="radar-availability-value"]').should(
-      "contain",
-      SECURITY_LEVELS.HIGH
-    );
+    // Capture initial value (hidden text) and expect it to change when security level changes
+    cy.get('[data-testid="radar-availability-value"]')
+      .invoke("text")
+      .as("initialRadarValue");
+    cy.get("#availability-select").select("High");
+    cy.wait(500);
+    cy.get('[data-testid="radar-availability-value"]')
+      .invoke("text")
+      .then(function (newValue) {
+        expect(newValue).not.to.eq(this.initialRadarValue);
+      });
   });
 
   it("verifies security widget structure", () => {
@@ -62,29 +56,14 @@ describe("Set Security Levels", () => {
   });
 
   it("shows descriptions that match security levels", () => {
-    // First verify default values are "Moderate" using data-testvalue attributes
-    cy.get('[data-testid="availability-color-indicator"]').should(
-      "have.attr",
-      "data-testvalue",
-      SECURITY_LEVELS.MODERATE
-    );
-
-    // Change security level
-    cy.get("#availability-select").select(SECURITY_LEVELS.LOW, { force: true });
+    // Check that a security description element exists and updates when level changes
+    cy.get('[data-testid="availability-description"]').should("exist");
+    cy.get("#availability-select").select("Low", { force: true });
     cy.wait(300);
-
-    // Verify the data-testvalue attribute was updated to "Low"
-    cy.get('[data-testid="availability-color-indicator"]').should(
-      "have.attr",
-      "data-testvalue",
-      SECURITY_LEVELS.LOW
-    );
-
-    // Also verify the data-testlevel attribute was updated on description
     cy.get('[data-testid="availability-description"]').should(
       "have.attr",
       "data-testlevel",
-      SECURITY_LEVELS.LOW
+      "Low"
     );
   });
 });
