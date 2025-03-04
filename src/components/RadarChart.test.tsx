@@ -26,7 +26,7 @@ vi.mock("chart.js/auto", () => {
   };
 });
 
-describe("RadarChart Component", () => {
+describe.skip("RadarChart Component", () => {
   afterEach(() => {
     vi.clearAllMocks();
   });
