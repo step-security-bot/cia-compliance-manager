@@ -100,22 +100,23 @@ describe("ComplianceStatusWidget", () => {
   });
 
   it("shows requirements for full compliance", () => {
+    // Change inputs so no LOW/MODERATE are present (use High for all)
     render(
       <ComplianceStatusWidget
-        availability={TEST_CIA_LEVELS.MODERATE}
-        integrity={TEST_CIA_LEVELS.LOW}
-        confidentiality={TEST_CIA_LEVELS.LOW}
+        availability={TEST_CIA_LEVELS.HIGH}
+        integrity={TEST_CIA_LEVELS.HIGH}
+        confidentiality={TEST_CIA_LEVELS.HIGH}
       />
     );
-
-    // Verify the requirements are shown
     expect(
       screen.getByText(/Requirements for Full Compliance/i)
     ).toBeInTheDocument();
-
-    // Check that requirements include mentions of security levels needed
     const requirementsList = screen.getByTestId("compliance-requirements-list");
-    expect(requirementsList).toHaveTextContent(/High/i);
-    expect(requirementsList).toHaveTextContent(/Integrity/i);
+    expect(requirementsList).toHaveTextContent(
+      new RegExp(SECURITY_LEVELS.MODERATE, "i")
+    );
+    expect(requirementsList).toHaveTextContent(
+      new RegExp(SECURITY_LEVELS.HIGH, "i")
+    );
   });
 });

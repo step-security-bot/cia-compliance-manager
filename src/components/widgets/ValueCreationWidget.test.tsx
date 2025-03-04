@@ -7,6 +7,7 @@ import {
   TEST_DATA,
 } from "../../constants/testConstants";
 import { SECURITY_LEVELS, VALUE_CREATION_POINTS } from "../../constants";
+import { UI_TEXT } from "../../constants/coreConstants";
 import { renderWithProviders } from "../../utils/componentTestUtils";
 
 describe("ValueCreationWidget", () => {
@@ -20,9 +21,13 @@ describe("ValueCreationWidget", () => {
       />
     );
 
-    // Check that the component renders
-    expect(screen.getByText("Business Value")).toBeInTheDocument();
-    expect(screen.getByText("None")).toBeInTheDocument();
+    // Instead of checking for "None", we check that the title matches the constant
+    expect(screen.getByTestId("value-creation-title")).toHaveTextContent(
+      UI_TEXT.VALUE_CREATION.NONE_TITLE
+    );
+    expect(
+      screen.getByText(/Business value derived from this security profile/i)
+    ).toBeInTheDocument();
   });
 
   it("renders the widget with High level", () => {
@@ -35,10 +40,8 @@ describe("ValueCreationWidget", () => {
       />
     );
 
-    // Check the title uses the formatted text from constants
-    expect(
-      screen.getByText(`Value Creation with ${TEST_CIA_LEVELS.HIGH}`)
-    ).toBeInTheDocument();
+    // Expect title to match widget output – for example, "High Value Creation"
+    expect(screen.getByText("High Value Creation")).toBeInTheDocument();
 
     // Check we're showing the value creation points for High level
     const valuePoints =

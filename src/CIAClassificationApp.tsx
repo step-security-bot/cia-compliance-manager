@@ -166,12 +166,9 @@ const CIAClassificationApp: React.FC = () => {
               integrity={integrity}
               confidentiality={confidentiality}
             >
-              {/* All widgets now consistently use medium size (1/3 width) */}
-
-              {/* Row 1: Configuration & Summary */}
+              {/* Row 1 */}
               <DashboardWidget
-                title="Security Level Selection"
-                size="medium"
+                title="Security Profile Configuration"
                 icon={WIDGET_ICONS.SECURITY_LEVEL}
                 testId="widget-security-level-selection"
               >
@@ -190,7 +187,6 @@ const CIAClassificationApp: React.FC = () => {
 
               <DashboardWidget
                 title="Cost Estimation"
-                size="medium"
                 icon={WIDGET_ICONS.COST_ESTIMATION}
                 testId="widget-cost-estimation"
               >
@@ -206,17 +202,15 @@ const CIAClassificationApp: React.FC = () => {
 
               <DashboardWidget
                 title="Value Creation"
-                size="medium"
                 icon={WIDGET_ICONS.VALUE_CREATION}
                 testId="widget-value-creation"
               >
                 <ValueCreationWidget securityLevel={overallSecurityLevel} />
               </DashboardWidget>
 
-              {/* Row 2: Security & Visualization */}
+              {/* Row 2 */}
               <DashboardWidget
                 title="Security Summary"
-                size="medium"
                 icon={WIDGET_ICONS.SECURITY_SUMMARY}
                 testId="widget-security-summary"
               >
@@ -230,7 +224,6 @@ const CIAClassificationApp: React.FC = () => {
 
               <DashboardWidget
                 title="Business Impact Analysis"
-                size="medium"
                 icon={WIDGET_ICONS.BUSINESS_IMPACT}
                 testId="widget-business-impact"
               >
@@ -245,8 +238,7 @@ const CIAClassificationApp: React.FC = () => {
               </DashboardWidget>
 
               <DashboardWidget
-                title="Security Profile Visualization"
-                size="medium"
+                title="Security Visualization"
                 icon={WIDGET_ICONS.SECURITY_VISUALIZATION}
                 testId="widget-radar-chart"
               >
@@ -261,10 +253,9 @@ const CIAClassificationApp: React.FC = () => {
                 </div>
               </DashboardWidget>
 
-              {/* Row 3: Compliance, Implementation & Resources */}
+              {/* Row 3 */}
               <DashboardWidget
                 title="Compliance Status"
-                size="medium"
                 icon={WIDGET_ICONS.COMPLIANCE_STATUS}
                 testId="widget-compliance-status"
               >
@@ -277,7 +268,6 @@ const CIAClassificationApp: React.FC = () => {
 
               <DashboardWidget
                 title="Technical Implementation"
-                size="medium"
                 icon={WIDGET_ICONS.TECHNICAL_IMPLEMENTATION}
                 testId="widget-technical-implementation"
               >
