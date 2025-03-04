@@ -1,23 +1,23 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import ValueCreationWidget from "./ValueCreationWidget";
-import {
-  TEST_CIA_LEVELS,
-  TEST_HELPERS,
-  TEST_DATA,
-} from "../../constants/testConstants";
 import { SECURITY_LEVELS, VALUE_CREATION_POINTS } from "../../constants";
 import { UI_TEXT } from "../../constants/coreConstants";
-import { renderWithProviders } from "../../utils/componentTestUtils";
+
+// Define test constants locally instead of importing them
+const TEST_SECURITY_LEVELS = {
+  NONE: "None",
+  LOW: "Low", 
+  MODERATE: "Moderate",
+  HIGH: "High",
+  VERY_HIGH: "Very High"
+};
 
 describe("ValueCreationWidget", () => {
   it("renders the widget with None level", () => {
-    renderWithProviders(
+    render(
       <ValueCreationWidget
-        availability={TEST_CIA_LEVELS.NONE}
-        integrity={TEST_CIA_LEVELS.NONE}
-        confidentiality={TEST_CIA_LEVELS.NONE}
-        securityLevel={TEST_CIA_LEVELS.NONE}
+        securityLevel={TEST_SECURITY_LEVELS.NONE}
       />
     );
 
@@ -31,12 +31,9 @@ describe("ValueCreationWidget", () => {
   });
 
   it("renders the widget with High level", () => {
-    renderWithProviders(
+    render(
       <ValueCreationWidget
-        availability={TEST_CIA_LEVELS.HIGH}
-        integrity={TEST_CIA_LEVELS.HIGH}
-        confidentiality={TEST_CIA_LEVELS.HIGH}
-        securityLevel={TEST_CIA_LEVELS.HIGH}
+        securityLevel={TEST_SECURITY_LEVELS.HIGH}
       />
     );
 
@@ -60,7 +57,7 @@ describe("ValueCreationWidget", () => {
   it("calculates ROI correctly", () => {
     render(
       <ValueCreationWidget
-        securityLevel="None" /* ...other props if needed... */
+        securityLevel={TEST_SECURITY_LEVELS.NONE}
       />
     );
     const roiText = screen.getByTestId("roi-value").textContent || "";
@@ -78,12 +75,9 @@ describe("ValueCreationWidget", () => {
   });
 
   it("displays different value propositions based on security levels", () => {
-    const { rerender } = renderWithProviders(
+    const { rerender } = render(
       <ValueCreationWidget
-        availability={TEST_CIA_LEVELS.LOW}
-        integrity={TEST_CIA_LEVELS.LOW}
-        confidentiality={TEST_CIA_LEVELS.LOW}
-        securityLevel={TEST_CIA_LEVELS.LOW}
+        securityLevel={TEST_SECURITY_LEVELS.LOW}
       />
     );
 
@@ -101,10 +95,7 @@ describe("ValueCreationWidget", () => {
     // Now test High security
     rerender(
       <ValueCreationWidget
-        availability={TEST_CIA_LEVELS.HIGH}
-        integrity={TEST_CIA_LEVELS.HIGH}
-        confidentiality={TEST_CIA_LEVELS.HIGH}
-        securityLevel={TEST_CIA_LEVELS.HIGH}
+        securityLevel={TEST_SECURITY_LEVELS.HIGH}
       />
     );
 
