@@ -155,7 +155,10 @@ const ComplianceStatusWidget: React.FC<ComplianceStatusWidgetProps> = ({
         <h4 className="text-sm font-medium mb-2">
           Requirements for Full Compliance:
         </h4>
-        <ul className="list-disc pl-5 space-y-1">
+        <ul
+          data-testid="compliance-requirements-list"
+          className="list-disc pl-5 space-y-1"
+        >
           <li className="text-sm">
             Minimum {SECURITY_LEVELS.MODERATE} level for all CIA components
           </li>

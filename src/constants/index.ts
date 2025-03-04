@@ -122,7 +122,6 @@ export const BUSINESS_CONSIDERATIONS = {
     ],
   },
   INTEGRITY: {
-    // Add integrity considerations here
     NONE: [
       {
         type: "Financial",
@@ -135,7 +134,48 @@ export const BUSINESS_CONSIDERATIONS = {
         description: "Non-compliance with data integrity regulations",
       },
     ],
-    // ... other integrity levels
+    LOW: [
+      {
+        type: "Financial",
+        risk: "HIGH",
+        description:
+          "Potential financial inaccuracies due to occasional data errors",
+      },
+      {
+        type: "Regulatory",
+        risk: "HIGH",
+        description:
+          "Risk of non-compliance with integrity requirements on sporadic basis",
+      },
+    ],
+    MODERATE: [
+      {
+        type: "Financial",
+        risk: "MEDIUM",
+        description:
+          "Moderate financial impact due to detected and correctable data issues",
+      },
+      {
+        type: "Regulatory",
+        risk: "MEDIUM",
+        description:
+          "Meets basic statutory requirements despite minor data issues",
+      },
+    ],
+    HIGH: [
+      {
+        type: "Financial",
+        risk: "LOW",
+        description:
+          "Minimal financial impact; most data errors are detected and corrected promptly",
+      },
+      {
+        type: "Regulatory",
+        risk: "LOW",
+        description:
+          "Fully compliant with data integrity standards with robust checks",
+      },
+    ],
     VERY_HIGH: [
       {
         type: "Financial",
@@ -145,12 +185,12 @@ export const BUSINESS_CONSIDERATIONS = {
       {
         type: "Regulatory",
         risk: "LOW",
-        description: "Exceeds all regulatory requirements for data integrity",
+        description:
+          "Exceeds all regulatory requirements for data integrity controls",
       },
     ],
   },
   CONFIDENTIALITY: {
-    // Add confidentiality considerations here
     NONE: [
       {
         type: "Reputational",
@@ -163,17 +203,54 @@ export const BUSINESS_CONSIDERATIONS = {
         description: "Non-compliance with privacy regulations",
       },
     ],
-    // ... other confidentiality levels
-    VERY_HIGH: [
+    LOW: [
+      {
+        type: "Reputational",
+        risk: "HIGH",
+        description: "Sensitive data may be exposed",
+      },
+      {
+        type: "Regulatory",
+        risk: "HIGH",
+        description: "May violate basic privacy requirements",
+      },
+    ],
+    MODERATE: [
+      {
+        type: "Reputational",
+        risk: "MEDIUM",
+        description: "Most sensitive data protected",
+      },
+      {
+        type: "Regulatory",
+        risk: "MEDIUM",
+        description:
+          "Complies with standard data protection and privacy regulations",
+      },
+    ],
+    HIGH: [
       {
         type: "Reputational",
         risk: "LOW",
-        description: "Enhanced brand reputation for data security",
+        description: "Strong protection for sensitive data",
       },
       {
         type: "Regulatory",
         risk: "LOW",
-        description: "Exceeds all privacy regulation requirements",
+        description: "Meets stringent privacy requirements",
+      },
+    ],
+    VERY_HIGH: [
+      {
+        type: "Reputational",
+        risk: "LOW",
+        description: "Maximum protection for sensitive information",
+      },
+      {
+        type: "Regulatory",
+        risk: "LOW",
+        description:
+          "Exceeds all standards for confidentiality and privacy regulations",
       },
     ],
   },

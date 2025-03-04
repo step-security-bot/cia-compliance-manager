@@ -26,3 +26,57 @@ export type BusinessKeyBenefits = {
 export interface BusinessImpactIcons {
   [key: string]: string;
 }
+
+export const BUSINESS_CONSIDERATIONS = {
+  AVAILABILITY: {
+    NONE: [
+      /* ...existing items... */
+    ],
+    LOW: [
+      /* ...new items for LOW impact... */
+    ],
+    MODERATE: [
+      /* ...existing items... */
+    ],
+    HIGH: [
+      /* ...existing items... */
+    ],
+    VERY_HIGH: [
+      /* ...existing items... */
+    ],
+  },
+  INTEGRITY: {
+    NONE: [
+      /* ...existing items... */
+    ],
+    LOW: [
+      /* ...new items for LOW impact... */
+    ],
+    MODERATE: [
+      /* ...existing items... */
+    ],
+    HIGH: [
+      /* ...existing items... */
+    ],
+    VERY_HIGH: [
+      /* ...existing items... */
+    ],
+  },
+  CONFIDENTIALITY: {
+    NONE: [
+      /* ...existing items... */
+    ],
+    LOW: [
+      /* ...new items for LOW impact... */
+    ],
+    MODERATE: [
+      /* ...existing items... */
+    ],
+    HIGH: [
+      /* ...existing items... */
+    ],
+    VERY_HIGH: [
+      /* ...existing items... */
+    ],
+  },
+};
