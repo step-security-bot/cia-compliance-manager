@@ -2,15 +2,7 @@ import React from "react";
 import BusinessImpactAnalysisWidget from "./BusinessImpactAnalysisWidget";
 import CIAImpactSummaryWidget from "./CIAImpactSummaryWidget";
 import { CIADetails } from "../../types/cia";
-
-interface CombinedBusinessImpactWidgetProps {
-  availability: string;
-  integrity: string;
-  confidentiality: string;
-  availabilityOptions?: Record<string, CIADetails>;
-  integrityOptions?: Record<string, CIADetails>;
-  confidentialityOptions?: Record<string, CIADetails>;
-}
+import { CombinedBusinessImpactWidgetProps } from "../../types/widgets";
 
 /**
  * A widget that displays business impact analysis for all three CIA components

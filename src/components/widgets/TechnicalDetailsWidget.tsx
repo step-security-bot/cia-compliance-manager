@@ -9,12 +9,13 @@ import ValueDisplay from "../common/ValueDisplay";
 import StatusBadge from "../common/StatusBadge";
 
 interface TechnicalDetailsWidgetProps {
-  availability: string;
-  integrity: string;
-  confidentiality: string;
-  availabilityOptions: Record<string, CIADetails>;
-  integrityOptions: Record<string, CIADetails>;
-  confidentialityOptions: Record<string, CIADetails>;
+  availability?: string;
+  integrity?: string;
+  confidentiality?: string;
+  availabilityOptions?: Record<string, any>;
+  integrityOptions?: Record<string, any>;
+  confidentialityOptions?: Record<string, any>;
+  testId?: string;
 }
 
 const TechnicalDetailsWidget: React.FC<TechnicalDetailsWidgetProps> = ({
@@ -37,21 +38,21 @@ const TechnicalDetailsWidget: React.FC<TechnicalDetailsWidgetProps> = ({
     implementation: string[];
     complexity: string;
   } => {
-    let options: Record<string, CIADetails>;
-    let level: string;
+    let options: Record<string, CIADetails> = {};
+    let level: string = "None";
 
     switch (component) {
       case "availability":
-        options = availabilityOptions;
-        level = availability;
+        options = availabilityOptions || {};
+        level = availability || "None";
         break;
       case "integrity":
-        options = integrityOptions;
-        level = integrity;
+        options = integrityOptions || {};
+        level = integrity || "None";
         break;
       case "confidentiality":
-        options = confidentialityOptions;
-        level = confidentiality;
+        options = confidentialityOptions || {};
+        level = confidentiality || "None";
         break;
     }
 
@@ -223,10 +224,10 @@ const TechnicalDetailsWidget: React.FC<TechnicalDetailsWidgetProps> = ({
           <ValueDisplay
             value={
               activeTab === "availability"
-                ? availability
+                ? availability || "None"
                 : activeTab === "integrity"
-                ? integrity
-                : confidentiality
+                ? integrity || "None"
+                : confidentiality || "None"
             }
             variant={
               activeTab === "availability"
@@ -290,10 +291,10 @@ const TechnicalDetailsWidget: React.FC<TechnicalDetailsWidgetProps> = ({
             {getTechnologyStack(
               activeTab,
               activeTab === "availability"
-                ? availability
+                ? availability || "None" // Add || "None" for each value
                 : activeTab === "integrity"
-                ? integrity
-                : confidentiality
+                ? integrity || "None" // Add || "None" for each value
+                : confidentiality || "None" // Add || "None" for each value
             ).map((tech, index) => (
               <span
                 key={index}
@@ -327,13 +328,13 @@ const TechnicalDetailsWidget: React.FC<TechnicalDetailsWidgetProps> = ({
               data-testid="development-effort"
             >
               {activeTab === "availability"
-                ? IMPLEMENTATION_COSTS?.[availability]?.developmentEffort ||
-                  `${availability} Level`
+                ? IMPLEMENTATION_COSTS?.[availability || "None"]
+                    ?.developmentEffort || `${availability || "None"} Level`
                 : activeTab === "integrity"
-                ? IMPLEMENTATION_COSTS?.[integrity]?.developmentEffort ||
-                  `${integrity} Level`
-                : IMPLEMENTATION_COSTS?.[confidentiality]?.developmentEffort ||
-                  `${confidentiality} Level`}
+                ? IMPLEMENTATION_COSTS?.[integrity || "None"]
+                    ?.developmentEffort || `${integrity || "None"} Level`
+                : IMPLEMENTATION_COSTS?.[confidentiality || "None"]
+                    ?.developmentEffort || `${confidentiality || "None"} Level`}
             </p>
           </div>
 
@@ -346,13 +347,13 @@ const TechnicalDetailsWidget: React.FC<TechnicalDetailsWidgetProps> = ({
               data-testid="maintenance-level"
             >
               {activeTab === "availability"
-                ? IMPLEMENTATION_COSTS?.[availability]?.maintenance ||
-                  `${availability} Complexity`
+                ? IMPLEMENTATION_COSTS?.[availability || "None"]?.maintenance ||
+                  `${availability || "None"} Complexity`
                 : activeTab === "integrity"
-                ? IMPLEMENTATION_COSTS?.[integrity]?.maintenance ||
-                  `${integrity} Complexity`
-                : IMPLEMENTATION_COSTS?.[confidentiality]?.maintenance ||
-                  `${confidentiality} Complexity`}
+                ? IMPLEMENTATION_COSTS?.[integrity || "None"]?.maintenance ||
+                  `${integrity || "None"} Complexity`
+                : IMPLEMENTATION_COSTS?.[confidentiality || "None"]
+                    ?.maintenance || `${confidentiality || "None"} Complexity`}
             </p>
           </div>
 

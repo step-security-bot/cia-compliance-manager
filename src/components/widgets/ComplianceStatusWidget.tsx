@@ -7,18 +7,9 @@ import {
 } from "../../constants";
 import { SecurityLevel } from "../../types/cia";
 import StatusBadge from "../common/StatusBadge";
+import { ComplianceStatusWidgetProps } from "../../types/widgets";
 
-interface ComplianceStatusWidgetProps {
-  availability: string;
-  integrity: string;
-  confidentiality: string;
-  securityLevels?: {
-    availability: string;
-    integrity: string;
-    confidentiality: string;
-  };
-}
-
+// Add proper type annotation to the component
 const ComplianceStatusWidget: React.FC<ComplianceStatusWidgetProps> = ({
   availability,
   integrity,

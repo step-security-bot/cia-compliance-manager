@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { App } from "./App"; // Import the named export
+import App from "./App"; // Import the default export
 
 // Use Vitest’s vi.mock in place of jest.mock
 vi.mock("./CIAClassificationApp", () => {

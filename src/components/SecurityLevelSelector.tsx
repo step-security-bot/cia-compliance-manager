@@ -77,12 +77,12 @@ const SecurityLevelSelector: React.FC<SecurityLevelSelectorProps> = ({
       </div>
 
       <SecurityLevelWidget
-        availability={availability}
-        integrity={integrity}
-        confidentiality={confidentiality}
-        setAvailability={setAvailability}
-        setIntegrity={setIntegrity}
-        setConfidentiality={setConfidentiality}
+        availabilityLevel={availability}
+        integrityLevel={integrity}
+        confidentialityLevel={confidentiality}
+        onAvailabilityChange={setAvailability}
+        onIntegrityChange={setIntegrity}
+        onConfidentialityChange={setConfidentiality}
         availabilityOptions={availabilityOptions}
         integrityOptions={integrityOptions}
         confidentialityOptions={confidentialityOptions}

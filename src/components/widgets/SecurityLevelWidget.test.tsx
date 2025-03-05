@@ -5,12 +5,12 @@ import { vi } from "vitest";
 import userEvent from "@testing-library/user-event";
 import {
   TEST_DATA,
-  CIA_TEST_IDS,
   TEST_HELPERS,
   TEST_CIA_LEVELS,
 } from "../../constants/testConstants";
 import { SECURITY_LEVELS } from "../../constants";
 import { CIA_LABELS } from "../../constants";
+import { CIA_TEST_IDS, WIDGET_TEST_IDS } from "../../constants/testIds";
 
 describe("SecurityLevelWidget", () => {
   const mockAvailabilityOptions = {
@@ -32,12 +32,12 @@ describe("SecurityLevelWidget", () => {
   };
 
   const mockProps = {
-    availability: "None",
-    integrity: "None",
-    confidentiality: "None",
-    setAvailability: vi.fn(),
-    setIntegrity: vi.fn(),
-    setConfidentiality: vi.fn(),
+    availabilityLevel: "None",
+    integrityLevel: "None",
+    confidentialityLevel: "None",
+    onAvailabilityChange: vi.fn(),
+    onIntegrityChange: vi.fn(),
+    onConfidentialityChange: vi.fn(),
     availabilityOptions: mockAvailabilityOptions,
     integrityOptions: mockIntegrityOptions,
     confidentialityOptions: mockConfidentialityOptions,
@@ -55,28 +55,38 @@ describe("SecurityLevelWidget", () => {
   it("selects have default values", () => {
     render(<SecurityLevelWidget {...mockProps} />);
 
-    expect(screen.getByTestId("availability-select")).toHaveValue("None");
-    expect(screen.getByTestId("integrity-select")).toHaveValue("None");
-    expect(screen.getByTestId("confidentiality-select")).toHaveValue("None");
+    expect(screen.getByTestId(CIA_TEST_IDS.AVAILABILITY_SELECT)).toHaveValue(
+      "None"
+    );
+    expect(screen.getByTestId(CIA_TEST_IDS.INTEGRITY_SELECT)).toHaveValue(
+      "None"
+    );
+    expect(screen.getByTestId(CIA_TEST_IDS.CONFIDENTIALITY_SELECT)).toHaveValue(
+      "None"
+    );
   });
 
   it("handles selection changes", () => {
     render(<SecurityLevelWidget {...mockProps} />);
 
-    fireEvent.change(screen.getByTestId("availability-select"), {
+    fireEvent.change(screen.getByTestId(CIA_TEST_IDS.AVAILABILITY_SELECT), {
       target: { value: TEST_CIA_LEVELS.LOW },
     });
-    expect(mockProps.setAvailability).toHaveBeenCalledWith(TEST_CIA_LEVELS.LOW);
+    expect(mockProps.onAvailabilityChange).toHaveBeenCalledWith(
+      TEST_CIA_LEVELS.LOW
+    );
 
-    fireEvent.change(screen.getByTestId("integrity-select"), {
+    fireEvent.change(screen.getByTestId(CIA_TEST_IDS.INTEGRITY_SELECT), {
       target: { value: TEST_CIA_LEVELS.LOW },
     });
-    expect(mockProps.setIntegrity).toHaveBeenCalledWith(TEST_CIA_LEVELS.LOW);
+    expect(mockProps.onIntegrityChange).toHaveBeenCalledWith(
+      TEST_CIA_LEVELS.LOW
+    );
 
-    fireEvent.change(screen.getByTestId("confidentiality-select"), {
+    fireEvent.change(screen.getByTestId(CIA_TEST_IDS.CONFIDENTIALITY_SELECT), {
       target: { value: TEST_CIA_LEVELS.LOW },
     });
-    expect(mockProps.setConfidentiality).toHaveBeenCalledWith(
+    expect(mockProps.onConfidentialityChange).toHaveBeenCalledWith(
       TEST_CIA_LEVELS.LOW
     );
   });
@@ -163,9 +173,9 @@ describe("SecurityLevelWidget", () => {
   it("renders color indicators for security levels", () => {
     const enhancedProps = {
       ...mockProps,
-      availability: "Low",
-      integrity: "Moderate",
-      confidentiality: "High",
+      availabilityLevel: "Low",
+      integrityLevel: "Moderate",
+      confidentialityLevel: "High",
     };
 
     render(<SecurityLevelWidget {...enhancedProps} />);
@@ -198,12 +208,12 @@ describe("SecurityLevelWidget", () => {
 
     render(
       <SecurityLevelWidget
-        availability="High"
-        integrity="Moderate"
-        confidentiality="Low"
-        setAvailability={vi.fn()}
-        setIntegrity={vi.fn()}
-        setConfidentiality={vi.fn()}
+        availabilityLevel="High"
+        integrityLevel="Moderate"
+        confidentialityLevel="Low"
+        onAvailabilityChange={vi.fn()}
+        onIntegrityChange={vi.fn()}
+        onConfidentialityChange={vi.fn()}
         availabilityOptions={mockAvailabilityOptions}
         integrityOptions={mockIntegrityOptions}
         confidentialityOptions={mockConfidentialityOptions}
@@ -300,7 +310,7 @@ describe("SecurityLevelWidget", () => {
   it("displays validation method and protection method badges when available", () => {
     const customProps = {
       ...mockProps,
-      integrity: "Low",
+      integrityLevel: "Low",
       integrityOptions: {
         ...mockIntegrityOptions,
         Low: {
@@ -308,7 +318,7 @@ describe("SecurityLevelWidget", () => {
           validationMethod: "Hash Validation",
         },
       },
-      confidentiality: "Low",
+      confidentialityLevel: "Low",
       confidentialityOptions: {
         ...mockConfidentialityOptions,
         Low: {
@@ -338,7 +348,7 @@ describe("SecurityLevelWidget", () => {
   it("handles rendering with availability uptime information", () => {
     const customProps = {
       ...mockProps,
-      availability: "Low",
+      availabilityLevel: "Low",
       availabilityOptions: {
         ...mockAvailabilityOptions,
         Low: {

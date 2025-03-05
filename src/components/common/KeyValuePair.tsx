@@ -1,50 +1,61 @@
 import React, { ReactNode } from "react";
+import { COMMON_COMPONENT_TEST_IDS } from "../../constants/testIds";
 
 interface KeyValuePairProps {
-  label: string;
+  label: ReactNode;
   value: ReactNode;
-  testId?: string;
-  labelClassName?: string;
-  valueClassName?: string;
   highlighted?: boolean;
-  className?: string; // May consider removing if not needed across app
+  testId?: string;
+  className?: string;
 }
 
 /**
- * KeyValuePair component for displaying label-value pairs consistently throughout the app
+ * KeyValuePair component for consistently displaying label: value pairs
+ * Used throughout the application for structured data display
  */
 const KeyValuePair: React.FC<KeyValuePairProps> = ({
   label,
   value,
-  testId,
-  labelClassName = "",
-  valueClassName = "",
   highlighted = false,
+  testId,
   className = "",
 }) => {
+  // Apply appropriate styling based on highlighting
+  const containerClasses = `w-full ${
+    highlighted ? "bg-blue-50 dark:bg-blue-900 p-2 rounded" : ""
+  } ${className}`;
+
+  const labelClasses = `text-sm text-gray-500 dark:text-gray-400 ${
+    highlighted ? "font-medium" : ""
+  }`;
+
+  const valueClasses = `text-sm font-medium text-gray-700 dark:text-gray-300 ${
+    highlighted ? "font-semibold" : ""
+  }`;
+
   return (
     <div
-      className={`flex justify-between items-center ${
-        highlighted
-          ? "bg-gray-50 dark:bg-gray-700 p-2 rounded-md border border-gray-200 dark:border-gray-600"
-          : ""
-      } ${className}`}
-      data-testid={testId || "key-value-pair"}
+      className={containerClasses}
+      data-testid={testId || COMMON_COMPONENT_TEST_IDS.KEY_VALUE_PAIR}
     >
-      <span
-        className={`text-sm text-gray-600 dark:text-gray-400 ${labelClassName}`}
-        data-testid={testId ? `${testId}-label` : "kv-label"}
-      >
-        {label}
-      </span>
-      <span
-        className={`font-medium ${
-          highlighted ? "text-blue-700 dark:text-blue-300" : ""
-        } ${valueClassName}`}
-        data-testid={testId ? `${testId}-value` : "kv-value"}
-      >
-        {value}
-      </span>
+      <div className="flex flex-col space-y-1">
+        <span
+          className={labelClasses}
+          data-testid={
+            testId ? `${testId}-label` : COMMON_COMPONENT_TEST_IDS.KV_LABEL
+          }
+        >
+          {label}
+        </span>
+        <span
+          className={valueClasses}
+          data-testid={
+            testId ? `${testId}-value` : COMMON_COMPONENT_TEST_IDS.KV_VALUE
+          }
+        >
+          {value}
+        </span>
+      </div>
     </div>
   );
 };

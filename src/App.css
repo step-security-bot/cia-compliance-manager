@@ -1,0 +1,90 @@
+/* Minimal CSS file to fix build error */
+/* App-wide styles can go here */
+
+:root {
+  --primary-color: #1a56db;
+  --secondary-color: #9061f9;
+  --text-color: #111827;
+  --background-color: #f9fafb;
+}
+
+/* Dark mode colors */
+.dark {
+  --text-color: #f3f4f6;
+  --background-color: #111827;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app-root {
+  min-height: 100vh;
+}
+
+/* Keep the dashboard grid styling */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+/* Widget styles */
+.widget-col-3 {
+  grid-column: span 3;
+}
+
+.widget-col-4 {
+  grid-column: span 4;
+}
+
+.widget-col-6 {
+  grid-column: span 6;
+}
+
+.widget-col-12 {
+  grid-column: span 12;
+}
+
+/* Widget styling */
+.widget {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 0.5rem;
+  /* Remove overflow hidden to show all content */
+  transition: all 0.3s ease-in-out;
+}
+
+.widget:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.widget-header {
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(209, 213, 219, 0.5);
+  margin-bottom: 0.5rem;
+}
+
+.widget-body {
+  flex: 1;
+  /* Remove overflow auto to ensure all content is visible */
+}
+
+/* Additional styling for dark mode */
+.dark .widget {
+  background-color: #1f2937;
+  border-color: #374151;
+}
+
+.dark .widget-header {
+  border-color: rgba(75, 85, 99, 0.5);
+}

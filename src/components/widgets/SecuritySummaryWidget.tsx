@@ -43,19 +43,15 @@ import {
   BusinessKeyBenefit,
 } from "../../types/businessImpact";
 
-interface SecuritySummaryWidgetProps {
-  securityLevel: string;
-  // Add optional props for individual CIA levels
-  availabilityLevel?: string;
-  integrityLevel?: string;
-  confidentialityLevel?: string;
-}
+import { SecuritySummaryWidgetProps } from "../../types/widgets";
 
+// Add proper type annotation to the component
 const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
   securityLevel,
-  availabilityLevel,
-  integrityLevel,
-  confidentialityLevel,
+  availabilityLevel = securityLevel, // Default to securityLevel if not provided
+  integrityLevel = securityLevel, // Default to securityLevel if not provided
+  confidentialityLevel = securityLevel, // Default to securityLevel if not provided
+  testId,
 }) => {
   const [expandedSections, setExpandedSections] = useState<{
     technical: boolean;
@@ -75,9 +71,9 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
   };
 
   // Use individual components if provided, otherwise use the securityLevel for all
-  const actualAvailabilityLevel = availabilityLevel || securityLevel;
-  const actualIntegrityLevel = integrityLevel || securityLevel;
-  const actualConfidentialityLevel = confidentialityLevel || securityLevel;
+  const actualAvailabilityLevel = availabilityLevel;
+  const actualIntegrityLevel = integrityLevel;
+  const actualConfidentialityLevel = confidentialityLevel;
 
   // Add a function to normalize security level for data lookup
   const getDataLookupKey = (level: string): string => {

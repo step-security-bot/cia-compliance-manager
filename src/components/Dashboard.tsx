@@ -1,7 +1,5 @@
 import React, { ReactNode } from "react";
-// Remove WIDGET_TITLES from import
-import { WIDGET_ICONS } from "../constants";
-import { WidgetContainer } from "./common";
+import { WIDGET_ICONS } from "../constants/appConstants";
 import widgetRegistry from "../utils/widgetRegistry";
 import {
   availabilityOptions,
@@ -9,20 +7,21 @@ import {
   confidentialityOptions,
 } from "../hooks/useCIAOptions";
 
+// Main Dashboard component props
 interface DashboardProps {
-  children: ReactNode;
-  availability: string;
-  integrity: string;
-  confidentiality: string;
-  useRegistry?: boolean; // Flag to use widget registry instead of children
+  children?: ReactNode;
+  useRegistry?: boolean;
+  availability?: string;
+  integrity?: string;
+  confidentiality?: string;
 }
 
 const Dashboard: React.FC<DashboardProps> = ({
   children,
+  useRegistry = false,
   availability,
   integrity,
   confidentiality,
-  useRegistry = false,
 }) => {
   // Prepare props for business impact widgets
   const impactWidgetProps = {
@@ -74,10 +73,7 @@ const Dashboard: React.FC<DashboardProps> = ({
   };
 
   return (
-    <div
-      className="dashboard-grid overflow-visible"
-      data-testid="dashboard-grid"
-    >
+    <div className="dashboard-grid" data-testid="dashboard-grid">
       {useRegistry
         ? widgetRegistry.renderWidgets(undefined, widgetProps)
         : children}
@@ -87,14 +83,14 @@ const Dashboard: React.FC<DashboardProps> = ({
 
 // Helper function to calculate overall security level
 function calculateOverallLevel(
-  availability: string,
-  integrity: string,
-  confidentiality: string
+  availability?: string,
+  integrity?: string,
+  confidentiality?: string
 ): string {
   const levels = ["None", "Low", "Moderate", "High", "Very High"];
-  const availabilityIndex = levels.indexOf(availability);
-  const integrityIndex = levels.indexOf(integrity);
-  const confidentialityIndex = levels.indexOf(confidentiality);
+  const availabilityIndex = levels.indexOf(availability || "None");
+  const integrityIndex = levels.indexOf(integrity || "None");
+  const confidentialityIndex = levels.indexOf(confidentiality || "None");
 
   const avgIndex = Math.round(
     (availabilityIndex + integrityIndex + confidentialityIndex) / 3
@@ -105,20 +101,24 @@ function calculateOverallLevel(
 
 // Helper function to calculate cost props
 function calculateCostProps(
-  availability: string,
-  integrity: string,
-  confidentiality: string
+  availability?: string,
+  integrity?: string,
+  confidentiality?: string
 ) {
-  // This is a simplified version - you would replace with your actual calculation logic
+  // Handle undefined values
+  const availLevel = availability || "None";
+  const intLevel = integrity || "None";
+  const confLevel = confidentiality || "None";
+
   const totalCapex =
-    (availabilityOptions[availability]?.capex || 0) +
-    (integrityOptions[integrity]?.capex || 0) +
-    (confidentialityOptions[confidentiality]?.capex || 0);
+    (availabilityOptions[availLevel]?.capex || 0) +
+    (integrityOptions[intLevel]?.capex || 0) +
+    (confidentialityOptions[confLevel]?.capex || 0);
 
   const totalOpex =
-    (availabilityOptions[availability]?.opex || 0) +
-    (integrityOptions[integrity]?.opex || 0) +
-    (confidentialityOptions[confidentiality]?.opex || 0);
+    (availabilityOptions[availLevel]?.opex || 0) +
+    (integrityOptions[intLevel]?.opex || 0) +
+    (confidentialityOptions[confLevel]?.opex || 0);
 
   return {
     totalCapex,
@@ -130,6 +130,7 @@ function calculateCostProps(
   };
 }
 
+// DashboardWidget component for widget containers
 interface DashboardWidgetProps {
   title: string;
   size?: "small" | "medium" | "large" | "full";
@@ -139,7 +140,6 @@ interface DashboardWidgetProps {
   testId?: string;
 }
 
-// Keep the original DashboardWidget for backward compatibility
 export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
   title,
   size = "medium",
@@ -148,23 +148,23 @@ export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
   icon,
   testId,
 }) => {
-  // Map widget sizes to grid column spans - all standard widgets now use the same size
+  // Map widget sizes to grid column spans
   const sizeClasses = {
-    small: "widget-col-4", // Changed to be the same as medium
-    medium: "widget-col-4", // Standard 1/3 width widget
-    large: "widget-col-4", // Changed to be the same as medium
-    full: "widget-col-12", // Only full remains different
+    small: "widget-col-4", // 1/3 width (standard)
+    medium: "widget-col-4", // 1/3 width (standard)
+    large: "widget-col-6", // 1/2 width
+    full: "widget-col-12", // Full width
   };
 
   return (
     <div
-      className={`widget ${sizeClasses[size]}`}
+      className={`widget p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm ${sizeClasses[size]} ${className}`}
       data-testid={
         testId || `widget-${title.toLowerCase().replace(/\s+/g, "-")}`
       }
     >
       <div className="widget-header">
-        <h3 className="text-sm font-semibold">
+        <h3 className="text-lg font-semibold mb-4 flex items-center text-gray-800 dark:text-gray-200">
           {icon && <span className="widget-icon mr-2">{icon}</span>}
           {title}
         </h3>
@@ -172,18 +172,6 @@ export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
       <div className="widget-body">{children}</div>
     </div>
   );
-};
-
-// Export predefined widget titles
-// Remove this line:
-// export const WIDGET_TITLES = UI_TEXT.WIDGET_TITLES;
-
-// Export the fixed column sizes to ensure proper grid layout
-export const GRID_SIZES = {
-  SMALL: "widget-col-3",
-  MEDIUM: "widget-col-4",
-  LARGE: "widget-col-6",
-  FULL: "widget-col-12",
 };
 
 export default Dashboard;

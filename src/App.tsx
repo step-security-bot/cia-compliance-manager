@@ -1,11 +1,12 @@
 import React from "react";
 import CIAClassificationApp from "./CIAClassificationApp";
+import "./App.css"; // Keep the import to avoid build errors
 
 /**
  * Main App component
  * Acts as a simple wrapper around CIAClassificationApp to maintain backward compatibility
  */
-export const App: React.FC = () => {
+const App: React.FC = () => {
   return (
     <div className="app-root" data-testid="app-root">
       {/* Add the cia-classification-app testId to fix the failing test */}

@@ -270,6 +270,7 @@ export const APP_TEST_IDS = {
   APP_ROOT: "app-root",
   CIA_CLASSIFICATION_APP: "cia-classification-app",
   DASHBOARD_GRID: "dashboard-grid",
+  GET_STARTED_BUTTON: "get-started-button", // Deprecated - not used in the current UI
 };
 
 // Common component test IDs

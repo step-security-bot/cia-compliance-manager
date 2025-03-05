@@ -10,14 +10,7 @@ import { ensureArray } from "../../utils/typeGuards";
 import ValueDisplay from "../common/ValueDisplay";
 import KeyValuePair from "../common/KeyValuePair";
 import { WIDGET_TEST_IDS, createDynamicTestId } from "../../constants/testIds"; // Import test ID constants
-
-interface ValueCreationWidgetProps {
-  // Add these props to fix type errors
-  availability?: string;
-  integrity?: string;
-  confidentiality?: string;
-  securityLevel: string;
-}
+import { ValueCreationWidgetProps } from "../../types/widgets";
 
 const ValueCreationWidget: React.FC<ValueCreationWidgetProps> = ({
   securityLevel,

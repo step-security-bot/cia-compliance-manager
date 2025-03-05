@@ -1,16 +1,27 @@
 import React, { ReactNode } from "react";
+import { COMMON_COMPONENT_TEST_IDS } from "../../constants/testIds";
+
+type DisplayVariant =
+  | "default"
+  | "primary"
+  | "success"
+  | "warning"
+  | "danger"
+  | "info";
+type DisplaySize = "xs" | "sm" | "md" | "lg" | "xl";
 
 interface ValueDisplayProps {
   value: ReactNode;
   label?: string;
-  variant?: "default" | "primary" | "success" | "warning" | "danger" | "info";
-  size?: "sm" | "md" | "lg";
+  variant?: DisplayVariant;
+  size?: DisplaySize;
   testId?: string;
+  className?: string;
 }
 
 /**
- * ValueDisplay component for consistently displaying application-set values
- * with clear visual distinction from regular text content.
+ * ValueDisplay component for displaying values with consistent styling
+ * Used for showing security levels, metrics, and other values
  */
 const ValueDisplay: React.FC<ValueDisplayProps> = ({
   value,
@@ -18,52 +29,48 @@ const ValueDisplay: React.FC<ValueDisplayProps> = ({
   variant = "default",
   size = "md",
   testId,
+  className = "",
 }) => {
-  const getVariantClasses = (): string => {
-    switch (variant) {
-      case "primary":
-        return "bg-blue-100 dark:bg-blue-900/30 border-blue-300 dark:border-blue-700 text-blue-800 dark:text-blue-200";
-      case "success":
-        return "bg-green-100 dark:bg-green-900/30 border-green-300 dark:border-green-700 text-green-800 dark:text-green-200";
-      case "warning":
-        return "bg-yellow-100 dark:bg-yellow-900/30 border-yellow-300 dark:border-yellow-700 text-yellow-800 dark:text-yellow-200";
-      case "danger":
-        return "bg-red-100 dark:bg-red-900/30 border-red-300 dark:border-red-700 text-red-800 dark:text-red-200";
-      case "info":
-        return "bg-purple-100 dark:bg-purple-900/30 border-purple-300 dark:border-purple-700 text-purple-800 dark:text-purple-200";
-      default:
-        return "bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200";
-    }
+  // Define variant-based color schemes
+  const variantStyles = {
+    default: "bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300",
+    primary: "bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300",
+    success:
+      "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300",
+    warning:
+      "bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300",
+    danger: "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300",
+    info: "bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300",
   };
 
-  const getSizeClasses = (): string => {
-    switch (size) {
-      case "sm":
-        return "text-xs px-1.5 py-0.5";
-      case "lg":
-        return "text-base px-3 py-1.5";
-      default:
-        return "text-sm px-2 py-1";
-    }
+  // Define size-based padding and font sizes
+  const sizeStyles = {
+    xs: "py-0.5 px-1 text-xs",
+    sm: "py-0.5 px-2 text-xs",
+    md: "py-1 px-3 text-sm",
+    lg: "py-1.5 px-4 text-base",
+    xl: "py-2 px-5 text-lg",
   };
+
+  // Combine all style classes
+  const baseStyles =
+    "inline-flex items-center font-medium rounded whitespace-nowrap";
+  const combinedStyles = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;
 
   return (
-    <div
-      className="inline-flex items-center"
-      data-testid={testId || "value-display"}
+    <span
+      className={combinedStyles}
+      data-testid={testId || COMMON_COMPONENT_TEST_IDS.VALUE_DISPLAY}
     >
-      {label && (
-        <span className="text-gray-600 dark:text-gray-400 mr-2 text-sm font-medium">
-          {label}:
-        </span>
-      )}
+      {label && <span className="mr-1 font-bold">{label}:</span>}
       <span
-        className={`font-semibold inline-block rounded-md border ${getVariantClasses()} ${getSizeClasses()} shadow-sm`}
-        data-testid={testId ? `${testId}-value` : "displayed-value"}
+        data-testid={
+          testId ? `${testId}-value` : COMMON_COMPONENT_TEST_IDS.DISPLAYED_VALUE
+        }
       >
         {value}
       </span>
-    </div>
+    </span>
   );
 };
 

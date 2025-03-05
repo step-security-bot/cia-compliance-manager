@@ -7,32 +7,35 @@ import {
   SECURITY_LEVEL_COLORS,
   SecurityLevelKey,
 } from "../../constants/appConstants";
+import { CIA_TEST_IDS, WIDGET_TEST_IDS } from "../../constants/testIds"; // Add WIDGET_TEST_IDS to the import
 import ValueDisplay from "../common/ValueDisplay";
 import StatusBadge from "../common/StatusBadge";
 import KeyValuePair from "../common/KeyValuePair";
 
 interface SecurityLevelWidgetProps {
-  availability: string;
-  integrity: string;
-  confidentiality: string;
-  setAvailability: (level: string) => void;
-  setIntegrity: (level: string) => void;
-  setConfidentiality: (level: string) => void;
-  availabilityOptions: Record<string, any>;
-  integrityOptions: Record<string, any>;
-  confidentialityOptions: Record<string, any>;
+  availabilityLevel: string;
+  integrityLevel: string;
+  confidentialityLevel: string;
+  onAvailabilityChange: (level: string) => void;
+  onIntegrityChange: (level: string) => void;
+  onConfidentialityChange: (level: string) => void;
+  testId?: string;
+  availabilityOptions?: Record<string, any>;
+  integrityOptions?: Record<string, any>;
+  confidentialityOptions?: Record<string, any>;
 }
 
+// Update the component to handle undefined options
 const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
-  availability,
-  integrity,
-  confidentiality,
-  setAvailability,
-  setIntegrity,
-  setConfidentiality,
-  availabilityOptions,
-  integrityOptions,
-  confidentialityOptions,
+  availabilityLevel,
+  integrityLevel,
+  confidentialityLevel,
+  onAvailabilityChange,
+  onIntegrityChange,
+  onConfidentialityChange,
+  availabilityOptions = {},
+  integrityOptions = {},
+  confidentialityOptions = {},
 }) => {
   const [hoveredTechnical, setHoveredTechnical] = useState<string | null>(null);
 
@@ -113,7 +116,10 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
   };
 
   return (
-    <div className="space-y-4" data-testid="security-level-controls">
+    <div
+      className="space-y-4"
+      data-testid={WIDGET_TEST_IDS.SECURITY_LEVEL_CONTROLS}
+    >
       {/* Widget Header */}
       <div className="flex items-center mb-6">
         <div className="text-2xl mr-2">{WIDGET_ICONS.SECURITY_LEVEL}</div>
@@ -136,7 +142,7 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
           {/* Replace custom div with ValueDisplay */}
           <div className="ml-auto">
             <ValueDisplay
-              value={availability}
+              value={availabilityLevel}
               variant="primary"
               size="sm"
               testId="availability-selected-level"
@@ -146,15 +152,16 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
 
         <Selection
           id="availability-select"
-          data-testid="availability-select"
+          data-testid={CIA_TEST_IDS.AVAILABILITY_SELECT}
+          testId={CIA_TEST_IDS.AVAILABILITY_SELECT} // Add explicit testId
           label=""
-          value={availability}
+          value={availabilityLevel}
           options={availabilityOptions}
-          onChange={setAvailability}
+          onChange={onAvailabilityChange}
           contextInfo={getSecurityContextInfo(
             "availability",
             availabilityOptions,
-            availability
+            availabilityLevel
           )}
         />
 
@@ -162,28 +169,28 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
         <div className="mt-3 flex items-center">
           <div
             className="w-4 h-4 rounded-full mr-2"
-            style={{ backgroundColor: getLevelColor(availability) }}
+            style={{ backgroundColor: getLevelColor(availabilityLevel) }}
             data-testid="availability-color-indicator"
-            data-testvalue={availability} // Add data-testvalue attribute for easier testing
+            data-testvalue={availabilityLevel} // Add data-testvalue attribute for easier testing
             aria-hidden="true"
           ></div>
           <p
             className="text-sm text-gray-700 dark:text-gray-300 flex-grow"
             data-testid="availability-description"
-            data-testlevel={availability} // Add level information for test verification
+            data-testlevel={availabilityLevel} // Add level information for test verification
           >
             <span data-testid="availability-description-text">
-              {availabilityOptions[availability]?.description ||
+              {availabilityOptions[availabilityLevel]?.description ||
                 "No description available."}
             </span>
-            {availabilityOptions[availability]?.uptime && (
+            {availabilityOptions[availabilityLevel]?.uptime && (
               <StatusBadge
                 status="info"
                 size="xs"
                 testId="availability-uptime-badge"
                 className="ml-1"
               >
-                {availabilityOptions[availability].uptime} uptime
+                {availabilityOptions[availabilityLevel].uptime} uptime
               </StatusBadge>
             )}
           </p>
@@ -206,13 +213,16 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
           >
             <KeyValuePair
               label="Technical Implementation"
-              value={getTechnicalDetails(availabilityOptions, availability)}
+              value={getTechnicalDetails(
+                availabilityOptions,
+                availabilityLevel
+              )}
               testId="availability-technical-details"
             />
-            {availabilityOptions[availability]?.businessImpact && (
+            {availabilityOptions[availabilityLevel]?.businessImpact && (
               <KeyValuePair
                 label="Business Impact"
-                value={availabilityOptions[availability].businessImpact}
+                value={availabilityOptions[availabilityLevel].businessImpact}
                 testId="availability-business-impact"
                 className="mt-1"
               />
@@ -236,7 +246,7 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
           </label>
           <div className="ml-auto">
             <ValueDisplay
-              value={integrity}
+              value={integrityLevel}
               variant="success"
               size="sm"
               testId="integrity-selected-level"
@@ -246,15 +256,16 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
 
         <Selection
           id="integrity-select"
-          data-testid="integrity-select"
+          data-testid={CIA_TEST_IDS.INTEGRITY_SELECT}
+          testId={CIA_TEST_IDS.INTEGRITY_SELECT} // Add explicit testId
           label=""
-          value={integrity}
+          value={integrityLevel}
           options={integrityOptions}
-          onChange={setIntegrity}
+          onChange={onIntegrityChange}
           contextInfo={getSecurityContextInfo(
             "integrity",
             integrityOptions,
-            integrity
+            integrityLevel
           )}
         />
 
@@ -262,28 +273,28 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
         <div className="mt-3 flex items-center">
           <div
             className="w-4 h-4 rounded-full mr-2"
-            style={{ backgroundColor: getLevelColor(integrity) }}
+            style={{ backgroundColor: getLevelColor(integrityLevel) }}
             data-testid="integrity-color-indicator"
-            data-testvalue={integrity} // Add data-testvalue attribute
+            data-testvalue={integrityLevel} // Add data-testvalue attribute
             aria-hidden="true"
           ></div>
           <p
             className="text-sm text-gray-700 dark:text-gray-300 flex-grow"
             data-testid="integrity-description"
-            data-testlevel={integrity} // Add level information
+            data-testlevel={integrityLevel} // Add level information
           >
             <span data-testid="integrity-description-text">
-              {integrityOptions[integrity]?.description ||
+              {integrityOptions[integrityLevel]?.description ||
                 "No description available."}
             </span>
-            {integrityOptions[integrity]?.validationMethod && (
+            {integrityOptions[integrityLevel]?.validationMethod && (
               <StatusBadge
                 status="success"
                 size="xs"
                 testId="integrity-validation-badge"
                 className="ml-1"
               >
-                {integrityOptions[integrity].validationMethod}
+                {integrityOptions[integrityLevel].validationMethod}
               </StatusBadge>
             )}
           </p>
@@ -305,13 +316,13 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
           >
             <KeyValuePair
               label="Technical Implementation"
-              value={getTechnicalDetails(integrityOptions, integrity)}
+              value={getTechnicalDetails(integrityOptions, integrityLevel)}
               testId="integrity-technical-details"
             />
-            {integrityOptions[integrity]?.businessImpact && (
+            {integrityOptions[integrityLevel]?.businessImpact && (
               <KeyValuePair
                 label="Business Impact"
-                value={integrityOptions[integrity].businessImpact}
+                value={integrityOptions[integrityLevel].businessImpact}
                 testId="integrity-business-impact"
                 className="mt-1"
               />
@@ -335,7 +346,7 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
           </label>
           <div className="ml-auto">
             <ValueDisplay
-              value={confidentiality}
+              value={confidentialityLevel}
               variant="info"
               size="sm"
               testId="confidentiality-selected-level"
@@ -345,15 +356,16 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
 
         <Selection
           id="confidentiality-select"
-          data-testid="confidentiality-select"
+          data-testid={CIA_TEST_IDS.CONFIDENTIALITY_SELECT}
+          testId={CIA_TEST_IDS.CONFIDENTIALITY_SELECT} // Add explicit testId
           label=""
-          value={confidentiality}
+          value={confidentialityLevel}
           options={confidentialityOptions}
-          onChange={setConfidentiality}
+          onChange={onConfidentialityChange}
           contextInfo={getSecurityContextInfo(
             "confidentiality",
             confidentialityOptions,
-            confidentiality
+            confidentialityLevel
           )}
         />
 
@@ -361,28 +373,28 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
         <div className="mt-3 flex items-center">
           <div
             className="w-4 h-4 rounded-full mr-2"
-            style={{ backgroundColor: getLevelColor(confidentiality) }}
+            style={{ backgroundColor: getLevelColor(confidentialityLevel) }}
             data-testid="confidentiality-color-indicator"
-            data-testvalue={confidentiality} // Add data-testvalue attribute
+            data-testvalue={confidentialityLevel} // Add data-testvalue attribute
             aria-hidden="true"
           ></div>
           <p
             className="text-sm text-gray-700 dark:text-gray-300 flex-grow"
             data-testid="confidentiality-description"
-            data-testlevel={confidentiality} // Add level information
+            data-testlevel={confidentialityLevel} // Add level information
           >
             <span data-testid="confidentiality-description-text">
-              {confidentialityOptions[confidentiality]?.description ||
+              {confidentialityOptions[confidentialityLevel]?.description ||
                 "No description available."}
             </span>
-            {confidentialityOptions[confidentiality]?.protectionMethod && (
+            {confidentialityOptions[confidentialityLevel]?.protectionMethod && (
               <StatusBadge
                 status="info"
                 size="xs"
                 testId="confidentiality-protection-badge"
                 className="ml-1"
               >
-                {confidentialityOptions[confidentiality].protectionMethod}
+                {confidentialityOptions[confidentialityLevel].protectionMethod}
               </StatusBadge>
             )}
           </p>
@@ -406,14 +418,16 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
               label="Technical Implementation"
               value={getTechnicalDetails(
                 confidentialityOptions,
-                confidentiality
+                confidentialityLevel
               )}
               testId="confidentiality-technical-details"
             />
-            {confidentialityOptions[confidentiality]?.businessImpact && (
+            {confidentialityOptions[confidentialityLevel]?.businessImpact && (
               <KeyValuePair
                 label="Business Impact"
-                value={confidentialityOptions[confidentiality].businessImpact}
+                value={
+                  confidentialityOptions[confidentialityLevel].businessImpact
+                }
                 testId="confidentiality-business-impact"
                 className="mt-1"
               />

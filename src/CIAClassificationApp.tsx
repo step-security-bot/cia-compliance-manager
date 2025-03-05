@@ -11,8 +11,9 @@ import CostEstimationWidget from "./components/widgets/CostEstimationWidget";
 import SecuritySummaryWidget from "./components/widgets/SecuritySummaryWidget";
 import ValueCreationWidget from "./components/widgets/ValueCreationWidget";
 import ComplianceStatusWidget from "./components/widgets/ComplianceStatusWidget";
-import CombinedBusinessImpactWidget from "./components/widgets/CombinedBusinessImpactWidget";
+import BusinessImpactWidget from "./components/widgets/CombinedBusinessImpactWidget";
 import { WIDGET_ICONS } from "./constants/appConstants";
+import { APP_TEST_IDS } from "./constants/testIds";
 import { safeAccess } from "./utils/typeGuards";
 
 const CIAClassificationApp: React.FC = () => {
@@ -125,20 +126,20 @@ const CIAClassificationApp: React.FC = () => {
   return (
     <div
       className={`app-container ${darkMode ? "dark bg-pattern" : ""}`}
-      data-testid="app-container"
+      data-testid={APP_TEST_IDS.APP_CONTAINER}
     >
       <div className="min-h-screen bg-gray-100 dark:bg-gray-900 p-6 transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
           <div className="bg-white dark:bg-gray-800 shadow-lg rounded-xl p-6 mb-6 transition-colors duration-300">
             <div className="flex items-center justify-between mb-6">
               <h1
-                data-testid="app-title"
+                data-testid={APP_TEST_IDS.APP_TITLE}
                 className="text-2xl font-bold text-gray-800 dark:text-gray-100 transition-colors duration-300"
               >
                 CIA Compliance Manager Dashboard
               </h1>
               <button
-                data-testid="theme-toggle"
+                data-testid={APP_TEST_IDS.THEME_TOGGLE}
                 onClick={toggleDarkMode}
                 className={`px-4 py-2 rounded-md flex items-center transition-all duration-300 ${
                   darkMode
@@ -161,11 +162,7 @@ const CIAClassificationApp: React.FC = () => {
               </button>
             </div>
 
-            <Dashboard
-              availability={availability}
-              integrity={integrity}
-              confidentiality={confidentiality}
-            >
+            <Dashboard>
               {/* Row 1 */}
               <DashboardWidget
                 title="Security Profile Configuration"
@@ -173,12 +170,12 @@ const CIAClassificationApp: React.FC = () => {
                 testId="widget-security-level-selection"
               >
                 <SecurityLevelWidget
-                  availability={availability}
-                  integrity={integrity}
-                  confidentiality={confidentiality}
-                  setAvailability={setAvailability}
-                  setIntegrity={setIntegrity}
-                  setConfidentiality={setConfidentiality}
+                  availabilityLevel={availability}
+                  integrityLevel={integrity}
+                  confidentialityLevel={confidentiality}
+                  onAvailabilityChange={setAvailability}
+                  onIntegrityChange={setIntegrity}
+                  onConfidentialityChange={setConfidentiality}
                   availabilityOptions={availabilityOptions}
                   integrityOptions={integrityOptions}
                   confidentialityOptions={confidentialityOptions}
@@ -227,7 +224,7 @@ const CIAClassificationApp: React.FC = () => {
                 icon={WIDGET_ICONS.BUSINESS_IMPACT}
                 testId="widget-business-impact"
               >
-                <CombinedBusinessImpactWidget
+                <BusinessImpactWidget
                   availability={availability}
                   integrity={integrity}
                   confidentiality={confidentiality}

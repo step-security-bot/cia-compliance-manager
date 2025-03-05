@@ -12,6 +12,7 @@ interface CostEstimationWidgetProps {
   isSmallSolution: boolean;
   roi?: string;
   implementationTime?: string;
+  testId?: string;
 }
 
 const CostEstimationWidget: React.FC<CostEstimationWidgetProps> = ({
