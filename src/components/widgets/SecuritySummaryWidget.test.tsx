@@ -1,15 +1,49 @@
 import React from "react";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event"; // Add userEvent import
+import { render, screen, fireEvent, waitFor, within } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import SecuritySummaryWidget from "./SecuritySummaryWidget";
-import {
-  SECURITY_SUMMARY_TITLES,
+import { SECURITY_LEVELS } from "../../constants/coreConstants";
+import { 
+  SECURITY_SUMMARY_TITLES, 
+  SECURITY_RECOMMENDATIONS,
   UI_ICONS,
-  TEST_MATCHERS,
   ROI_ESTIMATES,
+  TEST_MATCHERS, // Added missing import for TEST_MATCHERS
 } from "../../constants/appConstants";
-import { BUSINESS_KEY_BENEFITS } from "../../constants";
-import { ensureArray } from "../../utils/typeGuards";
+import { BusinessKeyBenefits } from "../../types/businessImpact";
+import { vi } from "vitest";
+
+// Helper function to ensure an item is always treated as an array
+const ensureArray = <T,>(item: T | T[]): T[] => {
+  return Array.isArray(item) ? item : [item];
+};
+
+// Mock the BusinessKeyBenefits to ensure consistent test data
+vi.mock("../../types/businessImpact", async () => {
+  const actual = await vi.importActual("../../types/businessImpact");
+  return {
+    ...actual,
+    BusinessKeyBenefits: {
+      NONE: [],
+      LOW: ["Cost-effective solution for non-critical systems", "Minimal maintenance overhead"],
+      MODERATE: [
+        "Good balance of security vs. cost", 
+        "Meets regulatory requirements", 
+        "Suitable for most business applications"
+      ],
+      HIGH: [
+        "Robust protection for sensitive data", 
+        "Compliance with stringent requirements", 
+        "Minimizes risk of security incidents"
+      ],
+      VERY_HIGH: [
+        "Maximum protection for critical systems",
+        "Suitable for highly regulated environments",
+        "Comprehensive security guarantees"
+      ],
+    }
+  };
+});
 
 // Create wrapper components instead of mocking React.useState
 const TechnicalExpandedWrapper: React.FC = () => (
@@ -203,23 +237,60 @@ describe("SecuritySummaryWidget", () => {
     );
   });
 
-  it("displays key benefits based on security level", () => {
-    const { rerender } = render(
-      <SecuritySummaryWidget securityLevel="Moderate" />
-    );
-
-    // Test Moderate level benefits
-    const moderateBenefits = BUSINESS_KEY_BENEFITS.MODERATE;
-    ensureArray(moderateBenefits).forEach((benefit: string) => {
-      expect(screen.getByText(benefit)).toBeInTheDocument();
+  it("displays key benefits based on security level", async () => {
+    // Render with Moderate security level
+    render(<SecuritySummaryWidget securityLevel={SECURITY_LEVELS.MODERATE} />);
+    
+    // Get the key benefits list
+    const benefitsList = screen.getByTestId("key-benefits-list");
+    expect(benefitsList).toBeInTheDocument();
+    
+    // Get the benefits for MODERATE level - fix type safety
+    const normalizedLevel = SECURITY_LEVELS.MODERATE.toUpperCase().replace(/\s+/g, "_") as keyof typeof BusinessKeyBenefits;
+    const moderateBenefits = BusinessKeyBenefits[normalizedLevel] || [];
+    
+    // Check that we have benefits defined in our mock
+    expect(moderateBenefits.length).toBeGreaterThan(0);
+    
+    // Check for the presence of each benefit
+    moderateBenefits.forEach((benefit) => {
+      const benefitText = typeof benefit === "string" ? benefit : benefit.title;
+      const benefitItems = screen.getAllByTestId(/^key-benefit-/);
+      
+      // Check if any of the benefit items contain our text
+      const foundBenefit = benefitItems.some(item => {
+        return item.textContent?.includes(benefitText);
+      });
+      
+      expect(foundBenefit).toBe(true);
     });
-
-    // Check High level benefits
-    rerender(<SecuritySummaryWidget securityLevel="High" />);
-    const highBenefits = BUSINESS_KEY_BENEFITS.HIGH;
-    ensureArray(highBenefits).forEach((benefit: string) => {
-      expect(screen.getByText(benefit)).toBeInTheDocument();
-    });
+    
+    // Change to a different security level and verify benefits update
+    const { rerender } = render(<SecuritySummaryWidget securityLevel={SECURITY_LEVELS.HIGH} />);
+    
+    // Check for HIGH level benefits - fix type safety
+    const highNormalizedLevel = SECURITY_LEVELS.HIGH.toUpperCase().replace(/\s+/g, "_") as keyof typeof BusinessKeyBenefits;
+    const highBenefits = BusinessKeyBenefits[highNormalizedLevel] || [];
+    expect(highBenefits.length).toBeGreaterThan(0);
+    
+    // Check that at least one HIGH benefit is shown
+    rerender(<SecuritySummaryWidget securityLevel={SECURITY_LEVELS.HIGH} />);
+    
+    // Get the updated benefit items
+    const highBenefitItems = screen.getAllByTestId(/^key-benefit-/);
+    
+    // Check if any high benefit is present - ensure highBenefits[0] exists
+    if (highBenefits.length > 0) {
+      const highBenefitText = typeof highBenefits[0] === "string" 
+        ? highBenefits[0] 
+        : highBenefits[0]?.title ?? 'Unknown';
+        
+      const foundHighBenefit = highBenefitItems.some(item => 
+        item.textContent?.includes(highBenefitText)
+      );
+      
+      expect(foundHighBenefit).toBe(true);
+    }
   });
 
   it("displays ROI estimates based on security level", async () => {

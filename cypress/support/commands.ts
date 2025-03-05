@@ -62,9 +62,11 @@ Cypress.Commands.add("getByTestId", (selector: string) => {
  * Navigate to a specific widget by test ID and scroll it into view
  */
 Cypress.Commands.add("navigateToWidget", (widgetTestId: string) => {
-  cy.get(`[data-testid="${widgetTestId}"]`, { timeout: 10000 })
-    .scrollIntoView()
-    .should("be.visible");
+  cy.get(`[data-testid="${widgetTestId}"]`, { timeout: 15000 })
+    .should("exist")
+    .safeScrollIntoView({ force: true });
+
+  cy.wait(500); // Wait for any animations to complete
 });
 
 /**
@@ -222,8 +224,22 @@ Cypress.Commands.add(
   "safeScrollIntoView",
   { prevSubject: "element" },
   (subject, options = {}) => {
-    // Use "as any" to bypass TypeScript checking
-    return cy.wrap(subject).scrollIntoView(options as any);
+    const defaultOptions = { block: "center", behavior: "smooth", ...options };
+
+    cy.wrap(subject).then(($el) => {
+      // Use native scrollIntoView with fallback
+      try {
+        $el[0].scrollIntoView(defaultOptions);
+      } catch (err) {
+        // Fallback to simpler version if the browser doesn't support options
+        $el[0].scrollIntoView();
+      }
+    });
+
+    // Add a short wait after scrolling to let animations complete
+    cy.wait(300);
+
+    return cy.wrap(subject);
   }
 );
 

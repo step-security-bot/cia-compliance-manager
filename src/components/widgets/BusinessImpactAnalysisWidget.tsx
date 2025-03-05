@@ -1,17 +1,20 @@
 import React, { useState } from "react";
+import { WIDGET_ICONS, SECURITY_LEVEL_COLORS } from "../../constants";
 import {
-  WIDGET_ICONS,
-  SECURITY_LEVEL_COLORS,
   BUSINESS_CONSIDERATIONS,
   BUSINESS_KEY_BENEFITS,
-  RISK_LEVELS,
-} from "../../constants";
+} from "../../constants/businessConstants";
 import { CIADetails } from "../../types/cia"; // Removed SecurityLevelKey import
-import { BusinessConsiderationItem } from "../../types/businessImpact";
+import { BusinessConsideration } from "../../types/businessImpact";
 import StatusBadge from "../common/StatusBadge";
 import ValueDisplay from "../common/ValueDisplay";
 import KeyValuePair from "../common/KeyValuePair";
 import MetricsCard from "../common/MetricsCard";
+import {
+  RISK_LEVELS, // Keep only this one
+  BUSINESS_IMPACT_CATEGORIES,
+} from "../../constants/riskConstants";
+import { BUSINESS_IMPACT_ICONS } from "../../constants/uiConstants";
 
 interface BusinessImpactAnalysisWidgetProps {
   category: "Availability" | "Integrity" | "Confidentiality";
@@ -59,9 +62,11 @@ const BusinessImpactAnalysisWidget: React.FC<
 
   // Helper to get risk status for StatusBadge
   const getRiskStatus = (
-    risk: string
+    risk?: string
   ): "success" | "warning" | "error" | "info" | "neutral" => {
-    switch (risk) {
+    const safeRisk = risk || "MEDIUM"; // Use a default value if risk is undefined
+
+    switch (safeRisk) {
       case RISK_LEVELS.CRITICAL:
         return "error";
       case RISK_LEVELS.HIGH:
@@ -134,25 +139,23 @@ const BusinessImpactAnalysisWidget: React.FC<
   };
 
   // Helper to get icon for impact type
-  const getImpactIcon = (type: string): string => {
-    const normalizedType = type.toUpperCase();
+  const getImpactIcon = (type?: string): React.ReactNode => {
+    const safeType = type || "NEUTRAL"; // Use a default value if type is undefined
 
-    // Direct mapping is simpler and more testable
-    if (normalizedType.includes("FINANCIAL"))
-      return enhancedIcons.IMPACT_TYPES.FINANCIAL;
-    if (normalizedType.includes("OPERATION"))
-      return enhancedIcons.IMPACT_TYPES.OPERATIONAL;
-    if (normalizedType.includes("REPUTATION"))
-      return enhancedIcons.IMPACT_TYPES.REPUTATIONAL;
-    if (normalizedType.includes("REGUL"))
-      return enhancedIcons.IMPACT_TYPES.REGULATORY;
-    if (normalizedType.includes("STRATEGIC"))
-      return enhancedIcons.IMPACT_TYPES.STRATEGIC;
-    if (normalizedType.includes("SECURITY"))
-      return enhancedIcons.IMPACT_TYPES.SECURITY;
-
-    // Default fallback
-    return enhancedIcons.IMPACT_TYPES.OPERATIONAL;
+    switch (safeType) {
+      case BUSINESS_IMPACT_CATEGORIES.FINANCIAL:
+        return <span>{BUSINESS_IMPACT_ICONS.FINANCIAL}</span>;
+      case BUSINESS_IMPACT_CATEGORIES.OPERATIONAL:
+        return <span>{BUSINESS_IMPACT_ICONS.OPERATIONAL}</span>;
+      case BUSINESS_IMPACT_CATEGORIES.REPUTATIONAL:
+        return <span>{BUSINESS_IMPACT_ICONS.REPUTATIONAL}</span>;
+      case BUSINESS_IMPACT_CATEGORIES.REGULATORY:
+        return <span>{BUSINESS_IMPACT_ICONS.REGULATORY}</span>;
+      case BUSINESS_IMPACT_CATEGORIES.STRATEGIC:
+        return <span>{BUSINESS_IMPACT_ICONS.STRATEGIC}</span>;
+      default:
+        return <span>{BUSINESS_IMPACT_ICONS.NEUTRAL}</span>;
+    }
   };
 
   const considerations = getBusinessConsiderations();
@@ -359,7 +362,7 @@ const BusinessImpactAnalysisWidget: React.FC<
             ) : (
               <ul className="space-y-2">
                 {considerations.map(
-                  (item: BusinessConsiderationItem, index: number) => (
+                  (item: BusinessConsideration, index: number) => (
                     <li
                       key={index}
                       className="border border-gray-200 dark:border-gray-700 rounded-md p-3 bg-gray-50 dark:bg-gray-700"
@@ -383,12 +386,10 @@ const BusinessImpactAnalysisWidget: React.FC<
                         />
                         <StatusBadge
                           status={getRiskStatus(item.risk)}
-                          testId={`risk-level-${index}`}
+                          size="xs"
+                          testId={`risk-badge-${index}`}
                         >
-                          {enhancedIcons.SEVERITY[
-                            item.risk as keyof typeof enhancedIcons.SEVERITY
-                          ] || ""}{" "}
-                          {item.risk}
+                          {item.risk || "Unknown Risk"}
                         </StatusBadge>
                       </div>
                       <p
@@ -430,16 +431,18 @@ const BusinessImpactAnalysisWidget: React.FC<
               </p>
             ) : (
               <ul className="space-y-2">
-                {benefits.map((benefit: string, index: number) => (
+                {benefits.map((benefit, index: number) => (
                   <li
-                    key={index}
-                    className="flex items-center bg-gray-50 dark:bg-gray-700 p-2 rounded-md border border-gray-200 dark:border-gray-600"
+                    key={`benefit-${index}`}
+                    className="text-sm font-medium bg-green-50 dark:bg-green-900 p-2 rounded-md flex items-start gap-2"
                     data-testid={`benefit-item-${index}`}
                   >
-                    <StatusBadge status="success" size="xs">
+                    <span className="text-green-600 dark:text-green-400 mt-0.5">
                       ✓
-                    </StatusBadge>
-                    <span className="text-sm font-medium ml-2">{benefit}</span>
+                    </span>
+                    <span className="text-gray-800 dark:text-gray-200">
+                      {typeof benefit === "string" ? benefit : benefit.title}
+                    </span>
                   </li>
                 ))}
               </ul>

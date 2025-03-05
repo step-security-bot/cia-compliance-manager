@@ -1,44 +1,35 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import ValueCreationWidget from "./ValueCreationWidget";
-import {
-  TEST_CIA_LEVELS,
-  TEST_HELPERS,
-  TEST_DATA,
-} from "../../constants/testConstants";
-import { SECURITY_LEVELS, VALUE_CREATION_POINTS } from "../../constants";
+import { SECURITY_LEVELS } from "../../constants/coreConstants";
+import { VALUE_CREATION_POINTS } from "../../constants/businessConstants"; // Updated import path
 import { UI_TEXT } from "../../constants/coreConstants";
-import { renderWithProviders } from "../../utils/componentTestUtils";
+import { WIDGET_TEST_IDS } from "../../constants/testIds";
+
+// Define test constants locally instead of importing them
+const TEST_SECURITY_LEVELS = {
+  NONE: "None",
+  LOW: "Low",
+  MODERATE: "Moderate",
+  HIGH: "High",
+  VERY_HIGH: "Very High",
+};
 
 describe("ValueCreationWidget", () => {
   it("renders the widget with None level", () => {
-    renderWithProviders(
-      <ValueCreationWidget
-        availability={TEST_CIA_LEVELS.NONE}
-        integrity={TEST_CIA_LEVELS.NONE}
-        confidentiality={TEST_CIA_LEVELS.NONE}
-        securityLevel={TEST_CIA_LEVELS.NONE}
-      />
-    );
+    render(<ValueCreationWidget securityLevel={TEST_SECURITY_LEVELS.NONE} />);
 
-    // Instead of checking for "None", we check that the title matches the constant
-    expect(screen.getByTestId("value-creation-title")).toHaveTextContent(
-      UI_TEXT.VALUE_CREATION.NONE_TITLE
-    );
+    // Use constant for testId instead of hardcoded string
+    expect(
+      screen.getByTestId(WIDGET_TEST_IDS.VALUE_CREATION_TITLE)
+    ).toHaveTextContent(UI_TEXT.VALUE_CREATION.NONE_TITLE);
     expect(
       screen.getByText(/Business value derived from this security profile/i)
     ).toBeInTheDocument();
   });
 
   it("renders the widget with High level", () => {
-    renderWithProviders(
-      <ValueCreationWidget
-        availability={TEST_CIA_LEVELS.HIGH}
-        integrity={TEST_CIA_LEVELS.HIGH}
-        confidentiality={TEST_CIA_LEVELS.HIGH}
-        securityLevel={TEST_CIA_LEVELS.HIGH}
-      />
-    );
+    render(<ValueCreationWidget securityLevel={TEST_SECURITY_LEVELS.HIGH} />);
 
     // Expect title to match widget output – for example, "High Value Creation"
     expect(screen.getByText("High Value Creation")).toBeInTheDocument();
@@ -58,12 +49,10 @@ describe("ValueCreationWidget", () => {
 
   // Remove outdated percentage expectation; instead, check ROI ends with "x"
   it("calculates ROI correctly", () => {
-    render(
-      <ValueCreationWidget
-        securityLevel="None" /* ...other props if needed... */
-      />
-    );
-    const roiText = screen.getByTestId("roi-value").textContent || "";
+    render(<ValueCreationWidget securityLevel={TEST_SECURITY_LEVELS.NONE} />);
+    // Use constant for testId
+    const roiText =
+      screen.getByTestId(WIDGET_TEST_IDS.ROI_VALUE).textContent || "";
     const capexValue = 100; // Assuming these are the values that lead to negative ROI
     const opexValue = 50;
     const valueCreation = 20; // Value too low compared to costs
@@ -78,13 +67,8 @@ describe("ValueCreationWidget", () => {
   });
 
   it("displays different value propositions based on security levels", () => {
-    const { rerender } = renderWithProviders(
-      <ValueCreationWidget
-        availability={TEST_CIA_LEVELS.LOW}
-        integrity={TEST_CIA_LEVELS.LOW}
-        confidentiality={TEST_CIA_LEVELS.LOW}
-        securityLevel={TEST_CIA_LEVELS.LOW}
-      />
+    const { rerender } = render(
+      <ValueCreationWidget securityLevel={TEST_SECURITY_LEVELS.LOW} />
     );
 
     // For Low security, check specific value propositions
@@ -99,14 +83,7 @@ describe("ValueCreationWidget", () => {
     }
 
     // Now test High security
-    rerender(
-      <ValueCreationWidget
-        availability={TEST_CIA_LEVELS.HIGH}
-        integrity={TEST_CIA_LEVELS.HIGH}
-        confidentiality={TEST_CIA_LEVELS.HIGH}
-        securityLevel={TEST_CIA_LEVELS.HIGH}
-      />
-    );
+    rerender(<ValueCreationWidget securityLevel={TEST_SECURITY_LEVELS.HIGH} />);
 
     // For High security, check specific value propositions
     const highValuePoints =

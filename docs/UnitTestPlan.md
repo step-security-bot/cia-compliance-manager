@@ -106,6 +106,9 @@ import {
 Use `createMockOptions()` to generate security level options for component testing:
 
 ```typescript
+import { CIA_TEST_IDS, WIDGET_TEST_IDS } from "../../constants/testIds";
+import { CIA_LABELS } from "../../constants/appConstants";
+
 // Mock availability options for testing
 const mockAvailabilityOptions = createMockOptions(["None", "Low"]);
 
@@ -116,6 +119,10 @@ render(
     {...otherProps}
   />
 );
+
+// Verify rendering using testIds and constants
+const availabilityLabel = screen.getByTestId(CIA_TEST_IDS.AVAILABILITY_LABEL);
+expect(availabilityLabel).toHaveTextContent(CIA_LABELS.AVAILABILITY);
 ```
 
 ### 2. Creating Complete SecurityLevelInfo
@@ -123,12 +130,20 @@ render(
 For tests requiring a complete SecurityLevelInfo structure:
 
 ```typescript
+import { WIDGET_TEST_IDS } from "../../constants/testIds";
+
 const mockSecurityInfo = createMockSecurityLevelInfo();
 
-// Access security level properties directly
-expect(mockSecurityInfo.Moderate.description).toBe(
-  "Moderate level description"
+render(
+  <SecuritySummaryWidget
+    securityInfo={mockSecurityInfo}
+    securityLevel={SECURITY_LEVELS.MODERATE}
+  />
 );
+
+// Verify using testIds and constants
+const summaryTitle = screen.getByTestId(WIDGET_TEST_IDS.SECURITY_SUMMARY_TITLE);
+expect(summaryTitle).toHaveTextContent(SECURITY_SUMMARY_TITLES.MODERATE);
 ```
 
 ### 3. Creating Mock Event Handlers
@@ -136,6 +151,8 @@ expect(mockSecurityInfo.Moderate.description).toBe(
 Use standard handlers for interaction tests:
 
 ```typescript
+import { CIA_TEST_IDS } from "../../constants/testIds";
+
 const handlers = createMockHandlers();
 
 render(
@@ -147,9 +164,12 @@ render(
   />
 );
 
-// Test interactions
-await userEvent.selectOptions(screen.getByTestId("availability-select"), "Low");
-expect(handlers.setAvailability).toHaveBeenCalledWith("Low");
+// Test interactions using testIds
+await userEvent.selectOptions(
+  screen.getByTestId(CIA_TEST_IDS.AVAILABILITY_SELECT),
+  SECURITY_LEVELS.LOW
+);
+expect(handlers.setAvailability).toHaveBeenCalledWith(SECURITY_LEVELS.LOW);
 ```
 
 ## Constants-Driven Testing Strategy
@@ -159,6 +179,7 @@ expect(handlers.setAvailability).toHaveBeenCalledWith("Low");
 Use constants from `appConstants.ts` to verify UI text and behavior:
 
 ```typescript
+import { CIA_TEST_IDS } from "../../constants/testIds";
 import {
   SECURITY_LEVELS,
   CIA_LABELS,
@@ -168,7 +189,14 @@ import {
 // Test using constants
 it("displays correct security level text", () => {
   render(<SecurityLevelWidget {...props} />);
-  expect(screen.getByText(SECURITY_LEVELS.LOW)).toBeInTheDocument();
+
+  const availabilitySelect = screen.getByTestId(
+    CIA_TEST_IDS.AVAILABILITY_SELECT
+  );
+  expect(availabilitySelect).toHaveValue(SECURITY_LEVELS.LOW);
+
+  const availabilityLabel = screen.getByTestId(CIA_TEST_IDS.AVAILABILITY_LABEL);
+  expect(availabilityLabel).toHaveTextContent(CIA_LABELS.AVAILABILITY);
 });
 ```
 
@@ -177,6 +205,7 @@ it("displays correct security level text", () => {
 Use test matchers and utilities defined in appConstants:
 
 ```typescript
+import { FRAMEWORK_TEST_IDS } from "../../constants/testIds";
 import {
   getPartialTextMatcher,
   TEST_MATCHERS,
@@ -185,10 +214,23 @@ import {
 it("displays compliance framework names", () => {
   render(<ComplianceStatusWidget {...props} />);
 
-  const frameworks = screen.getAllByText(
-    TEST_MATCHERS.COMPLIANCE_FRAMEWORKS_REGEX
+  // Find elements by testId first, then check their content
+  const frameworkContainer = screen.getByTestId(
+    FRAMEWORK_TEST_IDS.COMPLIANCE_FRAMEWORKS_CONTAINER
   );
-  expect(frameworks.length).toBeGreaterThan(0);
+  const frameworkElements =
+    within(frameworkContainer).getAllByTestId(/^framework-item-/);
+
+  // Verify at least one framework is shown
+  expect(frameworkElements.length).toBeGreaterThan(0);
+
+  // Verify framework names match the expected pattern
+  const frameworkTexts = frameworkElements.map((el) => el.textContent || "");
+  expect(
+    frameworkTexts.some((text) =>
+      TEST_MATCHERS.COMPLIANCE_FRAMEWORKS_REGEX.test(text)
+    )
+  ).toBe(true);
 });
 ```
 
@@ -197,11 +239,26 @@ it("displays compliance framework names", () => {
 Use test data objects from appConstants for consistent testing:
 
 ```typescript
+import { CIA_TEST_IDS } from "../../constants/testIds";
 import { TEST_DATA } from "../../constants/appConstants";
 
 it("renders with test options", () => {
-  render(<SomeComponent options={TEST_DATA.MOCK_OPTIONS.LOW} />);
-  // Assertions...
+  render(
+    <SecurityLevelWidget
+      confidentialityOptions={TEST_DATA.MOCK_OPTIONS.LOW}
+      data-testid="security-widget"
+    />
+  );
+
+  // Find widget using testId
+  const widget = screen.getByTestId("security-widget");
+  expect(widget).toBeInTheDocument();
+
+  // Verify content using test data
+  const description = screen.getByTestId(
+    CIA_TEST_IDS.CONFIDENTIALITY_DESCRIPTION
+  );
+  expect(description).toHaveTextContent(TEST_DATA.MOCK_OPTIONS.LOW.description);
 });
 ```
 
@@ -210,6 +267,8 @@ it("renders with test options", () => {
 When testing components that display business impact information:
 
 ```typescript
+import { BUSINESS_IMPACT_TEST_IDS, getTestId } from "../../constants/testIds";
+
 // Create options with businessImpactDetails
 const optionsWithBusinessImpact = {
   ...mockAvailabilityOptions,
@@ -218,7 +277,7 @@ const optionsWithBusinessImpact = {
     businessImpactDetails: {
       financialImpact: {
         description: "Financial impact description",
-        riskLevel: "HIGH",
+        riskLevel: RISK_LEVELS.HIGH,
         annualRevenueLoss: "$500,000",
       },
       operationalImpact: {
@@ -231,15 +290,26 @@ const optionsWithBusinessImpact = {
 
 render(
   <BusinessImpactAnalysisWidget
-    category="Availability"
-    level="High"
+    category={BUSINESS_IMPACT_CATEGORIES.FINANCIAL}
+    level={SECURITY_LEVELS.HIGH}
     options={optionsWithBusinessImpact}
+    data-testid="business-impact-widget"
   />
 );
 
-// Verify business impact details are displayed
-expect(screen.getByText(/Financial impact/i)).toBeInTheDocument();
-expect(screen.getByText(/\$500,000/i)).toBeInTheDocument();
+// Verify business impact details are displayed using testIds and constants
+const widget = screen.getByTestId("business-impact-widget");
+expect(widget).toBeInTheDocument();
+
+const financialSection = screen.getByTestId(
+  BUSINESS_IMPACT_TEST_IDS.FINANCIAL_IMPACT_SECTION
+);
+expect(financialSection).toHaveTextContent(/Financial impact description/i);
+
+const riskBadge = screen.getByTestId(
+  BUSINESS_IMPACT_TEST_IDS.FINANCIAL_RISK_BADGE
+);
+expect(riskBadge).toHaveTextContent(RISK_LEVELS.HIGH);
 ```
 
 ## Mocking useCIAOptions Hook
@@ -248,71 +318,126 @@ For tests that need to mock the entire hook:
 
 ```typescript
 import { vi } from "vitest";
+import { SECURITY_LEVELS } from "../../constants/appConstants";
 
 // Mock the entire hook
 vi.mock("../hooks/useCIAOptions", () => ({
   useCIAOptions: () => ({
-    availabilityOptions: createMockOptions(["None", "Low"]),
-    integrityOptions: createMockOptions(["None", "Low"]),
-    confidentialityOptions: createMockOptions(["None", "Low"]),
+    availabilityOptions: createMockOptions([
+      SECURITY_LEVELS.NONE,
+      SECURITY_LEVELS.LOW,
+    ]),
+    integrityOptions: createMockOptions([
+      SECURITY_LEVELS.NONE,
+      SECURITY_LEVELS.LOW,
+    ]),
+    confidentialityOptions: createMockOptions([
+      SECURITY_LEVELS.NONE,
+      SECURITY_LEVELS.LOW,
+    ]),
   }),
 }));
 ```
 
 ## TestID Selection Strategy
 
-### 1. Component TestIDs
+### 1. Using Centralized Test ID Constants
 
-All major components should have a testid:
+All test IDs should be defined in the centralized `testIds.ts` file and imported where needed:
 
-```tsx
-<div data-testid="security-level-widget">...</div>
-```
+### 2. Component TestIDs
 
-### 2. Interactive Element TestIDs
-
-All interactive elements should have a testid:
+All major components should have a testid using the TEST_IDS constants:
 
 ```tsx
-<button data-testid="tab-considerations">Considerations</button>
+<div data-testid={WIDGET_TEST_IDS.SECURITY_LEVEL_CONTROLS}>...</div>
 ```
 
-### 3. Dynamic Content TestIDs
+### 3. Interactive Element TestIDs
 
-Dynamic content should have predictable testids:
+All interactive elements should have a testid that includes the element type and its purpose:
+
+```tsx
+<button data-testid="tab-considerations-button">Considerations</button>
+<input data-testid="availability-select" />
+<div data-testid="compliance-toggle-switch" />
+```
+
+### 4. Dynamic Content TestIDs
+
+Dynamic content should have predictable testids using a consistent pattern:
 
 ```tsx
 <div data-testid={`framework-status-${frameworkId}`}>...</div>
+<div data-testid={`security-level-${level.toLowerCase()}`}>...</div>
+<div data-testid={`risk-badge-${riskLevel.toLowerCase()}`}>...</div>
 ```
 
-### 4. TestID Selection Pattern
+### 5. Container and Content TestIDs
+
+Use specific testIds for containers and their content:
+
+```tsx
+<div data-testid="security-measures-container">
+  <div data-testid="security-measure-availability">...</div>
+  <div data-testid="security-measure-integrity">...</div>
+  <div data-testid="security-measure-confidentiality">...</div>
+</div>
+```
+
+### 6. TestID Selection Pattern
 
 ```typescript
-// Preferred approach
-const element = screen.getByTestId("component-name");
+import {
+  CIA_TEST_IDS,
+  WIDGET_TEST_IDS,
+  FRAMEWORK_TEST_IDS,
+} from "../../constants/testIds";
+
+// Preferred approach: Use getByTestId with constants
+const element = screen.getByTestId(WIDGET_TEST_IDS.SECURITY_LEVEL_CONTROLS);
 
 // For text content with possible HTML formatting
-const text = screen.getByTestId("component-name").textContent;
+const text = screen.getByTestId(
+  WIDGET_TEST_IDS.VALUE_CREATION_TITLE
+).textContent;
+
+// For finding multiple elements with similar testIds using regex
+const frameworkPrefix = FRAMEWORK_TEST_IDS.FRAMEWORK_ITEM_PREFIX;
+const elements = screen.getAllByTestId(new RegExp(`^${frameworkPrefix}`));
+
+// For finding elements within a container
+const container = screen.getByTestId(SUMMARY_TEST_IDS.CIA_RATINGS);
+const availabilityMeasure = within(container).getByTestId(
+  SUMMARY_TEST_IDS.AVAILABILITY_MEASURE
+);
+
+// Avoid: Using string literals for test IDs
+// const element = screen.getByTestId("security-level-controls"); // ❌
 
 // Avoid: Using complex CSS selectors
-// const element = container.querySelector(".some-class > div:first-child");
+// const element = container.querySelector(".some-class > div:first-child"); // ❌
 ```
 
 ## Test Implementation Guidelines
 
-### 1. AAA Pattern
+### 1. AAA Pattern (Using Constants and TestIDs)
 
 ```typescript
 it("updates when selection changes", async () => {
   // Arrange
   render(<SecurityLevelWidget {...props} />);
-  const select = screen.getByTestId("availability-select");
+  const select = screen.getByTestId(CIA_TEST_IDS.AVAILABILITY_SELECT);
 
   // Act
-  await userEvent.selectOptions(select, "Low");
+  await userEvent.selectOptions(select, SECURITY_LEVELS.LOW);
 
   // Assert
-  expect(mockSetAvailability).toHaveBeenCalledWith("Low");
+  expect(mockSetAvailability).toHaveBeenCalledWith(SECURITY_LEVELS.LOW);
+  const indicator = screen.getByTestId(
+    CIA_TEST_IDS.AVAILABILITY_LEVEL_INDICATOR
+  );
+  expect(indicator).toHaveTextContent(SECURITY_LEVELS.LOW);
 });
 ```
 
@@ -320,32 +445,57 @@ it("updates when selection changes", async () => {
 
 ```typescript
 import { vi } from "vitest";
+import { SECURITY_LEVELS } from "../../constants/appConstants";
 
 // Mock hooks
 vi.mock("../../hooks/useCIAOptions", () => ({
-  useCIAOptions: () => mockedCIAOptions,
+  useCIAOptions: () => ({
+    availabilityOptions: {
+      [SECURITY_LEVELS.NONE]: {
+        /* mock details */
+      },
+      [SECURITY_LEVELS.LOW]: {
+        /* mock details */
+      },
+    },
+    integrityOptions: {
+      /* mock options */
+    },
+    confidentialityOptions: {
+      /* mock options */
+    },
+  }),
 }));
 
 // Mock functions
 const mockSetAvailability = vi.fn();
 ```
 
-### 3. Testing Asynchronous Behavior
+### 3. Testing Asynchronous Behavior (With TestIDs)
 
 ```typescript
+import { WIDGET_TEST_IDS } from "../../constants/testIds";
+
 it("loads data asynchronously", async () => {
   render(<AsyncComponent />);
 
-  // Check loading state
-  expect(screen.getByTestId("loading-indicator")).toBeInTheDocument();
+  // Check loading state using testId
+  expect(
+    screen.getByTestId(WIDGET_TEST_IDS.LOADING_INDICATOR)
+  ).toBeInTheDocument();
 
-  // Wait for data to load
+  // Wait for data to load, looking for a specific testId
   await waitFor(() => {
-    expect(screen.getByTestId("data-container")).toBeInTheDocument();
+    expect(
+      screen.getByTestId(WIDGET_TEST_IDS.DATA_CONTAINER)
+    ).toBeInTheDocument();
   });
 
-  // Verify loaded content
-  expect(screen.getByText("Loaded Content")).toBeInTheDocument();
+  // Verify loaded content with testId and constants
+  const contentTitle = screen.getByTestId(WIDGET_TEST_IDS.CONTENT_TITLE);
+  expect(contentTitle).toHaveTextContent(
+    UI_TEXT.WIDGET_TITLES.SECURITY_SUMMARY
+  );
 });
 ```
 
@@ -366,7 +516,7 @@ Based on coverage reports, these areas need focused testing:
 2. **RadarChart.tsx** - Currently at 89% statement, 66% branch coverage
 3. **useCIAOptions.ts** - Currently at 97% statement but 0% function coverage
 
-## Example Test File
+## Example Test File (Using Constants and TestIDs)
 
 ```typescript
 // SecurityLevelWidget.test.tsx
@@ -375,39 +525,99 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { vi } from "vitest";
 import SecurityLevelWidget from "./SecurityLevelWidget";
-import { CIA_LABELS } from "../../constants/appConstants";
+import {
+  CIA_LABELS,
+  SECURITY_LEVELS,
+  UI_TEXT,
+  SECURITY_DESCRIPTIONS,
+} from "../../constants/appConstants";
+import { CIA_TEST_IDS, WIDGET_TEST_IDS } from "../../constants/testIds";
 import { createMockOptions, createMockHandlers } from "../../tests/mockFactory";
 
 describe("SecurityLevelWidget", () => {
   const handlers = createMockHandlers();
 
   const defaultProps = {
-    availability: "None",
-    integrity: "None",
-    confidentiality: "None",
+    availability: SECURITY_LEVELS.NONE,
+    integrity: SECURITY_LEVELS.NONE,
+    confidentiality: SECURITY_LEVELS.NONE,
     setAvailability: handlers.setAvailability,
     setIntegrity: handlers.setIntegrity,
     setConfidentiality: handlers.setConfidentiality,
-    availabilityOptions: createMockOptions(["None", "Low"]),
-    integrityOptions: createMockOptions(["None", "Low"]),
-    confidentialityOptions: createMockOptions(["None", "Low"]),
+    availabilityOptions: createMockOptions([
+      SECURITY_LEVELS.NONE,
+      SECURITY_LEVELS.LOW,
+    ]),
+    integrityOptions: createMockOptions([
+      SECURITY_LEVELS.NONE,
+      SECURITY_LEVELS.LOW,
+    ]),
+    confidentialityOptions: createMockOptions([
+      SECURITY_LEVELS.NONE,
+      SECURITY_LEVELS.LOW,
+    ]),
   };
 
   it("renders security level controls", () => {
     render(<SecurityLevelWidget {...defaultProps} />);
 
-    expect(screen.getByTestId("security-level-controls")).toBeInTheDocument();
-    expect(screen.getByText(CIA_LABELS.AVAILABILITY)).toBeInTheDocument();
-    expect(screen.getByTestId("availability-select")).toHaveValue("None");
+    // Use testIds from constants
+    expect(
+      screen.getByTestId(WIDGET_TEST_IDS.SECURITY_LEVEL_CONTROLS)
+    ).toBeInTheDocument();
+
+    // Verify contents with constants
+    const availabilitySection = screen.getByTestId(
+      CIA_TEST_IDS.AVAILABILITY_SECTION
+    );
+    expect(availabilitySection).toBeInTheDocument();
+
+    const availabilityLabel = screen.getByTestId(
+      CIA_TEST_IDS.AVAILABILITY_LABEL
+    );
+    expect(availabilityLabel).toHaveTextContent(CIA_LABELS.AVAILABILITY);
+
+    const availabilitySelect = screen.getByTestId(
+      CIA_TEST_IDS.AVAILABILITY_SELECT
+    );
+    expect(availabilitySelect).toHaveValue(SECURITY_LEVELS.NONE);
+
+    // Verify description matches constants
+    const availabilityDescription = screen.getByTestId(
+      CIA_TEST_IDS.AVAILABILITY_DESCRIPTION
+    );
+    expect(availabilityDescription).toHaveTextContent(
+      SECURITY_DESCRIPTIONS.NONE
+    );
   });
 
   it("handles selection changes", async () => {
     render(<SecurityLevelWidget {...defaultProps} />);
 
-    const user = userEvent.setup();
-    await user.selectOptions(screen.getByTestId("availability-select"), "Low");
+    // Use testId constants to find the select element
+    const select = screen.getByTestId(CIA_TEST_IDS.AVAILABILITY_SELECT);
 
-    expect(handlers.setAvailability).toHaveBeenCalledWith("Low");
+    const user = userEvent.setup();
+    await user.selectOptions(select, SECURITY_LEVELS.LOW);
+
+    // Verify the handler was called with the constant value
+    expect(handlers.setAvailability).toHaveBeenCalledWith(SECURITY_LEVELS.LOW);
+
+    // Verify UI changes after selection
+    expect(select).toHaveValue(SECURITY_LEVELS.LOW);
+  });
+
+  it("displays correct descriptions for each security level", async () => {
+    render(<SecurityLevelWidget {...defaultProps} />);
+
+    const user = userEvent.setup();
+    const select = screen.getByTestId(CIA_TEST_IDS.INTEGRITY_SELECT);
+
+    // Change selection and verify description updates
+    await user.selectOptions(select, SECURITY_LEVELS.LOW);
+
+    const description = screen.getByTestId(CIA_TEST_IDS.INTEGRITY_DESCRIPTION);
+    expect(description).toHaveTextContent(SECURITY_DESCRIPTIONS.LOW);
   });
 });
 ```
@@ -425,6 +635,7 @@ src/
 └── tests/                  // Shared test utilities
     ├── mockFactory.ts      // Test mock factories
     ├── setupVitest.ts      // Vitest setup configuration
+    ├── testConstants.ts    // Test-specific constants
     └── examples/           // Example test patterns
         └── IntegrationTestExample.test.tsx
 ```

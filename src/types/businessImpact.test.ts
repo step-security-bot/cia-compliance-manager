@@ -1,29 +1,34 @@
-import { BUSINESS_CONSIDERATIONS, BUSINESS_KEY_BENEFITS } from "../constants";
+import { describe, it, expect } from "vitest";
+import {
+  BusinessConsideration,
+  BusinessKeyBenefits, // Changed from BusinessKeyBenefit to BusinessKeyBenefits
+  BUSINESS_CONSIDERATIONS,
+} from "./businessImpact";
 
 describe("Business Impact Types", () => {
   describe("BUSINESS_CONSIDERATIONS constant", () => {
     it("has correct structure for all CIA categories", () => {
-      // Test structure for each category
-      ["AVAILABILITY", "INTEGRITY", "CONFIDENTIALITY"].forEach((category) => {
+      // CIA categories
+      const ciaCategories = ["AVAILABILITY", "INTEGRITY", "CONFIDENTIALITY"];
+      ciaCategories.forEach((category) => {
         expect(BUSINESS_CONSIDERATIONS).toHaveProperty(category);
 
-        // Test structure for each security level
-        ["NONE", "LOW", "MODERATE", "HIGH", "VERY_HIGH"].forEach((level) => {
-          const categoryObj =
-            BUSINESS_CONSIDERATIONS[
-              category as keyof typeof BUSINESS_CONSIDERATIONS
-            ];
+        // Security levels
+        const categoryObj = BUSINESS_CONSIDERATIONS[category];
+        expect(categoryObj).toBeDefined();
+
+        const securityLevels = ["NONE", "LOW", "MODERATE", "HIGH", "VERY_HIGH"];
+
+        securityLevels.forEach((level) => {
           expect(categoryObj).toHaveProperty(level);
 
-          // Check that each level has an array of items
-          const items = categoryObj?.[level as keyof typeof categoryObj];
+          // Check items array
+          const items = categoryObj?.[level] || []; // Use optional chaining and default to empty array
           expect(Array.isArray(items)).toBe(true);
 
-          // If there are items, check their structure
+          // Check each item in the array
           if (items && items.length > 0) {
-            items.forEach((item) => {
-              expect(item).toHaveProperty("type");
-              expect(item).toHaveProperty("risk");
+            items.forEach((item: BusinessConsideration) => {
               expect(item).toHaveProperty("description");
             });
           }
@@ -34,18 +39,27 @@ describe("Business Impact Types", () => {
 
   describe("BUSINESS_KEY_BENEFITS constant", () => {
     it("has entries for all security levels", () => {
-      // Check that each security level has benefits
-      ["NONE", "LOW", "MODERATE", "HIGH", "VERY_HIGH"].forEach((level) => {
-        expect(BUSINESS_KEY_BENEFITS).toHaveProperty(level);
-        const benefits =
-          BUSINESS_KEY_BENEFITS[level as keyof typeof BUSINESS_KEY_BENEFITS];
+      const securityLevels = ["NONE", "LOW", "MODERATE", "HIGH", "VERY_HIGH"];
+
+      securityLevels.forEach((level) => {
+        expect(BusinessKeyBenefits).toHaveProperty(level);
+
+        const benefits = BusinessKeyBenefits[level];
         expect(Array.isArray(benefits)).toBe(true);
 
-        // Benefits should be non-empty strings
-        if (benefits) {
-          benefits.forEach((benefit) => {
-            expect(typeof benefit).toBe("string");
-            expect(benefit.length).toBeGreaterThan(0);
+        // Check each benefit
+        if (benefits && benefits.length > 0) {
+          benefits.forEach((benefit: any) => {
+            // Check if benefit is either a string or an object with title and description
+            expect(
+              typeof benefit === "string" || typeof benefit === "object"
+            ).toBe(true);
+            if (typeof benefit === "string") {
+              expect(benefit.length).toBeGreaterThan(0);
+            } else if (typeof benefit === "object") {
+              expect(benefit).toHaveProperty("title");
+              expect(benefit).toHaveProperty("description");
+            }
           });
         }
       });

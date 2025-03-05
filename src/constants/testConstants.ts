@@ -1,10 +1,6 @@
 import { SECURITY_DESCRIPTIONS, COMPLIANCE_FRAMEWORKS } from "./coreConstants";
-import {
-  SECURITY_LEVEL_COLORS,
-  CIA_LABELS,
-  WIDGET_ICONS,
-  BUSINESS_IMPACT_CATEGORIES,
-} from "./index";
+import { SECURITY_LEVEL_COLORS, CIA_LABELS, WIDGET_ICONS } from "./index";
+import { BUSINESS_IMPACT_CATEGORIES, RISK_LEVELS } from "./riskConstants";
 
 // Format constants for consistent display
 export const DISPLAY_FORMAT = {
@@ -125,3 +121,6 @@ export const TEST_DATA = {
     CONFIDENTIALITY: "Ensures sensitive information remains private",
   },
 };
+
+// Re-export important constants for tests
+export { BUSINESS_IMPACT_CATEGORIES, RISK_LEVELS };
