@@ -474,9 +474,9 @@ const BusinessImpactAnalysisWidget: React.FC<
                       options[level]?.businessImpactDetails?.financialImpact
                         .description
                     }
-                    icon={enhancedIcons.IMPACT_TYPES.FINANCIAL}
+                    icon={enhancedIcons.IMPACT_TYPES.FINANCIAL} // This is now properly typed
                     testId="financial-impact-metrics"
-                    className="bg-transparent border-0 p-0"
+                    className="w-full mb-2"
                   />
                   {options[level]?.businessImpactDetails?.financialImpact
                     .annualRevenueLoss && (
@@ -510,9 +510,9 @@ const BusinessImpactAnalysisWidget: React.FC<
                       options[level]?.businessImpactDetails?.operationalImpact
                         .description
                     }
-                    icon={enhancedIcons.IMPACT_TYPES.OPERATIONAL}
+                    icon={enhancedIcons.IMPACT_TYPES.OPERATIONAL} // This is now properly typed
                     testId="operational-impact-metrics"
-                    className="bg-transparent border-0 p-0"
+                    className="w-full mb-2"
                   />
                   {options[level]?.businessImpactDetails?.operationalImpact
                     .meanTimeToRecover && (

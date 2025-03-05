@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Chart from "chart.js/auto";
+import { CHART_TEST_IDS } from "../constants/testIds";
 
 interface RadarChartProps {
   availability: string;
@@ -10,11 +11,11 @@ interface RadarChartProps {
 }
 
 const RadarChart: React.FC<RadarChartProps> = ({
-  availability,
-  integrity,
-  confidentiality,
+  availability = "None",
+  integrity = "None",
+  confidentiality = "None",
   className = "",
-  testId = "radar-chart",
+  testId = CHART_TEST_IDS.RADAR_CHART,
 }) => {
   const chartRef = useRef<HTMLCanvasElement>(null);
   const chartInstanceRef = useRef<Chart<"radar", number[], string> | null>(
@@ -185,43 +186,34 @@ const RadarChart: React.FC<RadarChartProps> = ({
   }, [availability, integrity, confidentiality]);
 
   return (
-    <div
-      className={`radar-chart-container ${className}`}
-      data-testid={`${testId}-container`}
-    >
+    <div className="radar-chart-container" data-testid={`${testId}-container`}>
       {renderError ? (
         <div data-testid={`${testId}-error`} className="error-message">
-          Error rendering chart: {renderError}
+          Error loading chart: {renderError}
         </div>
       ) : (
-        <>
-          {/* Add hidden spans with security values for testing */}
-          <span
-            data-testid={`radar-availability-value`}
-            style={{ display: "none" }}
-          >
-            A: {securityLevels.availability}
-          </span>
-          <span
-            data-testid={`radar-integrity-value`}
-            style={{ display: "none" }}
-          >
-            I: {securityLevels.integrity}
-          </span>
-          <span
-            data-testid={`radar-confidentiality-value`}
-            style={{ display: "none" }}
-          >
-            C: {securityLevels.confidentiality}
-          </span>
-          <canvas
-            ref={chartRef}
-            data-testid={testId}
-            className={`max-w-full h-auto ${className}`}
-            aria-label="Security radar chart showing Availability, Integrity, and Confidentiality levels"
-          />
-        </>
+        <div className="radar-values flex justify-between mb-2">
+          <div>
+            <strong>Availability:</strong>{" "}
+            <span data-testid={CHART_TEST_IDS.RADAR_AVAILABILITY_VALUE}>
+              {availability || "None"}
+            </span>
+          </div>
+          <div>
+            <strong>Integrity:</strong>{" "}
+            <span data-testid={CHART_TEST_IDS.RADAR_INTEGRITY_VALUE}>
+              {integrity || "None"}
+            </span>
+          </div>
+          <div>
+            <strong>Confidentiality:</strong>{" "}
+            <span data-testid={CHART_TEST_IDS.RADAR_CONFIDENTIALITY_VALUE}>
+              {confidentiality || "None"}
+            </span>
+          </div>
+        </div>
       )}
+      <canvas ref={chartRef} data-testid={testId}></canvas>
     </div>
   );
 };

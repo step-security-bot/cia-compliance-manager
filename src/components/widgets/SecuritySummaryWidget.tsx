@@ -4,7 +4,7 @@ import {
   SECURITY_DESCRIPTIONS,
   UI_TEXT,
   SECURITY_LEVEL_COLORS,
-} from "../../constants/coreConstants";
+} from "../../constants/appConstants"; // Updated to use appConstants instead of coreConstants
 import {
   SECURITY_SUMMARY_TITLES,
   SECURITY_RECOMMENDATIONS,
@@ -21,6 +21,7 @@ import ValueDisplay from "../common/ValueDisplay";
 import StatusBadge from "../common/StatusBadge";
 import KeyValuePair from "../common/KeyValuePair";
 import MetricsCard from "../common/MetricsCard";
+import { SUMMARY_TEST_IDS, WIDGET_TEST_IDS } from "../../constants/testIds"; // Updated to include WIDGET_TEST_IDS
 
 // Define type for security level keys
 type SecurityLevelKey = "NONE" | "LOW" | "MODERATE" | "HIGH" | "VERY_HIGH";
@@ -282,17 +283,23 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
   const roiValueFormatted = roiEstimate || "N/A";
 
   return (
-    <div className="space-y-4" data-testid="security-summary-container">
+    <div
+      className="space-y-4"
+      data-testid={SUMMARY_TEST_IDS.SECURITY_SUMMARY_CONTAINER}
+    >
       {/* Title and security level indicator */}
       <div
         className={`rounded-lg p-4 ${summary.bgColor} ${summary.borderColor} border transition-colors duration-300 shadow-sm`}
-        data-testid="security-level-indicator"
+        data-testid={SUMMARY_TEST_IDS.SECURITY_LEVEL_INDICATOR}
       >
         <div
           className={`text-lg font-medium ${summary.colorClass} flex items-center`}
-          data-testid="security-summary-title"
+          data-testid={WIDGET_TEST_IDS.SECURITY_SUMMARY_TITLE}
         >
-          <span className="mr-2 text-xl" data-testid="security-icon">
+          <span
+            className="mr-2 text-xl"
+            data-testid={SUMMARY_TEST_IDS.SECURITY_ICON}
+          >
             {summary.emoji}
           </span>
           {summary.title}
@@ -309,21 +316,21 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
               label="A"
               variant="primary"
               size="sm"
-              testId="availability-level-pill"
+              testId={SUMMARY_TEST_IDS.AVAILABILITY_LEVEL_PILL}
             />
             <ValueDisplay
               value={actualIntegrityLevel}
               label="I"
               variant="success"
               size="sm"
-              testId="integrity-level-pill"
+              testId={SUMMARY_TEST_IDS.INTEGRITY_LEVEL_PILL}
             />
             <ValueDisplay
               value={actualConfidentialityLevel}
               label="C"
               variant="info"
               size="sm"
-              testId="confidentiality-level-pill"
+              testId={SUMMARY_TEST_IDS.CONFIDENTIALITY_LEVEL_PILL}
             />
           </div>
         )}
