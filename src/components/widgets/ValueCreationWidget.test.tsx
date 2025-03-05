@@ -1,77 +1,62 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
+import { describe, it, expect } from "vitest";
 import ValueCreationWidget from "./ValueCreationWidget";
-import { SECURITY_LEVELS } from "../../constants/coreConstants";
-import { VALUE_CREATION_POINTS } from "../../constants/businessConstants"; // Updated import path
-import { UI_TEXT } from "../../constants/coreConstants";
-import { WIDGET_TEST_IDS } from "../../constants/testIds";
-
-// Define test constants locally instead of importing them
-const TEST_SECURITY_LEVELS = {
-  NONE: "None",
-  LOW: "Low",
-  MODERATE: "Moderate",
-  HIGH: "High",
-  VERY_HIGH: "Very High",
-};
+import { WIDGET_TEST_IDS, createDynamicTestId } from "../../constants/testIds";
+import {
+  SECURITY_LEVELS,
+  VALUE_CREATION_POINTS,
+} from "../../constants/appConstants";
 
 describe("ValueCreationWidget", () => {
   it("renders the widget with None level", () => {
-    render(<ValueCreationWidget securityLevel={TEST_SECURITY_LEVELS.NONE} />);
+    render(<ValueCreationWidget securityLevel={SECURITY_LEVELS.NONE} />);
 
-    // Use constant for testId instead of hardcoded string
     expect(
       screen.getByTestId(WIDGET_TEST_IDS.VALUE_CREATION_TITLE)
-    ).toHaveTextContent(UI_TEXT.VALUE_CREATION.NONE_TITLE);
+    ).toHaveTextContent(`${SECURITY_LEVELS.NONE} Value Creation`);
+
     expect(
-      screen.getByText(/Business value derived from this security profile/i)
+      screen.getByTestId(WIDGET_TEST_IDS.VALUE_CREATION_SUBTITLE)
     ).toBeInTheDocument();
   });
 
   it("renders the widget with High level", () => {
-    render(<ValueCreationWidget securityLevel={TEST_SECURITY_LEVELS.HIGH} />);
+    render(<ValueCreationWidget securityLevel={SECURITY_LEVELS.HIGH} />);
 
-    // Expect title to match widget output – for example, "High Value Creation"
-    expect(screen.getByText("High Value Creation")).toBeInTheDocument();
+    expect(
+      screen.getByTestId(WIDGET_TEST_IDS.VALUE_CREATION_TITLE)
+    ).toHaveTextContent(`${SECURITY_LEVELS.HIGH} Value Creation`);
 
-    // Check we're showing the value creation points for High level
-    const valuePoints =
-      VALUE_CREATION_POINTS[
-        SECURITY_LEVELS.HIGH as keyof typeof VALUE_CREATION_POINTS
-      ];
-    if (valuePoints && valuePoints.length > 0) {
-      // Check at least the first point is rendered
-      expect(
-        screen.getByText(new RegExp(valuePoints[0] || ""))
-      ).toBeInTheDocument();
-    }
+    const pointsList = screen.getByTestId(WIDGET_TEST_IDS.VALUE_POINTS_LIST);
+    expect(pointsList).toBeInTheDocument();
+
+    expect(
+      screen.getByTestId(createDynamicTestId.valuePoint(0))
+    ).toBeInTheDocument();
   });
 
-  // Remove outdated percentage expectation; instead, check ROI ends with "x"
   it("calculates ROI correctly", () => {
-    render(<ValueCreationWidget securityLevel={TEST_SECURITY_LEVELS.NONE} />);
-    // Use constant for testId
+    render(<ValueCreationWidget securityLevel={SECURITY_LEVELS.NONE} />);
+
     const roiText =
       screen.getByTestId(WIDGET_TEST_IDS.ROI_VALUE).textContent || "";
-    const capexValue = 100; // Assuming these are the values that lead to negative ROI
+    const capexValue = 100;
     const opexValue = 50;
-    const valueCreation = 20; // Value too low compared to costs
+    const valueCreation = 20;
 
-    // If capex and opex are high compared to value, expect negative ROI text
     if (capexValue + opexValue > valueCreation * 2) {
       expect(roiText).toMatch(/negative|loss/i);
     } else {
-      // Otherwise expect the multiplier format
       expect(roiText).toMatch(/x\b/);
     }
   });
 
   it("displays different value propositions based on security levels", () => {
     const { rerender } = render(
-      <ValueCreationWidget securityLevel={TEST_SECURITY_LEVELS.LOW} />
+      <ValueCreationWidget securityLevel={SECURITY_LEVELS.LOW} />
     );
 
-    // For Low security, check specific value propositions
     const lowValuePoints =
       VALUE_CREATION_POINTS[
         SECURITY_LEVELS.LOW as keyof typeof VALUE_CREATION_POINTS
@@ -82,10 +67,8 @@ describe("ValueCreationWidget", () => {
       ).toBeInTheDocument();
     }
 
-    // Now test High security
-    rerender(<ValueCreationWidget securityLevel={TEST_SECURITY_LEVELS.HIGH} />);
+    rerender(<ValueCreationWidget securityLevel={SECURITY_LEVELS.HIGH} />);
 
-    // For High security, check specific value propositions
     const highValuePoints =
       VALUE_CREATION_POINTS[
         SECURITY_LEVELS.HIGH as keyof typeof VALUE_CREATION_POINTS

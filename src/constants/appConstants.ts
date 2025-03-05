@@ -106,8 +106,8 @@ export const createValuePointMatcher = (point: string) => {
 // Export type to help with TypeScript
 export type SecurityLevel = "None" | "Low" | "Moderate" | "High" | "Very High";
 
-// Security Levels
-export const SECURITY_LEVELS = {
+// Update the type of SECURITY_LEVELS
+export const SECURITY_LEVELS: Record<SecurityLevelKey, SecurityLevel> = {
   NONE: "None",
   LOW: "Low",
   MODERATE: "Moderate",
@@ -212,12 +212,12 @@ export const BUSINESS_IMPACTS = {
 };
 
 // Value Creation Points
-export const VALUE_CREATION_POINTS = {
-  NONE: "No security investment means all budget can go to other areas",
-  LOW: "Satisfies minimum viable security for non-critical systems",
-  MODERATE: "Demonstrates security diligence",
-  HIGH: "Enables expansion into regulated markets",
-  VERY_HIGH: "Enables participation in classified",
+export const VALUE_CREATION_POINTS: Record<SecurityLevel, string[]> = {
+  None: ["Minimal security baseline"],
+  Low: ["Basic security protection"],
+  Moderate: ["Demonstrates security diligence"],
+  High: ["Enables expansion into regulated markets"],
+  "Very High": ["Enables participation in classified"],
 };
 
 // Detailed value creation points by security level
