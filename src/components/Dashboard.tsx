@@ -6,6 +6,15 @@ import {
   integrityOptions,
   confidentialityOptions,
 } from "../hooks/useCIAOptions";
+import { APP_TEST_IDS, createDynamicTestId } from "../constants/testIds";
+// Add the missing imports for grid styles
+import {
+  gridClasses,
+  widgetClasses,
+  headerClasses,
+  contentClasses,
+  gridStyle,
+} from "../styles/gridStyles";
 
 // Main Dashboard component props
 interface DashboardProps {
@@ -14,6 +23,12 @@ interface DashboardProps {
   availability?: string;
   integrity?: string;
   confidentiality?: string;
+  columnsSmall?: number;
+  columnsMedium?: number;
+  columnsLarge?: number;
+  className?: string;
+  compact?: boolean;
+  showBorders?: boolean;
 }
 
 const Dashboard: React.FC<DashboardProps> = ({
@@ -22,6 +37,12 @@ const Dashboard: React.FC<DashboardProps> = ({
   availability,
   integrity,
   confidentiality,
+  columnsSmall = 1,
+  columnsMedium = 2,
+  columnsLarge = 3,
+  className = "",
+  compact = false,
+  showBorders = true,
 }) => {
   // Prepare props for business impact widgets
   const impactWidgetProps = {
@@ -73,10 +94,16 @@ const Dashboard: React.FC<DashboardProps> = ({
   };
 
   return (
-    <div className="dashboard-grid" data-testid="dashboard-grid">
+    <div
+      className={`dashboard-grid ${gridClasses} ${className}`}
+      data-testid={APP_TEST_IDS.DASHBOARD_GRID}
+    >
       {useRegistry
         ? widgetRegistry.renderWidgets(undefined, widgetProps)
-        : children}
+        : React.Children.map(children, (child) => {
+            if (!React.isValidElement(child)) return null;
+            return child;
+          })}
     </div>
   );
 };
@@ -138,15 +165,38 @@ interface DashboardWidgetProps {
   className?: string;
   icon?: ReactNode;
   testId?: string;
+  description?: string;
+  headerClassName?: string;
+  showHeader?: boolean;
+  colSpan?: number;
+  rowSpan?: number;
+  actions?: ReactNode;
+  headerContent?: ReactNode;
+  loading?: boolean;
+  error?: Error | null;
+  fullHeight?: boolean;
+  compact?: boolean;
+  emptyState?: ReactNode;
 }
 
 export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
-  title,
-  size = "medium",
   children,
+  title,
+  description,
   className = "",
-  icon,
+  headerClassName = "",
   testId,
+  showHeader = true,
+  colSpan = 1,
+  rowSpan = 1,
+  actions,
+  headerContent,
+  loading = false,
+  error = null,
+  fullHeight = true,
+  compact = false,
+  emptyState,
+  icon, // Added missing icon prop here
 }) => {
   // Map widget sizes to grid column spans
   const sizeClasses = {
@@ -158,18 +208,47 @@ export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
 
   return (
     <div
-      className={`widget p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm ${sizeClasses[size]} ${className}`}
-      data-testid={
-        testId || `widget-${title.toLowerCase().replace(/\s+/g, "-")}`
-      }
+      className={`relative dashboard-widget ${widgetClasses} ${className} ${
+        fullHeight ? "h-full" : ""
+      }`}
+      style={gridStyle}
+      data-testid={testId || createDynamicTestId.widgetId(title)}
+      role="region"
+      aria-labelledby={`widget-title-${title
+        ?.toLowerCase()
+        .replace(/\s+/g, "-")}`}
     >
-      <div className="widget-header">
-        <h3 className="text-lg font-semibold mb-4 flex items-center text-gray-800 dark:text-gray-200">
-          {icon && <span className="widget-icon mr-2">{icon}</span>}
-          {title}
-        </h3>
+      {showHeader && (
+        <div
+          className={`dashboard-widget-header ${headerClasses} ${headerClassName}`}
+        >
+          <h3 className="text-lg font-semibold mb-4 flex items-center text-gray-800 dark:text-gray-200">
+            {icon && <span className="widget-icon mr-2">{icon}</span>}
+            {title}
+          </h3>
+          {headerContent}
+        </div>
+      )}
+
+      <div className={`dashboard-widget-content ${contentClasses}`}>
+        {loading ? (
+          <div className="flex items-center justify-center h-full">
+            <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
+          </div>
+        ) : error ? (
+          <div className="text-red-500 p-4">
+            <div className="font-bold">Error</div>
+            <div>{error.toString()}</div>
+          </div>
+        ) : (
+          children ||
+          emptyState || (
+            <div className="text-gray-400 p-4 text-center italic">
+              No content available
+            </div>
+          )
+        )}
       </div>
-      <div className="widget-body">{children}</div>
     </div>
   );
 };

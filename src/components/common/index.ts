@@ -6,7 +6,7 @@ import StatusBadge from "./StatusBadge";
 import ValueDisplay from "./ValueDisplay";
 // Remove GlobalWidgetStyler import
 // Remove ResponsiveWidgetWrapper import
-import { WidgetContainer } from "./WidgetContainer";
+import WidgetContainer from "./WidgetContainer";
 
 export {
   KeyValuePair,

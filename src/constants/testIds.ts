@@ -62,6 +62,14 @@ export const CIA_TEST_IDS = {
   AVAILABILITY_BUSINESS_IMPACT: "availability-business-impact",
   INTEGRITY_BUSINESS_IMPACT: "integrity-business-impact",
   CONFIDENTIALITY_BUSINESS_IMPACT: "confidentiality-business-impact",
+
+  // New constants
+  AVAILABILITY_KV: "availability-kv",
+  INTEGRITY_KV: "integrity-kv",
+  CONFIDENTIALITY_KV: "confidentiality-kv",
+  CURRENT_AVAILABILITY: "current-availability",
+  CURRENT_INTEGRITY: "current-integrity",
+  CURRENT_CONFIDENTIALITY: "current-confidentiality",
 };
 
 // Common widget test IDs
@@ -194,6 +202,7 @@ export const COST_TEST_IDS = {
   COST_ANALYSIS_SECTION: "cost-analysis-section",
   COST_ANALYSIS_HEADING: "cost-analysis-heading",
   COST_ANALYSIS_TEXT: "cost-analysis-text",
+  ROI_SECTION: "roi-section",
 };
 
 // SecuritySummaryWidget test IDs
@@ -270,7 +279,6 @@ export const APP_TEST_IDS = {
   APP_ROOT: "app-root",
   CIA_CLASSIFICATION_APP: "cia-classification-app",
   DASHBOARD_GRID: "dashboard-grid",
-  GET_STARTED_BUTTON: "get-started-button", // Deprecated - not used in the current UI
 };
 
 // Common component test IDs

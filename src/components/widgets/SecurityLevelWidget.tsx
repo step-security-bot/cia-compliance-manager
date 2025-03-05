@@ -1,437 +1,278 @@
 import React, { useState } from "react";
-import Selection from "../Selection";
-import {
-  WIDGET_ICONS,
-  CIA_COMPONENT_ICONS,
-  CIA_LABELS,
-  SECURITY_LEVEL_COLORS,
-  SecurityLevelKey,
-} from "../../constants/appConstants";
-import { CIA_TEST_IDS, WIDGET_TEST_IDS } from "../../constants/testIds"; // Add WIDGET_TEST_IDS to the import
-import ValueDisplay from "../common/ValueDisplay";
+import { SECURITY_LEVELS } from "../../constants/appConstants";
+import { SecurityLevel } from "../../types/cia";
 import StatusBadge from "../common/StatusBadge";
-import KeyValuePair from "../common/KeyValuePair";
+import { CIA_TEST_IDS } from "../../constants/testIds";
 
 interface SecurityLevelWidgetProps {
-  availabilityLevel: string;
-  integrityLevel: string;
-  confidentialityLevel: string;
-  onAvailabilityChange: (level: string) => void;
-  onIntegrityChange: (level: string) => void;
-  onConfidentialityChange: (level: string) => void;
+  availability?: string;
+  integrity?: string;
+  confidentiality?: string;
+  availabilityOptions: Record<string, any>;
+  integrityOptions: Record<string, any>;
+  confidentialityOptions: Record<string, any>;
+  setAvailability?: (value: string) => void;
+  setIntegrity?: (value: string) => void;
+  setConfidentiality?: (value: string) => void;
   testId?: string;
-  availabilityOptions?: Record<string, any>;
-  integrityOptions?: Record<string, any>;
-  confidentialityOptions?: Record<string, any>;
 }
 
-// Update the component to handle undefined options
 const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
-  availabilityLevel,
-  integrityLevel,
-  confidentialityLevel,
-  onAvailabilityChange,
-  onIntegrityChange,
-  onConfidentialityChange,
-  availabilityOptions = {},
-  integrityOptions = {},
-  confidentialityOptions = {},
+  availability = "None",
+  integrity = "None",
+  confidentiality = "None",
+  availabilityOptions,
+  integrityOptions,
+  confidentialityOptions,
+  setAvailability,
+  setIntegrity,
+  setConfidentiality,
+  testId = "security-level-controls",
 }) => {
-  const [hoveredTechnical, setHoveredTechnical] = useState<string | null>(null);
+  const [hoverTechnicalInfo, setHoverTechnicalInfo] = useState<string | null>(
+    null
+  );
 
-  // Helper function to get color based on security level
-  const getLevelColor = (level: string): string => {
-    const normalizedLevel = level
-      .toUpperCase()
-      .replace(/\s+/g, "_") as SecurityLevelKey;
-    return SECURITY_LEVEL_COLORS[normalizedLevel] || "#6c757d";
-  };
-
-  // Helper function to get technical details
-  const getTechnicalDetails = (
-    options: Record<string, any>,
-    level: string
-  ): string => {
-    return options[level]?.technical || "No technical details available.";
-  };
-
-  // Helper function to get context-specific details for each component
-  const getSecurityContextInfo = (
-    component: string,
-    options: Record<string, any>,
-    level: string
-  ): string => {
-    if (!options[level]) return "";
-
-    switch (component) {
-      case "availability":
-        // For availability, display uptime information
-        if (options[level].uptime) return `${options[level].uptime} uptime`;
-        return options[level].impact ? `Impact: ${options[level].impact}` : "";
-      case "integrity":
-        // For integrity, highlight validation method
-        return options[level].validationMethod || options[level].impact || "";
-      case "confidentiality":
-        // For confidentiality, highlight protection method
-        return options[level].protectionMethod || options[level].impact || "";
-      default:
-        return "";
+  const handleAvailabilityChange = (
+    e: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    if (setAvailability) {
+      setAvailability(e.target.value);
     }
   };
 
-  // Get variant based on component type
-  const getComponentVariant = (
-    component: string
-  ): "primary" | "success" | "info" => {
-    switch (component) {
-      case "availability":
-        return "primary";
-      case "integrity":
-        return "success";
-      case "confidentiality":
-        return "info";
-      default:
-        return "primary";
+  const handleIntegrityChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    if (setIntegrity) {
+      setIntegrity(e.target.value);
     }
   };
 
-  // Get variant based on security level
-  const getLevelVariant = (
-    level: string
-  ): "success" | "warning" | "danger" | "info" | "primary" => {
+  const handleConfidentialityChange = (
+    e: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    if (setConfidentiality) {
+      setConfidentiality(e.target.value);
+    }
+  };
+
+  const getColorForLevel = (level: string): string => {
     switch (level) {
-      case "None":
-        return "danger";
-      case "Low":
-        return "warning";
-      case "Moderate":
-        return "info";
-      case "High":
-        return "success";
-      case "Very High":
-        return "primary";
+      case SECURITY_LEVELS.NONE:
+        return "bg-gray-200";
+      case SECURITY_LEVELS.LOW:
+        return "bg-yellow-200";
+      case SECURITY_LEVELS.MODERATE:
+        return "bg-orange-300";
+      case SECURITY_LEVELS.HIGH:
+        return "bg-red-400";
+      case SECURITY_LEVELS.VERY_HIGH:
+        return "bg-purple-500";
       default:
-        return "info";
+        return "bg-gray-200";
     }
+  };
+
+  const getAvailabilityDescription = () => {
+    return (
+      availabilityOptions[availability]?.description ||
+      "No description available"
+    );
+  };
+
+  const getIntegrityDescription = () => {
+    return (
+      integrityOptions[integrity]?.description || "No description available"
+    );
+  };
+
+  const getConfidentialityDescription = () => {
+    return (
+      confidentialityOptions[confidentiality]?.description ||
+      "No description available"
+    );
   };
 
   return (
     <div
-      className="space-y-4"
-      data-testid={WIDGET_TEST_IDS.SECURITY_LEVEL_CONTROLS}
+      className="bg-white dark:bg-gray-800 p-4 rounded-lg"
+      data-testid={testId}
     >
-      {/* Widget Header */}
-      <div className="flex items-center mb-6">
-        <div className="text-2xl mr-2">{WIDGET_ICONS.SECURITY_LEVEL}</div>
-        <h2 className="text-xl font-bold">Security Level Selection</h2>
-      </div>
-
-      {/* Availability Section - Updated to use ValueDisplay */}
-      <div className="mb-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-        <div className="flex items-center mb-3">
-          <span className="text-xl mr-2" aria-hidden="true">
-            {CIA_COMPONENT_ICONS.AVAILABILITY}
-          </span>
+      <div
+        className="mb-6 border-b pb-4 border-gray-100 dark:border-gray-700"
+        data-testid={CIA_TEST_IDS.AVAILABILITY_SECTION}
+      >
+        <div className="flex items-center mb-2">
           <label
-            htmlFor="availability-select"
-            className="text-base font-medium text-gray-800 dark:text-gray-200"
-            data-testid="availability-label"
+            htmlFor="availabilitySelect"
+            className="block text-sm font-medium text-gray-700 dark:text-gray-300 mr-2"
+            data-testid={CIA_TEST_IDS.AVAILABILITY_LABEL}
           >
-            {CIA_LABELS.AVAILABILITY}
+            Availability
           </label>
-          {/* Replace custom div with ValueDisplay */}
-          <div className="ml-auto">
-            <ValueDisplay
-              value={availabilityLevel}
-              variant="primary"
-              size="sm"
-              testId="availability-selected-level"
-            />
-          </div>
-        </div>
-
-        <Selection
-          id="availability-select"
-          data-testid={CIA_TEST_IDS.AVAILABILITY_SELECT}
-          testId={CIA_TEST_IDS.AVAILABILITY_SELECT} // Add explicit testId
-          label=""
-          value={availabilityLevel}
-          options={availabilityOptions}
-          onChange={onAvailabilityChange}
-          contextInfo={getSecurityContextInfo(
-            "availability",
-            availabilityOptions,
-            availabilityLevel
-          )}
-        />
-
-        {/* Security level indicator */}
-        <div className="mt-3 flex items-center">
           <div
-            className="w-4 h-4 rounded-full mr-2"
-            style={{ backgroundColor: getLevelColor(availabilityLevel) }}
-            data-testid="availability-color-indicator"
-            data-testvalue={availabilityLevel} // Add data-testvalue attribute for easier testing
-            aria-hidden="true"
-          ></div>
-          <p
-            className="text-sm text-gray-700 dark:text-gray-300 flex-grow"
-            data-testid="availability-description"
-            data-testlevel={availabilityLevel} // Add level information for test verification
+            className={`w-4 h-4 rounded-full mr-2 ${getColorForLevel(
+              availability
+            )}`}
+            data-testid={CIA_TEST_IDS.AVAILABILITY_COLOR_INDICATOR}
+          />
+          <select
+            id="availabilitySelect"
+            className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+            value={availability}
+            onChange={handleAvailabilityChange}
+            data-testid={CIA_TEST_IDS.AVAILABILITY_SELECT}
           >
-            <span data-testid="availability-description-text">
-              {availabilityOptions[availabilityLevel]?.description ||
-                "No description available."}
-            </span>
-            {availabilityOptions[availabilityLevel]?.uptime && (
-              <StatusBadge
-                status="info"
-                size="xs"
-                testId="availability-uptime-badge"
-                className="ml-1"
-              >
-                {availabilityOptions[availabilityLevel].uptime} uptime
-              </StatusBadge>
-            )}
-          </p>
+            <option value="None">None</option>
+            <option value="Low">Low</option>
+            <option value="Moderate">Moderate</option>
+            <option value="High">High</option>
+            <option value="Very High">Very High</option>
+          </select>
           <button
-            className="text-blue-500 text-sm hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
-            onMouseEnter={() => setHoveredTechnical("availability")}
-            onMouseLeave={() => setHoveredTechnical(null)}
-            aria-label="Show technical details"
-            data-testid="availability-technical-info-button"
+            type="button"
+            className="ml-2 p-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
+            onMouseEnter={() => setHoverTechnicalInfo("availability")}
+            onMouseLeave={() => setHoverTechnicalInfo(null)}
+            data-testid={CIA_TEST_IDS.AVAILABILITY_TECHNICAL_INFO}
           >
-            {WIDGET_ICONS.TECHNICAL_IMPLEMENTATION}
+            <span aria-hidden="true">ℹ️</span>
+            <span className="sr-only">Technical information</span>
           </button>
         </div>
-
-        {/* Technical details popover - Updated with KeyValuePair */}
-        {hoveredTechnical === "availability" && (
-          <div
-            className="mt-2 p-3 bg-white dark:bg-gray-700 rounded-md shadow-lg border border-gray-200 dark:border-gray-600 text-sm"
-            data-testid="availability-technical-popover"
-          >
-            <KeyValuePair
-              label="Technical Implementation"
-              value={getTechnicalDetails(
-                availabilityOptions,
-                availabilityLevel
-              )}
-              testId="availability-technical-details"
-            />
-            {availabilityOptions[availabilityLevel]?.businessImpact && (
-              <KeyValuePair
-                label="Business Impact"
-                value={availabilityOptions[availabilityLevel].businessImpact}
-                testId="availability-business-impact"
-                className="mt-1"
-              />
-            )}
+        <div
+          className="text-sm text-gray-600 dark:text-gray-400 mt-2"
+          data-testid={CIA_TEST_IDS.AVAILABILITY_DESCRIPTION}
+        >
+          {getAvailabilityDescription()}
+        </div>
+        {availabilityOptions[availability]?.uptime && (
+          <div className="mt-2">
+            <StatusBadge
+              status="info"
+              size="xs"
+              testId="availability-uptime-badge"
+            >
+              {availabilityOptions[availability].uptime}
+            </StatusBadge>
           </div>
         )}
       </div>
 
-      {/* Integrity Section - Updated similarly to Availability section */}
-      <div className="mb-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-        <div className="flex items-center mb-3">
-          <span className="text-xl mr-2" aria-hidden="true">
-            {CIA_COMPONENT_ICONS.INTEGRITY}
-          </span>
+      <div
+        className="mb-6 border-b pb-4 border-gray-100 dark:border-gray-700"
+        data-testid={CIA_TEST_IDS.INTEGRITY_SECTION}
+      >
+        <div className="flex items-center mb-2">
           <label
-            htmlFor="integrity-select"
-            className="text-base font-medium text-gray-800 dark:text-gray-200"
-            data-testid="integrity-label"
+            htmlFor="integritySelect"
+            className="block text-sm font-medium text-gray-700 dark:text-gray-300 mr-2"
+            data-testid={CIA_TEST_IDS.INTEGRITY_LABEL}
           >
-            {CIA_LABELS.INTEGRITY}
+            Integrity
           </label>
-          <div className="ml-auto">
-            <ValueDisplay
-              value={integrityLevel}
-              variant="success"
-              size="sm"
-              testId="integrity-selected-level"
-            />
-          </div>
-        </div>
-
-        <Selection
-          id="integrity-select"
-          data-testid={CIA_TEST_IDS.INTEGRITY_SELECT}
-          testId={CIA_TEST_IDS.INTEGRITY_SELECT} // Add explicit testId
-          label=""
-          value={integrityLevel}
-          options={integrityOptions}
-          onChange={onIntegrityChange}
-          contextInfo={getSecurityContextInfo(
-            "integrity",
-            integrityOptions,
-            integrityLevel
-          )}
-        />
-
-        {/* Security level indicator */}
-        <div className="mt-3 flex items-center">
           <div
-            className="w-4 h-4 rounded-full mr-2"
-            style={{ backgroundColor: getLevelColor(integrityLevel) }}
-            data-testid="integrity-color-indicator"
-            data-testvalue={integrityLevel} // Add data-testvalue attribute
-            aria-hidden="true"
-          ></div>
-          <p
-            className="text-sm text-gray-700 dark:text-gray-300 flex-grow"
-            data-testid="integrity-description"
-            data-testlevel={integrityLevel} // Add level information
+            className={`w-4 h-4 rounded-full mr-2 ${getColorForLevel(
+              integrity
+            )}`}
+            data-testid={CIA_TEST_IDS.INTEGRITY_COLOR_INDICATOR}
+          />
+          <select
+            id="integritySelect"
+            className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+            value={integrity}
+            onChange={handleIntegrityChange}
+            data-testid={CIA_TEST_IDS.INTEGRITY_SELECT}
           >
-            <span data-testid="integrity-description-text">
-              {integrityOptions[integrityLevel]?.description ||
-                "No description available."}
-            </span>
-            {integrityOptions[integrityLevel]?.validationMethod && (
-              <StatusBadge
-                status="success"
-                size="xs"
-                testId="integrity-validation-badge"
-                className="ml-1"
-              >
-                {integrityOptions[integrityLevel].validationMethod}
-              </StatusBadge>
-            )}
-          </p>
+            <option value="None">None</option>
+            <option value="Low">Low</option>
+            <option value="Moderate">Moderate</option>
+            <option value="High">High</option>
+            <option value="Very High">Very High</option>
+          </select>
           <button
-            className="text-blue-500 text-sm hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
-            onMouseEnter={() => setHoveredTechnical("integrity")}
-            onMouseLeave={() => setHoveredTechnical(null)}
-            aria-label="Show technical details"
-            data-testid="integrity-technical-info-button"
+            type="button"
+            className="ml-2 p-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
+            onMouseEnter={() => setHoverTechnicalInfo("integrity")}
+            onMouseLeave={() => setHoverTechnicalInfo(null)}
+            data-testid={CIA_TEST_IDS.INTEGRITY_TECHNICAL_INFO}
           >
-            {WIDGET_ICONS.TECHNICAL_IMPLEMENTATION}
+            <span aria-hidden="true">ℹ️</span>
+            <span className="sr-only">Technical information</span>
           </button>
         </div>
-
-        {hoveredTechnical === "integrity" && (
-          <div
-            className="mt-2 p-3 bg-white dark:bg-gray-700 rounded-md shadow-lg border border-gray-200 dark:border-gray-600 text-sm"
-            data-testid="integrity-technical-popover"
-          >
-            <KeyValuePair
-              label="Technical Implementation"
-              value={getTechnicalDetails(integrityOptions, integrityLevel)}
-              testId="integrity-technical-details"
-            />
-            {integrityOptions[integrityLevel]?.businessImpact && (
-              <KeyValuePair
-                label="Business Impact"
-                value={integrityOptions[integrityLevel].businessImpact}
-                testId="integrity-business-impact"
-                className="mt-1"
-              />
-            )}
+        <div
+          className="text-sm text-gray-600 dark:text-gray-400 mt-2"
+          data-testid={CIA_TEST_IDS.INTEGRITY_DESCRIPTION}
+        >
+          {getIntegrityDescription()}
+        </div>
+        {integrityOptions[integrity]?.validationMethod && (
+          <div className="mt-2">
+            <StatusBadge
+              status="success"
+              size="xs"
+              testId="integrity-validation-badge"
+            >
+              {integrityOptions[integrity].validationMethod}
+            </StatusBadge>
           </div>
         )}
       </div>
 
-      {/* Confidentiality Section - Updated similarly */}
-      <div className="mb-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-        <div className="flex items-center mb-3">
-          <span className="text-xl mr-2" aria-hidden="true">
-            {CIA_COMPONENT_ICONS.CONFIDENTIALITY}
-          </span>
+      <div className="mb-2" data-testid={CIA_TEST_IDS.CONFIDENTIALITY_SECTION}>
+        <div className="flex items-center mb-2">
           <label
-            htmlFor="confidentiality-select"
-            className="text-base font-medium text-gray-800 dark:text-gray-200"
-            data-testid="confidentiality-label"
+            htmlFor="confidentialitySelect"
+            className="block text-sm font-medium text-gray-700 dark:text-gray-300 mr-2"
+            data-testid={CIA_TEST_IDS.CONFIDENTIALITY_LABEL}
           >
-            {CIA_LABELS.CONFIDENTIALITY}
+            Confidentiality
           </label>
-          <div className="ml-auto">
-            <ValueDisplay
-              value={confidentialityLevel}
-              variant="info"
-              size="sm"
-              testId="confidentiality-selected-level"
-            />
-          </div>
-        </div>
-
-        <Selection
-          id="confidentiality-select"
-          data-testid={CIA_TEST_IDS.CONFIDENTIALITY_SELECT}
-          testId={CIA_TEST_IDS.CONFIDENTIALITY_SELECT} // Add explicit testId
-          label=""
-          value={confidentialityLevel}
-          options={confidentialityOptions}
-          onChange={onConfidentialityChange}
-          contextInfo={getSecurityContextInfo(
-            "confidentiality",
-            confidentialityOptions,
-            confidentialityLevel
-          )}
-        />
-
-        {/* Security level indicator */}
-        <div className="mt-3 flex items-center">
           <div
-            className="w-4 h-4 rounded-full mr-2"
-            style={{ backgroundColor: getLevelColor(confidentialityLevel) }}
-            data-testid="confidentiality-color-indicator"
-            data-testvalue={confidentialityLevel} // Add data-testvalue attribute
-            aria-hidden="true"
-          ></div>
-          <p
-            className="text-sm text-gray-700 dark:text-gray-300 flex-grow"
-            data-testid="confidentiality-description"
-            data-testlevel={confidentialityLevel} // Add level information
+            className={`w-4 h-4 rounded-full mr-2 ${getColorForLevel(
+              confidentiality
+            )}`}
+            data-testid={CIA_TEST_IDS.CONFIDENTIALITY_COLOR_INDICATOR}
+          />
+          <select
+            id="confidentialitySelect"
+            className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+            value={confidentiality}
+            onChange={handleConfidentialityChange}
+            data-testid={CIA_TEST_IDS.CONFIDENTIALITY_SELECT}
           >
-            <span data-testid="confidentiality-description-text">
-              {confidentialityOptions[confidentialityLevel]?.description ||
-                "No description available."}
-            </span>
-            {confidentialityOptions[confidentialityLevel]?.protectionMethod && (
-              <StatusBadge
-                status="info"
-                size="xs"
-                testId="confidentiality-protection-badge"
-                className="ml-1"
-              >
-                {confidentialityOptions[confidentialityLevel].protectionMethod}
-              </StatusBadge>
-            )}
-          </p>
+            <option value="None">None</option>
+            <option value="Low">Low</option>
+            <option value="Moderate">Moderate</option>
+            <option value="High">High</option>
+            <option value="Very High">Very High</option>
+          </select>
           <button
-            className="text-blue-500 text-sm hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
-            onMouseEnter={() => setHoveredTechnical("confidentiality")}
-            onMouseLeave={() => setHoveredTechnical(null)}
-            aria-label="Show technical details"
-            data-testid="confidentiality-technical-info-button"
+            type="button"
+            className="ml-2 p-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
+            onMouseEnter={() => setHoverTechnicalInfo("confidentiality")}
+            onMouseLeave={() => setHoverTechnicalInfo(null)}
+            data-testid={CIA_TEST_IDS.CONFIDENTIALITY_TECHNICAL_INFO}
           >
-            {WIDGET_ICONS.TECHNICAL_IMPLEMENTATION}
+            <span aria-hidden="true">ℹ️</span>
+            <span className="sr-only">Technical information</span>
           </button>
         </div>
-
-        {hoveredTechnical === "confidentiality" && (
-          <div
-            className="mt-2 p-3 bg-white dark:bg-gray-700 rounded-md shadow-lg border border-gray-200 dark:border-gray-600 text-sm"
-            data-testid="confidentiality-technical-popover"
-          >
-            <KeyValuePair
-              label="Technical Implementation"
-              value={getTechnicalDetails(
-                confidentialityOptions,
-                confidentialityLevel
-              )}
-              testId="confidentiality-technical-details"
-            />
-            {confidentialityOptions[confidentialityLevel]?.businessImpact && (
-              <KeyValuePair
-                label="Business Impact"
-                value={
-                  confidentialityOptions[confidentialityLevel].businessImpact
-                }
-                testId="confidentiality-business-impact"
-                className="mt-1"
-              />
-            )}
+        <div
+          className="text-sm text-gray-600 dark:text-gray-400 mt-2"
+          data-testid={CIA_TEST_IDS.CONFIDENTIALITY_DESCRIPTION}
+        >
+          {getConfidentialityDescription()}
+        </div>
+        {confidentialityOptions[confidentiality]?.protectionMethod && (
+          <div className="mt-2">
+            <StatusBadge
+              status="purple"
+              size="xs"
+              testId="confidentiality-protection-badge"
+            >
+              {confidentialityOptions[confidentiality].protectionMethod}
+            </StatusBadge>
           </div>
         )}
       </div>

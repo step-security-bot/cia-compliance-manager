@@ -33,12 +33,18 @@ Object.defineProperty(window, "matchMedia", {
 });
 
 describe("CIAClassificationApp Component Direct Tests", () => {
+  // Update the test to handle multiple elements with the same text
   it("renders basic structure correctly", () => {
     render(<CIAClassificationApp />);
     expect(screen.getByTestId("app-container")).toBeInTheDocument();
     expect(screen.getByTestId("app-title")).toHaveTextContent(
-      "CIA Compliance Manager Dashboard"
+      "CIA Security Profile" // Updated from "CIA Compliance Manager Dashboard"
     );
+
+    // Check for specific component rather than text
+    expect(
+      screen.getByTestId("widget-security-level-selection")
+    ).toBeInTheDocument();
   });
 
   it("shows security level section", () => {

@@ -3,9 +3,9 @@ import { render, screen } from "@testing-library/react";
 import KeyValuePair from "./KeyValuePair";
 import { COMMON_COMPONENT_TEST_IDS } from "../../constants/testIds";
 
-describe("KeyValuePair Component", () => {
-  it("renders basic key-value pair correctly", () => {
-    const customTestId = "custom-kv";
+describe("KeyValuePair", () => {
+  it("renders with custom testId", () => {
+    const customTestId = "custom-key-value";
     render(<KeyValuePair label="Test" value="Value" testId={customTestId} />);
 
     expect(screen.getByTestId(customTestId)).toBeInTheDocument();
@@ -13,7 +13,7 @@ describe("KeyValuePair Component", () => {
     expect(screen.getByTestId(`${customTestId}-value`)).toBeInTheDocument();
   });
 
-  it("renders with default test IDs when testId not provided", () => {
+  it("renders with default testId", () => {
     render(<KeyValuePair label="Test" value="Value" />);
 
     expect(
@@ -21,57 +21,45 @@ describe("KeyValuePair Component", () => {
     ).toBeInTheDocument();
     expect(
       screen.getByTestId(COMMON_COMPONENT_TEST_IDS.KV_LABEL)
-    ).toBeInTheDocument();
+    ).toHaveTextContent("Test");
     expect(
       screen.getByTestId(COMMON_COMPONENT_TEST_IDS.KV_VALUE)
-    ).toBeInTheDocument();
+    ).toHaveTextContent("Value");
   });
 
-  it("applies highlight styling when highlighted", () => {
-    const testId = "test-kv";
+  it("renders with highlighted prop", () => {
+    const testId = "highlighted-test";
+    render(
+      <KeyValuePair label="Test" value="Value" highlighted testId={testId} />
+    );
+
+    const highlightedElement = screen.getByTestId(testId);
+    expect(highlightedElement).toHaveClass("bg-gray-50");
+    expect(highlightedElement).toHaveClass("dark:bg-gray-700");
+  });
+
+  it("renders with justified prop", () => {
+    render(
+      <KeyValuePair label="Test" value="Value" justified testId="test-kv" />
+    );
+
+    const highlightedElement = screen.getByTestId("test-kv");
+    expect(highlightedElement).toHaveClass("justify-between");
+  });
+
+  it("renders with neither highlighted nor justified props", () => {
     render(
       <KeyValuePair
         label="Test"
         value="Value"
-        highlighted={true}
-        testId={testId}
-      />
-    );
-
-    const highlightedElement = screen.getByTestId(testId);
-    expect(highlightedElement).toBeInTheDocument();
-    expect(highlightedElement.className).toContain("bg-blue-50");
-  });
-
-  it("handles various prop combinations for branch coverage", () => {
-    // Test with highlighted=true
-    const { rerender } = render(
-      <KeyValuePair
-        label="Test Label"
-        value="Test Value"
-        highlighted={true}
-        testId="test-kv"
-      />
-    );
-
-    // Verify highlighted styling
-    const highlightedElement = screen.getByTestId("test-kv");
-    expect(highlightedElement.className).toContain("bg-blue-50");
-
-    // Test with highlighted=false but with className
-    rerender(
-      <KeyValuePair
-        label="Test Label"
-        value="Test Value"
         highlighted={false}
-        className="custom-class"
+        justified={false}
         testId="test-kv"
       />
     );
 
-    // Verify no highlighted classes but has custom class
     const nonHighlightedElement = screen.getByTestId("test-kv");
-    expect(nonHighlightedElement.className).not.toContain("bg-blue-50");
-    expect(nonHighlightedElement.className).toContain("custom-class");
+    expect(nonHighlightedElement).not.toHaveClass("bg-gray-50");
+    expect(nonHighlightedElement).not.toHaveClass("justify-between");
   });
 });

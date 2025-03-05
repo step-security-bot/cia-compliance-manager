@@ -24,10 +24,15 @@ export interface SecuritySummaryWidgetProps extends WidgetBaseProps {
   confidentialityLevel?: string; // Make this optional
 }
 
-export interface ComplianceStatusWidgetProps extends WidgetBaseProps {
-  availability: string;
-  integrity: string;
-  confidentiality: string;
+export interface ComplianceStatusWidgetProps {
+  securityLevel?: string;
+  availabilityLevel?: string;
+  integrityLevel?: string;
+  confidentialityLevel?: string;
+  availability?: string; // Add compatibility with older usages
+  integrity?: string; // Add compatibility with older usages
+  confidentiality?: string; // Add compatibility with older usages
+  testId?: string;
 }
 
 export interface CombinedBusinessImpactWidgetProps extends WidgetBaseProps {

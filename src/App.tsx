@@ -1,20 +1,20 @@
 import React from "react";
 import CIAClassificationApp from "./CIAClassificationApp";
+import { APP_TEST_IDS } from "./constants/testIds";
 import "./App.css"; // Keep the import to avoid build errors
 
 /**
  * Main App component
  * Acts as a simple wrapper around CIAClassificationApp to maintain backward compatibility
  */
-const App: React.FC = () => {
+function App() {
   return (
-    <div className="app-root" data-testid="app-root">
-      {/* Add the cia-classification-app testId to fix the failing test */}
-      <div data-testid="cia-classification-app">
+    <div className="app-root" data-testid={APP_TEST_IDS.APP_ROOT}>
+      <div data-testid={APP_TEST_IDS.CIA_CLASSIFICATION_APP}>
         <CIAClassificationApp />
       </div>
     </div>
   );
-};
+}
 
 export default App;
