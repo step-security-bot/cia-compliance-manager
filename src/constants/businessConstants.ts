@@ -1,7 +1,7 @@
 import { RISK_LEVELS, BUSINESS_IMPACT_CATEGORIES } from "./riskConstants";
 import {
   BusinessConsiderations,
-  BusinessKeyBenefits,
+  BusinessKeyBenefits, // Changed from BusinessKeyBenefit to BusinessKeyBenefits
 } from "../types/businessImpact";
 
 // Business impact considerations - these will populate our enhanced widget
@@ -253,11 +253,11 @@ export const BUSINESS_KEY_BENEFITS: BusinessKeyBenefits = {
 
 // Value Creation Points
 export const VALUE_CREATION_POINTS = {
-  NONE: "No security investment means all budget can go to other areas",
-  LOW: "Satisfies minimum viable security for non-critical systems",
-  MODERATE: "Demonstrates security diligence",
-  HIGH: "Enables expansion into regulated markets",
-  VERY_HIGH: "Enables participation in classified",
+  NONE: ["No security investment means all budget can go to other areas"],
+  LOW: ["Satisfies minimum viable security for non-critical systems"],
+  MODERATE: ["Demonstrates security diligence"],
+  HIGH: ["Enables expansion into regulated markets"],
+  VERY_HIGH: ["Enables participation in classified contracts"],
 };
 
 // Detailed value creation points by security level

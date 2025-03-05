@@ -8,7 +8,8 @@ import {
   integrityOptions,
   confidentialityOptions,
 } from "../../hooks/useCIAOptions";
-import { BUSINESS_CONSIDERATIONS, RISK_LEVELS } from "../../constants";
+import { BUSINESS_CONSIDERATIONS } from "../../constants/businessConstants";
+import { RISK_LEVELS } from "../../constants/riskConstants";
 import { ensureArray } from "../../utils/typeGuards";
 
 describe("BusinessImpactAnalysisWidget", () => {

@@ -77,6 +77,46 @@ export function skipTestIfElementMissing(selector: string, message: string) {
   });
 }
 
+/**
+ * Waits for an element to be visible and then scrolls it into view
+ * @param selector - Element selector
+ * @param options - Additional options
+ */
+export function waitForElement(
+  selector: string,
+  options: { timeout?: number; log?: boolean } = {}
+): Cypress.Chainable {
+  const { timeout = 10000, log = true } = options;
+  return cy.get(selector, { timeout, log }).should("be.visible");
+}
+
+/**
+ * Safely interacts with an element after ensuring it's visible and scrolled into view
+ * @param selector - Element selector
+ * @param action - Action to perform ('click', 'type', etc.)
+ * @param value - Value to use for actions like 'type'
+ */
+export function interactWithElement(
+  selector: string,
+  action: "click" | "type" | "select" = "click",
+  value?: string
+): Cypress.Chainable {
+  return cy
+    .get(selector, { timeout: 10000 })
+    .should("be.visible")
+    .safeScrollIntoView()
+    .then(($el) => {
+      cy.wait(300); // Small delay for animation/rendering
+      if (action === "click") {
+        cy.wrap($el).click({ force: true });
+      } else if (action === "type" && value) {
+        cy.wrap($el).type(value, { force: true });
+      } else if (action === "select" && value) {
+        cy.wrap($el).select(value, { force: true });
+      }
+    });
+}
+
 export default {
   interactWithElement,
   waitForElement,

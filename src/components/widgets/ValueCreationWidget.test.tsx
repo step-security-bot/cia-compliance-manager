@@ -1,7 +1,8 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import ValueCreationWidget from "./ValueCreationWidget";
-import { SECURITY_LEVELS, VALUE_CREATION_POINTS } from "../../constants";
+import { SECURITY_LEVELS } from "../../constants/coreConstants";
+import { VALUE_CREATION_POINTS } from "../../constants/businessConstants"; // Updated import path
 import { UI_TEXT } from "../../constants/coreConstants";
 import { WIDGET_TEST_IDS } from "../../constants/testIds";
 

@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import {
   SECURITY_LEVELS,
-  SECURITY_SUMMARY_TITLES,
   SECURITY_DESCRIPTIONS,
-  SECURITY_RECOMMENDATIONS,
-  UI_ICONS,
   UI_TEXT,
   SECURITY_LEVEL_COLORS,
-  SecurityLevelKey,
+} from "../../constants/coreConstants";
+import {
+  SECURITY_SUMMARY_TITLES,
+  SECURITY_RECOMMENDATIONS,
+  UI_ICONS,
   ROI_ESTIMATES,
   DETAILED_VALUE_POINTS,
 } from "../../constants/appConstants";
-import { BUSINESS_KEY_BENEFITS } from "../../constants";
 import {
   availabilityOptions,
   integrityOptions,
@@ -22,7 +22,10 @@ import StatusBadge from "../common/StatusBadge";
 import KeyValuePair from "../common/KeyValuePair";
 import MetricsCard from "../common/MetricsCard";
 
-// Add CSS animation classes at the top
+// Define type for security level keys
+type SecurityLevelKey = "NONE" | "LOW" | "MODERATE" | "HIGH" | "VERY_HIGH";
+
+// Add CSS animation classes
 const animationStyles = {
   fadeIn: {
     animation: "fadeIn 0.3s ease-in-out",
@@ -32,6 +35,12 @@ const animationStyles = {
     to: { opacity: 1, transform: "translateY(0)" },
   },
 };
+
+// Update the BusinessKeyBenefits reference by importing from types/businessImpact
+import {
+  BusinessKeyBenefits,
+  BusinessKeyBenefit,
+} from "../../types/businessImpact";
 
 interface SecuritySummaryWidgetProps {
   securityLevel: string;
@@ -256,12 +265,14 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
   };
 
   const summary = getSummary();
-  const normalizedLevel = getNormalizedLevel(
-    securityLevel === "Basic" ? "LOW" : securityLevel
-  );
-  const keyBenefits = BUSINESS_KEY_BENEFITS[normalizedLevel] || [];
-  const valuePoints = DETAILED_VALUE_POINTS[normalizedLevel] || [];
-  const roiEstimate = ROI_ESTIMATES[normalizedLevel] || "Unknown";
+  const normalizedLevel = getNormalizedLevel(securityLevel);
+  const keyBenefits = BusinessKeyBenefits[normalizedLevel] || [];
+  const valuePoints =
+    DETAILED_VALUE_POINTS[
+      normalizedLevel as keyof typeof DETAILED_VALUE_POINTS
+    ] || [];
+  const roiEstimate =
+    ROI_ESTIMATES[normalizedLevel as keyof typeof ROI_ESTIMATES] || "Unknown";
   const technicalDetails = getTechnicalDetails();
   const metrics = getMetrics();
   const businessImpact = getBusinessImpact();
@@ -595,14 +606,16 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
         </h4>
         {keyBenefits.length > 0 ? (
           <ul className="space-y-1" data-testid="key-benefits-list">
-            {keyBenefits.map((benefit, index) => (
+            {keyBenefits.map((benefit: BusinessKeyBenefit, index: number) => (
               <li
                 key={index}
                 className="text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700 p-2 rounded-md"
                 data-testid={`key-benefit-${index}`}
               >
                 <StatusBadge status="success" size="xs">
-                  <span className="ml-1">{benefit}</span>
+                  <span className="ml-1">
+                    {typeof benefit === "string" ? benefit : benefit.title}
+                  </span>
                 </StatusBadge>
               </li>
             ))}

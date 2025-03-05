@@ -11,7 +11,6 @@ import "./commands";
 import { mount } from "cypress/react";
 
 import "@testing-library/cypress/add-commands";
-import "./appConstantsHelper";
 
 // Import the cypress command types (should be at the top of the file)
 /// <reference types="cypress" />
@@ -19,6 +18,7 @@ import "./appConstantsHelper";
 // Prevents Cypress from failing tests when uncaught exceptions occur in the application
 Cypress.on("uncaught:exception", (err) => {
   // returning false here prevents Cypress from failing the test
+  console.log("Uncaught exception:", err);
   return false;
 });
 
@@ -276,3 +276,11 @@ Cypress.config("retries", {
 });
 
 // Remove any other duplicate implementation of scrollIntoView overwrite
+
+// Ensure viewport is consistent for all tests if not specified
+beforeEach(() => {
+  // Use a reasonable default size if not explicitly set in the test
+  if (Cypress.config("viewportWidth") === 0) {
+    cy.viewport(1280, 800);
+  }
+});
