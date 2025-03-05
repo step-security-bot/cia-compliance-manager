@@ -5,14 +5,10 @@
 import { RISK_LEVELS, BUSINESS_IMPACT_CATEGORIES } from "./riskConstants";
 import { CIADetails } from "../types/cia";
 // Import the UI constants for backward compatibility
-import {
-  BUSINESS_IMPACT_ICONS,
-  SECURITY_LEVEL_COLORS,
-  CIA_COMPONENT_ICONS,
-} from "./uiConstants";
+import { BUSINESS_IMPACT_ICONS, SECURITY_LEVEL_COLORS } from "./uiConstants";
 
 // Re-export UI constants for backward compatibility, except WIDGET_ICONS
-export { BUSINESS_IMPACT_ICONS, SECURITY_LEVEL_COLORS, CIA_COMPONENT_ICONS };
+export { BUSINESS_IMPACT_ICONS, SECURITY_LEVEL_COLORS };
 
 // SecurityLevelMap type for cleaner lookups
 export type SecurityLevelKey =
@@ -120,6 +116,20 @@ export const CIA_LABELS = {
   AVAILABILITY: "Availability",
   INTEGRITY: "Integrity",
   CONFIDENTIALITY: "Confidentiality",
+};
+
+// CIA component icons
+export const CIA_COMPONENT_ICONS = {
+  CONFIDENTIALITY: "🔒",
+  INTEGRITY: "🔐",
+  AVAILABILITY: "⏱️",
+};
+
+// CIA tooltip descriptions for better user understanding
+export const CIA_DESCRIPTIONS = {
+  CONFIDENTIALITY: "Controls who can access your data and systems",
+  INTEGRITY: "Ensures data remains accurate and unaltered",
+  AVAILABILITY: "Determines how reliably your systems can be accessed",
 };
 
 // Compliance Status Text
@@ -308,7 +318,7 @@ export const UI_TEXT = {
 
   // Widget titles
   WIDGET_TITLES: {
-    SECURITY_LEVEL: "Security Level Selection",
+    SECURITY_LEVEL: "Security Profile Configuration",
     SECURITY_SUMMARY: "Security Summary",
     RADAR_CHART: "Security Radar",
     COST_ESTIMATION: "Cost Estimation",
@@ -343,6 +353,9 @@ export const UI_TEXT = {
     NONE_TITLE: "No Value Creation",
     WITH_LEVEL: (level: string) => `${level} Value Creation`,
   },
+
+  // App title
+  APP_TITLE: "CIA Compliance Manager Dashboard",
 };
 
 // Test specific matchers for use in testing UI elements

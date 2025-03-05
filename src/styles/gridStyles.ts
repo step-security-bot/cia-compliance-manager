@@ -18,13 +18,19 @@ export const widgetClasses = `
   bg-white 
   dark:bg-gray-800 
   rounded-lg 
-  shadow-sm 
-  border 
-  border-gray-200 
-  dark:border-gray-700 
+  shadow-md 
   overflow-hidden 
   flex 
   flex-col
+  h-full
+  border 
+  border-gray-200 
+  dark:border-gray-700
+  transition-all
+  duration-300
+  ease-in-out
+  hover:shadow-lg
+  hover:-translate
 `;
 
 // Widget header styles

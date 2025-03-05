@@ -1,50 +1,42 @@
-import React from "react";
-import { COMMON_COMPONENT_TEST_IDS } from "../../constants/testIds";
+import React, { ReactNode } from "react";
 
 interface KeyValuePairProps {
   label: string;
-  value: React.ReactNode;
+  value: ReactNode;
   testId?: string;
-  highlighted?: boolean;
-  justified?: boolean;
+  className?: string;
   labelClassName?: string;
   valueClassName?: string;
+  highlighted?: boolean; // Added prop
+  justified?: boolean; // Added prop
 }
 
 const KeyValuePair: React.FC<KeyValuePairProps> = ({
   label,
   value,
-  testId = COMMON_COMPONENT_TEST_IDS.KEY_VALUE_PAIR,
-  highlighted = false,
-  justified = false,
+  testId,
+  className = "",
   labelClassName = "",
   valueClassName = "",
+  highlighted = false,
+  justified = false,
 }) => {
-  const containerClasses = `flex ${
-    justified ? "justify-between" : "flex-col"
-  } ${highlighted ? "bg-gray-50 dark:bg-gray-700 p-2 rounded" : ""} text-sm ${
-    labelClassName || ""
-  }`;
+  const highlightClass = highlighted
+    ? "font-bold text-blue-600 dark:text-blue-400"
+    : "";
+  const justifyClass = justified ? "text-right" : "";
 
   return (
-    <div className={containerClasses} data-testid={testId}>
+    <div className={`flex flex-col ${className} text-sm`} data-testid={testId}>
       <span
-        className={`text-gray-500 dark:text-gray-400 ${labelClassName}`}
-        data-testid={`${
-          testId === COMMON_COMPONENT_TEST_IDS.KEY_VALUE_PAIR
-            ? COMMON_COMPONENT_TEST_IDS.KV_LABEL
-            : `${testId}-label`
-        }`}
+        className={`text-gray-500 dark:text-gray-400 ${labelClassName} ${justifyClass}`}
+        data-testid={testId ? `${testId}-label` : undefined}
       >
         {label}
       </span>
       <div
-        className={`font-medium text-gray-900 dark:text-gray-100 ${valueClassName}`}
-        data-testid={`${
-          testId === COMMON_COMPONENT_TEST_IDS.KEY_VALUE_PAIR
-            ? COMMON_COMPONENT_TEST_IDS.KV_VALUE
-            : `${testId}-value`
-        }`}
+        className={`font-medium text-gray-900 dark:text-gray-100 ${valueClassName} ${highlightClass} ${justifyClass}`}
+        data-testid={testId ? `${testId}-value` : undefined}
       >
         {value}
       </div>

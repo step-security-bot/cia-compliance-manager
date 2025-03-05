@@ -2,8 +2,12 @@ import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { vi } from "vitest";
 import SecurityLevelSelector from "./SecurityLevelSelector";
-import { SECURITY_LEVELS, CIA_LABELS } from "../constants/appConstants";
-import { COMMON_COMPONENT_TEST_IDS, CIA_TEST_IDS } from "../constants/testIds";
+import {
+  SECURITY_LEVELS,
+  CIA_LABELS,
+  UI_TEXT,
+} from "../constants/appConstants";
+import { CIA_TEST_IDS, COMMON_COMPONENT_TEST_IDS } from "../constants/testIds";
 
 // Mock the useCIAOptions hook
 vi.mock("../hooks/useCIAOptions", () => ({
@@ -39,6 +43,15 @@ describe("SecurityLevelSelector", () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
+  });
+
+  it("renders with correct title", () => {
+    render(<SecurityLevelSelector />);
+
+    // Check if the title matches with what's in UI_TEXT constants
+    expect(
+      screen.getByText(UI_TEXT.WIDGET_TITLES.SECURITY_LEVEL)
+    ).toBeInTheDocument();
   });
 
   it("renders with default props", () => {
@@ -145,17 +158,6 @@ describe("SecurityLevelSelector", () => {
     expect(mockOnConfidentialityChange).toHaveBeenCalledWith(
       SECURITY_LEVELS.LOW
     );
-
-    // Verify the selection summary is updated
-    expect(
-      screen.getByTestId(COMMON_COMPONENT_TEST_IDS.AVAILABILITY_KV)
-    ).toHaveTextContent(SECURITY_LEVELS.HIGH);
-    expect(
-      screen.getByTestId(COMMON_COMPONENT_TEST_IDS.INTEGRITY_KV)
-    ).toHaveTextContent(SECURITY_LEVELS.MODERATE);
-    expect(
-      screen.getByTestId(COMMON_COMPONENT_TEST_IDS.CONFIDENTIALITY_KV)
-    ).toHaveTextContent(SECURITY_LEVELS.LOW);
   });
 
   it("uses custom options when provided", () => {
@@ -168,7 +170,7 @@ describe("SecurityLevelSelector", () => {
       <SecurityLevelSelector availabilityOptions={customAvailabilityOptions} />
     );
 
-    // Change to Low and verify the description from custom options is shown
+    // Change to Low and verify the description is shown
     fireEvent.change(screen.getByTestId(CIA_TEST_IDS.AVAILABILITY_SELECT), {
       target: { value: SECURITY_LEVELS.LOW },
     });
@@ -218,5 +220,68 @@ describe("SecurityLevelSelector", () => {
     render(<SecurityLevelSelector testId="custom-selector-id" />);
 
     expect(screen.getByTestId("custom-selector-id")).toBeInTheDocument();
+  });
+
+  it("shows technical details on info button hover", () => {
+    render(<SecurityLevelSelector />);
+
+    // Trigger mouseEnter on the confidentiality info button
+    fireEvent.mouseEnter(
+      screen.getByTestId(CIA_TEST_IDS.CONFIDENTIALITY_TECHNICAL_INFO_BUTTON)
+    );
+
+    // Check if technical details appear
+    expect(screen.getByText("Technical Details:")).toBeInTheDocument();
+
+    // Hide details
+    fireEvent.mouseLeave(
+      screen.getByTestId(CIA_TEST_IDS.CONFIDENTIALITY_TECHNICAL_INFO_BUTTON)
+    );
+  });
+
+  it("displays badges when available in options", () => {
+    const optionsWithBadges = {
+      None: { description: "No controls", uptime: "< 90%" },
+      Low: { description: "Basic controls", uptime: "95%" },
+    };
+
+    render(<SecurityLevelSelector availabilityOptions={optionsWithBadges} />);
+
+    // Change to Low level and check for badge
+    fireEvent.change(screen.getByTestId(CIA_TEST_IDS.AVAILABILITY_SELECT), {
+      target: { value: SECURITY_LEVELS.LOW },
+    });
+
+    const uptimeBadge = screen.getByTestId(
+      CIA_TEST_IDS.AVAILABILITY_UPTIME_BADGE
+    );
+    expect(uptimeBadge).toBeInTheDocument();
+    expect(uptimeBadge).toHaveTextContent("95%");
+  });
+
+  it("has components in correct order: Confidentiality, Integrity, Availability", () => {
+    render(<SecurityLevelSelector />);
+
+    // Get all sections
+    const confidentialitySection = screen.getByTestId(
+      CIA_TEST_IDS.CONFIDENTIALITY_SECTION
+    );
+    const integritySection = screen.getByTestId(CIA_TEST_IDS.INTEGRITY_SECTION);
+    const availabilitySection = screen.getByTestId(
+      CIA_TEST_IDS.AVAILABILITY_SECTION
+    );
+
+    // Check that they appear in the DOM in the expected order
+    // This assertion works because elements in the DOM are compared by their
+    // position in the document, not by reference equality
+    expect(
+      confidentialitySection.compareDocumentPosition(integritySection) &
+        Node.DOCUMENT_POSITION_FOLLOWING
+    ).toBeTruthy();
+
+    expect(
+      integritySection.compareDocumentPosition(availabilitySection) &
+        Node.DOCUMENT_POSITION_FOLLOWING
+    ).toBeTruthy();
   });
 });

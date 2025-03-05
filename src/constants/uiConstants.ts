@@ -2,20 +2,20 @@
  * UI-related constants for the application
  */
 
-// Widget Icons - For consistent icon use across the application
+// Widget icons using emoji characters
 export const WIDGET_ICONS = {
   SECURITY_LEVEL: "🛡️",
-  SECURITY_SUMMARY: "🔍",
-  SECURITY_VISUALIZATION: "📡",
+  SECURITY_SUMMARY: "📊",
+  SECURITY_VISUALIZATION: "📈",
   COMPLIANCE_STATUS: "✅",
-  VALUE_CREATION: "📈",
+  VALUE_CREATION: "💹",
   COST_ESTIMATION: "💰",
-  BUSINESS_IMPACT: "📊",
-  TECHNICAL_IMPLEMENTATION: "⚙️", // Add this icon for technical implementation
-  // Add missing icons
+  BUSINESS_IMPACT: "🏢",
+  TECHNICAL_IMPLEMENTATION: "⚙️",
   AVAILABILITY_IMPACT: "⏱️",
   INTEGRITY_IMPACT: "🔐",
-  CONFIDENTIALITY_IMPACT: "🔏",
+  CONFIDENTIALITY_IMPACT: "🔒",
+  SECURITY_RESOURCES: "📚",
 };
 
 // Business impact icons
@@ -25,23 +25,22 @@ export const BUSINESS_IMPACT_ICONS = {
   REPUTATIONAL: "🏆",
   REGULATORY: "⚖️",
   STRATEGIC: "🎯",
-  POSITIVE: "✅",
-  NEGATIVE: "⚠️",
-  NEUTRAL: "ℹ️",
+  CUSTOMER: "👥",
+  NEUTRAL: "ℹ️", // Added missing icon
 };
 
-// Security level color scheme
+// CIA component icons
+export const CIA_COMPONENT_ICONS = {
+  CONFIDENTIALITY: "🔒",
+  INTEGRITY: "🔐",
+  AVAILABILITY: "⏱️",
+};
+
+// Color mapping for security levels
 export const SECURITY_LEVEL_COLORS = {
   NONE: "#e74c3c", // Red
   LOW: "#f39c12", // Orange
-  MODERATE: "#f1c40f", // Yellow
+  MODERATE: "#3498db", // Blue
   HIGH: "#2ecc71", // Green
-  VERY_HIGH: "#3498db", // Blue
-};
-
-// Add specific CIA component icons
-export const CIA_COMPONENT_ICONS = {
-  AVAILABILITY: "⏱️", // Stopwatch for time/availability
-  INTEGRITY: "🔐", // Padlock with key for data integrity
-  CONFIDENTIALITY: "🔏", // Locked with pen for confidentiality
+  VERY_HIGH: "#9b59b6", // Purple
 };

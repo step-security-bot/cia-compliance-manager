@@ -46,6 +46,10 @@ export const CIA_TEST_IDS = {
   AVAILABILITY_TECHNICAL_INFO: "availability-technical-info-button",
   INTEGRITY_TECHNICAL_INFO: "integrity-technical-info-button",
   CONFIDENTIALITY_TECHNICAL_INFO: "confidentiality-technical-info-button",
+  AVAILABILITY_TECHNICAL_INFO_BUTTON: "availability-technical-info-button",
+  INTEGRITY_TECHNICAL_INFO_BUTTON: "integrity-technical-info-button",
+  CONFIDENTIALITY_TECHNICAL_INFO_BUTTON:
+    "confidentiality-technical-info-button",
   AVAILABILITY_TECHNICAL_POPOVER: "availability-technical-popover",
   INTEGRITY_TECHNICAL_POPOVER: "integrity-technical-popover",
   CONFIDENTIALITY_TECHNICAL_POPOVER: "confidentiality-technical-popover",

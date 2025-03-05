@@ -1,0 +1,169 @@
+/* Theme-specific styles and overrides */
+
+/* Base styles */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Transitions */
+* {
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-duration: 200ms;
+  transition-timing-function: ease-in-out;
+}
+
+/* Theme-specific styles */
+.app-container {
+  background-color: var(--background-color);
+}
+
+.dark .app-title {
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+/* Dark mode hex pattern background */
+.dark .bg-pattern {
+  background-color: var(--background-color);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill='%2300cc66' fill-opacity='0.05'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Light mode simple pattern background */
+.bg-pattern {
+  background-color: var(--background-color);
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z' fill='%23006633' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+/* Dark mode specific overrides */
+.dark button {
+  background-color: rgba(0, 204, 102, 0.1);
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.85rem;
+}
+
+.dark button:hover {
+  background-color: rgba(0, 204, 102, 0.2);
+  box-shadow: 0 0 10px rgba(0, 204, 102, 0.3);
+}
+
+.dark .widget-header {
+  background: linear-gradient(
+    to right,
+    rgba(0, 204, 102, 0.1),
+    rgba(0, 187, 119, 0.1)
+  );
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.dark .widget-header h3 {
+  font-family: "Orbitron", sans-serif;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  text-shadow: 0 0 5px rgba(0, 204, 102, 0.5);
+}
+
+.dark .highlight {
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+.dark .glow-effect {
+  box-shadow: 0 0 8px var(--primary-color);
+}
+
+.dark input,
+.dark select,
+.dark textarea {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--primary-color);
+  color: var(--text-color);
+}
+
+.dark select {
+  background-image: linear-gradient(
+      45deg,
+      transparent 50%,
+      var(--primary-color) 50%
+    ),
+    linear-gradient(135deg, var(--primary-color) 50%, transparent 50%);
+  background-position: calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px);
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
+
+.dark .technical-text {
+  font-family: "Share Tech Mono", monospace;
+  color: var(--primary-color);
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 0.5rem;
+  border-radius: 3px;
+  border-left: 2px solid var(--primary-color);
+}
+
+.dark .radar-chart canvas {
+  filter: drop-shadow(0px 0px 3px rgba(0, 204, 102, 0.5));
+}
+
+.dark .info-card {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 204, 102, 0.05) 0%,
+    rgba(0, 187, 119, 0.1) 100%
+  );
+  border-left: 3px solid var(--primary-color);
+}
+
+.dark .widget-icon {
+  color: var(--primary-color);
+  text-shadow: 0 0 5px rgba(0, 204, 102, 0.5);
+}
+
+/* Animation for pulse effect in dark mode */
+@keyframes pulse {
+  0% {
+    text-shadow: 0 0 5px rgba(0, 204, 102, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(0, 204, 102, 0.8);
+  }
+  100% {
+    text-shadow: 0 0 5px rgba(0, 204, 102, 0.5);
+  }
+}
+
+.dark .widget-header:hover .widget-icon {
+  animation: pulse 1.5s infinite;
+}

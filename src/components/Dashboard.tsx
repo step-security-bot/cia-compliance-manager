@@ -7,6 +7,7 @@ import {
   confidentialityOptions,
 } from "../hooks/useCIAOptions";
 import { APP_TEST_IDS, createDynamicTestId } from "../constants/testIds";
+import WidgetHeader from "./common/WidgetHeader";
 // Add the missing imports for grid styles
 import {
   gridClasses,
@@ -163,7 +164,7 @@ interface DashboardWidgetProps {
   size?: "small" | "medium" | "large" | "full";
   children: ReactNode;
   className?: string;
-  icon?: ReactNode;
+  icon?: keyof typeof WIDGET_ICONS | string; // Updated to accept both keys and string emojis
   testId?: string;
   description?: string;
   headerClassName?: string;
@@ -196,7 +197,7 @@ export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
   fullHeight = true,
   compact = false,
   emptyState,
-  icon, // Added missing icon prop here
+  icon, // Now accepts both keys and direct emoji strings
 }) => {
   // Map widget sizes to grid column spans
   const sizeClasses = {
@@ -208,10 +209,9 @@ export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
 
   return (
     <div
-      className={`relative dashboard-widget ${widgetClasses} ${className} ${
+      className={`widget ${sizeClasses.medium} ${className} ${
         fullHeight ? "h-full" : ""
       }`}
-      style={gridStyle}
       data-testid={testId || createDynamicTestId.widgetId(title)}
       role="region"
       aria-labelledby={`widget-title-${title
@@ -219,18 +219,16 @@ export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
         .replace(/\s+/g, "-")}`}
     >
       {showHeader && (
-        <div
-          className={`dashboard-widget-header ${headerClasses} ${headerClassName}`}
-        >
-          <h3 className="text-lg font-semibold mb-4 flex items-center text-gray-800 dark:text-gray-200">
-            {icon && <span className="widget-icon mr-2">{icon}</span>}
-            {title}
-          </h3>
-          {headerContent}
-        </div>
+        <WidgetHeader
+          title={title}
+          iconKey={icon}
+          actions={actions || headerContent}
+          className={headerClassName}
+          testId={`${testId || createDynamicTestId.widgetId(title)}-header`}
+        />
       )}
 
-      <div className={`dashboard-widget-content ${contentClasses}`}>
+      <div className="widget-body">
         {loading ? (
           <div className="flex items-center justify-center h-full">
             <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
@@ -241,12 +239,13 @@ export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
             <div>{error.toString()}</div>
           </div>
         ) : (
-          children ||
-          emptyState || (
-            <div className="text-gray-400 p-4 text-center italic">
-              No content available
-            </div>
-          )
+          <div className="widget-content-wrapper">
+            {children || emptyState || (
+              <div className="text-gray-400 p-4 text-center italic">
+                No content available
+              </div>
+            )}
+          </div>
         )}
       </div>
     </div>

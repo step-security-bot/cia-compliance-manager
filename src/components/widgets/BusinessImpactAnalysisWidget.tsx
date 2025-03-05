@@ -42,8 +42,6 @@ const BusinessImpactAnalysisWidget: React.FC<
     const levelKey = getNormalizedLevel(level);
 
     // Return the considerations if they exist, otherwise return empty array
-
-    // Return the considerations if they exist, otherwise return empty array
     return (
       BUSINESS_CONSIDERATIONS[categoryKey]?.[
         levelKey as keyof (typeof BUSINESS_CONSIDERATIONS)[typeof categoryKey]
@@ -140,23 +138,19 @@ const BusinessImpactAnalysisWidget: React.FC<
   };
 
   // Helper to get icon for impact type
-  const getImpactIcon = (type?: string): React.ReactNode => {
-    const safeType = type || "NEUTRAL"; // Use a default value if type is undefined
-
-    switch (safeType) {
-      case BUSINESS_IMPACT_CATEGORIES.FINANCIAL:
-        return <span>{BUSINESS_IMPACT_ICONS.FINANCIAL}</span>;
-      case BUSINESS_IMPACT_CATEGORIES.OPERATIONAL:
-        return <span>{BUSINESS_IMPACT_ICONS.OPERATIONAL}</span>;
-      case BUSINESS_IMPACT_CATEGORIES.REPUTATIONAL:
-        return <span>{BUSINESS_IMPACT_ICONS.REPUTATIONAL}</span>;
-      case BUSINESS_IMPACT_CATEGORIES.REGULATORY:
-        return <span>{BUSINESS_IMPACT_ICONS.REGULATORY}</span>;
-      case BUSINESS_IMPACT_CATEGORIES.STRATEGIC:
-        return <span>{BUSINESS_IMPACT_ICONS.STRATEGIC}</span>;
-      default:
-        return <span>{BUSINESS_IMPACT_ICONS.NEUTRAL}</span>;
+  const getImpactIcon = (category?: string): React.ReactNode => {
+    if (!category) {
+      return <span>{BUSINESS_IMPACT_ICONS.NEUTRAL || "ℹ️"}</span>; // Fallback if NEUTRAL is not defined
     }
+
+    // Check if the category exists in BUSINESS_IMPACT_ICONS
+    const icon =
+      BUSINESS_IMPACT_ICONS[category as keyof typeof BUSINESS_IMPACT_ICONS];
+    if (!icon) {
+      return <span>{BUSINESS_IMPACT_ICONS.NEUTRAL || "ℹ️"}</span>; // Fallback if category not found
+    }
+
+    return <span>{icon}</span>;
   };
 
   const considerations = getBusinessConsiderations();
@@ -492,7 +486,7 @@ const BusinessImpactAnalysisWidget: React.FC<
                       options[level]?.businessImpactDetails?.financialImpact
                         .description
                     }
-                    icon={enhancedIcons.IMPACT_TYPES.FINANCIAL} // This is now properly typed
+                    icon={enhancedIcons.IMPACT_TYPES.FINANCIAL}
                     testId="financial-impact-metrics"
                     className="w-full mb-2"
                   />
@@ -528,7 +522,7 @@ const BusinessImpactAnalysisWidget: React.FC<
                       options[level]?.businessImpactDetails?.operationalImpact
                         .description
                     }
-                    icon={enhancedIcons.IMPACT_TYPES.OPERATIONAL} // This is now properly typed
+                    icon={enhancedIcons.IMPACT_TYPES.OPERATIONAL}
                     testId="operational-impact-metrics"
                     className="w-full mb-2"
                   />
