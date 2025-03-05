@@ -69,7 +69,7 @@ const Selection: React.FC<SelectionProps> = ({
         onChange={(e) => onChange(e.target.value)}
         className="p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
         data-testid={testId || id} // Use id as fallback if testId is not provided
-        {...(label ? { 'aria-label': label } : {})} // Only add aria-label if label exists
+        {...(label ? { "aria-label": label } : {})} // Only add aria-label if label exists
       >
         {selectionLevels.map((level) => (
           <option
