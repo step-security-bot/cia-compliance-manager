@@ -342,7 +342,7 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
             aria-valuenow={summary.progressPercent}
             aria-valuemin={0}
             aria-valuemax={100}
-            data-testid="security-level-progress-bar"
+            data-testid={SUMMARY_TEST_IDS.SECURITY_LEVEL_PROGRESS_BAR}
           ></div>
         </div>
       </div>
@@ -354,7 +354,7 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
         </h4>
         <p
           className="text-sm text-gray-600 dark:text-gray-300"
-          data-testid="security-summary-description"
+          data-testid={SUMMARY_TEST_IDS.SECURITY_LEVEL_DESCRIPTION}
         >
           {compositeDescription}
         </p>
@@ -368,10 +368,10 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
                 value={roiValueFormatted}
                 variant={getLevelVariant(securityLevel)}
                 size="sm"
-                testId="roi-estimate-summary"
+                testId={SUMMARY_TEST_IDS.ROI_ESTIMATE_SUMMARY}
               />
             }
-            testId="roi-estimate-pair"
+            testId={SUMMARY_TEST_IDS.ROI_ESTIMATE_PAIR}
           />
         </div>
       </div>
@@ -382,7 +382,7 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
           onClick={() => toggleSection("technical")}
           className="flex justify-between items-center w-full text-left text-sm font-medium text-gray-700 dark:text-gray-300"
           aria-expanded={expandedSections.technical}
-          data-testid="technical-section-toggle"
+          data-testid={SUMMARY_TEST_IDS.TECHNICAL_SECTION_TOGGLE}
           aria-controls="technical-details-section"
         >
           <div className="flex items-center">
@@ -405,7 +405,7 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
           <div
             className="mt-3 space-y-3"
             style={animationStyles.fadeIn}
-            data-testid="technical-details-section"
+            data-testid={SUMMARY_TEST_IDS.TECHNICAL_DETAILS_SECTION}
             id="technical-details-section"
           >
             <div className="p-3 bg-gray-50 dark:bg-gray-700 rounded border border-gray-100 dark:border-gray-600">

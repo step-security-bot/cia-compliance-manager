@@ -7,21 +7,17 @@ import {
 
 interface SelectionProps {
   id: string;
-  label: string;
+  label?: string;
   value: string;
-  levels?: string[]; // Make levels optional
-  options?: Record<string, any>; // Add options support
+  levels?: string[];
+  options?: Record<string, any>;
   onChange: (value: string) => void;
   className?: string;
   testId?: string;
   infoContent?: string;
-  contextInfo?: string; // Add missing prop
+  contextInfo?: string;
 }
 
-/**
- * Selection component for handling dropdown selections
- * Used in CIA components for security level selection
- */
 const Selection: React.FC<SelectionProps> = ({
   id,
   label,
@@ -32,17 +28,21 @@ const Selection: React.FC<SelectionProps> = ({
   className = "",
   testId,
   infoContent,
-  contextInfo, // Add this
+  contextInfo,
 }) => {
   const [showInfo, setShowInfo] = useState(false);
+  const [showContextInfo, setShowContextInfo] = useState(false);
 
-  // If levels is empty but options isn't, extract keys from options
-  const selectionLevels = levels.length > 0 ? levels : Object.keys(options);
-
-  // Toggle info visibility
   const toggleInfo = () => {
     setShowInfo(!showInfo);
   };
+
+  const toggleContextInfo = () => {
+    setShowContextInfo(!showContextInfo);
+  };
+
+  // If levels are provided, use them; otherwise use the keys from options
+  const selectionLevels = levels.length > 0 ? levels : Object.keys(options);
 
   return (
     <div className={`flex flex-col space-y-1 ${className}`}>
