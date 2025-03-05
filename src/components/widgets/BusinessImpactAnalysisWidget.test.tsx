@@ -11,7 +11,10 @@ import {
 import { BUSINESS_CONSIDERATIONS } from "../../constants/businessConstants";
 import { RISK_LEVELS } from "../../constants/appConstants";
 import { ensureArray } from "../../utils/typeGuards";
-import { BUSINESS_IMPACT_TEST_IDS, createDynamicTestId } from "../../constants/testIds";
+import {
+  BUSINESS_IMPACT_TEST_IDS,
+  createDynamicTestId,
+} from "../../constants/testIds";
 
 describe("BusinessImpactAnalysisWidget", () => {
   // Helper function to find impact summary
@@ -132,15 +135,23 @@ describe("BusinessImpactAnalysisWidget", () => {
     );
 
     // Check initial ARIA attributes
-    const considerationsTab = screen.getByTestId(BUSINESS_IMPACT_TEST_IDS.TAB_CONSIDERATIONS);
-    const benefitsTab = screen.getByTestId(BUSINESS_IMPACT_TEST_IDS.TAB_BENEFITS);
+    const considerationsTab = screen.getByTestId(
+      BUSINESS_IMPACT_TEST_IDS.TAB_CONSIDERATIONS
+    );
+    const benefitsTab = screen.getByTestId(
+      BUSINESS_IMPACT_TEST_IDS.TAB_BENEFITS
+    );
 
     expect(considerationsTab).toHaveAttribute("aria-selected", "true");
     expect(benefitsTab).toHaveAttribute("aria-selected", "false");
 
     // Initial panel visibility
-    expect(screen.getByTestId(BUSINESS_IMPACT_TEST_IDS.BUSINESS_CONSIDERATIONS)).toBeInTheDocument();
-    expect(screen.queryByTestId(BUSINESS_IMPACT_TEST_IDS.BUSINESS_BENEFITS)).not.toBeInTheDocument();
+    expect(
+      screen.getByTestId(BUSINESS_IMPACT_TEST_IDS.BUSINESS_CONSIDERATIONS)
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByTestId(BUSINESS_IMPACT_TEST_IDS.BUSINESS_BENEFITS)
+    ).not.toBeInTheDocument();
 
     // Click benefits tab
     await user.click(benefitsTab);

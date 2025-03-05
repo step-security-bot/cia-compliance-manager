@@ -104,11 +104,15 @@ describe.skip("RadarChart Component", () => {
     );
 
     // Check container is rendered (this should always work)
-    expect(screen.getByTestId(`${CHART_TEST_IDS.RADAR_CHART}-container`)).toBeInTheDocument();
+    expect(
+      screen.getByTestId(`${CHART_TEST_IDS.RADAR_CHART}-container`)
+    ).toBeInTheDocument();
 
     // Use queryBy instead of findBy to handle both cases
     const chart = screen.queryByTestId(CHART_TEST_IDS.RADAR_CHART);
-    const errorElement = screen.queryByTestId(`${CHART_TEST_IDS.RADAR_CHART}-error`);
+    const errorElement = screen.queryByTestId(
+      `${CHART_TEST_IDS.RADAR_CHART}-error`
+    );
 
     // Ensure one of them exists
     expect(chart || errorElement).not.toBeNull();
@@ -119,9 +123,9 @@ describe.skip("RadarChart Component", () => {
     }
     // If chart is shown, check the values
     else if (chart) {
-      expect(screen.getByTestId(CHART_TEST_IDS.RADAR_AVAILABILITY_VALUE)).toHaveTextContent(
-        "None"
-      );
+      expect(
+        screen.getByTestId(CHART_TEST_IDS.RADAR_AVAILABILITY_VALUE)
+      ).toHaveTextContent("None");
     }
   });
 
@@ -138,15 +142,15 @@ describe.skip("RadarChart Component", () => {
     expect(screen.getByTestId(CHART_TEST_IDS.RADAR_CHART)).toBeInTheDocument();
 
     // Verify security level values are displayed correctly
-    expect(screen.getByTestId(CHART_TEST_IDS.RADAR_AVAILABILITY_VALUE)).toHaveTextContent(
-      SECURITY_LEVELS.HIGH
-    );
-    expect(screen.getByTestId(CHART_TEST_IDS.RADAR_INTEGRITY_VALUE)).toHaveTextContent(
-      SECURITY_LEVELS.MODERATE
-    );
-    expect(screen.getByTestId(CHART_TEST_IDS.RADAR_CONFIDENTIALITY_VALUE)).toHaveTextContent(
-      SECURITY_LEVELS.LOW
-    );
+    expect(
+      screen.getByTestId(CHART_TEST_IDS.RADAR_AVAILABILITY_VALUE)
+    ).toHaveTextContent(SECURITY_LEVELS.HIGH);
+    expect(
+      screen.getByTestId(CHART_TEST_IDS.RADAR_INTEGRITY_VALUE)
+    ).toHaveTextContent(SECURITY_LEVELS.MODERATE);
+    expect(
+      screen.getByTestId(CHART_TEST_IDS.RADAR_CONFIDENTIALITY_VALUE)
+    ).toHaveTextContent(SECURITY_LEVELS.LOW);
   });
 
   it("applies custom className", () => {

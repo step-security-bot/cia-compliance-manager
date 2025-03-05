@@ -7,11 +7,15 @@ describe("MetricsCard", () => {
   it("renders with basic props", () => {
     render(<MetricsCard title="Test Metric" value="100" />);
 
-    expect(screen.getByTestId(COMMON_COMPONENT_TEST_IDS.METRICS_CARD)).toBeInTheDocument();
-    expect(screen.getByTestId(COMMON_COMPONENT_TEST_IDS.METRICS_CARD_TITLE)).toHaveTextContent(
-      "Test Metric"
-    );
-    expect(screen.getByTestId(COMMON_COMPONENT_TEST_IDS.METRICS_CARD_VALUE)).toHaveTextContent("100");
+    expect(
+      screen.getByTestId(COMMON_COMPONENT_TEST_IDS.METRICS_CARD)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByTestId(COMMON_COMPONENT_TEST_IDS.METRICS_CARD_TITLE)
+    ).toHaveTextContent("Test Metric");
+    expect(
+      screen.getByTestId(COMMON_COMPONENT_TEST_IDS.METRICS_CARD_VALUE)
+    ).toHaveTextContent("100");
   });
 
   it("renders with an icon", () => {
@@ -36,9 +40,7 @@ describe("MetricsCard", () => {
 
   it("renders with custom testId", () => {
     const testId = "custom-metrics";
-    render(
-      <MetricsCard title="Test Metric" value="100" testId={testId} />
-    );
+    render(<MetricsCard title="Test Metric" value="100" testId={testId} />);
 
     expect(screen.getByTestId(testId)).toBeInTheDocument();
     expect(screen.getByTestId(`${testId}-title`)).toBeInTheDocument();
