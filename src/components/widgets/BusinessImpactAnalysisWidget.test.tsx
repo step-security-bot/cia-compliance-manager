@@ -9,19 +9,21 @@ import {
   confidentialityOptions,
 } from "../../hooks/useCIAOptions";
 import { BUSINESS_CONSIDERATIONS } from "../../constants/businessConstants";
-import { RISK_LEVELS } from "../../constants/riskConstants";
+import { RISK_LEVELS } from "../../constants/appConstants";
 import { ensureArray } from "../../utils/typeGuards";
+import { BUSINESS_IMPACT_TEST_IDS, createDynamicTestId } from "../../constants/testIds";
 
 describe("BusinessImpactAnalysisWidget", () => {
   // Helper function to find impact summary
   const findImpactSummary = () => {
-    return screen.getByTestId("business-impact-summary");
+    return screen.getByTestId(BUSINESS_IMPACT_TEST_IDS.BUSINESS_IMPACT_SUMMARY);
   };
 
   it("renders Availability impacts correctly", () => {
+    const category = "Availability";
     render(
       <BusinessImpactAnalysisWidget
-        category="Availability"
+        category={category}
         level="Moderate"
         options={availabilityOptions}
       />
@@ -30,7 +32,7 @@ describe("BusinessImpactAnalysisWidget", () => {
     // Check if summary is displayed
     const summary = findImpactSummary();
     expect(summary).toBeInTheDocument();
-    expect(summary).toHaveTextContent("Availability");
+    expect(summary).toHaveTextContent(category);
     expect(summary).toHaveTextContent("Moderate");
   });
 
@@ -124,21 +126,21 @@ describe("BusinessImpactAnalysisWidget", () => {
     render(
       <BusinessImpactAnalysisWidget
         category="Availability"
-        level="Moderate" // Use a level that likely has both considerations and benefits
+        level="Moderate"
         options={availabilityOptions}
       />
     );
 
     // Check initial ARIA attributes
-    const considerationsTab = screen.getByTestId("tab-considerations");
-    const benefitsTab = screen.getByTestId("tab-benefits");
+    const considerationsTab = screen.getByTestId(BUSINESS_IMPACT_TEST_IDS.TAB_CONSIDERATIONS);
+    const benefitsTab = screen.getByTestId(BUSINESS_IMPACT_TEST_IDS.TAB_BENEFITS);
 
     expect(considerationsTab).toHaveAttribute("aria-selected", "true");
     expect(benefitsTab).toHaveAttribute("aria-selected", "false");
 
     // Initial panel visibility
-    expect(screen.getByTestId("business-considerations")).toBeInTheDocument();
-    expect(screen.queryByTestId("business-benefits")).not.toBeInTheDocument();
+    expect(screen.getByTestId(BUSINESS_IMPACT_TEST_IDS.BUSINESS_CONSIDERATIONS)).toBeInTheDocument();
+    expect(screen.queryByTestId(BUSINESS_IMPACT_TEST_IDS.BUSINESS_BENEFITS)).not.toBeInTheDocument();
 
     // Click benefits tab
     await user.click(benefitsTab);

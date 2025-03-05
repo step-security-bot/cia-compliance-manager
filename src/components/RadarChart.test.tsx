@@ -2,7 +2,8 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { vi } from "vitest";
 import RadarChart from "./RadarChart";
-import { CIA_LABELS, SECURITY_LEVELS } from "../constants";
+import { CIA_LABELS, SECURITY_LEVELS } from "../constants/appConstants";
+import { CHART_TEST_IDS } from "../constants/testIds";
 import { TEST_CIA_LEVELS } from "../constants/testConstants";
 
 // Improve the Chart.js mock to avoid errors
@@ -103,11 +104,11 @@ describe.skip("RadarChart Component", () => {
     );
 
     // Check container is rendered (this should always work)
-    expect(screen.getByTestId("radar-chart-container")).toBeInTheDocument();
+    expect(screen.getByTestId(`${CHART_TEST_IDS.RADAR_CHART}-container`)).toBeInTheDocument();
 
     // Use queryBy instead of findBy to handle both cases
-    const chart = screen.queryByTestId("radar-chart");
-    const errorElement = screen.queryByTestId("radar-chart-error");
+    const chart = screen.queryByTestId(CHART_TEST_IDS.RADAR_CHART);
+    const errorElement = screen.queryByTestId(`${CHART_TEST_IDS.RADAR_CHART}-error`);
 
     // Ensure one of them exists
     expect(chart || errorElement).not.toBeNull();
@@ -118,8 +119,8 @@ describe.skip("RadarChart Component", () => {
     }
     // If chart is shown, check the values
     else if (chart) {
-      expect(screen.getByTestId("radar-availability-value")).toHaveTextContent(
-        "A: None"
+      expect(screen.getByTestId(CHART_TEST_IDS.RADAR_AVAILABILITY_VALUE)).toHaveTextContent(
+        "None"
       );
     }
   });
@@ -127,24 +128,24 @@ describe.skip("RadarChart Component", () => {
   it("handles different security levels", () => {
     render(
       <RadarChart
-        availability="High"
-        integrity="Moderate"
-        confidentiality="Low"
+        availability={SECURITY_LEVELS.HIGH}
+        integrity={SECURITY_LEVELS.MODERATE}
+        confidentiality={SECURITY_LEVELS.LOW}
       />
     );
 
     // Check canvas is rendered
-    expect(screen.getByTestId("radar-chart")).toBeInTheDocument();
+    expect(screen.getByTestId(CHART_TEST_IDS.RADAR_CHART)).toBeInTheDocument();
 
     // Verify security level values are displayed correctly
-    expect(screen.getByTestId("radar-availability-value")).toHaveTextContent(
-      "A: High"
+    expect(screen.getByTestId(CHART_TEST_IDS.RADAR_AVAILABILITY_VALUE)).toHaveTextContent(
+      SECURITY_LEVELS.HIGH
     );
-    expect(screen.getByTestId("radar-integrity-value")).toHaveTextContent(
-      "I: Moderate"
+    expect(screen.getByTestId(CHART_TEST_IDS.RADAR_INTEGRITY_VALUE)).toHaveTextContent(
+      SECURITY_LEVELS.MODERATE
     );
-    expect(screen.getByTestId("radar-confidentiality-value")).toHaveTextContent(
-      "C: Low"
+    expect(screen.getByTestId(CHART_TEST_IDS.RADAR_CONFIDENTIALITY_VALUE)).toHaveTextContent(
+      SECURITY_LEVELS.LOW
     );
   });
 
