@@ -39,7 +39,7 @@
     ]
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "4.0.9",
+    "@tailwindcss/postcss": "4.0.10",
     "@testing-library/cypress": "^10.0.3",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/react": "16.2.0",
