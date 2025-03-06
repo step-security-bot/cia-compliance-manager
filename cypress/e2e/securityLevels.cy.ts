@@ -3,6 +3,8 @@ import {
   CIA_LABELS,
   SELECTORS,
   TEST_COMMANDS,
+  getTestSelector,
+  TEST_IDS,
 } from "../support/constants";
 
 describe("Security Level Selection", () => {
@@ -25,16 +27,16 @@ describe("Security Level Selection", () => {
     TEST_COMMANDS.setSecurityLevel("integrity", "MODERATE");
     TEST_COMMANDS.setSecurityLevel("confidentiality", "LOW");
 
-    // Update selectors to use appropriate data-testid attributes
-    cy.get(`[data-testid="${SELECTORS.FORM_SELECTORS.AVAILABILITY_SELECT}"]`).should(
+    // Update to use SELECTORS.FORM instead of SELECTORS.FORM_SELECTORS
+    cy.get(getTestSelector(TEST_IDS.AVAILABILITY_SELECT)).should(
       "have.value",
       SECURITY_LEVELS.HIGH
     );
-    cy.get(`[data-testid="${SELECTORS.FORM_SELECTORS.INTEGRITY_SELECT}"]`).should(
+    cy.get(getTestSelector(TEST_IDS.INTEGRITY_SELECT)).should(
       "have.value",
       SECURITY_LEVELS.MODERATE
     );
-    cy.get(`[data-testid="${SELECTORS.FORM_SELECTORS.CONFIDENTIALITY_SELECT}"]`).should(
+    cy.get(getTestSelector(TEST_IDS.CONFIDENTIALITY_SELECT)).should(
       "have.value",
       SECURITY_LEVELS.LOW
     );

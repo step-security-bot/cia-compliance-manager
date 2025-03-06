@@ -1,37 +1,85 @@
+// Direct exports from source constants
+import {
+  TEST_IDS,
+  CIA_TEST_IDS,
+  WIDGET_TEST_IDS,
+  BUSINESS_IMPACT_TEST_IDS,
+  CHART_TEST_IDS,
+  COST_TEST_IDS,
+  FRAMEWORK_TEST_IDS,
+  SUMMARY_TEST_IDS,
+} from "../../src/constants/testIds";
 import {
   SECURITY_LEVELS,
   CIA_LABELS,
-  SECURITY_DESCRIPTIONS,
-  WIDGET_ICONS,
-  UI_TEXT,
-  COMPLIANCE_FRAMEWORKS,
-  COMPLIANCE_STATUS,
-  RISK_LEVELS,
+  WIDGET_TITLES,
+  UI_TEXT, // Add UI_TEXT import
+} from "../../src/constants/coreConstants";
+import {
   BUSINESS_IMPACT_CATEGORIES,
-  TEST_IDS,
-} from "../../src/constants";
+  RISK_LEVELS,
+} from "../../src/constants/riskConstants";
+import {
+  COMPLIANCE_STATUS,
+  COMPLIANCE_FRAMEWORKS,
+} from "../../src/constants/coreConstants";
 
+// Re-export imported constants
 export {
+  TEST_IDS,
+  CIA_TEST_IDS,
+  WIDGET_TEST_IDS,
+  BUSINESS_IMPACT_TEST_IDS, // Export these specific test ID objects
+  CHART_TEST_IDS,
+  COST_TEST_IDS,
+  FRAMEWORK_TEST_IDS,
+  SUMMARY_TEST_IDS,
   SECURITY_LEVELS,
   CIA_LABELS,
-  SECURITY_DESCRIPTIONS,
-  WIDGET_ICONS,
-  UI_TEXT,
-  COMPLIANCE_FRAMEWORKS,
-  COMPLIANCE_STATUS,
-  RISK_LEVELS,
+  WIDGET_TITLES,
   BUSINESS_IMPACT_CATEGORIES,
-  TEST_IDS,
+  RISK_LEVELS,
+  COMPLIANCE_STATUS,
+  COMPLIANCE_FRAMEWORKS,
+  UI_TEXT, // Add UI_TEXT export
 };
 
-export const FORM_SELECTORS = {
-  AVAILABILITY_SELECT: `[data-testid="${TEST_IDS.AVAILABILITY_SELECT}"]`,
-  INTEGRITY_SELECT: `[data-testid="${TEST_IDS.INTEGRITY_SELECT}"]`,
-  CONFIDENTIALITY_SELECT: `[data-testid="${TEST_IDS.CONFIDENTIALITY_SELECT}"]`,
+// Helper functions for working with test IDs
+export const getTestSelector = (testId: string): string =>
+  `[data-testid="${testId}"]`;
+
+// Generate selector functions for common test ID patterns
+export const SELECTORS = {
+  WIDGETS: {
+    SECURITY_LEVEL: getTestSelector(TEST_IDS.SECURITY_LEVEL_CONTROLS),
+    COST_ESTIMATION: getTestSelector(COST_TEST_IDS.COST_CONTAINER),
+    VALUE_CREATION: getTestSelector(WIDGET_TEST_IDS.VALUE_CREATION_CONTENT),
+    SECURITY_SUMMARY: getTestSelector(
+      SUMMARY_TEST_IDS.SECURITY_SUMMARY_CONTAINER
+    ),
+    BUSINESS_IMPACT: getTestSelector(
+      BUSINESS_IMPACT_TEST_IDS.BUSINESS_IMPACT_SUMMARY
+    ),
+    RADAR_CHART: getTestSelector(CHART_TEST_IDS.RADAR_CHART),
+    COMPLIANCE_STATUS: getTestSelector(
+      FRAMEWORK_TEST_IDS.COMPLIANCE_STATUS_WIDGET
+    ),
+  },
+  CONTROLS: {
+    THEME_TOGGLE: getTestSelector(TEST_IDS.THEME_TOGGLE),
+    APP_CONTAINER: getTestSelector(TEST_IDS.APP_CONTAINER),
+    APP_TITLE: getTestSelector(TEST_IDS.APP_TITLE),
+  },
+  FORM: {
+    AVAILABILITY_SELECT: getTestSelector(TEST_IDS.AVAILABILITY_SELECT),
+    INTEGRITY_SELECT: getTestSelector(TEST_IDS.INTEGRITY_SELECT),
+    CONFIDENTIALITY_SELECT: getTestSelector(TEST_IDS.CONFIDENTIALITY_SELECT),
+  },
 };
 
+// Command functions for test actions
 export const TEST_COMMANDS = {
-  setSecurityLevel: (category: string, level: keyof typeof SECURITY_LEVELS) => {
+  setSecurityLevel: (category: string, level: string) => {
     const testIdMap: Record<string, string> = {
       availability: TEST_IDS.AVAILABILITY_SELECT,
       integrity: TEST_IDS.INTEGRITY_SELECT,
@@ -40,7 +88,7 @@ export const TEST_COMMANDS = {
 
     const testId = testIdMap[category.toLowerCase()];
     if (testId) {
-      return cy.get(`[data-testid="${testId}"]`).select(SECURITY_LEVELS[level]);
+      return cy.get(getTestSelector(testId)).select(level);
     }
 
     cy.log(`No selector found for ${category}`);
@@ -61,31 +109,13 @@ export const TEST_COMMANDS = {
     const testId = testIdMap[category.toLowerCase()];
     if (testId) {
       return cy
-        .get(`[data-testid="${testId}"]`)
+        .get(getTestSelector(testId))
         .should("have.value", expectedLevel);
     }
 
     cy.log(`No selector found for ${category}`);
     return cy;
   },
-};
-
-export const SELECTORS = {
-  WIDGETS: {
-    SECURITY_LEVEL: `[data-testid="${TEST_IDS.SECURITY_LEVEL_CONTROLS}"]`,
-    COST_ESTIMATION: `[data-testid="${TEST_IDS.COST_ESTIMATION}"]`,
-    VALUE_CREATION: `[data-testid="${TEST_IDS.VALUE_CREATION}"]`,
-    SECURITY_SUMMARY: `[data-testid="${TEST_IDS.SECURITY_SUMMARY}"]`,
-    BUSINESS_IMPACT: `[data-testid="${TEST_IDS.BUSINESS_IMPACT}"]`,
-    RADAR_CHART: `[data-testid="${TEST_IDS.RADAR_CHART}"]`,
-    COMPLIANCE_STATUS: `[data-testid="${TEST_IDS.COMPLIANCE_STATUS}"]`,
-  },
-  CONTROLS: {
-    THEME_TOGGLE: `[data-testid="${TEST_IDS.THEME_TOGGLE}"]`,
-    APP_CONTAINER: `[data-testid="${TEST_IDS.APP_CONTAINER}"]`,
-    APP_TITLE: `[data-testid="${TEST_IDS.APP_TITLE}"]`,
-  },
-  ...FORM_SELECTORS,
 };
 
 export const TEST_PATTERNS = {

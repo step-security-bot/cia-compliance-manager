@@ -4,7 +4,7 @@
  * Tests that technical implementation details are shown correctly for different
  * security levels and that the tabbed interface works properly.
  */
-import { SECURITY_LEVELS } from "../../support/appConstantsHelper";
+import { SECURITY_LEVELS } from "../../support/constants";
 
 describe("Technical Implementation Details", () => {
   beforeEach(() => {

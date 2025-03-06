@@ -4,7 +4,7 @@
  * This smoke test verifies the most basic functionality -
  * that the application loads and displays its core elements.
  */
-import { UI_TEXT } from "../../support/appConstantsHelper";
+import { UI_TEXT } from "../../support/constants";
 
 describe("Dashboard Loads", () => {
   beforeEach(() => {

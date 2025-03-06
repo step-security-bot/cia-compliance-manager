@@ -13,7 +13,7 @@ export default defineConfig({
   screenshotOnRunFailure: true,
   trashAssetsBeforeRuns: true,
   viewportWidth: 1280,
-  viewportHeight: 720,
+  viewportHeight: 800,
   retries: {
     runMode: 1,
     openMode: 0,
@@ -52,5 +52,5 @@ export default defineConfig({
   },
   // Add these configurations
   waitForAnimations: false,
-  defaultCommandTimeout: 15000,
+  defaultCommandTimeout: 10000,
 });

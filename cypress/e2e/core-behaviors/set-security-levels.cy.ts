@@ -3,7 +3,12 @@
  *
  * Tests the ability to set different security levels and see visual feedback
  */
-import { SECURITY_LEVELS } from "../../support/appConstantsHelper";
+import {
+  SECURITY_LEVELS,
+  SELECTORS,
+  TEST_IDS,
+  getTestSelector,
+} from "../../support/constants";
 
 describe("Set Security Levels", () => {
   beforeEach(() => {
@@ -11,8 +16,20 @@ describe("Set Security Levels", () => {
     cy.ensureAppLoaded();
   });
 
-  it.skip("allows setting individual security levels", () => {
-    // Skip test as default security levels may have changed
+  it("allows setting individual security levels", () => {
+    // Using the selector constants
+    cy.get(SELECTORS.WIDGETS.SECURITY_LEVEL).should("be.visible");
+
+    // Using test IDs with helper function
+    cy.get(getTestSelector(TEST_IDS.AVAILABILITY_SELECT)).select(
+      SECURITY_LEVELS.HIGH
+    );
+
+    // Verify selection
+    cy.get(getTestSelector(TEST_IDS.AVAILABILITY_SELECT)).should(
+      "have.value",
+      SECURITY_LEVELS.HIGH
+    );
   });
 
   it.skip("verifies radar chart updates with security level changes", () => {

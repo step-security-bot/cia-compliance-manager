@@ -3,7 +3,7 @@
  *
  * Tests that the compliance status updates correctly based on the selected security levels.
  */
-import { SECURITY_LEVELS } from "../../support/appConstantsHelper";
+import { SECURITY_LEVELS } from "../../support/constants";
 
 describe("View Compliance Status", () => {
   beforeEach(() => {
