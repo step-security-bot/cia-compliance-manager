@@ -74,6 +74,10 @@ export const CIA_TEST_IDS = {
   CURRENT_AVAILABILITY: "current-availability",
   CURRENT_INTEGRITY: "current-integrity",
   CURRENT_CONFIDENTIALITY: "current-confidentiality",
+
+  // Added missing properties
+  SECURITY_LEVEL_SELECTOR: "security-level-selector",
+  SECURITY_LEVEL_CONTROLS: "security-level-controls",
 };
 
 // Common widget test IDs
