@@ -318,6 +318,18 @@ Cypress.Commands.add(
   }
 );
 
+/**
+ * List JUnit files in the results directory
+ */
+Cypress.Commands.add("listJunitFiles", () => {
+  cy.task("listJunitFiles").then((files) => {
+    cy.log(`Found ${files.length} JUnit files:`);
+    files.forEach((file: string) => {
+      cy.log(`- ${file}`);
+    });
+  });
+});
+
 // Define a custom type definition for the Chainable interface
 declare global {
   namespace Cypress {

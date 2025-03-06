@@ -257,3 +257,19 @@ beforeEach(() => {
   // Set viewport explicitly in each test's beforeEach
   cy.viewport(3840, 2160);
 });
+
+// Add JUnit file verification after all tests complete
+after(() => {
+  cy.task("listJunitFiles").then((files) => {
+    if (Array.isArray(files) && files.length > 0) {
+      console.log(
+        `Found ${files.length} JUnit XML files in the results directory`
+      );
+      files.forEach((file) => console.log(`  - ${file}`));
+    } else {
+      console.warn(
+        "⚠️ No JUnit XML files found! Reporting may not be working correctly."
+      );
+    }
+  });
+});

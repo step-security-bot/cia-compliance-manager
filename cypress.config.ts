@@ -3,9 +3,17 @@ import vitePreprocessor from "cypress-vite";
 import { resolve } from "path";
 import { resetJunitResults } from "./cypress/tasks/junit-reset";
 import { fileURLToPath } from "url";
+import fs from "fs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = resolve(fileURLToPath(new URL(".", import.meta.url)));
+
+// Ensure the results directory exists
+const resultsDir = resolve(__dirname, "cypress/results");
+if (!fs.existsSync(resultsDir)) {
+  fs.mkdirSync(resultsDir, { recursive: true });
+  console.log(`Created results directory: ${resultsDir}`);
+}
 
 export default defineConfig({
   experimentalMemoryManagement: true,
@@ -22,9 +30,10 @@ export default defineConfig({
   // Add reporter configuration here
   reporter: "junit",
   reporterOptions: {
-    mochaFile: "cypress/results/junit-[hash].xml",
+    mochaFile: "cypress/results/junit-[name]-[hash].xml",
     toConsole: true,
     attachments: true,
+    outputFile: true, // Ensure files are written to disk
   },
   e2e: {
     baseUrl: "http://localhost:5173",
@@ -35,6 +44,24 @@ export default defineConfig({
       // implement node event listeners here
       on("task", {
         resetJunitResults: resetJunitResults,
+
+        // Add this new task
+        listJunitFiles() {
+          const resultsDir = resolve(__dirname, "cypress/results");
+          if (!fs.existsSync(resultsDir)) {
+            console.log(`Results directory does not exist: ${resultsDir}`);
+            return [];
+          }
+
+          const files = fs
+            .readdirSync(resultsDir)
+            .filter((file) => file.endsWith(".xml"));
+
+          console.log(`Found ${files.length} JUnit files in ${resultsDir}`);
+          files.forEach((file) => console.log(`- ${file}`));
+
+          return files;
+        },
       });
       on(
         "file:preprocessor",

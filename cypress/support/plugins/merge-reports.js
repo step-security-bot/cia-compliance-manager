@@ -18,14 +18,16 @@ export function mergeAllJunitReports() {
       fs.mkdirSync(RESULTS_DIR, { recursive: true });
     }
 
-    // Get all junit XML files
+    // Get all junit XML files - modified to handle name-based pattern
     const reports = fs
       .readdirSync(RESULTS_DIR)
       .filter(
         (file) =>
           file.startsWith("junit-") &&
           file.endsWith(".xml") &&
-          !file.includes("combined")
+          !file.includes("combined") &&
+          !file.includes("backup") &&
+          !file.includes("all-")
       );
 
     if (reports.length === 0) {
