@@ -3,6 +3,7 @@
  */
 
 import { SECURITY_LEVELS } from "./appConstantsHelper";
+import { TEST_IDS } from "../../src/constants/testIds";
 
 /**
  * Wait for an element with fallback selectors
@@ -102,15 +103,15 @@ export const setAllLevels = (
   confidentiality: string
 ) => {
   // Use data-testid selectors for more reliable selection
-  cy.get('[data-testid="availability-select"]', { timeout: 10000 })
+  cy.get(`[data-testid="${TEST_IDS.AVAILABILITY_SELECT}"]`, { timeout: 10000 })
     .should("exist")
     .select(availability, { force: true });
 
-  cy.get('[data-testid="integrity-select"]', { timeout: 10000 })
+  cy.get(`[data-testid="${TEST_IDS.INTEGRITY_SELECT}"]`, { timeout: 10000 })
     .should("exist")
     .select(integrity, { force: true });
 
-  cy.get('[data-testid="confidentiality-select"]', { timeout: 10000 })
+  cy.get(`[data-testid="${TEST_IDS.CONFIDENTIALITY_SELECT}"]`, { timeout: 10000 })
     .should("exist")
     .select(confidentiality, { force: true });
 
@@ -130,17 +131,15 @@ export const setSecurityLevels = (
 ): void => {
   // Navigate to security selections if not already visible
   cy.get("body").then(($body) => {
-    if (!$body.find("#availability-select").is(":visible")) {
-      cy.get(
-        '[data-testid="widget-security-level-selection"]'
-      ).scrollIntoView();
+    if (!$body.find(`[data-testid="${TEST_IDS.AVAILABILITY_SELECT}"]`).is(":visible")) {
+      cy.get(`[data-testid="${TEST_IDS.SECURITY_LEVEL_CONTROLS}"]`).scrollIntoView();
     }
   });
 
   // Set individual levels with force option to handle any overlay issues
-  cy.get("#availability-select").select(availabilityLevel, { force: true });
-  cy.get("#integrity-select").select(integrityLevel, { force: true });
-  cy.get("#confidentiality-select").select(confidentialityLevel, {
+  cy.get(`[data-testid="${TEST_IDS.AVAILABILITY_SELECT}"]`).select(availabilityLevel, { force: true });
+  cy.get(`[data-testid="${TEST_IDS.INTEGRITY_SELECT}"]`).select(integrityLevel, { force: true });
+  cy.get(`[data-testid="${TEST_IDS.CONFIDENTIALITY_SELECT}"]`).select(confidentialityLevel, {
     force: true,
   });
 
@@ -225,7 +224,7 @@ export const ensureAppLoaded = () => {
   // Specifically look for security level controls
   cy.get("body").then(($body) => {
     const hasControls =
-      $body.find('[data-testid="security-level-controls"]').length > 0;
+      $body.find(`[data-testid="${TEST_IDS.SECURITY_LEVEL_CONTROLS}"]`).length > 0;
 
     if (hasControls) {
       cy.log("Security level controls found by data-testid");

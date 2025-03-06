@@ -60,5 +60,8 @@
   // Use privileged mode for X11 and Cypress
   "runArgs": ["--privileged"],
   // Fix: Use proper shutdown action instead of postStopCommand
-  "shutdownAction": "none"
+  "shutdownAction": "none",
+  "tasks": {
+    "build": "npm install && npm run build"
+  }
 }

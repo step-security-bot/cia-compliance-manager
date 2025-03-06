@@ -1,6 +1,4 @@
-// Import constants and type definitions
-import { CypressConstants } from "./appConstantsHelper";
-import { TEST_SELECTORS } from "./appConstantsHelper";
+import { TEST_IDS } from "../../src/constants/testIds";
 
 // DO NOT declare types here - they are in types.d.ts
 // Remove all "declare global" blocks
@@ -14,22 +12,22 @@ Cypress.Commands.add(
   "setSecurityLevels",
   (availability: string, integrity: string, confidentiality: string) => {
     // Navigate to security profile configuration if needed
-    cy.get('[data-testid="widget-security-profile"]')
+    cy.get(`[data-testid="${TEST_IDS.SECURITY_LEVEL_CONTROLS}"]`)
       .should("be.visible")
       .scrollIntoView();
 
     // Now try to find the selects inside this widget
-    cy.get('[data-testid="widget-security-profile"]').within(() => {
+    cy.get(`[data-testid="${TEST_IDS.SECURITY_LEVEL_CONTROLS}"]`).within(() => {
       if (availability) {
-        cy.get("#availability-select").select(availability, { force: true });
+        cy.get(`[data-testid="${TEST_IDS.AVAILABILITY_SELECT}"]`).select(availability, { force: true });
       }
 
       if (integrity) {
-        cy.get("#integrity-select").select(integrity, { force: true });
+        cy.get(`[data-testid="${TEST_IDS.INTEGRITY_SELECT}"]`).select(integrity, { force: true });
       }
 
       if (confidentiality) {
-        cy.get("#confidentiality-select").select(confidentiality, {
+        cy.get(`[data-testid="${TEST_IDS.CONFIDENTIALITY_SELECT}"]`).select(confidentiality, {
           force: true,
         });
       }
@@ -48,7 +46,7 @@ Cypress.Commands.add("ensureAppLoaded", () => {
   cy.get("body", { timeout: 10000 }).should("not.be.empty");
 
   // Check that main app container exists
-  cy.get('[data-testid="app-container"]', { timeout: 10000 }).should("exist");
+  cy.get(`[data-testid="${TEST_IDS.APP_CONTAINER}"]`, { timeout: 10000 }).should("exist");
 });
 
 /**

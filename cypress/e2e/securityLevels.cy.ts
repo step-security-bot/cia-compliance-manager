@@ -26,15 +26,15 @@ describe("Security Level Selection", () => {
     TEST_COMMANDS.setSecurityLevel("confidentiality", "LOW");
 
     // Update selectors to use appropriate data-testid attributes
-    cy.get('[data-testid="availability-select"]').should(
+    cy.get(`[data-testid="${SELECTORS.FORM_SELECTORS.AVAILABILITY_SELECT}"]`).should(
       "have.value",
       SECURITY_LEVELS.HIGH
     );
-    cy.get('[data-testid="integrity-select"]').should(
+    cy.get(`[data-testid="${SELECTORS.FORM_SELECTORS.INTEGRITY_SELECT}"]`).should(
       "have.value",
       SECURITY_LEVELS.MODERATE
     );
-    cy.get('[data-testid="confidentiality-select"]').should(
+    cy.get(`[data-testid="${SELECTORS.FORM_SELECTORS.CONFIDENTIALITY_SELECT}"]`).should(
       "have.value",
       SECURITY_LEVELS.LOW
     );
