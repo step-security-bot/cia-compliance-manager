@@ -135,7 +135,13 @@ const CIAClassificationApp: React.FC = () => {
               data-testid={APP_TEST_IDS.APP_TITLE}
               className="text-2xl font-bold text-gray-800 dark:text-gray-100 transition-colors duration-300 flex items-center"
             >
-              <span className="mr-3">🔒</span>
+              {/* Modified logo with inline style override for smaller size */}
+              <img
+                src="/icon-192.png"
+                alt="CIA Compliance Manager Logo"
+                style={{ height: "48px" }}
+                className="w-auto mr-1"
+              />
               {UI_TEXT.APP_TITLE}
             </h1>
             <button
