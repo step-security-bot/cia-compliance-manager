@@ -1,4 +1,4 @@
-# CIA Compliance Manager
+# <img src="https://github.com/Hack23/cia-compliance-manager/raw/main/public/icon-192.png" width="32" height="32" alt="CIA Logo"> CIA Compliance Manager
 
 The CIA Compliance Manager is a comprehensive application designed to help organizations assess, implement, and manage security controls across the CIA triad (Confidentiality, Integrity, and Availability). It provides detailed security assessments, cost estimation tools, business impact analysis, and technical implementation guidance to support organizations in achieving their security objectives within budget constraints.
 
