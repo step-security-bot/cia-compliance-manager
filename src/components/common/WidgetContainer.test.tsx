@@ -11,59 +11,49 @@ describe("WidgetContainer Component", () => {
   };
 
   it("renders with title and content", () => {
-    const customTestId = "test-widget-container";
-    render(<WidgetContainer {...defaultProps} testId={customTestId} />);
+    render(<WidgetContainer {...defaultProps} />);
 
-    expect(screen.getByTestId(customTestId)).toBeInTheDocument();
-    expect(screen.getByText(defaultProps.title)).toBeInTheDocument();
+    expect(screen.getByText("Test Widget")).toBeInTheDocument();
     expect(screen.getByText("Widget Content")).toBeInTheDocument();
   });
 
   it("renders with loading state", () => {
-    render(
-      <WidgetContainer {...defaultProps}>
-        <div data-testid={WIDGET_TEST_IDS.LOADING_INDICATOR}>Loading...</div>
-      </WidgetContainer>
-    );
+    render(<WidgetContainer {...defaultProps} loading={true} />);
 
     expect(
       screen.getByTestId(WIDGET_TEST_IDS.LOADING_INDICATOR)
     ).toBeInTheDocument();
+    expect(screen.queryByText("Widget Content")).not.toBeInTheDocument();
   });
 
   it("renders with error state", () => {
-    const errorMessage = "Test error message";
     render(
-      <WidgetContainer {...defaultProps}>
-        <div role="alert">{errorMessage}</div>
-      </WidgetContainer>
+      <WidgetContainer
+        {...defaultProps}
+        error={new Error("Test error message")}
+      />
     );
 
-    expect(screen.getByText(errorMessage)).toBeInTheDocument();
+    expect(screen.getByText("Test error message")).toBeInTheDocument();
+    expect(screen.queryByText("Widget Content")).not.toBeInTheDocument();
   });
 
   it("renders with custom header content", () => {
+    // Fix - Create a testable headerContent component with a testId
     const customProps = {
       ...defaultProps,
-      header: <button>Custom Action</button>,
+      headerContent: <button data-testid="custom-action">Custom Action</button>,
     };
 
     render(<WidgetContainer {...customProps} />);
 
-    expect(screen.getByText("Custom Action")).toBeInTheDocument();
+    // Use getByTestId instead of getByText to find the custom action button
+    expect(screen.getByTestId("custom-action")).toBeInTheDocument();
   });
 
   it("renders content title when provided", () => {
-    const contentTitle = "Content Section";
-    render(
-      <WidgetContainer {...defaultProps}>
-        <h3 data-testid={WIDGET_TEST_IDS.CONTENT_TITLE}>{contentTitle}</h3>
-        <div>Widget Content</div>
-      </WidgetContainer>
-    );
+    render(<WidgetContainer {...defaultProps} contentTitle="Content Title" />);
 
-    expect(screen.getByTestId(WIDGET_TEST_IDS.CONTENT_TITLE)).toHaveTextContent(
-      contentTitle
-    );
+    expect(screen.getByText("Content Title")).toBeInTheDocument();
   });
 });

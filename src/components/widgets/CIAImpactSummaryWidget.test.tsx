@@ -1,35 +1,28 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
+import { describe, it, expect } from "vitest";
 import CIAImpactSummaryWidget from "./CIAImpactSummaryWidget";
-import { WIDGET_TEST_IDS, CIA_TEST_IDS } from "../../constants/testIds";
-import { SECURITY_LEVEL_COLORS } from "../../constants/appConstants";
+import { WIDGET_TEST_IDS } from "../../constants/testIds";
 
 describe("CIAImpactSummaryWidget", () => {
   it("renders all three CIA categories with correct text", () => {
     render(
       <CIAImpactSummaryWidget
-        availability="Moderate"
-        integrity="High"
-        confidentiality="Low"
+        availability="High"
+        integrity="Low"
+        confidentiality="Moderate"
       />
     );
 
-    // Check for the text in the format expected by the tests
-    expect(screen.getByText("Moderate Availability")).toBeInTheDocument();
-    expect(screen.getByText("High Integrity")).toBeInTheDocument();
-    expect(screen.getByText("Low Confidentiality")).toBeInTheDocument();
+    // Check that all titles are rendered
+    expect(screen.getByText("Availability:")).toBeInTheDocument();
+    expect(screen.getByText("Integrity:")).toBeInTheDocument();
+    expect(screen.getByText("Confidentiality:")).toBeInTheDocument();
 
-    // Verify test IDs are properly set
-    expect(screen.getByTestId("cia-impact-summary")).toBeInTheDocument();
-    expect(
-      screen.getByTestId("cia-impact-summary-availability-level")
-    ).toBeInTheDocument();
-    expect(
-      screen.getByTestId("cia-impact-summary-integrity-level")
-    ).toBeInTheDocument();
-    expect(
-      screen.getByTestId("cia-impact-summary-confidentiality-level")
-    ).toBeInTheDocument();
+    // Check that all values are rendered with correct text
+    expect(screen.getByText("High Availability")).toBeInTheDocument();
+    expect(screen.getByText("Low Integrity")).toBeInTheDocument();
+    expect(screen.getByText("Moderate Confidentiality")).toBeInTheDocument();
   });
 
   it("applies appropriate styling to different security levels", () => {
@@ -42,58 +35,44 @@ describe("CIAImpactSummaryWidget", () => {
     );
 
     const availabilityValue = screen.getByTestId(
-      WIDGET_TEST_IDS.CIA_IMPACT_AVAILABILITY_LEVEL
+      "cia-impact-summary-availability-level"
     );
-    const integrityValue = screen.getByTestId(
-      WIDGET_TEST_IDS.CIA_IMPACT_INTEGRITY_LEVEL
-    );
-    const confidentialityValue = screen.getByTestId(
-      WIDGET_TEST_IDS.CIA_IMPACT_CONFIDENTIALITY_LEVEL
-    );
+    // Update to match "success" variant which is used for "Very High" level
+    expect(availabilityValue).toHaveClass("text-success-600");
 
-    // Check for appropriate styling classes being applied
-    // Update expectations to match the actual styling in the component
-    // Instead of looking for specific color classes, verify they have different classes
-    expect(availabilityValue.className).not.toEqual(integrityValue.className);
-    expect(availabilityValue.className).not.toEqual(
-      confidentialityValue.className
+    const integrityValue = screen.getByTestId(
+      "cia-impact-summary-integrity-level"
     );
-    expect(integrityValue.className).not.toEqual(
-      confidentialityValue.className
+    // "None" maps to "default" variant which uses gray colors
+    expect(integrityValue).toHaveClass("text-gray-700");
+
+    const confidentialityValue = screen.getByTestId(
+      "cia-impact-summary-confidentiality-level"
     );
+    // "Moderate" maps to "info" variant
+    expect(confidentialityValue).toHaveClass("text-info-600");
   });
 
-  // Add a test for the default test ID behavior:
   it("uses default testId when not provided", () => {
     render(
       <CIAImpactSummaryWidget
-        availability="Moderate"
+        availability="High"
         integrity="High"
-        confidentiality="Low"
+        confidentiality="High"
       />
     );
 
-    // Check for default testId
-    expect(screen.getByTestId("cia-impact-summary")).toBeInTheDocument();
+    expect(
+      screen.getByTestId(WIDGET_TEST_IDS.CIA_IMPACT_SUMMARY)
+    ).toBeInTheDocument();
   });
 
-  // Test for edge cases with empty or unexpected values
   it("handles empty or unexpected values gracefully", () => {
-    render(
-      <CIAImpactSummaryWidget
-        availability=""
-        integrity="Invalid Value"
-        confidentiality={undefined as any} // Testing with undefined
-      />
-    );
+    // @ts-ignore intentionally testing with invalid values
+    render(<CIAImpactSummaryWidget />);
 
-    // Should still render without crashing
-    expect(screen.getByTestId("cia-impact-summary")).toBeInTheDocument();
-    expect(
-      screen.getByTestId("cia-impact-summary-availability-level")
-    ).toHaveTextContent(/^\s*Availability$/);
-    expect(
-      screen.getByTestId("cia-impact-summary-integrity-level")
-    ).toHaveTextContent("Invalid Value Integrity");
+    expect(screen.getByText("None Availability")).toBeInTheDocument();
+    expect(screen.getByText("None Integrity")).toBeInTheDocument();
+    expect(screen.getByText("None Confidentiality")).toBeInTheDocument();
   });
 });
