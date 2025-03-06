@@ -1,17 +1,24 @@
 import React from "react";
-import { render, screen, fireEvent, waitFor, within } from "@testing-library/react";
+import {
+  render,
+  screen,
+  fireEvent,
+  waitFor,
+  within,
+} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import SecuritySummaryWidget from "./SecuritySummaryWidget";
-import { SECURITY_LEVELS } from "../../constants/coreConstants";
-import { 
-  SECURITY_SUMMARY_TITLES, 
+import { SECURITY_LEVELS } from "../../constants/appConstants";
+import {
+  SECURITY_SUMMARY_TITLES,
   SECURITY_RECOMMENDATIONS,
   UI_ICONS,
   ROI_ESTIMATES,
-  TEST_MATCHERS, // Added missing import for TEST_MATCHERS
+  TEST_MATCHERS,
 } from "../../constants/appConstants";
 import { BusinessKeyBenefits } from "../../types/businessImpact";
 import { vi } from "vitest";
+import { SUMMARY_TEST_IDS, WIDGET_TEST_IDS } from "../../constants/testIds";
 
 // Helper function to ensure an item is always treated as an array
 const ensureArray = <T,>(item: T | T[]): T[] => {
@@ -25,23 +32,26 @@ vi.mock("../../types/businessImpact", async () => {
     ...actual,
     BusinessKeyBenefits: {
       NONE: [],
-      LOW: ["Cost-effective solution for non-critical systems", "Minimal maintenance overhead"],
+      LOW: [
+        "Cost-effective solution for non-critical systems",
+        "Minimal maintenance overhead",
+      ],
       MODERATE: [
-        "Good balance of security vs. cost", 
-        "Meets regulatory requirements", 
-        "Suitable for most business applications"
+        "Good balance of security vs. cost",
+        "Meets regulatory requirements",
+        "Suitable for most business applications",
       ],
       HIGH: [
-        "Robust protection for sensitive data", 
-        "Compliance with stringent requirements", 
-        "Minimizes risk of security incidents"
+        "Robust protection for sensitive data",
+        "Compliance with stringent requirements",
+        "Minimizes risk of security incidents",
       ],
       VERY_HIGH: [
         "Maximum protection for critical systems",
         "Suitable for highly regulated environments",
-        "Comprehensive security guarantees"
+        "Comprehensive security guarantees",
       ],
-    }
+    },
   };
 });
 
@@ -73,14 +83,11 @@ describe("SecuritySummaryWidget", () => {
     render(<SecuritySummaryWidget securityLevel="None" />);
 
     // Use a custom matcher that can handle the title format
-    const titleElement = screen.getByText((content, element) => {
-      return (
-        element !== null &&
-        element.className.includes("text-lg") &&
-        content.includes(SECURITY_SUMMARY_TITLES.NONE)
-      );
-    });
+    const titleElement = screen.getByTestId(
+      WIDGET_TEST_IDS.SECURITY_SUMMARY_TITLE
+    );
     expect(titleElement).toBeInTheDocument();
+    expect(titleElement).toHaveTextContent(SECURITY_SUMMARY_TITLES.NONE);
 
     // Use test matcher for description
     expect(
@@ -158,29 +165,29 @@ describe("SecuritySummaryWidget", () => {
 
   it("displays appropriate security level icon", () => {
     const { rerender } = render(<SecuritySummaryWidget securityLevel="Low" />);
-    expect(screen.getByTestId("security-icon")).toHaveTextContent(
-      UI_ICONS.SECURITY_LOW
-    );
+    expect(
+      screen.getByTestId(SUMMARY_TEST_IDS.SECURITY_ICON)
+    ).toHaveTextContent(UI_ICONS.SECURITY_LOW);
 
     rerender(<SecuritySummaryWidget securityLevel="Moderate" />);
-    expect(screen.getByTestId("security-icon")).toHaveTextContent(
-      UI_ICONS.SECURITY_MODERATE
-    );
+    expect(
+      screen.getByTestId(SUMMARY_TEST_IDS.SECURITY_ICON)
+    ).toHaveTextContent(UI_ICONS.SECURITY_MODERATE);
 
     rerender(<SecuritySummaryWidget securityLevel="High" />);
-    expect(screen.getByTestId("security-icon")).toHaveTextContent(
-      UI_ICONS.SECURITY_HIGH
-    );
+    expect(
+      screen.getByTestId(SUMMARY_TEST_IDS.SECURITY_ICON)
+    ).toHaveTextContent(UI_ICONS.SECURITY_HIGH);
 
     rerender(<SecuritySummaryWidget securityLevel="Very High" />);
-    expect(screen.getByTestId("security-icon")).toHaveTextContent(
-      UI_ICONS.SECURITY_VERY_HIGH
-    );
+    expect(
+      screen.getByTestId(SUMMARY_TEST_IDS.SECURITY_ICON)
+    ).toHaveTextContent(UI_ICONS.SECURITY_VERY_HIGH);
 
     rerender(<SecuritySummaryWidget securityLevel="None" />);
-    expect(screen.getByTestId("security-icon")).toHaveTextContent(
-      UI_ICONS.SECURITY_NONE
-    );
+    expect(
+      screen.getByTestId(SUMMARY_TEST_IDS.SECURITY_ICON)
+    ).toHaveTextContent(UI_ICONS.SECURITY_NONE);
   });
 
   it("falls back to None when invalid security level is provided", () => {
@@ -240,55 +247,64 @@ describe("SecuritySummaryWidget", () => {
   it("displays key benefits based on security level", async () => {
     // Render with Moderate security level
     render(<SecuritySummaryWidget securityLevel={SECURITY_LEVELS.MODERATE} />);
-    
+
     // Get the key benefits list
     const benefitsList = screen.getByTestId("key-benefits-list");
     expect(benefitsList).toBeInTheDocument();
-    
+
     // Get the benefits for MODERATE level - fix type safety
-    const normalizedLevel = SECURITY_LEVELS.MODERATE.toUpperCase().replace(/\s+/g, "_") as keyof typeof BusinessKeyBenefits;
+    const normalizedLevel = SECURITY_LEVELS.MODERATE.toUpperCase().replace(
+      /\s+/g,
+      "_"
+    ) as keyof typeof BusinessKeyBenefits;
     const moderateBenefits = BusinessKeyBenefits[normalizedLevel] || [];
-    
+
     // Check that we have benefits defined in our mock
     expect(moderateBenefits.length).toBeGreaterThan(0);
-    
+
     // Check for the presence of each benefit
     moderateBenefits.forEach((benefit) => {
       const benefitText = typeof benefit === "string" ? benefit : benefit.title;
       const benefitItems = screen.getAllByTestId(/^key-benefit-/);
-      
+
       // Check if any of the benefit items contain our text
-      const foundBenefit = benefitItems.some(item => {
+      const foundBenefit = benefitItems.some((item) => {
         return item.textContent?.includes(benefitText);
       });
-      
+
       expect(foundBenefit).toBe(true);
     });
-    
+
     // Change to a different security level and verify benefits update
-    const { rerender } = render(<SecuritySummaryWidget securityLevel={SECURITY_LEVELS.HIGH} />);
-    
+    const { rerender } = render(
+      <SecuritySummaryWidget securityLevel={SECURITY_LEVELS.HIGH} />
+    );
+
     // Check for HIGH level benefits - fix type safety
-    const highNormalizedLevel = SECURITY_LEVELS.HIGH.toUpperCase().replace(/\s+/g, "_") as keyof typeof BusinessKeyBenefits;
+    const highNormalizedLevel = SECURITY_LEVELS.HIGH.toUpperCase().replace(
+      /\s+/g,
+      "_"
+    ) as keyof typeof BusinessKeyBenefits;
     const highBenefits = BusinessKeyBenefits[highNormalizedLevel] || [];
     expect(highBenefits.length).toBeGreaterThan(0);
-    
+
     // Check that at least one HIGH benefit is shown
     rerender(<SecuritySummaryWidget securityLevel={SECURITY_LEVELS.HIGH} />);
-    
+
     // Get the updated benefit items
     const highBenefitItems = screen.getAllByTestId(/^key-benefit-/);
-    
+
     // Check if any high benefit is present - ensure highBenefits[0] exists
     if (highBenefits.length > 0) {
-      const highBenefitText = typeof highBenefits[0] === "string" 
-        ? highBenefits[0] 
-        : highBenefits[0]?.title ?? 'Unknown';
-        
-      const foundHighBenefit = highBenefitItems.some(item => 
+      const highBenefitText =
+        typeof highBenefits[0] === "string"
+          ? highBenefits[0]
+          : highBenefits[0]?.title ?? "Unknown";
+
+      const foundHighBenefit = highBenefitItems.some((item) =>
         item.textContent?.includes(highBenefitText)
       );
-      
+
       expect(foundHighBenefit).toBe(true);
     }
   });
@@ -318,20 +334,24 @@ describe("SecuritySummaryWidget", () => {
     );
 
     // Find and click the technical section header
-    const technicalHeader = screen.getByTestId("technical-section-toggle");
+    const technicalHeader = screen.getByTestId(
+      SUMMARY_TEST_IDS.TECHNICAL_SECTION_TOGGLE
+    );
     fireEvent.click(technicalHeader);
 
     // Use waitFor instead of setTimeout
     await waitFor(() => {
       expect(
-        screen.getByTestId("technical-details-section")
+        screen.getByTestId(SUMMARY_TEST_IDS.TECHNICAL_DETAILS_SECTION)
       ).toBeInTheDocument();
       expect(
-        screen.getByTestId("availability-tech-heading")
+        screen.getByTestId(SUMMARY_TEST_IDS.AVAILABILITY_TECH_HEADING)
       ).toBeInTheDocument();
-      expect(screen.getByTestId("integrity-tech-heading")).toBeInTheDocument();
       expect(
-        screen.getByTestId("confidentiality-tech-heading")
+        screen.getByTestId(SUMMARY_TEST_IDS.INTEGRITY_TECH_HEADING)
+      ).toBeInTheDocument();
+      expect(
+        screen.getByTestId(SUMMARY_TEST_IDS.CONFIDENTIALITY_TECH_HEADING)
       ).toBeInTheDocument();
     });
   });

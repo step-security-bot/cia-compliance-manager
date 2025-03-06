@@ -1,23 +1,21 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import Selection from "./Selection";
-import { vi } from "vitest";
+import { CIA_TEST_IDS, COMMON_COMPONENT_TEST_IDS } from "../constants/testIds";
 
 describe("Selection Component", () => {
-  const mockOptions = {
-    None: { description: "No security" },
-    Low: { description: "Low security" },
-    Moderate: { description: "Moderate security" },
-    High: { description: "High security" },
-  };
-
   const defaultProps = {
     id: "availability-select",
     label: "Availability",
     value: "None",
-    options: mockOptions,
+    options: {
+      None: { description: "No availability guarantees" },
+      Low: { description: "Basic availability" },
+      Moderate: { description: "Moderate availability" },
+      High: { description: "High availability" },
+    },
     onChange: vi.fn(),
-    "data-testid": "availability-select",
+    testId: "availability-select", // Explicitly set testId
   };
 
   beforeEach(() => {
@@ -25,15 +23,24 @@ describe("Selection Component", () => {
     vi.clearAllMocks();
   });
 
-  it("renders with correct label", () => {
+  it("renders correctly with options", () => {
     render(<Selection {...defaultProps} />);
-    expect(screen.getByTestId("availability-select")).toBeInTheDocument();
+
+    const select = screen.getByTestId("availability-select");
+    expect(select).toBeInTheDocument();
+    expect(select).toHaveValue("None");
+    expect(screen.getByText("None")).toBeInTheDocument();
+    expect(screen.getByText("Low")).toBeInTheDocument();
+    expect(screen.getByText("Moderate")).toBeInTheDocument();
+    expect(screen.getByText("High")).toBeInTheDocument();
   });
 
   it("contains all option values", () => {
     render(<Selection {...defaultProps} />);
     const optionElements = screen.getAllByRole("option");
-    expect(optionElements).toHaveLength(Object.keys(mockOptions).length);
+    expect(optionElements).toHaveLength(
+      Object.keys(defaultProps.options).length
+    );
   });
 
   it("handles changes correctly", () => {
@@ -49,7 +56,7 @@ describe("Selection Component", () => {
       ...defaultProps,
       value: "Custom",
       options: {
-        ...mockOptions,
+        ...defaultProps.options,
         Custom: { description: "Custom level" },
       },
     };
@@ -71,13 +78,13 @@ describe("Selection Component", () => {
       // Use unique testid for this test
       const testProps = {
         ...defaultProps,
-        "data-testid": "aria-test-select",
+        testId: "aria-test-select", // Changed from data-testid to testId
       };
 
       const { rerender } = render(<Selection {...testProps} />);
       const select = screen.getByTestId("aria-test-select");
       expect(select).toHaveAttribute("id");
-      expect(select).toHaveAttribute("aria-label", "Availability Level");
+      expect(select).toHaveAttribute("aria-label", "Availability"); // Changed from "Availability Level"
 
       // Test with empty label (should not have aria-label)
       rerender(<Selection {...testProps} label="" />);
@@ -90,13 +97,15 @@ describe("Selection Component", () => {
     it("displays correct number of options", () => {
       render(<Selection {...defaultProps} />);
       const optionElements = screen.getAllByRole("option");
-      expect(optionElements).toHaveLength(Object.keys(mockOptions).length);
+      expect(optionElements).toHaveLength(
+        Object.keys(defaultProps.options).length
+      );
     });
 
     it("maintains option order", () => {
       render(<Selection {...defaultProps} />);
       const optionElements = screen.getAllByRole("option");
-      const optionsArray = Object.keys(mockOptions);
+      const optionsArray = Object.keys(defaultProps.options);
 
       optionElements.forEach((element, index) => {
         expect(element.textContent).toBe(optionsArray[index]);

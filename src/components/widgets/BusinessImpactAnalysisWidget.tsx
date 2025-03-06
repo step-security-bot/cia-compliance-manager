@@ -4,17 +4,18 @@ import {
   BUSINESS_CONSIDERATIONS,
   BUSINESS_KEY_BENEFITS,
 } from "../../constants/businessConstants";
-import { CIADetails } from "../../types/cia"; // Removed SecurityLevelKey import
+import { CIADetails } from "../../types/cia";
 import { BusinessConsideration } from "../../types/businessImpact";
 import StatusBadge from "../common/StatusBadge";
 import ValueDisplay from "../common/ValueDisplay";
 import KeyValuePair from "../common/KeyValuePair";
 import MetricsCard from "../common/MetricsCard";
 import {
-  RISK_LEVELS, // Keep only this one
+  RISK_LEVELS,
   BUSINESS_IMPACT_CATEGORIES,
 } from "../../constants/riskConstants";
 import { BUSINESS_IMPACT_ICONS } from "../../constants/uiConstants";
+import { BUSINESS_IMPACT_TEST_IDS } from "../../constants/testIds";
 
 interface BusinessImpactAnalysisWidgetProps {
   category: "Availability" | "Integrity" | "Confidentiality";
@@ -39,8 +40,6 @@ const BusinessImpactAnalysisWidget: React.FC<
     const categoryKey =
       category.toUpperCase() as keyof typeof BUSINESS_CONSIDERATIONS;
     const levelKey = getNormalizedLevel(level);
-
-    // Return the considerations if they exist, otherwise return empty array
 
     // Return the considerations if they exist, otherwise return empty array
     return (
@@ -139,23 +138,19 @@ const BusinessImpactAnalysisWidget: React.FC<
   };
 
   // Helper to get icon for impact type
-  const getImpactIcon = (type?: string): React.ReactNode => {
-    const safeType = type || "NEUTRAL"; // Use a default value if type is undefined
-
-    switch (safeType) {
-      case BUSINESS_IMPACT_CATEGORIES.FINANCIAL:
-        return <span>{BUSINESS_IMPACT_ICONS.FINANCIAL}</span>;
-      case BUSINESS_IMPACT_CATEGORIES.OPERATIONAL:
-        return <span>{BUSINESS_IMPACT_ICONS.OPERATIONAL}</span>;
-      case BUSINESS_IMPACT_CATEGORIES.REPUTATIONAL:
-        return <span>{BUSINESS_IMPACT_ICONS.REPUTATIONAL}</span>;
-      case BUSINESS_IMPACT_CATEGORIES.REGULATORY:
-        return <span>{BUSINESS_IMPACT_ICONS.REGULATORY}</span>;
-      case BUSINESS_IMPACT_CATEGORIES.STRATEGIC:
-        return <span>{BUSINESS_IMPACT_ICONS.STRATEGIC}</span>;
-      default:
-        return <span>{BUSINESS_IMPACT_ICONS.NEUTRAL}</span>;
+  const getImpactIcon = (category?: string): React.ReactNode => {
+    if (!category) {
+      return <span>{BUSINESS_IMPACT_ICONS.NEUTRAL || "ℹ️"}</span>; // Fallback if NEUTRAL is not defined
     }
+
+    // Check if the category exists in BUSINESS_IMPACT_ICONS
+    const icon =
+      BUSINESS_IMPACT_ICONS[category as keyof typeof BUSINESS_IMPACT_ICONS];
+    if (!icon) {
+      return <span>{BUSINESS_IMPACT_ICONS.NEUTRAL || "ℹ️"}</span>; // Fallback if category not found
+    }
+
+    return <span>{icon}</span>;
   };
 
   const considerations = getBusinessConsiderations();
@@ -200,13 +195,17 @@ const BusinessImpactAnalysisWidget: React.FC<
   // Improved container with better testids and ARIA attributes
   return (
     <div
-      data-testid={`business-impact-analysis-${category.toLowerCase()}`}
+      data-testid={`${
+        BUSINESS_IMPACT_TEST_IDS.BUSINESS_IMPACT_ANALYSIS_PREFIX
+      }-${category.toLowerCase()}`}
       className="relative"
     >
       {/* Add an icon indicator for the category */}
       <div
         className="absolute -top-2 -right-2 w-6 h-6 rounded-full flex items-center justify-center bg-white dark:bg-gray-800 shadow-md border border-gray-200 dark:border-gray-700"
-        data-testid={`category-icon-${category.toLowerCase()}`}
+        data-testid={`${
+          BUSINESS_IMPACT_TEST_IDS.CATEGORY_ICON_PREFIX
+        }-${category.toLowerCase()}`}
         aria-hidden="true"
       >
         {category === "Availability"
@@ -218,28 +217,36 @@ const BusinessImpactAnalysisWidget: React.FC<
 
       {/* Impact Analysis Summary with enhanced styling */}
       <div
-        data-testid={`impact-analysis-${category.toLowerCase()}`}
+        data-testid={`${
+          BUSINESS_IMPACT_TEST_IDS.IMPACT_ANALYSIS_PREFIX
+        }-${category.toLowerCase()}`}
         className="space-y-3 bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-200 dark:border-gray-700 mb-4"
         aria-label={`${category} impact analysis for ${level} level`}
       >
         <div className="flex items-center mb-2">
           <div
             className={`inline-block w-3 h-3 rounded-full mr-2 ${getBgColor()}`}
-            data-testid={`impact-level-indicator-${category.toLowerCase()}`}
+            data-testid={`${
+              BUSINESS_IMPACT_TEST_IDS.IMPACT_LEVEL_INDICATOR_PREFIX
+            }-${category.toLowerCase()}`}
             aria-hidden="true"
           />
           <ValueDisplay
             value={`${level} ${category}`}
             variant={getLevelVariant()}
             size="md"
-            testId={`impact-level-text-${category.toLowerCase()}`}
+            testId={`${
+              BUSINESS_IMPACT_TEST_IDS.IMPACT_LEVEL_TEXT_PREFIX
+            }-${category.toLowerCase()}`}
           />
         </div>
 
         <div className="text-sm text-gray-600 dark:text-gray-300">
           <p
             className="mb-2"
-            data-testid={`impact-description-${category.toLowerCase()}`}
+            data-testid={`${
+              BUSINESS_IMPACT_TEST_IDS.IMPACT_DESCRIPTION_PREFIX
+            }-${category.toLowerCase()}`}
           >
             {options && options[level]?.description
               ? options[level].description
@@ -248,7 +255,9 @@ const BusinessImpactAnalysisWidget: React.FC<
           <KeyValuePair
             label="Business Impact"
             value={getBusinessImpactText()}
-            testId={`business-impact-${category.toLowerCase()}`}
+            testId={`${
+              BUSINESS_IMPACT_TEST_IDS.BUSINESS_IMPACT_PREFIX
+            }-${category.toLowerCase()}`}
             highlighted={true}
           />
         </div>
@@ -256,7 +265,7 @@ const BusinessImpactAnalysisWidget: React.FC<
 
       {/* Main Widget Content with improved tab styling */}
       <div
-        data-testid="widget-business-impact-analysis"
+        data-testid={BUSINESS_IMPACT_TEST_IDS.COMBINED_BUSINESS_IMPACT_WIDGET}
         className="space-y-4 mt-4"
       >
         <div className="flex items-center justify-between border-b border-gray-200 dark:border-gray-700 pb-2">
@@ -274,7 +283,7 @@ const BusinessImpactAnalysisWidget: React.FC<
                   ? "bg-blue-600 text-white"
                   : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
               }`}
-              data-testid="tab-considerations"
+              data-testid={BUSINESS_IMPACT_TEST_IDS.TAB_CONSIDERATIONS}
               role="tab"
               aria-selected={activeTab === "considerations"}
               aria-controls="panel-considerations"
@@ -291,7 +300,7 @@ const BusinessImpactAnalysisWidget: React.FC<
                   ? "bg-blue-600 text-white"
                   : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
               }`}
-              data-testid="tab-benefits"
+              data-testid={BUSINESS_IMPACT_TEST_IDS.TAB_BENEFITS}
               role="tab"
               aria-selected={activeTab === "benefits"}
               aria-controls="panel-benefits"
@@ -305,7 +314,10 @@ const BusinessImpactAnalysisWidget: React.FC<
         </div>
 
         {/* Business Impact Category Summary */}
-        <div className="mb-4" data-testid="business-impact-summary">
+        <div
+          className="mb-4"
+          data-testid={BUSINESS_IMPACT_TEST_IDS.BUSINESS_IMPACT_SUMMARY}
+        >
           <div className="flex items-center justify-between">
             <h4 className="text-md font-medium flex items-center">
               {category} - {level}
@@ -339,7 +351,7 @@ const BusinessImpactAnalysisWidget: React.FC<
         {/* Considerations Tab with enhanced styling */}
         {activeTab === "considerations" && (
           <div
-            data-testid="business-considerations"
+            data-testid={BUSINESS_IMPACT_TEST_IDS.BUSINESS_CONSIDERATIONS}
             id="panel-considerations"
             role="tabpanel"
             aria-labelledby="tab-considerations"
@@ -355,7 +367,7 @@ const BusinessImpactAnalysisWidget: React.FC<
             {considerations.length === 0 ? (
               <p
                 className="text-sm text-gray-500 dark:text-gray-400 italic"
-                data-testid="no-considerations-message"
+                data-testid={BUSINESS_IMPACT_TEST_IDS.NO_CONSIDERATIONS_MESSAGE}
               >
                 No specific considerations for this level.
               </p>
@@ -409,7 +421,7 @@ const BusinessImpactAnalysisWidget: React.FC<
         {/* Benefits Tab with enhanced styling */}
         {activeTab === "benefits" && (
           <div
-            data-testid="business-benefits"
+            data-testid={BUSINESS_IMPACT_TEST_IDS.BUSINESS_BENEFITS}
             id="panel-benefits"
             role="tabpanel"
             aria-labelledby="tab-benefits"
@@ -425,7 +437,7 @@ const BusinessImpactAnalysisWidget: React.FC<
             {benefits.length === 0 ? (
               <p
                 className="text-sm text-gray-500 dark:text-gray-400 italic"
-                data-testid="no-benefits-message"
+                data-testid={BUSINESS_IMPACT_TEST_IDS.NO_BENEFITS_MESSAGE}
               >
                 No specific benefits for this level.
               </p>
@@ -454,7 +466,7 @@ const BusinessImpactAnalysisWidget: React.FC<
         {options && options[level]?.businessImpactDetails && (
           <div
             className="mt-4 pt-3 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-3 rounded-lg"
-            data-testid="impact-metrics-section"
+            data-testid={BUSINESS_IMPACT_TEST_IDS.IMPACT_METRICS_SECTION}
           >
             <h4 className="text-sm font-semibold mb-2 flex items-center">
               <span className="mr-2" aria-hidden="true">
@@ -476,7 +488,7 @@ const BusinessImpactAnalysisWidget: React.FC<
                     }
                     icon={enhancedIcons.IMPACT_TYPES.FINANCIAL}
                     testId="financial-impact-metrics"
-                    className="bg-transparent border-0 p-0"
+                    className="w-full mb-2"
                   />
                   {options[level]?.businessImpactDetails?.financialImpact
                     .annualRevenueLoss && (
@@ -512,7 +524,7 @@ const BusinessImpactAnalysisWidget: React.FC<
                     }
                     icon={enhancedIcons.IMPACT_TYPES.OPERATIONAL}
                     testId="operational-impact-metrics"
-                    className="bg-transparent border-0 p-0"
+                    className="w-full mb-2"
                   />
                   {options[level]?.businessImpactDetails?.operationalImpact
                     .meanTimeToRecover && (

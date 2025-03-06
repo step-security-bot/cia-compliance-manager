@@ -4,7 +4,7 @@ import {
   SECURITY_DESCRIPTIONS,
   UI_TEXT,
   SECURITY_LEVEL_COLORS,
-} from "../../constants/coreConstants";
+} from "../../constants/appConstants"; // Updated to use appConstants instead of coreConstants
 import {
   SECURITY_SUMMARY_TITLES,
   SECURITY_RECOMMENDATIONS,
@@ -21,6 +21,7 @@ import ValueDisplay from "../common/ValueDisplay";
 import StatusBadge from "../common/StatusBadge";
 import KeyValuePair from "../common/KeyValuePair";
 import MetricsCard from "../common/MetricsCard";
+import { SUMMARY_TEST_IDS, WIDGET_TEST_IDS } from "../../constants/testIds"; // Updated to include WIDGET_TEST_IDS
 
 // Define type for security level keys
 type SecurityLevelKey = "NONE" | "LOW" | "MODERATE" | "HIGH" | "VERY_HIGH";
@@ -42,19 +43,15 @@ import {
   BusinessKeyBenefit,
 } from "../../types/businessImpact";
 
-interface SecuritySummaryWidgetProps {
-  securityLevel: string;
-  // Add optional props for individual CIA levels
-  availabilityLevel?: string;
-  integrityLevel?: string;
-  confidentialityLevel?: string;
-}
+import { SecuritySummaryWidgetProps } from "../../types/widgets";
 
+// Add proper type annotation to the component
 const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
   securityLevel,
-  availabilityLevel,
-  integrityLevel,
-  confidentialityLevel,
+  availabilityLevel = securityLevel, // Default to securityLevel if not provided
+  integrityLevel = securityLevel, // Default to securityLevel if not provided
+  confidentialityLevel = securityLevel, // Default to securityLevel if not provided
+  testId,
 }) => {
   const [expandedSections, setExpandedSections] = useState<{
     technical: boolean;
@@ -74,9 +71,9 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
   };
 
   // Use individual components if provided, otherwise use the securityLevel for all
-  const actualAvailabilityLevel = availabilityLevel || securityLevel;
-  const actualIntegrityLevel = integrityLevel || securityLevel;
-  const actualConfidentialityLevel = confidentialityLevel || securityLevel;
+  const actualAvailabilityLevel = availabilityLevel;
+  const actualIntegrityLevel = integrityLevel;
+  const actualConfidentialityLevel = confidentialityLevel;
 
   // Add a function to normalize security level for data lookup
   const getDataLookupKey = (level: string): string => {
@@ -282,17 +279,23 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
   const roiValueFormatted = roiEstimate || "N/A";
 
   return (
-    <div className="space-y-4" data-testid="security-summary-container">
+    <div
+      className="space-y-4"
+      data-testid={SUMMARY_TEST_IDS.SECURITY_SUMMARY_CONTAINER}
+    >
       {/* Title and security level indicator */}
       <div
         className={`rounded-lg p-4 ${summary.bgColor} ${summary.borderColor} border transition-colors duration-300 shadow-sm`}
-        data-testid="security-level-indicator"
+        data-testid={SUMMARY_TEST_IDS.SECURITY_LEVEL_INDICATOR}
       >
         <div
           className={`text-lg font-medium ${summary.colorClass} flex items-center`}
-          data-testid="security-summary-title"
+          data-testid={WIDGET_TEST_IDS.SECURITY_SUMMARY_TITLE}
         >
-          <span className="mr-2 text-xl" data-testid="security-icon">
+          <span
+            className="mr-2 text-xl"
+            data-testid={SUMMARY_TEST_IDS.SECURITY_ICON}
+          >
             {summary.emoji}
           </span>
           {summary.title}
@@ -309,21 +312,21 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
               label="A"
               variant="primary"
               size="sm"
-              testId="availability-level-pill"
+              testId={SUMMARY_TEST_IDS.AVAILABILITY_LEVEL_PILL}
             />
             <ValueDisplay
               value={actualIntegrityLevel}
               label="I"
               variant="success"
               size="sm"
-              testId="integrity-level-pill"
+              testId={SUMMARY_TEST_IDS.INTEGRITY_LEVEL_PILL}
             />
             <ValueDisplay
               value={actualConfidentialityLevel}
               label="C"
               variant="info"
               size="sm"
-              testId="confidentiality-level-pill"
+              testId={SUMMARY_TEST_IDS.CONFIDENTIALITY_LEVEL_PILL}
             />
           </div>
         )}
@@ -339,7 +342,7 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
             aria-valuenow={summary.progressPercent}
             aria-valuemin={0}
             aria-valuemax={100}
-            data-testid="security-level-progress-bar"
+            data-testid={SUMMARY_TEST_IDS.SECURITY_LEVEL_PROGRESS_BAR}
           ></div>
         </div>
       </div>
@@ -351,7 +354,7 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
         </h4>
         <p
           className="text-sm text-gray-600 dark:text-gray-300"
-          data-testid="security-summary-description"
+          data-testid={SUMMARY_TEST_IDS.SECURITY_LEVEL_DESCRIPTION}
         >
           {compositeDescription}
         </p>
@@ -365,10 +368,10 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
                 value={roiValueFormatted}
                 variant={getLevelVariant(securityLevel)}
                 size="sm"
-                testId="roi-estimate-summary"
+                testId={SUMMARY_TEST_IDS.ROI_ESTIMATE_SUMMARY}
               />
             }
-            testId="roi-estimate-pair"
+            testId={SUMMARY_TEST_IDS.ROI_ESTIMATE_PAIR}
           />
         </div>
       </div>
@@ -379,7 +382,7 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
           onClick={() => toggleSection("technical")}
           className="flex justify-between items-center w-full text-left text-sm font-medium text-gray-700 dark:text-gray-300"
           aria-expanded={expandedSections.technical}
-          data-testid="technical-section-toggle"
+          data-testid={SUMMARY_TEST_IDS.TECHNICAL_SECTION_TOGGLE}
           aria-controls="technical-details-section"
         >
           <div className="flex items-center">
@@ -402,7 +405,7 @@ const SecuritySummaryWidget: React.FC<SecuritySummaryWidgetProps> = ({
           <div
             className="mt-3 space-y-3"
             style={animationStyles.fadeIn}
-            data-testid="technical-details-section"
+            data-testid={SUMMARY_TEST_IDS.TECHNICAL_DETAILS_SECTION}
             id="technical-details-section"
           >
             <div className="p-3 bg-gray-50 dark:bg-gray-700 rounded border border-gray-100 dark:border-gray-600">

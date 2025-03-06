@@ -1,71 +1,94 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
+import { vi } from "vitest";
 import KeyValuePair from "./KeyValuePair";
 
-describe("KeyValuePair component", () => {
-  it("renders label and value correctly", () => {
+describe("KeyValuePair", () => {
+  it("renders label and value", () => {
     render(<KeyValuePair label="Test Label" value="Test Value" />);
 
     expect(screen.getByText("Test Label")).toBeInTheDocument();
     expect(screen.getByText("Test Value")).toBeInTheDocument();
   });
 
-  it("applies test ID correctly", () => {
-    render(<KeyValuePair label="Test" value="Value" testId="custom-kv" />);
+  it("renders with custom className", () => {
+    const { container } = render(
+      <KeyValuePair
+        label="Test Label"
+        value="Test Value"
+        className="custom-class"
+      />
+    );
 
-    expect(screen.getByTestId("custom-kv")).toBeInTheDocument();
-    expect(screen.getByTestId("custom-kv-label")).toBeInTheDocument();
-    expect(screen.getByTestId("custom-kv-value")).toBeInTheDocument();
+    expect(container.firstChild).toHaveClass("custom-class");
   });
 
-  it("handles various prop combinations for branch coverage", () => {
-    // Test with highlighted=true
-    const { rerender } = render(
-      <KeyValuePair
-        label="Test Label"
-        value="Test Value"
-        highlighted={true}
-        testId="test-kv"
-      />
+  it("renders with custom testId", () => {
+    const testId = "test-key-value";
+    render(
+      <KeyValuePair label="Test Label" value="Test Value" testId={testId} />
     );
 
-    // Verify highlighted styling
-    const highlightedElement = screen.getByTestId("test-kv");
-    expect(highlightedElement.className).toContain("bg-gray-50");
+    expect(screen.getByTestId(testId)).toBeInTheDocument();
+    expect(screen.getByTestId(`${testId}-label`)).toBeInTheDocument();
+    expect(screen.getByTestId(`${testId}-value`)).toBeInTheDocument();
+  });
 
-    // Test with highlighted=false but with className
-    rerender(
+  it("applies highlighted styling when highlighted prop is true", () => {
+    const testId = "test-highlight";
+    render(
+      <KeyValuePair label="Test" value="Value" highlighted testId={testId} />
+    );
+
+    const valueElement = screen.getByTestId(`${testId}-value`);
+    expect(valueElement).toHaveClass("font-bold");
+    expect(valueElement).toHaveClass("text-blue-600");
+  });
+
+  it("applies justified styling when justified prop is true", () => {
+    const testId = "test-kv";
+    render(
+      <KeyValuePair label="Test" value="Value" justified testId="test-kv" />
+    );
+
+    const labelElement = screen.getByTestId(`${testId}-label`);
+    const valueElement = screen.getByTestId(`${testId}-value`);
+
+    expect(labelElement).toHaveClass("text-right");
+    expect(valueElement).toHaveClass("text-right");
+  });
+
+  it("applies custom label and value classes", () => {
+    const testId = "custom-classes";
+    render(
       <KeyValuePair
-        label="Test Label"
-        value="Test Value"
+        label="Test"
+        value="Value"
+        labelClassName="label-class"
+        valueClassName="value-class"
         highlighted={false}
-        className="custom-class"
-        testId="test-kv"
+        justified={false}
+        testId={testId}
       />
     );
 
-    // Verify no highlighted classes but has custom class
-    const nonHighlightedElement = screen.getByTestId("test-kv");
-    expect(nonHighlightedElement.className).not.toContain("bg-gray-50");
-    expect(nonHighlightedElement.className).toContain("custom-class");
+    expect(screen.getByTestId(`${testId}-label`)).toHaveClass("label-class");
+    expect(screen.getByTestId(`${testId}-value`)).toHaveClass("value-class");
+  });
 
-    // Test with both labelClassName and valueClassName
-    rerender(
+  it("renders ReactNode values", () => {
+    render(
       <KeyValuePair
-        label="Test Label"
-        value="Test Value"
-        labelClassName="test-label-class"
-        valueClassName="test-value-class"
-        testId="test-kv"
+        label="Complex"
+        value={<span data-testid="complex-value-content">Complex Value</span>}
+        testId="complex"
       />
     );
 
-    // Verify classes applied to label and value
-    expect(screen.getByTestId("test-kv-label").className).toContain(
-      "test-label-class"
-    );
-    expect(screen.getByTestId("test-kv-value").className).toContain(
-      "test-value-class"
+    // Use a more specific testId that won't conflict
+    expect(screen.getByTestId("complex-value-content")).toBeInTheDocument();
+    expect(screen.getByTestId("complex-value-content")).toHaveTextContent(
+      "Complex Value"
     );
   });
 });

@@ -1,0 +1,60 @@
+/* CSS Variables for the application */
+
+/* Light Mode - Slashdot Inspired */
+:root {
+  /* Colors */
+  --primary-color: #006633;
+  --primary-light: #008844;
+  --primary-dark: #004422;
+  --accent-color: #669900;
+  --background-color: #f0f0f0;
+  --card-background: #ffffff;
+  --text-color: #222222;
+  --text-secondary: #444444;
+  --border-color: rgba(0, 102, 51, 0.2);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --highlight-color: #008844;
+  --header-bg: #f7fafc;
+
+  /* Fonts */
+  --font-main: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+  --font-accent: system-ui, -apple-system, sans-serif;
+  --font-mono: "Share Tech Mono", monospace;
+
+  /* Sizing & Spacing */
+  --border-radius: 0.5rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
+  /* Transitions */
+  --transition-speed: 0.2s;
+  --transition-function: ease-in-out;
+}
+
+/* Dark Mode - Ingress Inspired */
+.dark {
+  /* Colors */
+  --primary-color: #00cc66;
+  --primary-light: #00ff88;
+  --primary-dark: #00bb77;
+  --accent-color: #33eeff;
+  --background-color: #001a1a;
+  --card-background: #002233;
+  --text-color: #f0f0f0;
+  --text-secondary: #aaaaaa;
+  --border-color: rgba(0, 204, 102, 0.3);
+  --shadow-color: rgba(0, 204, 102, 0.2);
+  --highlight-color: #00ff88;
+  --header-bg: #001a25;
+
+  /* Font overrides for Ingress style */
+  --font-accent: "Orbitron", sans-serif;
+
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+}

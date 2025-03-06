@@ -1,69 +1,111 @@
-import React from "react";
-import { SecurityLevelKey, UI_ICONS } from "../constants/appConstants";
+import React, { useState } from "react";
+import {
+  COMMON_COMPONENT_TEST_IDS,
+  createDynamicTestId,
+} from "../constants/testIds";
 
 interface SelectionProps {
   id: string;
-  label: string;
+  label?: string;
   value: string;
-  options: Record<string, any>;
+  levels?: string[];
+  options?: Record<string, any>;
   onChange: (value: string) => void;
   className?: string;
+  testId?: string;
+  infoContent?: string;
   contextInfo?: string;
-  "data-testid"?: string; // Allow custom testIds
 }
 
 const Selection: React.FC<SelectionProps> = ({
   id,
   label,
   value,
-  options,
+  levels = [],
+  options = {},
   onChange,
   className = "",
+  testId,
+  infoContent,
   contextInfo,
-  "data-testid": testId,
 }) => {
-  // Add the normalized level key function
-  const getNormalizedLevel = (level: string): SecurityLevelKey => {
-    return (level || "NONE")
-      .toUpperCase()
-      .replace(/\s+/g, "_") as SecurityLevelKey;
+  const [showInfo, setShowInfo] = useState(false);
+  const [showContextInfo, setShowContextInfo] = useState(false);
+
+  const toggleInfo = () => {
+    setShowInfo(!showInfo);
   };
 
-  // Get security level icon based on level
-  const getSecurityLevelIcon = (level: string): string => {
-    const normalizedLevel = getNormalizedLevel(level);
-    // Use UI_ICONS instead of SECURITY_LEVEL_ICONS which doesn't exist
-    return UI_ICONS[`SECURITY_${normalizedLevel}`] || "🔒"; // Default to a lock icon
+  const toggleContextInfo = () => {
+    setShowContextInfo(!showContextInfo);
   };
+
+  // If levels are provided, use them; otherwise use the keys from options
+  const selectionLevels = levels.length > 0 ? levels : Object.keys(options);
 
   return (
-    <div className={`mb-2 ${className}`}>
-      <div className="relative">
-        <select
-          id={id}
-          className="block w-full pl-3 pr-10 py-2 text-base border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md bg-white dark:bg-gray-700 dark:text-white"
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          data-testid={testId}
-          aria-label={label ? `${label} Level` : undefined} // Add aria-label only if label is provided
+    <div className={`flex flex-col space-y-1 ${className}`}>
+      {label && (
+        <label
+          htmlFor={id}
+          className="block text-sm font-medium text-gray-700 dark:text-gray-300"
         >
-          {Object.keys(options).map((level) => (
-            <option key={level} value={level} data-testid={`option-${level}`}>
-              {level}
-            </option>
-          ))}
-        </select>
-        <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-          <span className="text-gray-500">{getSecurityLevelIcon(value)}</span>
+          {label}
+          {infoContent && (
+            <button
+              type="button"
+              onClick={toggleInfo}
+              className="ml-1 text-gray-400 hover:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400"
+              aria-label={`Show information about ${label}`}
+            >
+              ℹ️
+            </button>
+          )}
+        </label>
+      )}
+
+      <select
+        id={id}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+        data-testid={testId || id} // Use id as fallback if testId is not provided
+        {...(label ? { "aria-label": label } : {})} // Only add aria-label if label exists
+      >
+        {selectionLevels.map((level) => (
+          <option
+            key={level}
+            value={level}
+            data-testid={createDynamicTestId.option(level)}
+          >
+            {level}
+          </option>
+        ))}
+      </select>
+
+      {showInfo && infoContent && (
+        <div className="mt-1 p-2 bg-gray-100 dark:bg-gray-700 rounded text-xs text-gray-600 dark:text-gray-300">
+          {infoContent}
         </div>
-      </div>
+      )}
 
       {contextInfo && (
-        <div
-          className="text-xs text-gray-500 dark:text-gray-400 mt-1"
-          data-testid="context-info"
-        >
-          {contextInfo}
+        <div className="mt-1 flex items-center">
+          <button
+            type="button"
+            onClick={toggleContextInfo}
+            className="text-xs text-blue-600 dark:text-blue-400 hover:underline"
+          >
+            {showContextInfo ? "Hide context" : "Show context"}
+          </button>
+          {showContextInfo && (
+            <div
+              data-testid={COMMON_COMPONENT_TEST_IDS.CONTEXT_INFO}
+              className="ml-2 text-xs text-gray-500 dark:text-gray-400"
+            >
+              {contextInfo}
+            </div>
+          )}
         </div>
       )}
     </div>

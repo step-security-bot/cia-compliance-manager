@@ -4,47 +4,42 @@ interface KeyValuePairProps {
   label: string;
   value: ReactNode;
   testId?: string;
+  className?: string;
   labelClassName?: string;
   valueClassName?: string;
-  highlighted?: boolean;
-  className?: string; // May consider removing if not needed across app
+  highlighted?: boolean; // Added prop
+  justified?: boolean; // Added prop
 }
 
-/**
- * KeyValuePair component for displaying label-value pairs consistently throughout the app
- */
 const KeyValuePair: React.FC<KeyValuePairProps> = ({
   label,
   value,
   testId,
+  className = "",
   labelClassName = "",
   valueClassName = "",
   highlighted = false,
-  className = "",
+  justified = false,
 }) => {
+  const highlightClass = highlighted
+    ? "font-bold text-blue-600 dark:text-blue-400"
+    : "";
+  const justifyClass = justified ? "text-right" : "";
+
   return (
-    <div
-      className={`flex justify-between items-center ${
-        highlighted
-          ? "bg-gray-50 dark:bg-gray-700 p-2 rounded-md border border-gray-200 dark:border-gray-600"
-          : ""
-      } ${className}`}
-      data-testid={testId || "key-value-pair"}
-    >
+    <div className={`flex flex-col ${className} text-sm`} data-testid={testId}>
       <span
-        className={`text-sm text-gray-600 dark:text-gray-400 ${labelClassName}`}
-        data-testid={testId ? `${testId}-label` : "kv-label"}
+        className={`text-gray-500 dark:text-gray-400 ${labelClassName} ${justifyClass}`}
+        data-testid={testId ? `${testId}-label` : undefined}
       >
         {label}
       </span>
-      <span
-        className={`font-medium ${
-          highlighted ? "text-blue-700 dark:text-blue-300" : ""
-        } ${valueClassName}`}
-        data-testid={testId ? `${testId}-value` : "kv-value"}
+      <div
+        className={`font-medium text-gray-900 dark:text-gray-100 ${valueClassName} ${highlightClass} ${justifyClass}`}
+        data-testid={testId ? `${testId}-value` : undefined}
       >
         {value}
-      </span>
+      </div>
     </div>
   );
 };

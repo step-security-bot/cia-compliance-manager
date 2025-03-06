@@ -1,8 +1,13 @@
 import React from "react";
-import { COST_ANALYSIS, UI_TEXT, UI_ICONS } from "../../constants/appConstants";
-import ValueDisplay from "../common/ValueDisplay";
+import {
+  SECURITY_LEVELS,
+  COST_ANALYSIS,
+  UI_TEXT,
+  WIDGET_ICONS,
+} from "../../constants/appConstants";
 import KeyValuePair from "../common/KeyValuePair";
-import MetricsCard from "../common/MetricsCard";
+import ValueDisplay from "../common/ValueDisplay";
+import { COST_TEST_IDS } from "../../constants/testIds";
 
 interface CostEstimationWidgetProps {
   totalCapex: number;
@@ -12,6 +17,13 @@ interface CostEstimationWidgetProps {
   isSmallSolution: boolean;
   roi?: string;
   implementationTime?: string;
+  testId?: string;
+  availabilityLevel?: string;
+  integrityLevel?: string;
+  confidentialityLevel?: string;
+  availabilityOptions?: Record<string, any>; // Change from string[]
+  integrityOptions?: Record<string, any>; // Change from string[]
+  confidentialityOptions?: Record<string, any>; // Change from string[]
 }
 
 const CostEstimationWidget: React.FC<CostEstimationWidgetProps> = ({
@@ -22,6 +34,12 @@ const CostEstimationWidget: React.FC<CostEstimationWidgetProps> = ({
   isSmallSolution,
   roi,
   implementationTime,
+  availabilityLevel = SECURITY_LEVELS.NONE,
+  integrityLevel = SECURITY_LEVELS.NONE,
+  confidentialityLevel = SECURITY_LEVELS.NONE,
+  availabilityOptions,
+  integrityOptions,
+  confidentialityOptions,
 }) => {
   const getCostSeverity = (percentage: number): string => {
     if (percentage <= 15) return "low";
@@ -115,171 +133,170 @@ const CostEstimationWidget: React.FC<CostEstimationWidgetProps> = ({
   return (
     <div
       className="space-y-4"
-      data-testid="cost-estimation-content"
-      aria-label="Security cost estimation"
+      data-testid={COST_TEST_IDS.COST_ESTIMATION_CONTENT}
     >
+      {/* Heading */}
       <div className="flex justify-between items-center">
-        <h4
-          className="text-sm font-medium"
-          data-testid="estimated-cost-heading"
+        <h3
+          className="text-lg font-medium text-gray-700 dark:text-gray-300"
+          data-testid={COST_TEST_IDS.ESTIMATED_COST_HEADING}
         >
           {UI_TEXT.LABELS.ESTIMATED_COST}
-        </h4>
+        </h3>
 
         {implementationTime && (
-          <ValueDisplay
+          <KeyValuePair
+            label="Est. Implementation Time"
             value={implementationTime}
-            variant="info"
-            size="sm"
-            testId="implementation-time"
+            testId={COST_TEST_IDS.IMPLEMENTATION_TIME}
           />
         )}
       </div>
 
-      <div>
-        <KeyValuePair
-          label={UI_TEXT.LABELS.CAPEX}
-          value={
-            <div className="flex items-center">
-              <span
-                className="mr-1"
-                aria-hidden="true"
-                data-testid="capex-severity-icon"
-              >
-                {getCostIcon(totalCapex)}
-              </span>
-              <ValueDisplay
-                value={formatCurrency(capexEstimate)}
-                variant="primary"
-                size="sm"
-                testId="capex-estimate-value" // Ensure consistent testId with unique "-value" suffix
-              />
-            </div>
-          }
-          testId="capex-section"
-        />
+      {/* CAPEX Section */}
+      <div className="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700">
+        <div className="flex justify-between mb-2">
+          <div className="flex items-center">
+            <span
+              className="text-lg text-gray-700 dark:text-gray-300 mr-2"
+              data-testid={COST_TEST_IDS.CAPEX_SEVERITY_ICON}
+            >
+              {getCostIcon(totalCapex)}
+            </span>
+            <KeyValuePair
+              label={UI_TEXT.LABELS.CAPEX}
+              value={
+                <ValueDisplay
+                  value={`${formatCurrency(capexEstimate)}`}
+                  variant="primary"
+                  size="lg"
+                  testId={COST_TEST_IDS.CAPEX_ESTIMATE_VALUE} // Ensure consistent testId with unique "-value" suffix
+                />
+              }
+              testId={COST_TEST_IDS.CAPEX_SECTION}
+            />
+          </div>
+        </div>
 
+        {/* Progress bar for CAPEX % */}
         <div className="mt-2">
-          <div
-            className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5"
-            role="progressbar"
-            aria-valuenow={Math.min(totalCapex, 100)}
-            aria-valuemin={0}
-            aria-valuemax={100}
-            aria-label={`Capital expenditure: ${totalCapex}% of IT budget`}
-          >
+          <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400 mb-1">
+            <span>{UI_TEXT.BUDGET.IT_BUDGET_CAPEX}</span>
+          </div>
+          <div className="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full">
             <div
-              className={`${getCapexColorClass()} h-2.5 rounded-full`}
+              className={`h-2 rounded-full ${getCapexColorClass()}`}
               style={{ width: `${Math.min(totalCapex, 100)}%` }}
-              data-testid="capex-progress-bar"
+              data-testid={COST_TEST_IDS.CAPEX_PROGRESS_BAR}
             ></div>
           </div>
-          <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-            <span className="font-bold" data-testid="capex-percentage">
-              {totalCapex}%
-            </span>{" "}
-            {UI_TEXT.BUDGET.IT_BUDGET_CAPEX}
-          </p>
+          <span
+            className="font-bold"
+            data-testid={COST_TEST_IDS.CAPEX_PERCENTAGE}
+          >
+            {totalCapex}%
+          </span>
         </div>
       </div>
 
-      <div>
-        <KeyValuePair
-          label={UI_TEXT.LABELS.OPEX}
-          value={
-            <div className="flex items-center">
-              <span
-                className="mr-1"
-                aria-hidden="true"
-                data-testid="opex-severity-icon"
-              >
-                {getCostIcon(totalOpex)}
-              </span>
-              <ValueDisplay
-                value={formatCurrency(opexEstimate)}
-                variant="primary"
-                size="sm"
-                testId="opex-estimate-value" // Ensure consistent testId with unique "-value" suffix
+      {/* OPEX Section */}
+      <div className="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700">
+        <div className="flex justify-between mb-2">
+          <div className="flex items-center">
+            <span
+              className="text-lg text-gray-700 dark:text-gray-300 mr-2"
+              data-testid={COST_TEST_IDS.OPEX_SEVERITY_ICON}
+            >
+              {getCostIcon(totalOpex)}
+            </span>
+            <div>
+              <KeyValuePair
+                label={UI_TEXT.LABELS.OPEX}
+                value={
+                  <ValueDisplay
+                    value={`${formatCurrency(opexEstimate)}`}
+                    variant="primary"
+                    size="lg"
+                    testId={COST_TEST_IDS.OPEX_ESTIMATE_VALUE} // Ensure consistent testId with unique "-value" suffix
+                  />
+                }
+                testId={COST_TEST_IDS.OPEX_SECTION}
               />
               {monthlyOpex && (
                 <span
-                  className="ml-1 text-xs text-gray-500 font-normal"
-                  data-testid="monthly-opex"
+                  className="text-xs text-gray-500 dark:text-gray-400"
+                  data-testid={COST_TEST_IDS.MONTHLY_OPEX}
                 >
-                  (~{monthlyOpex})
+                  {monthlyOpex}
                 </span>
               )}
             </div>
-          }
-          testId="opex-section"
-        />
+          </div>
+        </div>
 
+        {/* Progress bar for OPEX % */}
         <div className="mt-2">
-          <div
-            className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5"
-            role="progressbar"
-            aria-valuenow={Math.min(totalOpex, 100)}
-            aria-valuemin={0}
-            aria-valuemax={100}
-            aria-label={`Operational expenditure: ${totalOpex}% of IT budget`}
-          >
+          <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400 mb-1">
+            <span>{UI_TEXT.BUDGET.IT_BUDGET_OPEX}</span>
+          </div>
+          <div className="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full">
             <div
-              className={`${getOpexColorClass()} h-2.5 rounded-full`}
+              className={`h-2 rounded-full ${getOpexColorClass()}`}
               style={{ width: `${Math.min(totalOpex, 100)}%` }}
-              data-testid="opex-progress-bar"
+              data-testid={COST_TEST_IDS.OPEX_PROGRESS_BAR}
             ></div>
           </div>
-          <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-            <span className="font-bold" data-testid="opex-percentage">
-              {totalOpex}%
-            </span>{" "}
-            {UI_TEXT.BUDGET.IT_BUDGET_OPEX}
-          </p>
+          <span
+            className="font-bold"
+            data-testid={COST_TEST_IDS.OPEX_PERCENTAGE}
+          >
+            {totalOpex}%
+          </span>
         </div>
       </div>
 
+      {/* Total Cost and ROI Section */}
       <div
-        className="bg-gray-50 dark:bg-gray-800 p-3 border border-gray-200 dark:border-gray-700 rounded-md"
-        data-testid="total-cost-summary"
+        className="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700"
+        data-testid={COST_TEST_IDS.TOTAL_COST_SUMMARY}
       >
-        <MetricsCard
-          title="3-Year Total Cost"
+        <KeyValuePair
+          label="3-Year Total Cost"
           value={totalCost}
-          testId="three-year-total"
-          className="bg-transparent border-0 p-0"
+          testId={COST_TEST_IDS.THREE_YEAR_TOTAL}
         />
 
         {roi && (
-          <div className="mt-2 pt-2 border-t border-gray-200 dark:border-gray-600">
+          <div className="mt-2 border-t pt-2 border-gray-100 dark:border-gray-700">
             <KeyValuePair
               label="Estimated ROI"
               value={
                 <ValueDisplay
                   value={roi}
                   variant="success"
-                  size="sm"
-                  testId="roi-estimate"
+                  testId={COST_TEST_IDS.ROI_ESTIMATE}
                 />
               }
-              testId="roi-section"
+              testId={COST_TEST_IDS.ROI_SECTION}
             />
           </div>
         )}
       </div>
 
+      {/* Cost Analysis Section */}
       <div
-        className="rounded-md bg-blue-50 dark:bg-blue-900/20 p-3 mt-2"
-        data-testid="cost-analysis-section"
+        className="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700"
+        data-testid={COST_TEST_IDS.COST_ANALYSIS_SECTION}
       >
-        <h4
-          className="text-sm font-medium text-blue-800 dark:text-blue-300 mb-2"
-          data-testid="cost-analysis-heading"
+        <h3
+          className="text-lg font-medium text-gray-700 dark:text-gray-300 mb-2"
+          data-testid={COST_TEST_IDS.COST_ANALYSIS_HEADING}
         >
           {UI_TEXT.LABELS.COST_ANALYSIS}
-        </h4>
+        </h3>
         <p
-          className="text-sm text-blue-700 dark:text-blue-300"
-          data-testid="cost-analysis-text"
+          className="text-gray-600 dark:text-gray-400 text-sm"
+          data-testid={COST_TEST_IDS.COST_ANALYSIS_TEXT}
         >
           {isSmallSolution
             ? COST_ANALYSIS.SMALL_SOLUTION

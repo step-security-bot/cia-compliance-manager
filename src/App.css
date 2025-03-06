@@ -1,0 +1,4 @@
+/* App-specific styles only */
+.app-root {
+  min-height: 100vh;
+}

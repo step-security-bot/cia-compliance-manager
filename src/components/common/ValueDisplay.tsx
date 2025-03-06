@@ -1,69 +1,104 @@
-import React, { ReactNode } from "react";
+import React from "react";
+import { COMMON_COMPONENT_TEST_IDS } from "../../constants/testIds";
 
 interface ValueDisplayProps {
-  value: ReactNode;
-  label?: string;
-  variant?: "default" | "primary" | "success" | "warning" | "danger" | "info";
+  value: string | number;
+  variant?:
+    | "primary"
+    | "success"
+    | "warning"
+    | "danger"
+    | "info"
+    | "neutral"
+    | "default";
   size?: "sm" | "md" | "lg";
+  label?: string;
   testId?: string;
 }
 
-/**
- * ValueDisplay component for consistently displaying application-set values
- * with clear visual distinction from regular text content.
- */
 const ValueDisplay: React.FC<ValueDisplayProps> = ({
   value,
-  label,
-  variant = "default",
+  variant = "primary",
   size = "md",
-  testId,
+  label,
+  testId = COMMON_COMPONENT_TEST_IDS.VALUE_DISPLAY,
 }) => {
-  const getVariantClasses = (): string => {
-    switch (variant) {
+  // Map "default" to "neutral" for backward compatibility
+  const normalizedVariant = variant === "default" ? "neutral" : variant;
+
+  const getColorClass = () => {
+    switch (normalizedVariant) {
       case "primary":
-        return "bg-blue-100 dark:bg-blue-900/30 border-blue-300 dark:border-blue-700 text-blue-800 dark:text-blue-200";
+        return "text-blue-700 dark:text-blue-400 bg-blue-100";
       case "success":
-        return "bg-green-100 dark:bg-green-900/30 border-green-300 dark:border-green-700 text-green-800 dark:text-green-200";
+        return "text-green-700 dark:text-green-400 bg-green-100";
       case "warning":
-        return "bg-yellow-100 dark:bg-yellow-900/30 border-yellow-300 dark:border-yellow-700 text-yellow-800 dark:text-yellow-200";
+        return "text-yellow-700 dark:text-yellow-400 bg-yellow-100";
       case "danger":
-        return "bg-red-100 dark:bg-red-900/30 border-red-300 dark:border-red-700 text-red-800 dark:text-red-200";
+        return "text-red-700 dark:text-red-400 bg-red-100";
       case "info":
-        return "bg-purple-100 dark:bg-purple-900/30 border-purple-300 dark:border-purple-700 text-purple-800 dark:text-purple-200";
+        return "text-blue-700 dark:text-blue-400 bg-blue-100";
       default:
-        return "bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200";
+        return "text-gray-700 dark:text-gray-400 bg-gray-100";
     }
   };
 
-  const getSizeClasses = (): string => {
+  const getSizeClass = () => {
     switch (size) {
       case "sm":
-        return "text-xs px-1.5 py-0.5";
+        return "py-0.5 px-2 text-xs";
+      case "md":
+        return "py-1 px-2 text-sm";
       case "lg":
-        return "text-base px-3 py-1.5";
+        return "py-1 px-2.5 text-base";
       default:
-        return "text-sm px-2 py-1";
+        return "py-1 px-2 text-sm";
     }
   };
 
+  // Deduce the text color from the color class for standalone use
+  const getTextOnlyColor = () => {
+    switch (normalizedVariant) {
+      case "primary":
+        return "text-blue-600 dark:text-blue-400";
+      case "success":
+        return "text-green-600 dark:text-green-400";
+      case "warning":
+        return "text-yellow-600 dark:text-yellow-400";
+      case "danger":
+        return "text-red-600 dark:text-red-400";
+      case "info":
+        return "text-cyan-600 dark:text-cyan-400";
+      default:
+        return "text-gray-600 dark:text-gray-400";
+    }
+  };
+
+  const getFontSize = () => {
+    switch (size) {
+      case "sm":
+        return "text-sm";
+      case "lg":
+        return "text-lg";
+      case "md":
+      default:
+        return "text-base";
+    }
+  };
+
+  // Get all classes combined
+  const valueClasses = `${getColorClass()} ${getSizeClass()}`;
+
   return (
-    <div
-      className="inline-flex items-center"
-      data-testid={testId || "value-display"}
+    <span
+      className={`${getTextOnlyColor()} ${getFontSize()} font-semibold `}
+      data-testid={testId}
     >
-      {label && (
-        <span className="text-gray-600 dark:text-gray-400 mr-2 text-sm font-medium">
-          {label}:
-        </span>
-      )}
-      <span
-        className={`font-semibold inline-block rounded-md border ${getVariantClasses()} ${getSizeClasses()} shadow-sm`}
-        data-testid={testId ? `${testId}-value` : "displayed-value"}
-      >
+      {label && <span className="mr-1">{label}:</span>}
+      <span data-testid={`${testId}-value`} className={valueClasses}>
         {value}
       </span>
-    </div>
+    </span>
   );
 };
 

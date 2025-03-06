@@ -3,19 +3,21 @@
  * Breaking these out helps prevent circular dependencies
  */
 
-// Risk levels for business impact
+// Risk constants for the application
 export const RISK_LEVELS = {
-  LOW: "Low",
-  MEDIUM: "Medium",
-  HIGH: "High",
-  CRITICAL: "Critical",
+  LOW: "Low Risk",
+  MEDIUM: "Medium Risk",
+  HIGH: "High Risk",
+  CRITICAL: "Critical Risk",
+  MINIMAL: "Minimal Risk",
+  UNKNOWN: "Unknown Risk",
 };
 
 // Business impact categories
 export const BUSINESS_IMPACT_CATEGORIES = {
-  FINANCIAL: "Financial",
-  OPERATIONAL: "Operational",
-  REPUTATIONAL: "Reputational",
-  REGULATORY: "Regulatory",
-  STRATEGIC: "Strategic",
+  FINANCIAL: "financial",
+  OPERATIONAL: "operational",
+  REPUTATIONAL: "reputational",
+  REGULATORY: "regulatory",
+  STRATEGIC: "strategic",
 };

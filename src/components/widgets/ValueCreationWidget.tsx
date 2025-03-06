@@ -9,15 +9,8 @@ import {
 import { ensureArray } from "../../utils/typeGuards";
 import ValueDisplay from "../common/ValueDisplay";
 import KeyValuePair from "../common/KeyValuePair";
-
-// Update the interface to include CIA level props
-interface ValueCreationWidgetProps {
-  // Add these props to fix type errors
-  availability?: string;
-  integrity?: string;
-  confidentiality?: string;
-  securityLevel: string;
-}
+import { WIDGET_TEST_IDS, createDynamicTestId } from "../../constants/testIds"; // Import test ID constants
+import { ValueCreationWidgetProps } from "../../types/widgets";
 
 const ValueCreationWidget: React.FC<ValueCreationWidgetProps> = ({
   securityLevel,
@@ -26,23 +19,26 @@ const ValueCreationWidget: React.FC<ValueCreationWidgetProps> = ({
   const getValuePoints = () => {
     const levelMap: Record<string, string[]> = {
       [SECURITY_LEVELS.VERY_HIGH]: [
-        VALUE_CREATION_POINTS.VERY_HIGH,
+        VALUE_CREATION_POINTS[SECURITY_LEVELS.VERY_HIGH][0] ??
+          "Premium security value",
         ...DETAILED_VALUE_POINTS.VERY_HIGH,
       ],
       [SECURITY_LEVELS.HIGH]: [
-        VALUE_CREATION_POINTS.HIGH,
+        VALUE_CREATION_POINTS[SECURITY_LEVELS.HIGH][0] ?? "High security value",
         ...DETAILED_VALUE_POINTS.HIGH,
       ],
       [SECURITY_LEVELS.MODERATE]: [
-        VALUE_CREATION_POINTS.MODERATE,
+        VALUE_CREATION_POINTS[SECURITY_LEVELS.MODERATE][0] ??
+          "Moderate security value",
         ...DETAILED_VALUE_POINTS.MODERATE,
       ],
       [SECURITY_LEVELS.LOW]: [
-        VALUE_CREATION_POINTS.LOW,
+        VALUE_CREATION_POINTS[SECURITY_LEVELS.LOW][0] ?? "Basic security value",
         ...DETAILED_VALUE_POINTS.LOW,
       ],
       [SECURITY_LEVELS.NONE]: [
-        VALUE_CREATION_POINTS.NONE,
+        VALUE_CREATION_POINTS[SECURITY_LEVELS.NONE][0] ??
+          "Minimal security value",
         ...DETAILED_VALUE_POINTS.NONE,
       ],
     };
@@ -103,30 +99,31 @@ const ValueCreationWidget: React.FC<ValueCreationWidgetProps> = ({
   };
 
   return (
-    <div className="space-y-4" data-testid="value-creation-content">
-      <div className="mb-3">
+    <div
+      className="space-y-4"
+      data-testid={WIDGET_TEST_IDS.VALUE_CREATION_CONTENT}
+    >
+      <div className="flex items-center justify-between">
         <h3
-          className={`text-lg font-medium ${getLevelColorClass()}`}
-          data-testid="value-creation-title"
+          className={`text-lg font-bold ${getLevelColorClass()}`}
+          data-testid={WIDGET_TEST_IDS.VALUE_CREATION_TITLE}
         >
-          {securityLevel === SECURITY_LEVELS.NONE
-            ? UI_TEXT.VALUE_CREATION.NONE_TITLE
-            : UI_TEXT.VALUE_CREATION.WITH_LEVEL(securityLevel)}
+          {securityLevel} Value Creation
         </h3>
         <p
-          className="text-sm text-gray-600 dark:text-gray-300 mt-1"
-          data-testid="value-creation-subtitle"
+          className="text-sm text-gray-500 dark:text-gray-400"
+          data-testid={WIDGET_TEST_IDS.VALUE_CREATION_SUBTITLE}
         >
-          {UI_TEXT.LABELS.BUSINESS_VALUE}
+          Business value derived from this security profile
         </p>
       </div>
 
-      <ul className="space-y-2" data-testid="value-points-list">
+      <ul className="space-y-2" data-testid={WIDGET_TEST_IDS.VALUE_POINTS_LIST}>
         {ensureArray(valuePoints).map((point, index) => (
           <li
             key={index}
-            className="flex items-start bg-gray-50 dark:bg-gray-800 p-2.5 rounded-md border border-gray-100 dark:border-gray-700"
-            data-testid={`value-point-${index}`}
+            className="flex items-start"
+            data-testid={createDynamicTestId.valuePoint(index)}
           >
             <span className={`mr-2 ${getLevelColorClass()}`}>•</span>
             <span className="font-medium text-sm text-gray-700 dark:text-gray-300">
@@ -136,18 +133,17 @@ const ValueCreationWidget: React.FC<ValueCreationWidgetProps> = ({
         ))}
       </ul>
 
-      <div className="mt-4 pt-3 border-t border-gray-200 dark:border-gray-700">
+      <div className="border-t pt-2 mt-4">
         <KeyValuePair
-          label={UI_TEXT.LABELS.ESTIMATED_ROI}
+          label="Return on Investment:"
           value={
             <ValueDisplay
               value={roiEstimate}
               variant={getLevelVariant()}
-              testId="roi-value"
+              testId={WIDGET_TEST_IDS.ROI_VALUE}
             />
           }
-          testId="roi-section"
-          highlighted={true}
+          testId={WIDGET_TEST_IDS.ROI_SECTION}
         />
       </div>
     </div>

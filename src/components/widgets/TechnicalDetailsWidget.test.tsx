@@ -4,6 +4,13 @@ import { vi } from "vitest";
 import userEvent from "@testing-library/user-event";
 import TechnicalDetailsWidget from "./TechnicalDetailsWidget";
 import { CIADetails } from "../../types/cia";
+import { WIDGET_TEST_IDS, createDynamicTestId } from "../../constants/testIds";
+import { SECURITY_LEVELS } from "../../constants/appConstants";
+import {
+  mockAvailabilityOptions,
+  mockIntegrityOptions,
+  mockConfidentialityOptions,
+} from "../../tests/mockConstants";
 
 // Enhanced mock options that satisfy the CIADetails interface
 const createMockCIADetails = (
@@ -162,5 +169,71 @@ describe("TechnicalDetailsWidget", () => {
       selector: '[data-testid$="-level-indicator-value"]',
     });
     expect(confidentialityIndicator).toBeInTheDocument();
+  });
+
+  it("renders the widget with default props", async () => {
+    render(
+      <TechnicalDetailsWidget
+        availabilityLevel={SECURITY_LEVELS.MODERATE}
+        integrityLevel={SECURITY_LEVELS.MODERATE}
+        confidentialityLevel={SECURITY_LEVELS.MODERATE}
+        availabilityOptions={mockAvailabilityOptions}
+        integrityOptions={mockIntegrityOptions}
+        confidentialityOptions={mockConfidentialityOptions}
+      />
+    );
+
+    expect(
+      screen.getByTestId(WIDGET_TEST_IDS.TECHNICAL_DETAILS_WIDGET)
+    ).toBeInTheDocument();
+
+    // Verify technical description is displayed correctly
+    expect(
+      screen.getByTestId(WIDGET_TEST_IDS.TECHNICAL_DESCRIPTION)
+    ).toHaveTextContent("moderate-tech");
+
+    // Switch to integrity tab and verify content changes
+    const user = userEvent.setup();
+    await user.click(screen.getByTestId(WIDGET_TEST_IDS.INTEGRITY_TAB));
+
+    expect(
+      screen.getByTestId(WIDGET_TEST_IDS.TECHNICAL_DESCRIPTION)
+    ).toHaveTextContent("moderate-integrity-tech");
+
+    // Test that active tab has the correct styling
+    expect(screen.getByTestId(WIDGET_TEST_IDS.INTEGRITY_TAB)).toHaveClass(
+      "border-b-2"
+    );
+
+    // Check if implementation steps are rendered correctly
+    expect(
+      screen.getByTestId(createDynamicTestId.implementationStep(0))
+    ).toHaveTextContent("Step 1");
+    expect(
+      screen.getByTestId(createDynamicTestId.implementationStep(1))
+    ).toHaveTextContent("Step 2");
+  });
+
+  it("displays resource requirements", () => {
+    render(
+      <TechnicalDetailsWidget
+        availabilityLevel={SECURITY_LEVELS.HIGH}
+        integrityLevel={SECURITY_LEVELS.HIGH}
+        confidentialityLevel={SECURITY_LEVELS.HIGH}
+        availabilityOptions={mockAvailabilityOptions}
+        integrityOptions={mockIntegrityOptions}
+        confidentialityOptions={mockConfidentialityOptions}
+      />
+    );
+
+    expect(
+      screen.getByTestId(WIDGET_TEST_IDS.DEVELOPMENT_EFFORT)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByTestId(WIDGET_TEST_IDS.MAINTENANCE_LEVEL)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByTestId(WIDGET_TEST_IDS.REQUIRED_EXPERTISE)
+    ).toBeInTheDocument();
   });
 });

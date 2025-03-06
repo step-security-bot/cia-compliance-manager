@@ -1,60 +1,58 @@
 import React, { ReactNode } from "react";
+import { COMMON_COMPONENT_TEST_IDS } from "../../constants/testIds";
 
-interface StatusBadgeProps {
-  status: "success" | "warning" | "error" | "info" | "neutral";
+export type StatusBadgeProps = {
+  status: "info" | "success" | "warning" | "error" | "neutral" | "purple";
   children: ReactNode;
   size?: "xs" | "sm" | "md" | "lg";
-  testId?: string;
   className?: string;
-  // Re-add icon prop for backward compatibility
-  icon?: string;
-}
+  testId?: string;
+};
 
 const StatusBadge: React.FC<StatusBadgeProps> = ({
   status,
   children,
   size = "md",
-  testId,
   className = "",
-  icon, // Include the icon prop
+  testId = COMMON_COMPONENT_TEST_IDS.STATUS_BADGE,
 }) => {
-  const getStatusStyles = () => {
+  const getStatusColors = () => {
     switch (status) {
+      case "info":
+        return "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300";
       case "success":
         return "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300";
       case "warning":
         return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300";
       case "error":
         return "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300";
-      case "info":
-        return "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300";
+      case "purple":
+        return "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300";
+      case "neutral":
       default:
         return "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300";
     }
   };
 
-  const getSizeStyles = () => {
+  const getSizeClasses = () => {
     switch (size) {
       case "xs":
-        return "text-xs px-1.5 py-0.5";
+        return "text-xs py-0.5 px-1.5";
       case "sm":
-        return "text-xs px-2 py-1";
+        return "text-xs py-1 px-2";
       case "lg":
-        return "text-sm px-3 py-1.5";
+        return "text-sm py-1.5 px-3";
+      case "md":
       default:
-        return "text-xs px-2.5 py-1";
+        return "text-xs py-1 px-2.5";
     }
   };
 
   return (
     <span
-      className={`font-medium rounded-full inline-flex items-center ${getStatusStyles()} ${getSizeStyles()} ${className}`}
-      data-testid={testId || "status-badge"}
-      data-status={status} // Keep the data-status attribute for testing
-      data-size={size} // Keep the size information for test verification
+      className={`inline-flex items-center font-medium rounded-full ${getStatusColors()} ${getSizeClasses()} ${className}`}
+      data-testid={testId}
     >
-      {/* Include the icon if provided */}
-      {icon && <span className="mr-1">{icon}</span>}
       {children}
     </span>
   );
