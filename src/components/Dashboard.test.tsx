@@ -2,6 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { vi } from "vitest";
 import Dashboard, { DashboardWidget } from "./Dashboard";
+import { APP_TEST_IDS } from "../constants/testIds";
 
 // Mock the widget registry
 vi.mock("../utils/widgetRegistry", () => ({
@@ -35,27 +36,29 @@ describe("Dashboard Component", () => {
   it("renders children when useRegistry is false", () => {
     render(<Dashboard {...defaultProps} />);
 
-    expect(screen.getByTestId("dashboard-grid")).toBeInTheDocument();
+    expect(screen.getByTestId(APP_TEST_IDS.DASHBOARD_GRID)).toBeInTheDocument();
     expect(screen.getByTestId("test-child")).toBeInTheDocument();
   });
 
   it("uses widget registry when useRegistry is true", () => {
     render(<Dashboard {...defaultProps} useRegistry={true} />);
 
-    expect(screen.getByTestId("dashboard-grid")).toBeInTheDocument();
+    expect(screen.getByTestId(APP_TEST_IDS.DASHBOARD_GRID)).toBeInTheDocument();
     expect(screen.getByText("Mock Widget")).toBeInTheDocument();
   });
 });
 
 describe("DashboardWidget Component", () => {
+  const testWidgetId = "test-widget";
+
   it("renders with correct props", () => {
     render(
-      <DashboardWidget title="Test Widget" testId="test-widget">
+      <DashboardWidget title="Test Widget" testId={testWidgetId}>
         <div>Widget Content</div>
       </DashboardWidget>
     );
 
-    expect(screen.getByTestId("test-widget")).toBeInTheDocument();
+    expect(screen.getByTestId(testWidgetId)).toBeInTheDocument();
     expect(screen.getByText("Widget Content")).toBeInTheDocument();
   });
 });

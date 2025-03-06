@@ -73,9 +73,15 @@ vi.mock("./components/RadarChart", () => {
       confidentiality: string;
     }) => (
       <div data-testid="mock-radar-chart">
-        <div data-testid="mock-radar-availability">{availability}</div>
-        <div data-testid="mock-radar-integrity">{integrity}</div>
-        <div data-testid="mock-radar-confidentiality">{confidentiality}</div>
+        <div data-testid={CHART_TEST_IDS.RADAR_AVAILABILITY_VALUE}>
+          {availability}
+        </div>
+        <div data-testid={CHART_TEST_IDS.RADAR_INTEGRITY_VALUE}>
+          {integrity}
+        </div>
+        <div data-testid={CHART_TEST_IDS.RADAR_CONFIDENTIALITY_VALUE}>
+          {confidentiality}
+        </div>
       </div>
     ),
   };
@@ -97,21 +103,21 @@ describe("CIAClassificationApp", () => {
     render(<CIAClassificationApp />);
 
     // The radar chart should initially use "None" as the default value for all dimensions
-    expect(screen.getByTestId("mock-radar-availability")).toHaveTextContent(
-      SECURITY_LEVELS.NONE
-    );
+    expect(
+      screen.getByTestId(CHART_TEST_IDS.RADAR_AVAILABILITY_VALUE)
+    ).toHaveTextContent(SECURITY_LEVELS.NONE);
 
     // When we update the app state to change security levels, the radar chart should update
     // Note: In a real test, you would call setAvailability through user events
     // Here we're just verifying that the props are properly connected
-    expect(screen.getByTestId("mock-radar-availability")).toHaveTextContent(
-      SECURITY_LEVELS.NONE
-    );
-    expect(screen.getByTestId("mock-radar-integrity")).toHaveTextContent(
-      SECURITY_LEVELS.NONE
-    );
-    expect(screen.getByTestId("mock-radar-confidentiality")).toHaveTextContent(
-      SECURITY_LEVELS.NONE
-    );
+    expect(
+      screen.getByTestId(CHART_TEST_IDS.RADAR_AVAILABILITY_VALUE)
+    ).toHaveTextContent(SECURITY_LEVELS.NONE);
+    expect(
+      screen.getByTestId(CHART_TEST_IDS.RADAR_INTEGRITY_VALUE)
+    ).toHaveTextContent(SECURITY_LEVELS.NONE);
+    expect(
+      screen.getByTestId(CHART_TEST_IDS.RADAR_CONFIDENTIALITY_VALUE)
+    ).toHaveTextContent(SECURITY_LEVELS.NONE);
   });
 });

@@ -8,9 +8,10 @@ interface MetricsCardProps {
     value: string;
     direction: "up" | "down" | "neutral";
   };
-  icon?: string; // Add the missing icon prop
+  icon?: string;
   testId?: string;
   className?: string;
+  variant?: "success" | "warning" | "danger" | "info" | "primary" | "default";
 }
 
 /**
@@ -20,9 +21,10 @@ const MetricsCard: React.FC<MetricsCardProps> = ({
   title,
   value,
   trend,
-  icon, // Add icon to the component parameters
+  icon,
   testId,
   className = "",
+  variant,
 }) => {
   const getTrendClasses = () => {
     if (!trend) return "";
@@ -49,6 +51,24 @@ const MetricsCard: React.FC<MetricsCardProps> = ({
       case "neutral":
       default:
         return "→";
+    }
+  };
+
+  // Add variant handling for the value display
+  const getVariantClass = () => {
+    switch (variant) {
+      case "success":
+        return "text-green-600 dark:text-green-400";
+      case "warning":
+        return "text-yellow-600 dark:text-yellow-400";
+      case "danger":
+        return "text-red-600 dark:text-red-400";
+      case "info":
+        return "text-blue-600 dark:text-blue-400";
+      case "primary":
+        return "text-indigo-600 dark:text-indigo-400";
+      default:
+        return "";
     }
   };
 
@@ -80,7 +100,7 @@ const MetricsCard: React.FC<MetricsCardProps> = ({
         )}
       </div>
       <div
-        className="mt-1 font-bold text-lg"
+        className={`mt-1 font-bold text-lg ${getVariantClass()}`}
         data-testid={`${
           testId || COMMON_COMPONENT_TEST_IDS.METRICS_CARD
         }-value`}

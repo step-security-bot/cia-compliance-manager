@@ -78,20 +78,21 @@ describe("RadarChart", () => {
 
     // Should render the chart container even if canvas fails
     expect(
-      screen.getByTestId(`${CHART_TEST_IDS.RADAR_CHART}-container`)
+      screen.getByTestId(CHART_TEST_IDS.RADAR_CHART_CONTAINER)
     ).toBeInTheDocument();
   });
 
   it("accepts custom testId prop", () => {
+    const customTestId = "custom-chart";
     render(
       <RadarChart
         availability="None"
         integrity="None"
         confidentiality="None"
-        testId="custom-chart"
+        testId={customTestId}
       />
     );
 
-    expect(screen.getByTestId("custom-chart")).toBeInTheDocument();
+    expect(screen.getByTestId(customTestId)).toBeInTheDocument();
   });
 });

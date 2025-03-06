@@ -2,6 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import App from "./App";
+import { APP_TEST_IDS } from "./constants/testIds";
 
 // Mock the CIAClassificationApp component
 vi.mock("./CIAClassificationApp", () => ({
@@ -19,5 +20,7 @@ describe("App", () => {
 
     // App should show the CIA dashboard directly
     expect(screen.getByTestId("mock-cia-app")).toBeInTheDocument();
+    // Check if the app root is rendered
+    expect(screen.getByTestId(APP_TEST_IDS.APP_ROOT)).toBeInTheDocument();
   });
 });

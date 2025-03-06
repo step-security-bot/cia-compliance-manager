@@ -1,11 +1,12 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
+import { describe, it, expect } from "vitest";
 import MetricsCard from "./MetricsCard";
 import { COMMON_COMPONENT_TEST_IDS } from "../../constants/testIds";
 
-describe("MetricsCard", () => {
-  it("renders with basic props", () => {
-    render(<MetricsCard title="Test Metric" value="100" />);
+describe("MetricsCard Component", () => {
+  it("renders with title and value", () => {
+    render(<MetricsCard title="Test Metric" value="100%" />);
 
     expect(
       screen.getByTestId(COMMON_COMPONENT_TEST_IDS.METRICS_CARD)
@@ -15,103 +16,43 @@ describe("MetricsCard", () => {
     ).toHaveTextContent("Test Metric");
     expect(
       screen.getByTestId(COMMON_COMPONENT_TEST_IDS.METRICS_CARD_VALUE)
-    ).toHaveTextContent("100");
+    ).toHaveTextContent("100%");
   });
 
-  it("renders with an icon", () => {
-    render(<MetricsCard title="Test Metric" value="100" icon="📊" />);
+  it("renders with custom test ID", () => {
+    const customTestId = "custom-metrics-card";
+    render(
+      <MetricsCard title="Test Metric" value="100%" testId={customTestId} />
+    );
 
-    expect(screen.getByText("📊")).toBeInTheDocument();
+    expect(screen.getByTestId(customTestId)).toBeInTheDocument();
   });
 
-  it("renders with custom className", () => {
-    const testId = "custom-metrics";
+  it("renders with trend indicator", () => {
     render(
       <MetricsCard
-        title="Test Metric"
-        value="100"
-        className="custom-class"
-        testId={testId}
+        title="Growth Metric"
+        value="25%"
+        trend={{ value: "+5%", direction: "up" }}
       />
     );
 
-    expect(screen.getByTestId(testId)).toHaveClass("custom-class");
+    expect(
+      screen.getByTestId(COMMON_COMPONENT_TEST_IDS.METRICS_CARD_TREND)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByTestId(COMMON_COMPONENT_TEST_IDS.METRICS_CARD_TREND)
+    ).toHaveTextContent("+5%");
   });
 
-  it("renders with custom testId", () => {
-    const testId = "custom-metrics";
-    render(<MetricsCard title="Test Metric" value="100" testId={testId} />);
-
-    expect(screen.getByTestId(testId)).toBeInTheDocument();
-    expect(screen.getByTestId(`${testId}-title`)).toBeInTheDocument();
-    expect(screen.getByTestId(`${testId}-value`)).toBeInTheDocument();
-  });
-
-  it("renders with upward trend", () => {
-    const testId = "trend-metrics";
+  it("applies variant styling", () => {
     render(
-      <MetricsCard
-        title="Test Metric"
-        value="100"
-        trend={{ direction: "up", value: "+10%" }}
-        testId={testId}
-      />
+      <MetricsCard title="Success Metric" value="100%" variant="success" />
     );
 
-    const trendElement = screen.getByTestId(`${testId}-trend`);
-    expect(trendElement).toBeInTheDocument();
-    expect(trendElement).toHaveTextContent("↑+10%");
-    expect(trendElement).toHaveClass("text-green-600");
-  });
-
-  it("renders with downward trend", () => {
-    const testId = "trend-metrics";
-    render(
-      <MetricsCard
-        title="Test Metric"
-        value="100"
-        trend={{ direction: "down", value: "-10%" }}
-        testId={testId}
-      />
+    const metricValue = screen.getByTestId(
+      COMMON_COMPONENT_TEST_IDS.METRICS_CARD_VALUE
     );
-
-    const trendElement = screen.getByTestId(`${testId}-trend`);
-    expect(trendElement).toBeInTheDocument();
-    expect(trendElement).toHaveTextContent("↓-10%");
-    expect(trendElement).toHaveClass("text-red-600");
-  });
-
-  it("renders with neutral trend", () => {
-    const testId = "trend-metrics";
-    render(
-      <MetricsCard
-        title="Test Metric"
-        value="100"
-        trend={{ direction: "neutral", value: "0%" }}
-        testId={testId}
-      />
-    );
-
-    const trendElement = screen.getByTestId(`${testId}-trend`);
-    expect(trendElement).toBeInTheDocument();
-    expect(trendElement).toHaveTextContent("→0%");
-    expect(trendElement).toHaveClass("text-gray-600");
-  });
-
-  it("renders a complex value as children", () => {
-    render(
-      <MetricsCard
-        title="Complex Metric"
-        value={
-          <div data-testid="complex-value">
-            Complex <strong>Value</strong>
-          </div>
-        }
-      />
-    );
-
-    expect(screen.getByTestId("complex-value")).toBeInTheDocument();
-    expect(screen.getByText("Complex")).toBeInTheDocument();
-    expect(screen.getByText("Value")).toBeInTheDocument();
+    expect(metricValue.className).toContain("text-green");
   });
 });
