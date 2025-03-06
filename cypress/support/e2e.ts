@@ -188,6 +188,20 @@ before(() => {
   cy.task("resetJunitResults");
 });
 
+// Add this line to create the results directory if it doesn't exist
+Cypress.Cy.prototype.onBeforeRun = function (attributes) {
+  try {
+    // Create cypress/results directory if it doesn't exist
+    const fs = require("fs");
+    const resultsDir = "cypress/results";
+    if (!fs.existsSync(resultsDir)) {
+      fs.mkdirSync(resultsDir, { recursive: true });
+    }
+  } catch (err) {
+    console.log("Error creating results directory:", err);
+  }
+};
+
 import "cypress-wait-until";
 import "cypress-real-events";
 

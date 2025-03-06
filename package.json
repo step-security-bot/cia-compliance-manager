@@ -18,13 +18,14 @@
     "test:watch": "vitest",
     "coverage": "vitest run --coverage",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run",
-    "test:e2e": "start-server-and-test 'vite --port 5173' http://localhost:5173 'cypress run'",
+    "cypress:run": "cypress run --reporter junit --reporter-options 'mochaFile=cypress/results/junit-[hash].xml,toConsole=true'",
+    "test:e2e": "start-server-and-test 'vite --port 5173' http://localhost:5173 'cypress run --reporter junit'",
     "pretest:e2e": "bash .devcontainer/init-xvfb.sh",
     "cypress:install": "cypress install",
     "cypress:verify": "cypress verify",
     "test:ci": "cross-env CI=true vitest run --coverage",
-    "cypress:open:with-server": "start-server-and-test 'vite --port 5173' http://localhost:5173 'cypress open'"
+    "cypress:open:with-server": "start-server-and-test 'vite --port 5173' http://localhost:5173 'cypress open'",
+    "merge-test-reports": "node --experimental-json-modules ./cypress/support/plugins/merge-reports.js"
   },
   "browserslist": {
     "production": [
@@ -55,6 +56,8 @@
     "canvas": "3.1.0",
     "cross-env": "^7.0.3",
     "cypress": "^14.1.0",
+    "cypress-multi-reporters": "^1.6.3",
+    "cypress-junit-reporter": "^1.3.1",
     "cypress-react-selector": "^3.0.0",
     "cypress-real-events": "1.14.0",
     "cypress-vite": "^1.5.0",

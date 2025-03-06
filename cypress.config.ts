@@ -19,6 +19,13 @@ export default defineConfig({
     runMode: 2, // Increased retries in run mode
     openMode: 1, // Added retry in open mode
   },
+  // Add reporter configuration here
+  reporter: "junit",
+  reporterOptions: {
+    mochaFile: "cypress/results/junit-[hash].xml",
+    toConsole: true,
+    attachments: true,
+  },
   e2e: {
     baseUrl: "http://localhost:5173",
     specPattern: "cypress/e2e/**/*.cy.{js,jsx,ts,tsx}",
@@ -35,6 +42,32 @@ export default defineConfig({
           configFile: resolve(__dirname, "./vite.config.ts"),
         })
       );
+
+      // Import and register the JUnit merger plugin using dynamic import
+      import("./cypress/support/plugins/junit-merger.js")
+        .then(({ junitMerger }) => {
+          junitMerger(on, config);
+        })
+        .catch((err) => {
+          console.error("Error loading JUnit merger plugin:", err);
+        });
+
+      // Add task for merging reports
+      on("task", {
+        async mergeAllJunitReports() {
+          try {
+            const { mergeAllJunitReports } = await import(
+              "./cypress/support/plugins/junit-merger.js"
+            );
+            return mergeAllJunitReports();
+          } catch (err) {
+            console.error("Error running mergeAllJunitReports:", err);
+            return { success: false, error: String(err) };
+          }
+        },
+      });
+
+      return config;
     },
   },
   component: {
