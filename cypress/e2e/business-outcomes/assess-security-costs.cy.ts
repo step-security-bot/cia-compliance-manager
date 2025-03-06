@@ -8,6 +8,7 @@ import {
   interactWithElement,
   waitForElement,
 } from "../../support/test-helpers";
+import { COST_TEST_IDS, WIDGET_TEST_IDS } from "../../../src/constants/testIds";
 
 describe("Assess Security Costs", () => {
   beforeEach(() => {
@@ -20,45 +21,45 @@ describe("Assess Security Costs", () => {
 
   it("shows cost estimation widget", () => {
     // Use more robust selector with safeScrollIntoView instead of scrollIntoView
-    cy.get('[data-testid="widget-cost-estimation"]', { timeout: 15000 })
+    cy.get(`[data-testid="${WIDGET_TEST_IDS.COST_ESTIMATION}"]`, { timeout: 15000 })
       .should("exist")
       .safeScrollIntoView({ force: true });
 
-    cy.get('[data-testid="cost-estimation-content"]', {
+    cy.get(`[data-testid="${COST_TEST_IDS.COST_ESTIMATION_CONTENT}"]`, {
       timeout: 10000,
     }).should("be.visible");
   });
 
   it("shows cost estimates and values", () => {
     // Navigate to cost estimation widget
-    cy.navigateToWidget("widget-cost-estimation");
+    cy.navigateToWidget(WIDGET_TEST_IDS.COST_ESTIMATION);
 
     // Check for CAPEX and OPEX sections
-    cy.get('[data-testid="capex-section"]').should("exist");
-    cy.get('[data-testid="opex-section"]').should("exist");
+    cy.get(`[data-testid="${COST_TEST_IDS.CAPEX_SECTION}"]`).should("exist");
+    cy.get(`[data-testid="${COST_TEST_IDS.OPEX_SECTION}"]`).should("exist");
 
     // Check for estimate values
-    cy.get('[data-testid="capex-estimate-value"]').should("exist");
-    cy.get('[data-testid="opex-estimate-value"]').should("exist");
+    cy.get(`[data-testid="${COST_TEST_IDS.CAPEX_ESTIMATE_VALUE}"]`).should("exist");
+    cy.get(`[data-testid="${COST_TEST_IDS.OPEX_ESTIMATE_VALUE}"]`).should("exist");
   });
 
   it("shows value creation widget", () => {
     // Navigate to value creation widget
-    cy.navigateToWidget("widget-value-creation");
+    cy.navigateToWidget(WIDGET_TEST_IDS.VALUE_CREATION);
 
     // Check value creation content
-    cy.get('[data-testid="value-creation-content"]').should("be.visible");
+    cy.get(`[data-testid="${WIDGET_TEST_IDS.VALUE_CREATION_CONTENT}"]`).should("be.visible");
   });
 
   it.skip("updates costs when security levels change", () => {
     // Navigate to cost estimation widget with safeScrollIntoView
-    cy.get('[data-testid="widget-cost-estimation"]', {
+    cy.get(`[data-testid="${WIDGET_TEST_IDS.COST_ESTIMATION}"]`, {
       timeout: 15000,
     }).safeScrollIntoView({ force: true });
     cy.wait(500);
 
     // Get initial CAPEX value with retry logic
-    cy.get('[data-testid="capex-estimate-value-value"]', { timeout: 10000 })
+    cy.get(`[data-testid="${COST_TEST_IDS.CAPEX_ESTIMATE_VALUE}"]`, { timeout: 10000 })
       .should("be.visible")
       .invoke("text")
       .then((text) => {
@@ -77,10 +78,10 @@ describe("Assess Security Costs", () => {
         cy.wait(1000); // Wait for changes to process
 
         // Check values changed using safeScrollIntoView
-        cy.get('[data-testid="widget-cost-estimation"]', {
+        cy.get(`[data-testid="${WIDGET_TEST_IDS.COST_ESTIMATION}"]`, {
           timeout: 10000,
         }).safeScrollIntoView({ force: true });
-        cy.get('[data-testid="capex-estimate-value-value"]', { timeout: 10000 })
+        cy.get(`[data-testid="${COST_TEST_IDS.CAPEX_ESTIMATE_VALUE}"]`, { timeout: 10000 })
           .should("be.visible")
           .invoke("text")
           .should("not.eq", initialCapex);
@@ -89,11 +90,11 @@ describe("Assess Security Costs", () => {
 
   it("shows ROI estimate", () => {
     // Navigate to cost estimation widget
-    cy.navigateToWidget("widget-cost-estimation");
+    cy.navigateToWidget(WIDGET_TEST_IDS.COST_ESTIMATION);
 
     // Check ROI section
-    cy.get('[data-testid="roi-section"]').should("exist");
-    cy.get('[data-testid="roi-estimate"]').should("exist");
-    cy.get('[data-testid="roi-estimate-value"]').should("be.visible");
+    cy.get(`[data-testid="${COST_TEST_IDS.ROI_SECTION}"]`).should("exist");
+    cy.get(`[data-testid="${COST_TEST_IDS.ROI_ESTIMATE}"]`).should("exist");
+    cy.get(`[data-testid="${COST_TEST_IDS.ROI_ESTIMATE_VALUE}"]`).should("be.visible");
   });
 });
