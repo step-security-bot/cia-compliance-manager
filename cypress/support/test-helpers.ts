@@ -202,6 +202,22 @@ export const logPageElements = (): void => {
   });
 };
 
+/**
+ * Forces all parent containers to be visible and removes overflow restrictions
+ * @param selector The element selector to ensure visibility
+ */
+export function forceElementVisibility(selector: string) {
+  cy.get(selector).then(($el) => {
+    let current = $el;
+    // Walk up the DOM and remove overflow restrictions
+    while (current.length && !current.is("body")) {
+      cy.wrap(current).invoke("css", "overflow", "visible");
+      current = current.parent();
+    }
+  });
+}
+
+// Add to exports
 export default {
   interactWithElement,
   waitForElement,
@@ -210,4 +226,5 @@ export default {
   setSecurityLevelsReliably,
   textExistsAnywhere,
   logPageElements,
+  forceElementVisibility,
 };

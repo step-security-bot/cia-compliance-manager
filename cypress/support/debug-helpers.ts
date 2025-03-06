@@ -16,6 +16,11 @@ declare global {
        * Logs information about currently visible elements
        */
       logVisibleElements(): void;
+
+      /**
+       * Logs all test IDs present in the DOM for debugging
+       */
+      logAllTestIds(): void;
     }
   }
 }
@@ -68,6 +73,31 @@ export function logVisibleElements(): void {
 }
 
 /**
+ * Logs all test IDs present in the DOM for debugging
+ */
+export function logAllTestIds() {
+  cy.document().then((doc) => {
+    const elements = doc.querySelectorAll("[data-testid]");
+    cy.log(`Found ${elements.length} elements with data-testid`);
+
+    const testIds = Array.from(elements).map((el) =>
+      el.getAttribute("data-testid")
+    );
+    cy.log("Available test IDs:");
+    testIds.forEach((id, index) => {
+      if (index < 20) {
+        // Limit logging to first 20
+        cy.log(`- ${id}`);
+      }
+    });
+
+    if (testIds.length > 20) {
+      cy.log(`...and ${testIds.length - 20} more`);
+    }
+  });
+}
+
+/**
  * Add these debug helpers to Cypress commands
  */
 Cypress.Commands.add("debugFailure", (testName: string) => {
@@ -78,7 +108,10 @@ Cypress.Commands.add("logVisibleElements", () => {
   logVisibleElements();
 });
 
+Cypress.Commands.add("logAllTestIds", logAllTestIds);
+
 export default {
   debugFailure,
   logVisibleElements,
+  logAllTestIds,
 };

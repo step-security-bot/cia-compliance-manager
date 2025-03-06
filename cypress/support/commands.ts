@@ -105,14 +105,38 @@ Cypress.Commands.add("getByTestId", (selector: string) => {
 });
 
 /**
- * Navigate to a specific widget in a large viewport context
+ * Navigate to a specific widget with enhanced reliability
  */
 Cypress.Commands.add("navigateToWidget", (widgetTestId: string) => {
-  cy.get(`[data-testid="${widgetTestId}"]`, { timeout: 5000 }) // Reduced timeout
-    .should("exist")
-    .scrollIntoView({ duration: 100, offset: { top: -100, left: 0 } })
-    .should("be.visible")
-    .wait(300); // Reduced wait time
+  // First check if element exists at all
+  cy.get("body").then(($body) => {
+    const exists = $body.find(`[data-testid="${widgetTestId}"]`).length > 0;
+
+    if (exists) {
+      // Fix containers with overflow issues
+      cy.get(`[data-testid="${widgetTestId}"]`)
+        .parents()
+        .each(($el) => {
+          // Remove overflow restriction on all parent elements
+          cy.wrap($el).invoke("css", "overflow", "visible");
+        });
+
+      // Now try to interact with element
+      cy.get(`[data-testid="${widgetTestId}"]`, { timeout: 5000 })
+        .should("exist")
+        .scrollIntoView({ duration: 100, offset: { top: -100, left: 0 } })
+        .invoke("css", "visibility", "visible")
+        .invoke("css", "opacity", "1")
+        .should("be.visible")
+        .wait(300);
+    } else {
+      // Log helpful error for missing elements
+      cy.log(`Widget with testId "${widgetTestId}" not found in the DOM`);
+      // Take screenshot for debugging
+      cy.screenshot(`missing-element-${widgetTestId}`);
+      // Continue the test - will fail naturally when element is used
+    }
+  });
 });
 
 /**

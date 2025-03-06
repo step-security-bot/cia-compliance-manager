@@ -237,3 +237,9 @@ beforeEach(() => {
     cy.viewport(1280, 800);
   }
 });
+
+// Force viewport size for all tests
+beforeEach(() => {
+  // Set viewport explicitly in each test's beforeEach
+  cy.viewport(3840, 2160);
+});
