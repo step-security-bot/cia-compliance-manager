@@ -36,7 +36,7 @@
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.codeActionsOnSave": {
-          "source.fixAll.eslint": true
+          "source.fixAll.eslint": "always"
         },
         "typescript.updateImportsOnFileMove.enabled": "always",
         "javascript.updateImportsOnFileMove.enabled": "always",
@@ -60,8 +60,5 @@
   // Use privileged mode for X11 and Cypress
   "runArgs": ["--privileged"],
   // Fix: Use proper shutdown action instead of postStopCommand
-  "shutdownAction": "none",
-  "tasks": {
-    "build": "npm install && npm run build"
-  }
+  "shutdownAction": "none"
 }

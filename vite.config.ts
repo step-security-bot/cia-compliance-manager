@@ -7,9 +7,13 @@ import path from "path";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), tsconfigPaths()],
+  publicDir: "public",
   server: {
     port: 5173,
     open: true,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
   },
   build: {
     outDir: "build",

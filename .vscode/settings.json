@@ -64,14 +64,26 @@
   "editor.linkedEditing": true,
   "editor.stickyScroll.enabled": true,
   "editor.guides.bracketPairs": true,
+  "editor.suggestSelection": "first",
+  "editor.tabSize": 2,
 
-  // TypeScript settings
+  // TypeScript settings - enhanced for quality
   "typescript.preferences.importModuleSpecifier": "shortest",
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.suggestionActions.enabled": true,
   "typescript.preferences.preferTypeOnlyAutoImports": true,
   "typescript.inlayHints.parameterNames.enabled": "literals",
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+  "typescript.preferences.useAliasesForRenames": false,
+  "typescript.suggest.completeJSDocs": true,
+  "typescript.inlayHints.variableTypes.enabled": true,
+  "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "typescript.inlayHints.parameterTypes.enabled": true,
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "typescript.preferences.renameMatchingJsxTags": true,
+  "javascript.preferences.renameMatchingJsxTags": true,
 
   // Tailwind settings
   "tailwindCSS.experimental.classRegex": [
@@ -80,22 +92,41 @@
   "tailwindCSS.emmetCompletions": true,
   "css.validate": false,
 
-  // Testing settings
+  // Testing settings - enhanced
   "vitest.enable": true,
   "vitest.commandLine": "npx vitest",
   "vitest.include": ["**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
   "testing.automaticallyOpenPeekView": "never",
   "coverage-gutters.showLineCoverage": true,
+  "coverage-gutters.showRulerCoverage": true,
+  "coverage-gutters.highlightdark": "rgba(45, 121, 10, 0.2)",
+  "coverage-gutters.noHighlightDark": "rgba(121, 31, 10, 0.2)",
+  "coverage-gutters.partialHighlightDark": "rgba(245, 196, 0, 0.2)",
+  "vitest.showFailMessages": true,
 
   // File associations
   "files.associations": {
     "*.css": "tailwindcss",
-    "*.module.css": "tailwindcss"
+    "*.module.css": "tailwindcss",
+    "*.test.ts": "typescript",
+    "*.test.tsx": "typescriptreact",
+    "*.cy.ts": "typescript"
   },
 
   // Error visualization
   "errorLens.enabledDiagnosticLevels": ["error", "warning"],
   "errorLens.exclude": ["never used"],
+  "problems.showCurrentInStatus": true,
+
+  // Eslint settings - enhanced
+  "eslint.validate": ["typescript", "typescriptreact"],
+  "eslint.run": "onType",
+  "eslint.codeActionsOnSave.rules": [
+    "@typescript-eslint/no-unused-vars",
+    "@typescript-eslint/no-explicit-any",
+    "react-hooks/rules-of-hooks",
+    "react-hooks/exhaustive-deps"
+  ],
 
   // Copilot settings
   "github.copilot.enable": {
@@ -111,12 +142,28 @@
     "language.enableAutoCompletions": {
       "typescript": true,
       "typescriptreact": true
-    }
+    },
+    "indentationMode": "keep",
+    "inlineSuggestCount": 3,
+    "listCount": 5,
+    "temperature": 0.3
   },
-  // Custom instructions for GitHub Copilot
+
+  // Custom instructions for GitHub Copilot - enhanced with test plan details
   "github.copilot.editor.customization": {
     "repositoryInstructions": {
-      "instructions": "You're working on the CIA Compliance Manager application, which helps organizations assess security controls across the Confidentiality, Integrity, and Availability (CIA) triad. Use these coding conventions for consistency:\n\n1. TYPESCRIPT STANDARDS:\n- Use TypeScript 5.x features where appropriate\n- Always use explicit types (avoid 'any', prefer unknown if necessary)\n- Use interface for public API and type for internal structures\n- Use mapped types, conditional types, and utility types (Pick, Omit) where appropriate\n- Follow strict null checking principles\n- Use type narrowing with type guards\n- Use generics to improve code reuse and type safety\n\n2. PROJECT STRUCTURE:\n- React components live in src/components/ with associated test files\n- Hooks live in src/hooks/ with associated test files\n- Constants live in dedicated files in src/constants/\n- Type definitions go in src/types/\n- Tests should use the mock utilities in src/tests/mockFactory.ts\n\n3. COMPONENTS:\n- Use function components with explicit return types\n- Props should be defined with interfaces in a types.ts file\n- Add data-testid attributes to elements that need testing\n- Use custom hooks for shared logic\n- Organize complex widgets under components/widgets/\n\n4. TESTING:\n- Tests should be located adjacent to the files they test\n- Use constants from appConstants.ts for test validation\n- Focus on behavior, not implementation details\n- Use createMockOptions() for mocking CIA option structures\n- Test components in isolation with mocked dependencies\n- Current testing targets: 90%+ statement, 85%+ branch, 85%+ function coverage\n\n5. STATE MANAGEMENT:\n- Use React hooks for local state\n- Use useCIAOptions() hook for accessing options data\n- Use constants for string values\n- Avoid direct DOM manipulation\n\n6. STYLING:\n- Use Tailwind CSS for styling\n- Use data-testid attributes for testing, not CSS classes\n- Use CSS variables for theming where appropriate\n\nRemind me if I deviate from these practices in my code."
+      "instructions": "You're working on the CIA Compliance Manager application, which helps organizations assess security controls across the Confidentiality, Integrity, and Availability (CIA) triad. Use these coding conventions for consistency:\n\n1. TYPESCRIPT STANDARDS:\n- Use TypeScript 5.x features where appropriate\n- Always use explicit types (avoid 'any', prefer unknown if necessary)\n- Use interface for public API and type for internal structures\n- Use mapped types, conditional types, and utility types (Pick, Omit) where appropriate\n- Follow strict null checking principles\n- Use type narrowing with type guards\n- Use generics to improve code reuse and type safety\n- Use readonly modifiers for immutable data\n- Leverage discriminated unions for state management\n- Prefer const assertions for literal values\n\n2. PROJECT STRUCTURE:\n- React components live in src/components/ with associated test files\n- Hooks live in src/hooks/ with associated test files\n- Constants live in dedicated files in src/constants/\n- Type definitions go in src/types/\n- Tests should use the mock utilities in src/tests/mockFactory.ts\n\n3. COMPONENTS:\n- Use function components with explicit return types\n- Props should be defined with interfaces in a types.ts file\n- Add data-testid attributes to elements that need testing\n- Use custom hooks for shared logic\n- Organize complex widgets under components/widgets/\n\n4. UNIT TESTING:\n- Follow testID structure from testIds.ts file with namespaced IDs\n- Use dynamic test ID generators for repeated components\n- Structure tests into categories: Rendering, Interaction, State Management, Data Integration\n- Mock dependencies with vitest mock functions\n- Include both happy path and edge case scenarios\n- Test accessibility concerns with axe testing utilities\n- Target coverage: 90%+ statement, 85%+ branch, 85%+ function coverage\n\n5. E2E TESTING:\n- Organize Cypress tests by function (business-outcomes, core-behaviors, widgets, user-flows)\n- Use resilient selectors with fallback strategies\n- Create custom Cypress commands for common operations\n- Use setup functions for consistent test initialization\n- Include debug helpers for test diagnosis\n- Test complete user journeys that demonstrate business value\n\n6. STATE MANAGEMENT:\n- Use React hooks for local state\n- Use useCIAOptions() hook for accessing options data\n- Use constants for string values\n- Avoid direct DOM manipulation\n\n7. STYLING:\n- Use Tailwind CSS for styling\n- Use data-testid attributes for testing, not CSS classes\n- Use CSS variables for theming where appropriate\n\nRemind me if I deviate from these practices in my code."
     }
-  }
+  },
+
+  // Additional supportive settings
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${capture}.test.ts, ${capture}.spec.ts, ${capture}.cy.ts",
+    "*.tsx": "${capture}.test.tsx, ${capture}.spec.tsx, ${capture}.cy.tsx",
+    "*.js": "${capture}.test.js, ${capture}.spec.js",
+    "*.jsx": "${capture}.test.jsx, ${capture}.spec.jsx"
+  },
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "diffEditor.ignoreTrimWhitespace": false
 }

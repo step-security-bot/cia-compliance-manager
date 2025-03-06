@@ -1,4 +1,4 @@
-# CIA Compliance Manager
+# <img src="https://github.com/Hack23/cia-compliance-manager/raw/main/public/icon-192.png" width="32" height="32" alt="CIA Logo"> CIA Compliance Manager
 
 The CIA Compliance Manager is a comprehensive application designed to help organizations assess, implement, and manage security controls across the CIA triad (Confidentiality, Integrity, and Availability). It provides detailed security assessments, cost estimation tools, business impact analysis, and technical implementation guidance to support organizations in achieving their security objectives within budget constraints.
 
@@ -232,50 +232,57 @@ This document provides a high-level overview of the key technologies used within
 
 ## Technology Stack
 
-| Category | Technologies | Support Status | Latest Version | EOL Notes |
-|----------|-------------|----------------|----------------|-----------|
-| Core Framework | [React](https://www.npmjs.com/package/react) | Active | 19.x | No official EOL policy, [supports N-2 versions](https://endoflife.date/react) |
-|  | [TypeScript](https://www.npmjs.com/package/typescript) | Active | 5.x | [Older versions supported ~12 months](https://endoflife.date/typescript) |
-| Data Visualization | [Chart.js](https://www.npmjs.com/package/chart.js) | Active | 4.x | Community maintained, no formal EOL policy |
-| UI/Styling | [TailwindCSS](https://www.npmjs.com/package/tailwindcss) | Active | 4.x | Major versions typically maintained for 1-2 years |
-|  | [PostCSS](https://www.npmjs.com/package/postcss) | Active | 8.x | Community maintained, no formal EOL policy |
-| Build Tools | [Vite](https://www.npmjs.com/package/vite) | Active | 6.x | [Follows semver](https://endoflife.date/vite), minor versions supported until next minor |
-| Testing | [Vitest](https://www.npmjs.com/package/vitest) | Active | 3.x | Actively maintained with Vite compatibility |
-|  | [Cypress](https://www.npmjs.com/package/cypress) | Active | 14.x | [Regular updates](https://endoflife.date/cypress), typically supports N-1 version |
-|  | [Testing Library](https://www.npmjs.com/package/@testing-library/react) | Active | 16.x | Community maintained, regular updates |
-| Development Utilities | [Cross-env](https://www.npmjs.com/package/cross-env) | Active | 7.x | Stable utility, minimal updates needed |
-|  | [Start-server-and-test](https://www.npmjs.com/package/start-server-and-test) | Active | 2.x | Utility package, stable API |
-| Runtime Requirements | Node.js | Required | ≥20.0.0 | [Node 20 EOL: April 2026](https://endoflife.date/nodejs) |
-|  | npm | Required | ≥10.8.2 | Follows Node.js support lifecycle |
+| Category              | Technologies                                                                 | Support Status | Latest Version | EOL Notes                                                                                |
+| --------------------- | ---------------------------------------------------------------------------- | -------------- | -------------- | ---------------------------------------------------------------------------------------- |
+| Core Framework        | [React](https://www.npmjs.com/package/react)                                 | Active         | 19.x           | No official EOL policy, [supports N-2 versions](https://endoflife.date/react)            |
+|                       | [TypeScript](https://www.npmjs.com/package/typescript)                       | Active         | 5.x            | [Older versions supported ~12 months](https://endoflife.date/typescript)                 |
+| Data Visualization    | [Chart.js](https://www.npmjs.com/package/chart.js)                           | Active         | 4.x            | Community maintained, no formal EOL policy                                               |
+| UI/Styling            | [TailwindCSS](https://www.npmjs.com/package/tailwindcss)                     | Active         | 4.x            | Major versions typically maintained for 1-2 years                                        |
+|                       | [PostCSS](https://www.npmjs.com/package/postcss)                             | Active         | 8.x            | Community maintained, no formal EOL policy                                               |
+| Build Tools           | [Vite](https://www.npmjs.com/package/vite)                                   | Active         | 6.x            | [Follows semver](https://endoflife.date/vite), minor versions supported until next minor |
+| Testing               | [Vitest](https://www.npmjs.com/package/vitest)                               | Active         | 3.x            | Actively maintained with Vite compatibility                                              |
+|                       | [Cypress](https://www.npmjs.com/package/cypress)                             | Active         | 14.x           | [Regular updates](https://endoflife.date/cypress), typically supports N-1 version        |
+|                       | [Testing Library](https://www.npmjs.com/package/@testing-library/react)      | Active         | 16.x           | Community maintained, regular updates                                                    |
+| Development Utilities | [Cross-env](https://www.npmjs.com/package/cross-env)                         | Active         | 7.x            | Stable utility, minimal updates needed                                                   |
+|                       | [Start-server-and-test](https://www.npmjs.com/package/start-server-and-test) | Active         | 2.x            | Utility package, stable API                                                              |
+| Runtime Requirements  | Node.js                                                                      | Required       | ≥20.0.0        | [Node 20 EOL: April 2026](https://endoflife.date/nodejs)                                 |
+|                       | npm                                                                          | Required       | ≥10.8.2        | Follows Node.js support lifecycle                                                        |
 
 ## Stack Summary
 
 This stack comprises:
 
 ### Core Framework
+
 - **[React](https://www.npmjs.com/package/react)**: Powers the UI with component-based architecture, providing a responsive and interactive user experience for security impact visualization.
 - **[TypeScript](https://www.npmjs.com/package/typescript)**: Adds strong typing to JavaScript, enhancing code quality and developer experience while reducing runtime errors.
 
 ### Data Visualization
+
 - **[Chart.js](https://www.npmjs.com/package/chart.js)**: Provides flexible charting capabilities for visualizing security impact assessments across availability, integrity, and confidentiality domains.
 
 ### UI/Styling
+
 - **[TailwindCSS](https://www.npmjs.com/package/tailwindcss)**: Offers utility-first CSS framework for rapid UI development and consistent styling across components.
 - **[PostCSS](https://www.npmjs.com/package/postcss)**: Processes CSS with plugins like Autoprefixer for optimal browser compatibility.
 
 ### Build Tools
+
 - **[Vite](https://www.npmjs.com/package/vite)**: Serves as the next-generation frontend tooling, providing fast development and optimized production builds with efficient HMR.
 
 ### Testing
+
 - **[Vitest](https://www.npmjs.com/package/vitest)**: Provides a Vite-native unit testing framework with Jest compatibility for component and unit testing.
 - **[Cypress](https://www.npmjs.com/package/cypress)**: Enables robust end-to-end testing for validating security impact analysis functionality and user workflows.
 - **[Testing Library](https://www.npmjs.com/package/@testing-library/react)**: Offers utilities for testing React components in a user-centric way, focusing on accessibility and user interactions.
 
 ### Development Utilities
+
 - **[Cross-env](https://www.npmjs.com/package/cross-env)**: Sets environment variables across platforms for consistent testing environments.
 - **[Start-server-and-test](https://www.npmjs.com/package/start-server-and-test)**: Simplifies the process of starting a server before running tests in CI/CD pipelines.
 
 ## Environment Requirements
+
 - **Node.js**: ≥20.0.0 ([Support until April 2026](https://endoflife.date/nodejs))
 - **npm**: ≥10.8.2 (Follows Node.js support lifecycle)
 
@@ -299,6 +306,44 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://vitejs.dev/guide/static-deploy.html) for more information.
 
+## Testing
+
+The project implements comprehensive testing strategies to ensure reliability and quality:
+
+### Unit Testing
+
+The CIA Compliance Manager uses Vitest with React Testing Library for component testing. Our unit test approach follows these principles:
+
+- Component isolation with mocked dependencies
+- Constant-driven validation
+- Test ID selection for reliable element selection
+- Behavior verification focused on component functionality
+
+For detailed information on unit test structure, categories, examples, and best practices, see our [Unit Test Plan](docs/UnitTestPlan.md).
+
+### End-to-End Testing
+
+End-to-end tests are implemented using Cypress and follow these core principles:
+
+- User-centric testing with focus on key user flows
+- Constant-driven selection for reliable element targeting
+- Resilient testing with fallbacks and retry mechanisms
+- Comprehensive coverage of both UI components and integrated functionality
+
+For more information about E2E test organization, custom commands, test patterns, and best practices, see our [E2E Test Plan](docs/E2ETestPlan.md).
+
+### Running Tests
+
+```bash
+# Run unit tests
+npm run test
+
+# Run end-to-end tests
+npm run cypress:run
+
+# Open Cypress UI for interactive testing
+npm run cypress:open
+
 ## Learn More
 
 You can learn more in the [Vite documentation](https://vitejs.dev/guide/).
@@ -313,3 +358,4 @@ We're committed to making this project accessible, inclusive, and secure. Please
 - [Code of Conduct](CODE_OF_CONDUCT.md) - Our standards for project participation
 - [Security Policy](SECURITY.md) - How to report security vulnerabilities
 - [License](LICENSE.md) - Project license details and terms
+```
