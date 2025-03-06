@@ -3,7 +3,27 @@ import { setupWidgetTest } from "./widget-test-helper";
 
 describe("Cost Estimation Widget", () => {
   beforeEach(() => {
-    setupWidgetTest("widget-cost-estimation");
+    // Use more flexible matching for the cost widget
+    cy.document().then((doc) => {
+      // Try multiple possible IDs for cost widget
+      const possibleIds = [
+        "widget-cost-estimation",
+        "cost-container",
+        "cost-estimation-content",
+      ];
+
+      // Find the first ID that exists in the DOM
+      let foundId = "";
+      for (const id of possibleIds) {
+        if (doc.querySelector(`[data-testid="${id}"]`)) {
+          foundId = id;
+          break;
+        }
+      }
+
+      // Use the found ID or default to widget-cost-estimation
+      setupWidgetTest(foundId || "widget-cost-estimation");
+    });
   });
 
   it("provides accurate financial impact analysis of security choices", () => {

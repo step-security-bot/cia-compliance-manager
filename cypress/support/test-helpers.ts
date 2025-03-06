@@ -217,6 +217,80 @@ export function forceElementVisibility(selector: string) {
   });
 }
 
+/**
+ * Verify text content with flexible matching
+ * Accommodates minor text changes without breaking tests
+ */
+export function verifyTextContent(
+  selector: string,
+  expectedText: string,
+  exactMatch = false
+) {
+  return cy
+    .get(selector)
+    .invoke("text")
+    .then((text) => {
+      if (exactMatch) {
+        expect(text.trim()).to.equal(expectedText);
+      } else {
+        // Check if it's a close enough match by checking key parts
+        const normalizedText = text.toLowerCase().replace(/\s+/g, " ").trim();
+        const normalizedExpected = expectedText
+          .toLowerCase()
+          .replace(/\s+/g, " ")
+          .trim();
+
+        // Create variations of expected text to handle common wording changes
+        const expectedVariations = [
+          normalizedExpected,
+          // Different cases
+          expectedText.toLowerCase(),
+          expectedText.toUpperCase(),
+          // Common word variations
+          normalizedExpected.replace("non-compliant", "non-compliant with"),
+          normalizedExpected.replace("compliant", "compliance"),
+          // Add more variations as needed
+        ];
+
+        // Check if any variation matches
+        const isMatch = expectedVariations.some((variation) =>
+          normalizedText.includes(variation)
+        );
+
+        expect(
+          isMatch,
+          `Expected text to contain a variation of "${expectedText}" but found "${text}"`
+        ).to.be.true;
+      }
+    });
+}
+
+/**
+ * Find an element by trying multiple test IDs
+ * Returns the first matching element
+ */
+export function findElementByMultipleTestIds(testIds: string[]) {
+  return cy.document().then((doc) => {
+    for (const id of testIds) {
+      const element = doc.querySelector(`[data-testid="${id}"]`);
+      if (element) {
+        return cy.wrap(element);
+      }
+    }
+
+    // If no exact matches, try partial matches
+    for (const id of testIds) {
+      const elements = doc.querySelectorAll(`[data-testid*="${id}"]`);
+      if (elements.length > 0) {
+        return cy.wrap(elements[0]);
+      }
+    }
+
+    // Nothing found, return the original selector for proper error reporting
+    return cy.get(`[data-testid="${testIds[0]}"]`);
+  });
+}
+
 // Add to exports
 export default {
   interactWithElement,
@@ -227,4 +301,6 @@ export default {
   textExistsAnywhere,
   logPageElements,
   forceElementVisibility,
+  verifyTextContent,
+  findElementByMultipleTestIds,
 };

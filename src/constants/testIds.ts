@@ -4,6 +4,22 @@
 
 import { VALUE_CREATION_POINTS } from "./appConstants";
 
+// Add this function near the top of the file to make it easier to create compound testIds
+export const createCompoundTestId = (prefix: string, suffix: string): string =>
+  `${prefix}-${suffix}`;
+
+// Add these mappings to help make testIds more unique and consistent
+export const WIDGET_PREFIXES = {
+  SECURITY_PROFILE: "widget-security-level",
+  COST_ESTIMATION: "widget-cost-estimation",
+  BUSINESS_IMPACT: "widget-business-impact",
+  COMPLIANCE_STATUS: "widget-compliance-status",
+  RADAR_CHART: "widget-radar-chart",
+  VALUE_CREATION: "widget-value-creation",
+  SECURITY_SUMMARY: "widget-security-summary",
+  TECHNICAL_DETAILS: "widget-technical-details",
+};
+
 // CIA Component TestIDs
 export const CIA_TEST_IDS = {
   // Select dropdown elements
@@ -82,6 +98,7 @@ export const CIA_TEST_IDS = {
 
 // Common widget test IDs
 export const WIDGET_TEST_IDS = {
+  // Keep existing IDs for backward compatibility
   SECURITY_LEVEL_CONTROLS: "security-level-controls",
   VALUE_CREATION_TITLE: "value-creation-title",
   ROI_VALUE: "roi-value",
@@ -117,6 +134,15 @@ export const WIDGET_TEST_IDS = {
   CIA_IMPACT_AVAILABILITY_LEVEL: "cia-impact-summary-availability-level",
   CIA_IMPACT_INTEGRITY_LEVEL: "cia-impact-summary-integrity-level",
   CIA_IMPACT_CONFIDENTIALITY_LEVEL: "cia-impact-summary-confidentiality-level",
+
+  // Add more specific and standardized widget container IDs
+  SECURITY_LEVEL_WIDGET: WIDGET_PREFIXES.SECURITY_PROFILE,
+  SECURITY_LEVEL_SELECTION: `${WIDGET_PREFIXES.SECURITY_PROFILE}-selection`,
+  COST_ESTIMATION_WIDGET: WIDGET_PREFIXES.COST_ESTIMATION,
+  BUSINESS_IMPACT_WIDGET: WIDGET_PREFIXES.BUSINESS_IMPACT,
+  COMPLIANCE_STATUS_WIDGET: WIDGET_PREFIXES.COMPLIANCE_STATUS,
+  RADAR_CHART_WIDGET: WIDGET_PREFIXES.RADAR_CHART,
+  VALUE_CREATION_WIDGET: WIDGET_PREFIXES.VALUE_CREATION,
 };
 
 // BusinessImpactAnalysisWidget IDs
@@ -184,6 +210,7 @@ export const CHART_TEST_IDS = {
 
 // CostEstimationWidget test IDs
 export const COST_TEST_IDS = {
+  // Keep existing IDs for backward compatibility
   COST_CONTAINER: "cost-container",
   CAPEX_VALUE: "capex-value",
   OPEX_VALUE: "opex-value",
@@ -211,6 +238,10 @@ export const COST_TEST_IDS = {
   COST_ANALYSIS_HEADING: "cost-analysis-heading",
   COST_ANALYSIS_TEXT: "cost-analysis-text",
   ROI_SECTION: "roi-section",
+
+  // Add more specific IDs
+  COST_ESTIMATION_WIDGET: WIDGET_PREFIXES.COST_ESTIMATION,
+  COST_ESTIMATION_ROOT: `${WIDGET_PREFIXES.COST_ESTIMATION}-root`,
 };
 
 // SecuritySummaryWidget test IDs

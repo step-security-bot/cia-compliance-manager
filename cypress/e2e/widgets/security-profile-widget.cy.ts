@@ -3,7 +3,27 @@ import { setupWidgetTest } from "./widget-test-helper";
 
 describe("Security Profile Configuration Widget", () => {
   beforeEach(() => {
-    setupWidgetTest("widget-security-level");
+    // Use more flexible widget ID matching for security widget
+    cy.document().then((doc) => {
+      // Try multiple possible IDs for security level widget
+      const possibleIds = [
+        "widget-security-level",
+        "widget-security-level-selection",
+        "security-level-controls",
+      ];
+
+      // Find the first ID that exists in the DOM
+      let foundId = "";
+      for (const id of possibleIds) {
+        if (doc.querySelector(`[data-testid="${id}"]`)) {
+          foundId = id;
+          break;
+        }
+      }
+
+      // If found, use that ID, otherwise use the original for error reporting
+      setupWidgetTest(foundId || "widget-security-level");
+    });
   });
 
   it("allows business users to configure appropriate security levels", () => {

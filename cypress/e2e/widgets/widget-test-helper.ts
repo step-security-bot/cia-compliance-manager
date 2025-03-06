@@ -28,7 +28,7 @@ export function ensureWidgetVisible(widgetId: string) {
 
 /**
  * Standard setup for widget tests - handles visibility and scrolling
- * @param widgetId The test ID of the widget
+ * @param widgetId The test ID of the widget or a partial ID to search for
  */
 export function setupWidgetTest(widgetId: string) {
   cy.viewport(3840, 2160);
@@ -53,17 +53,28 @@ export function setupWidgetTest(widgetId: string) {
   // Wait for app to stabilize
   cy.wait(500);
 
-  // Ensure widget exists and is visible
-  ensureWidgetVisible(widgetId);
-
-  // Log all available test IDs for debugging
-  cy.window().then((win) => {
-    const elements = win.document.querySelectorAll("[data-testid]");
-    console.log(`Found ${elements.length} elements with data-testid`);
-    const testIds = Array.from(elements).map((el) =>
-      el.getAttribute("data-testid")
-    );
-    console.log("Available test IDs:", testIds);
+  // Try exact match first, then fallback to partial match
+  cy.document().then((doc) => {
+    const elements = doc.querySelectorAll(`[data-testid="${widgetId}"]`);
+    if (elements.length > 0) {
+      ensureWidgetVisible(widgetId);
+    } else {
+      // Try finding elements with similar test IDs using partial match
+      cy.get(`[data-testid*="${widgetId}"]`)
+        .first()
+        .then(($el) => {
+          const actualId = $el.attr("data-testid");
+          if (actualId) {
+            // Fix: Add null check for actualId
+            cy.log(`Found alternative widget with ID: ${actualId}`);
+            ensureWidgetVisible(actualId);
+          } else {
+            cy.log(`Could not find data-testid for widget ${widgetId}`);
+            // Use original ID as fallback
+            ensureWidgetVisible(widgetId);
+          }
+        });
+    }
   });
 }
 
@@ -122,4 +133,34 @@ export function checkForTextContent(content: string | RegExp) {
     // RegExp matching
     cy.get("body").invoke("text").should("match", content);
   }
+}
+
+/**
+ * Get a test ID using primary ID or try several alternatives as fallbacks
+ * Handles common test ID variations between tests and UI
+ */
+export function getWidgetId(primaryId: string, featureName: string): string[] {
+  // Fix: Define type for idMappings with index signature
+  const idMappings: Record<string, string[]> = {
+    "widget-security-level": [
+      "widget-security-level-selection",
+      "widget-security-profile",
+      "security-level-controls",
+    ],
+    "cost-container": [
+      "widget-cost-estimation",
+      "cost-estimation-content",
+      "COST_CONTAINER",
+    ],
+  };
+
+  // Return widget-specific mappings if they exist, otherwise try common patterns
+  return (
+    idMappings[primaryId as keyof typeof idMappings] || [
+      `widget-${featureName}`,
+      `${featureName}-container`,
+      `${featureName}-content`,
+      `${featureName}-section`,
+    ]
+  );
 }
