@@ -7,8 +7,7 @@ export const gridClasses = `
   grid 
   grid-cols-1 
   sm:grid-cols-2 
-  lg:grid-cols-3 
-  xl:grid-cols-4 
+  lg:grid-cols-3
   gap-4 
   p-4
 `;
@@ -39,6 +38,9 @@ export const headerClasses = `
   border-b 
   border-gray-100 
   dark:border-gray-700
+  bg-gray-50
+  dark:bg-gray-800
+  font-semibold
 `;
 
 // Widget content styles
@@ -50,8 +52,9 @@ export const contentClasses = `
 
 // Grid style object for inline style application
 export const gridStyle = {
-  display: "flex",
-  flexDirection: "column" as const,
+  display: "grid",
+  gridTemplateColumns: "repeat(3, 1fr)",
+  gap: "1rem",
 };
 
 // Responsive grid configuration
@@ -59,7 +62,6 @@ export const gridConfig = {
   sm: 1, // 1 column on small screens
   md: 2, // 2 columns on medium screens
   lg: 3, // 3 columns on large screens
-  xl: 4, // 4 columns on extra large screens
 };
 
 // Sizing constants for widgets

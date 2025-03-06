@@ -129,39 +129,40 @@ const CIAClassificationApp: React.FC = () => {
       data-testid={APP_TEST_IDS.APP_CONTAINER}
     >
       <div className="min-h-screen bg-gray-100 dark:bg-gray-900 p-6 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto">
+        <div className="w-full mx-auto">
+          {" "}
+          {/* Changed from max-w-7xl to w-full */}
+          <div className="app-title shadow-lg rounded-xl transition-colors duration-300">
+            <h1
+              data-testid={APP_TEST_IDS.APP_TITLE}
+              className="text-2xl text-gray-800 dark:text-gray-100 transition-colors duration-300"
+            >
+              {UI_TEXT.APP_TITLE}
+            </h1>
+            <button
+              data-testid={APP_TEST_IDS.THEME_TOGGLE}
+              onClick={toggleDarkMode}
+              className={`px-4 py-2 rounded-md flex items-center transition-all duration-300 ${
+                darkMode
+                  ? "bg-black border border-green-500 hover:border-green-400 hover:bg-gray-900"
+                  : "bg-blue-500 hover:bg-blue-600 text-white"
+              }`}
+            >
+              {darkMode ? (
+                <>
+                  <span className="mr-2 text-green-400">☀️</span>
+                  <span className="text-green-400 font-mono tracking-wide text-sm uppercase">
+                    Light Mode
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span className="mr-2">🌙</span> Dark Mode
+                </>
+              )}
+            </button>
+          </div>
           <div className="bg-white dark:bg-gray-800 shadow-lg rounded-xl p-6 mb-6 transition-colors duration-300">
-            <div className="flex items-center justify-between mb-6">
-              <h1
-                data-testid={APP_TEST_IDS.APP_TITLE}
-                className="text-2xl font-bold text-gray-800 dark:text-gray-100 transition-colors duration-300"
-              >
-                {UI_TEXT.APP_TITLE}
-              </h1>
-              <button
-                data-testid={APP_TEST_IDS.THEME_TOGGLE}
-                onClick={toggleDarkMode}
-                className={`px-4 py-2 rounded-md flex items-center transition-all duration-300 ${
-                  darkMode
-                    ? "bg-black border border-green-500 hover:border-green-400 hover:bg-gray-900"
-                    : "bg-blue-500 hover:bg-blue-600 text-white"
-                }`}
-              >
-                {darkMode ? (
-                  <>
-                    <span className="mr-2 text-green-400">☀️</span>
-                    <span className="text-green-400 font-mono tracking-wide text-sm uppercase">
-                      Light Mode
-                    </span>
-                  </>
-                ) : (
-                  <>
-                    <span className="mr-2">🌙</span> Dark Mode
-                  </>
-                )}
-              </button>
-            </div>
-
             <Dashboard
               availability={availability}
               integrity={integrity}

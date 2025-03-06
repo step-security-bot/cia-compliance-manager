@@ -31,10 +31,15 @@
   box-shadow: 0 8px 16px var(--shadow-color), 0 0 4px var(--primary-color);
 }
 
+/* Original widget header styles - keep for compatibility */
 .widget-header {
   padding: 0.75rem 1rem;
   border-bottom: 1px solid var(--border-color);
-  background-color: rgba(255, 255, 255, 0.1);
+  background: linear-gradient(
+    to right,
+    rgba(0, 102, 51, 0.05),
+    rgba(0, 136, 68, 0.05)
+  );
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -42,9 +47,67 @@
   position: sticky !important;
   top: 0 !important;
   z-index: 10 !important;
-  background-color: var(--card-background) !important;
+  background-color: var(--header-bg) !important;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }
 
+/* Target actual DOM structure for widget headers */
+[data-testid$="-header"] {
+  padding: 0.75rem 1rem !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  background: linear-gradient(
+    to right,
+    rgba(0, 102, 51, 0.05),
+    rgba(0, 136, 68, 0.05)
+  ) !important;
+  background-color: var(--header-bg) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-shrink: 0 !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 10 !important;
+  border-top-left-radius: 0.5rem !important;
+  border-top-right-radius: 0.5rem !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0.75rem !important;
+}
+
+/* Widget header title styles */
+[data-testid$="-header"] h3 {
+  margin: 0 !important;
+  color: var(--primary-color) !important;
+  font-size: 0.9rem !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+  display: flex !important;
+  align-items: center !important;
+  font-family: var(--font-accent) !important;
+}
+
+/* Dark mode header styles */
+.dark [data-testid$="-header"] {
+  background: linear-gradient(
+    to right,
+    rgba(0, 204, 102, 0.1),
+    rgba(0, 187, 119, 0.1)
+  ) !important;
+  border-bottom: 1px solid var(--primary-color) !important;
+}
+
+.dark [data-testid$="-header"] h3 {
+  font-family: "Orbitron", sans-serif !important;
+  color: var(--primary-color) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  font-size: 0.9rem !important;
+  text-shadow: 0 0 5px rgba(0, 204, 102, 0.5) !important;
+}
+
+/* Widget body and content styles - keep these unchanged */
 .widget-body {
   padding: 1rem;
   flex: 1;
@@ -73,6 +136,33 @@
   align-items: center;
   justify-content: center;
   font-size: 1.25rem;
+  margin-right: 0.5rem;
+  width: 24px;
+  height: 24px;
+  color: var(--primary-color);
+}
+
+/* App title styling */
+.app-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background-color: var(--card-background);
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 5px var(--shadow-color);
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.app-title h1 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  font-family: var(--font-accent);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 /* Button styling */

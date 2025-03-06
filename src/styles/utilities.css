@@ -177,7 +177,7 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 .max-w-7xl {
-  max-width: 80rem;
+  max-width: 100%; /* Changed from 80rem to 100% */
 }
 .mx-auto {
   margin-left: auto;
