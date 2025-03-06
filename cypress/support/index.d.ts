@@ -71,7 +71,7 @@ declare namespace Cypress {
 
     /**
      * Custom command to navigate to a widget by its test ID
-     * @example cy.navigateToWidget('widget-security-summary')
+     * @example cy.navigateToWidget(TEST_IDS.WIDGET_SECURITY_SUMMARY)
      */
     navigateToWidget(testId: string): Chainable<JQuery<HTMLElement>>;
   }

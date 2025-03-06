@@ -7,6 +7,11 @@ declare namespace Cypress {
      * @default false
      */
     force?: boolean;
+
+    /**
+     * Duration for scrolling animation
+     */
+    duration?: number;
   }
 
   interface Chainable<Subject = any> {
@@ -17,6 +22,17 @@ declare namespace Cypress {
     safeScrollIntoView(
       options?: Partial<ScrollIntoViewOptions>
     ): Chainable<Subject>;
+
+    /**
+     * Takes a screenshot and logs DOM state at failure point
+     * @param testName Name of the test that failed
+     */
+    debugFailure(testName: string): void;
+
+    /**
+     * Logs information about currently visible elements
+     */
+    logVisibleElements(): void;
 
     // Update the parameter types to require non-nullable strings
     setSecurityLevels(

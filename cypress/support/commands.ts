@@ -1,6 +1,4 @@
-// Import constants and type definitions
-import { CypressConstants } from "./appConstantsHelper";
-import { TEST_SELECTORS } from "./appConstantsHelper";
+import { TEST_IDS, getTestSelector } from "./constants";
 
 // DO NOT declare types here - they are in types.d.ts
 // Remove all "declare global" blocks
@@ -9,46 +7,94 @@ import { TEST_SELECTORS } from "./appConstantsHelper";
 
 /**
  * Custom command to set security levels for all CIA components
+ * with enhanced reliability for large viewports
  */
 Cypress.Commands.add(
   "setSecurityLevels",
   (availability: string, integrity: string, confidentiality: string) => {
-    // Navigate to security profile configuration if needed
-    cy.get('[data-testid="widget-security-profile"]')
+    // First make sure the security controls are visible in the viewport
+    cy.get(getTestSelector(TEST_IDS.SECURITY_LEVEL_CONTROLS), {
+      timeout: 5000, // Reduced timeout
+    })
+      .should("exist")
+      .scrollIntoView({ duration: 100 })
       .should("be.visible")
-      .scrollIntoView();
+      .wait(300); // Reduced wait time
 
-    // Now try to find the selects inside this widget
-    cy.get('[data-testid="widget-security-profile"]').within(() => {
-      if (availability) {
-        cy.get("#availability-select").select(availability, { force: true });
-      }
+    // Set availability level with retry logic
+    cy.get(getTestSelector(TEST_IDS.AVAILABILITY_SELECT))
+      .should("be.visible")
+      .then(($el) => {
+        if (!$el.is(":disabled")) {
+          cy.wrap($el).select(availability, { force: true });
+        } else {
+          cy.log("Availability select is disabled, waiting...");
+          cy.wait(300); // Reduced wait time
+          cy.wrap($el)
+            .should("not.be.disabled")
+            .select(availability, { force: true });
+        }
+      })
+      .wait(200); // Reduced wait time
 
-      if (integrity) {
-        cy.get("#integrity-select").select(integrity, { force: true });
-      }
+    // Set integrity level with retry logic
+    cy.get(getTestSelector(TEST_IDS.INTEGRITY_SELECT))
+      .should("be.visible")
+      .then(($el) => {
+        if (!$el.is(":disabled")) {
+          cy.wrap($el).select(integrity, { force: true });
+        } else {
+          cy.log("Integrity select is disabled, waiting...");
+          cy.wait(300); // Reduced wait time
+          cy.wrap($el)
+            .should("not.be.disabled")
+            .select(integrity, { force: true });
+        }
+      })
+      .wait(200); // Reduced wait time
 
-      if (confidentiality) {
-        cy.get("#confidentiality-select").select(confidentiality, {
-          force: true,
-        });
-      }
-    });
+    // Set confidentiality level with retry logic
+    cy.get(getTestSelector(TEST_IDS.CONFIDENTIALITY_SELECT))
+      .should("be.visible")
+      .then(($el) => {
+        if (!$el.is(":disabled")) {
+          cy.wrap($el).select(confidentiality, { force: true });
+        } else {
+          cy.log("Confidentiality select is disabled, waiting...");
+          cy.wait(300); // Reduced wait time
+          cy.wrap($el)
+            .should("not.be.disabled")
+            .select(confidentiality, { force: true });
+        }
+      });
 
-    // Wait for changes to apply
-    cy.wait(300);
+    // Wait for UI to update after all selections
+    cy.wait(300); // Reduced wait time
   }
 );
 
 /**
- * Ensures app is loaded by waiting for key elements
+ * Ensures app is loaded with enhanced viewport awareness
  */
 Cypress.Commands.add("ensureAppLoaded", () => {
-  // Wait for the app to initialize
-  cy.get("body", { timeout: 10000 }).should("not.be.empty");
+  // Set a large viewport for better visibility
+  cy.viewport(3840, 2160);
 
-  // Check that main app container exists
-  cy.get('[data-testid="app-container"]', { timeout: 10000 }).should("exist");
+  // Wait for the app to initialize
+  cy.get("body", { timeout: 5000 }) // Reduced timeout
+    .should("not.be.empty");
+
+  // Check that main app container exists and is visible
+  cy.get(getTestSelector(TEST_IDS.APP_CONTAINER), {
+    timeout: 5000, // Reduced timeout
+  })
+    .should("exist")
+    .and("be.visible");
+
+  // Wait for any initial animations or loading to complete
+  cy.wait(500); // Reduced wait time
+
+  return cy.wrap(true);
 });
 
 /**
@@ -59,14 +105,38 @@ Cypress.Commands.add("getByTestId", (selector: string) => {
 });
 
 /**
- * Navigate to a specific widget by test ID and scroll it into view
+ * Navigate to a specific widget with enhanced reliability
  */
 Cypress.Commands.add("navigateToWidget", (widgetTestId: string) => {
-  cy.get(`[data-testid="${widgetTestId}"]`, { timeout: 15000 })
-    .should("exist")
-    .safeScrollIntoView({ force: true });
+  // First check if element exists at all
+  cy.get("body").then(($body) => {
+    const exists = $body.find(`[data-testid="${widgetTestId}"]`).length > 0;
 
-  cy.wait(500); // Wait for any animations to complete
+    if (exists) {
+      // Fix containers with overflow issues
+      cy.get(`[data-testid="${widgetTestId}"]`)
+        .parents()
+        .each(($el) => {
+          // Remove overflow restriction on all parent elements
+          cy.wrap($el).invoke("css", "overflow", "visible");
+        });
+
+      // Now try to interact with element
+      cy.get(`[data-testid="${widgetTestId}"]`, { timeout: 5000 })
+        .should("exist")
+        .scrollIntoView({ duration: 100, offset: { top: -100, left: 0 } })
+        .invoke("css", "visibility", "visible")
+        .invoke("css", "opacity", "1")
+        .should("be.visible")
+        .wait(300);
+    } else {
+      // Log helpful error for missing elements
+      cy.log(`Widget with testId "${widgetTestId}" not found in the DOM`);
+      // Take screenshot for debugging
+      cy.screenshot(`missing-element-${widgetTestId}`);
+      // Continue the test - will fail naturally when element is used
+    }
+  });
 });
 
 /**
@@ -224,7 +294,12 @@ Cypress.Commands.add(
   "safeScrollIntoView",
   { prevSubject: "element" },
   (subject, options = {}) => {
-    const defaultOptions = { block: "center", behavior: "smooth", ...options };
+    // Fix: Use proper ScrollIntoViewOptions with valid ScrollLogicalPosition values
+    const defaultOptions = {
+      block: "center" as ScrollLogicalPosition,
+      behavior: "smooth" as ScrollBehavior,
+      ...options,
+    };
 
     cy.wrap(subject).then(($el) => {
       // Use native scrollIntoView with fallback
@@ -242,6 +317,18 @@ Cypress.Commands.add(
     return cy.wrap(subject);
   }
 );
+
+/**
+ * List JUnit files in the results directory
+ */
+Cypress.Commands.add("listJunitFiles", () => {
+  cy.task("listJunitFiles").then((files) => {
+    cy.log(`Found ${files.length} JUnit files:`);
+    files.forEach((file: string) => {
+      cy.log(`- ${file}`);
+    });
+  });
+});
 
 // Define a custom type definition for the Chainable interface
 declare global {

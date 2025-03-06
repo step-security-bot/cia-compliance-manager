@@ -3,11 +3,22 @@ import {
   CIA_LABELS,
   SELECTORS,
   TEST_COMMANDS,
+  getTestSelector,
+  TEST_IDS,
 } from "../support/constants";
 
 describe("Security Level Selection", () => {
   beforeEach(() => {
+    // Use larger viewport for this test
+    cy.viewport(3840, 2160);
     cy.visit("/");
+    cy.ensureAppLoaded();
+
+    // Make sure security widget is visible before testing
+    cy.get(SELECTORS.WIDGETS.SECURITY_LEVEL)
+      .should("be.visible")
+      .scrollIntoView()
+      .wait(500);
   });
 
   it("should display correct CIA labels", () => {
@@ -20,21 +31,42 @@ describe("Security Level Selection", () => {
   });
 
   it("can set security levels using application constants", () => {
-    // Uses the constants from the application code
-    TEST_COMMANDS.setSecurityLevel("availability", "HIGH");
-    TEST_COMMANDS.setSecurityLevel("integrity", "MODERATE");
-    TEST_COMMANDS.setSecurityLevel("confidentiality", "LOW");
+    // Make sure selectors are visible first
+    cy.get(getTestSelector(TEST_IDS.AVAILABILITY_SELECT))
+      .scrollIntoView()
+      .should("be.visible");
 
-    // Update selectors to use appropriate data-testid attributes
-    cy.get('[data-testid="availability-select"]').should(
+    // Uses the constants from the application code with force option
+    cy.get(getTestSelector(TEST_IDS.AVAILABILITY_SELECT)).select(
+      SECURITY_LEVELS.HIGH,
+      { force: true }
+    );
+
+    cy.get(getTestSelector(TEST_IDS.INTEGRITY_SELECT)).select(
+      SECURITY_LEVELS.MODERATE,
+      { force: true }
+    );
+
+    cy.get(getTestSelector(TEST_IDS.CONFIDENTIALITY_SELECT)).select(
+      SECURITY_LEVELS.LOW,
+      { force: true }
+    );
+
+    // Short wait to ensure UI updates
+    cy.wait(500);
+
+    // Verify selections were made correctly
+    cy.get(getTestSelector(TEST_IDS.AVAILABILITY_SELECT)).should(
       "have.value",
       SECURITY_LEVELS.HIGH
     );
-    cy.get('[data-testid="integrity-select"]').should(
+
+    cy.get(getTestSelector(TEST_IDS.INTEGRITY_SELECT)).should(
       "have.value",
       SECURITY_LEVELS.MODERATE
     );
-    cy.get('[data-testid="confidentiality-select"]').should(
+
+    cy.get(getTestSelector(TEST_IDS.CONFIDENTIALITY_SELECT)).should(
       "have.value",
       SECURITY_LEVELS.LOW
     );

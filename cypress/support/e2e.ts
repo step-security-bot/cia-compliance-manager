@@ -1,121 +1,99 @@
-// ***********************************************************
-// This file is processed and loaded automatically
-// before your test files.
-//
-// This is a great place to put global configuration and
-// behavior that modifies Cypress.
-// ***********************************************************
-
-// Import commands.ts using ES2015 syntax:
 import "./commands";
 import { mount } from "cypress/react";
-
 import "@testing-library/cypress/add-commands";
+import { TEST_IDS } from "../../src/constants/testIds";
+// Import debug helpers
+import "./debug-helpers";
 
-// Import the cypress command types (should be at the top of the file)
-/// <reference types="cypress" />
-
-// Prevents Cypress from failing tests when uncaught exceptions occur in the application
 Cypress.on("uncaught:exception", (err) => {
-  // returning false here prevents Cypress from failing the test
   console.log("Uncaught exception:", err);
   return false;
 });
 
-// Note: We don't need to redefine types here since they're in index.d.ts
-// Remove the conflicting type declarations
-
-// Add the mount command for component testing
 Cypress.Commands.add("mount", mount);
 
-// Keep existing theme checking command
 Cypress.Commands.add("checkTheme", (isDark: boolean) => {
   if (isDark) {
     cy.get("#root").should("have.class", "dark");
-    cy.get('[data-testid="theme-toggle"]').should("contain.text", "Light Mode");
+    cy.get(`[data-testid="${TEST_IDS.THEME_TOGGLE}"]`).should(
+      "contain.text",
+      "Light Mode"
+    );
   } else {
     cy.get("#root").should("not.have.class", "dark");
-    cy.get('[data-testid="theme-toggle"]').should("contain.text", "Dark Mode");
+    cy.get(`[data-testid="${TEST_IDS.THEME_TOGGLE}"]`).should(
+      "contain.text",
+      "Dark Mode"
+    );
   }
 });
 
-// Add a safe select command instead of overwriting the built-in one
 Cypress.Commands.add(
   "safeSelect",
   { prevSubject: "element" },
   (subject, value, options = {}) => {
-    // First scroll the element into view without returning a promise
     cy.wrap(subject).scrollIntoView();
-    cy.wait(200); // Add a small wait for stability
-
-    // Use the regular select with force: true
+    cy.wait(200);
     return cy.wrap(subject).select(value, { force: true, ...options });
   }
 );
 
-// Update the setSecurityLevels command to match the type definition order
 Cypress.Commands.add(
   "setSecurityLevels",
   (availability, integrity, confidentiality) => {
-    // Navigate to the security profile widget first
-    cy.get('[data-testid="widget-security-profile"]')
+    cy.get(`[data-testid="${TEST_IDS.SECURITY_LEVEL_CONTROLS}"]`)
       .should("be.visible")
       .scrollIntoView();
 
-    // Now try to find the selects inside this widget
-    cy.get('[data-testid="widget-security-profile"]').within(() => {
+    cy.get(`[data-testid="${TEST_IDS.SECURITY_LEVEL_CONTROLS}"]`).within(() => {
       if (availability) {
-        cy.get("#availability-select").select(availability, { force: true });
+        cy.get(`[data-testid="${TEST_IDS.AVAILABILITY_SELECT}"]`).select(
+          availability,
+          { force: true }
+        );
       }
 
       if (integrity) {
-        cy.get("#integrity-select").select(integrity, { force: true });
+        cy.get(`[data-testid="${TEST_IDS.INTEGRITY_SELECT}"]`).select(
+          integrity,
+          { force: true }
+        );
       }
 
       if (confidentiality) {
-        cy.get("#confidentiality-select").select(confidentiality, {
-          force: true,
-        });
+        cy.get(`[data-testid="${TEST_IDS.CONFIDENTIALITY_SELECT}"]`).select(
+          confidentiality,
+          { force: true }
+        );
       }
     });
 
-    // Wait for changes to apply
     cy.wait(300);
   }
 );
 
-// Add ensureAppLoaded helper command
 Cypress.Commands.add("ensureAppLoaded", () => {
-  // First verify the body has content
   cy.get("body", { timeout: 10000 }).should("not.be.empty");
-
-  // Then verify the app title is present
   cy.contains("CIA Compliance Manager", { timeout: 5000 }).should("be.visible");
 });
 
-// Use longer timeouts for all commands
 Cypress.config("defaultCommandTimeout", 10000);
 
-// Add screenshot on failure with more context (fix TypeScript errors)
 Cypress.on("test:after:run", (test, runnable) => {
   if (test.state === "failed") {
-    // Take a screenshot with more context
     const parentTitle = runnable?.parent?.title || "Unknown";
     const testTitle = test?.title || "Unknown";
 
-    // Take a full page screenshot for better debugging
     cy.screenshot(`${parentTitle} -- ${testTitle} -- debug-failure`, {
       capture: "fullPage",
     });
 
-    // Log DOM state for debugging
     cy.document().then((doc) => {
       console.log("HTML at failure:", doc.documentElement.outerHTML);
     });
 
-    // Log React component state if available - fix TypeScript error
     try {
-      const win = window as any; // Use type assertion
+      const win = window as any;
       if (
         win.Cypress &&
         typeof win.Cypress === "object" &&
@@ -129,9 +107,7 @@ Cypress.on("test:after:run", (test, runnable) => {
   }
 });
 
-// Configure better defaults for all tests
 before(() => {
-  // Add a CSS class to disable transitions during tests
   cy.document().then((document) => {
     const style = document.createElement("style");
     style.innerHTML = `
@@ -145,9 +121,7 @@ before(() => {
   });
 });
 
-// Optimize performance settings
 before(() => {
-  // Disable app animations and transitions globally
   cy.document().then((document) => {
     const style = document.createElement("style");
     style.innerHTML = `
@@ -164,28 +138,20 @@ before(() => {
   });
 });
 
-// Set a global command to allow direct state manipulation
 Cypress.Commands.add("setAppState", (stateChanges) => {
   cy.window().then((win) => {
     const event = new CustomEvent("test:set-values", {
       detail: stateChanges,
     });
     win.document.dispatchEvent(event);
-
-    // Return a small promise to allow chaining
     return cy.wrap(null).wait(100);
   });
 });
 
-// More efficient shorthand for common text content checks
 Cypress.Commands.add("containsText", (text) => {
-  // The type expects void return not a chainable
   cy.get("body").invoke("text").should("include", text);
-
-  // No return statement needed, this matches the void return type in the declaration
 });
 
-// Add debug command to help diagnose issues
 Cypress.Commands.add("logCurrentState", () => {
   cy.log("------ Current App State ------");
   cy.get("select").then(($selects) => {
@@ -195,7 +161,6 @@ Cypress.Commands.add("logCurrentState", () => {
   });
 });
 
-// Create wrapper around select that's more reliable
 Cypress.Commands.add("selectSafe", (selector, value) => {
   cy.get(selector, { timeout: 5000 })
     .should("exist")
@@ -204,7 +169,6 @@ Cypress.Commands.add("selectSafe", (selector, value) => {
     .select(value, { force: true });
 });
 
-// Add DOM debugging command
 Cypress.Commands.add("logElementDetails", (selector) => {
   cy.get(selector).then(($el) => {
     cy.log(`Element ${selector}:`);
@@ -213,7 +177,6 @@ Cypress.Commands.add("logElementDetails", (selector) => {
     cy.log(`- Classes: ${$el.attr("class")}`);
     cy.log(`- Width x Height: ${$el.width()} x ${$el.height()}`);
 
-    // Position info can help debug if element is off-screen
     const offset = $el.offset();
     if (offset) {
       cy.log(`- Position: (${offset.left}, ${offset.top})`);
@@ -221,23 +184,33 @@ Cypress.Commands.add("logElementDetails", (selector) => {
   });
 });
 
-// Reset JUnit results at the beginning of a test run
 before(() => {
   cy.task("resetJunitResults");
 });
 
-// Import additional testing libraries
+// Add this line to create the results directory if it doesn't exist
+Cypress.Cy.prototype.onBeforeRun = function (attributes) {
+  try {
+    // Create cypress/results directory if it doesn't exist
+    const fs = require("fs");
+    const resultsDir = "cypress/results";
+    if (!fs.existsSync(resultsDir)) {
+      fs.mkdirSync(resultsDir, { recursive: true });
+    }
+  } catch (err) {
+    console.log("Error creating results directory:", err);
+  }
+};
+
 import "cypress-wait-until";
 import "cypress-real-events";
 
-// Helper for navigating to specific widgets
 Cypress.Commands.add("navigateToWidget", (widgetTestId) => {
   cy.get(`[data-testid="${widgetTestId}"]`, { timeout: 10000 })
     .scrollIntoView()
     .should("be.visible");
 });
 
-// FIX: Overwrite scrollIntoView with proper type casting
 before(() => {
   Cypress.Commands.overwrite(
     "scrollIntoView",
@@ -254,7 +227,6 @@ before(() => {
     }
   );
 
-  // Existing fail handler remains unchanged
   Cypress.on("fail", (error, runnable) => {
     if (
       error.message.includes("not visible") ||
@@ -269,18 +241,35 @@ before(() => {
   });
 });
 
-// Add test retry logic for flaky visibility tests
 Cypress.config("retries", {
   runMode: 1,
   openMode: 0,
 });
 
-// Remove any other duplicate implementation of scrollIntoView overwrite
-
-// Ensure viewport is consistent for all tests if not specified
 beforeEach(() => {
-  // Use a reasonable default size if not explicitly set in the test
   if (Cypress.config("viewportWidth") === 0) {
     cy.viewport(1280, 800);
   }
+});
+
+// Force viewport size for all tests
+beforeEach(() => {
+  // Set viewport explicitly in each test's beforeEach
+  cy.viewport(3840, 2160);
+});
+
+// Add JUnit file verification after all tests complete
+after(() => {
+  cy.task("listJunitFiles").then((files) => {
+    if (Array.isArray(files) && files.length > 0) {
+      console.log(
+        `Found ${files.length} JUnit XML files in the results directory`
+      );
+      files.forEach((file) => console.log(`  - ${file}`));
+    } else {
+      console.warn(
+        "⚠️ No JUnit XML files found! Reporting may not be working correctly."
+      );
+    }
+  });
 });

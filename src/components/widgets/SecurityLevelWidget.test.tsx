@@ -28,7 +28,7 @@ vi.mock("../SecurityLevelSelector", () => ({
     onConfidentialityChange?: (value: string) => void;
     testId?: string;
   }) => (
-    <div data-testid={testId || "security-level-selector"}>
+    <div data-testid={testId || CIA_TEST_IDS.SECURITY_LEVEL_SELECTOR}>
       <div>
         <label htmlFor="availabilitySelect">Availability</label>
         <select

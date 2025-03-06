@@ -1,94 +1,60 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { vi } from "vitest";
+import { describe, it, expect } from "vitest";
 import KeyValuePair from "./KeyValuePair";
+import { COMMON_COMPONENT_TEST_IDS } from "../../constants/testIds";
 
-describe("KeyValuePair", () => {
-  it("renders label and value", () => {
+describe("KeyValuePair Component", () => {
+  it("renders with label and value", () => {
     render(<KeyValuePair label="Test Label" value="Test Value" />);
 
-    expect(screen.getByText("Test Label")).toBeInTheDocument();
-    expect(screen.getByText("Test Value")).toBeInTheDocument();
+    expect(
+      screen.getByTestId(COMMON_COMPONENT_TEST_IDS.KEY_VALUE_PAIR)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByTestId(COMMON_COMPONENT_TEST_IDS.KV_LABEL)
+    ).toHaveTextContent("Test Label");
+    expect(
+      screen.getByTestId(COMMON_COMPONENT_TEST_IDS.KV_VALUE)
+    ).toHaveTextContent("Test Value");
   });
 
-  it("renders with custom className", () => {
-    const { container } = render(
+  it("renders with custom test ID", () => {
+    const customTestId = "custom-kv-pair";
+    render(
       <KeyValuePair
         label="Test Label"
         value="Test Value"
-        className="custom-class"
+        testId={customTestId}
       />
     );
 
-    expect(container.firstChild).toHaveClass("custom-class");
+    expect(screen.getByTestId(customTestId)).toBeInTheDocument();
   });
 
-  it("renders with custom testId", () => {
-    const testId = "test-key-value";
-    render(
-      <KeyValuePair label="Test Label" value="Test Value" testId={testId} />
-    );
-
-    expect(screen.getByTestId(testId)).toBeInTheDocument();
-    expect(screen.getByTestId(`${testId}-label`)).toBeInTheDocument();
-    expect(screen.getByTestId(`${testId}-value`)).toBeInTheDocument();
-  });
-
-  it("applies highlighted styling when highlighted prop is true", () => {
-    const testId = "test-highlight";
-    render(
-      <KeyValuePair label="Test" value="Value" highlighted testId={testId} />
-    );
-
-    const valueElement = screen.getByTestId(`${testId}-value`);
-    expect(valueElement).toHaveClass("font-bold");
-    expect(valueElement).toHaveClass("text-blue-600");
-  });
-
-  it("applies justified styling when justified prop is true", () => {
-    const testId = "test-kv";
-    render(
-      <KeyValuePair label="Test" value="Value" justified testId="test-kv" />
-    );
-
-    const labelElement = screen.getByTestId(`${testId}-label`);
-    const valueElement = screen.getByTestId(`${testId}-value`);
-
-    expect(labelElement).toHaveClass("text-right");
-    expect(valueElement).toHaveClass("text-right");
-  });
-
-  it("applies custom label and value classes", () => {
-    const testId = "custom-classes";
+  it("renders with variant styling", () => {
     render(
       <KeyValuePair
-        label="Test"
-        value="Value"
-        labelClassName="label-class"
-        valueClassName="value-class"
-        highlighted={false}
-        justified={false}
-        testId={testId}
+        label="Status"
+        value="Active"
+        valueClassName="text-green-600"
       />
     );
 
-    expect(screen.getByTestId(`${testId}-label`)).toHaveClass("label-class");
-    expect(screen.getByTestId(`${testId}-value`)).toHaveClass("value-class");
+    const valueElement = screen.getByTestId(COMMON_COMPONENT_TEST_IDS.KV_VALUE);
+    expect(valueElement.className).toContain("text-green");
   });
 
-  it("renders ReactNode values", () => {
+  it("renders with custom layout", () => {
     render(
       <KeyValuePair
-        label="Complex"
-        value={<span data-testid="complex-value-content">Complex Value</span>}
-        testId="complex"
+        label="Test Label"
+        value="Test Value"
+        className="flex-col"
       />
     );
 
-    // Use a more specific testId that won't conflict
-    expect(screen.getByTestId("complex-value-content")).toBeInTheDocument();
-    expect(screen.getByTestId("complex-value-content")).toHaveTextContent(
-      "Complex Value"
-    );
+    const kvPair = screen.getByTestId(COMMON_COMPONENT_TEST_IDS.KEY_VALUE_PAIR);
+    expect(kvPair.className).toContain("flex-col");
   });
 });

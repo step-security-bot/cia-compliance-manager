@@ -2,6 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import RadarChart from "./RadarChart";
 import { vi } from "vitest";
+import { CHART_TEST_IDS } from "../constants/testIds";
 
 // Track if the mock was called
 let mockCalled = false;
@@ -40,7 +41,7 @@ describe("RadarChart Component", () => {
 
     // Verify the canvas element is created
     expect(container.querySelector("canvas")).toBeInTheDocument();
-    expect(screen.getByTestId("radar-chart")).toBeInTheDocument();
+    expect(screen.getByTestId(CHART_TEST_IDS.RADAR_CHART)).toBeInTheDocument();
   });
 
   // Replace problematic test with a simplified version
@@ -51,7 +52,7 @@ describe("RadarChart Component", () => {
     );
 
     // Just verify the canvas exists without checking mock internals
-    expect(screen.getByTestId("radar-chart")).toBeInTheDocument();
+    expect(screen.getByTestId(CHART_TEST_IDS.RADAR_CHART)).toBeInTheDocument();
     expect(HTMLCanvasElement.prototype.getContext).toHaveBeenCalledWith("2d");
   });
 
@@ -70,6 +71,6 @@ describe("RadarChart Component", () => {
     );
 
     // Component should still be in the document
-    expect(screen.getByTestId("radar-chart")).toBeInTheDocument();
+    expect(screen.getByTestId(CHART_TEST_IDS.RADAR_CHART)).toBeInTheDocument();
   });
 });

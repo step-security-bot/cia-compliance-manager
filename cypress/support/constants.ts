@@ -1,44 +1,85 @@
-// Import and re-export application constants for Cypress tests
-
-// Use direct imports from src/constants
+// Direct exports from source constants
+import {
+  TEST_IDS,
+  CIA_TEST_IDS,
+  WIDGET_TEST_IDS,
+  BUSINESS_IMPACT_TEST_IDS,
+  CHART_TEST_IDS,
+  COST_TEST_IDS,
+  FRAMEWORK_TEST_IDS,
+  SUMMARY_TEST_IDS,
+} from "../../src/constants/testIds";
 import {
   SECURITY_LEVELS,
   CIA_LABELS,
-  SECURITY_DESCRIPTIONS,
-  WIDGET_ICONS,
-  UI_TEXT,
-  COMPLIANCE_FRAMEWORKS,
-  COMPLIANCE_STATUS,
-  RISK_LEVELS,
+  WIDGET_TITLES,
+  UI_TEXT, // Add UI_TEXT import
+} from "../../src/constants/coreConstants";
+import {
   BUSINESS_IMPACT_CATEGORIES,
-  TEST_IDS,
-} from "../../src/constants";
+  RISK_LEVELS,
+} from "../../src/constants/riskConstants";
+import {
+  COMPLIANCE_STATUS,
+  COMPLIANCE_FRAMEWORKS,
+} from "../../src/constants/coreConstants";
 
-// Re-export everything for use in Cypress tests
+// Re-export imported constants
 export {
+  TEST_IDS,
+  CIA_TEST_IDS,
+  WIDGET_TEST_IDS,
+  BUSINESS_IMPACT_TEST_IDS, // Export these specific test ID objects
+  CHART_TEST_IDS,
+  COST_TEST_IDS,
+  FRAMEWORK_TEST_IDS,
+  SUMMARY_TEST_IDS,
   SECURITY_LEVELS,
   CIA_LABELS,
-  SECURITY_DESCRIPTIONS,
-  WIDGET_ICONS,
-  UI_TEXT,
-  COMPLIANCE_FRAMEWORKS,
-  COMPLIANCE_STATUS,
-  RISK_LEVELS,
+  WIDGET_TITLES,
   BUSINESS_IMPACT_CATEGORIES,
-  TEST_IDS,
+  RISK_LEVELS,
+  COMPLIANCE_STATUS,
+  COMPLIANCE_FRAMEWORKS,
+  UI_TEXT, // Add UI_TEXT export
 };
 
-// Add test-specific selectors for individual form controls
-export const FORM_SELECTORS = {
-  AVAILABILITY_SELECT: '[data-testid="availability-select"]',
-  INTEGRITY_SELECT: '[data-testid="integrity-select"]',
-  CONFIDENTIALITY_SELECT: '[data-testid="confidentiality-select"]',
+// Helper functions for working with test IDs
+export const getTestSelector = (testId: string): string =>
+  `[data-testid="${testId}"]`;
+
+// Generate selector functions for common test ID patterns
+export const SELECTORS = {
+  WIDGETS: {
+    SECURITY_LEVEL: getTestSelector(TEST_IDS.SECURITY_LEVEL_CONTROLS),
+    COST_ESTIMATION: getTestSelector(COST_TEST_IDS.COST_CONTAINER),
+    VALUE_CREATION: getTestSelector(WIDGET_TEST_IDS.VALUE_CREATION_CONTENT),
+    SECURITY_SUMMARY: getTestSelector(
+      SUMMARY_TEST_IDS.SECURITY_SUMMARY_CONTAINER
+    ),
+    BUSINESS_IMPACT: getTestSelector(
+      BUSINESS_IMPACT_TEST_IDS.BUSINESS_IMPACT_SUMMARY
+    ),
+    RADAR_CHART: getTestSelector(CHART_TEST_IDS.RADAR_CHART),
+    COMPLIANCE_STATUS: getTestSelector(
+      FRAMEWORK_TEST_IDS.COMPLIANCE_STATUS_WIDGET
+    ),
+  },
+  CONTROLS: {
+    THEME_TOGGLE: getTestSelector(TEST_IDS.THEME_TOGGLE),
+    APP_CONTAINER: getTestSelector(TEST_IDS.APP_CONTAINER),
+    APP_TITLE: getTestSelector(TEST_IDS.APP_TITLE),
+  },
+  FORM: {
+    AVAILABILITY_SELECT: getTestSelector(TEST_IDS.AVAILABILITY_SELECT),
+    INTEGRITY_SELECT: getTestSelector(TEST_IDS.INTEGRITY_SELECT),
+    CONFIDENTIALITY_SELECT: getTestSelector(TEST_IDS.CONFIDENTIALITY_SELECT),
+  },
 };
 
-// Add Cypress-specific test commands
+// Command functions for test actions
 export const TEST_COMMANDS = {
-  // Set security level using the imported constants
-  setSecurityLevel: (category: string, level: keyof typeof SECURITY_LEVELS) => {
+  setSecurityLevel: (category: string, level: string) => {
     const testIdMap: Record<string, string> = {
       availability: TEST_IDS.AVAILABILITY_SELECT,
       integrity: TEST_IDS.INTEGRITY_SELECT,
@@ -47,19 +88,17 @@ export const TEST_COMMANDS = {
 
     const testId = testIdMap[category.toLowerCase()];
     if (testId) {
-      return cy.get(`[data-testid="${testId}"]`).select(SECURITY_LEVELS[level]);
+      return cy.get(getTestSelector(testId)).select(level);
     }
 
     cy.log(`No selector found for ${category}`);
     return cy;
   },
 
-  // Verify text content against constants
   verifyText: (selector: string, expectedText: string) => {
     return cy.get(selector).should("contain.text", expectedText);
   },
 
-  // Verify security level selection
   verifySecurityLevel: (category: string, expectedLevel: string) => {
     const testIdMap: Record<string, string> = {
       availability: TEST_IDS.AVAILABILITY_SELECT,
@@ -70,7 +109,7 @@ export const TEST_COMMANDS = {
     const testId = testIdMap[category.toLowerCase()];
     if (testId) {
       return cy
-        .get(`[data-testid="${testId}"]`)
+        .get(getTestSelector(testId))
         .should("have.value", expectedLevel);
     }
 
@@ -79,27 +118,6 @@ export const TEST_COMMANDS = {
   },
 };
 
-// Common element selectors
-export const SELECTORS = {
-  WIDGETS: {
-    SECURITY_LEVEL: `[data-testid="${TEST_IDS.SECURITY_LEVEL_CONTROLS}"]`,
-    COST_ESTIMATION: `[data-testid="widget-cost-estimation"]`,
-    VALUE_CREATION: `[data-testid="widget-value-creation"]`,
-    SECURITY_SUMMARY: `[data-testid="widget-security-summary"]`,
-    BUSINESS_IMPACT: `[data-testid="widget-business-impact"]`,
-    RADAR_CHART: `[data-testid="widget-radar-chart"]`,
-    COMPLIANCE_STATUS: `[data-testid="widget-compliance-status"]`,
-  },
-  CONTROLS: {
-    THEME_TOGGLE: `[data-testid="${TEST_IDS.THEME_TOGGLE}"]`,
-    APP_CONTAINER: `[data-testid="${TEST_IDS.APP_CONTAINER}"]`,
-    APP_TITLE: `[data-testid="${TEST_IDS.APP_TITLE}"]`,
-  },
-  // Add direct references to form controls
-  ...FORM_SELECTORS,
-};
-
-// Test patterns for content identification
 export const TEST_PATTERNS = {
   AVAILABILITY: [/availability/i, /uptime/i, /downtime/i, /recovery/i],
   INTEGRITY: [/integrity/i, /accuracy/i, /valid/i, /corrupt/i, /tamper/i],

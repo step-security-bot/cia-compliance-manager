@@ -4,7 +4,23 @@
 
 import { VALUE_CREATION_POINTS } from "./appConstants";
 
-// CIA Component TestIDs
+// Add this function near the top of the file to make it easier to create compound testIds
+export const createCompoundTestId = (prefix: string, suffix: string): string =>
+  `${prefix}-${suffix}`;
+
+// Add these mappings to help make testIds more unique and consistent
+export const WIDGET_PREFIXES = {
+  SECURITY_PROFILE: "widget-security-level",
+  COST_ESTIMATION: "widget-cost-estimation",
+  BUSINESS_IMPACT: "widget-business-impact",
+  COMPLIANCE_STATUS: "widget-compliance-status",
+  RADAR_CHART: "widget-radar-chart",
+  VALUE_CREATION: "widget-value-creation",
+  SECURITY_SUMMARY: "widget-security-summary",
+  TECHNICAL_DETAILS: "widget-technical-details",
+};
+
+// CIA Component TestIDs - KEEP ORIGINAL VALUES FOR BACKWARD COMPATIBILITY
 export const CIA_TEST_IDS = {
   // Select dropdown elements
   AVAILABILITY_SELECT: "availability-select",
@@ -43,9 +59,9 @@ export const CIA_TEST_IDS = {
   CONFIDENTIALITY_COLOR_INDICATOR: "confidentiality-color-indicator",
 
   // Technical info buttons and popovers
-  AVAILABILITY_TECHNICAL_INFO: "availability-technical-info-button",
-  INTEGRITY_TECHNICAL_INFO: "integrity-technical-info-button",
-  CONFIDENTIALITY_TECHNICAL_INFO: "confidentiality-technical-info-button",
+  AVAILABILITY_TECHNICAL_INFO: "availability-technical-info",
+  INTEGRITY_TECHNICAL_INFO: "integrity-technical-info",
+  CONFIDENTIALITY_TECHNICAL_INFO: "confidentiality-technical-info",
   AVAILABILITY_TECHNICAL_INFO_BUTTON: "availability-technical-info-button",
   INTEGRITY_TECHNICAL_INFO_BUTTON: "integrity-technical-info-button",
   CONFIDENTIALITY_TECHNICAL_INFO_BUTTON:
@@ -74,10 +90,20 @@ export const CIA_TEST_IDS = {
   CURRENT_AVAILABILITY: "current-availability",
   CURRENT_INTEGRITY: "current-integrity",
   CURRENT_CONFIDENTIALITY: "current-confidentiality",
+
+  // Added missing properties
+  SECURITY_LEVEL_SELECTOR: "security-level-selector",
+  SECURITY_LEVEL_CONTROLS: "security-level-controls",
+
+  // Additional backward compatibility for any potential direct references
+  AVAILABILITY: "availability",
+  INTEGRITY: "integrity",
+  CONFIDENTIALITY: "confidentiality",
 };
 
-// Common widget test IDs
+// Common widget test IDs - KEEP ORIGINAL VALUES FOR BACKWARD COMPATIBILITY
 export const WIDGET_TEST_IDS = {
+  // Keep existing IDs for backward compatibility
   SECURITY_LEVEL_CONTROLS: "security-level-controls",
   VALUE_CREATION_TITLE: "value-creation-title",
   ROI_VALUE: "roi-value",
@@ -107,15 +133,24 @@ export const WIDGET_TEST_IDS = {
 
   // CIA Impact Summary Widget
   CIA_IMPACT_SUMMARY: "cia-impact-summary",
-  CIA_IMPACT_AVAILABILITY_ROW: "cia-impact-summary-availability-row",
-  CIA_IMPACT_INTEGRITY_ROW: "cia-impact-summary-integrity-row",
-  CIA_IMPACT_CONFIDENTIALITY_ROW: "cia-impact-summary-confidentiality-row",
-  CIA_IMPACT_AVAILABILITY_LEVEL: "cia-impact-summary-availability-level",
-  CIA_IMPACT_INTEGRITY_LEVEL: "cia-impact-summary-integrity-level",
-  CIA_IMPACT_CONFIDENTIALITY_LEVEL: "cia-impact-summary-confidentiality-level",
+  CIA_IMPACT_AVAILABILITY_ROW: "cia-impact-availability-row",
+  CIA_IMPACT_INTEGRITY_ROW: "cia-impact-integrity-row",
+  CIA_IMPACT_CONFIDENTIALITY_ROW: "cia-impact-confidentiality-row",
+  CIA_IMPACT_AVAILABILITY_LEVEL: "cia-impact-availability-level",
+  CIA_IMPACT_INTEGRITY_LEVEL: "cia-impact-integrity-level",
+  CIA_IMPACT_CONFIDENTIALITY_LEVEL: "cia-impact-confidentiality-level",
+
+  // Add more specific and standardized widget container IDs
+  SECURITY_LEVEL_WIDGET: "widget-security-level",
+  SECURITY_LEVEL_SELECTION: "widget-security-level-selection",
+  COST_ESTIMATION_WIDGET: "widget-cost-estimation",
+  BUSINESS_IMPACT_WIDGET: "widget-business-impact",
+  COMPLIANCE_STATUS_WIDGET: "widget-compliance-status",
+  RADAR_CHART_WIDGET: "widget-radar-chart",
+  VALUE_CREATION_WIDGET: "widget-value-creation",
 };
 
-// BusinessImpactAnalysisWidget IDs
+// BusinessImpactAnalysisWidget IDs - KEEP ORIGINAL VALUES FOR BACKWARD COMPATIBILITY
 export const BUSINESS_IMPACT_TEST_IDS = {
   FINANCIAL_IMPACT_SECTION: "financial-impact-section",
   OPERATIONAL_IMPACT_SECTION: "operational-impact-section",
@@ -157,7 +192,7 @@ export const BUSINESS_IMPACT_TEST_IDS = {
   COMBINED_BUSINESS_IMPACT_WIDGET: "combined-business-impact-widget",
 };
 
-// ComplianceStatusWidget IDs
+// ComplianceStatusWidget IDs - KEEP ORIGINAL VALUES FOR BACKWARD COMPATIBILITY
 export const FRAMEWORK_TEST_IDS = {
   COMPLIANCE_FRAMEWORKS_CONTAINER: "compliance-frameworks-container",
   FRAMEWORK_ITEM_PREFIX: "framework-item",
@@ -167,7 +202,7 @@ export const FRAMEWORK_TEST_IDS = {
   COMPLIANCE_REQUIREMENTS_LIST: "compliance-requirements-list",
 };
 
-// RadarChart test IDs
+// RadarChart test IDs - KEEP ORIGINAL VALUES FOR BACKWARD COMPATIBILITY
 export const CHART_TEST_IDS = {
   RADAR_CHART: "radar-chart",
   RADAR_CHART_CONTAINER: "radar-chart-container",
@@ -178,8 +213,9 @@ export const CHART_TEST_IDS = {
   RADAR_CONFIDENTIALITY_VALUE: "radar-confidentiality-value",
 };
 
-// CostEstimationWidget test IDs
+// CostEstimationWidget test IDs - KEEP ORIGINAL VALUES FOR BACKWARD COMPATIBILITY
 export const COST_TEST_IDS = {
+  // Keep existing IDs for backward compatibility
   COST_CONTAINER: "cost-container",
   CAPEX_VALUE: "capex-value",
   OPEX_VALUE: "opex-value",
@@ -207,11 +243,15 @@ export const COST_TEST_IDS = {
   COST_ANALYSIS_HEADING: "cost-analysis-heading",
   COST_ANALYSIS_TEXT: "cost-analysis-text",
   ROI_SECTION: "roi-section",
+
+  // Add more specific IDs
+  COST_ESTIMATION_WIDGET: "widget-cost-estimation",
+  COST_ESTIMATION_ROOT: "widget-cost-estimation-root",
 };
 
-// SecuritySummaryWidget test IDs
+// SecuritySummaryWidget test IDs - KEEP ORIGINAL VALUES FOR BACKWARD COMPATIBILITY
 export const SUMMARY_TEST_IDS = {
-  SUMMARY_CONTAINER: "summary-container",
+  SUMMARY_CONTAINER: "security-summary-container",
   OVERALL_RATING: "overall-rating",
   SECURITY_LEVEL_DESCRIPTION: "security-level-description",
   SECURITY_RECOMMENDATIONS: "security-recommendations",
@@ -261,7 +301,7 @@ export const SUMMARY_TEST_IDS = {
   RECOMMENDATION_HEADING: "recommendation-heading",
   SECURITY_RECOMMENDATION: "security-recommendation",
 
-  // Status badges
+  // Status badges - ORIGINAL NAMES WITHOUT PREFIX
   BADGE_HIGH_RISK: "badge-high-risk",
   BADGE_NOT_RECOMMENDED: "badge-not-recommended",
   BADGE_LIMITED_PROTECTION: "badge-limited-protection",
@@ -274,7 +314,7 @@ export const SUMMARY_TEST_IDS = {
   BADGE_MISSION_CRITICAL: "badge-mission-critical",
 };
 
-// App-level test IDs
+// App-level test IDs - KEEP ORIGINAL VALUES FOR BACKWARD COMPATIBILITY
 export const APP_TEST_IDS = {
   APP_CONTAINER: "app-container",
   THEME_TOGGLE: "theme-toggle",
@@ -285,7 +325,7 @@ export const APP_TEST_IDS = {
   DASHBOARD_GRID: "dashboard-grid",
 };
 
-// Common component test IDs
+// Common component test IDs - KEEP ORIGINAL VALUES FOR BACKWARD COMPATIBILITY
 export const COMMON_COMPONENT_TEST_IDS = {
   // MetricsCard
   METRICS_CARD: "metrics-card",
@@ -323,7 +363,7 @@ export const WIDGET_REGISTRY_TEST_IDS = {
 };
 
 /**
- * Helper functions for dynamic test ID generation
+ * Helper functions for dynamic test ID generation - KEEP ORIGINAL FUNCTIONS
  */
 export const createDynamicTestId = {
   valuePoint: (index: number): string => `value-point-${index}`,

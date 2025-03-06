@@ -3,20 +3,37 @@ import vitePreprocessor from "cypress-vite";
 import { resolve } from "path";
 import { resetJunitResults } from "./cypress/tasks/junit-reset";
 import { fileURLToPath } from "url";
+import fs from "fs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = resolve(fileURLToPath(new URL(".", import.meta.url)));
+
+// Ensure the results directory exists
+const resultsDir = resolve(__dirname, "cypress/results");
+if (!fs.existsSync(resultsDir)) {
+  fs.mkdirSync(resultsDir, { recursive: true });
+  console.log(`Created results directory: ${resultsDir}`);
+}
 
 export default defineConfig({
   experimentalMemoryManagement: true,
   video: true,
   screenshotOnRunFailure: true,
   trashAssetsBeforeRuns: true,
-  viewportWidth: 1280,
-  viewportHeight: 720,
+  // Increase viewport size for better visibility during testing
+  viewportWidth: 3840, // Increased from 1280 to 3840
+  viewportHeight: 2160, // Increased from 800 to 2160
   retries: {
-    runMode: 1,
-    openMode: 0,
+    runMode: 2, // Increased retries in run mode
+    openMode: 1, // Added retry in open mode
+  },
+  // Add reporter configuration here
+  reporter: "junit",
+  reporterOptions: {
+    mochaFile: "cypress/results/junit-[name]-[hash].xml",
+    toConsole: true,
+    attachments: true,
+    outputFile: true, // Ensure files are written to disk
   },
   e2e: {
     baseUrl: "http://localhost:5173",
@@ -27,21 +44,57 @@ export default defineConfig({
       // implement node event listeners here
       on("task", {
         resetJunitResults: resetJunitResults,
+
+        // Add this new task
+        listJunitFiles() {
+          const resultsDir = resolve(__dirname, "cypress/results");
+          if (!fs.existsSync(resultsDir)) {
+            console.log(`Results directory does not exist: ${resultsDir}`);
+            return [];
+          }
+
+          const files = fs
+            .readdirSync(resultsDir)
+            .filter((file) => file.endsWith(".xml"));
+
+          console.log(`Found ${files.length} JUnit files in ${resultsDir}`);
+          files.forEach((file) => console.log(`- ${file}`));
+
+          return files;
+        },
       });
       on(
         "file:preprocessor",
         vitePreprocessor({
           configFile: resolve(__dirname, "./vite.config.ts"),
-          // options passed to vite
-          // this is an example that shows how to configure Vite to pass
-          // command line arguments through to the test
-          // pass command line argument y through to the test like this:
-          // `cypress run --env y=true`
-          // and access it like this:
-          // `Cypress.env('y')`
-          // key: config.env.y,
         })
       );
+
+      // Import and register the JUnit merger plugin using dynamic import
+      import("./cypress/support/plugins/junit-merger.js")
+        .then(({ junitMerger }) => {
+          junitMerger(on, config);
+        })
+        .catch((err) => {
+          console.error("Error loading JUnit merger plugin:", err);
+        });
+
+      // Add task for merging reports
+      on("task", {
+        async mergeAllJunitReports() {
+          try {
+            const { mergeAllJunitReports } = await import(
+              "./cypress/support/plugins/junit-merger.js"
+            );
+            return mergeAllJunitReports();
+          } catch (err) {
+            console.error("Error running mergeAllJunitReports:", err);
+            return { success: false, error: String(err) };
+          }
+        },
+      });
+
+      return config;
     },
   },
   component: {
@@ -50,7 +103,9 @@ export default defineConfig({
       bundler: "vite",
     },
   },
-  // Add these configurations
+  // Fast timeouts to fail quickly
   waitForAnimations: false,
-  defaultCommandTimeout: 15000,
+  defaultCommandTimeout: 5000,
+  pageLoadTimeout: 10000,
+  requestTimeout: 5000,
 });

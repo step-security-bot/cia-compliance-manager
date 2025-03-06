@@ -21,7 +21,7 @@ const ComplianceStatusWidget: React.FC<ComplianceStatusWidgetProps> = ({
   availability, // For backwards compatibility
   integrity, // For backwards compatibility
   confidentiality, // For backwards compatibility
-  testId = "compliance-status-widget",
+  testId = FRAMEWORK_TEST_IDS.COMPLIANCE_STATUS_WIDGET,
 }) => {
   // Use provided levels or fallback to backward compatibility props
   const actualAvailLevel = availabilityLevel || availability;

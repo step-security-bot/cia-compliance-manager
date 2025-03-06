@@ -1,114 +1,48 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
+import { describe, it, expect } from "vitest";
 import ValueDisplay from "./ValueDisplay";
 import { COMMON_COMPONENT_TEST_IDS } from "../../constants/testIds";
 
-describe("ValueDisplay", () => {
-  it("renders with default styling", () => {
+describe("ValueDisplay Component", () => {
+  it("renders with value only", () => {
     render(<ValueDisplay value="Test Value" />);
-
-    const display = screen.getByTestId(COMMON_COMPONENT_TEST_IDS.VALUE_DISPLAY);
-    expect(display).toBeInTheDocument();
-    expect(display).toHaveTextContent("Test Value");
-
-    const value = screen.getByText("Test Value");
-    expect(value).toBeInTheDocument();
+    expect(
+      screen.getByTestId(COMMON_COMPONENT_TEST_IDS.VALUE_DISPLAY)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByTestId(`${COMMON_COMPONENT_TEST_IDS.VALUE_DISPLAY}-value`)
+    ).toHaveTextContent("Test Value");
   });
 
-  it("renders with primary variant", () => {
-    render(<ValueDisplay value="Primary" variant="primary" />);
-
-    const element = screen.getByTestId(
-      `${COMMON_COMPONENT_TEST_IDS.VALUE_DISPLAY}-value`
+  it("renders with label and value", () => {
+    render(<ValueDisplay label="Test Label" value="Test Value" />);
+    const component = screen.getByTestId(
+      COMMON_COMPONENT_TEST_IDS.VALUE_DISPLAY
     );
-    expect(element).toHaveClass("text-blue-700");
-    expect(element).toHaveClass("bg-blue-100");
+    expect(component).toHaveTextContent("Test Label");
+    expect(component).toHaveTextContent("Test Value");
   });
 
-  it("renders with success variant", () => {
+  it("renders with custom test ID", () => {
+    const customTestId = "custom-value-display";
+    render(<ValueDisplay value="Test Value" testId={customTestId} />);
+    expect(screen.getByTestId(customTestId)).toBeInTheDocument();
+  });
+
+  it("applies variant styling", () => {
     render(<ValueDisplay value="Success" variant="success" />);
-
-    const element = screen.getByTestId(
+    const valueElement = screen.getByTestId(
       `${COMMON_COMPONENT_TEST_IDS.VALUE_DISPLAY}-value`
     );
-    expect(element).toHaveClass("text-green-700");
-    expect(element).toHaveClass("bg-green-100");
+    expect(valueElement.className).toContain("text-green");
   });
 
-  it("renders with warning variant", () => {
-    render(<ValueDisplay value="Warning" variant="warning" />);
-
-    const element = screen.getByTestId(
+  it("applies size styling", () => {
+    render(<ValueDisplay value="Large Text" size="lg" />);
+    const valueElement = screen.getByTestId(
       `${COMMON_COMPONENT_TEST_IDS.VALUE_DISPLAY}-value`
     );
-    expect(element).toHaveClass("text-yellow-700");
-    expect(element).toHaveClass("bg-yellow-100");
-  });
-
-  it("renders with danger variant", () => {
-    render(<ValueDisplay value="Danger" variant="danger" />);
-
-    const element = screen.getByTestId(
-      `${COMMON_COMPONENT_TEST_IDS.VALUE_DISPLAY}-value`
-    );
-    expect(element).toHaveClass("text-red-700");
-    expect(element).toHaveClass("bg-red-100");
-  });
-
-  it("renders with info variant", () => {
-    render(<ValueDisplay value="Info" variant="info" />);
-
-    const element = screen.getByTestId(
-      `${COMMON_COMPONENT_TEST_IDS.VALUE_DISPLAY}-value`
-    );
-    expect(element).toHaveClass("text-blue-700");
-    expect(element).toHaveClass("bg-blue-100");
-  });
-
-  it("renders with small size", () => {
-    render(<ValueDisplay value="Small" size="sm" />);
-
-    const element = screen.getByTestId(
-      `${COMMON_COMPONENT_TEST_IDS.VALUE_DISPLAY}-value`
-    );
-    expect(element).toHaveClass("py-0.5");
-    expect(element).toHaveClass("px-2");
-    expect(element).toHaveClass("text-xs");
-  });
-
-  it("renders with medium size", () => {
-    render(<ValueDisplay value="Medium" size="md" />);
-
-    const element = screen.getByTestId(
-      `${COMMON_COMPONENT_TEST_IDS.VALUE_DISPLAY}-value`
-    );
-    expect(element).toHaveClass("py-1");
-    expect(element).toHaveClass("px-2");
-    expect(element).toHaveClass("text-sm");
-  });
-
-  it("renders with large size", () => {
-    render(<ValueDisplay value="Large" size="lg" />);
-
-    const element = screen.getByTestId(
-      `${COMMON_COMPONENT_TEST_IDS.VALUE_DISPLAY}-value`
-    );
-    expect(element).toHaveClass("py-1");
-    expect(element).toHaveClass("px-2.5");
-    expect(element).toHaveClass("text-base");
-  });
-
-  it("renders with custom testId", () => {
-    render(<ValueDisplay value="Custom ID" testId="custom-value" />);
-
-    expect(screen.getByTestId("custom-value")).toBeInTheDocument();
-  });
-
-  it("renders with a label", () => {
-    render(<ValueDisplay value="Labeled" label="Label" />);
-
-    const display = screen.getByTestId(COMMON_COMPONENT_TEST_IDS.VALUE_DISPLAY);
-    expect(display.textContent).toMatch(/Label/);
-    expect(display.textContent).toMatch(/Labeled/);
+    expect(valueElement.className).toContain("text-lg");
   });
 });

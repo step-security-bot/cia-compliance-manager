@@ -41,7 +41,7 @@ const StatusBadge: React.FC<StatusBadgeProps> = ({
       case "sm":
         return "text-xs py-1 px-2";
       case "lg":
-        return "text-sm py-1.5 px-3";
+        return "text-lg py-1.5 px-3";
       case "md":
       default:
         return "text-xs py-1 px-2.5";

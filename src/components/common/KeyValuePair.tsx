@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import { COMMON_COMPONENT_TEST_IDS } from "../../constants/testIds";
 
 interface KeyValuePairProps {
   label: string;
@@ -7,8 +8,8 @@ interface KeyValuePairProps {
   className?: string;
   labelClassName?: string;
   valueClassName?: string;
-  highlighted?: boolean; // Added prop
-  justified?: boolean; // Added prop
+  highlighted?: boolean;
+  justified?: boolean;
 }
 
 const KeyValuePair: React.FC<KeyValuePairProps> = ({
@@ -27,16 +28,23 @@ const KeyValuePair: React.FC<KeyValuePairProps> = ({
   const justifyClass = justified ? "text-right" : "";
 
   return (
-    <div className={`flex flex-col ${className} text-sm`} data-testid={testId}>
+    <div
+      className={`flex flex-col ${className} text-sm`}
+      data-testid={testId || COMMON_COMPONENT_TEST_IDS.KEY_VALUE_PAIR}
+    >
       <span
         className={`text-gray-500 dark:text-gray-400 ${labelClassName} ${justifyClass}`}
-        data-testid={testId ? `${testId}-label` : undefined}
+        data-testid={
+          testId ? `${testId}-label` : COMMON_COMPONENT_TEST_IDS.KV_LABEL
+        }
       >
         {label}
       </span>
       <div
         className={`font-medium text-gray-900 dark:text-gray-100 ${valueClassName} ${highlightClass} ${justifyClass}`}
-        data-testid={testId ? `${testId}-value` : undefined}
+        data-testid={
+          testId ? `${testId}-value` : COMMON_COMPONENT_TEST_IDS.KV_VALUE
+        }
       >
         {value}
       </div>

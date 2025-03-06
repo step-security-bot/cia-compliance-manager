@@ -23,13 +23,9 @@ const ValueDisplay: React.FC<ValueDisplayProps> = ({
   label,
   testId = COMMON_COMPONENT_TEST_IDS.VALUE_DISPLAY,
 }) => {
-  // Map "default" to "neutral" for backward compatibility
-  const normalizedVariant = variant === "default" ? "neutral" : variant;
-
+  // Get background and text colors based on variant
   const getColorClass = () => {
-    switch (normalizedVariant) {
-      case "primary":
-        return "text-blue-700 dark:text-blue-400 bg-blue-100";
+    switch (variant) {
       case "success":
         return "text-green-700 dark:text-green-400 bg-green-100";
       case "warning":
@@ -38,29 +34,32 @@ const ValueDisplay: React.FC<ValueDisplayProps> = ({
         return "text-red-700 dark:text-red-400 bg-red-100";
       case "info":
         return "text-blue-700 dark:text-blue-400 bg-blue-100";
-      default:
+      case "neutral":
         return "text-gray-700 dark:text-gray-400 bg-gray-100";
+      case "default":
+        return "text-gray-800 dark:text-gray-200 bg-transparent";
+      case "primary":
+      default:
+        return "text-blue-700 dark:text-blue-400 bg-blue-100";
     }
   };
 
+  // Get padding and border radius based on size
   const getSizeClass = () => {
     switch (size) {
       case "sm":
-        return "py-0.5 px-2 text-xs";
-      case "md":
-        return "py-1 px-2 text-sm";
+        return "py-0.5 px-2 text-sm";
       case "lg":
-        return "py-1 px-2.5 text-base";
+        return "py-1.5 px-3 text-lg"; // Updated to use text-lg
+      case "md":
       default:
-        return "py-1 px-2 text-sm";
+        return "py-1 px-2.5 text-base";
     }
   };
 
-  // Deduce the text color from the color class for standalone use
+  // Get text color without background for text-only elements
   const getTextOnlyColor = () => {
-    switch (normalizedVariant) {
-      case "primary":
-        return "text-blue-600 dark:text-blue-400";
+    switch (variant) {
       case "success":
         return "text-green-600 dark:text-green-400";
       case "warning":
@@ -68,18 +67,24 @@ const ValueDisplay: React.FC<ValueDisplayProps> = ({
       case "danger":
         return "text-red-600 dark:text-red-400";
       case "info":
-        return "text-cyan-600 dark:text-cyan-400";
-      default:
+        return "text-blue-600 dark:text-blue-400";
+      case "neutral":
         return "text-gray-600 dark:text-gray-400";
+      case "default":
+        return "text-gray-700 dark:text-gray-300";
+      case "primary":
+      default:
+        return "text-blue-600 dark:text-blue-400";
     }
   };
 
+  // Get font size for the wrapper element
   const getFontSize = () => {
     switch (size) {
       case "sm":
         return "text-sm";
       case "lg":
-        return "text-lg";
+        return "text-lg"; // This needs to be applied to the value element
       case "md":
       default:
         return "text-base";

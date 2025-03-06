@@ -36,7 +36,7 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
   return (
     <div
       className="bg-white dark:bg-gray-800 p-4 rounded-lg"
-      data-testid="security-level-controls"
+      data-testid={CIA_TEST_IDS.SECURITY_LEVEL_CONTROLS}
     >
       <SecurityLevelSelector
         initialAvailability={availability}
@@ -49,7 +49,7 @@ const SecurityLevelWidget: React.FC<SecurityLevelWidgetProps> = ({
         integrityOptions={integrityOptions}
         confidentialityOptions={confidentialityOptions}
         disabled={disabled}
-        testId="security-level-selector"
+        testId={CIA_TEST_IDS.SECURITY_LEVEL_SELECTOR}
       />
     </div>
   );

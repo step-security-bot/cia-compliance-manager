@@ -24,8 +24,7 @@
     // Path configuration consistent with main config
     "baseUrl": "..",
     "paths": {
-      "@/*": ["./src/*"],
-      "@constants/*": ["src/constants/*"]
+      "@/*": ["../src/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", "index.d.ts"]
