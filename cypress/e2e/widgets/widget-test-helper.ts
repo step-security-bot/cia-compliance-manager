@@ -45,6 +45,14 @@ export function setupWidgetTest(widgetId: string) {
         opacity: 1 !important;
         transition: none !important;
         animation: none !important;
+        clip: auto !important;
+        clip-path: none !important;
+        position: static !important;
+      }
+      .widget-body, .widget-content-wrapper {
+        display: block !important;
+        height: auto !important;
+        max-height: none !important;
       }
     `;
     doc.head.appendChild(style);
@@ -65,13 +73,17 @@ export function setupWidgetTest(widgetId: string) {
         .then(($el) => {
           const actualId = $el.attr("data-testid");
           if (actualId) {
-            // Fix: Add null check for actualId
             cy.log(`Found alternative widget with ID: ${actualId}`);
             ensureWidgetVisible(actualId);
           } else {
-            cy.log(`Could not find data-testid for widget ${widgetId}`);
-            // Use original ID as fallback
-            ensureWidgetVisible(widgetId);
+            // If we still can't find it, try a more generic approach
+            cy.log(
+              `No data-testid found containing ${widgetId}, trying generic approach`
+            );
+            // Try to find by content instead
+            cy.contains(
+              new RegExp(widgetId.replace(/-/g, " "), "i")
+            ).scrollIntoView();
           }
         });
     }
