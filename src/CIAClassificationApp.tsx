@@ -128,15 +128,14 @@ const CIAClassificationApp: React.FC = () => {
       className={`app-container ${darkMode ? "dark bg-pattern" : ""}`}
       data-testid={APP_TEST_IDS.APP_CONTAINER}
     >
-      <div className="min-h-screen bg-gray-100 dark:bg-gray-900 p-6 transition-colors duration-300">
+      <div className="min-h-screen bg-gray-100 dark:bg-gray-900 p-4 transition-colors duration-300">
         <div className="w-full mx-auto">
-          {" "}
-          {/* Changed from max-w-7xl to w-full */}
           <div className="app-title shadow-lg rounded-xl transition-colors duration-300">
             <h1
               data-testid={APP_TEST_IDS.APP_TITLE}
-              className="text-2xl text-gray-800 dark:text-gray-100 transition-colors duration-300"
+              className="text-2xl font-bold text-gray-800 dark:text-gray-100 transition-colors duration-300 flex items-center"
             >
+              <span className="mr-3">🔒</span>
               {UI_TEXT.APP_TITLE}
             </h1>
             <button
@@ -174,17 +173,19 @@ const CIAClassificationApp: React.FC = () => {
                 icon="SECURITY_LEVEL"
                 testId="widget-security-level-selection"
               >
-                <SecurityLevelWidget
-                  availability={availability}
-                  integrity={integrity}
-                  confidentiality={confidentiality}
-                  setAvailability={setAvailability}
-                  setIntegrity={setIntegrity}
-                  setConfidentiality={setConfidentiality}
-                  availabilityOptions={availabilityOptions}
-                  integrityOptions={integrityOptions}
-                  confidentialityOptions={confidentialityOptions}
-                />
+                <div className="section-container dark:bg-gray-700">
+                  <SecurityLevelWidget
+                    availability={availability}
+                    integrity={integrity}
+                    confidentiality={confidentiality}
+                    setAvailability={setAvailability}
+                    setIntegrity={setIntegrity}
+                    setConfidentiality={setConfidentiality}
+                    availabilityOptions={availabilityOptions}
+                    integrityOptions={integrityOptions}
+                    confidentialityOptions={confidentialityOptions}
+                  />
+                </div>
               </DashboardWidget>
 
               <DashboardWidget

@@ -9,16 +9,13 @@
   padding-left: 0.5rem;
 }
 
-/* Dashboard grid */
+/* Dashboard grid with improved spacing */
 .dashboard-grid {
   display: grid !important;
-  grid-template-columns: repeat(
-    3,
-    1fr
-  ) !important; /* Force 3 columns regardless of Tailwind classes */
-  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 1.25rem !important; /* Increased gap for better separation */
   width: 100%;
-  max-width: 100% !important; /* Ensure grid takes full width */
+  max-width: 100% !important;
 }
 
 /* Widget column sizing */
@@ -53,7 +50,41 @@
   grid-template-columns: repeat(3, 1fr) !important;
 }
 
+/* Content height distribution */
+.full-height-container {
+  height: calc(
+    100vh - 150px
+  ); /* Adjustable height that fills most of viewport */
+  min-height: 600px; /* Minimum height */
+  overflow: hidden;
+}
+
+/* Widget sizing consistency */
+.widget {
+  min-height: 350px !important; /* Increased minimum height for better proportions */
+}
+
+/* Smaller widgets for specific components */
+.compact-widget {
+  min-height: 280px !important;
+}
+
+/* Larger widgets for data-heavy components */
+.expanded-widget {
+  min-height: 400px !important;
+}
+
 /* Responsive adjustments */
+@media (max-width: 1400px) {
+  .dashboard-grid {
+    gap: 1rem !important;
+  }
+
+  .widget {
+    min-height: 320px !important;
+  }
+}
+
 @media (max-width: 1200px) {
   .widget-col-2,
   .widget-col-4,

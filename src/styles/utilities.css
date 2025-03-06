@@ -17,6 +17,19 @@
   justify-content: space-between;
 }
 
+/* Improved content containers */
+.widget-content {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.75rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dark .widget-content {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
 /* Sizing utilities */
 .w-full {
   width: 100%;
@@ -40,6 +53,9 @@
 }
 .p-4 {
   padding: 1rem;
+}
+.p-5 {
+  padding: 1.25rem;
 }
 .p-6 {
   padding: 1.5rem;
@@ -123,6 +139,12 @@
 }
 .gap-4 {
   gap: 1rem;
+}
+.gap-5 {
+  gap: 1.25rem;
+}
+.gap-6 {
+  gap: 1.5rem;
 }
 .pl-5 {
   padding-left: 1.25rem;
@@ -443,4 +465,32 @@
 }
 .text-purple-800 {
   color: #6b21a8;
+}
+
+/* Special container for widget sections */
+.section-container {
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  background-color: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dark .section-container {
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Enhanced hover effects */
+.hover-lift {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dark .hover-lift:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }

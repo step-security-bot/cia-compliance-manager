@@ -4,8 +4,8 @@
 .widget {
   background-color: var(--card-background);
   border: 1px solid var(--border-color);
-  box-shadow: 0 4px 6px var(--shadow-color);
-  border-radius: 0.5rem;
+  box-shadow: 0 6px 12px var(--shadow-color);
+  border-radius: 0.75rem;
   overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
   margin-bottom: 1rem;
@@ -54,11 +54,11 @@
 
 /* Target actual DOM structure for widget headers */
 [data-testid$="-header"] {
-  padding: 0.75rem 1rem !important;
+  padding: 1rem 1.25rem !important;
   border-bottom: 1px solid var(--border-color) !important;
   background: linear-gradient(
     to right,
-    rgba(0, 102, 51, 0.05),
+    rgba(0, 102, 51, 0.08),
     rgba(0, 136, 68, 0.05)
   ) !important;
   background-color: var(--header-bg) !important;
@@ -69,18 +69,19 @@
   position: sticky !important;
   top: 0 !important;
   z-index: 10 !important;
-  border-top-left-radius: 0.5rem !important;
-  border-top-right-radius: 0.5rem !important;
+  border-top-left-radius: 0.75rem !important;
+  border-top-right-radius: 0.75rem !important;
   margin-bottom: 0 !important;
-  padding-bottom: 0.75rem !important;
+  padding-bottom: 1rem !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
 }
 
 /* Widget header title styles */
 [data-testid$="-header"] h3 {
   margin: 0 !important;
   color: var(--primary-color) !important;
-  font-size: 0.9rem !important;
-  letter-spacing: 0.05em !important;
+  font-size: 1rem !important;
+  letter-spacing: 0.03em !important;
   text-transform: uppercase !important;
   font-weight: 600 !important;
   display: flex !important;
@@ -92,7 +93,7 @@
 .dark [data-testid$="-header"] {
   background: linear-gradient(
     to right,
-    rgba(0, 204, 102, 0.1),
+    rgba(0, 204, 102, 0.15),
     rgba(0, 187, 119, 0.1)
   ) !important;
   border-bottom: 1px solid var(--primary-color) !important;
@@ -109,13 +110,12 @@
 
 /* Widget body and content styles - keep these unchanged */
 .widget-body {
-  padding: 1rem;
+  padding: calc(var(--spacing-md) + 0.25rem) !important;
   flex: 1;
   overflow: auto;
   flex: 1 1 auto !important;
   overflow-y: auto !important;
   overflow-x: hidden !important;
-  padding: var(--spacing-md) !important;
   display: flex !important;
   flex-direction: column !important;
   max-height: calc(100% - 60px) !important;
@@ -147,12 +147,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 1.5rem;
+  padding: 1.25rem 1.75rem;
   background-color: var(--card-background);
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 5px var(--shadow-color);
-  margin-bottom: 1.5rem;
-  border-bottom: 2px solid var(--primary-color);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 8px var(--shadow-color);
+  margin-bottom: 1.75rem;
+  border-bottom: 3px solid var(--primary-color);
 }
 
 .app-title h1 {
@@ -167,12 +167,13 @@
 
 /* Button styling */
 button {
-  border-radius: 3px;
-  font-weight: 500;
-  transition: all 0.2s;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.15s;
   background-color: #f0f0f0;
   border: 1px solid #ccc;
   color: #333;
+  padding: 0.5rem 1rem;
 }
 
 button:hover {
