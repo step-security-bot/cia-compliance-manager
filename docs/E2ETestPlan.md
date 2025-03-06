@@ -53,7 +53,7 @@ it("displays compliance status for regulatory requirements", () => {
   // Verify compliance status with flexible approach
   cy.get("body").then(($body) => {
     const pageText = $body.text();
-    const hasHighComplianceIndicators = 
+    const hasHighComplianceIndicators =
       pageText.toLowerCase().includes("compliant") ||
       pageText.toLowerCase().includes("compliance") ||
       pageText.toLowerCase().includes("framework");
@@ -523,11 +523,13 @@ after(() => {
 ## Continuous Improvement
 
 1. **Stability Improvements**:
+
    - Implement automatic retries for flaky tests
    - Use consistent waiting strategies
    - Implement fallback selectors
 
 2. **Performance Optimization**:
+
    - Group related tests to reduce page loads
    - Use focused test runs during development
    - Optimize selectors for faster targeting
