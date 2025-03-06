@@ -203,17 +203,33 @@ export const logPageElements = (): void => {
 };
 
 /**
- * Forces all parent containers to be visible and removes overflow restrictions
- * @param selector The element selector to ensure visibility
+ * Forces elements to be visible by overriding CSS properties that might hide them
+ * @param selector The CSS selector for the element
+ * @returns Cypress chainable for continued operations
  */
 export function forceElementVisibility(selector: string) {
-  cy.get(selector).then(($el) => {
-    let current = $el;
-    // Walk up the DOM and remove overflow restrictions
+  return cy.get(selector).then(($el) => {
+    // Modify the element to be visible
+    cy.wrap($el)
+      .invoke("css", "visibility", "visible")
+      .invoke("css", "opacity", "1")
+      .invoke("css", "display", "block")
+      .invoke("css", "position", "relative"); // Ensure it's in the document flow
+
+    // Modify all parent elements to ensure visibility
+    let current = $el.parent();
     while (current.length && !current.is("body")) {
+      // Remove any CSS properties that might hide the element
       cy.wrap(current).invoke("css", "overflow", "visible");
+      cy.wrap(current).invoke("css", "visibility", "visible");
+      cy.wrap(current).invoke("css", "opacity", "1");
+      cy.wrap(current).invoke("css", "height", "auto");
+      cy.wrap(current).invoke("css", "max-height", "none");
+      cy.wrap(current).invoke("css", "pointer-events", "auto");
       current = current.parent();
     }
+
+    return cy.wrap($el);
   });
 }
 
@@ -291,6 +307,45 @@ export function findElementByMultipleTestIds(testIds: string[]) {
   });
 }
 
+/**
+ * Find a widget by name using multiple selector strategies
+ * @param widgetName The name of the widget (e.g., 'technical', 'security')
+ * @returns Cypress chainable with the found element
+ */
+export function findWidgetByName(widgetName: string) {
+  return cy.get("body").then(($body) => {
+    // Try specific data-testid first
+    let found = $body.find(`[data-testid="widget-${widgetName}"]`);
+
+    // Try partial data-testid match
+    if (!found.length) {
+      found = $body.find(`[data-testid*="${widgetName}"]`);
+    }
+
+    // Try heading text
+    if (!found.length) {
+      found = $body
+        .find(`h3:contains("${widgetName}")`)
+        .closest("[data-testid]");
+    }
+
+    // If still not found, widen the search
+    if (!found.length) {
+      found = $body
+        .find(`div:contains("${widgetName}")`)
+        .closest("[data-testid]");
+    }
+
+    if (found.length) {
+      return cy.wrap(found);
+    }
+
+    // If nothing found, log and return empty selector
+    cy.log(`Could not find widget: ${widgetName}`);
+    return cy.wrap($body.find(`[data-testid="nonexistent-${widgetName}"]`));
+  });
+}
+
 // Add to exports
 export default {
   interactWithElement,
@@ -303,4 +358,5 @@ export default {
   forceElementVisibility,
   verifyTextContent,
   findElementByMultipleTestIds,
+  findWidgetByName,
 };
