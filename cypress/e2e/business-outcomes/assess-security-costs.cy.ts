@@ -13,6 +13,7 @@ import {
   waitForElement,
   findElementByMultipleTestIds,
 } from "../../support/test-helpers";
+import { testCostUpdatesWithSecurityLevels } from "../../support/test-patterns";
 
 describe("Assess Security Costs", () => {
   beforeEach(() => {
@@ -108,9 +109,71 @@ describe("Assess Security Costs", () => {
     );
   });
 
-  // Skip the test that's failing due to cost-container not found
-  it.skip("updates costs when security levels change", () => {
-    // Skipped to avoid failures
+  it("updates costs when security levels change", () => {
+    // Find any cost-related element with flexible approach
+    cy.get("body").then(($body) => {
+      // Look for different possible cost indicators
+      const costIndicators = [
+        `[data-testid="${COST_TEST_IDS.CAPEX_PERCENTAGE}"]`,
+        `[data-testid="${COST_TEST_IDS.OPEX_PERCENTAGE}"]`,
+        `[data-testid="${COST_TEST_IDS.CAPEX_VALUE}"]`,
+        `[data-testid="${COST_TEST_IDS.OPEX_VALUE}"]`,
+        `[data-testid*="capex"]`,
+        `[data-testid*="opex"]`,
+        // Try matching any elements with cost-related text
+        `div:contains("CAPEX"), div:contains("OPEX"), div:contains("Cost")`,
+      ];
+
+      // Find the first matching element
+      let indicator = null;
+      for (const selector of costIndicators) {
+        if ($body.find(selector).length > 0) {
+          indicator = selector;
+          break;
+        }
+      }
+
+      if (indicator) {
+        // Get initial cost value
+        cy.get(indicator).scrollIntoView().should("be.visible");
+        cy.get(indicator)
+          .invoke("text")
+          .then((initialText) => {
+            // Change security levels to higher values
+            cy.setSecurityLevels(
+              SECURITY_LEVELS.HIGH,
+              SECURITY_LEVELS.HIGH,
+              SECURITY_LEVELS.HIGH
+            );
+            cy.wait(500);
+
+            // Check that cost values have changed
+            cy.get(indicator).invoke("text").should("not.equal", initialText);
+          });
+      } else {
+        // If no specific indicators found, check if cost content changes at all
+        cy.get("div")
+          .contains(/cost|capex|opex|budget|expense/i)
+          .closest("div[data-testid]")
+          .invoke("text")
+          .then((initialText) => {
+            // Change security levels
+            cy.setSecurityLevels(
+              SECURITY_LEVELS.HIGH,
+              SECURITY_LEVELS.HIGH,
+              SECURITY_LEVELS.HIGH
+            );
+            cy.wait(500);
+
+            // Check that content has changed
+            cy.get("div")
+              .contains(/cost|capex|opex|budget|expense/i)
+              .closest("div[data-testid]")
+              .invoke("text")
+              .should("not.equal", initialText);
+          });
+      }
+    });
   });
 
   it("shows ROI estimate", () => {

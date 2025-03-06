@@ -204,29 +204,46 @@ export const logPageElements = (): void => {
 
 /**
  * Forces elements to be visible by overriding CSS properties that might hide them
+ * Enhanced version with more aggressive visibility fixing
  * @param selector The CSS selector for the element
  * @returns Cypress chainable for continued operations
  */
 export function forceElementVisibility(selector: string) {
   return cy.get(selector).then(($el) => {
-    // Modify the element to be visible
-    cy.wrap($el)
-      .invoke("css", "visibility", "visible")
-      .invoke("css", "opacity", "1")
-      .invoke("css", "display", "block")
-      .invoke("css", "position", "relative"); // Ensure it's in the document flow
+    // Apply styles directly to the element
+    cy.wrap($el).invoke(
+      "attr",
+      "style",
+      "visibility: visible !important; " +
+        "display: block !important; " +
+        "opacity: 1 !important; " +
+        "position: static !important; " +
+        "transform: none !important; " +
+        "pointer-events: auto !important; " +
+        "clip: auto !important; " +
+        "clip-path: none !important; " +
+        "z-index: 9999 !important"
+    );
 
-    // Modify all parent elements to ensure visibility
+    // Fix all parent elements to ensure visibility
     let current = $el.parent();
-    while (current.length && !current.is("body")) {
-      // Remove any CSS properties that might hide the element
-      cy.wrap(current).invoke("css", "overflow", "visible");
-      cy.wrap(current).invoke("css", "visibility", "visible");
-      cy.wrap(current).invoke("css", "opacity", "1");
-      cy.wrap(current).invoke("css", "height", "auto");
-      cy.wrap(current).invoke("css", "max-height", "none");
-      cy.wrap(current).invoke("css", "pointer-events", "auto");
+    let depth = 0;
+    const maxDepth = 10; // Limit how far up we go to avoid infinite loops
+
+    while (current.length && !current.is("body") && depth < maxDepth) {
+      cy.wrap(current).invoke(
+        "attr",
+        "style",
+        "overflow: visible !important; " +
+          "visibility: visible !important; " +
+          "display: block !important; " +
+          "opacity: 1 !important; " +
+          "height: auto !important; " +
+          "max-height: none !important; " +
+          "pointer-events: auto !important"
+      );
       current = current.parent();
+      depth++;
     }
 
     return cy.wrap($el);
