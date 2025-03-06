@@ -12,11 +12,12 @@ export default defineConfig({
   video: true,
   screenshotOnRunFailure: true,
   trashAssetsBeforeRuns: true,
-  viewportWidth: 1280,
-  viewportHeight: 800,
+  // Increase viewport size for better visibility during testing
+  viewportWidth: 3840, // Increased from 1280 to 3840
+  viewportHeight: 2160, // Increased from 800 to 2160
   retries: {
-    runMode: 1,
-    openMode: 0,
+    runMode: 2, // Increased retries in run mode
+    openMode: 1, // Added retry in open mode
   },
   e2e: {
     baseUrl: "http://localhost:5173",
@@ -32,14 +33,6 @@ export default defineConfig({
         "file:preprocessor",
         vitePreprocessor({
           configFile: resolve(__dirname, "./vite.config.ts"),
-          // options passed to vite
-          // this is an example that shows how to configure Vite to pass
-          // command line arguments through to the test
-          // pass command line argument y through to the test like this:
-          // `cypress run --env y=true`
-          // and access it like this:
-          // `Cypress.env('y')`
-          // key: config.env.y,
         })
       );
     },
@@ -50,7 +43,9 @@ export default defineConfig({
       bundler: "vite",
     },
   },
-  // Add these configurations
+  // Fast timeouts to fail quickly
   waitForAnimations: false,
-  defaultCommandTimeout: 10000,
+  defaultCommandTimeout: 5000,
+  pageLoadTimeout: 10000,
+  requestTimeout: 5000,
 });

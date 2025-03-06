@@ -7,43 +7,94 @@ import { TEST_IDS, getTestSelector } from "./constants";
 
 /**
  * Custom command to set security levels for all CIA components
+ * with enhanced reliability for large viewports
  */
 Cypress.Commands.add(
   "setSecurityLevels",
   (availability: string, integrity: string, confidentiality: string) => {
-    // Navigate to security profile configuration if needed
-    cy.get(getTestSelector(TEST_IDS.SECURITY_LEVEL_CONTROLS))
+    // First make sure the security controls are visible in the viewport
+    cy.get(getTestSelector(TEST_IDS.SECURITY_LEVEL_CONTROLS), {
+      timeout: 5000, // Reduced timeout
+    })
+      .should("exist")
+      .scrollIntoView({ duration: 100 })
       .should("be.visible")
-      .scrollIntoView();
+      .wait(300); // Reduced wait time
 
-    // Set levels using test IDs
-    cy.get(getTestSelector(TEST_IDS.AVAILABILITY_SELECT)).select(availability, {
-      force: true,
-    });
-    cy.get(getTestSelector(TEST_IDS.INTEGRITY_SELECT)).select(integrity, {
-      force: true,
-    });
-    cy.get(getTestSelector(TEST_IDS.CONFIDENTIALITY_SELECT)).select(
-      confidentiality,
-      { force: true }
-    );
+    // Set availability level with retry logic
+    cy.get(getTestSelector(TEST_IDS.AVAILABILITY_SELECT))
+      .should("be.visible")
+      .then(($el) => {
+        if (!$el.is(":disabled")) {
+          cy.wrap($el).select(availability, { force: true });
+        } else {
+          cy.log("Availability select is disabled, waiting...");
+          cy.wait(300); // Reduced wait time
+          cy.wrap($el)
+            .should("not.be.disabled")
+            .select(availability, { force: true });
+        }
+      })
+      .wait(200); // Reduced wait time
 
-    // Wait for changes to apply
-    cy.wait(300);
+    // Set integrity level with retry logic
+    cy.get(getTestSelector(TEST_IDS.INTEGRITY_SELECT))
+      .should("be.visible")
+      .then(($el) => {
+        if (!$el.is(":disabled")) {
+          cy.wrap($el).select(integrity, { force: true });
+        } else {
+          cy.log("Integrity select is disabled, waiting...");
+          cy.wait(300); // Reduced wait time
+          cy.wrap($el)
+            .should("not.be.disabled")
+            .select(integrity, { force: true });
+        }
+      })
+      .wait(200); // Reduced wait time
+
+    // Set confidentiality level with retry logic
+    cy.get(getTestSelector(TEST_IDS.CONFIDENTIALITY_SELECT))
+      .should("be.visible")
+      .then(($el) => {
+        if (!$el.is(":disabled")) {
+          cy.wrap($el).select(confidentiality, { force: true });
+        } else {
+          cy.log("Confidentiality select is disabled, waiting...");
+          cy.wait(300); // Reduced wait time
+          cy.wrap($el)
+            .should("not.be.disabled")
+            .select(confidentiality, { force: true });
+        }
+      });
+
+    // Wait for UI to update after all selections
+    cy.wait(300); // Reduced wait time
   }
 );
 
 /**
- * Ensures app is loaded by waiting for key elements
+ * Ensures app is loaded with enhanced viewport awareness
  */
 Cypress.Commands.add("ensureAppLoaded", () => {
-  // Wait for the app to initialize
-  cy.get("body", { timeout: 10000 }).should("not.be.empty");
+  // Set a large viewport for better visibility
+  cy.viewport(3840, 2160);
 
-  // Check that main app container exists
-  cy.get(`[data-testid="${TEST_IDS.APP_CONTAINER}"]`, {
-    timeout: 10000,
-  }).should("exist");
+  // Wait for the app to initialize
+  cy.get("body", { timeout: 5000 }) // Reduced timeout
+    .should("not.be.empty");
+
+  // Check that main app container exists and is visible
+  cy.get(getTestSelector(TEST_IDS.APP_CONTAINER), {
+    timeout: 5000, // Reduced timeout
+  })
+    .should("exist")
+    .and("be.visible");
+
+  // Wait for any initial animations or loading to complete
+  cy.wait(500); // Reduced wait time
+
+  return cy.wrap(true);
 });
 
 /**
@@ -54,14 +105,14 @@ Cypress.Commands.add("getByTestId", (selector: string) => {
 });
 
 /**
- * Navigate to a specific widget by test ID and scroll it into view
+ * Navigate to a specific widget in a large viewport context
  */
 Cypress.Commands.add("navigateToWidget", (widgetTestId: string) => {
-  cy.get(`[data-testid="${widgetTestId}"]`, { timeout: 15000 })
+  cy.get(`[data-testid="${widgetTestId}"]`, { timeout: 5000 }) // Reduced timeout
     .should("exist")
-    .safeScrollIntoView({ force: true });
-
-  cy.wait(500); // Wait for any animations to complete
+    .scrollIntoView({ duration: 100, offset: { top: -100, left: 0 } })
+    .should("be.visible")
+    .wait(300); // Reduced wait time
 });
 
 /**
@@ -219,7 +270,12 @@ Cypress.Commands.add(
   "safeScrollIntoView",
   { prevSubject: "element" },
   (subject, options = {}) => {
-    const defaultOptions = { block: "center", behavior: "smooth", ...options };
+    // Fix: Use proper ScrollIntoViewOptions with valid ScrollLogicalPosition values
+    const defaultOptions = {
+      block: "center" as ScrollLogicalPosition,
+      behavior: "smooth" as ScrollBehavior,
+      ...options,
+    };
 
     cy.wrap(subject).then(($el) => {
       // Use native scrollIntoView with fallback

@@ -2,6 +2,8 @@ import "./commands";
 import { mount } from "cypress/react";
 import "@testing-library/cypress/add-commands";
 import { TEST_IDS } from "../../src/constants/testIds";
+// Import debug helpers
+import "./debug-helpers";
 
 Cypress.on("uncaught:exception", (err) => {
   console.log("Uncaught exception:", err);
@@ -13,10 +15,16 @@ Cypress.Commands.add("mount", mount);
 Cypress.Commands.add("checkTheme", (isDark: boolean) => {
   if (isDark) {
     cy.get("#root").should("have.class", "dark");
-    cy.get(`[data-testid="${TEST_IDS.THEME_TOGGLE}"]`).should("contain.text", "Light Mode");
+    cy.get(`[data-testid="${TEST_IDS.THEME_TOGGLE}"]`).should(
+      "contain.text",
+      "Light Mode"
+    );
   } else {
     cy.get("#root").should("not.have.class", "dark");
-    cy.get(`[data-testid="${TEST_IDS.THEME_TOGGLE}"]`).should("contain.text", "Dark Mode");
+    cy.get(`[data-testid="${TEST_IDS.THEME_TOGGLE}"]`).should(
+      "contain.text",
+      "Dark Mode"
+    );
   }
 });
 
@@ -39,15 +47,24 @@ Cypress.Commands.add(
 
     cy.get(`[data-testid="${TEST_IDS.SECURITY_LEVEL_CONTROLS}"]`).within(() => {
       if (availability) {
-        cy.get(`[data-testid="${TEST_IDS.AVAILABILITY_SELECT}"]`).select(availability, { force: true });
+        cy.get(`[data-testid="${TEST_IDS.AVAILABILITY_SELECT}"]`).select(
+          availability,
+          { force: true }
+        );
       }
 
       if (integrity) {
-        cy.get(`[data-testid="${TEST_IDS.INTEGRITY_SELECT}"]`).select(integrity, { force: true });
+        cy.get(`[data-testid="${TEST_IDS.INTEGRITY_SELECT}"]`).select(
+          integrity,
+          { force: true }
+        );
       }
 
       if (confidentiality) {
-        cy.get(`[data-testid="${TEST_IDS.CONFIDENTIALITY_SELECT}"]`).select(confidentiality, { force: true });
+        cy.get(`[data-testid="${TEST_IDS.CONFIDENTIALITY_SELECT}"]`).select(
+          confidentiality,
+          { force: true }
+        );
       }
     });
 
