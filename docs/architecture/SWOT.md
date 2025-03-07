@@ -17,6 +17,19 @@ quadrantChart
     quadrant-2 Strengths
     quadrant-3 Weaknesses
     quadrant-4 Threats
+
+    "CIA Security Model": [0.2, 0.8]
+    "Component Architecture": [0.3, 0.7]
+    "Modern Tech Stack": [0.1, 0.6]
+    "Application Complexity": [0.3, 0.3]
+    "Performance Limitations": [0.2, 0.2]
+    "Single-User Focus": [0.4, 0.2]
+    "Growing Security Market": [0.7, 0.9]
+    "Integration Potential": [0.8, 0.7]
+    "AI Enhancement": [0.9, 0.8]
+    "Evolving Security Landscape": [0.7, 0.2]
+    "Competitive Products": [0.8, 0.3]
+    "Regulatory Changes": [0.9, 0.1]
 ```
 
 ## Strengths (Internal Positive)
