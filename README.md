@@ -226,6 +226,33 @@ The application provides both aggregated and detailed views of cost estimates, a
 - **Reporting and Documentation**: Generate comprehensive reports for stakeholders at technical and executive levels
 - **ROI Calculator**: Measure return on investment for security implementations against potential breach costs
 
+
+# Documentation Resources
+
+### Architecture Documentation
+
+Our architecture documentation provides multiple views and perspectives on the CIA Compliance Manager's design and implementation:
+
+- [**C4 Model Architecture**](docs/architecture/ARCHITECTURE.md) - Visualizes the system at different levels of abstraction using C4 modeling (Context, Container, Component, and Dynamic diagrams)
+- [**State Diagrams**](docs/architecture/STATEDIAGRAM.md) - Illustrates key states and transitions for security profiles and compliance status
+- [**Mindmaps**](docs/architecture/MINDMAP.md) - Provides hierarchical visualizations of system structure, technical implementation, and business value
+- [**SWOT Analysis**](docs/architecture/SWOT.md) - Strategic assessment of Strengths, Weaknesses, Opportunities, and Threats with priority matrix
+- [**Process Flowcharts**](docs/architecture/FLOWCHART.md) - Illustrates key workflows like security assessment and compliance evaluation
+
+### API & Component Documentation
+
+- [**API Documentation**](https://hack23.github.io/cia-compliance-manager/api) - Complete reference for all exported interfaces, types, constants, and functions, including:
+  - Core data models (CIALevel, BusinessImpact, ComplianceFramework)
+  - Widget component props and definitions
+  - Security level calculations and utilities
+  - Test helpers and mock implementations
+
+- [**Diagrams Documentation**](https://hack23.github.io/cia-compliance-manager/diagrams) - Visual reference for key data models and relationships, including:
+  - CIA security level structures and relationships
+  - Business impact categorization
+  - Compliance framework mappings
+  - Security implementation patterns
+
 # Project Technology Stack Overview
 
 This document provides a high-level overview of the key technologies used within the CIA (Confidentiality, Integrity, Availability) Impact Analysis application. Each technology plays a vital role in supporting the application's security assessment capabilities.
