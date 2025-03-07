@@ -60,7 +60,10 @@ export function testTabbedInterface(tabListSelector: string, tabIds: string[]) {
  */
 export function testCostUpdatesWithSecurityLevels(
   costElementSelector: string,
-  securityLevels: { low: string[]; high: string[] }
+  securityLevels: {
+    low: [string, string, string];
+    high: [string, string, string];
+  }
 ) {
   // Start with low security
   cy.setSecurityLevels(...securityLevels.low);
@@ -86,7 +89,10 @@ export function testCostUpdatesWithSecurityLevels(
  */
 export function testComplianceStatus(
   complianceElementSelector: string,
-  securityLevels: { low: string[]; high: string[] }
+  securityLevels: {
+    low: [string, string, string];
+    high: [string, string, string];
+  }
 ) {
   // Test with low security first
   cy.setSecurityLevels(...securityLevels.low);

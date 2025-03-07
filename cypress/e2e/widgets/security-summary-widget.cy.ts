@@ -78,11 +78,12 @@ describe("Security Summary Widget", () => {
         // Add type annotation to current and additional null checks
         let current: JQuery<HTMLElement> | null = el;
         while (current && current.length && !current.is("body")) {
-          // Add safety check before calling methods on current
+          // Fix the TypeScript error by using a safe approach without optional chaining
           if (current) {
-            current.css("overflow", "visible");
-            current.css("display", "block");
-            current.css("visibility", "visible");
+            const currentElement = current; // Create a stable reference
+            currentElement.css("overflow", "visible");
+            currentElement.css("display", "block");
+            currentElement.css("visibility", "visible");
           }
           current = current.parent();
         }

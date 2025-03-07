@@ -1,0 +1,21 @@
+{
+  "entryPoints": ["src"],
+  "entryPointStrategy": "expand",
+  "out": "docs/api",
+  "name": "CIA Compliance Manager API Documentation",
+  "includeVersion": true,
+  "categorizeByGroup": true,
+  "categoryOrder": ["CIA Model", "Components", "Utilities", "*"],
+  "plugin": ["typedoc-plugin-merge-modules", "typedoc-plugin-mermaid"],
+  "exclude": ["**/*.test.ts", "**/*.test.tsx", "**/node_modules/**"],
+  "excludeExternals": true,
+  "excludePrivate": false,
+  "excludeProtected": false,
+  "excludeInternal": false,
+  "externalSymbolLinkMappings": {
+    "react": {
+      "Component": "https://react.dev/reference/react/Component",
+      "ReactNode": "https://react.dev/reference/react/ReactNode"
+    }
+  }
+}

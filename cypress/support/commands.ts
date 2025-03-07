@@ -322,13 +322,29 @@ Cypress.Commands.add(
  * List JUnit files in the results directory
  */
 Cypress.Commands.add("listJunitFiles", () => {
-  cy.task("listJunitFiles").then((files) => {
-    cy.log(`Found ${files.length} JUnit files:`);
-    files.forEach((file: string) => {
-      cy.log(`- ${file}`);
-    });
+  cy.task<string[]>("listJunitFiles").then((files) => {
+    if (Array.isArray(files)) {
+      // Now TypeScript knows files is a string array
+      console.log(`Found ${files.length} JUnit files`);
+      return files;
+    }
+    return [];
   });
 });
+
+// Add type declaration for listJunitFiles and fix type issues with 'files'
+
+// Add this near the top of the file, after imports but before command definitions
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      /**
+       * Custom command to list JUnit files
+       */
+      listJunitFiles(): Chainable<string[]>;
+    }
+  }
+}
 
 // Define a custom type definition for the Chainable interface
 declare global {

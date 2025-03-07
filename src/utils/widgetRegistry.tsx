@@ -15,7 +15,7 @@ export interface WidgetDefinition {
 }
 
 // Class to manage available widgets and their configurations
-class WidgetRegistry {
+export class WidgetRegistry {
   private widgets: Map<string, WidgetDefinition> = new Map();
 
   // Register a widget with the system
@@ -38,7 +38,8 @@ class WidgetRegistry {
       // Handle undefined order values safely
       const orderA = typeof a.order === "number" ? a.order : 999;
       const orderB = typeof b.order === "number" ? b.order : 999;
-      return orderA - orderB;
+      // Ensure we're working with numbers for the subtraction
+      return (orderA || 999) - (orderB || 999);
     });
   }
 

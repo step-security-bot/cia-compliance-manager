@@ -25,7 +25,9 @@
     "cypress:verify": "cypress verify",
     "test:ci": "cross-env CI=true vitest run --coverage",
     "cypress:open:with-server": "start-server-and-test 'vite --port 5173' http://localhost:5173 'cypress open'",
-    "merge-test-reports": "node --experimental-json-modules ./cypress/support/plugins/merge-reports.js"
+    "merge-test-reports": "node --experimental-json-modules ./cypress/support/plugins/merge-reports.js",
+    "docs": "typedoc --out docs/api src --entryPointStrategy expand --excludeExternals",
+    "docs:uml": "typedoc --plugin typedoc-plugin-mermaid --out docs/diagrams --entryPoints src/types/cia.ts"
   },
   "browserslist": {
     "production": [
@@ -60,12 +62,15 @@
     "cypress-junit-reporter": "^1.3.1",
     "cypress-react-selector": "^3.0.0",
     "cypress-real-events": "1.14.0",
-    "cypress-vite": "^1.5.0",
+    "cypress-vite": "^1.6.0",
     "cypress-wait-until": "3.0.2",
     "jsdom": "26.0.0",
     "postcss": "^8.5.3",
     "start-server-and-test": "^2.0.10",
-    "tailwindcss": "^4.0.9",
+    "tailwindcss": "^4.0.11",
+    "typedoc": "^0.27.9",
+    "typedoc-plugin-merge-modules": "^6.1.0",
+    "typedoc-plugin-mermaid": "^1.12.0",
     "vite": "^6.2.0",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "3.0.8"
