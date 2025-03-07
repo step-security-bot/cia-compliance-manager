@@ -26,8 +26,13 @@
     "test:ci": "cross-env CI=true vitest run --coverage",
     "cypress:open:with-server": "start-server-and-test 'vite --port 5173' http://localhost:5173 'cypress open'",
     "merge-test-reports": "node --experimental-json-modules ./cypress/support/plugins/merge-reports.js",
-    "docs": "typedoc --out docs/api src --entryPointStrategy expand --excludeExternals",
-    "docs:uml": "typedoc --plugin typedoc-plugin-mermaid --out docs/diagrams --entryPoints src/types/cia.ts"
+    "docs": "typedoc --options typedoc.enhanced.json",
+    "docs:uml": "typedoc --options typedoc.uml.json",
+    "docs:markdown": "typedoc --plugin typedoc-plugin-markdown --out docs/markdown src",
+    "docs:dependencies": "mkdir -p docs/dependencies && depcruise --config .dependency-cruiser.cjs --output-type dot src | dot -T svg > docs/dependencies/module-dependencies.svg || echo 'Dependency diagram generation failed - continuing' && touch docs/dependencies/module-dependencies.svg",
+    "docs:bundle": "npm run docs && npm run docs:uml && npm run docs:dependencies && npm run docs:architecture",
+    "docs:architecture": "node scripts/generate-architecture-diagrams.js",
+    "docs:coverage-summary": "echo 'Documentation coverage report is not available.' > docs/coverage-summary.txt"
   },
   "browserslist": {
     "production": [
@@ -64,11 +69,15 @@
     "cypress-real-events": "1.14.0",
     "cypress-vite": "^1.6.0",
     "cypress-wait-until": "3.0.2",
+    "dependency-cruiser": "^16.10.0",
     "jsdom": "26.0.0",
+    "madge": "^8.0.0",
     "postcss": "^8.5.3",
     "start-server-and-test": "^2.0.10",
     "tailwindcss": "^4.0.11",
     "typedoc": "^0.27.9",
+    "typedoc-plugin-coverage": "^3.4.1",
+    "typedoc-plugin-markdown": "^4.4.2",
     "typedoc-plugin-merge-modules": "^6.1.0",
     "typedoc-plugin-mermaid": "^1.12.0",
     "vite": "^6.2.1",

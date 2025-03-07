@@ -1,0 +1,10 @@
+{
+  "entryPoints": ["src/types/cia.ts", "src/constants/index.ts"],
+  "entryPointStrategy": "expand",
+  "out": "docs/diagrams",
+  "name": "CIA Compliance Manager Diagrams",
+  "includeVersion": true,
+  "plugin": ["typedoc-plugin-mermaid", "typedoc-plugin-markdown"],
+  "excludeExternals": false,
+  "mermaidVersion": "10.6.1"
+}
