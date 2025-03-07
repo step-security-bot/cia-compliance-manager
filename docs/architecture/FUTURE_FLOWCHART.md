@@ -2,11 +2,32 @@
 
 This document illustrates key process flows and decision trees planned for the future evolution of the CIA Compliance Manager, focusing on context-aware assessment, machine learning enhancements, and integration capabilities.
 
+## 📚 Related Architecture Documentation
+
+<div class="documentation-map">
+
+| Document                                            | Focus           | Description                               |
+| --------------------------------------------------- | --------------- | ----------------------------------------- |
+| **[Current Architecture](ARCHITECTURE.md)**         | 🏛️ Architecture | C4 model showing current system structure |
+| **[Future Architecture](FUTURE_ARCHITECTURE.md)**   | 🏛️ Architecture | Vision for context-aware platform         |
+| **[State Diagrams](STATEDIAGRAM.md)**               | 🔄 Behavior     | Current system state transitions          |
+| **[Future State Diagrams](FUTURE_STATEDIAGRAM.md)** | 🔄 Behavior     | Enhanced adaptive state transitions       |
+| **[Process Flowcharts](FLOWCHART.md)**              | 🔄 Process      | Current security workflows                |
+| **[Mindmaps](MINDMAP.md)**                          | 🧠 Concept      | Current system component relationships    |
+| **[Future Mindmaps](FUTURE_MINDMAP.md)**            | 🧠 Concept      | Future capability evolution               |
+| **[SWOT Analysis](SWOT.md)**                        | 💼 Business     | Current strategic assessment              |
+| **[Future SWOT Analysis](FUTURE_SWOT.md)**          | 💼 Business     | Future strategic opportunities            |
+| **[CI/CD Workflows](WORKFLOWS.md)**                 | 🔧 DevOps       | Current automation processes              |
+| **[Future Workflows](FUTURE_WORKFLOWS.md)**         | 🔧 DevOps       | Enhanced CI/CD with ML                    |
+| **[Future Data Model](FUTURE_DATA_MODEL.md)**       | 📊 Data         | Context-aware data architecture           |
+
+</div>
+
 ## Context-Aware Security Assessment Flow
 
-**Business Focus:** Maps the enhanced decision process that incorporates organizational context parameters to deliver tailored security recommendations.
+**💼 Business Focus:** Maps the enhanced decision process that incorporates organizational context parameters to deliver tailored security recommendations.
 
-**User Experience Focus:** Shows how the assessment experience will evolve to collect contextual data and use it to generate organization-specific guidance.
+**👤 User Experience Focus:** Shows how the assessment experience will evolve to collect contextual data and use it to generate organization-specific guidance.
 
 ```mermaid
 flowchart TD
@@ -52,9 +73,9 @@ flowchart TD
 
 ## Machine Learning-Enhanced Recommendation Flow
 
-**Intelligence Focus:** Illustrates how the recommendation engine will be enhanced with machine learning to deliver increasingly accurate and relevant recommendations over time.
+**🧠 Intelligence Focus:** Illustrates how the recommendation engine will be enhanced with machine learning to deliver increasingly accurate and relevant recommendations over time.
 
-**Learning Focus:** Shows the continuous learning loop that improves recommendations based on implementation outcomes and user feedback.
+**🔄 Learning Focus:** Shows the continuous learning loop that improves recommendations based on implementation outcomes and user feedback.
 
 ```mermaid
 flowchart TD
@@ -97,9 +118,9 @@ flowchart TD
 
 ## Integration Ecosystem Workflow
 
-**Integration Focus:** Shows how the CIA Compliance Manager will interact with external tools and systems to create a comprehensive security management ecosystem.
+**🔌 Integration Focus:** Shows how the CIA Compliance Manager will interact with external tools and systems to create a comprehensive security management ecosystem.
 
-**Data Flow Focus:** Illustrates the bidirectional data flows between the CIA Compliance Manager and other enterprise systems.
+**📊 Data Flow Focus:** Illustrates the bidirectional data flows between the CIA Compliance Manager and other enterprise systems.
 
 ```mermaid
 flowchart TD
@@ -147,9 +168,9 @@ flowchart TD
 
 ## Continuous Compliance Monitoring Process
 
-**Compliance Focus:** Illustrates how the system will evolve to provide continuous compliance monitoring rather than point-in-time assessments.
+**📋 Compliance Focus:** Illustrates how the system will evolve to provide continuous compliance monitoring rather than point-in-time assessments.
 
-**Operational Focus:** Shows the automated monitoring and detection processes that maintain ongoing compliance visibility.
+**🔄 Operational Focus:** Shows the automated monitoring and detection processes that maintain ongoing compliance visibility.
 
 ```mermaid
 flowchart TD
@@ -198,9 +219,9 @@ flowchart TD
 
 ## Adaptive Security Decision Tree
 
-**Adaptability Focus:** Shows the decision logic that will adjust security recommendations based on changing business and threat landscapes.
+**🔄 Adaptability Focus:** Shows the decision logic that will adjust security recommendations based on changing business and threat landscapes.
 
-**Decision Making Focus:** Illustrates the complex decision matrix that drives adaptive security recommendations.
+**🧠 Decision Making Focus:** Illustrates the complex decision matrix that drives adaptive security recommendations.
 
 ```mermaid
 flowchart TD
@@ -248,12 +269,14 @@ flowchart TD
     class I update
 ```
 
+<div class="diagram-legend">
 These flowcharts provide a detailed view of how the CIA Compliance Manager will evolve to incorporate context awareness, machine learning, integration capabilities, continuous monitoring, and adaptive security decision-making. They show the complex processes and decision pathways that will enable the system to provide increasingly tailored and relevant security recommendations as it matures.
 
 The color coding across diagrams helps to identify similar process stages:
 
-- Blue shades for core processes, data, and start/end points
-- Yellow/orange for context information and user interactions
-- Green for profiles, recommendations, and monitoring activities
-- Purple for implementation, ML, and integration components
-- Red for decision points and status updates
+- 🔵 Blue shades for core processes, data, and start/end points
+- 🟡 Yellow/orange for context information and user interactions
+- 🟢 Green for profiles, recommendations, and monitoring activities
+- 🟣 Purple for implementation, ML, and integration components
+- 🔴 Red for decision points and status updates
+</div>

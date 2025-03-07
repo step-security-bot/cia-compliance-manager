@@ -2,11 +2,32 @@
 
 This document illustrates the future state transitions and behavior of the enhanced CIA Compliance Manager system, focused on context awareness, adaptive security, and dynamic compliance.
 
+## 📚 Related Architecture Documentation
+
+<div class="documentation-map">
+
+| Document                                          | Focus           | Description                               |
+| ------------------------------------------------- | --------------- | ----------------------------------------- |
+| **[Current Architecture](ARCHITECTURE.md)**       | 🏛️ Architecture | C4 model showing current system structure |
+| **[Future Architecture](FUTURE_ARCHITECTURE.md)** | 🏛️ Architecture | Vision for context-aware platform         |
+| **[State Diagrams](STATEDIAGRAM.md)**             | 🔄 Behavior     | Current system state transitions          |
+| **[Process Flowcharts](FLOWCHART.md)**            | 🔄 Process      | Current security workflows                |
+| **[Future Flowcharts](FUTURE_FLOWCHART.md)**      | 🔄 Process      | Enhanced context-aware workflows          |
+| **[Mindmaps](MINDMAP.md)**                        | 🧠 Concept      | Current system component relationships    |
+| **[Future Mindmaps](FUTURE_MINDMAP.md)**          | 🧠 Concept      | Future capability evolution               |
+| **[SWOT Analysis](SWOT.md)**                      | 💼 Business     | Current strategic assessment              |
+| **[Future SWOT Analysis](FUTURE_SWOT.md)**        | 💼 Business     | Future strategic opportunities            |
+| **[CI/CD Workflows](WORKFLOWS.md)**               | 🔧 DevOps       | Current automation processes              |
+| **[Future Workflows](FUTURE_WORKFLOWS.md)**       | 🔧 DevOps       | Enhanced CI/CD with ML                    |
+| **[Future Data Model](FUTURE_DATA_MODEL.md)**     | 📊 Data         | Context-aware data architecture           |
+
+</div>
+
 ## Context-Aware Security Assessment State Diagram
 
-**Business Focus:** Demonstrates how the system will adapt security assessments based on organization context factors, showing how recommendations and security profiles will dynamically adjust as business context changes.
+**💼 Business Focus:** Demonstrates how the system will adapt security assessments based on organization context factors, showing how recommendations and security profiles will dynamically adjust as business context changes.
 
-**Security Focus:** Illustrates the relationship between organizational context factors and resulting security profiles, showing transitions between different context-influenced security states.
+**🔒 Security Focus:** Illustrates the relationship between organizational context factors and resulting security profiles, showing transitions between different context-influenced security states.
 
 ```mermaid
 stateDiagram-v2
@@ -76,9 +97,9 @@ stateDiagram-v2
 
 ## Adaptive Compliance Management State Diagram
 
-**Compliance Focus:** Shows how the system will evolve to maintain dynamic compliance across multiple frameworks, adapting to both regulatory changes and system modifications.
+**📋 Compliance Focus:** Shows how the system will evolve to maintain dynamic compliance across multiple frameworks, adapting to both regulatory changes and system modifications.
 
-**Operational Focus:** Illustrates the continuous compliance assessment process that replaces point-in-time assessments with ongoing monitoring and adjustment.
+**🔄 Operational Focus:** Illustrates the continuous compliance assessment process that replaces point-in-time assessments with ongoing monitoring and adjustment.
 
 ```mermaid
 stateDiagram-v2
@@ -146,9 +167,9 @@ stateDiagram-v2
 
 ## Machine Learning Enhancement State Diagram
 
-**Technical Focus:** Illustrates the machine learning enhancement lifecycle that will improve security recommendations over time through continuous learning.
+**🔧 Technical Focus:** Illustrates the machine learning enhancement lifecycle that will improve security recommendations over time through continuous learning.
 
-**Adaptability Focus:** Shows how the system will learn from implementation outcomes and user feedback to refine its recommendation engine.
+**🔄 Adaptability Focus:** Shows how the system will learn from implementation outcomes and user feedback to refine its recommendation engine.
 
 ```mermaid
 stateDiagram-v2
@@ -215,6 +236,7 @@ stateDiagram-v2
     class RecommendationDelivery delivery
 ```
 
+<div class="diagram-legend">
 These state diagrams illustrate the future behavior and state transitions of the CIA Compliance Manager system, focusing on:
 
 1. **Context-Aware Security Assessment**: How organizational context will drive adaptive security profiles
@@ -223,8 +245,9 @@ These state diagrams illustrate the future behavior and state transitions of the
 
 The color schemes provide visual distinction between different process phases:
 
-- Blues represent mapping and data collection activities
-- Greens represent assessment and training operations
-- Purples represent optimization and reporting functions
-- Oranges/yellows represent active states like deployment and monitoring
-- Reds represent monitoring and alerting functions
+- 🔵 Blues represent mapping and data collection activities
+- 🟢 Greens represent assessment and training operations
+- 🟣 Purples represent optimization and reporting functions
+- 🟠 Oranges/yellows represent active states like deployment and monitoring
+- 🔴 Reds represent monitoring and alerting functions
+</div>

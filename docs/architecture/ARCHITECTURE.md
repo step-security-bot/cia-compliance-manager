@@ -2,26 +2,33 @@
 
 This document serves as the primary entry point for the CIA Compliance Manager's architectural documentation. It provides a comprehensive view of the system's design using the C4 model approach, starting from a high-level system context and drilling down to component interactions.
 
-## Architecture Documentation Overview
+## 📚 Architecture Documentation Map
 
-The CIA Compliance Manager architecture is documented through multiple complementary views that help stakeholders understand different aspects of the system:
+<div class="documentation-map">
 
-- **[C4 Model Diagrams](#c4-system-context-diagram)** - This document provides a structured view of the system at different abstraction levels
-- **[State Diagrams](STATEDIAGRAM.md)** - Illustrates security profiles and compliance status transitions
-- **[Process Flowcharts](FLOWCHART.md)** - Shows key operational workflows for security assessment and compliance evaluation
-- **[Mindmaps](MINDMAP.md)** - Provides hierarchical visualization of system components and business concepts
-- **[SWOT Analysis](SWOT.md)** - Strategic assessment of project strengths, weaknesses, opportunities and threats
-- **[CI/CD Workflows](WORKFLOWS.md)** - Documents the automated processes for build, test, security scanning and release
+| Document                                            | Type    | Focus           | Description                                                          |
+| --------------------------------------------------- | ------- | --------------- | -------------------------------------------------------------------- |
+| **[Current Architecture](ARCHITECTURE.md)**         | Core    | 🏛️ Architecture | C4 model showing current system containers, components, and dynamics |
+| **[Future Architecture](FUTURE_ARCHITECTURE.md)**   | Future  | 🏛️ Architecture | Vision for context-aware security posture management platform        |
+| **[State Diagrams](STATEDIAGRAM.md)**               | Current | 🔄 Behavior     | Security profile and compliance status state transitions             |
+| **[Future State Diagrams](FUTURE_STATEDIAGRAM.md)** | Future  | 🔄 Behavior     | Context-aware and adaptive security state transitions                |
+| **[Process Flowcharts](FLOWCHART.md)**              | Current | 🔄 Process      | Security assessment and compliance workflows                         |
+| **[Future Flowcharts](FUTURE_FLOWCHART.md)**        | Future  | 🔄 Process      | ML-enhanced and context-aware workflows                              |
+| **[Mindmaps](MINDMAP.md)**                          | Current | 🧠 Concept      | System structure and component relationships                         |
+| **[Future Mindmaps](FUTURE_MINDMAP.md)**            | Future  | 🧠 Concept      | Evolution roadmap and capability expansion                           |
+| **[SWOT Analysis](SWOT.md)**                        | Current | 💼 Business     | Strategic strengths, weaknesses, opportunities, and threats          |
+| **[Future SWOT Analysis](FUTURE_SWOT.md)**          | Future  | 💼 Business     | Strategic analysis of context-aware security platform                |
+| **[CI/CD Workflows](WORKFLOWS.md)**                 | Current | 🔧 DevOps       | Build, test, and deployment automation                               |
+| **[Future Workflows](FUTURE_WORKFLOWS.md)**         | Future  | 🔧 DevOps       | Advanced CI/CD with ML and security automation                       |
+| **[Future Data Model](FUTURE_DATA_MODEL.md)**       | Future  | 📊 Data         | Enhanced context-aware data architecture                             |
 
-These diagrams provide multiple perspectives to help different stakeholders understand the system's architecture, behavior, and value proposition. Technical teams can focus on the C4 diagrams and workflows, while business stakeholders might find the SWOT analysis and mindmaps more relevant to their needs.
+</div>
 
 ## C4 System Context Diagram
 
-The System Context diagram shows the CIA Compliance Manager in relation to its users and external systems.
+**💼 Business Focus:** Illustrates how different stakeholders interact with the system and the external dependencies required for compliance references and cost estimation.
 
-**Business Focus:** Illustrates how different stakeholders interact with the system and the external dependencies required for compliance references and cost estimation.
-
-**Security Focus:** Demonstrates clear boundaries between internal system components and external data sources, establishing the trust boundaries for security analysis.
+**🔒 Security Focus:** Demonstrates clear boundaries between internal system components and external data sources, establishing the trust boundaries for security analysis.
 
 ```mermaid
 C4Context
@@ -68,11 +75,9 @@ C4Context
 
 ## C4 Container Diagram
 
-The Container diagram shows the high-level technical components of the CIA Compliance Manager.
+**🏛️ Architecture Focus:** Reveals the modular construction of the application with distinct components for security assessment, business impact analysis, cost estimation, and compliance mapping.
 
-**Architecture Focus:** Reveals the modular construction of the application with distinct components for security assessment, business impact analysis, cost estimation, and compliance mapping.
-
-**Technical Focus:** Highlights how the single-page application architecture leverages React and TypeScript to create a responsive, client-side experience with centralized state management.
+**🔧 Technical Focus:** Highlights how the single-page application architecture leverages React and TypeScript to create a responsive, client-side experience with centralized state management.
 
 ```mermaid
 C4Container
@@ -142,11 +147,9 @@ C4Container
 
 ## C4 Component Diagram
 
-The Component diagram shows the key components within the Security Assessment Module.
+**🏛️ Architecture Focus:** Demonstrates the internal structure of the Security Assessment Module, showing how individual UI components interact with data repositories and state management.
 
-**Architecture Focus:** Demonstrates the internal structure of the Security Assessment Module, showing how individual UI components interact with data repositories and state management.
-
-**Technical Focus:** Illustrates the component-based approach to security assessment, with specialized components for selection, visualization, calculation, and recommendations.
+**🔧 Technical Focus:** Illustrates the component-based approach to security assessment, with specialized components for selection, visualization, calculation, and recommendations.
 
 ```mermaid
 C4Component
@@ -201,11 +204,9 @@ C4Component
 
 ## C4 Dynamic Diagram
 
-The Dynamic diagram shows the core user flow for security assessment.
+**👤 User Experience Focus:** Maps the sequence of interactions from initial security level selection to the display of various business impacts and compliance status.
 
-**User Experience Focus:** Maps the sequence of interactions from initial security level selection to the display of various business impacts and compliance status.
-
-**Data Flow Focus:** Reveals how changes to security levels propagate through the application state to update multiple visualization components.
+**📊 Data Flow Focus:** Reveals how changes to security levels propagate through the application state to update multiple visualization components.
 
 ```mermaid
 C4Dynamic

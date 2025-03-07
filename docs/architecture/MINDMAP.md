@@ -2,11 +2,32 @@
 
 This mindmap provides a visual overview of the CIA Compliance Manager's architecture, components, and key concepts.
 
+## 📚 Related Architecture Documentation
+
+<div class="documentation-map">
+
+| Document                                            | Focus           | Description                               |
+| --------------------------------------------------- | --------------- | ----------------------------------------- |
+| **[Current Architecture](ARCHITECTURE.md)**         | 🏛️ Architecture | C4 model showing current system structure |
+| **[Future Architecture](FUTURE_ARCHITECTURE.md)**   | 🏛️ Architecture | Vision for context-aware platform         |
+| **[State Diagrams](STATEDIAGRAM.md)**               | 🔄 Behavior     | Current system state transitions          |
+| **[Future State Diagrams](FUTURE_STATEDIAGRAM.md)** | 🔄 Behavior     | Enhanced adaptive state transitions       |
+| **[Process Flowcharts](FLOWCHART.md)**              | 🔄 Process      | Current security workflows                |
+| **[Future Flowcharts](FUTURE_FLOWCHART.md)**        | 🔄 Process      | Enhanced context-aware workflows          |
+| **[Future Mindmaps](FUTURE_MINDMAP.md)**            | 🧠 Concept      | Future capability evolution               |
+| **[SWOT Analysis](SWOT.md)**                        | 💼 Business     | Current strategic assessment              |
+| **[Future SWOT Analysis](FUTURE_SWOT.md)**          | 💼 Business     | Future strategic opportunities            |
+| **[CI/CD Workflows](WORKFLOWS.md)**                 | 🔧 DevOps       | Current automation processes              |
+| **[Future Workflows](FUTURE_WORKFLOWS.md)**         | 🔧 DevOps       | Enhanced CI/CD with ML                    |
+| **[Future Data Model](FUTURE_DATA_MODEL.md)**       | 📊 Data         | Context-aware data architecture           |
+
+</div>
+
 ## System Overview Mindmap
 
-**Business Focus:** Maps the core business domains of the application, showing how the CIA triad integrates with business analysis, compliance frameworks, and architectural components.
+**💼 Business Focus:** Maps the core business domains of the application, showing how the CIA triad integrates with business analysis, compliance frameworks, and architectural components.
 
-**Security Focus:** Illustrates the security progression across each CIA element (Availability, Integrity, Confidentiality) from basic to very high levels, with corresponding implementation approaches.
+**🔒 Security Focus:** Illustrates the security progression across each CIA element (Availability, Integrity, Confidentiality) from basic to very high levels, with corresponding implementation approaches.
 
 ```mermaid
 mindmap
@@ -76,9 +97,9 @@ mindmap
 
 ## Technical Implementation Mindmap
 
-**Architecture Focus:** Provides a technology-oriented view of the implementation stack, showing how different technologies work together to create a cohesive application.
+**🏛️ Architecture Focus:** Provides a technology-oriented view of the implementation stack, showing how different technologies work together to create a cohesive application.
 
-**Development Focus:** Highlights the modern framework choices, testing strategies, security layers, and development processes that ensure code quality and security.
+**🔧 Development Focus:** Highlights the modern framework choices, testing strategies, security layers, and development processes that ensure code quality and security.
 
 ```mermaid
 mindmap
@@ -129,9 +150,9 @@ mindmap
 
 ## Business Value Mindmap
 
-**Business Focus:** Demonstrates how the CIA Compliance Manager creates value for organizations through strategic planning, business case development, and stakeholder communication.
+**💼 Business Focus:** Demonstrates how the CIA Compliance Manager creates value for organizations through strategic planning, business case development, and stakeholder communication.
 
-**Investment Focus:** Shows the relationship between security level implementation and business outcomes, helping decision-makers understand the return on security investments.
+**💰 Investment Focus:** Shows the relationship between security level implementation and business outcomes, helping decision-makers understand the return on security investments.
 
 ```mermaid
 mindmap
@@ -161,6 +182,7 @@ mindmap
       Control Prioritization
 ```
 
+<div class="mindmap-legend">
 The mindmaps above provide three different perspectives on the CIA Compliance Manager:
 
 1. **System Overview** - Shows the core components, security levels, and key features of the CIA triad components, business analysis domains, compliance frameworks, and architecture layers
@@ -171,8 +193,9 @@ These visualizations complement the C4 diagrams by providing a different way to 
 
 **Color Legend (conceptual):**
 
-- CIA components - blue shades
-- Business analysis - orange/amber shades
-- Compliance - purple shades
-- Architecture - green shades
-- Security levels - graduated colors from orange (basic) to green (very high)
+- 🔵 CIA components - blue shades
+- 🟠 Business analysis - orange/amber shades
+- 🟣 Compliance - purple shades
+- 🟢 Architecture - green shades
+- 🌈 Security levels - graduated colors from orange (basic) to green (very high)
+</div>

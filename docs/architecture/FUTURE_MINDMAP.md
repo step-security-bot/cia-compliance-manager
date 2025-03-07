@@ -2,6 +2,15 @@
 
 This mindmap outlines the future vision and architecture evolution for the CIA Compliance Manager, focusing on enhanced context awareness, integration capabilities, and advanced analytics.
 
+## Related Architecture Documentation
+
+- [Future Architecture Overview](FUTURE_ARCHITECTURE.md) - Core architectural vision and principles
+- [Strategic Analysis](FUTURE_SWOT.md) - SWOT analysis and strategic roadmap
+- [Process Flows](FUTURE_FLOWCHART.md) - Key workflows and processes
+- [System States](FUTURE_STATEDIAGRAM.md) - State transitions and system behavior
+- [DevOps Workflows](FUTURE_WORKFLOWS.md) - Implementation and CI/CD processes
+- [Data Model](FUTURE_DATA_MODEL.md) - Enhanced data architecture
+
 ## System Evolution Mindmap
 
 **Business Focus:** Maps how the CIA Compliance Manager will evolve to provide deeper business insights, more tailored security recommendations, and enhanced regulatory alignment.

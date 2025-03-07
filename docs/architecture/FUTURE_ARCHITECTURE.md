@@ -2,25 +2,54 @@
 
 This document outlines the future architectural vision for the CIA Compliance Manager, detailing how the system will evolve to provide enhanced context awareness, adaptive security recommendations, and deeper business impact analysis.
 
+## 📚 Related Architecture Documentation
+
+<div class="documentation-map">
+
+| Document                                            | Focus           | Description                               |
+| --------------------------------------------------- | --------------- | ----------------------------------------- |
+| **[Current Architecture](ARCHITECTURE.md)**         | 🏛️ Architecture | C4 model showing current system structure |
+| **[State Diagrams](STATEDIAGRAM.md)**               | 🔄 Behavior     | Current system state transitions          |
+| **[Future State Diagrams](FUTURE_STATEDIAGRAM.md)** | 🔄 Behavior     | Context-aware state transitions           |
+| **[Process Flowcharts](FLOWCHART.md)**              | 🔄 Process      | Current security workflows                |
+| **[Future Flowcharts](FUTURE_FLOWCHART.md)**        | 🔄 Process      | Enhanced context-aware workflows          |
+| **[Mindmaps](MINDMAP.md)**                          | 🧠 Concept      | Current system component relationships    |
+| **[Future Mindmaps](FUTURE_MINDMAP.md)**            | 🧠 Concept      | Future capability evolution               |
+| **[SWOT Analysis](SWOT.md)**                        | 💼 Business     | Current strategic assessment              |
+| **[Future SWOT Analysis](FUTURE_SWOT.md)**          | 💼 Business     | Future strategic opportunities            |
+| **[CI/CD Workflows](WORKFLOWS.md)**                 | 🔧 DevOps       | Current automation processes              |
+| **[Future Workflows](FUTURE_WORKFLOWS.md)**         | 🔧 DevOps       | Enhanced CI/CD with ML                    |
+| **[Future Data Model](FUTURE_DATA_MODEL.md)**       | 📊 Data         | Context-aware data architecture           |
+
+</div>
+
 ## Architectural Vision Overview
+
+<div class="vision-principles">
 
 The CIA Compliance Manager is evolving from a static security assessment tool into a dynamic, context-aware security posture management platform that adapts recommendations based on organizational context, learns from implementation outcomes, and provides continuous compliance monitoring. This evolution is driven by several key architectural principles:
 
-1. **Context-Aware Security**: Moving beyond one-size-fits-all recommendations to tailored security profiles based on industry, size, data sensitivity, and regulatory environment
-2. **Continuous Adaptation**: Transitioning from point-in-time assessments to continuous monitoring with dynamic adjustment to changing conditions
-3. **Business-Driven Security**: Deepening the connection between security controls and business outcomes through advanced impact modeling
-4. **Machine Learning Enhancement**: Leveraging ML for pattern recognition, predictive recommendations, and anomaly detection
-5. **Integration Ecosystem**: Expanding integrations with security tools, GRC platforms, and enterprise systems
+- **🏢 Context-Aware Security:** Moving beyond one-size-fits-all recommendations to tailored security profiles based on industry, size, data sensitivity, and regulatory environment
+- **🔄 Continuous Adaptation:** Transitioning from point-in-time assessments to continuous monitoring with dynamic adjustment to changing conditions
+- **💼 Business-Driven Security:** Deepening the connection between security controls and business outcomes through advanced impact modeling
+- **🧠 Machine Learning Enhancement:** Leveraging ML for pattern recognition, predictive recommendations, and anomaly detection
+- **🔌 Integration Ecosystem:** Expanding integrations with security tools, GRC platforms, and enterprise systems
 
-## Future C4 System Context Diagram
+</div>
+
+## Future C4 Context Diagram
+
+**💼 Business Focus:** Illustrates how the enhanced platform serves multiple stakeholder roles with different information needs and connects with a broader ecosystem of external systems.
+
+**🔒 Security Focus:** Defines expanded trust boundaries that include bidirectional integrations with security tools and enterprise systems.
 
 ```mermaid
 C4Context
-  title System Context diagram for Future CIA Compliance Manager
+  title Context diagram for Future CIA Compliance Manager
 
-  Person(securityOfficer, "Security Officer", "Responsible for implementing and managing security controls")
-  Person(businessStakeholder, "Business Stakeholder", "Makes decisions based on security assessments and cost analysis")
-  Person(complianceManager, "Compliance Manager", "Ensures adherence to regulatory frameworks")
+  Person(securityOfficer, "Security Officer", "Responsible for implementing security controls")
+  Person(businessStakeholder, "Business Stakeholder", "Evaluates security investments and business impact")
+  Person(complianceManager, "Compliance Manager", "Ensures adherence to regulatory requirements")
   Person(technicalImplementer, "Technical Implementer", "Implements security controls based on recommendations")
   Person(executiveSponsor, "Executive Sponsor", "Approves security investments and strategy")
 
@@ -50,6 +79,10 @@ C4Context
 ```
 
 ## Future C4 Container Diagram
+
+**🏛️ Architecture Focus:** Shows the modular design with specialized containers for context awareness, recommendations, integrations, and machine learning capabilities.
+
+**🔧 Technical Focus:** Illustrates the API-first approach with centralized gateway, diverse database technologies, and ML pipeline integration.
 
 ```mermaid
 C4Container
@@ -113,7 +146,9 @@ C4Container
 
 ## Enhanced Context Engine Component Diagram
 
-The Context Engine is a critical new component that powers the system's ability to provide highly tailored security recommendations based on organizational factors. This diagram shows the detailed internal components of the Context Engine.
+**🏛️ Architecture Focus:** Provides detailed insight into the Context Engine's internal components and their interactions with data sources and other system components.
+
+**💼 Business Focus:** Shows how organizational context parameters are collected, analyzed, and applied to security recommendations.
 
 ```mermaid
 C4Component
@@ -163,7 +198,9 @@ C4Component
 
 ## Enhanced Data Model Architecture
 
-The future CIA Compliance Manager will feature a significantly enhanced data model that captures rich organizational context and enables more precise security recommendations. This diagram shows the key domain entities and their relationships.
+**📊 Data Focus:** Illustrates the comprehensive data model that powers context-aware security recommendations with rich organizational factors.
+
+**🔧 Technical Focus:** Shows the entity relationships between business context, security profiles, and impact analysis components.
 
 ```mermaid
 classDiagram
