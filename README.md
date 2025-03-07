@@ -319,7 +319,7 @@ We're committed to making this project accessible, inclusive, and secure. Please
 - [Contributing Guidelines](CONTRIBUTING.md) - How to contribute code and documentation
 - [Code of Conduct](CODE_OF_CONDUCT.md) - Our standards for project participation
 - [Security Policy](SECURITY.md) - How to report security vulnerabilities
-- [License](LICENSE.md) - Project license details and terms
+- [License](LICENSE) - Project license details and terms
 
 ## Testing
 

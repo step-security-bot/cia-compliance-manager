@@ -3,10 +3,10 @@ import vitePreprocessor from "cypress-vite";
 import { resolve } from "path";
 import { resetJunitResults } from "./cypress/tasks/junit-reset";
 import { fileURLToPath } from "url";
-import fs from "fs";
+import * as fs from "fs";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = resolve(fileURLToPath(new URL(".", import.meta.url)));
+// Use __dirname in a more TypeScript-friendly way
+const __dirname = resolve(process.cwd());
 
 // Ensure the results directory exists
 const resultsDir = resolve(__dirname, "cypress/results");
@@ -83,10 +83,20 @@ export default defineConfig({
       on("task", {
         async mergeAllJunitReports() {
           try {
-            const { mergeAllJunitReports } = await import(
-              "./cypress/support/plugins/junit-merger.js"
+            // Use a different module path - import from merge-reports.js which has the function
+            const mergeReportsModule = await import(
+              "./cypress/support/plugins/merge-reports.js"
             );
-            return mergeAllJunitReports();
+
+            // Check if the function exists in the module
+            if (typeof mergeReportsModule.mergeAllJunitReports === "function") {
+              return mergeReportsModule.mergeAllJunitReports();
+            }
+            return {
+              success: false,
+              error:
+                "mergeAllJunitReports function not found in merge-reports.js",
+            };
           } catch (err) {
             console.error("Error running mergeAllJunitReports:", err);
             return { success: false, error: String(err) };

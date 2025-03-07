@@ -1,6 +1,10 @@
 /* c8 ignore start */
 // This file contains TypeScript types that don't need test coverage
 
+/**
+ * Represents security levels in the CIA triad model
+ * @category CIA Model
+ */
 export type SecurityLevel = "None" | "Low" | "Moderate" | "High" | "Very High";
 export type SecurityFunctionGroup =
   | "Identify"
@@ -24,6 +28,19 @@ export enum CIALevel {
 import { RISK_LEVELS } from "../constants/riskConstants";
 
 // New interface for detailed business impact information
+/**
+ * Business impact analysis interface for tracking security implications
+ * @category CIA Model
+ *
+ * @example
+ * ```ts
+ * const financialImpact: BusinessImpactDetail = {
+ *   description: "Revenue loss from service interruption",
+ *   riskLevel: "High",
+ *   annualRevenueLoss: "$2.5M"
+ * };
+ * ```
+ */
 export interface BusinessImpactDetail {
   description: string;
   riskLevel?: string; // One of the RISK_LEVELS values
