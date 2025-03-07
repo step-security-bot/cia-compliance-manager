@@ -4,6 +4,10 @@ This document contains flowcharts that illustrate key processes within the CIA C
 
 ## Security Level Assessment Workflow
 
+**Business Focus:** Maps the decision process from security domain selection through business impact analysis, compliance evaluation, and cost calculation to final recommendations.
+
+**User Journey Focus:** Illustrates the complete user flow for conducting a security assessment, showing decision points and alternative paths based on implementation choices.
+
 ```mermaid
 flowchart TD
     A[Start Assessment] --> B{Select Security Domain}
@@ -27,17 +31,27 @@ flowchart TD
     I --> K[End Assessment]
     J --> K
 
-    classDef process fill:#f9f9f9,stroke:#333,stroke-width:1px;
-    classDef decision fill:#ffffde,stroke:#333,stroke-width:1px;
-    classDef start fill:#d1e0ff,stroke:#333,stroke-width:1px;
-    classDef end fill:#d1e0ff,stroke:#333,stroke-width:1px;
+    classDef start fill:#a0c8e0,stroke:#333,stroke-width:1px,color:black;
+    classDef end fill:#a0c8e0,stroke:#333,stroke-width:1px,color:black;
+    classDef process fill:#f9f9f9,stroke:#333,stroke-width:1px,color:black;
+    classDef decision fill:#ffda9e,stroke:#333,stroke-width:1px,color:black;
+    classDef domain fill:#c8e6c9,stroke:#333,stroke-width:1px,color:black;
+    classDef cost fill:#d1c4e9,stroke:#333,stroke-width:1px,color:black;
+    classDef report fill:#bbdefb,stroke:#333,stroke-width:1px,color:black;
 
     class A,K start;
     class B,H decision;
-    class C1,C2,C3,D,E,F,G,I,J process;
+    class C1,C2,C3 domain;
+    class D,E process;
+    class F cost;
+    class G,I,J report;
 ```
 
 ## Compliance Evaluation Process
+
+**Regulatory Focus:** Shows the step-by-step process of evaluating compliance status against multiple frameworks based on implemented security controls.
+
+**Reporting Focus:** Illustrates how compliance findings are aggregated across frameworks to generate comprehensive compliance reports and status indicators.
 
 ```mermaid
 flowchart TD
@@ -60,14 +74,28 @@ flowchart TD
     NextFw -->|No| GenReport[Generate Compliance Report]
     GenReport --> End[End Compliance Check]
 
-    classDef process fill:#f9f9f9,stroke:#333,stroke-width:1px;
-    classDef decision fill:#ffffde,stroke:#333,stroke-width:1px;
-    classDef start fill:#d1e0ff,stroke:#333,stroke-width:1px;
-    classDef end fill:#d1e0ff,stroke:#333,stroke-width:1px;
+    classDef start fill:#a0c8e0,stroke:#333,stroke-width:1px,color:black;
+    classDef end fill:#a0c8e0,stroke:#333,stroke-width:1px,color:black;
+    classDef process fill:#f9f9f9,stroke:#333,stroke-width:1px,color:black;
+    classDef decision fill:#ffda9e,stroke:#333,stroke-width:1px,color:black;
+    classDef compliant fill:#66cc66,stroke:#333,stroke-width:1px,color:white;
+    classDef partial fill:#ffcc66,stroke:#333,stroke-width:1px,color:black;
+    classDef noncomp fill:#ff6666,stroke:#333,stroke-width:1px,color:white;
+    classDef report fill:#bbdefb,stroke:#333,stroke-width:1px,color:black;
 
     class Start,End start;
     class Frameworks,EvalCompStatus,NextFw decision;
-    class GetLevel,MapControls,CheckReqs,MarkCompliant,MarkPartial,MarkNoncomp,GenReport process;
+    class GetLevel,MapControls,CheckReqs process;
+    class MarkCompliant compliant;
+    class MarkPartial partial;
+    class MarkNoncomp noncomp;
+    class GenReport report;
 ```
 
-These flowcharts illustrate key operational processes within the CIA Compliance Manager application. They provide a clear visual representation of the decision-making and evaluation workflows that users will follow when using the system.
+These flowcharts illustrate key operational processes within the CIA Compliance Manager application. The color scheme provides visual distinction between different types of process steps:
+
+- Blue represents start/end points and report generation
+- Yellow/orange indicates decision points
+- Green indicates compliance status
+- Red indicates non-compliance
+- Purple highlights cost-related calculations

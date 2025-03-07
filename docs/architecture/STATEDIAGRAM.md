@@ -4,29 +4,43 @@ This document contains state diagrams that illustrate key states and transitions
 
 ## Security Profile State Diagram
 
+**Business Focus:** Demonstrates how organizations can progress through increasingly mature security implementations, with corresponding improvements in compliance status and risk reduction.
+
+**Security Focus:** Illustrates the relationship between security controls implementation and resulting risk posture, showing clear transitions between different security maturity levels.
+
 ```mermaid
 stateDiagram-v2
     [*] --> NoSecurity: Initialize
 
-    NoSecurity: Security Level: None
-    NoSecurity: Compliance: Non-Compliant
-    NoSecurity: Risk: Critical
+    state NoSecurity {
+      Security Level: None
+      Compliance: Non-Compliant
+      Risk: Critical
+    }
 
-    BasicSecurity: Security Level: Low
-    BasicSecurity: Compliance: Minimal
-    BasicSecurity: Risk: High
+    state BasicSecurity {
+      Security Level: Low
+      Compliance: Minimal
+      Risk: High
+    }
 
-    ModerateSecurity: Security Level: Moderate
-    ModerateSecurity: Compliance: Partial
-    ModerateSecurity: Risk: Medium
+    state ModerateSecurity {
+      Security Level: Moderate
+      Compliance: Partial
+      Risk: Medium
+    }
 
-    HighSecurity: Security Level: High
-    HighSecurity: Compliance: Standard
-    HighSecurity: Risk: Low
+    state HighSecurity {
+      Security Level: High
+      Compliance: Standard
+      Risk: Low
+    }
 
-    VeryHighSecurity: Security Level: Very High
-    VeryHighSecurity: Compliance: Full
-    VeryHighSecurity: Risk: Minimal
+    state VeryHighSecurity {
+      Security Level: Very High
+      Compliance: Full
+      Risk: Minimal
+    }
 
     NoSecurity --> BasicSecurity: Implement Basic Controls
     BasicSecurity --> ModerateSecurity: Upgrade to Moderate
@@ -37,27 +51,51 @@ stateDiagram-v2
     HighSecurity --> ModerateSecurity: Reduce Security
     ModerateSecurity --> BasicSecurity: Reduce Security
     BasicSecurity --> NoSecurity: Remove Controls
+
+    classDef noSecurity fill:#ff6666,stroke:#333,stroke-width:1px,color:white
+    classDef basicSecurity fill:#ffb366,stroke:#333,stroke-width:1px,color:white
+    classDef moderateSecurity fill:#ffff66,stroke:#333,stroke-width:1px,color:black
+    classDef highSecurity fill:#99cc66,stroke:#333,stroke-width:1px,color:white
+    classDef veryHighSecurity fill:#66cc66,stroke:#333,stroke-width:1px,color:white
+
+    class NoSecurity noSecurity
+    class BasicSecurity basicSecurity
+    class ModerateSecurity moderateSecurity
+    class HighSecurity highSecurity
+    class VeryHighSecurity veryHighSecurity
 ```
 
 ## Compliance Status State Diagram
+
+**Business Focus:** Shows how compliance status evolves based on control implementation, helping organizations visualize their compliance journey and the steps needed to achieve full compliance.
+
+**Regulatory Focus:** Illustrates the assessment workflow and status changes that occur during compliance evaluation, including the relationship between control implementation and compliance achievement.
 
 ```mermaid
 stateDiagram-v2
     [*] --> Initial: Start Assessment
 
-    Initial: No compliance checks run
+    state Initial {
+      No compliance checks run
+    }
 
-    NonCompliant: Status: Non-Compliant
-    NonCompliant: Risk Level: High
-    NonCompliant: Frameworks: 0%
+    state NonCompliant {
+      Status: Non-Compliant
+      Risk Level: High
+      Frameworks: 0%
+    }
 
-    PartiallyCompliant: Status: Partially Compliant
-    PartiallyCompliant: Risk Level: Medium
-    PartiallyCompliant: Frameworks: Varies
+    state PartiallyCompliant {
+      Status: Partially Compliant
+      Risk Level: Medium
+      Frameworks: Varies
+    }
 
-    Compliant: Status: Compliant
-    Compliant: Risk Level: Low
-    Compliant: Frameworks: 100%
+    state Compliant {
+      Status: Compliant
+      Risk Level: Low
+      Frameworks: 100%
+    }
 
     Initial --> NonCompliant: Insufficient Controls
     Initial --> PartiallyCompliant: Some Controls
@@ -72,6 +110,21 @@ stateDiagram-v2
     NonCompliant --> [*]: End Assessment
     PartiallyCompliant --> [*]: End Assessment
     Compliant --> [*]: End Assessment
+
+    classDef initial fill:#a0c8e0,stroke:#333,stroke-width:1px,color:black
+    classDef nonCompliant fill:#ff6666,stroke:#333,stroke-width:1px,color:white
+    classDef partiallyCompliant fill:#ffcc66,stroke:#333,stroke-width:1px,color:black
+    classDef compliant fill:#66cc66,stroke:#333,stroke-width:1px,color:white
+
+    class Initial initial
+    class NonCompliant nonCompliant
+    class PartiallyCompliant partiallyCompliant
+    class Compliant compliant
 ```
 
-These state diagrams illustrate the different security states a system can transition through and how the compliance status changes based on the implementation of security controls. They help visualize the progression from low to high security levels and the corresponding changes in compliance status.
+These state diagrams illustrate the different security states a system can transition through and how the compliance status changes based on the implementation of security controls. They help visualize the progression from low to high security levels and the corresponding changes in compliance status. The color scheme provides immediate visual feedback about the risk level and compliance status:
+
+- Red indicates critical/high risk or non-compliance
+- Orange/Yellow represents moderate risk or partial compliance
+- Green shows low/minimal risk or full compliance
+- Blue is used for neutral or initial states

@@ -4,6 +4,10 @@ This document provides a strategic assessment of the CIA Compliance Manager proj
 
 ## SWOT Analysis Overview
 
+**Strategic Focus:** Provides a high-level visualization of the project's internal and external factors, organized by positive and negative impact.
+
+**Decision Support Focus:** Establishes a framework for strategic decision-making by identifying areas of advantage and concern requiring attention.
+
 ```mermaid
 quadrantChart
     title CIA Compliance Manager SWOT Analysis
@@ -13,6 +17,11 @@ quadrantChart
     quadrant-2 Strengths
     quadrant-3 Weaknesses
     quadrant-4 Threats
+
+    quadrant-1-style: fill:#66cc66,stroke:#333,opacity:0.6
+    quadrant-2-style: fill:#5bc0de,stroke:#333,opacity:0.6
+    quadrant-3-style: fill:#ffb366,stroke:#333,opacity:0.6
+    quadrant-4-style: fill:#ff6666,stroke:#333,opacity:0.6
 ```
 
 ## Strengths (Internal Positive)
@@ -54,7 +63,9 @@ quadrantChart
 
 ## Strategic Implementation Matrix
 
-The following quadrant chart helps visualize different security control implementations based on their implementation difficulty and business value, helping organizations prioritize their security investments:
+**Investment Focus:** Visualizes security controls based on implementation difficulty versus business value, helping organizations prioritize their security investments.
+
+**Resource Allocation Focus:** Helps organizations identify "quick wins" versus longer-term strategic projects, enabling efficient resource allocation based on difficulty and impact.
 
 ```mermaid
 quadrantChart
@@ -66,16 +77,21 @@ quadrantChart
     quadrant-3 Low Priority
     quadrant-4 Major Projects
 
-    Encryption at Rest: [0.3, 0.7]
-    Network Segmentation: [0.7, 0.8]
-    MFA Implementation: [0.2, 0.9]
-    DLP Solutions: [0.8, 0.7]
-    Security Awareness Training: [0.1, 0.6]
-    SIEM Deployment: [0.9, 0.85]
-    Automated Backups: [0.3, 0.5]
-    Patch Management: [0.4, 0.7]
-    Blockchain Integrity: [0.9, 0.5]
-    Zero Trust Architecture: [0.8, 0.9]
+    "Encryption at Rest": [0.3, 0.7]
+    "Network Segmentation": [0.7, 0.8]
+    "MFA Implementation": [0.2, 0.9]
+    "DLP Solutions": [0.8, 0.7]
+    "Security Awareness Training": [0.1, 0.6]
+    "SIEM Deployment": [0.9, 0.85]
+    "Automated Backups": [0.3, 0.5]
+    "Patch Management": [0.4, 0.7]
+    "Blockchain Integrity": [0.9, 0.5]
+    "Zero Trust Architecture": [0.8, 0.9]
+
+    quadrant-1-style: fill:#66cc66,stroke:#333,opacity:0.6
+    quadrant-2-style: fill:#5bc0de,stroke:#333,opacity:0.6
+    quadrant-3-style: fill:#f0ad4e,stroke:#333,opacity:0.6
+    quadrant-4-style: fill:#ff8c00,stroke:#333,opacity:0.6
 ```
 
 ## Recommendations Based on SWOT
