@@ -18,10 +18,10 @@ quadrantChart
     quadrant-3 Weaknesses
     quadrant-4 Threats
 
-    quadrant-1-style: fill:#66cc66,stroke:#333,opacity:0.6
-    quadrant-2-style: fill:#5bc0de,stroke:#333,opacity:0.6
-    quadrant-3-style: fill:#ffb366,stroke:#333,opacity:0.6
-    quadrant-4-style: fill:#ff6666,stroke:#333,opacity:0.6
+    quadrant-1-title-style stroke-width:1px
+    quadrant-2-title-style stroke-width:1px
+    quadrant-3-title-style stroke-width:1px
+    quadrant-4-title-style stroke-width:1px
 ```
 
 ## Strengths (Internal Positive)
@@ -88,10 +88,10 @@ quadrantChart
     "Blockchain Integrity": [0.9, 0.5]
     "Zero Trust Architecture": [0.8, 0.9]
 
-    quadrant-1-style: fill:#66cc66,stroke:#333,opacity:0.6
-    quadrant-2-style: fill:#5bc0de,stroke:#333,opacity:0.6
-    quadrant-3-style: fill:#f0ad4e,stroke:#333,opacity:0.6
-    quadrant-4-style: fill:#ff8c00,stroke:#333,opacity:0.6
+    quadrant-1-title-style stroke-width:1px
+    quadrant-2-title-style stroke-width:1px
+    quadrant-3-title-style stroke-width:1px
+    quadrant-4-title-style stroke-width:1px
 ```
 
 ## Recommendations Based on SWOT
