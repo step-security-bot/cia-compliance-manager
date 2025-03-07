@@ -31,20 +31,20 @@ flowchart TD
     I --> K[End Assessment]
     J --> K
 
-    classDef start fill:#a0c8e0,stroke:#333,stroke-width:1px,color:black;
-    classDef end fill:#a0c8e0,stroke:#333,stroke-width:1px,color:black;
-    classDef process fill:#f9f9f9,stroke:#333,stroke-width:1px,color:black;
-    classDef decision fill:#ffda9e,stroke:#333,stroke-width:1px,color:black;
-    classDef domain fill:#c8e6c9,stroke:#333,stroke-width:1px,color:black;
-    classDef cost fill:#d1c4e9,stroke:#333,stroke-width:1px,color:black;
-    classDef report fill:#bbdefb,stroke:#333,stroke-width:1px,color:black;
+    classDef startNode fill:#a0c8e0,stroke:#333,stroke-width:1px,color:black
+    classDef endNode fill:#a0c8e0,stroke:#333,stroke-width:1px,color:black
+    classDef process fill:#f9f9f9,stroke:#333,stroke-width:1px,color:black
+    classDef decision fill:#ffda9e,stroke:#333,stroke-width:1px,color:black
+    classDef domain fill:#c8e6c9,stroke:#333,stroke-width:1px,color:black
+    classDef cost fill:#d1c4e9,stroke:#333,stroke-width:1px,color:black
+    classDef report fill:#bbdefb,stroke:#333,stroke-width:1px,color:black
 
-    class A,K start;
-    class B,H decision;
-    class C1,C2,C3 domain;
-    class D,E process;
-    class F cost;
-    class G,I,J report;
+    class A,K startNode
+    class B,H decision
+    class C1,C2,C3 domain
+    class D,E process
+    class F cost
+    class G,I,J report
 ```
 
 ## Compliance Evaluation Process
@@ -74,22 +74,22 @@ flowchart TD
     NextFw -->|No| GenReport[Generate Compliance Report]
     GenReport --> End[End Compliance Check]
 
-    classDef start fill:#a0c8e0,stroke:#333,stroke-width:1px,color:black;
-    classDef end fill:#a0c8e0,stroke:#333,stroke-width:1px,color:black;
-    classDef process fill:#f9f9f9,stroke:#333,stroke-width:1px,color:black;
-    classDef decision fill:#ffda9e,stroke:#333,stroke-width:1px,color:black;
-    classDef compliant fill:#66cc66,stroke:#333,stroke-width:1px,color:white;
-    classDef partial fill:#ffcc66,stroke:#333,stroke-width:1px,color:black;
-    classDef noncomp fill:#ff6666,stroke:#333,stroke-width:1px,color:white;
-    classDef report fill:#bbdefb,stroke:#333,stroke-width:1px,color:black;
+    classDef startNode fill:#a0c8e0,stroke:#333,stroke-width:1px,color:black
+    classDef endNode fill:#a0c8e0,stroke:#333,stroke-width:1px,color:black
+    classDef process fill:#f9f9f9,stroke:#333,stroke-width:1px,color:black
+    classDef decision fill:#ffda9e,stroke:#333,stroke-width:1px,color:black
+    classDef compliant fill:#66cc66,stroke:#333,stroke-width:1px,color:white
+    classDef partial fill:#ffcc66,stroke:#333,stroke-width:1px,color:black
+    classDef noncomp fill:#ff6666,stroke:#333,stroke-width:1px,color:white
+    classDef report fill:#bbdefb,stroke:#333,stroke-width:1px,color:black
 
-    class Start,End start;
-    class Frameworks,EvalCompStatus,NextFw decision;
-    class GetLevel,MapControls,CheckReqs process;
-    class MarkCompliant compliant;
-    class MarkPartial partial;
-    class MarkNoncomp noncomp;
-    class GenReport report;
+    class Start,End startNode
+    class Frameworks,EvalCompStatus,NextFw decision
+    class GetLevel,MapControls,CheckReqs process
+    class MarkCompliant compliant
+    class MarkPartial partial
+    class MarkNoncomp noncomp
+    class GenReport report
 ```
 
 These flowcharts illustrate key operational processes within the CIA Compliance Manager application. The color scheme provides visual distinction between different types of process steps:
