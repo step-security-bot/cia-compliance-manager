@@ -17,11 +17,6 @@ quadrantChart
     quadrant-2 Strengths
     quadrant-3 Weaknesses
     quadrant-4 Threats
-
-    quadrant-1-title-style stroke-width:1px
-    quadrant-2-title-style stroke-width:1px
-    quadrant-3-title-style stroke-width:1px
-    quadrant-4-title-style stroke-width:1px
 ```
 
 ## Strengths (Internal Positive)
@@ -87,11 +82,6 @@ quadrantChart
     "Patch Management": [0.4, 0.7]
     "Blockchain Integrity": [0.9, 0.5]
     "Zero Trust Architecture": [0.8, 0.9]
-
-    quadrant-1-title-style stroke-width:1px
-    quadrant-2-title-style stroke-width:1px
-    quadrant-3-title-style stroke-width:1px
-    quadrant-4-title-style stroke-width:1px
 ```
 
 ## Recommendations Based on SWOT
