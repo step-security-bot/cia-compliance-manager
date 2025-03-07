@@ -113,15 +113,15 @@ mindmap
         Deployment
         Documentation Generation
     User Workflows
-      Security Assessment{"Security Assessment"}
+      Security Assessment["Security Assessment"]
         Level Selection
         Impact Analysis
         Recommendations
-      Compliance Verification{"Compliance Verification"}
+      Compliance Verification["Compliance Verification"]
         Framework Mapping
         Gap Analysis
         Status Reporting
-      Cost Analysis{"Cost Analysis"}
+      Cost Analysis["Cost Analysis"]
         CAPEX Calculation
         OPEX Estimation
         ROI Projection
