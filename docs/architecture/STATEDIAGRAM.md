@@ -12,34 +12,29 @@ This document contains state diagrams that illustrate key states and transitions
 stateDiagram-v2
     [*] --> NoSecurity: Initialize
 
-    state NoSecurity {
-        description: Security Level - None
-        description2: Compliance - Non-Compliant
-        description3: Risk - Critical
+    state "No Security" as NoSecurity {
+      [*] --> NoSecurity_inner
+      state "Security Level: None<br/>Compliance: Non-Compliant<br/>Risk: Critical" as NoSecurity_inner
     }
 
-    state BasicSecurity {
-        description: Security Level - Low
-        description2: Compliance - Minimal
-        description3: Risk - High
+    state "Basic Security" as BasicSecurity {
+      [*] --> BasicSecurity_inner
+      state "Security Level: Low<br/>Compliance: Minimal<br/>Risk: High" as BasicSecurity_inner
     }
 
-    state ModerateSecurity {
-        description: Security Level - Moderate
-        description2: Compliance - Partial
-        description3: Risk - Medium
+    state "Moderate Security" as ModerateSecurity {
+      [*] --> ModerateSecurity_inner
+      state "Security Level: Moderate<br/>Compliance: Partial<br/>Risk: Medium" as ModerateSecurity_inner
     }
 
-    state HighSecurity {
-        description: Security Level - High
-        description2: Compliance - Standard
-        description3: Risk - Low
+    state "High Security" as HighSecurity {
+      [*] --> HighSecurity_inner
+      state "Security Level: High<br/>Compliance: Standard<br/>Risk: Low" as HighSecurity_inner
     }
 
-    state VeryHighSecurity {
-        description: Security Level - Very High
-        description2: Compliance - Full
-        description3: Risk - Minimal
+    state "Very High Security" as VeryHighSecurity {
+      [*] --> VeryHighSecurity_inner
+      state "Security Level: Very High<br/>Compliance: Full<br/>Risk: Minimal" as VeryHighSecurity_inner
     }
 
     NoSecurity --> BasicSecurity: Implement Basic Controls
@@ -75,26 +70,24 @@ stateDiagram-v2
 stateDiagram-v2
     [*] --> Initial: Start Assessment
 
-    state Initial {
-        description: No compliance checks run
+    state "Initial" as Initial {
+      [*] --> Initial_inner
+      state "No compliance checks run" as Initial_inner
     }
 
-    state NonCompliant {
-        description: Status - Non-Compliant
-        description2: Risk Level - High
-        description3: Frameworks - 0%
+    state "Non-Compliant" as NonCompliant {
+      [*] --> NonCompliant_inner
+      state "Status: Non-Compliant<br/>Risk Level: High<br/>Frameworks: 0%" as NonCompliant_inner
     }
 
-    state PartiallyCompliant {
-        description: Status - Partially Compliant
-        description2: Risk Level - Medium
-        description3: Frameworks - Varies
+    state "Partially Compliant" as PartiallyCompliant {
+      [*] --> PartiallyCompliant_inner
+      state "Status: Partially Compliant<br/>Risk Level: Medium<br/>Frameworks: Varies" as PartiallyCompliant_inner
     }
 
-    state Compliant {
-        description: Status - Compliant
-        description2: Risk Level - Low
-        description3: Frameworks - 100%
+    state "Compliant" as Compliant {
+      [*] --> Compliant_inner
+      state "Status: Compliant<br/>Risk Level: Low<br/>Frameworks: 100%" as Compliant_inner
     }
 
     Initial --> NonCompliant: Insufficient Controls
