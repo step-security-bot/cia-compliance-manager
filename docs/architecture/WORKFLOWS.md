@@ -116,17 +116,15 @@ stateDiagram-v2
 
     Release --> [*]
 
-    classDef preparation fill:#a0c8e0,stroke:#333,stroke-width:1px,color:black;
-    classDef testing fill:#e8f5e9,stroke:#333,stroke-width:1px,color:black;
-    classDef build fill:#d1c4e9,stroke:#333,stroke-width:1px,color:black;
-    classDef release fill:#bbdefb,stroke:#333,stroke-width:1px,color:black;
-    classDef terminal fill:#f5f5f5,stroke:#333,stroke-width:1px,color:black;
+    classDef preparation fill:#a0c8e0,stroke:#333,stroke-width:1px,color:black
+    classDef testing fill:#e8f5e9,stroke:#333,stroke-width:1px,color:black
+    classDef build fill:#d1c4e9,stroke:#333,stroke-width:1px,color:black
+    classDef release fill:#bbdefb,stroke:#333,stroke-width:1px,color:black
 
-    class Preparation preparation;
-    class Testing testing;
-    class Build build;
-    class Release release;
-    class [*] terminal;
+    class Preparation preparation
+    class Testing testing
+    class Build build
+    class Release release
 ```
 
 ## Security Scanning Integration
