@@ -13,33 +13,33 @@ stateDiagram-v2
     [*] --> NoSecurity: Initialize
 
     state NoSecurity {
-      Security Level: None
-      Compliance: Non-Compliant
-      Risk: Critical
+        description: Security Level - None
+        description2: Compliance - Non-Compliant
+        description3: Risk - Critical
     }
 
     state BasicSecurity {
-      Security Level: Low
-      Compliance: Minimal
-      Risk: High
+        description: Security Level - Low
+        description2: Compliance - Minimal
+        description3: Risk - High
     }
 
     state ModerateSecurity {
-      Security Level: Moderate
-      Compliance: Partial
-      Risk: Medium
+        description: Security Level - Moderate
+        description2: Compliance - Partial
+        description3: Risk - Medium
     }
 
     state HighSecurity {
-      Security Level: High
-      Compliance: Standard
-      Risk: Low
+        description: Security Level - High
+        description2: Compliance - Standard
+        description3: Risk - Low
     }
 
     state VeryHighSecurity {
-      Security Level: Very High
-      Compliance: Full
-      Risk: Minimal
+        description: Security Level - Very High
+        description2: Compliance - Full
+        description3: Risk - Minimal
     }
 
     NoSecurity --> BasicSecurity: Implement Basic Controls
@@ -76,25 +76,25 @@ stateDiagram-v2
     [*] --> Initial: Start Assessment
 
     state Initial {
-      No compliance checks run
+        description: No compliance checks run
     }
 
     state NonCompliant {
-      Status: Non-Compliant
-      Risk Level: High
-      Frameworks: 0%
+        description: Status - Non-Compliant
+        description2: Risk Level - High
+        description3: Frameworks - 0%
     }
 
     state PartiallyCompliant {
-      Status: Partially Compliant
-      Risk Level: Medium
-      Frameworks: Varies
+        description: Status - Partially Compliant
+        description2: Risk Level - Medium
+        description3: Frameworks - Varies
     }
 
     state Compliant {
-      Status: Compliant
-      Risk Level: Low
-      Frameworks: 100%
+        description: Status - Compliant
+        description2: Risk Level - Low
+        description3: Frameworks - 100%
     }
 
     Initial --> NonCompliant: Insufficient Controls
