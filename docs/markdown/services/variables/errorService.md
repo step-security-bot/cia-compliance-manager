@@ -1,4 +1,4 @@
-[**CIA Compliance Manager Documentation v1.1.31**](../../README.md)
+[**CIA Compliance Manager Documentation v1.1.32**](../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > `const` **errorService**: [`ErrorService`](../classes/ErrorService.md)
 
-Defined in: [services/errorService.ts:395](https://github.com/Hack23/cia-compliance-manager/blob/1c8bec6cbe09f80caaef8f0521c4e2e531753f04/src/services/errorService.ts#L395)
+Defined in: [services/errorService.ts:395](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/errorService.ts#L395)
 
 Export singleton instance for convenient access

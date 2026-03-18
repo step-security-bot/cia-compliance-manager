@@ -1,4 +1,4 @@
-[**CIA Compliance Manager Diagrams v1.1.31**](../../README.md)
+[**CIA Compliance Manager Diagrams v1.1.32**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getKeyCombination**(`event`): `string`
 
-Defined in: [utils/keyboardUtils.ts:191](https://github.com/Hack23/cia-compliance-manager/blob/1c8bec6cbe09f80caaef8f0521c4e2e531753f04/src/utils/keyboardUtils.ts#L191)
+Defined in: [utils/keyboardUtils.ts:191](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/utils/keyboardUtils.ts#L191)
 
 Get key combination string from keyboard event
 

@@ -1,4 +1,4 @@
-[**CIA Compliance Manager Diagrams v1.1.31**](../../../README.md)
+[**CIA Compliance Manager Diagrams v1.1.32**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **useComplianceService**(): `object`
 
-Defined in: [hooks/useComplianceService.ts:8](https://github.com/Hack23/cia-compliance-manager/blob/1c8bec6cbe09f80caaef8f0521c4e2e531753f04/src/hooks/useComplianceService.ts#L8)
+Defined in: [hooks/useComplianceService.ts:8](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/hooks/useComplianceService.ts#L8)
 
 Hook to access compliance service functionality
 

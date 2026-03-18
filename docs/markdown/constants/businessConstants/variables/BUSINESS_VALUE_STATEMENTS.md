@@ -1,4 +1,4 @@
-[**CIA Compliance Manager Documentation v1.1.31**](../../../README.md)
+[**CIA Compliance Manager Documentation v1.1.32**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > `const` **BUSINESS\_VALUE\_STATEMENTS**: `Record`\<[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md), `string`[]\>
 
-Defined in: [constants/businessConstants.ts:349](https://github.com/Hack23/cia-compliance-manager/blob/1c8bec6cbe09f80caaef8f0521c4e2e531753f04/src/constants/businessConstants.ts#L349)
+Defined in: [constants/businessConstants.ts:349](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/businessConstants.ts#L349)
 
 Business value statements for security levels

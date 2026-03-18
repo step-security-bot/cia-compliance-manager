@@ -1,4 +1,4 @@
-[**CIA Compliance Manager Documentation v1.1.31**](../../../README.md)
+[**CIA Compliance Manager Documentation v1.1.32**](../../../README.md)
 
 ***
 
@@ -8,4 +8,4 @@
 
 > `const` **confidentialityOptions**: `Record`\<[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md), [`CIAOptionDetails`](../interfaces/CIAOptionDetails.md)\>
 
-Defined in: [hooks/useCIAOptions.ts:186](https://github.com/Hack23/cia-compliance-manager/blob/1c8bec6cbe09f80caaef8f0521c4e2e531753f04/src/hooks/useCIAOptions.ts#L186)
+Defined in: [hooks/useCIAOptions.ts:186](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/hooks/useCIAOptions.ts#L186)
