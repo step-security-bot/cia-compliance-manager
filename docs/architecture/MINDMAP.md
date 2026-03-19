@@ -6,26 +6,26 @@
 
 <p align="center">
   <strong>🛡️ System Component Relationships and Architecture</strong><br>
-  <em>🎯 Visual Mental Model for v1.0 Platform Structure</em>
+  <em>🎯 Visual Mental Model for v1.1.32 Platform Structure</em>
 </p>
 
 <p align="center">
   <a href="#"><img src="https://img.shields.io/badge/Owner-CEO-0A66C2?style=for-the-badge" alt="Owner"/></a>
-  <a href="#"><img src="https://img.shields.io/badge/Version-1.1-555?style=for-the-badge" alt="Version"/></a>
+  <a href="#"><img src="https://img.shields.io/badge/Version-1.1.32-555?style=for-the-badge" alt="Version"/></a>
   <a href="#"><img src="https://img.shields.io/badge/Effective-2025--11--22-success?style=for-the-badge" alt="Effective Date"/></a>
   <a href="#"><img src="https://img.shields.io/badge/Review-Quarterly-orange?style=for-the-badge" alt="Review Cycle"/></a>
 </p>
 
-**📋 Document Owner:** CEO | **📄 Version:** 1.1 | **📅 Last Updated:** 2026-02-24 (UTC)  
-**🔄 Review Cycle:** Quarterly | **⏰ Next Review:** 2026-02-22
+**📋 Document Owner:** CEO | **📄 Version:** 1.1.32 | **📅 Last Updated:** 2026-03-19 (UTC)  
+**🔄 Review Cycle:** Quarterly | **⏰ Next Review:** 2026-06-19
 
 ---
 
 ## 🎯 **Purpose**
 
-This mindmap provides a comprehensive visual mental model of the CIA Compliance Manager system architecture, illustrating component relationships, service dependencies, and feature organization for the v1.0 release. It serves as a conceptual framework for understanding how different parts of the system work together to deliver security assessment and compliance mapping capabilities.
+This mindmap provides a comprehensive visual mental model of the CIA Compliance Manager system architecture, illustrating component relationships, service dependencies, and feature organization for the v1.1.32 release. It serves as a conceptual framework for understanding how different parts of the system work together to deliver security assessment and compliance mapping capabilities.
 
-Per **[Secure Development Policy §10](https://github.com/Hack23/ISMS/blob/main/Secure_Development_Policy.md#-comprehensive-architecture-documentation-portfolio)**, this document maintains the system component inventory aligned with:
+Per **[Secure Development Policy §10](https://github.com/Hack23/ISMS-PUBLIC/blob/main/Secure_Development_Policy.md#-comprehensive-architecture-documentation-portfolio)**, this document maintains the system component inventory aligned with:
 - **ISO 27001 (A.8.1)**: System inventory maintained
 - **NIST CSF (ID.AM-1)**: Physical devices and systems inventoried
 - **CIS Controls (2.1)**: Software inventory maintained
@@ -69,7 +69,7 @@ Per **[Secure Development Policy §10](https://github.com/Hack23/ISMS/blob/main/
 
 ## 🎨 **Mindmap Color Legend**
 
-This document uses consistent color schemes aligned with the **[ISMS Style Guide](https://github.com/Hack23/ISMS/blob/main/STYLE_GUIDE.md#mermaid-diagram-standards)**:
+This document uses consistent color schemes aligned with the **[ISMS Style Guide](https://github.com/Hack23/ISMS-PUBLIC/blob/main/STYLE_GUIDE.md#mermaid-diagram-standards)**:
 
 ### Classification Colors
 - **🔴 Critical/High** - `#D32F2F` (Red) - Core components, critical security controls
@@ -86,13 +86,13 @@ This document uses consistent color schemes aligned with the **[ISMS Style Guide
 
 ---
 
-## 📊 **v1.0 System Overview**
+## 📊 **v1.1.32 System Overview**
 
 Complete system structure showing all major components and their relationships.
 
 ```mermaid
 mindmap
-  root((🎯 CIA Compliance<br/>Manager v1.0))
+  root((🎯 CIA Compliance<br/>Manager v1.1.32))
     (📊 Assessment Center)
       🔐 SecurityLevelWidget
         Configuration Hub
@@ -1087,14 +1087,14 @@ mindmap
 
 ---
 
-This mindmap visualizes the comprehensive v1.0 architecture of the CIA Compliance Manager system, providing clear mental models for understanding component relationships, service dependencies, technology stack integration, and feature organization. The diagrams use consistent color coding and hierarchical organization to facilitate quick comprehension and navigation of the system's structure.
+This mindmap visualizes the comprehensive v1.1.32 architecture of the CIA Compliance Manager system, providing clear mental models for understanding component relationships, service dependencies, technology stack integration, and feature organization. The diagrams use consistent color coding and hierarchical organization to facilitate quick comprehension and navigation of the system's structure.
 
 ---
 
 **📋 Document Control:**  
 **✅ Approved by:** James Pether Sörling, CEO  
 **📤 Distribution:** Public  
-**🏷️ Classification:** [![Confidentiality: Public](https://img.shields.io/badge/C-Public-lightgrey?style=flat-square)](https://github.com/Hack23/ISMS/blob/main/CLASSIFICATION.md#confidentiality-levels)  
+**🏷️ Classification:** [![Confidentiality: Public](https://img.shields.io/badge/C-Public-lightgrey?style=flat-square)](https://github.com/Hack23/ISMS-PUBLIC/blob/main/CLASSIFICATION.md#confidentiality-levels)  
 **📅 Effective Date:** 2025-11-22  
-**⏰ Next Review:** 2026-02-22  
-**🎯 Framework Compliance:** [![ISO 27001](https://img.shields.io/badge/ISO_27001-2022_Aligned-blue?style=flat-square&logo=iso&logoColor=white)](https://github.com/Hack23/ISMS/blob/main/CLASSIFICATION.md) [![NIST CSF 2.0](https://img.shields.io/badge/NIST_CSF-2.0_Aligned-green?style=flat-square&logo=nist&logoColor=white)](https://github.com/Hack23/ISMS/blob/main/CLASSIFICATION.md) [![CIS Controls](https://img.shields.io/badge/CIS_Controls-v8.1_Aligned-orange?style=flat-square&logo=cisecurity&logoColor=white)](https://github.com/Hack23/ISMS/blob/main/CLASSIFICATION.md)
+**⏰ Next Review:** 2026-06-19  
+**🎯 Framework Compliance:** [![ISO 27001](https://img.shields.io/badge/ISO_27001-2022_Aligned-blue?style=flat-square&logo=iso&logoColor=white)](https://github.com/Hack23/ISMS-PUBLIC/blob/main/CLASSIFICATION.md) [![NIST CSF 2.0](https://img.shields.io/badge/NIST_CSF-2.0_Aligned-green?style=flat-square&logo=nist&logoColor=white)](https://github.com/Hack23/ISMS-PUBLIC/blob/main/CLASSIFICATION.md) [![CIS Controls](https://img.shields.io/badge/CIS_Controls-v8.1_Aligned-orange?style=flat-square&logo=cisecurity&logoColor=white)](https://github.com/Hack23/ISMS-PUBLIC/blob/main/CLASSIFICATION.md)
