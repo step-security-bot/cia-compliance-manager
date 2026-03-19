@@ -1,20 +1,20 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../../modules.md) / [constants/appConstants](../README.md) / SECURITY\_DESCRIPTIONS
+[CIA Compliance Manager — UML Diagrams](../../../modules.md) / [constants/appConstants](../README.md) / SECURITY\_DESCRIPTIONS
 
 # Variable: SECURITY\_DESCRIPTIONS
 
 > `const` **SECURITY\_DESCRIPTIONS**: `object`
 
-Defined in: [constants/appConstants.ts:122](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/appConstants.ts#L122)
+Defined in: [constants/appConstants.ts:122](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/appConstants.ts#L122)
 
 ## Type Declaration
 
-### HIGH
+### NONE
 
-> **HIGH**: `string` = `"Robust protection with minimal single points of failure, blockchain validation, and strong encryption."`
+> **NONE**: `string` = `"No security controls implemented."`
 
 ### LOW
 
@@ -24,9 +24,9 @@ Defined in: [constants/appConstants.ts:122](https://github.com/Hack23/cia-compli
 
 > **MODERATE**: `string` = `"Balanced protection with automated recovery, validation checks, and standard encryption."`
 
-### NONE
+### HIGH
 
-> **NONE**: `string` = `"No security controls implemented."`
+> **HIGH**: `string` = `"Robust protection with minimal single points of failure, blockchain validation, and strong encryption."`
 
 ### VERY\_HIGH
 

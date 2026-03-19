@@ -1,20 +1,112 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../../modules.md) / [constants/appConstants](../README.md) / UI\_TEXT
+[CIA Compliance Manager — UML Diagrams](../../../modules.md) / [constants/appConstants](../README.md) / UI\_TEXT
 
 # Variable: UI\_TEXT
 
 > `const` **UI\_TEXT**: `object`
 
-Defined in: [constants/appConstants.ts:192](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/appConstants.ts#L192)
+Defined in: [constants/appConstants.ts:192](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/appConstants.ts#L192)
 
 ## Type Declaration
 
-### APP\_TITLE
+### LABELS
 
-> **APP\_TITLE**: `string` = `"CIA Compliance Manager Dashboard"`
+> **LABELS**: `object`
+
+#### LABELS.BUSINESS\_IMPACT
+
+> **BUSINESS\_IMPACT**: `string` = `"Business Impact:"`
+
+#### LABELS.RECOMMENDATION
+
+> **RECOMMENDATION**: `string` = `"Recommendation:"`
+
+#### LABELS.ESTIMATED\_COST
+
+> **ESTIMATED\_COST**: `string` = `"Estimated Implementation Cost"`
+
+#### LABELS.CAPEX
+
+> **CAPEX**: `string` = `"CAPEX:"`
+
+#### LABELS.OPEX
+
+> **OPEX**: `string` = `"OPEX:"`
+
+#### LABELS.COST\_ANALYSIS
+
+> **COST\_ANALYSIS**: `string` = `"Cost Analysis"`
+
+#### LABELS.BUSINESS\_VALUE
+
+> **BUSINESS\_VALUE**: `string` = `"Business value derived from this security profile:"`
+
+#### LABELS.ESTIMATED\_ROI
+
+> **ESTIMATED\_ROI**: `string` = `"Estimated ROI:"`
+
+#### LABELS.SECURITY\_PROFILE
+
+> **SECURITY\_PROFILE**: `string` = `"Security Profile"`
+
+#### LABELS.CURRENT\_PROFILE
+
+> **CURRENT\_PROFILE**: `string` = `"Current Profile"`
+
+#### LABELS.AVAILABILITY
+
+> **AVAILABILITY**: `string` = `"Availability"`
+
+#### LABELS.INTEGRITY
+
+> **INTEGRITY**: `string` = `"Integrity"`
+
+#### LABELS.CONFIDENTIALITY
+
+> **CONFIDENTIALITY**: `string` = `"Confidentiality"`
+
+### WIDGET\_TITLES
+
+> **WIDGET\_TITLES**: `object`
+
+#### WIDGET\_TITLES.SECURITY\_LEVEL
+
+> **SECURITY\_LEVEL**: `string` = `"Security Profile Configuration"`
+
+#### WIDGET\_TITLES.SECURITY\_SUMMARY
+
+> **SECURITY\_SUMMARY**: `string` = `"Security Summary"`
+
+#### WIDGET\_TITLES.RADAR\_CHART
+
+> **RADAR\_CHART**: `string` = `"Security Radar"`
+
+#### WIDGET\_TITLES.COST\_ESTIMATION
+
+> **COST\_ESTIMATION**: `string` = `"Cost Estimation"`
+
+#### WIDGET\_TITLES.COMPLIANCE\_STATUS
+
+> **COMPLIANCE\_STATUS**: `string` = `"Compliance Status"`
+
+#### WIDGET\_TITLES.VALUE\_CREATION
+
+> **VALUE\_CREATION**: `string` = `"Value Creation"`
+
+#### WIDGET\_TITLES.IMPACT\_ANALYSIS
+
+> **IMPACT\_ANALYSIS**: `string` = `"Impact Analysis"`
+
+#### WIDGET\_TITLES.SECURITY\_PROFILE
+
+> **SECURITY\_PROFILE**: `string` = `"CIA Security Profile"`
+
+#### WIDGET\_TITLES.SECURITY\_RESOURCES
+
+> **SECURITY\_RESOURCES**: `string` = `"Security Resources"`
 
 ### BUDGET
 
@@ -28,6 +120,22 @@ Defined in: [constants/appConstants.ts:192](https://github.com/Hack23/cia-compli
 
 > **IT\_BUDGET\_OPEX**: `string` = `"of IT budget as annual operational expenses"`
 
+### SECURITY\_MEASURES
+
+> **SECURITY\_MEASURES**: `object`
+
+#### SECURITY\_MEASURES.AVAILABILITY
+
+> **AVAILABILITY**: `string` = `"Availability"`
+
+#### SECURITY\_MEASURES.INTEGRITY
+
+> **INTEGRITY**: `string` = `"Integrity"`
+
+#### SECURITY\_MEASURES.CONFIDENTIALITY
+
+> **CONFIDENTIALITY**: `string` = `"Confidentiality"`
+
 ### CHART
 
 > **CHART**: `object`
@@ -40,78 +148,6 @@ Defined in: [constants/appConstants.ts:192](https://github.com/Hack23/cia-compli
 
 > **TITLE\_SECURITY\_PROFILE**: `string` = `"Security Profile"`
 
-### LABELS
-
-> **LABELS**: `object`
-
-#### LABELS.AVAILABILITY
-
-> **AVAILABILITY**: `string` = `"Availability"`
-
-#### LABELS.BUSINESS\_IMPACT
-
-> **BUSINESS\_IMPACT**: `string` = `"Business Impact:"`
-
-#### LABELS.BUSINESS\_VALUE
-
-> **BUSINESS\_VALUE**: `string` = `"Business value derived from this security profile:"`
-
-#### LABELS.CAPEX
-
-> **CAPEX**: `string` = `"CAPEX:"`
-
-#### LABELS.CONFIDENTIALITY
-
-> **CONFIDENTIALITY**: `string` = `"Confidentiality"`
-
-#### LABELS.COST\_ANALYSIS
-
-> **COST\_ANALYSIS**: `string` = `"Cost Analysis"`
-
-#### LABELS.CURRENT\_PROFILE
-
-> **CURRENT\_PROFILE**: `string` = `"Current Profile"`
-
-#### LABELS.ESTIMATED\_COST
-
-> **ESTIMATED\_COST**: `string` = `"Estimated Implementation Cost"`
-
-#### LABELS.ESTIMATED\_ROI
-
-> **ESTIMATED\_ROI**: `string` = `"Estimated ROI:"`
-
-#### LABELS.INTEGRITY
-
-> **INTEGRITY**: `string` = `"Integrity"`
-
-#### LABELS.OPEX
-
-> **OPEX**: `string` = `"OPEX:"`
-
-#### LABELS.RECOMMENDATION
-
-> **RECOMMENDATION**: `string` = `"Recommendation:"`
-
-#### LABELS.SECURITY\_PROFILE
-
-> **SECURITY\_PROFILE**: `string` = `"Security Profile"`
-
-### SECURITY\_MEASURES
-
-> **SECURITY\_MEASURES**: `object`
-
-#### SECURITY\_MEASURES.AVAILABILITY
-
-> **AVAILABILITY**: `string` = `"Availability"`
-
-#### SECURITY\_MEASURES.CONFIDENTIALITY
-
-> **CONFIDENTIALITY**: `string` = `"Confidentiality"`
-
-#### SECURITY\_MEASURES.INTEGRITY
-
-> **INTEGRITY**: `string` = `"Integrity"`
-
 ### VALUE\_CREATION
 
 > **VALUE\_CREATION**: `object`
@@ -120,7 +156,7 @@ Defined in: [constants/appConstants.ts:192](https://github.com/Hack23/cia-compli
 
 > **NONE\_TITLE**: `string` = `"No Value Creation"`
 
-#### VALUE\_CREATION.WITH\_LEVEL()
+#### VALUE\_CREATION.WITH\_LEVEL
 
 > **WITH\_LEVEL**: (`level`) => `string`
 
@@ -134,42 +170,6 @@ Defined in: [constants/appConstants.ts:192](https://github.com/Hack23/cia-compli
 
 `string`
 
-### WIDGET\_TITLES
+### APP\_TITLE
 
-> **WIDGET\_TITLES**: `object`
-
-#### WIDGET\_TITLES.COMPLIANCE\_STATUS
-
-> **COMPLIANCE\_STATUS**: `string` = `"Compliance Status"`
-
-#### WIDGET\_TITLES.COST\_ESTIMATION
-
-> **COST\_ESTIMATION**: `string` = `"Cost Estimation"`
-
-#### WIDGET\_TITLES.IMPACT\_ANALYSIS
-
-> **IMPACT\_ANALYSIS**: `string` = `"Impact Analysis"`
-
-#### WIDGET\_TITLES.RADAR\_CHART
-
-> **RADAR\_CHART**: `string` = `"Security Radar"`
-
-#### WIDGET\_TITLES.SECURITY\_LEVEL
-
-> **SECURITY\_LEVEL**: `string` = `"Security Profile Configuration"`
-
-#### WIDGET\_TITLES.SECURITY\_PROFILE
-
-> **SECURITY\_PROFILE**: `string` = `"CIA Security Profile"`
-
-#### WIDGET\_TITLES.SECURITY\_RESOURCES
-
-> **SECURITY\_RESOURCES**: `string` = `"Security Resources"`
-
-#### WIDGET\_TITLES.SECURITY\_SUMMARY
-
-> **SECURITY\_SUMMARY**: `string` = `"Security Summary"`
-
-#### WIDGET\_TITLES.VALUE\_CREATION
-
-> **VALUE\_CREATION**: `string` = `"Value Creation"`
+> **APP\_TITLE**: `string` = `"CIA Compliance Manager Dashboard"`

@@ -1,8 +1,8 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../modules.md) / data/securityResources
+[CIA Compliance Manager — Markdown Documentation](../../modules.md) / data/securityResources
 
 # data/securityResources
 

@@ -1,22 +1,30 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../../modules.md) / [services/securityMetricsService](../README.md) / BusinessImpactMetrics
+[CIA Compliance Manager — Markdown Documentation](../../../modules.md) / [services/securityMetricsService](../README.md) / BusinessImpactMetrics
 
 # Interface: BusinessImpactMetrics
 
-Defined in: [services/securityMetricsService.ts:71](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/securityMetricsService.ts#L71)
+Defined in: [services/securityMetricsService.ts:71](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/securityMetricsService.ts#L71)
 
 Business impact metrics for value creation
 
 ## Properties
 
+### revenueProtection
+
+> **revenueProtection**: `string`
+
+Defined in: [services/securityMetricsService.ts:72](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/securityMetricsService.ts#L72)
+
+***
+
 ### costAvoidance
 
 > **costAvoidance**: `string`
 
-Defined in: [services/securityMetricsService.ts:73](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/securityMetricsService.ts#L73)
+Defined in: [services/securityMetricsService.ts:73](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/securityMetricsService.ts#L73)
 
 ***
 
@@ -24,12 +32,4 @@ Defined in: [services/securityMetricsService.ts:73](https://github.com/Hack23/ci
 
 > **productivityImprovement**: `string`
 
-Defined in: [services/securityMetricsService.ts:74](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/securityMetricsService.ts#L74)
-
-***
-
-### revenueProtection
-
-> **revenueProtection**: `string`
-
-Defined in: [services/securityMetricsService.ts:72](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/securityMetricsService.ts#L72)
+Defined in: [services/securityMetricsService.ts:74](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/securityMetricsService.ts#L74)

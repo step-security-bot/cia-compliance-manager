@@ -1,14 +1,14 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../modules.md) / [components](../README.md) / SecurityResourcesWidget
+[CIA Compliance Manager — Markdown Documentation](../../modules.md) / [components](../README.md) / SecurityResourcesWidget
 
 # Variable: SecurityResourcesWidget
 
-> `const` **SecurityResourcesWidget**: `React.FC`\<[`SecurityResourcesWidgetProps`](../../types/interfaces/SecurityResourcesWidgetProps.md)\>
+> `const` **SecurityResourcesWidget**: `React.FC`\<[`SecurityResourcesWidgetProps`](../../types/widget-props/interfaces/SecurityResourcesWidgetProps.md)\>
 
-Defined in: [components/widgets/implementationguide/SecurityResourcesWidget.tsx:83](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/components/widgets/implementationguide/SecurityResourcesWidget.tsx#L83)
+Defined in: [components/widgets/implementationguide/SecurityResourcesWidget.tsx:83](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/components/widgets/implementationguide/SecurityResourcesWidget.tsx#L83)
 
 Widget that displays security resources and implementation guides
 

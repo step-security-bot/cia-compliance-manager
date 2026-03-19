@@ -1,12 +1,12 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../../modules.md) / [services/technicalImplementationService](../README.md) / TechnicalImplementationService
+[CIA Compliance Manager — UML Diagrams](../../../modules.md) / [services/technicalImplementationService](../README.md) / TechnicalImplementationService
 
 # Class: TechnicalImplementationService
 
-Defined in: [services/technicalImplementationService.ts:36](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/technicalImplementationService.ts#L36)
+Defined in: [services/technicalImplementationService.ts:36](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/technicalImplementationService.ts#L36)
 
 Service for technical implementation details and guidance
 
@@ -25,7 +25,7 @@ security requirements and implement controls effectively. 🔧
 
 ## Implements
 
-- `ITechnicalImplementationService`
+- [`ITechnicalImplementationService`](../../../types/services/interfaces/ITechnicalImplementationService.md)
 
 ## Constructors
 
@@ -33,7 +33,7 @@ security requirements and implement controls effectively. 🔧
 
 > **new TechnicalImplementationService**(`dataProvider`): `TechnicalImplementationService`
 
-Defined in: [services/technicalImplementationService.ts:48](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/technicalImplementationService.ts#L48)
+Defined in: [services/technicalImplementationService.ts:48](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/technicalImplementationService.ts#L48)
 
 Create a new TechnicalImplementationService instance
 
@@ -41,7 +41,7 @@ Create a new TechnicalImplementationService instance
 
 ##### dataProvider
 
-[`CIADataProvider`](../../../types/interfaces/CIADataProvider.md)
+[`CIADataProvider`](../../../types/cia-services/interfaces/CIADataProvider.md)
 
 Data provider for CIA options and implementation data
 
@@ -63,13 +63,13 @@ If dataProvider is not provided
 
 > `readonly` **name**: `string` = `'TechnicalImplementationService'`
 
-Defined in: [services/technicalImplementationService.ts:40](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/technicalImplementationService.ts#L40)
+Defined in: [services/technicalImplementationService.ts:40](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/technicalImplementationService.ts#L40)
 
 Service name for identification
 
 #### Implementation of
 
-`ITechnicalImplementationService.name`
+[`ITechnicalImplementationService`](../../../types/services/interfaces/ITechnicalImplementationService.md).[`name`](../../../types/services/interfaces/ITechnicalImplementationService.md#name)
 
 #### Overrides
 
@@ -77,11 +77,75 @@ Service name for identification
 
 ## Methods
 
+### validate()
+
+> **validate**(`input`): `boolean`
+
+Defined in: [services/BaseService.ts:73](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/BaseService.ts#L73)
+
+Validate input parameters (to be overridden by subclasses)
+
+#### Parameters
+
+##### input
+
+`unknown`
+
+Input to validate
+
+#### Returns
+
+`boolean`
+
+True if valid, false otherwise
+
+#### Implementation of
+
+[`ITechnicalImplementationService`](../../../types/services/interfaces/ITechnicalImplementationService.md).[`validate`](../../../types/services/interfaces/ITechnicalImplementationService.md#validate)
+
+#### Inherited from
+
+[`BaseService`](../../BaseService/classes/BaseService.md).[`validate`](../../BaseService/classes/BaseService.md#validate)
+
+***
+
+### handleError()
+
+> **handleError**(`error`): [`ServiceError`](../../errors/classes/ServiceError.md)
+
+Defined in: [services/BaseService.ts:104](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/BaseService.ts#L104)
+
+Handle errors consistently across services
+
+#### Parameters
+
+##### error
+
+`Error`
+
+Error to handle
+
+#### Returns
+
+[`ServiceError`](../../errors/classes/ServiceError.md)
+
+ServiceError
+
+#### Implementation of
+
+[`ITechnicalImplementationService`](../../../types/services/interfaces/ITechnicalImplementationService.md).[`handleError`](../../../types/services/interfaces/ITechnicalImplementationService.md#handleerror)
+
+#### Inherited from
+
+[`BaseService`](../../BaseService/classes/BaseService.md).[`handleError`](../../BaseService/classes/BaseService.md#handleerror)
+
+***
+
 ### getComponentDetails()
 
-> **getComponentDetails**(`component`, `level`): [`CIADetails`](../../../types/interfaces/CIADetails.md) \| `undefined`
+> **getComponentDetails**(`component`, `level`): [`CIADetails`](../../../types/cia-services/interfaces/CIADetails.md) \| `undefined`
 
-Defined in: [services/BaseService.ts:193](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/BaseService.ts#L193)
+Defined in: [services/BaseService.ts:193](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/BaseService.ts#L193)
 
 Get component details for a specific component and security level
 
@@ -89,7 +153,7 @@ Get component details for a specific component and security level
 
 ##### component
 
-[`CIAComponentType`](../../../types/type-aliases/CIAComponentType.md)
+[`CIAComponentType`](../../../types/cia-services/type-aliases/CIAComponentType.md)
 
 ##### level
 
@@ -97,7 +161,7 @@ Get component details for a specific component and security level
 
 #### Returns
 
-[`CIADetails`](../../../types/interfaces/CIADetails.md) \| `undefined`
+[`CIADetails`](../../../types/cia-services/interfaces/CIADetails.md) \| `undefined`
 
 #### Inherited from
 
@@ -105,11 +169,110 @@ Get component details for a specific component and security level
 
 ***
 
+### getSecurityLevelDescription()
+
+> **getSecurityLevelDescription**(`level`): `string`
+
+Defined in: [services/BaseService.ts:233](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/BaseService.ts#L233)
+
+Get security level description
+
+#### Parameters
+
+##### level
+
+[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
+
+#### Returns
+
+`string`
+
+#### Inherited from
+
+[`BaseService`](../../BaseService/classes/BaseService.md).[`getSecurityLevelDescription`](../../BaseService/classes/BaseService.md#getsecurityleveldescription)
+
+***
+
+### getRiskLevelFromSecurityLevel()
+
+> **getRiskLevelFromSecurityLevel**(`level`): `string`
+
+Defined in: [services/BaseService.ts:254](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/BaseService.ts#L254)
+
+Get risk level from security level
+
+#### Parameters
+
+##### level
+
+[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
+
+#### Returns
+
+`string`
+
+#### Inherited from
+
+[`BaseService`](../../BaseService/classes/BaseService.md).[`getRiskLevelFromSecurityLevel`](../../BaseService/classes/BaseService.md#getrisklevelfromsecuritylevel)
+
+***
+
+### getTechnicalImplementation()
+
+> **getTechnicalImplementation**(`component`, `level`): [`TechnicalImplementationDetails`](../../../types/cia-services/interfaces/TechnicalImplementationDetails.md)
+
+Defined in: [services/technicalImplementationService.ts:72](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/technicalImplementationService.ts#L72)
+
+Get technical implementation details for a component and security level
+
+Provides detailed technical guidance including implementation steps,
+effort estimates, required expertise, and technology recommendations
+for implementing security controls.
+
+#### Parameters
+
+##### component
+
+[`CIAComponentType`](../../../types/cia-services/type-aliases/CIAComponentType.md)
+
+CIA component type (confidentiality, integrity, availability)
+
+##### level
+
+[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
+
+Security level
+
+#### Returns
+
+[`TechnicalImplementationDetails`](../../../types/cia-services/interfaces/TechnicalImplementationDetails.md)
+
+Technical implementation details including steps, effort estimates, and requirements
+
+#### Throws
+
+If component or level is invalid
+
+#### Example
+
+```typescript
+const details = service.getTechnicalImplementation('confidentiality', 'High');
+console.log(details.description);
+console.log(`Development effort: ${details.effort.development}`);
+details.implementationSteps.forEach((step, i) => console.log(`${i+1}. ${step}`));
+```
+
+#### Implementation of
+
+[`ITechnicalImplementationService`](../../../types/services/interfaces/ITechnicalImplementationService.md).[`getTechnicalImplementation`](../../../types/services/interfaces/ITechnicalImplementationService.md#gettechnicalimplementation)
+
+***
+
 ### getComponentImplementationDetails()
 
-> **getComponentImplementationDetails**(`_component`, `level`): [`TechnicalImplementationDetails`](../../../types/interfaces/TechnicalImplementationDetails.md)
+> **getComponentImplementationDetails**(`_component`, `level`): [`TechnicalImplementationDetails`](../../../types/cia-services/interfaces/TechnicalImplementationDetails.md)
 
-Defined in: [services/technicalImplementationService.ts:122](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/technicalImplementationService.ts#L122)
+Defined in: [services/technicalImplementationService.ts:122](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/technicalImplementationService.ts#L122)
 
 Get component implementation details
 
@@ -117,7 +280,7 @@ Get component implementation details
 
 ##### \_component
 
-[`CIAComponentType`](../../../types/type-aliases/CIAComponentType.md)
+[`CIAComponentType`](../../../types/cia-services/type-aliases/CIAComponentType.md)
 
 ##### level
 
@@ -125,91 +288,103 @@ Get component implementation details
 
 #### Returns
 
-[`TechnicalImplementationDetails`](../../../types/interfaces/TechnicalImplementationDetails.md)
+[`TechnicalImplementationDetails`](../../../types/cia-services/interfaces/TechnicalImplementationDetails.md)
 
 ***
 
-### getImplementationConsiderations()
+### getTechnicalDescription()
 
-> **getImplementationConsiderations**(`level`): `string`
+> **getTechnicalDescription**(`component`, `level`): `string`
 
-Defined in: [services/technicalImplementationService.ts:256](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/technicalImplementationService.ts#L256)
+Defined in: [services/technicalImplementationService.ts:146](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/technicalImplementationService.ts#L146)
 
-Get implementation considerations based on security levels
+Get technical description for a component and security level
+
+Returns a detailed technical description of what needs to be implemented
+for the specified security control.
 
 #### Parameters
+
+##### component
+
+[`CIAComponentType`](../../../types/cia-services/type-aliases/CIAComponentType.md)
+
+CIA component type
 
 ##### level
 
 [`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
 
-Security level for implementation
+Security level
 
 #### Returns
 
 `string`
 
-Implementation considerations text
+Technical description or "No technical details available" if not found
+
+#### Throws
+
+If component or level is invalid
+
+#### Example
+
+```typescript
+const desc = service.getTechnicalDescription('integrity', 'High');
+console.log(desc); // "Implement cryptographic hashing and digital signatures..."
+```
+
+#### Implementation of
+
+[`ITechnicalImplementationService`](../../../types/services/interfaces/ITechnicalImplementationService.md).[`getTechnicalDescription`](../../../types/services/interfaces/ITechnicalImplementationService.md#gettechnicaldescription)
 
 ***
 
-### getImplementationEffort()
+### getRecommendations()
 
-> **getImplementationEffort**(`component`, `level`): [`ImplementationEffort`](../../../types/interfaces/ImplementationEffort.md)
+> **getRecommendations**(`component`, `level`): `string`[]
 
-Defined in: [services/technicalImplementationService.ts:279](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/technicalImplementationService.ts#L279)
+Defined in: [services/technicalImplementationService.ts:180](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/technicalImplementationService.ts#L180)
 
-Get implementation effort for a component's security level
+Get recommendations for a component and security level
+
+Returns specific actionable recommendations for implementing
+security controls at the given level.
 
 #### Parameters
 
 ##### component
 
-[`CIAComponentType`](../../../types/type-aliases/CIAComponentType.md)
+[`CIAComponentType`](../../../types/cia-services/type-aliases/CIAComponentType.md)
 
-The CIA component
-
-##### level
-
-[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
-
-The security level
-
-#### Returns
-
-[`ImplementationEffort`](../../../types/interfaces/ImplementationEffort.md)
-
-Implementation effort details or default effort
-
-***
-
-### getImplementationSteps()
-
-> **getImplementationSteps**(`component`, `level`): `string`[]
-
-Defined in: [services/technicalImplementationService.ts:293](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/technicalImplementationService.ts#L293)
-
-Get implementation steps for a component's security level
-
-#### Parameters
-
-##### component
-
-[`CIAComponentType`](../../../types/type-aliases/CIAComponentType.md)
-
-The CIA component
+CIA component type
 
 ##### level
 
 [`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
 
-The security level
+Security level
 
 #### Returns
 
 `string`[]
 
-Array of implementation steps
+Array of recommendation strings (may be empty if none available)
+
+#### Throws
+
+If component or level is invalid
+
+#### Example
+
+```typescript
+const recs = service.getRecommendations('availability', 'High');
+recs.forEach(rec => console.log(`- ${rec}`));
+```
+
+#### Implementation of
+
+[`ITechnicalImplementationService`](../../../types/services/interfaces/ITechnicalImplementationService.md).[`getRecommendations`](../../../types/services/interfaces/ITechnicalImplementationService.md#getrecommendations)
 
 ***
 
@@ -217,7 +392,7 @@ Array of implementation steps
 
 > **getImplementationTime**(`level`): `string`
 
-Defined in: [services/technicalImplementationService.ts:230](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/technicalImplementationService.ts#L230)
+Defined in: [services/technicalImplementationService.ts:230](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/technicalImplementationService.ts#L230)
 
 Get implementation time estimate for a security level
 
@@ -251,263 +426,88 @@ console.log(`Expected implementation time: ${time}`);
 
 #### Implementation of
 
-`ITechnicalImplementationService.getImplementationTime`
+[`ITechnicalImplementationService`](../../../types/services/interfaces/ITechnicalImplementationService.md).[`getImplementationTime`](../../../types/services/interfaces/ITechnicalImplementationService.md#getimplementationtime)
 
 ***
 
-### getRecommendations()
+### getImplementationConsiderations()
 
-> **getRecommendations**(`component`, `level`): `string`[]
+> **getImplementationConsiderations**(`level`): `string`
 
-Defined in: [services/technicalImplementationService.ts:180](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/technicalImplementationService.ts#L180)
+Defined in: [services/technicalImplementationService.ts:256](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/technicalImplementationService.ts#L256)
 
-Get recommendations for a component and security level
-
-Returns specific actionable recommendations for implementing
-security controls at the given level.
+Get implementation considerations based on security levels
 
 #### Parameters
-
-##### component
-
-[`CIAComponentType`](../../../types/type-aliases/CIAComponentType.md)
-
-CIA component type
 
 ##### level
 
 [`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
 
-Security level
+Security level for implementation
+
+#### Returns
+
+`string`
+
+Implementation considerations text
+
+***
+
+### getImplementationEffort()
+
+> **getImplementationEffort**(`component`, `level`): [`ImplementationEffort`](../../../types/cia-services/interfaces/ImplementationEffort.md)
+
+Defined in: [services/technicalImplementationService.ts:279](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/technicalImplementationService.ts#L279)
+
+Get implementation effort for a component's security level
+
+#### Parameters
+
+##### component
+
+[`CIAComponentType`](../../../types/cia-services/type-aliases/CIAComponentType.md)
+
+The CIA component
+
+##### level
+
+[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
+
+The security level
+
+#### Returns
+
+[`ImplementationEffort`](../../../types/cia-services/interfaces/ImplementationEffort.md)
+
+Implementation effort details or default effort
+
+***
+
+### getImplementationSteps()
+
+> **getImplementationSteps**(`component`, `level`): `string`[]
+
+Defined in: [services/technicalImplementationService.ts:293](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/technicalImplementationService.ts#L293)
+
+Get implementation steps for a component's security level
+
+#### Parameters
+
+##### component
+
+[`CIAComponentType`](../../../types/cia-services/type-aliases/CIAComponentType.md)
+
+The CIA component
+
+##### level
+
+[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
+
+The security level
 
 #### Returns
 
 `string`[]
 
-Array of recommendation strings (may be empty if none available)
-
-#### Throws
-
-If component or level is invalid
-
-#### Example
-
-```typescript
-const recs = service.getRecommendations('availability', 'High');
-recs.forEach(rec => console.log(`- ${rec}`));
-```
-
-#### Implementation of
-
-`ITechnicalImplementationService.getRecommendations`
-
-***
-
-### getRiskLevelFromSecurityLevel()
-
-> **getRiskLevelFromSecurityLevel**(`level`): `string`
-
-Defined in: [services/BaseService.ts:254](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/BaseService.ts#L254)
-
-Get risk level from security level
-
-#### Parameters
-
-##### level
-
-[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
-
-#### Returns
-
-`string`
-
-#### Inherited from
-
-[`BaseService`](../../BaseService/classes/BaseService.md).[`getRiskLevelFromSecurityLevel`](../../BaseService/classes/BaseService.md#getrisklevelfromsecuritylevel)
-
-***
-
-### getSecurityLevelDescription()
-
-> **getSecurityLevelDescription**(`level`): `string`
-
-Defined in: [services/BaseService.ts:233](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/BaseService.ts#L233)
-
-Get security level description
-
-#### Parameters
-
-##### level
-
-[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
-
-#### Returns
-
-`string`
-
-#### Inherited from
-
-[`BaseService`](../../BaseService/classes/BaseService.md).[`getSecurityLevelDescription`](../../BaseService/classes/BaseService.md#getsecurityleveldescription)
-
-***
-
-### getTechnicalDescription()
-
-> **getTechnicalDescription**(`component`, `level`): `string`
-
-Defined in: [services/technicalImplementationService.ts:146](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/technicalImplementationService.ts#L146)
-
-Get technical description for a component and security level
-
-Returns a detailed technical description of what needs to be implemented
-for the specified security control.
-
-#### Parameters
-
-##### component
-
-[`CIAComponentType`](../../../types/type-aliases/CIAComponentType.md)
-
-CIA component type
-
-##### level
-
-[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
-
-Security level
-
-#### Returns
-
-`string`
-
-Technical description or "No technical details available" if not found
-
-#### Throws
-
-If component or level is invalid
-
-#### Example
-
-```typescript
-const desc = service.getTechnicalDescription('integrity', 'High');
-console.log(desc); // "Implement cryptographic hashing and digital signatures..."
-```
-
-#### Implementation of
-
-`ITechnicalImplementationService.getTechnicalDescription`
-
-***
-
-### getTechnicalImplementation()
-
-> **getTechnicalImplementation**(`component`, `level`): [`TechnicalImplementationDetails`](../../../types/interfaces/TechnicalImplementationDetails.md)
-
-Defined in: [services/technicalImplementationService.ts:72](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/technicalImplementationService.ts#L72)
-
-Get technical implementation details for a component and security level
-
-Provides detailed technical guidance including implementation steps,
-effort estimates, required expertise, and technology recommendations
-for implementing security controls.
-
-#### Parameters
-
-##### component
-
-[`CIAComponentType`](../../../types/type-aliases/CIAComponentType.md)
-
-CIA component type (confidentiality, integrity, availability)
-
-##### level
-
-[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
-
-Security level
-
-#### Returns
-
-[`TechnicalImplementationDetails`](../../../types/interfaces/TechnicalImplementationDetails.md)
-
-Technical implementation details including steps, effort estimates, and requirements
-
-#### Throws
-
-If component or level is invalid
-
-#### Example
-
-```typescript
-const details = service.getTechnicalImplementation('confidentiality', 'High');
-console.log(details.description);
-console.log(`Development effort: ${details.effort.development}`);
-details.implementationSteps.forEach((step, i) => console.log(`${i+1}. ${step}`));
-```
-
-#### Implementation of
-
-`ITechnicalImplementationService.getTechnicalImplementation`
-
-***
-
-### handleError()
-
-> **handleError**(`error`): [`ServiceError`](../../classes/ServiceError.md)
-
-Defined in: [services/BaseService.ts:104](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/BaseService.ts#L104)
-
-Handle errors consistently across services
-
-#### Parameters
-
-##### error
-
-`Error`
-
-Error to handle
-
-#### Returns
-
-[`ServiceError`](../../classes/ServiceError.md)
-
-ServiceError
-
-#### Implementation of
-
-`ITechnicalImplementationService.handleError`
-
-#### Inherited from
-
-[`BaseService`](../../BaseService/classes/BaseService.md).[`handleError`](../../BaseService/classes/BaseService.md#handleerror)
-
-***
-
-### validate()
-
-> **validate**(`input`): `boolean`
-
-Defined in: [services/BaseService.ts:73](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/BaseService.ts#L73)
-
-Validate input parameters (to be overridden by subclasses)
-
-#### Parameters
-
-##### input
-
-`unknown`
-
-Input to validate
-
-#### Returns
-
-`boolean`
-
-True if valid, false otherwise
-
-#### Implementation of
-
-`ITechnicalImplementationService.validate`
-
-#### Inherited from
-
-[`BaseService`](../../BaseService/classes/BaseService.md).[`validate`](../../BaseService/classes/BaseService.md#validate)
+Array of implementation steps

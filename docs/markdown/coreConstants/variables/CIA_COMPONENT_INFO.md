@@ -1,46 +1,26 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../modules.md) / [coreConstants](../README.md) / CIA\_COMPONENT\_INFO
+[CIA Compliance Manager — Markdown Documentation](../../modules.md) / [coreConstants](../README.md) / CIA\_COMPONENT\_INFO
 
 # Variable: CIA\_COMPONENT\_INFO
 
 > `const` **CIA\_COMPONENT\_INFO**: `object`
 
-Defined in: [constants/coreConstants.ts:333](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/coreConstants.ts#L333)
+Defined in: [constants/coreConstants.ts:333](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/coreConstants.ts#L333)
 
 CIA component information
 
 ## Type Declaration
 
-### AVAILABILITY
-
-> **AVAILABILITY**: `object`
-
-#### AVAILABILITY.COLOR
-
-> **COLOR**: `string` = `"#2980b9"`
-
-#### AVAILABILITY.DESCRIPTION
-
-> **DESCRIPTION**: `string` = `"Accessibility and uptime of systems and data"`
-
-#### AVAILABILITY.ICON
-
-> **ICON**: `string` = `"⏱️"`
-
-#### AVAILABILITY.NAME
-
-> **NAME**: `string` = `"Availability"`
-
 ### CONFIDENTIALITY
 
 > **CONFIDENTIALITY**: `object`
 
-#### CONFIDENTIALITY.COLOR
+#### CONFIDENTIALITY.NAME
 
-> **COLOR**: `string` = `"#8e44ad"`
+> **NAME**: `string` = `"Confidentiality"`
 
 #### CONFIDENTIALITY.DESCRIPTION
 
@@ -50,17 +30,17 @@ CIA component information
 
 > **ICON**: `string` = `"🔒"`
 
-#### CONFIDENTIALITY.NAME
+#### CONFIDENTIALITY.COLOR
 
-> **NAME**: `string` = `"Confidentiality"`
+> **COLOR**: `string` = `"#8e44ad"`
 
 ### INTEGRITY
 
 > **INTEGRITY**: `object`
 
-#### INTEGRITY.COLOR
+#### INTEGRITY.NAME
 
-> **COLOR**: `string` = `"#27ae60"`
+> **NAME**: `string` = `"Integrity"`
 
 #### INTEGRITY.DESCRIPTION
 
@@ -70,6 +50,26 @@ CIA component information
 
 > **ICON**: `string` = `"✓"`
 
-#### INTEGRITY.NAME
+#### INTEGRITY.COLOR
 
-> **NAME**: `string` = `"Integrity"`
+> **COLOR**: `string` = `"#27ae60"`
+
+### AVAILABILITY
+
+> **AVAILABILITY**: `object`
+
+#### AVAILABILITY.NAME
+
+> **NAME**: `string` = `"Availability"`
+
+#### AVAILABILITY.DESCRIPTION
+
+> **DESCRIPTION**: `string` = `"Accessibility and uptime of systems and data"`
+
+#### AVAILABILITY.ICON
+
+> **ICON**: `string` = `"⏱️"`
+
+#### AVAILABILITY.COLOR
+
+> **COLOR**: `string` = `"#2980b9"`

@@ -1,0 +1,60 @@
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../../README.md)
+
+***
+
+[CIA Compliance Manager — UML Diagrams](../../../modules.md) / [constants/designTokens](../README.md) / SPACING
+
+# Variable: SPACING
+
+> `const` **SPACING**: `object`
+
+Defined in: [constants/designTokens.ts:22](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/designTokens.ts#L22)
+
+Spacing scale based on a flexible grid system with optimizations
+Use these values for padding, margin, and gap properties
+
+NOTE: These values have been optimized to reduce widget empty space
+and provide more compact layouts while maintaining visual hierarchy.
+
+⚠️ EXCEPTION: `sm: 6px` breaks the strict 4px/8px grid system but was
+intentionally optimized to fix 50% blank space issues in widgets.
+This value matches the current tailwind.config.ts and preserves
+the optimized UI appearance from v1.0.6+.
+
+## Type Declaration
+
+### xs
+
+> `readonly` **xs**: `"4px"` = `'4px'`
+
+4px - Extra small spacing for tight layouts
+
+### sm
+
+> `readonly` **sm**: `"6px"` = `'6px'`
+
+6px - Small spacing for compact elements (optimized from 8px)
+
+### md
+
+> `readonly` **md**: `"8px"` = `'8px'`
+
+8px - Medium spacing (optimized from 16px for more compact layouts)
+
+### lg
+
+> `readonly` **lg**: `"16px"` = `'16px'`
+
+16px - Large spacing for section separation (optimized from 24px)
+
+### xl
+
+> `readonly` **xl**: `"24px"` = `'24px'`
+
+24px - Extra large spacing for major sections (optimized from 32px)
+
+### xxl
+
+> `readonly` **xxl**: `"40px"` = `'40px'`
+
+40px - XXL spacing for page-level separation (optimized from 48px)

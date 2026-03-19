@@ -1,63 +1,63 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../../modules.md) / [constants/uiConstants](../README.md) / SECURITY\_ICONS
+[CIA Compliance Manager — Markdown Documentation](../../../modules.md) / [constants/uiConstants](../README.md) / SECURITY\_ICONS
 
 # Variable: SECURITY\_ICONS
 
 > `const` **SECURITY\_ICONS**: `object`
 
-Defined in: [constants/uiConstants.ts:46](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/uiConstants.ts#L46)
+Defined in: [constants/uiConstants.ts:46](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/uiConstants.ts#L46)
 
 Icons for security-related concepts
 
 ## Type Declaration
 
-### compliance
+### risk
 
-> **compliance**: `string` = `"📋"`
-
-### cost
-
-> **cost**: `string` = `"💲"`
-
-### details
-
-> **details**: `string` = `"ℹ️"`
-
-### effort
-
-> **effort**: `string` = `"📈"`
-
-### implementation
-
-> **implementation**: `string` = `"🛠️"`
+> **risk**: `string` = `"⚠️"`
 
 ### recommendation
 
 > **recommendation**: `string` = `"💡"`
 
-### risk
+### compliance
 
-> **risk**: `string` = `"⚠️"`
+> **compliance**: `string` = `"📋"`
 
 ### riskLevel
 
 > **riskLevel**: `string` = `"🔍"`
 
+### security
+
+> **security**: `string` = `"🔐"`
+
 ### score
 
 > **score**: `string` = `"📊"`
 
-### security
+### details
 
-> **security**: `string` = `"🔐"`
+> **details**: `string` = `"ℹ️"`
+
+### implementation
+
+> **implementation**: `string` = `"🛠️"`
+
+### value
+
+> **value**: `string` = `"💎"`
+
+### cost
+
+> **cost**: `string` = `"💲"`
 
 ### time
 
 > **time**: `string` = `"⏰"`
 
-### value
+### effort
 
-> **value**: `string` = `"💎"`
+> **effort**: `string` = `"📈"`

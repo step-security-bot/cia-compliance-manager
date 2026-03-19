@@ -1,14 +1,14 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../../modules.md) / [utils/riskUtils](../README.md) / getSLAMetrics
+[CIA Compliance Manager — Markdown Documentation](../../../modules.md) / [utils/riskUtils](../README.md) / getSLAMetrics
 
-# Variable: getSLAMetrics()
+# Variable: getSLAMetrics
 
 > `const` **getSLAMetrics**: (`level`) => `object` = `getDefaultSLAMetrics`
 
-Defined in: [utils/riskUtils.ts:31](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/utils/riskUtils.ts#L31)
+Defined in: [utils/riskUtils.ts:31](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/utils/riskUtils.ts#L31)
 
 Get default SLA metrics for a security level
 
@@ -26,22 +26,22 @@ Security level
 
 SLA metrics object
 
-### mttr
+### uptime
 
-> **mttr**: `string`
-
-### rpo
-
-> **rpo**: `string`
+> **uptime**: `string`
 
 ### rto
 
 > **rto**: `string`
 
+### rpo
+
+> **rpo**: `string`
+
+### mttr
+
+> **mttr**: `string`
+
 ### sla
 
 > **sla**: `string`
-
-### uptime
-
-> **uptime**: `string`

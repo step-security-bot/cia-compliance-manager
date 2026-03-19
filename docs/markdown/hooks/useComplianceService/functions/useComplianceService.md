@@ -1,14 +1,14 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../../modules.md) / [hooks/useComplianceService](../README.md) / useComplianceService
+[CIA Compliance Manager — Markdown Documentation](../../../modules.md) / [hooks/useComplianceService](../README.md) / useComplianceService
 
 # Function: useComplianceService()
 
 > **useComplianceService**(): `object`
 
-Defined in: [hooks/useComplianceService.ts:8](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/hooks/useComplianceService.ts#L8)
+Defined in: [hooks/useComplianceService.ts:8](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/hooks/useComplianceService.ts#L8)
 
 Hook to access compliance service functionality
 
@@ -16,14 +16,14 @@ Hook to access compliance service functionality
 
 `object`
 
+### isLoading
+
+> **isLoading**: `boolean`
+
 ### complianceService
 
-> **complianceService**: [`ComplianceServiceAdapter`](../../../services/classes/ComplianceServiceAdapter.md)
+> **complianceService**: [`ComplianceServiceAdapter`](../../../services/ComplianceServiceAdapter/classes/ComplianceServiceAdapter.md)
 
 ### error
 
 > **error**: `Error` \| `null`
-
-### isLoading
-
-> **isLoading**: `boolean`

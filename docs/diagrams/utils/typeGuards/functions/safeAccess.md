@@ -1,14 +1,14 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../../modules.md) / [utils/typeGuards](../README.md) / safeAccess
+[CIA Compliance Manager — UML Diagrams](../../../modules.md) / [utils/typeGuards](../README.md) / safeAccess
 
 # Function: safeAccess()
 
 > **safeAccess**\<`T`\>(`obj`, `path`, `defaultValue?`): `T`
 
-Defined in: [utils/typeGuards.ts:160](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/utils/typeGuards.ts#L160)
+Defined in: [utils/typeGuards.ts:160](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/utils/typeGuards.ts#L160)
 
 Safely access a nested property in an object using a dot notation path
 
@@ -28,9 +28,9 @@ The object to access
 
 ### path
 
-The path to the property, e.g. 'a.b.c' or 'a[0].b.c'
+`string` \| (`string` \| `number`)[]
 
-`string` | (`string` \| `number`)[]
+The path to the property, e.g. 'a.b.c' or 'a[0].b.c'
 
 ### defaultValue?
 

@@ -1,8 +1,8 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../modules.md) / services
+[CIA Compliance Manager — Markdown Documentation](../modules.md) / services
 
 # services
 
@@ -17,61 +17,11 @@ and business impact analysis, centralizing critical functionality. 💼
 ## Technical Perspective
 Centralized service exports simplify imports and promote service reuse.
 
-## Enumerations
-
-- [ErrorSeverity](enumerations/ErrorSeverity.md)
-- [ServiceErrorCode](enumerations/ServiceErrorCode.md)
-
-## Classes
-
-- [ComplianceServiceAdapter](classes/ComplianceServiceAdapter.md)
-- [ErrorService](classes/ErrorService.md)
-- [ServiceError](classes/ServiceError.md)
-
-## Interfaces
-
-- [ErrorContext](interfaces/ErrorContext.md)
-- [ErrorLogEntry](interfaces/ErrorLogEntry.md)
-- [SecurityResource](interfaces/SecurityResource.md)
-
 ## Variables
 
 - [defaultCIAContentService](variables/defaultCIAContentService.md)
-- [errorService](variables/errorService.md)
-
-## Functions
-
-- [createCalculationError](functions/createCalculationError.md)
-- [createDataNotFoundError](functions/createDataNotFoundError.md)
-- [createNetworkServiceError](functions/createNetworkServiceError.md)
-- [createRetryableServiceError](functions/createRetryableServiceError.md)
-- [createValidationError](functions/createValidationError.md)
-- [createValidationServiceError](functions/createValidationServiceError.md)
-- [getErrorMessage](functions/getErrorMessage.md)
-- [isNetworkError](functions/isNetworkError.md)
-- [isRetryableError](functions/isRetryableError.md)
-- [isServiceError](functions/isServiceError.md)
-- [isValidationError](functions/isValidationError.md)
 
 ## References
-
-### BaseService
-
-Re-exports [BaseService](BaseService/classes/BaseService.md)
-
-***
-
-### BusinessImpactService
-
-Re-exports [BusinessImpactService](businessImpactService/classes/BusinessImpactService.md)
-
-***
-
-### CIAContentService
-
-Re-exports [CIAContentService](ciaContentService/classes/CIAContentService.md)
-
-***
 
 ### createBusinessImpactService
 
@@ -91,21 +41,27 @@ Re-exports [createComplianceService](complianceService/functions/createComplianc
 
 ***
 
-### createSecurityMetricsService
-
-Re-exports [createSecurityMetricsService](securityMetricsService/functions/createSecurityMetricsService.md)
-
-***
-
-### createSecurityResourceService
-
-Re-exports [createSecurityResourceService](securityResourceService/functions/createSecurityResourceService.md)
-
-***
-
 ### createTechnicalImplementationService
 
 Re-exports [createTechnicalImplementationService](technicalImplementationService/functions/createTechnicalImplementationService.md)
+
+***
+
+### BaseService
+
+Re-exports [BaseService](BaseService/classes/BaseService.md)
+
+***
+
+### BusinessImpactService
+
+Re-exports [BusinessImpactService](businessImpactService/classes/BusinessImpactService.md)
+
+***
+
+### CIAContentService
+
+Re-exports [CIAContentService](ciaContentService/classes/CIAContentService.md)
 
 ***
 
@@ -133,12 +89,144 @@ Re-exports [getValuePoints](ciaContentService/functions/getValuePoints.md)
 
 ***
 
+### ComplianceServiceAdapter
+
+Re-exports [ComplianceServiceAdapter](ComplianceServiceAdapter/classes/ComplianceServiceAdapter.md)
+
+***
+
+### createSecurityMetricsService
+
+Re-exports [createSecurityMetricsService](securityMetricsService/functions/createSecurityMetricsService.md)
+
+***
+
 ### SecurityMetricsService
 
 Re-exports [SecurityMetricsService](securityMetricsService/classes/SecurityMetricsService.md)
 
 ***
 
+### createSecurityResourceService
+
+Re-exports [createSecurityResourceService](securityResourceService/functions/createSecurityResourceService.md)
+
+***
+
 ### SecurityResourceService
 
 Re-exports [SecurityResourceService](securityResourceService/classes/SecurityResourceService.md)
+
+***
+
+### SecurityResource
+
+Re-exports [SecurityResource](../types/securityResources/interfaces/SecurityResource.md)
+
+***
+
+### ErrorService
+
+Re-exports [ErrorService](errorService/classes/ErrorService.md)
+
+***
+
+### errorService
+
+Re-exports [errorService](errorService/variables/errorService.md)
+
+***
+
+### ErrorSeverity
+
+Re-exports [ErrorSeverity](errorService/enumerations/ErrorSeverity.md)
+
+***
+
+### ErrorLogEntry
+
+Re-exports [ErrorLogEntry](errorService/interfaces/ErrorLogEntry.md)
+
+***
+
+### ServiceError
+
+Re-exports [ServiceError](errors/classes/ServiceError.md)
+
+***
+
+### ServiceErrorCode
+
+Re-exports [ServiceErrorCode](errors/enumerations/ServiceErrorCode.md)
+
+***
+
+### createValidationServiceError
+
+Re-exports [createValidationServiceError](errors/functions/createValidationServiceError.md)
+
+***
+
+### createNetworkServiceError
+
+Re-exports [createNetworkServiceError](errors/functions/createNetworkServiceError.md)
+
+***
+
+### createRetryableServiceError
+
+Re-exports [createRetryableServiceError](errors/functions/createRetryableServiceError.md)
+
+***
+
+### ErrorContext
+
+Re-exports [ErrorContext](errors/interfaces/ErrorContext.md)
+
+***
+
+### createValidationError
+
+Re-exports [createValidationError](errors/functions/createValidationError.md)
+
+***
+
+### createDataNotFoundError
+
+Re-exports [createDataNotFoundError](errors/functions/createDataNotFoundError.md)
+
+***
+
+### createCalculationError
+
+Re-exports [createCalculationError](errors/functions/createCalculationError.md)
+
+***
+
+### isServiceError
+
+Re-exports [isServiceError](errors/functions/isServiceError.md)
+
+***
+
+### isValidationError
+
+Re-exports [isValidationError](errors/functions/isValidationError.md)
+
+***
+
+### isNetworkError
+
+Re-exports [isNetworkError](errors/functions/isNetworkError.md)
+
+***
+
+### isRetryableError
+
+Re-exports [isRetryableError](errors/functions/isRetryableError.md)
+
+***
+
+### getErrorMessage
+
+Re-exports [getErrorMessage](errors/functions/getErrorMessage.md)

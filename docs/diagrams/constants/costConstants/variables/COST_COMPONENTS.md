@@ -1,14 +1,14 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../../modules.md) / [constants/costConstants](../README.md) / COST\_COMPONENTS
+[CIA Compliance Manager — UML Diagrams](../../../modules.md) / [constants/costConstants](../README.md) / COST\_COMPONENTS
 
 # Variable: COST\_COMPONENTS
 
 > `const` **COST\_COMPONENTS**: `object`
 
-Defined in: [constants/costConstants.ts:168](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/costConstants.ts#L168)
+Defined in: [constants/costConstants.ts:168](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/costConstants.ts#L168)
 
 Typical cost components for security implementations
 
@@ -18,34 +18,34 @@ Typical cost components for security implementations
 
 > **HARDWARE**: `string` = `"Hardware"`
 
-### LICENSING
+### SOFTWARE
 
-> **LICENSING**: `string` = `"Licensing"`
-
-### MAINTENANCE
-
-> **MAINTENANCE**: `string` = `"Maintenance"`
-
-### OVERHEAD
-
-> **OVERHEAD**: `string` = `"Overhead"`
+> **SOFTWARE**: `string` = `"Software"`
 
 ### SERVICES
 
 > **SERVICES**: `string` = `"Professional Services"`
 
-### SOFTWARE
+### LICENSING
 
-> **SOFTWARE**: `string` = `"Software"`
+> **LICENSING**: `string` = `"Licensing"`
 
-### STAFFING
+### TRAINING
 
-> **STAFFING**: `string` = `"Staffing"`
+> **TRAINING**: `string` = `"Training"`
+
+### MAINTENANCE
+
+> **MAINTENANCE**: `string` = `"Maintenance"`
 
 ### SUPPORT
 
 > **SUPPORT**: `string` = `"Support"`
 
-### TRAINING
+### STAFFING
 
-> **TRAINING**: `string` = `"Training"`
+> **STAFFING**: `string` = `"Staffing"`
+
+### OVERHEAD
+
+> **OVERHEAD**: `string` = `"Overhead"`

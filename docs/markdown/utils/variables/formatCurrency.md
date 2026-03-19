@@ -1,14 +1,14 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../modules.md) / [utils](../README.md) / formatCurrency
+[CIA Compliance Manager — Markdown Documentation](../../modules.md) / [utils](../README.md) / formatCurrency
 
-# Variable: formatCurrency()
+# Variable: formatCurrency
 
 > **formatCurrency**: (`value`, `options?`, `locale?`) => `string`
 
-Defined in: [utils/index.ts:89](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/utils/index.ts#L89)
+Defined in: [utils/index.ts:89](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/utils/index.ts#L89)
 
 Formats a number as currency with proper thousands separators
 
@@ -26,37 +26,43 @@ The numeric value to format as currency
 
 ### options?
 
-Formatting options object or currency code string (for backward compatibility)
-
-`string` |
-
-\{ `currency?`: `string`; `locale?`: `string`; `maximumFractionDigits?`: `number`; `minimumFractionDigits?`: `number`; \}
+`string` \| \{ `locale?`: `string`; `currency?`: `string`; `minimumFractionDigits?`: `number`; `maximumFractionDigits?`: `number`; \}
 
 Formatting options object or currency code string (for backward compatibility)
-
-#### currency?
 
 `string`
 
-Currency code (e.g., 'USD', 'EUR', 'SEK')
+***
 
-#### locale?
+#### Type Literal
+
+\{ `locale?`: `string`; `currency?`: `string`; `minimumFractionDigits?`: `number`; `maximumFractionDigits?`: `number`; \}
+
+Formatting options object or currency code string (for backward compatibility)
+
+##### locale?
 
 `string`
 
 Locale string for regional formatting (e.g., 'en-US', 'sv-SE')
 
-#### maximumFractionDigits?
+##### currency?
 
-`number`
+`string`
 
-Maximum decimal places to show
+Currency code (e.g., 'USD', 'EUR', 'SEK')
 
-#### minimumFractionDigits?
+##### minimumFractionDigits?
 
 `number`
 
 Minimum decimal places to show
+
+##### maximumFractionDigits?
+
+`number`
+
+Maximum decimal places to show
 
 ### locale?
 

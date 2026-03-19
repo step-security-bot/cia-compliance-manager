@@ -1,12 +1,12 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../../modules.md) / [types/cia](../README.md) / IntegrityImpact
+[CIA Compliance Manager — Markdown Documentation](../../../modules.md) / [types/cia](../README.md) / IntegrityImpact
 
 # Interface: IntegrityImpact
 
-Defined in: [types/cia.ts:391](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/types/cia.ts#L391)
+Defined in: [types/cia.ts:391](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/cia.ts#L391)
 
 Impact associated with the integrity of the system
 
@@ -30,35 +30,11 @@ const impact: IntegrityImpact = {
 
 ## Properties
 
-### dataAccuracy
-
-> **dataAccuracy**: `string`
-
-Defined in: [types/cia.ts:393](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/types/cia.ts#L393)
-
-Expected data accuracy level and tolerance for errors
-
-***
-
-### description
-
-> **description**: `string`
-
-Defined in: [types/cia.ts:348](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/types/cia.ts#L348)
-
-Human-readable description of the impact
-
-#### Inherited from
-
-[`BaseImpact`](BaseImpact.md).[`description`](BaseImpact.md#description)
-
-***
-
 ### level
 
 > **level**: [`SecurityLevel`](../type-aliases/SecurityLevel.md)
 
-Defined in: [types/cia.ts:345](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/types/cia.ts#L345)
+Defined in: [types/cia.ts:345](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/cia.ts#L345)
 
 Security level associated with this impact
 
@@ -68,10 +44,34 @@ Security level associated with this impact
 
 ***
 
+### description
+
+> **description**: `string`
+
+Defined in: [types/cia.ts:348](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/cia.ts#L348)
+
+Human-readable description of the impact
+
+#### Inherited from
+
+[`BaseImpact`](BaseImpact.md).[`description`](BaseImpact.md#description)
+
+***
+
+### dataAccuracy
+
+> **dataAccuracy**: `string`
+
+Defined in: [types/cia.ts:393](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/cia.ts#L393)
+
+Expected data accuracy level and tolerance for errors
+
+***
+
 ### verificationSteps
 
 > **verificationSteps**: `string`
 
-Defined in: [types/cia.ts:396](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/types/cia.ts#L396)
+Defined in: [types/cia.ts:396](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/cia.ts#L396)
 
 Verification and validation processes required

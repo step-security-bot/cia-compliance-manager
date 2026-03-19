@@ -1,14 +1,14 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../modules.md) / [coreConstants](../README.md) / API\_CONFIG
+[CIA Compliance Manager — Markdown Documentation](../../modules.md) / [coreConstants](../README.md) / API\_CONFIG
 
 # Variable: API\_CONFIG
 
 > `const` **API\_CONFIG**: `object`
 
-Defined in: [constants/coreConstants.ts:477](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/coreConstants.ts#L477)
+Defined in: [constants/coreConstants.ts:477](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/coreConstants.ts#L477)
 
 API configuration for external services
 
@@ -18,14 +18,14 @@ API configuration for external services
 
 > **BASE\_URL**: `string` = `"/api"`
 
-### CACHE\_DURATION
+### TIMEOUT
 
-> **CACHE\_DURATION**: `number` = `3600`
+> **TIMEOUT**: `number` = `5000`
 
 ### RETRY\_ATTEMPTS
 
 > **RETRY\_ATTEMPTS**: `number` = `2`
 
-### TIMEOUT
+### CACHE\_DURATION
 
-> **TIMEOUT**: `number` = `5000`
+> **CACHE\_DURATION**: `number` = `3600`

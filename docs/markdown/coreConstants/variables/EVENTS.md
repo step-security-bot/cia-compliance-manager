@@ -1,26 +1,18 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../modules.md) / [coreConstants](../README.md) / EVENTS
+[CIA Compliance Manager — Markdown Documentation](../../modules.md) / [coreConstants](../README.md) / EVENTS
 
 # Variable: EVENTS
 
 > `const` **EVENTS**: `object`
 
-Defined in: [constants/coreConstants.ts:467](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/coreConstants.ts#L467)
+Defined in: [constants/coreConstants.ts:467](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/coreConstants.ts#L467)
 
 Application events
 
 ## Type Declaration
-
-### DATA\_LOADED
-
-> **DATA\_LOADED**: `string` = `"cia-data-loaded"`
-
-### ERROR\_OCCURRED
-
-> **ERROR\_OCCURRED**: `string` = `"cia-error-occurred"`
 
 ### LEVEL\_CHANGED
 
@@ -29,3 +21,11 @@ Application events
 ### SETTINGS\_CHANGED
 
 > **SETTINGS\_CHANGED**: `string` = `"cia-settings-changed"`
+
+### DATA\_LOADED
+
+> **DATA\_LOADED**: `string` = `"cia-data-loaded"`
+
+### ERROR\_OCCURRED
+
+> **ERROR\_OCCURRED**: `string` = `"cia-error-occurred"`

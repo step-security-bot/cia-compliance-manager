@@ -1,20 +1,20 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../../modules.md) / [types/businessImpact](../README.md) / BUSINESS\_KEY\_BENEFITS
+[CIA Compliance Manager — Markdown Documentation](../../../modules.md) / [types/businessImpact](../README.md) / BUSINESS\_KEY\_BENEFITS
 
 # Variable: BUSINESS\_KEY\_BENEFITS
 
 > `const` **BUSINESS\_KEY\_BENEFITS**: `object`
 
-Defined in: [types/businessImpact.ts:416](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/types/businessImpact.ts#L416)
+Defined in: [types/businessImpact.ts:416](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/businessImpact.ts#L416)
 
 ## Type Declaration
 
-### HIGH
+### NONE
 
-> **HIGH**: [`BusinessKeyBenefit`](../interfaces/BusinessKeyBenefit.md)[]
+> **NONE**: [`BusinessKeyBenefit`](../interfaces/BusinessKeyBenefit.md)[]
 
 ### LOW
 
@@ -24,9 +24,9 @@ Defined in: [types/businessImpact.ts:416](https://github.com/Hack23/cia-complian
 
 > **MODERATE**: [`BusinessKeyBenefit`](../interfaces/BusinessKeyBenefit.md)[]
 
-### NONE
+### HIGH
 
-> **NONE**: [`BusinessKeyBenefit`](../interfaces/BusinessKeyBenefit.md)[]
+> **HIGH**: [`BusinessKeyBenefit`](../interfaces/BusinessKeyBenefit.md)[]
 
 ### VERY\_HIGH
 

@@ -1,104 +1,24 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../../modules.md) / [constants/appConstants](../README.md) / TEST\_DATA
+[CIA Compliance Manager — UML Diagrams](../../../modules.md) / [constants/appConstants](../README.md) / TEST\_DATA
 
 # Variable: TEST\_DATA
 
 > `const` **TEST\_DATA**: `object`
 
-Defined in: [constants/appConstants.ts:268](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/appConstants.ts#L268)
+Defined in: [constants/appConstants.ts:268](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/appConstants.ts#L268)
 
 ## Type Declaration
-
-### MOCK\_DESCRIPTIONS
-
-> **MOCK\_DESCRIPTIONS**: `object`
-
-#### MOCK\_DESCRIPTIONS.AVAILABILITY
-
-> **AVAILABILITY**: `string` = `"Custom availability description"`
-
-#### MOCK\_DESCRIPTIONS.CONFIDENTIALITY
-
-> **CONFIDENTIALITY**: `string` = `"Custom confidentiality description"`
-
-#### MOCK\_DESCRIPTIONS.INTEGRITY
-
-> **INTEGRITY**: `string` = `"Custom integrity description"`
-
-### MOCK\_OPTIONS
-
-> **MOCK\_OPTIONS**: `object`
-
-#### MOCK\_OPTIONS.BASE
-
-> **BASE**: `object`
-
-#### MOCK\_OPTIONS.BASE.bg
-
-> **bg**: `string` = `"#ffffff"`
-
-#### MOCK\_OPTIONS.BASE.capex
-
-> **capex**: `number` = `0`
-
-#### MOCK\_OPTIONS.BASE.description
-
-> **description**: `string` = `"None"`
-
-#### MOCK\_OPTIONS.BASE.impact
-
-> **impact**: `string` = `"None"`
-
-#### MOCK\_OPTIONS.BASE.opex
-
-> **opex**: `number` = `0`
-
-#### MOCK\_OPTIONS.BASE.technical
-
-> **technical**: `string` = `"None"`
-
-#### MOCK\_OPTIONS.BASE.text
-
-> **text**: `string` = `"#000000"`
-
-#### MOCK\_OPTIONS.LOW
-
-> **LOW**: `object`
-
-#### MOCK\_OPTIONS.LOW.bg
-
-> **bg**: `string` = `"#ffffff"`
-
-#### MOCK\_OPTIONS.LOW.capex
-
-> **capex**: `number` = `5`
-
-#### MOCK\_OPTIONS.LOW.description
-
-> **description**: `string` = `"Low"`
-
-#### MOCK\_OPTIONS.LOW.impact
-
-> **impact**: `string` = `"Low"`
-
-#### MOCK\_OPTIONS.LOW.opex
-
-> **opex**: `number` = `5`
-
-#### MOCK\_OPTIONS.LOW.technical
-
-> **technical**: `string` = `"Low"`
-
-#### MOCK\_OPTIONS.LOW.text
-
-> **text**: `string` = `"#000000"`
 
 ### WIDGET
 
 > **WIDGET**: `object`
+
+#### WIDGET.TITLE
+
+> **TITLE**: `string` = `"Test Widget"`
 
 #### WIDGET.CONTENT
 
@@ -108,6 +28,86 @@ Defined in: [constants/appConstants.ts:268](https://github.com/Hack23/cia-compli
 
 > **CUSTOM\_CLASS**: `string` = `"test-class"`
 
-#### WIDGET.TITLE
+### MOCK\_DESCRIPTIONS
 
-> **TITLE**: `string` = `"Test Widget"`
+> **MOCK\_DESCRIPTIONS**: `object`
+
+#### MOCK\_DESCRIPTIONS.AVAILABILITY
+
+> **AVAILABILITY**: `string` = `"Custom availability description"`
+
+#### MOCK\_DESCRIPTIONS.INTEGRITY
+
+> **INTEGRITY**: `string` = `"Custom integrity description"`
+
+#### MOCK\_DESCRIPTIONS.CONFIDENTIALITY
+
+> **CONFIDENTIALITY**: `string` = `"Custom confidentiality description"`
+
+### MOCK\_OPTIONS
+
+> **MOCK\_OPTIONS**: `object`
+
+#### MOCK\_OPTIONS.BASE
+
+> **BASE**: `object`
+
+#### MOCK\_OPTIONS.BASE.description
+
+> **description**: `string` = `"None"`
+
+#### MOCK\_OPTIONS.BASE.impact
+
+> **impact**: `string` = `"None"`
+
+#### MOCK\_OPTIONS.BASE.technical
+
+> **technical**: `string` = `"None"`
+
+#### MOCK\_OPTIONS.BASE.capex
+
+> **capex**: `number` = `0`
+
+#### MOCK\_OPTIONS.BASE.opex
+
+> **opex**: `number` = `0`
+
+#### MOCK\_OPTIONS.BASE.bg
+
+> **bg**: `string` = `"#ffffff"`
+
+#### MOCK\_OPTIONS.BASE.text
+
+> **text**: `string` = `"#000000"`
+
+#### MOCK\_OPTIONS.LOW
+
+> **LOW**: `object`
+
+#### MOCK\_OPTIONS.LOW.description
+
+> **description**: `string` = `"Low"`
+
+#### MOCK\_OPTIONS.LOW.impact
+
+> **impact**: `string` = `"Low"`
+
+#### MOCK\_OPTIONS.LOW.technical
+
+> **technical**: `string` = `"Low"`
+
+#### MOCK\_OPTIONS.LOW.capex
+
+> **capex**: `number` = `5`
+
+#### MOCK\_OPTIONS.LOW.opex
+
+> **opex**: `number` = `5`
+
+#### MOCK\_OPTIONS.LOW.bg
+
+> **bg**: `string` = `"#ffffff"`
+
+#### MOCK\_OPTIONS.LOW.text
+
+> **text**: `string` = `"#000000"`

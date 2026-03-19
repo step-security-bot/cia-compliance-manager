@@ -1,0 +1,162 @@
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../../README.md)
+
+***
+
+[CIA Compliance Manager — Markdown Documentation](../../../modules.md) / [types/widget-props](../README.md) / IntegrityImpactWidgetProps
+
+# Interface: IntegrityImpactWidgetProps
+
+Defined in: [types/widget-props.ts:611](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/widget-props.ts#L611)
+
+Props for IntegrityImpactWidget component
+
+Displays integrity-specific business impact including data accuracy,
+validation requirements, and audit controls.
+
+## Example
+
+```typescript
+<IntegrityImpactWidget
+  integrityLevel="Very High"
+  availabilityLevel="High"
+  confidentialityLevel="Moderate"
+  showExtendedDetails
+/>
+```
+
+## Extends
+
+- [`BaseWidgetProps`](BaseWidgetProps.md)
+
+## Properties
+
+### className?
+
+> `optional` **className?**: `string`
+
+Defined in: [types/widget-props.ts:124](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/widget-props.ts#L124)
+
+Optional CSS class name for custom styling
+
+Allows consumers to apply custom styles via CSS classes.
+Use Tailwind CSS classes or custom CSS classes.
+
+#### Example
+
+```ts
+"mt-4 border-2 rounded-lg"
+```
+
+#### Inherited from
+
+[`BaseWidgetProps`](BaseWidgetProps.md).[`className`](BaseWidgetProps.md#classname)
+
+***
+
+### testId?
+
+> `optional` **testId?**: `string`
+
+Defined in: [types/widget-props.ts:135](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/widget-props.ts#L135)
+
+Optional test ID for automated testing
+
+Used by testing frameworks (Cypress, Vitest) to locate
+and interact with the component. Should follow the pattern
+defined in testIds constants.
+
+#### Example
+
+```ts
+"security-widget-availability"
+```
+
+#### Inherited from
+
+[`BaseWidgetProps`](BaseWidgetProps.md).[`testId`](BaseWidgetProps.md#testid)
+
+***
+
+### children?
+
+> `optional` **children?**: `ReactNode`
+
+Defined in: [types/widget-props.ts:244](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/widget-props.ts#L244)
+
+Optional children elements
+
+#### Inherited from
+
+[`BaseWidgetProps`](BaseWidgetProps.md).[`children`](BaseWidgetProps.md#children)
+
+***
+
+### onError?
+
+> `optional` **onError?**: (`error`) => `void`
+
+Defined in: [types/widget-props.ts:250](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/widget-props.ts#L250)
+
+Optional callback when widget encounters an error
+
+#### Parameters
+
+##### error
+
+`Error`
+
+Error that occurred
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`BaseWidgetProps`](BaseWidgetProps.md).[`onError`](BaseWidgetProps.md#onerror)
+
+***
+
+### availabilityLevel?
+
+> `optional` **availabilityLevel?**: [`SecurityLevel`](../../cia/type-aliases/SecurityLevel.md)
+
+Defined in: [types/widget-props.ts:615](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/widget-props.ts#L615)
+
+Availability security level (optional, for context)
+
+***
+
+### integrityLevel
+
+> **integrityLevel**: [`SecurityLevel`](../../cia/type-aliases/SecurityLevel.md)
+
+Defined in: [types/widget-props.ts:620](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/widget-props.ts#L620)
+
+Integrity security level
+
+***
+
+### confidentialityLevel?
+
+> `optional` **confidentialityLevel?**: [`SecurityLevel`](../../cia/type-aliases/SecurityLevel.md)
+
+Defined in: [types/widget-props.ts:625](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/widget-props.ts#L625)
+
+Confidentiality security level (optional, for context)
+
+***
+
+### showExtendedDetails?
+
+> `optional` **showExtendedDetails?**: `boolean`
+
+Defined in: [types/widget-props.ts:631](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/widget-props.ts#L631)
+
+If true, displays extended details
+
+#### Default
+
+```ts
+false
+```

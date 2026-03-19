@@ -1,8 +1,8 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../modules.md) / components/widgets
+[CIA Compliance Manager — Markdown Documentation](../../modules.md) / components/widgets
 
 # components/widgets
 
@@ -12,51 +12,15 @@ This module exports specialized dashboard widgets for security compliance visual
 
 ## References
 
-### AvailabilityImpactWidget
-
-Re-exports [AvailabilityImpactWidget](../variables/AvailabilityImpactWidget.md)
-
-***
-
-### BusinessImpactAnalysisWidget
-
-Re-exports [BusinessImpactAnalysisWidget](../variables/BusinessImpactAnalysisWidget.md)
-
-***
-
 ### COMPLIANCE\_STATUS
 
-Re-exports [COMPLIANCE_STATUS](../variables/COMPLIANCE_STATUS.md)
+Re-exports [COMPLIANCE_STATUS](constants/variables/COMPLIANCE_STATUS.md)
 
 ***
 
 ### COMPLIANCE\_STATUS\_TEST\_IDS
 
-Re-exports [COMPLIANCE_STATUS_TEST_IDS](../variables/COMPLIANCE_STATUS_TEST_IDS.md)
-
-***
-
-### ComplianceStatusWidget
-
-Re-exports [ComplianceStatusWidget](../variables/ComplianceStatusWidget.md)
-
-***
-
-### ConfidentialityImpactWidget
-
-Re-exports [ConfidentialityImpactWidget](../variables/ConfidentialityImpactWidget.md)
-
-***
-
-### CostEstimationWidget
-
-Re-exports [CostEstimationWidget](../variables/CostEstimationWidget.md)
-
-***
-
-### IntegrityImpactWidget
-
-Re-exports [IntegrityImpactWidget](../variables/IntegrityImpactWidget.md)
+Re-exports [COMPLIANCE_STATUS_TEST_IDS](constants/variables/COMPLIANCE_STATUS_TEST_IDS.md)
 
 ***
 
@@ -66,15 +30,39 @@ Re-exports [SecurityLevelWidget](../variables/SecurityLevelWidget.md)
 
 ***
 
-### SecurityResourcesWidget
-
-Re-exports [SecurityResourcesWidget](../variables/SecurityResourcesWidget.md)
-
-***
-
 ### SecuritySummaryWidget
 
 Re-exports [SecuritySummaryWidget](../variables/SecuritySummaryWidget.md)
+
+***
+
+### BusinessImpactAnalysisWidget
+
+Re-exports [BusinessImpactAnalysisWidget](../variables/BusinessImpactAnalysisWidget.md)
+
+***
+
+### ComplianceStatusWidget
+
+Re-exports [ComplianceStatusWidget](../variables/ComplianceStatusWidget.md)
+
+***
+
+### CostEstimationWidget
+
+Re-exports [CostEstimationWidget](../variables/CostEstimationWidget.md)
+
+***
+
+### ValueCreationWidget
+
+Re-exports [ValueCreationWidget](../variables/ValueCreationWidget.md)
+
+***
+
+### SecurityResourcesWidget
+
+Re-exports [SecurityResourcesWidget](../variables/SecurityResourcesWidget.md)
 
 ***
 
@@ -90,6 +78,18 @@ Re-exports [TechnicalDetailsWidget](../variables/TechnicalDetailsWidget.md)
 
 ***
 
-### ValueCreationWidget
+### AvailabilityImpactWidget
 
-Re-exports [ValueCreationWidget](../variables/ValueCreationWidget.md)
+Re-exports [AvailabilityImpactWidget](../variables/AvailabilityImpactWidget.md)
+
+***
+
+### ConfidentialityImpactWidget
+
+Re-exports [ConfidentialityImpactWidget](../variables/ConfidentialityImpactWidget.md)
+
+***
+
+### IntegrityImpactWidget
+
+Re-exports [IntegrityImpactWidget](../variables/IntegrityImpactWidget.md)

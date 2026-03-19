@@ -1,14 +1,14 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../../modules.md) / [utils/riskUtils](../README.md) / getDefaultComponentImpact
+[CIA Compliance Manager — Markdown Documentation](../../../modules.md) / [utils/riskUtils](../README.md) / getDefaultComponentImpact
 
 # Function: getDefaultComponentImpact()
 
-> **getDefaultComponentImpact**(`component`, `level`): [`BusinessImpactDetails`](../../../types/interfaces/BusinessImpactDetails.md)
+> **getDefaultComponentImpact**(`component`, `level`): [`BusinessImpactDetails`](../../../types/cia-services/interfaces/BusinessImpactDetails.md)
 
-Defined in: [utils/riskUtils.ts:514](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/utils/riskUtils.ts#L514)
+Defined in: [utils/riskUtils.ts:514](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/utils/riskUtils.ts#L514)
 
 Generates default component impact data when service data isn't available
 
@@ -28,6 +28,6 @@ The security level of the component
 
 ## Returns
 
-[`BusinessImpactDetails`](../../../types/interfaces/BusinessImpactDetails.md)
+[`BusinessImpactDetails`](../../../types/cia-services/interfaces/BusinessImpactDetails.md)
 
 Default impact details for the component

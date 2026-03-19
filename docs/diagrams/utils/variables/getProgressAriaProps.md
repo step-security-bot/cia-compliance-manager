@@ -1,14 +1,14 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../modules.md) / [utils](../README.md) / getProgressAriaProps
+[CIA Compliance Manager — UML Diagrams](../../modules.md) / [utils](../README.md) / getProgressAriaProps
 
-# Variable: getProgressAriaProps()
+# Variable: getProgressAriaProps
 
 > **getProgressAriaProps**: (`label`, `valuenow`, `valuemin`, `valuemax`, `valuetext?`) => `object`
 
-Defined in: [utils/index.ts:43](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/utils/index.ts#L43)
+Defined in: [utils/index.ts:43](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/utils/index.ts#L43)
 
 Generate ARIA props for a progress bar or meter
 
@@ -50,26 +50,26 @@ Textual representation of value
 
 ARIA props object
 
+### role
+
+> **role**: `string`
+
 ### aria-label
 
 > **aria-label**: `string`
-
-### aria-valuemax
-
-> **aria-valuemax**: `number`
-
-### aria-valuemin
-
-> **aria-valuemin**: `number`
 
 ### aria-valuenow
 
 > **aria-valuenow**: `number`
 
+### aria-valuemin
+
+> **aria-valuemin**: `number`
+
+### aria-valuemax
+
+> **aria-valuemax**: `number`
+
 ### aria-valuetext?
 
-> `optional` **aria-valuetext**: `string`
-
-### role
-
-> **role**: `string`
+> `optional` **aria-valuetext?**: `string`

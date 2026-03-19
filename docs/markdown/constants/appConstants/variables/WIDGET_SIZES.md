@@ -1,31 +1,31 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../../modules.md) / [constants/appConstants](../README.md) / WIDGET\_SIZES
+[CIA Compliance Manager — Markdown Documentation](../../../modules.md) / [constants/appConstants](../README.md) / WIDGET\_SIZES
 
 # Variable: WIDGET\_SIZES
 
 > `const` **WIDGET\_SIZES**: `object`
 
-Defined in: [constants/appConstants.ts:399](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/appConstants.ts#L399)
+Defined in: [constants/appConstants.ts:399](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/appConstants.ts#L399)
 
 Widget sizes for layout
 
 ## Type Declaration
 
-### FULL
+### SMALL
 
-> **FULL**: `string` = `"full"`
-
-### LARGE
-
-> **LARGE**: `string` = `"large"`
+> **SMALL**: `string` = `"small"`
 
 ### MEDIUM
 
 > **MEDIUM**: `string` = `"medium"`
 
-### SMALL
+### LARGE
 
-> **SMALL**: `string` = `"small"`
+> **LARGE**: `string` = `"large"`
+
+### FULL
+
+> **FULL**: `string` = `"full"`

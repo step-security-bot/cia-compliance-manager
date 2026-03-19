@@ -1,14 +1,14 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../../modules.md) / [data/riskImpactData](../README.md) / getBusinessImpact
+[CIA Compliance Manager — Markdown Documentation](../../../modules.md) / [data/riskImpactData](../README.md) / getBusinessImpact
 
 # Function: getBusinessImpact()
 
-> **getBusinessImpact**(`component`, `level`): [`BusinessImpactDetail`](../../../types/interfaces/BusinessImpactDetail.md)
+> **getBusinessImpact**(`component`, `level`): [`BusinessImpactDetail`](../../../types/cia-services/interfaces/BusinessImpactDetail.md)
 
-Defined in: [data/riskImpactData.ts:394](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/data/riskImpactData.ts#L394)
+Defined in: [data/riskImpactData.ts:394](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/data/riskImpactData.ts#L394)
 
 Get business impact details for a specific component and security level
 
@@ -32,7 +32,7 @@ Security level for the component
 
 ## Returns
 
-[`BusinessImpactDetail`](../../../types/interfaces/BusinessImpactDetail.md)
+[`BusinessImpactDetail`](../../../types/cia-services/interfaces/BusinessImpactDetail.md)
 
 Business impact details including risk level, revenue loss, and recovery time
 

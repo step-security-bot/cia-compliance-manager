@@ -1,8 +1,8 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../modules.md) / hooks/useCIAContentService
+[CIA Compliance Manager — UML Diagrams](../../modules.md) / hooks/useCIAContentService
 
 # hooks/useCIAContentService
 

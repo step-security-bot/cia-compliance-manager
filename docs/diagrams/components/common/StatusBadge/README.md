@@ -1,8 +1,8 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../../modules.md) / components/common/StatusBadge
+[CIA Compliance Manager — UML Diagrams](../../../modules.md) / components/common/StatusBadge
 
 # components/common/StatusBadge
 
@@ -10,12 +10,14 @@
 
 - [StatusBadgeProps](interfaces/StatusBadgeProps.md)
 
-## Type Aliases
-
-- [StatusType](type-aliases/StatusType.md)
-
 ## References
 
 ### default
 
 Renames and re-exports [StatusBadge](../../variables/StatusBadge.md)
+
+***
+
+### StatusType
+
+Re-exports [StatusType](../../../types/common/StatusTypes/type-aliases/StatusType.md)

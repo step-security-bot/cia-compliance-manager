@@ -1,12 +1,12 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../../modules.md) / [types/cia](../README.md) / CIAOptions
+[CIA Compliance Manager — Markdown Documentation](../../../modules.md) / [types/cia](../README.md) / CIAOptions
 
 # Interface: CIAOptions
 
-Defined in: [types/cia.ts:479](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/types/cia.ts#L479)
+Defined in: [types/cia.ts:479](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/cia.ts#L479)
 
 Available options for each CIA pillar
 
@@ -29,19 +29,9 @@ const options: CIAOptions = {
 
 > **availability**: [`SecurityLevel`](../type-aliases/SecurityLevel.md)[]
 
-Defined in: [types/cia.ts:481](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/types/cia.ts#L481)
+Defined in: [types/cia.ts:481](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/cia.ts#L481)
 
 Available security level options for availability
-
-***
-
-### confidentiality
-
-> **confidentiality**: [`SecurityLevel`](../type-aliases/SecurityLevel.md)[]
-
-Defined in: [types/cia.ts:487](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/types/cia.ts#L487)
-
-Available security level options for confidentiality
 
 ***
 
@@ -49,6 +39,16 @@ Available security level options for confidentiality
 
 > **integrity**: [`SecurityLevel`](../type-aliases/SecurityLevel.md)[]
 
-Defined in: [types/cia.ts:484](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/types/cia.ts#L484)
+Defined in: [types/cia.ts:484](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/cia.ts#L484)
 
 Available security level options for integrity
+
+***
+
+### confidentiality
+
+> **confidentiality**: [`SecurityLevel`](../type-aliases/SecurityLevel.md)[]
+
+Defined in: [types/cia.ts:487](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/cia.ts#L487)
+
+Available security level options for confidentiality

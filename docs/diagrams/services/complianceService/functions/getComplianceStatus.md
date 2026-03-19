@@ -1,14 +1,14 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../../modules.md) / [services/complianceService](../README.md) / getComplianceStatus
+[CIA Compliance Manager — UML Diagrams](../../../modules.md) / [services/complianceService](../README.md) / getComplianceStatus
 
 # Function: getComplianceStatus()
 
 > **getComplianceStatus**(`availabilityLevel`, `integrityLevel`, `confidentialityLevel`): `Promise`\<[`ComplianceStatusDetails`](../../../types/compliance/interfaces/ComplianceStatusDetails.md)\>
 
-Defined in: [services/complianceService.ts:1059](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/complianceService.ts#L1059)
+Defined in: [services/complianceService.ts:1059](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/complianceService.ts#L1059)
 
 Get compliance status based on security levels
 

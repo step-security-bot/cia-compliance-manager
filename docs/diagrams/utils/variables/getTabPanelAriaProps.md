@@ -1,14 +1,14 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../modules.md) / [utils](../README.md) / getTabPanelAriaProps
+[CIA Compliance Manager — UML Diagrams](../../modules.md) / [utils](../README.md) / getTabPanelAriaProps
 
-# Variable: getTabPanelAriaProps()
+# Variable: getTabPanelAriaProps
 
 > **getTabPanelAriaProps**: (`id`, `labelledBy`, `isHidden`) => `object`
 
-Defined in: [utils/index.ts:40](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/utils/index.ts#L40)
+Defined in: [utils/index.ts:40](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/utils/index.ts#L40)
 
 Generate ARIA props for a tab panel
 
@@ -38,21 +38,21 @@ Whether the panel is currently hidden
 
 ARIA props object
 
+### role
+
+> **role**: `string`
+
+### id
+
+> **id**: `string`
+
 ### aria-labelledby
 
 > **aria-labelledby**: `string`
 
 ### hidden?
 
-> `optional` **hidden**: `boolean`
-
-### id
-
-> **id**: `string`
-
-### role
-
-> **role**: `string`
+> `optional` **hidden?**: `boolean`
 
 ### tabIndex
 

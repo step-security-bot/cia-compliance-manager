@@ -1,14 +1,14 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../../modules.md) / [utils/securityLevelUtils](../README.md) / normalizeSecurityLevel
+[CIA Compliance Manager — UML Diagrams](../../../modules.md) / [utils/securityLevelUtils](../README.md) / normalizeSecurityLevel
 
 # Function: normalizeSecurityLevel()
 
 > **normalizeSecurityLevel**(`level?`): [`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
 
-Defined in: [utils/securityLevelUtils.ts:52](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/utils/securityLevelUtils.ts#L52)
+Defined in: [utils/securityLevelUtils.ts:52](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/utils/securityLevelUtils.ts#L52)
 
 Normalize any security level input to a valid SecurityLevel enum value
 
@@ -19,9 +19,9 @@ Provides a robust way to convert user input or API responses to valid SecurityLe
 
 ### level?
 
-Input that might be a security level (can be string, SecurityLevel, null, or undefined)
+`string` \| `null`
 
-`string` | `null`
+Input that might be a security level (can be string, SecurityLevel, null, or undefined)
 
 ## Returns
 

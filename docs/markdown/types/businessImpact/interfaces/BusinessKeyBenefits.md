@@ -1,15 +1,15 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../../modules.md) / [types/businessImpact](../README.md) / BusinessKeyBenefits
+[CIA Compliance Manager — Markdown Documentation](../../../modules.md) / [types/businessImpact](../README.md) / BusinessKeyBenefits
 
 # Interface: BusinessKeyBenefits
 
-Defined in: [types/businessImpact.ts:265](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/types/businessImpact.ts#L265)
+Defined in: [types/businessImpact.ts:265](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/businessImpact.ts#L265)
 
 Business benefits by security level
 
 ## Indexable
 
-\[`key`: `string`\]: [`BusinessKeyBenefit`](BusinessKeyBenefit.md)[]
+> \[`key`: `string`\]: [`BusinessKeyBenefit`](BusinessKeyBenefit.md)[]

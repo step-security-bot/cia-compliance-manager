@@ -1,12 +1,12 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../../modules.md) / [types/widgets](../README.md) / SecurityComponentProps
+[CIA Compliance Manager — UML Diagrams](../../../modules.md) / [types/widgets](../README.md) / SecurityComponentProps
 
 # Interface: SecurityComponentProps
 
-Defined in: [types/widgets.ts:421](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/types/widgets.ts#L421)
+Defined in: [types/widgets.ts:421](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/widgets.ts#L421)
 
 Props for security component widgets
 
@@ -24,9 +24,9 @@ integrity, or confidentiality). 🔍
 
 ### className?
 
-> `optional` **className**: `string`
+> `optional` **className?**: `string`
 
-Defined in: [types/widgets.ts:56](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/types/widgets.ts#L56)
+Defined in: [types/widgets.ts:56](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/widgets.ts#L56)
 
 Optional CSS class name
 
@@ -36,31 +36,25 @@ Optional CSS class name
 
 ***
 
-### component
+### testId?
 
-> **component**: `"confidentiality"` \| `"integrity"` \| `"availability"`
+> `optional` **testId?**: `string`
 
-Defined in: [types/widgets.ts:425](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/types/widgets.ts#L425)
+Defined in: [types/widgets.ts:61](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/widgets.ts#L61)
 
-The CIA component this widget represents
+Optional test ID for testing
 
-***
+#### Inherited from
 
-### level
-
-> **level**: [`SecurityLevel`](../../cia/type-aliases/SecurityLevel.md)
-
-Defined in: [types/widgets.ts:430](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/types/widgets.ts#L430)
-
-Security level for this component
+[`WidgetBaseProps`](WidgetBaseProps.md).[`testId`](WidgetBaseProps.md#testid)
 
 ***
 
 ### securityLevel?
 
-> `optional` **securityLevel**: [`SecurityLevel`](../../cia/type-aliases/SecurityLevel.md)
+> `optional` **securityLevel?**: [`SecurityLevel`](../../cia/type-aliases/SecurityLevel.md)
 
-Defined in: [types/widgets.ts:66](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/types/widgets.ts#L66)
+Defined in: [types/widgets.ts:66](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/widgets.ts#L66)
 
 Optional security level for widgets that only need one level
 
@@ -70,14 +64,20 @@ Optional security level for widgets that only need one level
 
 ***
 
-### testId?
+### component
 
-> `optional` **testId**: `string`
+> **component**: `"confidentiality"` \| `"integrity"` \| `"availability"`
 
-Defined in: [types/widgets.ts:61](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/types/widgets.ts#L61)
+Defined in: [types/widgets.ts:425](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/widgets.ts#L425)
 
-Optional test ID for testing
+The CIA component this widget represents
 
-#### Inherited from
+***
 
-[`WidgetBaseProps`](WidgetBaseProps.md).[`testId`](WidgetBaseProps.md#testid)
+### level
+
+> **level**: [`SecurityLevel`](../../cia/type-aliases/SecurityLevel.md)
+
+Defined in: [types/widgets.ts:430](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/widgets.ts#L430)
+
+Security level for this component

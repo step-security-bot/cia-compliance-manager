@@ -1,14 +1,14 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../modules.md) / [components](../README.md) / ComplianceStatusWidget
+[CIA Compliance Manager — UML Diagrams](../../modules.md) / [components](../README.md) / ComplianceStatusWidget
 
 # Variable: ComplianceStatusWidget
 
-> `const` **ComplianceStatusWidget**: `React.FC`\<[`ComplianceStatusWidgetProps`](../../types/interfaces/ComplianceStatusWidgetProps.md)\>
+> `const` **ComplianceStatusWidget**: `React.FC`\<[`ComplianceStatusWidgetProps`](../../types/widget-props/interfaces/ComplianceStatusWidgetProps.md)\>
 
-Defined in: [components/widgets/businessvalue/ComplianceStatusWidget.tsx:34](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/components/widgets/businessvalue/ComplianceStatusWidget.tsx#L34)
+Defined in: [components/widgets/businessvalue/ComplianceStatusWidget.tsx:34](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/components/widgets/businessvalue/ComplianceStatusWidget.tsx#L34)
 
 ComplianceStatusWidget displays status of compliance with various frameworks
 

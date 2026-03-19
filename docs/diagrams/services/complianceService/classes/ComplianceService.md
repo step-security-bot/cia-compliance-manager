@@ -1,12 +1,12 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../../modules.md) / [services/complianceService](../README.md) / ComplianceService
+[CIA Compliance Manager — UML Diagrams](../../../modules.md) / [services/complianceService](../README.md) / ComplianceService
 
 # Class: ComplianceService
 
-Defined in: [services/complianceService.ts:36](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/complianceService.ts#L36)
+Defined in: [services/complianceService.ts:36](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/complianceService.ts#L36)
 
 Service for compliance mapping and status reporting
 
@@ -27,13 +27,13 @@ requirements. 📋
 
 > **new ComplianceService**(`dataProvider`): `ComplianceService`
 
-Defined in: [services/complianceService.ts:102](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/complianceService.ts#L102)
+Defined in: [services/complianceService.ts:102](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/complianceService.ts#L102)
 
 #### Parameters
 
 ##### dataProvider
 
-[`CIADataProvider`](../../../types/interfaces/CIADataProvider.md)
+[`CIADataProvider`](../../../types/cia-services/interfaces/CIADataProvider.md)
 
 #### Returns
 
@@ -49,7 +49,7 @@ Defined in: [services/complianceService.ts:102](https://github.com/Hack23/cia-co
 
 > `readonly` **name**: `string` = `'BaseService'`
 
-Defined in: [services/BaseService.ts:44](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/BaseService.ts#L44)
+Defined in: [services/BaseService.ts:44](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/BaseService.ts#L44)
 
 Service name for identification
 
@@ -59,35 +59,135 @@ Service name for identification
 
 ## Methods
 
-### getComplianceGapAnalysis()
+### validate()
 
-> **getComplianceGapAnalysis**(`availabilityLevel`, `integrityLevel`, `confidentialityLevel`, `framework?`): [`ComplianceGapAnalysis`](../../../types/compliance/interfaces/ComplianceGapAnalysis.md)
+> **validate**(`input`): `boolean`
 
-Defined in: [services/complianceService.ts:634](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/complianceService.ts#L634)
+Defined in: [services/BaseService.ts:73](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/BaseService.ts#L73)
 
-Get compliance gap analysis between current and required security levels
+Validate input parameters (to be overridden by subclasses)
 
 #### Parameters
 
-##### availabilityLevel
+##### input
 
-[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
+`unknown`
 
-##### integrityLevel
-
-[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
-
-##### confidentialityLevel
-
-[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
-
-##### framework?
-
-`string`
+Input to validate
 
 #### Returns
 
-[`ComplianceGapAnalysis`](../../../types/compliance/interfaces/ComplianceGapAnalysis.md)
+`boolean`
+
+True if valid, false otherwise
+
+#### Inherited from
+
+[`BaseService`](../../BaseService/classes/BaseService.md).[`validate`](../../BaseService/classes/BaseService.md#validate)
+
+***
+
+### handleError()
+
+> **handleError**(`error`): [`ServiceError`](../../errors/classes/ServiceError.md)
+
+Defined in: [services/BaseService.ts:104](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/BaseService.ts#L104)
+
+Handle errors consistently across services
+
+#### Parameters
+
+##### error
+
+`Error`
+
+Error to handle
+
+#### Returns
+
+[`ServiceError`](../../errors/classes/ServiceError.md)
+
+ServiceError
+
+#### Inherited from
+
+[`BaseService`](../../BaseService/classes/BaseService.md).[`handleError`](../../BaseService/classes/BaseService.md#handleerror)
+
+***
+
+### getComponentDetails()
+
+> **getComponentDetails**(`component`, `level`): [`CIADetails`](../../../types/cia-services/interfaces/CIADetails.md) \| `undefined`
+
+Defined in: [services/BaseService.ts:193](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/BaseService.ts#L193)
+
+Get component details for a specific component and security level
+
+#### Parameters
+
+##### component
+
+[`CIAComponentType`](../../../types/cia-services/type-aliases/CIAComponentType.md)
+
+##### level
+
+[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
+
+#### Returns
+
+[`CIADetails`](../../../types/cia-services/interfaces/CIADetails.md) \| `undefined`
+
+#### Inherited from
+
+[`BaseService`](../../BaseService/classes/BaseService.md).[`getComponentDetails`](../../BaseService/classes/BaseService.md#getcomponentdetails)
+
+***
+
+### getSecurityLevelDescription()
+
+> **getSecurityLevelDescription**(`level`): `string`
+
+Defined in: [services/BaseService.ts:233](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/BaseService.ts#L233)
+
+Get security level description
+
+#### Parameters
+
+##### level
+
+[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
+
+#### Returns
+
+`string`
+
+#### Inherited from
+
+[`BaseService`](../../BaseService/classes/BaseService.md).[`getSecurityLevelDescription`](../../BaseService/classes/BaseService.md#getsecurityleveldescription)
+
+***
+
+### getRiskLevelFromSecurityLevel()
+
+> **getRiskLevelFromSecurityLevel**(`level`): `string`
+
+Defined in: [services/BaseService.ts:254](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/BaseService.ts#L254)
+
+Get risk level from security level
+
+#### Parameters
+
+##### level
+
+[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
+
+#### Returns
+
+`string`
+
+#### Inherited from
+
+[`BaseService`](../../BaseService/classes/BaseService.md).[`getRiskLevelFromSecurityLevel`](../../BaseService/classes/BaseService.md#getrisklevelfromsecuritylevel)
 
 ***
 
@@ -95,7 +195,7 @@ Get compliance gap analysis between current and required security levels
 
 > **getComplianceStatus**(`availabilityLevel`, `integrityLevel`, `confidentialityLevel`): [`ComplianceStatusDetails`](../../../types/compliance/interfaces/ComplianceStatusDetails.md)
 
-Defined in: [services/complianceService.ts:135](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/complianceService.ts#L135)
+Defined in: [services/complianceService.ts:135](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/complianceService.ts#L135)
 
 Get compliance status based on security levels
 
@@ -153,7 +253,7 @@ status.remediationSteps.forEach(step => {
 
 > **getComplianceStatusText**(`availabilityLevel`, `integrityLevel?`, `confidentialityLevel?`): `string`
 
-Defined in: [services/complianceService.ts:216](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/complianceService.ts#L216)
+Defined in: [services/complianceService.ts:216](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/complianceService.ts#L216)
 
 Get compliance status text
 
@@ -181,7 +281,7 @@ Get compliance status text
 
 > **getCompliantFrameworks**(`availabilityLevel`, `integrityLevel?`, `confidentialityLevel?`): `string`[]
 
-Defined in: [services/complianceService.ts:297](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/complianceService.ts#L297)
+Defined in: [services/complianceService.ts:297](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/complianceService.ts#L297)
 
 Get compliant frameworks for a specific security level
 
@@ -231,39 +331,11 @@ console.log('Moderate meets:', moderateFrameworks.length, 'frameworks');
 
 ***
 
-### getComponentDetails()
-
-> **getComponentDetails**(`component`, `level`): [`CIADetails`](../../../types/interfaces/CIADetails.md) \| `undefined`
-
-Defined in: [services/BaseService.ts:193](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/BaseService.ts#L193)
-
-Get component details for a specific component and security level
-
-#### Parameters
-
-##### component
-
-[`CIAComponentType`](../../../types/type-aliases/CIAComponentType.md)
-
-##### level
-
-[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
-
-#### Returns
-
-[`CIADetails`](../../../types/interfaces/CIADetails.md) \| `undefined`
-
-#### Inherited from
-
-[`BaseService`](../../BaseService/classes/BaseService.md).[`getComponentDetails`](../../BaseService/classes/BaseService.md#getcomponentdetails)
-
-***
-
 ### getFrameworkDescription()
 
 > **getFrameworkDescription**(`framework`): `string`
 
-Defined in: [services/complianceService.ts:326](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/complianceService.ts#L326)
+Defined in: [services/complianceService.ts:326](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/complianceService.ts#L326)
 
 Get description of a specific compliance framework
 
@@ -283,41 +355,11 @@ Framework description
 
 ***
 
-### getFrameworkRequiredLevel()
-
-> **getFrameworkRequiredLevel**(`framework`, `component`): [`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
-
-Defined in: [services/complianceService.ts:453](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/complianceService.ts#L453)
-
-Get required security level for a specific framework and component
-
-#### Parameters
-
-##### framework
-
-`string`
-
-Framework name
-
-##### component
-
-[`CIAComponentType`](../../../types/type-aliases/CIAComponentType.md)
-
-CIA component
-
-#### Returns
-
-[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
-
-Required security level
-
-***
-
 ### getFrameworkStatus()
 
 > **getFrameworkStatus**(`framework`, `availabilityLevel`, `integrityLevel`, `confidentialityLevel`): [`ComplianceStatusType`](../type-aliases/ComplianceStatusType.md)
 
-Defined in: [services/complianceService.ts:397](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/complianceService.ts#L397)
+Defined in: [services/complianceService.ts:397](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/complianceService.ts#L397)
 
 Get compliance status for a specific framework
 
@@ -380,104 +422,62 @@ frameworks.forEach(framework => {
 
 ***
 
-### getRiskLevelFromSecurityLevel()
+### getFrameworkRequiredLevel()
 
-> **getRiskLevelFromSecurityLevel**(`level`): `string`
+> **getFrameworkRequiredLevel**(`framework`, `component`): [`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
 
-Defined in: [services/BaseService.ts:254](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/BaseService.ts#L254)
+Defined in: [services/complianceService.ts:453](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/complianceService.ts#L453)
 
-Get risk level from security level
+Get required security level for a specific framework and component
 
 #### Parameters
 
-##### level
-
-[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
-
-#### Returns
+##### framework
 
 `string`
 
-#### Inherited from
+Framework name
 
-[`BaseService`](../../BaseService/classes/BaseService.md).[`getRiskLevelFromSecurityLevel`](../../BaseService/classes/BaseService.md#getrisklevelfromsecuritylevel)
+##### component
 
-***
+[`CIAComponentType`](../../../types/cia-services/type-aliases/CIAComponentType.md)
 
-### getSecurityLevelDescription()
+CIA component
 
-> **getSecurityLevelDescription**(`level`): `string`
-
-Defined in: [services/BaseService.ts:233](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/BaseService.ts#L233)
-
-Get security level description
-
-#### Parameters
-
-##### level
+#### Returns
 
 [`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
 
-#### Returns
+Required security level
+
+***
+
+### getComplianceGapAnalysis()
+
+> **getComplianceGapAnalysis**(`availabilityLevel`, `integrityLevel`, `confidentialityLevel`, `framework?`): [`ComplianceGapAnalysis`](../../../types/compliance/interfaces/ComplianceGapAnalysis.md)
+
+Defined in: [services/complianceService.ts:634](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/complianceService.ts#L634)
+
+Get compliance gap analysis between current and required security levels
+
+#### Parameters
+
+##### availabilityLevel
+
+[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
+
+##### integrityLevel
+
+[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
+
+##### confidentialityLevel
+
+[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
+
+##### framework?
 
 `string`
 
-#### Inherited from
-
-[`BaseService`](../../BaseService/classes/BaseService.md).[`getSecurityLevelDescription`](../../BaseService/classes/BaseService.md#getsecurityleveldescription)
-
-***
-
-### handleError()
-
-> **handleError**(`error`): [`ServiceError`](../../classes/ServiceError.md)
-
-Defined in: [services/BaseService.ts:104](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/BaseService.ts#L104)
-
-Handle errors consistently across services
-
-#### Parameters
-
-##### error
-
-`Error`
-
-Error to handle
-
 #### Returns
 
-[`ServiceError`](../../classes/ServiceError.md)
-
-ServiceError
-
-#### Inherited from
-
-[`BaseService`](../../BaseService/classes/BaseService.md).[`handleError`](../../BaseService/classes/BaseService.md#handleerror)
-
-***
-
-### validate()
-
-> **validate**(`input`): `boolean`
-
-Defined in: [services/BaseService.ts:73](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/BaseService.ts#L73)
-
-Validate input parameters (to be overridden by subclasses)
-
-#### Parameters
-
-##### input
-
-`unknown`
-
-Input to validate
-
-#### Returns
-
-`boolean`
-
-True if valid, false otherwise
-
-#### Inherited from
-
-[`BaseService`](../../BaseService/classes/BaseService.md).[`validate`](../../BaseService/classes/BaseService.md#validate)
+[`ComplianceGapAnalysis`](../../../types/compliance/interfaces/ComplianceGapAnalysis.md)

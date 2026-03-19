@@ -1,0 +1,50 @@
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../../README.md)
+
+***
+
+[CIA Compliance Manager — Markdown Documentation](../../../modules.md) / [hooks/useBusinessImpact](../README.md) / useBusinessImpact
+
+# Function: useBusinessImpact()
+
+> **useBusinessImpact**(`component`, `level`): [`BusinessImpactDetails`](../../../types/cia-services/interfaces/BusinessImpactDetails.md)
+
+Defined in: [hooks/useBusinessImpact.ts:30](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/hooks/useBusinessImpact.ts#L30)
+
+Custom hook for fetching business impact details with fallback
+
+## Business Perspective
+
+This hook provides consistent access to business impact information
+across all widget components. It automatically falls back to default
+values when the service is unavailable, ensuring widgets always display
+meaningful impact information to stakeholders. 💼
+
+## Parameters
+
+### component
+
+[`CIAComponent`](../../../types/cia/type-aliases/CIAComponent.md)
+
+CIA component (availability, integrity, confidentiality)
+
+### level
+
+[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
+
+Security level for the component
+
+## Returns
+
+[`BusinessImpactDetails`](../../../types/cia-services/interfaces/BusinessImpactDetails.md)
+
+Business impact details with automatic fallback
+
+## Example
+
+```typescript
+const impact = useBusinessImpact('confidentiality', 'Very High');
+
+// Always returns impact data, never null
+console.log(impact.financialImpact);
+console.log(impact.operationalImpact);
+```

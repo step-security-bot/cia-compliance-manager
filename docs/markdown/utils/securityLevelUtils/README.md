@@ -1,8 +1,8 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../modules.md) / utils/securityLevelUtils
+[CIA Compliance Manager — Markdown Documentation](../../modules.md) / utils/securityLevelUtils
 
 # utils/securityLevelUtils
 
@@ -12,22 +12,22 @@
 
 ## Functions
 
-- [asSecurityLevel](functions/asSecurityLevel.md)
-- [calculateOverallSecurityLevel](functions/calculateOverallSecurityLevel.md)
-- [formatSecurityLevel](functions/formatSecurityLevel.md)
-- [getRecommendedSecurityLevel](functions/getRecommendedSecurityLevel.md)
-- [getRecommendedSecurityLevels](functions/getRecommendedSecurityLevels.md)
-- [getRiskLevelFromSecurityLevel](functions/getRiskLevelFromSecurityLevel.md)
-- [getSecurityIcon](functions/getSecurityIcon.md)
-- [getSecurityLevelBadgeVariant](functions/getSecurityLevelBadgeVariant.md)
-- [getSecurityLevelClass](functions/getSecurityLevelClass.md)
-- [getSecurityLevelDescription](functions/getSecurityLevelDescription.md)
-- [getSecurityLevelFromValue](functions/getSecurityLevelFromValue.md)
-- [getSecurityLevelGap](functions/getSecurityLevelGap.md)
-- [getSecurityLevelPercentage](functions/getSecurityLevelPercentage.md)
-- [getSecurityLevelValue](functions/getSecurityLevelValue.md)
-- [getStatusVariant](functions/getStatusVariant.md)
-- [isSecurityLevel](functions/isSecurityLevel.md)
-- [meetsComplianceRequirements](functions/meetsComplianceRequirements.md)
-- [meetsSecurityRequirements](functions/meetsSecurityRequirements.md)
 - [normalizeSecurityLevel](functions/normalizeSecurityLevel.md)
+- [getSecurityLevelValue](functions/getSecurityLevelValue.md)
+- [getSecurityLevelFromValue](functions/getSecurityLevelFromValue.md)
+- [getRiskLevelFromSecurityLevel](functions/getRiskLevelFromSecurityLevel.md)
+- [calculateOverallSecurityLevel](functions/calculateOverallSecurityLevel.md)
+- [meetsSecurityRequirements](functions/meetsSecurityRequirements.md)
+- [getSecurityLevelGap](functions/getSecurityLevelGap.md)
+- [getRecommendedSecurityLevels](functions/getRecommendedSecurityLevels.md)
+- [getSecurityLevelPercentage](functions/getSecurityLevelPercentage.md)
+- [getSecurityLevelClass](functions/getSecurityLevelClass.md)
+- [getSecurityLevelBadgeVariant](functions/getSecurityLevelBadgeVariant.md)
+- [isSecurityLevel](functions/isSecurityLevel.md)
+- [asSecurityLevel](functions/asSecurityLevel.md)
+- [getSecurityLevelDescription](functions/getSecurityLevelDescription.md)
+- [meetsComplianceRequirements](functions/meetsComplianceRequirements.md)
+- [getSecurityIcon](functions/getSecurityIcon.md)
+- [getRecommendedSecurityLevel](functions/getRecommendedSecurityLevel.md)
+- [formatSecurityLevel](functions/formatSecurityLevel.md)
+- [getStatusVariant](functions/getStatusVariant.md)

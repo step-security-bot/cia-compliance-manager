@@ -1,29 +1,29 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../modules.md) / types/businessImpact
+[CIA Compliance Manager — Markdown Documentation](../../modules.md) / types/businessImpact
 
 # types/businessImpact
 
 ## Interfaces
 
+- [BusinessImpactDetail](interfaces/BusinessImpactDetail.md)
 - [BusinessConsideration](interfaces/BusinessConsideration.md)
 - [BusinessConsiderations](interfaces/BusinessConsiderations.md)
-- [BusinessImpact](interfaces/BusinessImpact.md)
-- [BusinessImpactDetail](interfaces/BusinessImpactDetail.md)
-- [BusinessImpactDetails](interfaces/BusinessImpactDetails.md)
 - [BusinessImpactIcons](interfaces/BusinessImpactIcons.md)
-- [BusinessItem](interfaces/BusinessItem.md)
+- [SLAMetrics](interfaces/SLAMetrics.md)
+- [BusinessImpact](interfaces/BusinessImpact.md)
+- [ImpactConsideration](interfaces/ImpactConsideration.md)
+- [ComponentBusinessConsiderations](interfaces/ComponentBusinessConsiderations.md)
 - [BusinessKeyBenefit](interfaces/BusinessKeyBenefit.md)
 - [BusinessKeyBenefits](interfaces/BusinessKeyBenefits.md)
+- [BusinessImpactDetails](interfaces/BusinessImpactDetails.md)
+- [BusinessItem](interfaces/BusinessItem.md)
+- [BusinessValueMetric](interfaces/BusinessValueMetric.md)
 - [BusinessROIEstimates](interfaces/BusinessROIEstimates.md)
 - [BusinessTimeToValue](interfaces/BusinessTimeToValue.md)
-- [BusinessValueMetric](interfaces/BusinessValueMetric.md)
 - [BusinessValueMetrics](interfaces/BusinessValueMetrics.md)
-- [ComponentBusinessConsiderations](interfaces/ComponentBusinessConsiderations.md)
-- [ImpactConsideration](interfaces/ImpactConsideration.md)
-- [SLAMetrics](interfaces/SLAMetrics.md)
 
 ## Variables
 

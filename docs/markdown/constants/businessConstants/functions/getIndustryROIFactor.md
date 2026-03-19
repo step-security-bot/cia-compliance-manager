@@ -1,14 +1,14 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../../modules.md) / [constants/businessConstants](../README.md) / getIndustryROIFactor
+[CIA Compliance Manager — Markdown Documentation](../../../modules.md) / [constants/businessConstants](../README.md) / getIndustryROIFactor
 
 # Function: getIndustryROIFactor()
 
 > **getIndustryROIFactor**(`industry`): `number`
 
-Defined in: [constants/businessConstants.ts:797](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/businessConstants.ts#L797)
+Defined in: [constants/businessConstants.ts:797](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/businessConstants.ts#L797)
 
 Get ROI factor for a specific industry
 

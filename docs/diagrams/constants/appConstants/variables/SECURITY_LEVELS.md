@@ -1,11 +1,11 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../../modules.md) / [constants/appConstants](../README.md) / SECURITY\_LEVELS
+[CIA Compliance Manager — UML Diagrams](../../../modules.md) / [constants/appConstants](../README.md) / SECURITY\_LEVELS
 
 # Variable: SECURITY\_LEVELS
 
 > `const` **SECURITY\_LEVELS**: `Record`\<[`SecurityLevelKey`](../type-aliases/SecurityLevelKey.md), [`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)\>
 
-Defined in: [constants/appConstants.ts:70](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/appConstants.ts#L70)
+Defined in: [constants/appConstants.ts:70](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/appConstants.ts#L70)

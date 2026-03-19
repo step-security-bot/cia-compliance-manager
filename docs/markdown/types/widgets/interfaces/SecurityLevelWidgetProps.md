@@ -1,12 +1,12 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../../modules.md) / [types/widgets](../README.md) / SecurityLevelWidgetProps
+[CIA Compliance Manager — Markdown Documentation](../../../modules.md) / [types/widgets](../README.md) / SecurityLevelWidgetProps
 
 # Interface: SecurityLevelWidgetProps
 
-Defined in: [types/widgets.ts:196](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/types/widgets.ts#L196)
+Defined in: [types/widgets.ts:196](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/widgets.ts#L196)
 
 Security level widget props for selecting and displaying security levels
 
@@ -25,25 +25,11 @@ adjust security levels and immediately see the impact of their choices. 🔄
 
 ## Properties
 
-### availabilityLevel
-
-> **availabilityLevel**: [`SecurityLevel`](../../cia/type-aliases/SecurityLevel.md)
-
-Defined in: [types/widgets.ts:87](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/types/widgets.ts#L87)
-
-Availability security level
-
-#### Inherited from
-
-[`CIABaseWidgetProps`](CIABaseWidgetProps.md).[`availabilityLevel`](CIABaseWidgetProps.md#availabilitylevel)
-
-***
-
 ### className?
 
-> `optional` **className**: `string`
+> `optional` **className?**: `string`
 
-Defined in: [types/widgets.ts:56](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/types/widgets.ts#L56)
+Defined in: [types/widgets.ts:56](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/widgets.ts#L56)
 
 Optional CSS class name
 
@@ -53,27 +39,45 @@ Optional CSS class name
 
 ***
 
-### confidentialityLevel
+### testId?
 
-> **confidentialityLevel**: [`SecurityLevel`](../../cia/type-aliases/SecurityLevel.md)
+> `optional` **testId?**: `string`
 
-Defined in: [types/widgets.ts:97](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/types/widgets.ts#L97)
+Defined in: [types/widgets.ts:61](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/widgets.ts#L61)
 
-Confidentiality security level
+Optional test ID for testing
 
 #### Inherited from
 
-[`CIABaseWidgetProps`](CIABaseWidgetProps.md).[`confidentialityLevel`](CIABaseWidgetProps.md#confidentialitylevel)
+[`CIABaseWidgetProps`](CIABaseWidgetProps.md).[`testId`](CIABaseWidgetProps.md#testid)
 
 ***
 
-### disabled?
+### securityLevel?
 
-> `optional` **disabled**: `boolean`
+> `optional` **securityLevel?**: [`SecurityLevel`](../../cia/type-aliases/SecurityLevel.md)
 
-Defined in: [types/widgets.ts:208](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/types/widgets.ts#L208)
+Defined in: [types/widgets.ts:66](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/widgets.ts#L66)
 
-Whether the widget is disabled
+Optional security level for widgets that only need one level
+
+#### Inherited from
+
+[`CIABaseWidgetProps`](CIABaseWidgetProps.md).[`securityLevel`](CIABaseWidgetProps.md#securitylevel)
+
+***
+
+### availabilityLevel
+
+> **availabilityLevel**: [`SecurityLevel`](../../cia/type-aliases/SecurityLevel.md)
+
+Defined in: [types/widgets.ts:87](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/widgets.ts#L87)
+
+Availability security level
+
+#### Inherited from
+
+[`CIABaseWidgetProps`](CIABaseWidgetProps.md).[`availabilityLevel`](CIABaseWidgetProps.md#availabilitylevel)
 
 ***
 
@@ -81,7 +85,7 @@ Whether the widget is disabled
 
 > **integrityLevel**: [`SecurityLevel`](../../cia/type-aliases/SecurityLevel.md)
 
-Defined in: [types/widgets.ts:92](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/types/widgets.ts#L92)
+Defined in: [types/widgets.ts:92](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/widgets.ts#L92)
 
 Integrity security level
 
@@ -91,11 +95,25 @@ Integrity security level
 
 ***
 
-### onLevelChange()?
+### confidentialityLevel
 
-> `optional` **onLevelChange**: (`component`, `level`) => `void`
+> **confidentialityLevel**: [`SecurityLevel`](../../cia/type-aliases/SecurityLevel.md)
 
-Defined in: [types/widgets.ts:200](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/types/widgets.ts#L200)
+Defined in: [types/widgets.ts:97](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/widgets.ts#L97)
+
+Confidentiality security level
+
+#### Inherited from
+
+[`CIABaseWidgetProps`](CIABaseWidgetProps.md).[`confidentialityLevel`](CIABaseWidgetProps.md#confidentialitylevel)
+
+***
+
+### onLevelChange?
+
+> `optional` **onLevelChange?**: (`component`, `level`) => `void`
+
+Defined in: [types/widgets.ts:200](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/widgets.ts#L200)
 
 Callback for when security levels change
 
@@ -103,7 +121,7 @@ Callback for when security levels change
 
 ##### component
 
-`"confidentiality"` | `"integrity"` | `"availability"`
+`"confidentiality"` \| `"integrity"` \| `"availability"`
 
 ##### level
 
@@ -115,28 +133,10 @@ Callback for when security levels change
 
 ***
 
-### securityLevel?
+### disabled?
 
-> `optional` **securityLevel**: [`SecurityLevel`](../../cia/type-aliases/SecurityLevel.md)
+> `optional` **disabled?**: `boolean`
 
-Defined in: [types/widgets.ts:66](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/types/widgets.ts#L66)
+Defined in: [types/widgets.ts:208](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/widgets.ts#L208)
 
-Optional security level for widgets that only need one level
-
-#### Inherited from
-
-[`CIABaseWidgetProps`](CIABaseWidgetProps.md).[`securityLevel`](CIABaseWidgetProps.md#securitylevel)
-
-***
-
-### testId?
-
-> `optional` **testId**: `string`
-
-Defined in: [types/widgets.ts:61](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/types/widgets.ts#L61)
-
-Optional test ID for testing
-
-#### Inherited from
-
-[`CIABaseWidgetProps`](CIABaseWidgetProps.md).[`testId`](CIABaseWidgetProps.md#testid)
+Whether the widget is disabled

@@ -1,31 +1,31 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../../modules.md) / [constants/appConstants](../README.md) / ROUTES
+[CIA Compliance Manager — UML Diagrams](../../../modules.md) / [constants/appConstants](../README.md) / ROUTES
 
 # Variable: ROUTES
 
 > `const` **ROUTES**: `object`
 
-Defined in: [constants/appConstants.ts:421](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/appConstants.ts#L421)
+Defined in: [constants/appConstants.ts:421](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/appConstants.ts#L421)
 
 Application routes
 
 ## Type Declaration
 
-### DASHBOARD
-
-> **DASHBOARD**: `string` = `"/dashboard"`
-
 ### HOME
 
 > **HOME**: `string` = `"/"`
 
-### REPORTS
+### DASHBOARD
 
-> **REPORTS**: `string` = `"/reports"`
+> **DASHBOARD**: `string` = `"/dashboard"`
 
 ### SETTINGS
 
 > **SETTINGS**: `string` = `"/settings"`
+
+### REPORTS
+
+> **REPORTS**: `string` = `"/reports"`

@@ -1,20 +1,30 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../../../modules.md) / [components/common/StatusBadge](../README.md) / StatusBadgeProps
+[CIA Compliance Manager — UML Diagrams](../../../../modules.md) / [components/common/StatusBadge](../README.md) / StatusBadgeProps
 
 # Interface: StatusBadgeProps
 
-Defined in: [components/common/StatusBadge.tsx:5](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/components/common/StatusBadge.tsx#L5)
+Defined in: [components/common/StatusBadge.tsx:5](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/components/common/StatusBadge.tsx#L5)
 
 ## Properties
+
+### status
+
+> **status**: [`StatusType`](../../../../types/common/StatusTypes/type-aliases/StatusType.md)
+
+Defined in: [components/common/StatusBadge.tsx:9](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/components/common/StatusBadge.tsx#L9)
+
+The status type (determines color)
+
+***
 
 ### children
 
 > **children**: `ReactNode`
 
-Defined in: [components/common/StatusBadge.tsx:14](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/components/common/StatusBadge.tsx#L14)
+Defined in: [components/common/StatusBadge.tsx:14](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/components/common/StatusBadge.tsx#L14)
 
 The content to display inside the badge
 
@@ -22,48 +32,38 @@ The content to display inside the badge
 
 ### className?
 
-> `optional` **className**: `string`
+> `optional` **className?**: `string`
 
-Defined in: [components/common/StatusBadge.tsx:19](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/components/common/StatusBadge.tsx#L19)
+Defined in: [components/common/StatusBadge.tsx:19](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/components/common/StatusBadge.tsx#L19)
 
 Additional CSS classes
 
 ***
 
-### size?
-
-> `optional` **size**: `"sm"` \| `"md"` \| `"lg"`
-
-Defined in: [components/common/StatusBadge.tsx:29](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/components/common/StatusBadge.tsx#L29)
-
-Optional size variant
-
-***
-
-### status
-
-> **status**: [`StatusType`](../type-aliases/StatusType.md)
-
-Defined in: [components/common/StatusBadge.tsx:9](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/components/common/StatusBadge.tsx#L9)
-
-The status type (determines color)
-
-***
-
 ### testId?
 
-> `optional` **testId**: `string`
+> `optional` **testId?**: `string`
 
-Defined in: [components/common/StatusBadge.tsx:24](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/components/common/StatusBadge.tsx#L24)
+Defined in: [components/common/StatusBadge.tsx:24](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/components/common/StatusBadge.tsx#L24)
 
 Test ID for automated testing
 
 ***
 
+### size?
+
+> `optional` **size?**: `"sm"` \| `"md"` \| `"lg"`
+
+Defined in: [components/common/StatusBadge.tsx:29](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/components/common/StatusBadge.tsx#L29)
+
+Optional size variant
+
+***
+
 ### variant?
 
-> `optional` **variant**: `string`
+> `optional` **variant?**: `string`
 
-Defined in: [components/common/StatusBadge.tsx:34](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/components/common/StatusBadge.tsx#L34)
+Defined in: [components/common/StatusBadge.tsx:34](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/components/common/StatusBadge.tsx#L34)
 
 Badge variant/color scheme

@@ -1,30 +1,26 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../modules.md) / [coreConstants](../README.md) / DEFAULT\_SETTINGS
+[CIA Compliance Manager — Markdown Documentation](../../modules.md) / [coreConstants](../README.md) / DEFAULT\_SETTINGS
 
 # Variable: DEFAULT\_SETTINGS
 
 > `const` **DEFAULT\_SETTINGS**: `object`
 
-Defined in: [constants/coreConstants.ts:433](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/coreConstants.ts#L433)
+Defined in: [constants/coreConstants.ts:433](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/coreConstants.ts#L433)
 
 Default settings for the application
 
 ## Type Declaration
 
+### THEME
+
+> **THEME**: `string` = `"light"`
+
 ### LANGUAGE
 
 > **LANGUAGE**: `string` = `DEFAULT_LANGUAGE`
-
-### SAVE\_STATE\_LOCALLY
-
-> **SAVE\_STATE\_LOCALLY**: `boolean` = `true`
-
-### SHOW\_BUSINESS\_IMPACT
-
-> **SHOW\_BUSINESS\_IMPACT**: `boolean` = `true`
 
 ### SHOW\_DETAILED\_DESCRIPTIONS
 
@@ -34,6 +30,10 @@ Default settings for the application
 
 > **SHOW\_TECHNICAL\_DETAILS**: `boolean` = `true`
 
-### THEME
+### SHOW\_BUSINESS\_IMPACT
 
-> **THEME**: `string` = `"light"`
+> **SHOW\_BUSINESS\_IMPACT**: `boolean` = `true`
+
+### SAVE\_STATE\_LOCALLY
+
+> **SAVE\_STATE\_LOCALLY**: `boolean` = `true`

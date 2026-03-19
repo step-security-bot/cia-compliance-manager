@@ -1,14 +1,14 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../../modules.md) / [utils/typeGuards](../README.md) / toStatusType
+[CIA Compliance Manager — UML Diagrams](../../../modules.md) / [utils/typeGuards](../README.md) / toStatusType
 
 # Function: toStatusType()
 
-> **toStatusType**(`value`, `fallback?`): [`StatusType`](../../../components/common/StatusBadge/type-aliases/StatusType.md)
+> **toStatusType**(`value`, `fallback?`): [`StatusType`](../../../types/common/StatusTypes/type-aliases/StatusType.md)
 
-Defined in: [utils/typeGuards.ts:963](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/utils/typeGuards.ts#L963)
+Defined in: [utils/typeGuards.ts:963](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/utils/typeGuards.ts#L963)
 
 Safely converts a string to a StatusType, with fallback
 
@@ -22,12 +22,12 @@ The value to convert
 
 ### fallback?
 
-[`StatusType`](../../../components/common/StatusBadge/type-aliases/StatusType.md) = `"neutral"`
+[`StatusType`](../../../types/common/StatusTypes/type-aliases/StatusType.md) = `"neutral"`
 
 The fallback value (defaults to "neutral")
 
 ## Returns
 
-[`StatusType`](../../../components/common/StatusBadge/type-aliases/StatusType.md)
+[`StatusType`](../../../types/common/StatusTypes/type-aliases/StatusType.md)
 
 A valid StatusType

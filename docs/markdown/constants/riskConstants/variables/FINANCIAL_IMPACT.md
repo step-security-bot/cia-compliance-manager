@@ -1,13 +1,13 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../../modules.md) / [constants/riskConstants](../README.md) / FINANCIAL\_IMPACT
+[CIA Compliance Manager — Markdown Documentation](../../../modules.md) / [constants/riskConstants](../README.md) / FINANCIAL\_IMPACT
 
 # Variable: FINANCIAL\_IMPACT
 
 > `const` **FINANCIAL\_IMPACT**: `Record`\<`string`, `string`\>
 
-Defined in: [constants/riskConstants.ts:68](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/riskConstants.ts#L68)
+Defined in: [constants/riskConstants.ts:68](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/riskConstants.ts#L68)
 
 Financial impact descriptions by risk level

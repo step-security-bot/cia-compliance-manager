@@ -1,15 +1,15 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../modules.md) / utils/securityDefaults
+[CIA Compliance Manager — Markdown Documentation](../../modules.md) / utils/securityDefaults
 
 # utils/securityDefaults
 
 ## Functions
 
 - [getDefaultDevelopmentEffort](functions/getDefaultDevelopmentEffort.md)
-- [getDefaultExpertiseLevel](functions/getDefaultExpertiseLevel.md)
 - [getDefaultMaintenanceEffort](functions/getDefaultMaintenanceEffort.md)
+- [getDefaultExpertiseLevel](functions/getDefaultExpertiseLevel.md)
 - [getInformationSensitivity](functions/getInformationSensitivity.md)
 - [getProtectionLevel](functions/getProtectionLevel.md)

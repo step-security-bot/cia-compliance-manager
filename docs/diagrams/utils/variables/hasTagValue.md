@@ -1,14 +1,14 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../modules.md) / [utils](../README.md) / hasTagValue
+[CIA Compliance Manager — UML Diagrams](../../modules.md) / [utils](../README.md) / hasTagValue
 
-# Variable: hasTagValue()
+# Variable: hasTagValue
 
 > **hasTagValue**: (`obj`, `tagValue`) => `boolean`
 
-Defined in: [utils/index.ts:199](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/utils/index.ts#L199)
+Defined in: [utils/index.ts:199](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/utils/index.ts#L199)
 
 Checks if an object has a specific tag value
 

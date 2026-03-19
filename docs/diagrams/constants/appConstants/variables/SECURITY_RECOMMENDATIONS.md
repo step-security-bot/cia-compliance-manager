@@ -1,24 +1,20 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../../modules.md) / [constants/appConstants](../README.md) / SECURITY\_RECOMMENDATIONS
+[CIA Compliance Manager — UML Diagrams](../../../modules.md) / [constants/appConstants](../README.md) / SECURITY\_RECOMMENDATIONS
 
 # Variable: SECURITY\_RECOMMENDATIONS
 
 > `const` **SECURITY\_RECOMMENDATIONS**: `object`
 
-Defined in: [constants/appConstants.ts:101](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/appConstants.ts#L101)
+Defined in: [constants/appConstants.ts:101](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/appConstants.ts#L101)
 
 ## Type Declaration
 
-### BASIC
+### NONE
 
-> **BASIC**: `string` = `"Only appropriate for non-critical systems with public information."`
-
-### HIGH
-
-> **HIGH**: `string` = `"Appropriate for systems handling sensitive customer data or financial information."`
+> **NONE**: `string` = `"Not recommended for any production system. Implement basic security controls immediately."`
 
 ### LOW
 
@@ -28,10 +24,14 @@ Defined in: [constants/appConstants.ts:101](https://github.com/Hack23/cia-compli
 
 > **MODERATE**: `string` = `"Suitable for internal business systems with some regulatory requirements."`
 
-### NONE
+### HIGH
 
-> **NONE**: `string` = `"Not recommended for any production system. Implement basic security controls immediately."`
+> **HIGH**: `string` = `"Appropriate for systems handling sensitive customer data or financial information."`
 
 ### VERY\_HIGH
 
 > **VERY\_HIGH**: `string` = `"Suitable for mission-critical systems handling top secret information."`
+
+### BASIC
+
+> **BASIC**: `string` = `"Only appropriate for non-critical systems with public information."`

@@ -1,22 +1,26 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../../modules.md) / [constants/appConstants](../README.md) / WIDGET\_TITLES
+[CIA Compliance Manager — Markdown Documentation](../../../modules.md) / [constants/appConstants](../README.md) / WIDGET\_TITLES
 
 # Variable: WIDGET\_TITLES
 
 > `const` **WIDGET\_TITLES**: `object`
 
-Defined in: [constants/appConstants.ts:358](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/appConstants.ts#L358)
+Defined in: [constants/appConstants.ts:358](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/appConstants.ts#L358)
 
 Widget titles for consistent naming
 
 ## Type Declaration
 
-### AVAILABILITY\_IMPACT
+### SECURITY\_LEVEL
 
-> **AVAILABILITY\_IMPACT**: `string` = `"Availability Impact"`
+> **SECURITY\_LEVEL**: `string` = `"Security Level Configuration"`
+
+### SECURITY\_SUMMARY
+
+> **SECURITY\_SUMMARY**: `string` = `"Security Summary"`
 
 ### BUSINESS\_IMPACT\_ANALYSIS
 
@@ -26,38 +30,34 @@ Widget titles for consistent naming
 
 > **COMPLIANCE\_STATUS**: `string` = `"Compliance Status"`
 
-### CONFIDENTIALITY\_IMPACT
+### SECURITY\_RESOURCES
 
-> **CONFIDENTIALITY\_IMPACT**: `string` = `"Confidentiality Impact"`
+> **SECURITY\_RESOURCES**: `string` = `"Security Resources"`
 
 ### COST\_ESTIMATION
 
 > **COST\_ESTIMATION**: `string` = `"Cost Estimation"`
 
-### INTEGRITY\_IMPACT
+### VALUE\_CREATION
 
-> **INTEGRITY\_IMPACT**: `string` = `"Integrity Impact"`
-
-### SECURITY\_LEVEL
-
-> **SECURITY\_LEVEL**: `string` = `"Security Level Configuration"`
-
-### SECURITY\_RESOURCES
-
-> **SECURITY\_RESOURCES**: `string` = `"Security Resources"`
-
-### SECURITY\_SUMMARY
-
-> **SECURITY\_SUMMARY**: `string` = `"Security Summary"`
-
-### SECURITY\_VISUALIZATION
-
-> **SECURITY\_VISUALIZATION**: `string` = `"Security Visualization"`
+> **VALUE\_CREATION**: `string` = `"Value Creation"`
 
 ### TECHNICAL\_DETAILS
 
 > **TECHNICAL\_DETAILS**: `string` = `"Technical Implementation Details"`
 
-### VALUE\_CREATION
+### SECURITY\_VISUALIZATION
 
-> **VALUE\_CREATION**: `string` = `"Value Creation"`
+> **SECURITY\_VISUALIZATION**: `string` = `"Security Visualization"`
+
+### AVAILABILITY\_IMPACT
+
+> **AVAILABILITY\_IMPACT**: `string` = `"Availability Impact"`
+
+### INTEGRITY\_IMPACT
+
+> **INTEGRITY\_IMPACT**: `string` = `"Integrity Impact"`
+
+### CONFIDENTIALITY\_IMPACT
+
+> **CONFIDENTIALITY\_IMPACT**: `string` = `"Confidentiality Impact"`

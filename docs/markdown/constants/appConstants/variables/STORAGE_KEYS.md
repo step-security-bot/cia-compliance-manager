@@ -1,30 +1,30 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../../modules.md) / [constants/appConstants](../README.md) / STORAGE\_KEYS
+[CIA Compliance Manager — Markdown Documentation](../../../modules.md) / [constants/appConstants](../README.md) / STORAGE\_KEYS
 
 # Variable: STORAGE\_KEYS
 
 > `const` **STORAGE\_KEYS**: `object`
 
-Defined in: [constants/appConstants.ts:431](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/appConstants.ts#L431)
+Defined in: [constants/appConstants.ts:431](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/appConstants.ts#L431)
 
 Local storage keys
 
 ## Type Declaration
 
-### DASHBOARD\_LAYOUT
+### THEME
 
-> **DASHBOARD\_LAYOUT**: `string` = `"cia-dashboard-layout"`
+> **THEME**: `string` = `"cia-theme"`
 
 ### SECURITY\_LEVELS
 
 > **SECURITY\_LEVELS**: `string` = `"cia-security-levels"`
 
-### THEME
+### DASHBOARD\_LAYOUT
 
-> **THEME**: `string` = `"cia-theme"`
+> **DASHBOARD\_LAYOUT**: `string` = `"cia-dashboard-layout"`
 
 ### USER\_PREFERENCES
 

@@ -1,14 +1,14 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../../modules.md) / [constants/appConstants](../README.md) / CHART\_COLORS
+[CIA Compliance Manager — UML Diagrams](../../../modules.md) / [constants/appConstants](../README.md) / CHART\_COLORS
 
 # Variable: CHART\_COLORS
 
 > `const` **CHART\_COLORS**: `object`
 
-Defined in: [constants/appConstants.ts:464](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/appConstants.ts#L464)
+Defined in: [constants/appConstants.ts:464](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/appConstants.ts#L464)
 
 Chart colors
 
@@ -18,21 +18,21 @@ Chart colors
 
 > **AVAILABILITY**: `string` = `"#2196F3"`
 
-### CONFIDENTIALITY
-
-> **CONFIDENTIALITY**: `string` = `"#9C27B0"`
-
 ### INTEGRITY
 
 > **INTEGRITY**: `string` = `"#4CAF50"`
+
+### CONFIDENTIALITY
+
+> **CONFIDENTIALITY**: `string` = `"#9C27B0"`
 
 ### SECURITY\_LEVEL\_COLORS
 
 > **SECURITY\_LEVEL\_COLORS**: `object`
 
-#### SECURITY\_LEVEL\_COLORS.High
+#### SECURITY\_LEVEL\_COLORS.None
 
-> **High**: `string` = `"#4CAF50"`
+> **None**: `string` = `"#F44336"`
 
 #### SECURITY\_LEVEL\_COLORS.Low
 
@@ -42,9 +42,9 @@ Chart colors
 
 > **Moderate**: `string` = `"#FFEB3B"`
 
-#### SECURITY\_LEVEL\_COLORS.None
+#### SECURITY\_LEVEL\_COLORS.High
 
-> **None**: `string` = `"#F44336"`
+> **High**: `string` = `"#4CAF50"`
 
 #### SECURITY\_LEVEL\_COLORS.Very High
 

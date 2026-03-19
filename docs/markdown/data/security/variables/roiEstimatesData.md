@@ -1,14 +1,14 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../../modules.md) / [data/security](../README.md) / roiEstimatesData
+[CIA Compliance Manager — Markdown Documentation](../../../modules.md) / [data/security](../README.md) / roiEstimatesData
 
 # Variable: roiEstimatesData
 
-> `const` **roiEstimatesData**: [`ROIEstimatesMap`](../../../types/interfaces/ROIEstimatesMap.md)
+> `const` **roiEstimatesData**: [`ROIEstimatesMap`](../../../types/cia-services/interfaces/ROIEstimatesMap.md)
 
-Defined in: [data/security/roiEstimatesData.ts:12](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/data/security/roiEstimatesData.ts#L12)
+Defined in: [data/security/roiEstimatesData.ts:12](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/data/security/roiEstimatesData.ts#L12)
 
 Return on investment estimates for different security levels
 

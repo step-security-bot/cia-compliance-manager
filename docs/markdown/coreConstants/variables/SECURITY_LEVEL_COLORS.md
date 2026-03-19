@@ -1,14 +1,14 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../modules.md) / [coreConstants](../README.md) / SECURITY\_LEVEL\_COLORS
+[CIA Compliance Manager — Markdown Documentation](../../modules.md) / [coreConstants](../README.md) / SECURITY\_LEVEL\_COLORS
 
 # Variable: SECURITY\_LEVEL\_COLORS
 
 > `const` **SECURITY\_LEVEL\_COLORS**: `object`
 
-Defined in: [constants/coreConstants.ts:129](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/coreConstants.ts#L129)
+Defined in: [constants/coreConstants.ts:129](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/coreConstants.ts#L129)
 
 Security level color scheme mapping.
 
@@ -18,9 +18,9 @@ from red (None) through orange/yellow (Low/Moderate) to green/blue
 
 ## Type Declaration
 
-### HIGH
+### NONE
 
-> **HIGH**: `string` = `"#2ecc71"`
+> **NONE**: `string` = `"#e74c3c"`
 
 ### LOW
 
@@ -30,9 +30,9 @@ from red (None) through orange/yellow (Low/Moderate) to green/blue
 
 > **MODERATE**: `string` = `"#f1c40f"`
 
-### NONE
+### HIGH
 
-> **NONE**: `string` = `"#e74c3c"`
+> **HIGH**: `string` = `"#2ecc71"`
 
 ### VERY\_HIGH
 

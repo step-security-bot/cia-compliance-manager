@@ -1,38 +1,30 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../../modules.md) / [constants/costConstants](../README.md) / INDUSTRY\_COST\_FACTORS
+[CIA Compliance Manager — UML Diagrams](../../../modules.md) / [constants/costConstants](../README.md) / INDUSTRY\_COST\_FACTORS
 
 # Variable: INDUSTRY\_COST\_FACTORS
 
 > `const` **INDUSTRY\_COST\_FACTORS**: `object`
 
-Defined in: [constants/costConstants.ts:42](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/costConstants.ts#L42)
+Defined in: [constants/costConstants.ts:42](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/costConstants.ts#L42)
 
 Industry-specific cost factors that adjust implementation costs
 
 ## Type Declaration
 
-### finance
-
-> **finance**: `number` = `1.7`
-
-### general
-
-> **general**: `number` = `1.0`
-
-### government
-
-> **government**: `number` = `1.3`
-
 ### healthcare
 
 > **healthcare**: `number` = `1.5`
 
-### manufacturing
+### finance
 
-> **manufacturing**: `number` = `0.9`
+> **finance**: `number` = `1.7`
+
+### government
+
+> **government**: `number` = `1.3`
 
 ### retail
 
@@ -41,3 +33,11 @@ Industry-specific cost factors that adjust implementation costs
 ### technology
 
 > **technology**: `number` = `1.0`
+
+### manufacturing
+
+> **manufacturing**: `number` = `0.9`
+
+### general
+
+> **general**: `number` = `1.0`

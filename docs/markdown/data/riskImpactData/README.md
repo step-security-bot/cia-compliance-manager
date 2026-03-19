@@ -1,8 +1,8 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../modules.md) / data/riskImpactData
+[CIA Compliance Manager — Markdown Documentation](../../modules.md) / data/riskImpactData
 
 # data/riskImpactData
 
@@ -16,20 +16,20 @@
 
 ## Variables
 
-- [AVAILABILITY\_RISK\_IMPACTS](variables/AVAILABILITY_RISK_IMPACTS.md)
-- [CONFIDENTIALITY\_RISK\_IMPACTS](variables/CONFIDENTIALITY_RISK_IMPACTS.md)
 - [financialImpactByLevel](variables/financialImpactByLevel.md)
-- [INTEGRITY\_RISK\_IMPACTS](variables/INTEGRITY_RISK_IMPACTS.md)
 - [operationalImpactByLevel](variables/operationalImpactByLevel.md)
 - [reputationalImpactByLevel](variables/reputationalImpactByLevel.md)
+- [AVAILABILITY\_RISK\_IMPACTS](variables/AVAILABILITY_RISK_IMPACTS.md)
+- [INTEGRITY\_RISK\_IMPACTS](variables/INTEGRITY_RISK_IMPACTS.md)
+- [CONFIDENTIALITY\_RISK\_IMPACTS](variables/CONFIDENTIALITY_RISK_IMPACTS.md)
 
 ## Functions
 
-- [calculateBusinessImpactLevel](functions/calculateBusinessImpactLevel.md)
-- [createDefaultBusinessImpact](functions/createDefaultBusinessImpact.md)
-- [getBusinessImpact](functions/getBusinessImpact.md)
-- [getRiskImpactLabel](functions/getRiskImpactLabel.md)
-- [getRiskLevelFromSecurityLevel](functions/getRiskLevelFromSecurityLevel.md)
-- [isRiskImpact](functions/isRiskImpact.md)
 - [isRiskImpactLevel](functions/isRiskImpactLevel.md)
+- [isRiskImpact](functions/isRiskImpact.md)
 - [isValidCIAComponent](functions/isValidCIAComponent.md)
+- [getRiskLevelFromSecurityLevel](functions/getRiskLevelFromSecurityLevel.md)
+- [getBusinessImpact](functions/getBusinessImpact.md)
+- [calculateBusinessImpactLevel](functions/calculateBusinessImpactLevel.md)
+- [getRiskImpactLabel](functions/getRiskImpactLabel.md)
+- [createDefaultBusinessImpact](functions/createDefaultBusinessImpact.md)

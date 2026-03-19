@@ -1,8 +1,8 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../modules.md) / index
+[CIA Compliance Manager — UML Diagrams](../modules.md) / index
 
 # index
 
@@ -18,15 +18,23 @@ This is the main entry point for the application, providing access to all
 components, services, hooks and utilities needed to build and maintain
 security compliance dashboards. 🔒
 
-## Interfaces
-
-- [ComplianceStatus](interfaces/ComplianceStatus.md)
-
 ## Variables
 
 - [CIAClassificationApp](variables/CIAClassificationApp.md)
 
 ## References
+
+### Types
+
+Renames and re-exports [types](../types/README.md)
+
+***
+
+### Services
+
+Renames and re-exports [services](../services/README.md)
+
+***
 
 ### Components
 
@@ -34,15 +42,15 @@ Renames and re-exports [components](../components/README.md)
 
 ***
 
-### ComponentTechnicalDetails
-
-Re-exports [ComponentTechnicalDetails](../services/technicalImplementationService/interfaces/ComponentTechnicalDetails.md)
-
-***
-
 ### Hooks
 
 Renames and re-exports [hooks](../hooks/README.md)
+
+***
+
+### Utils
+
+Renames and re-exports [utils](../utils/README.md)
 
 ***
 
@@ -58,18 +66,12 @@ Re-exports [SecurityProfile](../types/cia/interfaces/SecurityProfile.md)
 
 ***
 
-### Services
+### ComplianceStatus
 
-Renames and re-exports [services](../services/README.md)
-
-***
-
-### Types
-
-Renames and re-exports [types](../types/README.md)
+Re-exports [ComplianceStatus](../types/cia-services/interfaces/ComplianceStatus.md)
 
 ***
 
-### Utils
+### ComponentTechnicalDetails
 
-Renames and re-exports [utils](../utils/README.md)
+Re-exports [ComponentTechnicalDetails](../services/technicalImplementationService/interfaces/ComponentTechnicalDetails.md)

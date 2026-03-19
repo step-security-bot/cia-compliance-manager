@@ -1,0 +1,26 @@
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../../README.md)
+
+***
+
+[CIA Compliance Manager — Markdown Documentation](../../../modules.md) / [types/widget-props](../README.md) / SecurityVisualizationWidgetProps
+
+# Type Alias: SecurityVisualizationWidgetProps
+
+> **SecurityVisualizationWidgetProps** = [`AllCIAComponentsProps`](../interfaces/AllCIAComponentsProps.md)
+
+Defined in: [types/widget-props.ts:763](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/widget-props.ts#L763)
+
+Props for SecurityVisualizationWidget component
+
+Visualizes security posture with interactive charts based on
+CIA component security levels.
+
+## Example
+
+```typescript
+<SecurityVisualizationWidget
+  availabilityLevel="High"
+  integrityLevel="Very High"
+  confidentialityLevel="Moderate"
+/>
+```

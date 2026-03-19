@@ -1,14 +1,14 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../../modules.md) / [utils/securityDefaults](../README.md) / getDefaultDevelopmentEffort
+[CIA Compliance Manager — Markdown Documentation](../../../modules.md) / [utils/securityDefaults](../README.md) / getDefaultDevelopmentEffort
 
 # Function: getDefaultDevelopmentEffort()
 
 > **getDefaultDevelopmentEffort**(`level`): `string`
 
-Defined in: [utils/securityDefaults.ts:6](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/utils/securityDefaults.ts#L6)
+Defined in: [utils/securityDefaults.ts:6](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/utils/securityDefaults.ts#L6)
 
 Gets default development effort based on security level
 

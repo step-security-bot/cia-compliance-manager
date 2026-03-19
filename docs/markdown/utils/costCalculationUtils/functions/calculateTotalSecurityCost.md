@@ -1,14 +1,14 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../../modules.md) / [utils/costCalculationUtils](../README.md) / calculateTotalSecurityCost
+[CIA Compliance Manager — Markdown Documentation](../../../modules.md) / [utils/costCalculationUtils](../README.md) / calculateTotalSecurityCost
 
 # Function: calculateTotalSecurityCost()
 
 > **calculateTotalSecurityCost**(`availabilityLevel`, `integrityLevel`, `confidentialityLevel`, `orgSize?`, `industry?`): `object`
 
-Defined in: [utils/costCalculationUtils.ts:116](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/utils/costCalculationUtils.ts#L116)
+Defined in: [utils/costCalculationUtils.ts:116](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/utils/costCalculationUtils.ts#L116)
 
 Calculate total security costs across all CIA components
 
@@ -42,22 +42,22 @@ Calculate total security costs across all CIA components
 
 > **availabilityCost**: `CostResult`
 
-### confidentialityCost
-
-> **confidentialityCost**: `CostResult`
-
 ### integrityCost
 
 > **integrityCost**: `CostResult`
+
+### confidentialityCost
+
+> **confidentialityCost**: `CostResult`
 
 ### totalCapex
 
 > **totalCapex**: `number`
 
-### totalCost
-
-> **totalCost**: `number`
-
 ### totalOpex
 
 > **totalOpex**: `number`
+
+### totalCost
+
+> **totalCost**: `number`

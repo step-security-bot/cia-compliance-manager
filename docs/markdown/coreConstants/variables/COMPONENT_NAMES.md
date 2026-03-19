@@ -1,18 +1,22 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../modules.md) / [coreConstants](../README.md) / COMPONENT\_NAMES
+[CIA Compliance Manager — Markdown Documentation](../../modules.md) / [coreConstants](../README.md) / COMPONENT\_NAMES
 
 # Variable: COMPONENT\_NAMES
 
 > `const` **COMPONENT\_NAMES**: `object`
 
-Defined in: [constants/coreConstants.ts:487](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/coreConstants.ts#L487)
+Defined in: [constants/coreConstants.ts:487](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/coreConstants.ts#L487)
 
 Component names used for debugging and logging
 
 ## Type Declaration
+
+### SECURITY\_LEVEL\_WIDGET
+
+> **SECURITY\_LEVEL\_WIDGET**: `string` = `"SecurityLevelWidget"`
 
 ### BUSINESS\_IMPACT\_WIDGET
 
@@ -26,18 +30,14 @@ Component names used for debugging and logging
 
 > **COST\_ESTIMATION\_WIDGET**: `string` = `"CostEstimationWidget"`
 
-### SECURITY\_LEVEL\_WIDGET
+### VALUE\_CREATION\_WIDGET
 
-> **SECURITY\_LEVEL\_WIDGET**: `string` = `"SecurityLevelWidget"`
-
-### SECURITY\_SUMMARY\_WIDGET
-
-> **SECURITY\_SUMMARY\_WIDGET**: `string` = `"SecuritySummaryWidget"`
+> **VALUE\_CREATION\_WIDGET**: `string` = `"ValueCreationWidget"`
 
 ### TECHNICAL\_DETAILS\_WIDGET
 
 > **TECHNICAL\_DETAILS\_WIDGET**: `string` = `"TechnicalDetailsWidget"`
 
-### VALUE\_CREATION\_WIDGET
+### SECURITY\_SUMMARY\_WIDGET
 
-> **VALUE\_CREATION\_WIDGET**: `string` = `"ValueCreationWidget"`
+> **SECURITY\_SUMMARY\_WIDGET**: `string` = `"SecuritySummaryWidget"`

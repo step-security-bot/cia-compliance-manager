@@ -1,0 +1,125 @@
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../../README.md)
+
+***
+
+[CIA Compliance Manager — UML Diagrams](../../../modules.md) / [constants/designTokens](../README.md) / WIDGET\_STYLES
+
+# Variable: WIDGET\_STYLES
+
+> `const` **WIDGET\_STYLES**: `object`
+
+Defined in: [constants/designTokens.ts:295](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/designTokens.ts#L295)
+
+Widget-specific styling utilities
+These helpers generate consistent className strings for common widget patterns
+
+NOTE: These utilities are provided for convenience and future use. While all widgets
+have been refactored to use design tokens via inline Tailwind classes, these helpers
+can be adopted in future refactoring to further reduce code duplication and improve
+maintainability. They are kept for forward compatibility and as reference patterns.
+
+## Type Declaration
+
+### container
+
+> `readonly` **container**: () => `string`
+
+Get widget container classes
+
+#### Returns
+
+`string`
+
+Tailwind className string for widget containers
+
+### header
+
+> `readonly` **header**: () => `string`
+
+Get widget header classes
+
+#### Returns
+
+`string`
+
+Tailwind className string for widget headers
+
+### section
+
+> `readonly` **section**: () => `string`
+
+Get widget section classes
+
+#### Returns
+
+`string`
+
+Tailwind className string for widget sections
+
+### title
+
+> `readonly` **title**: () => `string`
+
+Get widget title classes
+
+#### Returns
+
+`string`
+
+Tailwind className string for widget titles
+
+### subtitle
+
+> `readonly` **subtitle**: () => `string`
+
+Get widget subtitle classes
+
+#### Returns
+
+`string`
+
+Tailwind className string for widget subtitles
+
+### content
+
+> `readonly` **content**: () => `string`
+
+Get widget content classes
+
+#### Returns
+
+`string`
+
+Tailwind className string for widget content areas
+
+### card
+
+> `readonly` **card**: () => `string`
+
+Get card classes for nested content
+
+#### Returns
+
+`string`
+
+Tailwind className string for cards within widgets
+
+### badge
+
+> `readonly` **badge**: (`variant`) => `string`
+
+Get badge classes
+
+#### Parameters
+
+##### variant?
+
+`"success"` \| `"info"` \| `"warning"` \| `"error"` \| `"neutral"` \| `"primary"`
+
+Color variant (primary, success, warning, error, info, neutral)
+
+#### Returns
+
+`string`
+
+Tailwind className string for badges

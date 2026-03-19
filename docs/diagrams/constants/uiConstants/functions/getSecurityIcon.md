@@ -1,14 +1,14 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../../modules.md) / [constants/uiConstants](../README.md) / getSecurityIcon
+[CIA Compliance Manager — UML Diagrams](../../../modules.md) / [constants/uiConstants](../README.md) / getSecurityIcon
 
 # Function: getSecurityIcon()
 
 > **getSecurityIcon**(`concept`): `string`
 
-Defined in: [constants/uiConstants.ts:92](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/uiConstants.ts#L92)
+Defined in: [constants/uiConstants.ts:92](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/uiConstants.ts#L92)
 
 Get icon for a security concept
 

@@ -1,33 +1,33 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../modules.md) / [coreConstants](../README.md) / COMPLIANCE\_FRAMEWORKS
+[CIA Compliance Manager — Markdown Documentation](../../modules.md) / [coreConstants](../README.md) / COMPLIANCE\_FRAMEWORKS
 
 # Variable: COMPLIANCE\_FRAMEWORKS
 
 > `const` **COMPLIANCE\_FRAMEWORKS**: `object`
 
-Defined in: [constants/coreConstants.ts:303](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/coreConstants.ts#L303)
+Defined in: [constants/coreConstants.ts:303](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/coreConstants.ts#L303)
 
 ## Type Declaration
 
-### HIPAA
+### SOC2
 
-> **HIPAA**: `string` = `"HIPAA"`
+> **SOC2**: `string` = `"SOC 2 Type 2"`
 
 ### ISO27001
 
 > **ISO27001**: `string` = `"ISO 27001"`
 
-### NIST
-
-> **NIST**: `string` = `"NIST 800-53 High"`
-
 ### PCI\_DSS
 
 > **PCI\_DSS**: `string` = `"PCI DSS"`
 
-### SOC2
+### HIPAA
 
-> **SOC2**: `string` = `"SOC 2 Type 2"`
+> **HIPAA**: `string` = `"HIPAA"`
+
+### NIST
+
+> **NIST**: `string` = `"NIST 800-53 High"`

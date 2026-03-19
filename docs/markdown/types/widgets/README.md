@@ -1,8 +1,8 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../modules.md) / types/widgets
+[CIA Compliance Manager — Markdown Documentation](../../modules.md) / types/widgets
 
 # types/widgets
 
@@ -10,36 +10,36 @@
 
 ### Assessment Widgets
 
-- [CIAImpactSummaryWidgetProps](interfaces/CIAImpactSummaryWidgetProps.md)
 - [SecuritySummaryWidgetProps](interfaces/SecuritySummaryWidgetProps.md)
+- [CIAImpactSummaryWidgetProps](interfaces/CIAImpactSummaryWidgetProps.md)
 
 ### Base Types
 
-- [CIABaseWidgetProps](interfaces/CIABaseWidgetProps.md)
 - [SecurityWidgetBaseProps](interfaces/SecurityWidgetBaseProps.md)
 - [WidgetBaseProps](interfaces/WidgetBaseProps.md)
+- [CIABaseWidgetProps](interfaces/CIABaseWidgetProps.md)
 
 ### Business Widgets
 
-- [BusinessImpactAnalysisWidgetProps](interfaces/BusinessImpactAnalysisWidgetProps.md)
 - [BusinessImpactWidgetProps](interfaces/BusinessImpactWidgetProps.md)
+- [BusinessImpactAnalysisWidgetProps](interfaces/BusinessImpactAnalysisWidgetProps.md)
 - [ValueCreationWidgetProps](interfaces/ValueCreationWidgetProps.md)
 
 ### Compliance Widgets
 
-- [ComplianceStatusWidgetProps](interfaces/ComplianceStatusWidgetProps.md)
 - [ComplianceWidgetProps](interfaces/ComplianceWidgetProps.md)
+- [ComplianceStatusWidgetProps](interfaces/ComplianceStatusWidgetProps.md)
 
 ### Component Details
 
 - [AvailabilityDetail](interfaces/AvailabilityDetail.md)
-- [ConfidentialityDetail](interfaces/ConfidentialityDetail.md)
 - [IntegrityDetail](interfaces/IntegrityDetail.md)
+- [ConfidentialityDetail](interfaces/ConfidentialityDetail.md)
 
 ### Component Widgets
 
-- [ComponentImpactWidgetProps](interfaces/ComponentImpactWidgetProps.md)
 - [SecurityComponentProps](interfaces/SecurityComponentProps.md)
+- [ComponentImpactWidgetProps](interfaces/ComponentImpactWidgetProps.md)
 
 ### Control Widgets
 
@@ -51,8 +51,8 @@
 
 ### Implementation Widgets
 
-- [SecurityResourcesWidgetProps](interfaces/SecurityResourcesWidgetProps.md)
 - [TechnicalDetailsWidgetProps](interfaces/TechnicalDetailsWidgetProps.md)
+- [SecurityResourcesWidgetProps](interfaces/SecurityResourcesWidgetProps.md)
 
 ### Security Level Widgets
 

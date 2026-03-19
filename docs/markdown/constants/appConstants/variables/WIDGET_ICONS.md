@@ -1,22 +1,26 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../../modules.md) / [constants/appConstants](../README.md) / WIDGET\_ICONS
+[CIA Compliance Manager — Markdown Documentation](../../../modules.md) / [constants/appConstants](../README.md) / WIDGET\_ICONS
 
 # Variable: WIDGET\_ICONS
 
 > `const` **WIDGET\_ICONS**: `object`
 
-Defined in: [constants/appConstants.ts:339](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/appConstants.ts#L339)
+Defined in: [constants/appConstants.ts:339](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/appConstants.ts#L339)
 
 Widget icons for consistent UI representation
 
 ## Type Declaration
 
-### AVAILABILITY\_IMPACT
+### SECURITY\_LEVEL
 
-> **AVAILABILITY\_IMPACT**: `string`
+> **SECURITY\_LEVEL**: `string` = `"🔐"`
+
+### SECURITY\_SUMMARY
+
+> **SECURITY\_SUMMARY**: `string` = `"📊"`
 
 ### BUSINESS\_IMPACT\_ANALYSIS
 
@@ -26,38 +30,34 @@ Widget icons for consistent UI representation
 
 > **COMPLIANCE\_STATUS**: `string` = `"📋"`
 
-### CONFIDENTIALITY\_IMPACT
+### SECURITY\_RESOURCES
 
-> **CONFIDENTIALITY\_IMPACT**: `string`
+> **SECURITY\_RESOURCES**: `string` = `"📚"`
 
 ### COST\_ESTIMATION
 
 > **COST\_ESTIMATION**: `string` = `"💰"`
 
-### INTEGRITY\_IMPACT
+### VALUE\_CREATION
 
-> **INTEGRITY\_IMPACT**: `string`
-
-### SECURITY\_LEVEL
-
-> **SECURITY\_LEVEL**: `string` = `"🔐"`
-
-### SECURITY\_RESOURCES
-
-> **SECURITY\_RESOURCES**: `string` = `"📚"`
-
-### SECURITY\_SUMMARY
-
-> **SECURITY\_SUMMARY**: `string` = `"📊"`
-
-### SECURITY\_VISUALIZATION
-
-> **SECURITY\_VISUALIZATION**: `string` = `"📈"`
+> **VALUE\_CREATION**: `string` = `"💎"`
 
 ### TECHNICAL\_DETAILS
 
 > **TECHNICAL\_DETAILS**: `string` = `"⚙️"`
 
-### VALUE\_CREATION
+### SECURITY\_VISUALIZATION
 
-> **VALUE\_CREATION**: `string` = `"💎"`
+> **SECURITY\_VISUALIZATION**: `string` = `"📈"`
+
+### AVAILABILITY\_IMPACT
+
+> **AVAILABILITY\_IMPACT**: `string`
+
+### INTEGRITY\_IMPACT
+
+> **INTEGRITY\_IMPACT**: `string`
+
+### CONFIDENTIALITY\_IMPACT
+
+> **CONFIDENTIALITY\_IMPACT**: `string`

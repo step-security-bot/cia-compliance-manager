@@ -1,14 +1,14 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../modules.md) / [utils](../README.md) / getSelectAriaProps
+[CIA Compliance Manager — Markdown Documentation](../../modules.md) / [utils](../README.md) / getSelectAriaProps
 
-# Variable: getSelectAriaProps()
+# Variable: getSelectAriaProps
 
 > **getSelectAriaProps**: (`label`, `value`, `required`) => `object`
 
-Defined in: [utils/index.ts:42](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/utils/index.ts#L42)
+Defined in: [utils/index.ts:42](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/utils/index.ts#L42)
 
 Generate ARIA props for a select/dropdown component
 
@@ -38,14 +38,14 @@ Whether selection is required
 
 ARIA props object
 
-### aria-describedby?
-
-> `optional` **aria-describedby**: `string`
-
 ### aria-label
 
 > **aria-label**: `string`
 
 ### aria-required?
 
-> `optional` **aria-required**: `boolean`
+> `optional` **aria-required?**: `boolean`
+
+### aria-describedby?
+
+> `optional` **aria-describedby?**: `string`

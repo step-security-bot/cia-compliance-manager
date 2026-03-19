@@ -1,24 +1,60 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../../modules.md) / [types/businessImpact](../README.md) / BUSINESS\_CONSIDERATIONS
+[CIA Compliance Manager — Markdown Documentation](../../../modules.md) / [types/businessImpact](../README.md) / BUSINESS\_CONSIDERATIONS
 
 # Variable: BUSINESS\_CONSIDERATIONS
 
 > `const` **BUSINESS\_CONSIDERATIONS**: `object`
 
-Defined in: [types/businessImpact.ts:380](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/types/businessImpact.ts#L380)
+Defined in: [types/businessImpact.ts:380](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/businessImpact.ts#L380)
 
 ## Type Declaration
+
+### financial
+
+> **financial**: [`BusinessConsideration`](../interfaces/BusinessConsideration.md)[]
+
+Financial considerations
+
+### operational
+
+> **operational**: [`BusinessConsideration`](../interfaces/BusinessConsideration.md)[]
+
+Operational considerations
+
+### strategic
+
+> **strategic**: [`BusinessConsideration`](../interfaces/BusinessConsideration.md)[]
+
+Strategic considerations
+
+### compliance?
+
+> `optional` **compliance?**: [`BusinessConsideration`](../interfaces/BusinessConsideration.md)[]
+
+Compliance considerations
+
+### reputational?
+
+> `optional` **reputational?**: [`BusinessConsideration`](../interfaces/BusinessConsideration.md)[]
+
+Reputational considerations
+
+### regulatory?
+
+> `optional` **regulatory?**: [`BusinessConsideration`](../interfaces/BusinessConsideration.md)[]
+
+Regulatory considerations
 
 ### AVAILABILITY
 
 > **AVAILABILITY**: `object`
 
-#### AVAILABILITY.HIGH
+#### AVAILABILITY.NONE
 
-> **HIGH**: `never`[] = `[]`
+> **NONE**: `never`[] = `[]`
 
 #### AVAILABILITY.LOW
 
@@ -28,57 +64,21 @@ Defined in: [types/businessImpact.ts:380](https://github.com/Hack23/cia-complian
 
 > **MODERATE**: `never`[] = `[]`
 
-#### AVAILABILITY.NONE
+#### AVAILABILITY.HIGH
 
-> **NONE**: `never`[] = `[]`
+> **HIGH**: `never`[] = `[]`
 
 #### AVAILABILITY.VERY\_HIGH
 
 > **VERY\_HIGH**: `never`[] = `[]`
 
-### compliance?
-
-> `optional` **compliance**: [`BusinessConsideration`](../interfaces/BusinessConsideration.md)[]
-
-Compliance considerations
-
-### CONFIDENTIALITY
-
-> **CONFIDENTIALITY**: `object`
-
-#### CONFIDENTIALITY.HIGH
-
-> **HIGH**: `never`[] = `[]`
-
-#### CONFIDENTIALITY.LOW
-
-> **LOW**: `never`[] = `[]`
-
-#### CONFIDENTIALITY.MODERATE
-
-> **MODERATE**: `never`[] = `[]`
-
-#### CONFIDENTIALITY.NONE
-
-> **NONE**: `never`[] = `[]`
-
-#### CONFIDENTIALITY.VERY\_HIGH
-
-> **VERY\_HIGH**: `never`[] = `[]`
-
-### financial
-
-> **financial**: [`BusinessConsideration`](../interfaces/BusinessConsideration.md)[]
-
-Financial considerations
-
 ### INTEGRITY
 
 > **INTEGRITY**: `object`
 
-#### INTEGRITY.HIGH
+#### INTEGRITY.NONE
 
-> **HIGH**: `never`[] = `[]`
+> **NONE**: `never`[] = `[]`
 
 #### INTEGRITY.LOW
 
@@ -88,34 +88,34 @@ Financial considerations
 
 > **MODERATE**: `never`[] = `[]`
 
-#### INTEGRITY.NONE
+#### INTEGRITY.HIGH
 
-> **NONE**: `never`[] = `[]`
+> **HIGH**: `never`[] = `[]`
 
 #### INTEGRITY.VERY\_HIGH
 
 > **VERY\_HIGH**: `never`[] = `[]`
 
-### operational
+### CONFIDENTIALITY
 
-> **operational**: [`BusinessConsideration`](../interfaces/BusinessConsideration.md)[]
+> **CONFIDENTIALITY**: `object`
 
-Operational considerations
+#### CONFIDENTIALITY.NONE
 
-### regulatory?
+> **NONE**: `never`[] = `[]`
 
-> `optional` **regulatory**: [`BusinessConsideration`](../interfaces/BusinessConsideration.md)[]
+#### CONFIDENTIALITY.LOW
 
-Regulatory considerations
+> **LOW**: `never`[] = `[]`
 
-### reputational?
+#### CONFIDENTIALITY.MODERATE
 
-> `optional` **reputational**: [`BusinessConsideration`](../interfaces/BusinessConsideration.md)[]
+> **MODERATE**: `never`[] = `[]`
 
-Reputational considerations
+#### CONFIDENTIALITY.HIGH
 
-### strategic
+> **HIGH**: `never`[] = `[]`
 
-> **strategic**: [`BusinessConsideration`](../interfaces/BusinessConsideration.md)[]
+#### CONFIDENTIALITY.VERY\_HIGH
 
-Strategic considerations
+> **VERY\_HIGH**: `never`[] = `[]`

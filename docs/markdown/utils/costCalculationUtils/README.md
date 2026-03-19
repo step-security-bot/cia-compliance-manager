@@ -1,8 +1,8 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../modules.md) / utils/costCalculationUtils
+[CIA Compliance Manager — Markdown Documentation](../../modules.md) / utils/costCalculationUtils
 
 # utils/costCalculationUtils
 
@@ -19,12 +19,12 @@ that can be used for budgeting and ROI analysis. 💰
 
 ## Type Aliases
 
-- [Industry](type-aliases/Industry.md)
 - [OrganizationSize](type-aliases/OrganizationSize.md)
+- [Industry](type-aliases/Industry.md)
 
 ## Functions
 
 - [calculateImplementationCost](functions/calculateImplementationCost.md)
-- [calculateSecurityROI](functions/calculateSecurityROI.md)
 - [calculateTotalSecurityCost](functions/calculateTotalSecurityCost.md)
+- [calculateSecurityROI](functions/calculateSecurityROI.md)
 - [getRecommendedBudgetAllocation](functions/getRecommendedBudgetAllocation.md)

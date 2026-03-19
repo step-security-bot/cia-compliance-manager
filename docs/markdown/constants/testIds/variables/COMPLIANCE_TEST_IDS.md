@@ -1,0 +1,133 @@
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../../README.md)
+
+***
+
+[CIA Compliance Manager — Markdown Documentation](../../../modules.md) / [constants/testIds](../README.md) / COMPLIANCE\_TEST\_IDS
+
+# Variable: COMPLIANCE\_TEST\_IDS
+
+> `const` **COMPLIANCE\_TEST\_IDS**: `object`
+
+Defined in: [constants/testIds.ts:1079](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/testIds.ts#L1079)
+
+## Type Declaration
+
+### COMPLIANCE\_STATUS\_WIDGET
+
+> **COMPLIANCE\_STATUS\_WIDGET**: `string` = `"compliance-status-widget"`
+
+### COMPLIANCE\_STATUS\_BADGE
+
+> **COMPLIANCE\_STATUS\_BADGE**: `string` = `"compliance-status-badge"`
+
+### COMPLIANCE\_FRAMEWORK\_ITEM
+
+> **COMPLIANCE\_FRAMEWORK\_ITEM**: `string` = `"compliance-framework-item"`
+
+### COMPLIANCE\_REQUIREMENTS\_LIST
+
+> **COMPLIANCE\_REQUIREMENTS\_LIST**: `string` = `"compliance-requirements-list"`
+
+### COMPLIANCE\_FRAMEWORKS\_CONTAINER
+
+> **COMPLIANCE\_FRAMEWORKS\_CONTAINER**: `string` = `"compliance-frameworks-container"`
+
+### COMPLIANT\_FRAMEWORKS\_LIST
+
+> **COMPLIANT\_FRAMEWORKS\_LIST**: `string` = `"compliant-frameworks-list"`
+
+### WIDGET
+
+> **WIDGET**: `string` = `"compliance-status-widget"`
+
+### COMPLIANCE\_ERROR
+
+> **COMPLIANCE\_ERROR**: `string` = `"compliance-error"`
+
+### COMPLIANCE\_LOADING
+
+> **COMPLIANCE\_LOADING**: `string` = `"compliance-loading"`
+
+### COMPLIANCE\_STATUS\_SUMMARY
+
+> **COMPLIANCE\_STATUS\_SUMMARY**: `string` = `"compliance-status-summary"`
+
+### COMPLIANCE\_SCORE
+
+> **COMPLIANCE\_SCORE**: `string` = `"compliance-score"`
+
+### COMPLIANCE\_SCORE\_BAR
+
+> **COMPLIANCE\_SCORE\_BAR**: `string` = `"compliance-score-bar"`
+
+### FRAMEWORK\_ITEM\_PREFIX
+
+> **FRAMEWORK\_ITEM\_PREFIX**: `string` = `"framework-item"`
+
+### FRAMEWORK\_STATUS
+
+> **FRAMEWORK\_STATUS**: `string` = `"framework-status"`
+
+### PARTIALLY\_COMPLIANT\_FRAMEWORKS\_LIST
+
+> **PARTIALLY\_COMPLIANT\_FRAMEWORKS\_LIST**: `string` = `"partially-compliant-frameworks-list"`
+
+### NON\_COMPLIANT\_FRAMEWORKS\_LIST
+
+> **NON\_COMPLIANT\_FRAMEWORKS\_LIST**: `string` = `"non-compliant-frameworks-list"`
+
+### FRAMEWORK\_GAP\_ANALYSIS
+
+> **FRAMEWORK\_GAP\_ANALYSIS**: `string` = `"framework-gap-analysis"`
+
+### SELECTED\_FRAMEWORK\_STATUS
+
+> **SELECTED\_FRAMEWORK\_STATUS**: `string` = `"selected-framework-status"`
+
+### AVAILABILITY\_REQUIREMENT
+
+> **AVAILABILITY\_REQUIREMENT**: `string` = `"availability-requirement"`
+
+### AVAILABILITY\_REQUIRED\_LEVEL
+
+> **AVAILABILITY\_REQUIRED\_LEVEL**: `string` = `"availability-required-level"`
+
+### INTEGRITY\_REQUIREMENT
+
+> **INTEGRITY\_REQUIREMENT**: `string` = `"integrity-requirement"`
+
+### INTEGRITY\_REQUIRED\_LEVEL
+
+> **INTEGRITY\_REQUIRED\_LEVEL**: `string` = `"integrity-required-level"`
+
+### CONFIDENTIALITY\_REQUIREMENT
+
+> **CONFIDENTIALITY\_REQUIREMENT**: `string` = `"confidentiality-requirement"`
+
+### CONFIDENTIALITY\_REQUIRED\_LEVEL
+
+> **CONFIDENTIALITY\_REQUIRED\_LEVEL**: `string` = `"confidentiality-required-level"`
+
+### COMPLIANCE\_GAPS\_LIST
+
+> **COMPLIANCE\_GAPS\_LIST**: `string` = `"compliance-gaps-list"`
+
+### COMPLIANCE\_GAP\_ITEM
+
+> **COMPLIANCE\_GAP\_ITEM**: `string` = `"compliance-gap-item"`
+
+### COMPLIANCE\_RECOMMENDATIONS\_LIST
+
+> **COMPLIANCE\_RECOMMENDATIONS\_LIST**: `string` = `"compliance-recommendations-list"`
+
+### COMPLIANCE\_RECOMMENDATION\_ITEM
+
+> **COMPLIANCE\_RECOMMENDATION\_ITEM**: `string` = `"compliance-recommendation-item"`
+
+### NO\_GAP\_ANALYSIS
+
+> **NO\_GAP\_ANALYSIS**: `string` = `"no-gap-analysis"`
+
+### COMPLIANCE\_TIPS\_LIST
+
+> **COMPLIANCE\_TIPS\_LIST**: `string` = `"compliance-tips-list"`

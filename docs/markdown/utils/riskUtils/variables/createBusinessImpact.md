@@ -1,14 +1,14 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../../modules.md) / [utils/riskUtils](../README.md) / createBusinessImpact
+[CIA Compliance Manager — Markdown Documentation](../../../modules.md) / [utils/riskUtils](../README.md) / createBusinessImpact
 
-# Variable: createBusinessImpact()
+# Variable: createBusinessImpact
 
-> `const` **createBusinessImpact**: (`component`, `level`) => [`BusinessImpactDetails`](../../../types/interfaces/BusinessImpactDetails.md) = `createDefaultBusinessImpact`
+> `const` **createBusinessImpact**: (`component`, `level`) => [`BusinessImpactDetails`](../../../types/cia-services/interfaces/BusinessImpactDetails.md) = `createDefaultBusinessImpact`
 
-Defined in: [utils/riskUtils.ts:35](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/utils/riskUtils.ts#L35)
+Defined in: [utils/riskUtils.ts:35](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/utils/riskUtils.ts#L35)
 
 Create a default business impact object with minimum required fields
 
@@ -32,7 +32,7 @@ Security level for the component
 
 ## Returns
 
-[`BusinessImpactDetails`](../../../types/interfaces/BusinessImpactDetails.md)
+[`BusinessImpactDetails`](../../../types/cia-services/interfaces/BusinessImpactDetails.md)
 
 Business impact details with financial, operational, and reputational aspects
 

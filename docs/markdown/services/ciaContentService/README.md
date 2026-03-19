@@ -1,8 +1,8 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../modules.md) / services/ciaContentService
+[CIA Compliance Manager — Markdown Documentation](../../modules.md) / services/ciaContentService
 
 # services/ciaContentService
 
@@ -16,24 +16,18 @@
 
 ## Functions
 
-- [createCIAContentService](functions/createCIAContentService.md)
-- [getAvailabilityDetails](functions/getAvailabilityDetails.md)
 - [getCIAOptions](functions/getCIAOptions.md)
-- [getConfidentialityDetails](functions/getConfidentialityDetails.md)
+- [createCIAContentService](functions/createCIAContentService.md)
 - [getInformationSensitivity](functions/getInformationSensitivity.md)
-- [getIntegrityDetails](functions/getIntegrityDetails.md)
 - [getRiskBadgeVariant](functions/getRiskBadgeVariant.md)
 - [getROIEstimate](functions/getROIEstimate.md)
-- [getSecuritySummary](functions/getSecuritySummary.md)
 - [getValuePoints](functions/getValuePoints.md)
+- [getSecuritySummary](functions/getSecuritySummary.md)
+- [getAvailabilityDetails](functions/getAvailabilityDetails.md)
+- [getIntegrityDetails](functions/getIntegrityDetails.md)
+- [getConfidentialityDetails](functions/getConfidentialityDetails.md)
 
 ## References
-
-### BusinessImpactDetails
-
-Re-exports [BusinessImpactDetails](../../types/interfaces/BusinessImpactDetails.md)
-
-***
 
 ### default
 
@@ -41,6 +35,12 @@ Renames and re-exports [defaultCIAContentService](../variables/defaultCIAContent
 
 ***
 
+### BusinessImpactDetails
+
+Re-exports [BusinessImpactDetails](../../types/cia-services/interfaces/BusinessImpactDetails.md)
+
+***
+
 ### TechnicalImplementationDetails
 
-Re-exports [TechnicalImplementationDetails](../../types/interfaces/TechnicalImplementationDetails.md)
+Re-exports [TechnicalImplementationDetails](../../types/cia-services/interfaces/TechnicalImplementationDetails.md)

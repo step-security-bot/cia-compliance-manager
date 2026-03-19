@@ -1,14 +1,14 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../../modules.md) / [constants/riskConstants](../README.md) / SECURITY\_TO\_RISK\_MAP
+[CIA Compliance Manager — Markdown Documentation](../../../modules.md) / [constants/riskConstants](../README.md) / SECURITY\_TO\_RISK\_MAP
 
 # Variable: SECURITY\_TO\_RISK\_MAP
 
 > `const` **SECURITY\_TO\_RISK\_MAP**: `Record`\<[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md), `string`\>
 
-Defined in: [constants/riskConstants.ts:46](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/riskConstants.ts#L46)
+Defined in: [constants/riskConstants.ts:46](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/riskConstants.ts#L46)
 
 Mapping between security levels and associated risk levels
 Higher security = lower risk

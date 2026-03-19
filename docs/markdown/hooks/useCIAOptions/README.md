@@ -1,15 +1,15 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../modules.md) / hooks/useCIAOptions
+[CIA Compliance Manager — Markdown Documentation](../../modules.md) / hooks/useCIAOptions
 
 # hooks/useCIAOptions
 
 ## Interfaces
 
-- [CIAOptionDetails](interfaces/CIAOptionDetails.md)
 - [ROIData](interfaces/ROIData.md)
+- [CIAOptionDetails](interfaces/CIAOptionDetails.md)
 - [UseCIAOptionsReturn](interfaces/UseCIAOptionsReturn.md)
 
 ## Type Aliases
@@ -19,8 +19,8 @@
 ## Variables
 
 - [availabilityOptions](variables/availabilityOptions.md)
-- [confidentialityOptions](variables/confidentialityOptions.md)
 - [integrityOptions](variables/integrityOptions.md)
+- [confidentialityOptions](variables/confidentialityOptions.md)
 - [ROI\_ESTIMATES](variables/ROI_ESTIMATES.md)
 
 ## Functions

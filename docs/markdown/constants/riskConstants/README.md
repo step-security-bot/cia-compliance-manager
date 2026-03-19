@@ -1,8 +1,8 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../modules.md) / constants/riskConstants
+[CIA Compliance Manager — Markdown Documentation](../../modules.md) / constants/riskConstants
 
 # constants/riskConstants
 
@@ -12,19 +12,19 @@
 
 ## Variables
 
+- [RISK\_LEVELS](variables/RISK_LEVELS.md)
 - [BUSINESS\_IMPACT\_CATEGORIES](variables/BUSINESS_IMPACT_CATEGORIES.md)
 - [BUSINESS\_IMPACT\_CATEGORY\_LIST](variables/BUSINESS_IMPACT_CATEGORY_LIST.md)
+- [SECURITY\_TO\_RISK\_MAP](variables/SECURITY_TO_RISK_MAP.md)
+- [RISK\_LEVEL\_DESCRIPTIONS](variables/RISK_LEVEL_DESCRIPTIONS.md)
 - [FINANCIAL\_IMPACT](variables/FINANCIAL_IMPACT.md)
 - [OPERATIONAL\_IMPACT](variables/OPERATIONAL_IMPACT.md)
-- [REGULATORY\_IMPACT](variables/REGULATORY_IMPACT.md)
 - [REPUTATIONAL\_IMPACT](variables/REPUTATIONAL_IMPACT.md)
-- [RISK\_LEVEL\_COLORS](variables/RISK_LEVEL_COLORS.md)
-- [RISK\_LEVEL\_CSS\_CLASSES](variables/RISK_LEVEL_CSS_CLASSES.md)
-- [RISK\_LEVEL\_DESCRIPTIONS](variables/RISK_LEVEL_DESCRIPTIONS.md)
-- [RISK\_LEVELS](variables/RISK_LEVELS.md)
+- [REGULATORY\_IMPACT](variables/REGULATORY_IMPACT.md)
 - [RISK\_MATRIX](variables/RISK_MATRIX.md)
 - [RISK\_SCORE\_TO\_LEVEL](variables/RISK_SCORE_TO_LEVEL.md)
-- [SECURITY\_TO\_RISK\_MAP](variables/SECURITY_TO_RISK_MAP.md)
+- [RISK\_LEVEL\_COLORS](variables/RISK_LEVEL_COLORS.md)
+- [RISK\_LEVEL\_CSS\_CLASSES](variables/RISK_LEVEL_CSS_CLASSES.md)
 
 ## Functions
 
@@ -35,4 +35,4 @@
 
 ### RiskLevelLiteral
 
-Re-exports [RiskLevelLiteral](../type-aliases/RiskLevelLiteral.md)
+Re-exports [RiskLevelLiteral](../../types/risk/type-aliases/RiskLevelLiteral.md)

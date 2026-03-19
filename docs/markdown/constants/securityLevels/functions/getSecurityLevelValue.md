@@ -1,14 +1,14 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../../modules.md) / [constants/securityLevels](../README.md) / getSecurityLevelValue
+[CIA Compliance Manager — Markdown Documentation](../../../modules.md) / [constants/securityLevels](../README.md) / getSecurityLevelValue
 
 # Function: getSecurityLevelValue()
 
 > **getSecurityLevelValue**(`level`): `number`
 
-Defined in: [constants/securityLevels.ts:121](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/securityLevels.ts#L121)
+Defined in: [constants/securityLevels.ts:121](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/securityLevels.ts#L121)
 
 Get security level value as number
 

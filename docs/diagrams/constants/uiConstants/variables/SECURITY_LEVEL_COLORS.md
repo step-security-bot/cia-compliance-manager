@@ -1,22 +1,22 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../../modules.md) / [constants/uiConstants](../README.md) / SECURITY\_LEVEL\_COLORS
+[CIA Compliance Manager — UML Diagrams](../../../modules.md) / [constants/uiConstants](../README.md) / SECURITY\_LEVEL\_COLORS
 
 # Variable: SECURITY\_LEVEL\_COLORS
 
 > `const` **SECURITY\_LEVEL\_COLORS**: `object`
 
-Defined in: [constants/uiConstants.ts:104](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/uiConstants.ts#L104)
+Defined in: [constants/uiConstants.ts:104](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/uiConstants.ts#L104)
 
 Color mapping for security levels
 
 ## Type Declaration
 
-### HIGH
+### NONE
 
-> **HIGH**: `string` = `"#2ecc71"`
+> **NONE**: `string` = `"#e74c3c"`
 
 ### LOW
 
@@ -26,9 +26,9 @@ Color mapping for security levels
 
 > **MODERATE**: `string` = `"#3498db"`
 
-### NONE
+### HIGH
 
-> **NONE**: `string` = `"#e74c3c"`
+> **HIGH**: `string` = `"#2ecc71"`
 
 ### VERY\_HIGH
 

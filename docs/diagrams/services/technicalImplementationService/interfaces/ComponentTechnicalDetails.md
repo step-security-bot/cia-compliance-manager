@@ -1,12 +1,12 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../../modules.md) / [services/technicalImplementationService](../README.md) / ComponentTechnicalDetails
+[CIA Compliance Manager — UML Diagrams](../../../modules.md) / [services/technicalImplementationService](../README.md) / ComponentTechnicalDetails
 
 # Interface: ComponentTechnicalDetails
 
-Defined in: [services/technicalImplementationService.ts:14](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/technicalImplementationService.ts#L14)
+Defined in: [services/technicalImplementationService.ts:14](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/technicalImplementationService.ts#L14)
 
 Technical implementation details for different security components
 
@@ -16,27 +16,7 @@ Technical implementation details for different security components
 
 > **description**: `string`
 
-Defined in: [services/technicalImplementationService.ts:15](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/technicalImplementationService.ts#L15)
-
-***
-
-### effort
-
-> **effort**: `object`
-
-Defined in: [services/technicalImplementationService.ts:17](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/technicalImplementationService.ts#L17)
-
-#### development
-
-> **development**: `string`
-
-#### expertise
-
-> **expertise**: `string`
-
-#### maintenance
-
-> **maintenance**: `string`
+Defined in: [services/technicalImplementationService.ts:15](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/technicalImplementationService.ts#L15)
 
 ***
 
@@ -44,4 +24,24 @@ Defined in: [services/technicalImplementationService.ts:17](https://github.com/H
 
 > **implementationSteps**: `string`[]
 
-Defined in: [services/technicalImplementationService.ts:16](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/technicalImplementationService.ts#L16)
+Defined in: [services/technicalImplementationService.ts:16](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/technicalImplementationService.ts#L16)
+
+***
+
+### effort
+
+> **effort**: `object`
+
+Defined in: [services/technicalImplementationService.ts:17](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/technicalImplementationService.ts#L17)
+
+#### development
+
+> **development**: `string`
+
+#### maintenance
+
+> **maintenance**: `string`
+
+#### expertise
+
+> **expertise**: `string`

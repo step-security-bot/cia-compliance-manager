@@ -1,30 +1,30 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../modules.md) / data/ciaOptionsData
+[CIA Compliance Manager — Markdown Documentation](../../modules.md) / data/ciaOptionsData
 
 # data/ciaOptionsData
 
 ## Variables
 
 - [availabilityOptions](variables/availabilityOptions.md)
-- [confidentialityOptions](variables/confidentialityOptions.md)
-- [defaultCIADataProvider](variables/defaultCIADataProvider.md)
 - [integrityOptions](variables/integrityOptions.md)
+- [confidentialityOptions](variables/confidentialityOptions.md)
 - [ROI\_ESTIMATES](variables/ROI_ESTIMATES.md)
+- [defaultCIADataProvider](variables/defaultCIADataProvider.md)
 
 ## Functions
 
 - [getCIAOptionsForComponent](functions/getCIAOptionsForComponent.md)
-- [getDefaultErrorRate](functions/getDefaultErrorRate.md)
-- [getDefaultPrivacyImpact](functions/getDefaultPrivacyImpact.md)
-- [getDefaultSLAMetrics](functions/getDefaultSLAMetrics.md)
-- [getDefaultValidationLevel](functions/getDefaultValidationLevel.md)
 - [getImplementationDetails](functions/getImplementationDetails.md)
+- [getDefaultSLAMetrics](functions/getDefaultSLAMetrics.md)
+- [getDefaultPrivacyImpact](functions/getDefaultPrivacyImpact.md)
+- [getDefaultValidationLevel](functions/getDefaultValidationLevel.md)
+- [getDefaultErrorRate](functions/getDefaultErrorRate.md)
 
 ## References
 
 ### CIADetails
 
-Re-exports [CIADetails](../../types/interfaces/CIADetails.md)
+Re-exports [CIADetails](../../types/cia-services/interfaces/CIADetails.md)

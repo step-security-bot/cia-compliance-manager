@@ -1,8 +1,8 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../modules.md) / services/securityResourceService
+[CIA Compliance Manager — UML Diagrams](../../modules.md) / services/securityResourceService
 
 # services/securityResourceService
 

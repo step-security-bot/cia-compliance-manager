@@ -1,8 +1,8 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../modules.md) / components
+[CIA Compliance Manager — UML Diagrams](../modules.md) / components
 
 # components
 
@@ -17,72 +17,31 @@ with intuitive interfaces for managing security compliance. 🎨
 ## Technical Perspective
 Centralized component exports simplify imports and promote component reuse.
 
-## Classes
-
-- [WidgetErrorBoundary](classes/WidgetErrorBoundary.md)
-
-## Interfaces
-
-- [ErrorMessageProps](interfaces/ErrorMessageProps.md)
-- [KeyValuePairProps](interfaces/KeyValuePairProps.md)
-- [LoadingSkeletonProps](interfaces/LoadingSkeletonProps.md)
-- [LoadingSpinnerProps](interfaces/LoadingSpinnerProps.md)
-- [MetricCardProps](interfaces/MetricCardProps.md)
-- [RiskLevelBadgeProps](interfaces/RiskLevelBadgeProps.md)
-- [SecurityLevelBadgeProps](interfaces/SecurityLevelBadgeProps.md)
-- [SecurityRiskScoreProps](interfaces/SecurityRiskScoreProps.md)
-- [TabProps](interfaces/TabProps.md)
-- [ThemeToggleProps](interfaces/ThemeToggleProps.md)
-- [TooltipProps](interfaces/TooltipProps.md)
-- [WidgetActionsProps](interfaces/WidgetActionsProps.md)
-- [WidgetContainerProps](interfaces/WidgetContainerProps.md)
-- [WidgetErrorBoundaryProps](interfaces/WidgetErrorBoundaryProps.md)
-- [WidgetSectionProps](interfaces/WidgetSectionProps.md)
-
 ## Variables
 
-- [AvailabilityImpactWidget](variables/AvailabilityImpactWidget.md)
-- [BusinessImpactAnalysisWidget](variables/BusinessImpactAnalysisWidget.md)
-- [BusinessImpactSection](variables/BusinessImpactSection.md)
-- [COMPLIANCE\_STATUS](variables/COMPLIANCE_STATUS.md)
-- [COMPLIANCE\_STATUS\_TEST\_IDS](variables/COMPLIANCE_STATUS_TEST_IDS.md)
-- [ComplianceStatusWidget](variables/ComplianceStatusWidget.md)
-- [ConfidentialityImpactWidget](variables/ConfidentialityImpactWidget.md)
-- [CostEstimationWidget](variables/CostEstimationWidget.md)
-- [ErrorMessage](variables/ErrorMessage.md)
-- [IntegrityImpactWidget](variables/IntegrityImpactWidget.md)
-- [LoadingSkeleton](variables/LoadingSkeleton.md)
-- [LoadingSpinner](variables/LoadingSpinner.md)
-- [MetricCard](variables/MetricCard.md)
 - [RadarChart](variables/RadarChart.md)
+- [BusinessImpactSection](variables/BusinessImpactSection.md)
 - [RiskLevelBadge](variables/RiskLevelBadge.md)
 - [SecurityLevelBadge](variables/SecurityLevelBadge.md)
-- [SecurityLevelWidget](variables/SecurityLevelWidget.md)
-- [SecurityResourcesWidget](variables/SecurityResourcesWidget.md)
-- [SecuritySummaryWidget](variables/SecuritySummaryWidget.md)
-- [SecurityVisualizationWidget](variables/SecurityVisualizationWidget.md)
 - [StatusBadge](variables/StatusBadge.md)
-- [TechnicalDetailsWidget](variables/TechnicalDetailsWidget.md)
+- [BusinessImpactAnalysisWidget](variables/BusinessImpactAnalysisWidget.md)
+- [SecurityLevelWidget](variables/SecurityLevelWidget.md)
+- [SecuritySummaryWidget](variables/SecuritySummaryWidget.md)
+- [ComplianceStatusWidget](variables/ComplianceStatusWidget.md)
+- [CostEstimationWidget](variables/CostEstimationWidget.md)
 - [ValueCreationWidget](variables/ValueCreationWidget.md)
-- [WidgetSection](variables/WidgetSection.md)
+- [AvailabilityImpactWidget](variables/AvailabilityImpactWidget.md)
+- [ConfidentialityImpactWidget](variables/ConfidentialityImpactWidget.md)
+- [IntegrityImpactWidget](variables/IntegrityImpactWidget.md)
+- [SecurityResourcesWidget](variables/SecurityResourcesWidget.md)
+- [SecurityVisualizationWidget](variables/SecurityVisualizationWidget.md)
+- [TechnicalDetailsWidget](variables/TechnicalDetailsWidget.md)
 
 ## References
 
-### BusinessImpactSectionProps
+### ErrorMessage
 
-Re-exports [BusinessImpactSectionProps](../types/interfaces/BusinessImpactSectionProps.md)
-
-***
-
-### BusinessRiskDisplayProps
-
-Re-exports [BusinessRiskDisplayProps](../types/interfaces/BusinessRiskDisplayProps.md)
-
-***
-
-### CIAImpactCardProps
-
-Re-exports [CIAImpactCardProps](../types/interfaces/CIAImpactCardProps.md)
+Re-exports [ErrorMessage](common/ErrorMessage/variables/ErrorMessage.md)
 
 ***
 
@@ -92,30 +51,180 @@ Re-exports [KeyValuePair](common/KeyValuePair/functions/KeyValuePair.md)
 
 ***
 
+### LoadingSkeleton
+
+Re-exports [LoadingSkeleton](common/LoadingSkeleton/variables/LoadingSkeleton.md)
+
+***
+
+### LoadingSpinner
+
+Re-exports [LoadingSpinner](common/LoadingSpinner/variables/LoadingSpinner.md)
+
+***
+
+### MetricCard
+
+Re-exports [MetricCard](common/MetricCard/variables/MetricCard.md)
+
+***
+
+### WidgetErrorBoundary
+
+Re-exports [WidgetErrorBoundary](common/WidgetErrorBoundary/classes/WidgetErrorBoundary.md)
+
+***
+
+### WidgetSection
+
+Re-exports [WidgetSection](common/WidgetSection/variables/WidgetSection.md)
+
+***
+
+### BusinessImpactSectionProps
+
+Re-exports [BusinessImpactSectionProps](../types/componentPropExports/interfaces/BusinessImpactSectionProps.md)
+
+***
+
+### BusinessRiskDisplayProps
+
+Re-exports [BusinessRiskDisplayProps](../types/componentPropExports/interfaces/BusinessRiskDisplayProps.md)
+
+***
+
+### CIAImpactCardProps
+
+Re-exports [CIAImpactCardProps](../types/componentPropExports/interfaces/CIAImpactCardProps.md)
+
+***
+
+### ErrorMessageProps
+
+Re-exports [ErrorMessageProps](../types/componentPropExports/interfaces/ErrorMessageProps.md)
+
+***
+
+### KeyValuePairProps
+
+Re-exports [KeyValuePairProps](../types/componentPropExports/interfaces/KeyValuePairProps.md)
+
+***
+
+### LoadingSkeletonProps
+
+Re-exports [LoadingSkeletonProps](../types/componentPropExports/interfaces/LoadingSkeletonProps.md)
+
+***
+
+### LoadingSpinnerProps
+
+Re-exports [LoadingSpinnerProps](../types/componentPropExports/interfaces/LoadingSpinnerProps.md)
+
+***
+
+### MetricCardProps
+
+Re-exports [MetricCardProps](../types/componentPropExports/interfaces/MetricCardProps.md)
+
+***
+
 ### MetricsCardProps
 
-Re-exports [MetricsCardProps](../types/interfaces/MetricsCardProps.md)
+Re-exports [MetricsCardProps](../types/componentPropExports/interfaces/MetricsCardProps.md)
 
 ***
 
 ### RadarChartProps
 
-Re-exports [RadarChartProps](../types/interfaces/RadarChartProps.md)
+Re-exports [RadarChartProps](../types/componentPropExports/interfaces/RadarChartProps.md)
 
 ***
 
 ### RiskAssessmentProps
 
-Re-exports [RiskAssessmentProps](../types/interfaces/RiskAssessmentProps.md)
+Re-exports [RiskAssessmentProps](../types/componentPropExports/interfaces/RiskAssessmentProps.md)
+
+***
+
+### RiskLevelBadgeProps
+
+Re-exports [RiskLevelBadgeProps](../types/componentPropExports/interfaces/RiskLevelBadgeProps.md)
+
+***
+
+### SecurityLevelBadgeProps
+
+Re-exports [SecurityLevelBadgeProps](../types/componentPropExports/interfaces/SecurityLevelBadgeProps.md)
+
+***
+
+### SecurityRiskScoreProps
+
+Re-exports [SecurityRiskScoreProps](../types/componentPropExports/interfaces/SecurityRiskScoreProps.md)
 
 ***
 
 ### StatusBadgeProps
 
-Re-exports [StatusBadgeProps](../types/interfaces/StatusBadgeProps.md)
+Re-exports [StatusBadgeProps](../types/componentPropExports/interfaces/StatusBadgeProps.md)
+
+***
+
+### TabProps
+
+Re-exports [TabProps](../types/componentPropExports/interfaces/TabProps.md)
+
+***
+
+### ThemeToggleProps
+
+Re-exports [ThemeToggleProps](../types/componentPropExports/interfaces/ThemeToggleProps.md)
+
+***
+
+### TooltipProps
+
+Re-exports [TooltipProps](../types/componentPropExports/interfaces/TooltipProps.md)
+
+***
+
+### WidgetActionsProps
+
+Re-exports [WidgetActionsProps](../types/componentPropExports/interfaces/WidgetActionsProps.md)
+
+***
+
+### WidgetContainerProps
+
+Re-exports [WidgetContainerProps](../types/componentPropExports/interfaces/WidgetContainerProps.md)
+
+***
+
+### WidgetErrorBoundaryProps
+
+Re-exports [WidgetErrorBoundaryProps](../types/componentPropExports/interfaces/WidgetErrorBoundaryProps.md)
 
 ***
 
 ### WidgetHeaderProps
 
-Re-exports [WidgetHeaderProps](../types/interfaces/WidgetHeaderProps.md)
+Re-exports [WidgetHeaderProps](../types/componentPropExports/interfaces/WidgetHeaderProps.md)
+
+***
+
+### WidgetSectionProps
+
+Re-exports [WidgetSectionProps](../types/componentPropExports/interfaces/WidgetSectionProps.md)
+
+***
+
+### COMPLIANCE\_STATUS
+
+Re-exports [COMPLIANCE_STATUS](widgets/constants/variables/COMPLIANCE_STATUS.md)
+
+***
+
+### COMPLIANCE\_STATUS\_TEST\_IDS
+
+Re-exports [COMPLIANCE_STATUS_TEST_IDS](widgets/constants/variables/COMPLIANCE_STATUS_TEST_IDS.md)

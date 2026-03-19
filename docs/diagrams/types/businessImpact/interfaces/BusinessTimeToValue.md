@@ -1,13 +1,13 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../../modules.md) / [types/businessImpact](../README.md) / BusinessTimeToValue
+[CIA Compliance Manager — UML Diagrams](../../../modules.md) / [types/businessImpact](../README.md) / BusinessTimeToValue
 
 # Interface: BusinessTimeToValue
 
-Defined in: [types/businessImpact.ts:363](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/types/businessImpact.ts#L363)
+Defined in: [types/businessImpact.ts:363](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/types/businessImpact.ts#L363)
 
 ## Indexable
 
-\[`level`: `string`\]: `string`
+> \[`level`: `string`\]: `string`

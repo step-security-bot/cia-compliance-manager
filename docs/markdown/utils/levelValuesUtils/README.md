@@ -1,8 +1,8 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../modules.md) / utils/levelValuesUtils
+[CIA Compliance Manager — Markdown Documentation](../../modules.md) / utils/levelValuesUtils
 
 # utils/levelValuesUtils
 
@@ -12,8 +12,8 @@
 
 ## Functions
 
-- [calculateOverallSecurityLevel](functions/calculateOverallSecurityLevel.md)
-- [compareSecurityLevels](functions/compareSecurityLevels.md)
-- [getNormalizedSecurityValue](functions/getNormalizedSecurityValue.md)
-- [getSecurityLevelFromValue](functions/getSecurityLevelFromValue.md)
 - [getSecurityLevelValue](functions/getSecurityLevelValue.md)
+- [getSecurityLevelFromValue](functions/getSecurityLevelFromValue.md)
+- [calculateOverallSecurityLevel](functions/calculateOverallSecurityLevel.md)
+- [getNormalizedSecurityValue](functions/getNormalizedSecurityValue.md)
+- [compareSecurityLevels](functions/compareSecurityLevels.md)

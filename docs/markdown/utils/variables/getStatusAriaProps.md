@@ -1,14 +1,14 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../modules.md) / [utils](../README.md) / getStatusAriaProps
+[CIA Compliance Manager — Markdown Documentation](../../modules.md) / [utils](../README.md) / getStatusAriaProps
 
-# Variable: getStatusAriaProps()
+# Variable: getStatusAriaProps
 
 > **getStatusAriaProps**: (`message`, `politeness`) => `object`
 
-Defined in: [utils/index.ts:44](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/utils/index.ts#L44)
+Defined in: [utils/index.ts:44](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/utils/index.ts#L44)
 
 Generate ARIA props for a status/live region
 
@@ -22,9 +22,9 @@ Status message
 
 ### politeness?
 
-ARIA live politeness level
+`"OFF"` \| `"POLITE"` \| `"ASSERTIVE"`
 
-`"OFF"` | `"POLITE"` | `"ASSERTIVE"`
+ARIA live politeness level
 
 ## Returns
 
@@ -32,14 +32,14 @@ ARIA live politeness level
 
 ARIA props object
 
-### aria-atomic
+### role
 
-> **aria-atomic**: `boolean`
+> **role**: `string`
 
 ### aria-live
 
 > **aria-live**: `string`
 
-### role
+### aria-atomic
 
-> **role**: `string`
+> **aria-atomic**: `boolean`

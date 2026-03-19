@@ -1,8 +1,8 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../modules.md) / utils/formatUtils
+[CIA Compliance Manager — UML Diagrams](../../modules.md) / utils/formatUtils
 
 # utils/formatUtils
 
@@ -12,15 +12,15 @@
 
 ## Functions
 
-- [formatBudgetPercentage](functions/formatBudgetPercentage.md)
+- [toTitleCase](functions/toTitleCase.md)
+- [formatPercentage](functions/formatPercentage.md)
 - [formatCurrency](functions/formatCurrency.md)
-- [formatDate](functions/formatDate.md)
-- [formatLargeNumber](functions/formatLargeNumber.md)
+- [formatSecurityLevel](functions/formatSecurityLevel.md)
+- [formatRiskLevel](functions/formatRiskLevel.md)
 - [formatNumber](functions/formatNumber.md)
 - [formatNumberWithDecimals](functions/formatNumberWithDecimals.md)
-- [formatPercentage](functions/formatPercentage.md)
-- [formatRiskLevel](functions/formatRiskLevel.md)
-- [formatSecurityLevel](functions/formatSecurityLevel.md)
-- [formatTimeframe](functions/formatTimeframe.md)
+- [formatBudgetPercentage](functions/formatBudgetPercentage.md)
 - [formatUptime](functions/formatUptime.md)
-- [toTitleCase](functions/toTitleCase.md)
+- [formatDate](functions/formatDate.md)
+- [formatLargeNumber](functions/formatLargeNumber.md)
+- [formatTimeframe](functions/formatTimeframe.md)

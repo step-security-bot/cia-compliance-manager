@@ -1,33 +1,33 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../../modules.md) / [constants/appConstants](../README.md) / FRAMEWORK\_DESCRIPTIONS
+[CIA Compliance Manager — UML Diagrams](../../../modules.md) / [constants/appConstants](../README.md) / FRAMEWORK\_DESCRIPTIONS
 
 # Variable: FRAMEWORK\_DESCRIPTIONS
 
 > `const` **FRAMEWORK\_DESCRIPTIONS**: `object`
 
-Defined in: [constants/appConstants.ts:113](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/appConstants.ts#L113)
+Defined in: [constants/appConstants.ts:113](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/appConstants.ts#L113)
 
 ## Type Declaration
 
-### HIPAA
+### SOC2
 
-> **HIPAA**: `string` = `"Requires protection of healthcare information"`
+> **SOC2**: `string` = `"Requires basic security controls across CIA triad"`
 
 ### ISO27001
 
 > **ISO27001**: `string` = `"Requires moderate security controls and management system"`
 
-### NIST
-
-> **NIST**: `string` = `"High security controls for federal information systems"`
-
 ### PCI\_DSS
 
 > **PCI\_DSS**: `string` = `"Emphasis on strong confidentiality controls"`
 
-### SOC2
+### HIPAA
 
-> **SOC2**: `string` = `"Requires basic security controls across CIA triad"`
+> **HIPAA**: `string` = `"Requires protection of healthcare information"`
+
+### NIST
+
+> **NIST**: `string` = `"High security controls for federal information systems"`

@@ -1,14 +1,14 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../modules.md) / [coreConstants](../README.md) / WIDGET\_TITLES
+[CIA Compliance Manager — Markdown Documentation](../../modules.md) / [coreConstants](../README.md) / WIDGET\_TITLES
 
 # Variable: WIDGET\_TITLES
 
 > `const` **WIDGET\_TITLES**: `object`
 
-Defined in: [constants/coreConstants.ts:182](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/coreConstants.ts#L182)
+Defined in: [constants/coreConstants.ts:182](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/coreConstants.ts#L182)
 
 Widget title constants for consistent naming.
 
@@ -18,45 +18,9 @@ efforts if needed in the future.
 
 ## Type Declaration
 
-### AVAILABILITY\_IMPACT
-
-> **AVAILABILITY\_IMPACT**: `string` = `"Availability Impact"`
-
-### BUSINESS\_IMPACT
-
-> **BUSINESS\_IMPACT**: `string` = `"Business Impact Analysis"`
-
-### CIA\_IMPACT\_SUMMARY
-
-> **CIA\_IMPACT\_SUMMARY**: `string` = `"CIA Impact Summary"`
-
-### COMPLIANCE\_STATUS
-
-> **COMPLIANCE\_STATUS**: `string` = `"Compliance Status"`
-
-### CONFIDENTIALITY\_IMPACT
-
-> **CONFIDENTIALITY\_IMPACT**: `string` = `"Confidentiality Impact"`
-
-### COST\_ESTIMATION
-
-> **COST\_ESTIMATION**: `string` = `"Cost Estimation"`
-
-### INTEGRITY\_IMPACT
-
-> **INTEGRITY\_IMPACT**: `string` = `"Integrity Impact"`
-
 ### SECURITY\_LEVEL
 
 > **SECURITY\_LEVEL**: `string` = `"Security Level Selection"`
-
-### SECURITY\_PROFILE
-
-> **SECURITY\_PROFILE**: `string` = `"CIA Security Profile"`
-
-### SECURITY\_RESOURCES
-
-> **SECURITY\_RESOURCES**: `string` = `"Security Resources"`
 
 ### SECURITY\_SUMMARY
 
@@ -66,17 +30,53 @@ efforts if needed in the future.
 
 > **SECURITY\_VISUALIZATION**: `string` = `"Security Visualization"`
 
-### TECHNICAL\_DETAILS
+### COMPLIANCE\_STATUS
 
-> **TECHNICAL\_DETAILS**: `string` = `"Technical Details"`
+> **COMPLIANCE\_STATUS**: `string` = `"Compliance Status"`
+
+### VALUE\_CREATION
+
+> **VALUE\_CREATION**: `string` = `"Business Value & ROI"`
+
+### COST\_ESTIMATION
+
+> **COST\_ESTIMATION**: `string` = `"Cost Estimation"`
+
+### BUSINESS\_IMPACT
+
+> **BUSINESS\_IMPACT**: `string` = `"Business Impact Analysis"`
 
 ### TECHNICAL\_IMPLEMENTATION
 
 > **TECHNICAL\_IMPLEMENTATION**: `string` = `"Technical Implementation"`
 
-### VALUE\_CREATION
+### SECURITY\_PROFILE
 
-> **VALUE\_CREATION**: `string` = `"Business Value & ROI"`
+> **SECURITY\_PROFILE**: `string` = `"CIA Security Profile"`
+
+### SECURITY\_RESOURCES
+
+> **SECURITY\_RESOURCES**: `string` = `"Security Resources"`
+
+### AVAILABILITY\_IMPACT
+
+> **AVAILABILITY\_IMPACT**: `string` = `"Availability Impact"`
+
+### INTEGRITY\_IMPACT
+
+> **INTEGRITY\_IMPACT**: `string` = `"Integrity Impact"`
+
+### CONFIDENTIALITY\_IMPACT
+
+> **CONFIDENTIALITY\_IMPACT**: `string` = `"Confidentiality Impact"`
+
+### CIA\_IMPACT\_SUMMARY
+
+> **CIA\_IMPACT\_SUMMARY**: `string` = `"CIA Impact Summary"`
+
+### TECHNICAL\_DETAILS
+
+> **TECHNICAL\_DETAILS**: `string` = `"Technical Details"`
 
 ## Example
 

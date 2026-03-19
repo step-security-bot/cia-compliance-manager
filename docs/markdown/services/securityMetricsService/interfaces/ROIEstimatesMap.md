@@ -1,34 +1,22 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../../modules.md) / [services/securityMetricsService](../README.md) / ROIEstimatesMap
+[CIA Compliance Manager — Markdown Documentation](../../../modules.md) / [services/securityMetricsService](../README.md) / ROIEstimatesMap
 
 # Interface: ROIEstimatesMap
 
-Defined in: [services/securityMetricsService.ts:170](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/securityMetricsService.ts#L170)
+Defined in: [services/securityMetricsService.ts:170](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/securityMetricsService.ts#L170)
 
 Interface for ROI estimates map
 
 ## Properties
 
-### HIGH
+### NONE
 
-> **HIGH**: `object`
+> **NONE**: `object`
 
-Defined in: [services/securityMetricsService.ts:192](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/securityMetricsService.ts#L192)
-
-#### breakEvenPeriod?
-
-> `optional` **breakEvenPeriod**: `string`
-
-#### description
-
-> **description**: `string`
-
-#### potentialSavings?
-
-> `optional` **potentialSavings**: `string`
+Defined in: [services/securityMetricsService.ts:171](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/securityMetricsService.ts#L171)
 
 #### returnRate
 
@@ -36,7 +24,19 @@ Defined in: [services/securityMetricsService.ts:192](https://github.com/Hack23/c
 
 #### value?
 
-> `optional` **value**: `string`
+> `optional` **value?**: `string`
+
+#### description
+
+> **description**: `string`
+
+#### potentialSavings?
+
+> `optional` **potentialSavings?**: `string`
+
+#### breakEvenPeriod?
+
+> `optional` **breakEvenPeriod?**: `string`
 
 ***
 
@@ -44,19 +44,7 @@ Defined in: [services/securityMetricsService.ts:192](https://github.com/Hack23/c
 
 > **LOW**: `object`
 
-Defined in: [services/securityMetricsService.ts:178](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/securityMetricsService.ts#L178)
-
-#### breakEvenPeriod?
-
-> `optional` **breakEvenPeriod**: `string`
-
-#### description
-
-> **description**: `string`
-
-#### potentialSavings?
-
-> `optional` **potentialSavings**: `string`
+Defined in: [services/securityMetricsService.ts:178](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/securityMetricsService.ts#L178)
 
 #### returnRate
 
@@ -64,7 +52,19 @@ Defined in: [services/securityMetricsService.ts:178](https://github.com/Hack23/c
 
 #### value?
 
-> `optional` **value**: `string`
+> `optional` **value?**: `string`
+
+#### description
+
+> **description**: `string`
+
+#### potentialSavings?
+
+> `optional` **potentialSavings?**: `string`
+
+#### breakEvenPeriod?
+
+> `optional` **breakEvenPeriod?**: `string`
 
 ***
 
@@ -72,19 +72,7 @@ Defined in: [services/securityMetricsService.ts:178](https://github.com/Hack23/c
 
 > **MODERATE**: `object`
 
-Defined in: [services/securityMetricsService.ts:185](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/securityMetricsService.ts#L185)
-
-#### breakEvenPeriod?
-
-> `optional` **breakEvenPeriod**: `string`
-
-#### description
-
-> **description**: `string`
-
-#### potentialSavings?
-
-> `optional` **potentialSavings**: `string`
+Defined in: [services/securityMetricsService.ts:185](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/securityMetricsService.ts#L185)
 
 #### returnRate
 
@@ -92,27 +80,27 @@ Defined in: [services/securityMetricsService.ts:185](https://github.com/Hack23/c
 
 #### value?
 
-> `optional` **value**: `string`
+> `optional` **value?**: `string`
+
+#### description
+
+> **description**: `string`
+
+#### potentialSavings?
+
+> `optional` **potentialSavings?**: `string`
+
+#### breakEvenPeriod?
+
+> `optional` **breakEvenPeriod?**: `string`
 
 ***
 
-### NONE
+### HIGH
 
-> **NONE**: `object`
+> **HIGH**: `object`
 
-Defined in: [services/securityMetricsService.ts:171](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/securityMetricsService.ts#L171)
-
-#### breakEvenPeriod?
-
-> `optional` **breakEvenPeriod**: `string`
-
-#### description
-
-> **description**: `string`
-
-#### potentialSavings?
-
-> `optional` **potentialSavings**: `string`
+Defined in: [services/securityMetricsService.ts:192](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/securityMetricsService.ts#L192)
 
 #### returnRate
 
@@ -120,7 +108,19 @@ Defined in: [services/securityMetricsService.ts:171](https://github.com/Hack23/c
 
 #### value?
 
-> `optional` **value**: `string`
+> `optional` **value?**: `string`
+
+#### description
+
+> **description**: `string`
+
+#### potentialSavings?
+
+> `optional` **potentialSavings?**: `string`
+
+#### breakEvenPeriod?
+
+> `optional` **breakEvenPeriod?**: `string`
 
 ***
 
@@ -128,19 +128,7 @@ Defined in: [services/securityMetricsService.ts:171](https://github.com/Hack23/c
 
 > **VERY\_HIGH**: `object`
 
-Defined in: [services/securityMetricsService.ts:199](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/services/securityMetricsService.ts#L199)
-
-#### breakEvenPeriod?
-
-> `optional` **breakEvenPeriod**: `string`
-
-#### description
-
-> **description**: `string`
-
-#### potentialSavings?
-
-> `optional` **potentialSavings**: `string`
+Defined in: [services/securityMetricsService.ts:199](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/services/securityMetricsService.ts#L199)
 
 #### returnRate
 
@@ -148,4 +136,16 @@ Defined in: [services/securityMetricsService.ts:199](https://github.com/Hack23/c
 
 #### value?
 
-> `optional` **value**: `string`
+> `optional` **value?**: `string`
+
+#### description
+
+> **description**: `string`
+
+#### potentialSavings?
+
+> `optional` **potentialSavings?**: `string`
+
+#### breakEvenPeriod?
+
+> `optional` **breakEvenPeriod?**: `string`

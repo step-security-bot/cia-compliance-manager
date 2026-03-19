@@ -1,14 +1,14 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../../modules.md) / [utils/typeGuards](../README.md) / parseRiskLevel
+[CIA Compliance Manager — UML Diagrams](../../../modules.md) / [utils/typeGuards](../README.md) / parseRiskLevel
 
 # Function: parseRiskLevel()
 
 > **parseRiskLevel**(`riskLevel`): `number`
 
-Defined in: [utils/typeGuards.ts:619](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/utils/typeGuards.ts#L619)
+Defined in: [utils/typeGuards.ts:619](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/utils/typeGuards.ts#L619)
 
 Parse a risk level from a string or number
 
@@ -16,9 +16,9 @@ Parse a risk level from a string or number
 
 ### riskLevel
 
-Risk level to parse
+`string` \| `number` \| `null` \| `undefined`
 
-`string` | `number` | `null` | `undefined`
+Risk level to parse
 
 ## Returns
 

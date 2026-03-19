@@ -1,14 +1,14 @@
-[**CIA Compliance Manager Documentation v1.1.32**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.33**](../../../README.md)
 
 ***
 
-[CIA Compliance Manager Documentation](../../../modules.md) / [constants/businessConstants](../README.md) / BUSINESS\_IMPACT\_METRICS
+[CIA Compliance Manager — Markdown Documentation](../../../modules.md) / [constants/businessConstants](../README.md) / BUSINESS\_IMPACT\_METRICS
 
 # Variable: BUSINESS\_IMPACT\_METRICS
 
 > `const` **BUSINESS\_IMPACT\_METRICS**: `object`
 
-Defined in: [constants/businessConstants.ts:637](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/businessConstants.ts#L637)
+Defined in: [constants/businessConstants.ts:637](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/businessConstants.ts#L637)
 
 Enhanced business impact metrics with specific values
 
@@ -18,61 +18,9 @@ Enhanced business impact metrics with specific values
 
 > **AVAILABILITY**: `object`
 
-#### AVAILABILITY.HIGH
-
-> **HIGH**: `object`
-
-#### AVAILABILITY.HIGH.customerImpact
-
-> **customerImpact**: `string` = `"Minor disruption, negligible customer impact"`
-
-#### AVAILABILITY.HIGH.downtime
-
-> **downtime**: `string` = `"Up to 44 minutes/year (99.99% uptime)"`
-
-#### AVAILABILITY.HIGH.financialImpact
-
-> **financialImpact**: `string` = `"0.1-1% of annual revenue"`
-
-#### AVAILABILITY.LOW
-
-> **LOW**: `object`
-
-#### AVAILABILITY.LOW.customerImpact
-
-> **customerImpact**: `string` = `"Significant disruption, some customer loss"`
-
-#### AVAILABILITY.LOW.downtime
-
-> **downtime**: `string` = `"Up to 48 hours/year (99.45% uptime)"`
-
-#### AVAILABILITY.LOW.financialImpact
-
-> **financialImpact**: `string` = `"5-15% of annual revenue"`
-
-#### AVAILABILITY.MODERATE
-
-> **MODERATE**: `object`
-
-#### AVAILABILITY.MODERATE.customerImpact
-
-> **customerImpact**: `string` = `"Noticeable disruption, minimal customer loss"`
-
-#### AVAILABILITY.MODERATE.downtime
-
-> **downtime**: `string` = `"Up to 8.8 hours/year (99.9% uptime)"`
-
-#### AVAILABILITY.MODERATE.financialImpact
-
-> **financialImpact**: `string` = `"1-5% of annual revenue"`
-
 #### AVAILABILITY.NONE
 
 > **NONE**: `object`
-
-#### AVAILABILITY.NONE.customerImpact
-
-> **customerImpact**: `string` = `"Severe disruption, likely customer loss"`
 
 #### AVAILABILITY.NONE.downtime
 
@@ -82,13 +30,61 @@ Enhanced business impact metrics with specific values
 
 > **financialImpact**: `string` = `"15-20% of annual revenue"`
 
+#### AVAILABILITY.NONE.customerImpact
+
+> **customerImpact**: `string` = `"Severe disruption, likely customer loss"`
+
+#### AVAILABILITY.LOW
+
+> **LOW**: `object`
+
+#### AVAILABILITY.LOW.downtime
+
+> **downtime**: `string` = `"Up to 48 hours/year (99.45% uptime)"`
+
+#### AVAILABILITY.LOW.financialImpact
+
+> **financialImpact**: `string` = `"5-15% of annual revenue"`
+
+#### AVAILABILITY.LOW.customerImpact
+
+> **customerImpact**: `string` = `"Significant disruption, some customer loss"`
+
+#### AVAILABILITY.MODERATE
+
+> **MODERATE**: `object`
+
+#### AVAILABILITY.MODERATE.downtime
+
+> **downtime**: `string` = `"Up to 8.8 hours/year (99.9% uptime)"`
+
+#### AVAILABILITY.MODERATE.financialImpact
+
+> **financialImpact**: `string` = `"1-5% of annual revenue"`
+
+#### AVAILABILITY.MODERATE.customerImpact
+
+> **customerImpact**: `string` = `"Noticeable disruption, minimal customer loss"`
+
+#### AVAILABILITY.HIGH
+
+> **HIGH**: `object`
+
+#### AVAILABILITY.HIGH.downtime
+
+> **downtime**: `string` = `"Up to 44 minutes/year (99.99% uptime)"`
+
+#### AVAILABILITY.HIGH.financialImpact
+
+> **financialImpact**: `string` = `"0.1-1% of annual revenue"`
+
+#### AVAILABILITY.HIGH.customerImpact
+
+> **customerImpact**: `string` = `"Minor disruption, negligible customer impact"`
+
 #### AVAILABILITY.VERY\_HIGH
 
 > **VERY\_HIGH**: `object`
-
-#### AVAILABILITY.VERY\_HIGH.customerImpact
-
-> **customerImpact**: `string` = `"Minimal to no disruption or customer impact"`
 
 #### AVAILABILITY.VERY\_HIGH.downtime
 
@@ -98,109 +94,29 @@ Enhanced business impact metrics with specific values
 
 > **financialImpact**: `string` = `"<0.1% of annual revenue"`
 
-### CONFIDENTIALITY
+#### AVAILABILITY.VERY\_HIGH.customerImpact
 
-> **CONFIDENTIALITY**: `object`
-
-#### CONFIDENTIALITY.HIGH
-
-> **HIGH**: `object`
-
-#### CONFIDENTIALITY.HIGH.dataBreachRisk
-
-> **dataBreachRisk**: `string` = `"Low probability"`
-
-#### CONFIDENTIALITY.HIGH.financialImpact
-
-> **financialImpact**: `string` = `"1-5% of annual revenue"`
-
-#### CONFIDENTIALITY.HIGH.reputationalDamage
-
-> **reputationalDamage**: `string` = `"Minor, short-term damage"`
-
-#### CONFIDENTIALITY.LOW
-
-> **LOW**: `object`
-
-#### CONFIDENTIALITY.LOW.dataBreachRisk
-
-> **dataBreachRisk**: `string` = `"High probability"`
-
-#### CONFIDENTIALITY.LOW.financialImpact
-
-> **financialImpact**: `string` = `"10-20% of annual revenue"`
-
-#### CONFIDENTIALITY.LOW.reputationalDamage
-
-> **reputationalDamage**: `string` = `"Significant, long-term damage"`
-
-#### CONFIDENTIALITY.MODERATE
-
-> **MODERATE**: `object`
-
-#### CONFIDENTIALITY.MODERATE.dataBreachRisk
-
-> **dataBreachRisk**: `string` = `"Moderate probability"`
-
-#### CONFIDENTIALITY.MODERATE.financialImpact
-
-> **financialImpact**: `string` = `"5-10% of annual revenue"`
-
-#### CONFIDENTIALITY.MODERATE.reputationalDamage
-
-> **reputationalDamage**: `string` = `"Moderate, recoverable damage"`
-
-#### CONFIDENTIALITY.NONE
-
-> **NONE**: `object`
-
-#### CONFIDENTIALITY.NONE.dataBreachRisk
-
-> **dataBreachRisk**: `string` = `"Extremely high probability"`
-
-#### CONFIDENTIALITY.NONE.financialImpact
-
-> **financialImpact**: `string` = `"20-30% of annual revenue"`
-
-#### CONFIDENTIALITY.NONE.reputationalDamage
-
-> **reputationalDamage**: `string` = `"Severe, potentially business-ending"`
-
-#### CONFIDENTIALITY.VERY\_HIGH
-
-> **VERY\_HIGH**: `object`
-
-#### CONFIDENTIALITY.VERY\_HIGH.dataBreachRisk
-
-> **dataBreachRisk**: `string` = `"Very low probability"`
-
-#### CONFIDENTIALITY.VERY\_HIGH.financialImpact
-
-> **financialImpact**: `string` = `"<1% of annual revenue"`
-
-#### CONFIDENTIALITY.VERY\_HIGH.reputationalDamage
-
-> **reputationalDamage**: `string` = `"Minimal to no damage"`
+> **customerImpact**: `string` = `"Minimal to no disruption or customer impact"`
 
 ### INTEGRITY
 
 > **INTEGRITY**: `object`
 
-#### INTEGRITY.HIGH
+#### INTEGRITY.NONE
 
-> **HIGH**: `object`
+> **NONE**: `object`
 
-#### INTEGRITY.HIGH.dataCorruption
+#### INTEGRITY.NONE.dataCorruption
 
-> **dataCorruption**: `string` = `"Very low probability, always detected"`
+> **dataCorruption**: `string` = `"High probability of undetected corruption"`
 
-#### INTEGRITY.HIGH.financialImpact
+#### INTEGRITY.NONE.financialImpact
 
-> **financialImpact**: `string` = `"0.1-1% of annual revenue"`
+> **financialImpact**: `string` = `"10-15% of annual revenue"`
 
-#### INTEGRITY.HIGH.regulatoryRisk
+#### INTEGRITY.NONE.regulatoryRisk
 
-> **regulatoryRisk**: `string` = `"Minor violations, limited penalties"`
+> **regulatoryRisk**: `string` = `"Severe violations and penalties"`
 
 #### INTEGRITY.LOW
 
@@ -234,21 +150,21 @@ Enhanced business impact metrics with specific values
 
 > **regulatoryRisk**: `string` = `"Moderate violations and penalties"`
 
-#### INTEGRITY.NONE
+#### INTEGRITY.HIGH
 
-> **NONE**: `object`
+> **HIGH**: `object`
 
-#### INTEGRITY.NONE.dataCorruption
+#### INTEGRITY.HIGH.dataCorruption
 
-> **dataCorruption**: `string` = `"High probability of undetected corruption"`
+> **dataCorruption**: `string` = `"Very low probability, always detected"`
 
-#### INTEGRITY.NONE.financialImpact
+#### INTEGRITY.HIGH.financialImpact
 
-> **financialImpact**: `string` = `"10-15% of annual revenue"`
+> **financialImpact**: `string` = `"0.1-1% of annual revenue"`
 
-#### INTEGRITY.NONE.regulatoryRisk
+#### INTEGRITY.HIGH.regulatoryRisk
 
-> **regulatoryRisk**: `string` = `"Severe violations and penalties"`
+> **regulatoryRisk**: `string` = `"Minor violations, limited penalties"`
 
 #### INTEGRITY.VERY\_HIGH
 
@@ -265,3 +181,87 @@ Enhanced business impact metrics with specific values
 #### INTEGRITY.VERY\_HIGH.regulatoryRisk
 
 > **regulatoryRisk**: `string` = `"Minimal to no violations or penalties"`
+
+### CONFIDENTIALITY
+
+> **CONFIDENTIALITY**: `object`
+
+#### CONFIDENTIALITY.NONE
+
+> **NONE**: `object`
+
+#### CONFIDENTIALITY.NONE.dataBreachRisk
+
+> **dataBreachRisk**: `string` = `"Extremely high probability"`
+
+#### CONFIDENTIALITY.NONE.financialImpact
+
+> **financialImpact**: `string` = `"20-30% of annual revenue"`
+
+#### CONFIDENTIALITY.NONE.reputationalDamage
+
+> **reputationalDamage**: `string` = `"Severe, potentially business-ending"`
+
+#### CONFIDENTIALITY.LOW
+
+> **LOW**: `object`
+
+#### CONFIDENTIALITY.LOW.dataBreachRisk
+
+> **dataBreachRisk**: `string` = `"High probability"`
+
+#### CONFIDENTIALITY.LOW.financialImpact
+
+> **financialImpact**: `string` = `"10-20% of annual revenue"`
+
+#### CONFIDENTIALITY.LOW.reputationalDamage
+
+> **reputationalDamage**: `string` = `"Significant, long-term damage"`
+
+#### CONFIDENTIALITY.MODERATE
+
+> **MODERATE**: `object`
+
+#### CONFIDENTIALITY.MODERATE.dataBreachRisk
+
+> **dataBreachRisk**: `string` = `"Moderate probability"`
+
+#### CONFIDENTIALITY.MODERATE.financialImpact
+
+> **financialImpact**: `string` = `"5-10% of annual revenue"`
+
+#### CONFIDENTIALITY.MODERATE.reputationalDamage
+
+> **reputationalDamage**: `string` = `"Moderate, recoverable damage"`
+
+#### CONFIDENTIALITY.HIGH
+
+> **HIGH**: `object`
+
+#### CONFIDENTIALITY.HIGH.dataBreachRisk
+
+> **dataBreachRisk**: `string` = `"Low probability"`
+
+#### CONFIDENTIALITY.HIGH.financialImpact
+
+> **financialImpact**: `string` = `"1-5% of annual revenue"`
+
+#### CONFIDENTIALITY.HIGH.reputationalDamage
+
+> **reputationalDamage**: `string` = `"Minor, short-term damage"`
+
+#### CONFIDENTIALITY.VERY\_HIGH
+
+> **VERY\_HIGH**: `object`
+
+#### CONFIDENTIALITY.VERY\_HIGH.dataBreachRisk
+
+> **dataBreachRisk**: `string` = `"Very low probability"`
+
+#### CONFIDENTIALITY.VERY\_HIGH.financialImpact
+
+> **financialImpact**: `string` = `"<1% of annual revenue"`
+
+#### CONFIDENTIALITY.VERY\_HIGH.reputationalDamage
+
+> **reputationalDamage**: `string` = `"Minimal to no damage"`

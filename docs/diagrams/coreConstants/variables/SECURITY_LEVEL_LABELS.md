@@ -1,22 +1,22 @@
-[**CIA Compliance Manager Diagrams v1.1.32**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../README.md)
 
 ***
 
-[CIA Compliance Manager Diagrams](../../modules.md) / [coreConstants](../README.md) / SECURITY\_LEVEL\_LABELS
+[CIA Compliance Manager — UML Diagrams](../../modules.md) / [coreConstants](../README.md) / SECURITY\_LEVEL\_LABELS
 
 # Variable: SECURITY\_LEVEL\_LABELS
 
 > `const` **SECURITY\_LEVEL\_LABELS**: `object`
 
-Defined in: [constants/coreConstants.ts:389](https://github.com/Hack23/cia-compliance-manager/blob/5d9bfa9bf972c007ee203f3866fd9fbbb105b179/src/constants/coreConstants.ts#L389)
+Defined in: [constants/coreConstants.ts:389](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/coreConstants.ts#L389)
 
 Security level labels for display
 
 ## Type Declaration
 
-### HIGH
+### NONE
 
-> **HIGH**: `string` = `"High"`
+> **NONE**: `string` = `"None"`
 
 ### LOW
 
@@ -26,9 +26,9 @@ Security level labels for display
 
 > **MODERATE**: `string` = `"Moderate"`
 
-### NONE
+### HIGH
 
-> **NONE**: `string` = `"None"`
+> **HIGH**: `string` = `"High"`
 
 ### VERY\_HIGH
 
