@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.34**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getRequiredSecurityLevel**(`framework`, `component`): [`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
 
-Defined in: [constants/complianceConstants.ts:242](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/constants/complianceConstants.ts#L242)
+Defined in: [constants/complianceConstants.ts:242](https://github.com/Hack23/cia-compliance-manager/blob/93d28e2dddb40364acafb5aab5b0a96fcc590cc8/src/constants/complianceConstants.ts#L242)
 
 Get the required security level for a specific framework and component
 

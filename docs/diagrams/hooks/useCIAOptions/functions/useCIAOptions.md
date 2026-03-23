@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.34**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **useCIAOptions**(): [`UseCIAOptionsReturn`](../interfaces/UseCIAOptionsReturn.md)
 
-Defined in: [hooks/useCIAOptions.ts:417](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/hooks/useCIAOptions.ts#L417)
+Defined in: [hooks/useCIAOptions.ts:417](https://github.com/Hack23/cia-compliance-manager/blob/93d28e2dddb40364acafb5aab5b0a96fcc590cc8/src/hooks/useCIAOptions.ts#L417)
 
 Custom hook for accessing CIA security level options and ROI estimates
 

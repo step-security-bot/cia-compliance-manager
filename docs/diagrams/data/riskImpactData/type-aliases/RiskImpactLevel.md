@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.33**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.34**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > **RiskImpactLevel** = `"Minimal"` \| `"Low"` \| `"Medium"` \| `"High"` \| `"Critical"`
 
-Defined in: [data/riskImpactData.ts:10](https://github.com/Hack23/cia-compliance-manager/blob/94f5ebbb955e20e7ecd8df8e067b2edac2a859ae/src/data/riskImpactData.ts#L10)
+Defined in: [data/riskImpactData.ts:10](https://github.com/Hack23/cia-compliance-manager/blob/93d28e2dddb40364acafb5aab5b0a96fcc590cc8/src/data/riskImpactData.ts#L10)
 
 Risk impact levels
