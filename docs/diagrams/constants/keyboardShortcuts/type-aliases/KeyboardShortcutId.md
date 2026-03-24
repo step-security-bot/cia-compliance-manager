@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.37**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.38**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > **KeyboardShortcutId** = keyof *typeof* [`KEYBOARD_SHORTCUTS`](../variables/KEYBOARD_SHORTCUTS.md)
 
-Defined in: [constants/keyboardShortcuts.ts:116](https://github.com/Hack23/cia-compliance-manager/blob/4c8200b5bddf128916a299baf22a27cf745941c8/src/constants/keyboardShortcuts.ts#L116)
+Defined in: [constants/keyboardShortcuts.ts:116](https://github.com/Hack23/cia-compliance-manager/blob/e53f32b24281901e3964b603dea2bfa4c23bab48/src/constants/keyboardShortcuts.ts#L116)
 
 Keyboard shortcut IDs for type-safe access

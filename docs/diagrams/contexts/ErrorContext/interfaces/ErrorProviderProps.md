@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.37**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.38**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: ErrorProviderProps
 
-Defined in: [contexts/ErrorContext.tsx:92](https://github.com/Hack23/cia-compliance-manager/blob/4c8200b5bddf128916a299baf22a27cf745941c8/src/contexts/ErrorContext.tsx#L92)
+Defined in: [contexts/ErrorContext.tsx:92](https://github.com/Hack23/cia-compliance-manager/blob/e53f32b24281901e3964b603dea2bfa4c23bab48/src/contexts/ErrorContext.tsx#L92)
 
 Props for ErrorProvider
 
@@ -16,7 +16,7 @@ Props for ErrorProvider
 
 > **children**: `ReactNode`
 
-Defined in: [contexts/ErrorContext.tsx:94](https://github.com/Hack23/cia-compliance-manager/blob/4c8200b5bddf128916a299baf22a27cf745941c8/src/contexts/ErrorContext.tsx#L94)
+Defined in: [contexts/ErrorContext.tsx:94](https://github.com/Hack23/cia-compliance-manager/blob/e53f32b24281901e3964b603dea2bfa4c23bab48/src/contexts/ErrorContext.tsx#L94)
 
 Child components
 
@@ -26,7 +26,7 @@ Child components
 
 > `optional` **maxErrors?**: `number`
 
-Defined in: [contexts/ErrorContext.tsx:97](https://github.com/Hack23/cia-compliance-manager/blob/4c8200b5bddf128916a299baf22a27cf745941c8/src/contexts/ErrorContext.tsx#L97)
+Defined in: [contexts/ErrorContext.tsx:97](https://github.com/Hack23/cia-compliance-manager/blob/e53f32b24281901e3964b603dea2bfa4c23bab48/src/contexts/ErrorContext.tsx#L97)
 
 Maximum number of errors to track
 
@@ -36,7 +36,7 @@ Maximum number of errors to track
 
 > `optional` **defaultToastPosition?**: [`ToastPosition`](../../../components/common/ErrorToast/type-aliases/ToastPosition.md)
 
-Defined in: [contexts/ErrorContext.tsx:100](https://github.com/Hack23/cia-compliance-manager/blob/4c8200b5bddf128916a299baf22a27cf745941c8/src/contexts/ErrorContext.tsx#L100)
+Defined in: [contexts/ErrorContext.tsx:100](https://github.com/Hack23/cia-compliance-manager/blob/e53f32b24281901e3964b603dea2bfa4c23bab48/src/contexts/ErrorContext.tsx#L100)
 
 Default toast position
 
@@ -46,6 +46,6 @@ Default toast position
 
 > `optional` **defaultAutoHideDuration?**: `number`
 
-Defined in: [contexts/ErrorContext.tsx:103](https://github.com/Hack23/cia-compliance-manager/blob/4c8200b5bddf128916a299baf22a27cf745941c8/src/contexts/ErrorContext.tsx#L103)
+Defined in: [contexts/ErrorContext.tsx:103](https://github.com/Hack23/cia-compliance-manager/blob/e53f32b24281901e3964b603dea2bfa4c23bab48/src/contexts/ErrorContext.tsx#L103)
 
 Default toast auto-hide duration

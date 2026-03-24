@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.37**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.38**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **useKeyboardShortcuts**(`options`): `void`
 
-Defined in: [hooks/useKeyboardShortcuts.ts:42](https://github.com/Hack23/cia-compliance-manager/blob/4c8200b5bddf128916a299baf22a27cf745941c8/src/hooks/useKeyboardShortcuts.ts#L42)
+Defined in: [hooks/useKeyboardShortcuts.ts:42](https://github.com/Hack23/cia-compliance-manager/blob/e53f32b24281901e3964b603dea2bfa4c23bab48/src/hooks/useKeyboardShortcuts.ts#L42)
 
 Custom hook for registering and handling keyboard shortcuts
 

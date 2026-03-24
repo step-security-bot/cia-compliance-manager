@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.37**](../../../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.38**](../../../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **CIAComponentDetails**: `React.FC`\<[`CIAComponentDetailsProps`](../interfaces/CIAComponentDetailsProps.md)\>
 
-Defined in: [components/widgets/implementationguide/CIAComponentDetails.tsx:80](https://github.com/Hack23/cia-compliance-manager/blob/4c8200b5bddf128916a299baf22a27cf745941c8/src/components/widgets/implementationguide/CIAComponentDetails.tsx#L80)
+Defined in: [components/widgets/implementationguide/CIAComponentDetails.tsx:80](https://github.com/Hack23/cia-compliance-manager/blob/e53f32b24281901e3964b603dea2bfa4c23bab48/src/components/widgets/implementationguide/CIAComponentDetails.tsx#L80)
 
 Reusable component for displaying CIA component details
 Handles rendering for confidentiality, integrity, or availability

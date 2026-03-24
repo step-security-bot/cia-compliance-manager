@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.37**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.38**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **toErrorObject**(`err`): `Error`
 
-Defined in: [utils/errorUtils.ts:60](https://github.com/Hack23/cia-compliance-manager/blob/4c8200b5bddf128916a299baf22a27cf745941c8/src/utils/errorUtils.ts#L60)
+Defined in: [utils/errorUtils.ts:60](https://github.com/Hack23/cia-compliance-manager/blob/e53f32b24281901e3964b603dea2bfa4c23bab48/src/utils/errorUtils.ts#L60)
 
 Converts any error value to an Error object
 
