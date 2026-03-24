@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.36**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.37**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getCIAOptionsForComponent**(`component`): `Record`\<[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md), [`CIADetails`](../../../types/cia-services/interfaces/CIADetails.md)\>
 
-Defined in: [data/ciaOptionsData.ts:313](https://github.com/Hack23/cia-compliance-manager/blob/619a0e78ce14948ed535761186ab2648d596a7bd/src/data/ciaOptionsData.ts#L313)
+Defined in: [data/ciaOptionsData.ts:313](https://github.com/Hack23/cia-compliance-manager/blob/4c8200b5bddf128916a299baf22a27cf745941c8/src/data/ciaOptionsData.ts#L313)
 
 Get CIA options for a specific component
 

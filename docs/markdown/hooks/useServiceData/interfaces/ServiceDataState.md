@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.36**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.37**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: ServiceDataState\<T\>
 
-Defined in: [hooks/useServiceData.ts:8](https://github.com/Hack23/cia-compliance-manager/blob/619a0e78ce14948ed535761186ab2648d596a7bd/src/hooks/useServiceData.ts#L8)
+Defined in: [hooks/useServiceData.ts:8](https://github.com/Hack23/cia-compliance-manager/blob/4c8200b5bddf128916a299baf22a27cf745941c8/src/hooks/useServiceData.ts#L8)
 
 Service data state
 
@@ -24,7 +24,7 @@ Type of data returned by the service
 
 > **data**: `T` \| `null`
 
-Defined in: [hooks/useServiceData.ts:10](https://github.com/Hack23/cia-compliance-manager/blob/619a0e78ce14948ed535761186ab2648d596a7bd/src/hooks/useServiceData.ts#L10)
+Defined in: [hooks/useServiceData.ts:10](https://github.com/Hack23/cia-compliance-manager/blob/4c8200b5bddf128916a299baf22a27cf745941c8/src/hooks/useServiceData.ts#L10)
 
 Fetched data, null if not yet loaded or if an error occurred
 
@@ -34,7 +34,7 @@ Fetched data, null if not yet loaded or if an error occurred
 
 > **loading**: `boolean`
 
-Defined in: [hooks/useServiceData.ts:12](https://github.com/Hack23/cia-compliance-manager/blob/619a0e78ce14948ed535761186ab2648d596a7bd/src/hooks/useServiceData.ts#L12)
+Defined in: [hooks/useServiceData.ts:12](https://github.com/Hack23/cia-compliance-manager/blob/4c8200b5bddf128916a299baf22a27cf745941c8/src/hooks/useServiceData.ts#L12)
 
 Loading state - true while data is being fetched
 
@@ -44,7 +44,7 @@ Loading state - true while data is being fetched
 
 > **error**: `Error` \| `null`
 
-Defined in: [hooks/useServiceData.ts:14](https://github.com/Hack23/cia-compliance-manager/blob/619a0e78ce14948ed535761186ab2648d596a7bd/src/hooks/useServiceData.ts#L14)
+Defined in: [hooks/useServiceData.ts:14](https://github.com/Hack23/cia-compliance-manager/blob/4c8200b5bddf128916a299baf22a27cf745941c8/src/hooks/useServiceData.ts#L14)
 
 Error if fetch failed, null otherwise
 
@@ -54,7 +54,7 @@ Error if fetch failed, null otherwise
 
 > **refetch**: () => `void`
 
-Defined in: [hooks/useServiceData.ts:16](https://github.com/Hack23/cia-compliance-manager/blob/619a0e78ce14948ed535761186ab2648d596a7bd/src/hooks/useServiceData.ts#L16)
+Defined in: [hooks/useServiceData.ts:16](https://github.com/Hack23/cia-compliance-manager/blob/4c8200b5bddf128916a299baf22a27cf745941c8/src/hooks/useServiceData.ts#L16)
 
 Function to manually trigger a refetch of the data
 
