@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.34**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.36**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: BusinessValueMetric
 
-Defined in: [types/businessImpact.ts:337](https://github.com/Hack23/cia-compliance-manager/blob/bf8189075bc86cb5a8999dce70d7c9c39852b616/src/types/businessImpact.ts#L337)
+Defined in: [types/businessImpact.ts:337](https://github.com/Hack23/cia-compliance-manager/blob/619a0e78ce14948ed535761186ab2648d596a7bd/src/types/businessImpact.ts#L337)
 
 Business value metric
 
@@ -16,7 +16,7 @@ Business value metric
 
 > **name**: `string`
 
-Defined in: [types/businessImpact.ts:341](https://github.com/Hack23/cia-compliance-manager/blob/bf8189075bc86cb5a8999dce70d7c9c39852b616/src/types/businessImpact.ts#L341)
+Defined in: [types/businessImpact.ts:341](https://github.com/Hack23/cia-compliance-manager/blob/619a0e78ce14948ed535761186ab2648d596a7bd/src/types/businessImpact.ts#L341)
 
 Name of the metric
 
@@ -26,7 +26,7 @@ Name of the metric
 
 > **description**: `string`
 
-Defined in: [types/businessImpact.ts:346](https://github.com/Hack23/cia-compliance-manager/blob/bf8189075bc86cb5a8999dce70d7c9c39852b616/src/types/businessImpact.ts#L346)
+Defined in: [types/businessImpact.ts:346](https://github.com/Hack23/cia-compliance-manager/blob/619a0e78ce14948ed535761186ab2648d596a7bd/src/types/businessImpact.ts#L346)
 
 Description of the metric
 
@@ -36,7 +36,7 @@ Description of the metric
 
 > **measurementMethod**: `string`
 
-Defined in: [types/businessImpact.ts:351](https://github.com/Hack23/cia-compliance-manager/blob/bf8189075bc86cb5a8999dce70d7c9c39852b616/src/types/businessImpact.ts#L351)
+Defined in: [types/businessImpact.ts:351](https://github.com/Hack23/cia-compliance-manager/blob/619a0e78ce14948ed535761186ab2648d596a7bd/src/types/businessImpact.ts#L351)
 
 How the metric is measured
 
@@ -46,6 +46,6 @@ How the metric is measured
 
 > **securityImpact**: `string`
 
-Defined in: [types/businessImpact.ts:356](https://github.com/Hack23/cia-compliance-manager/blob/bf8189075bc86cb5a8999dce70d7c9c39852b616/src/types/businessImpact.ts#L356)
+Defined in: [types/businessImpact.ts:356](https://github.com/Hack23/cia-compliance-manager/blob/619a0e78ce14948ed535761186ab2648d596a7bd/src/types/businessImpact.ts#L356)
 
 How security impacts this metric

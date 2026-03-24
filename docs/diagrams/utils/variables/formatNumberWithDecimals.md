@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.34**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.36**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **formatNumberWithDecimals**: (`value`, `decimalPlaces`) => `string`
 
-Defined in: [utils/index.ts:94](https://github.com/Hack23/cia-compliance-manager/blob/93d28e2dddb40364acafb5aab5b0a96fcc590cc8/src/utils/index.ts#L94)
+Defined in: [utils/index.ts:97](https://github.com/Hack23/cia-compliance-manager/blob/619a0e78ce14948ed535761186ab2648d596a7bd/src/utils/index.ts#L97)
 
 Format a number with specified decimal places
 

@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.34**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.36**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > `const` **BUSINESS\_KEY\_BENEFITS**: [`BusinessKeyBenefits`](../../../types/businessImpact/interfaces/BusinessKeyBenefits.md)
 
-Defined in: [constants/businessConstants.ts:185](https://github.com/Hack23/cia-compliance-manager/blob/93d28e2dddb40364acafb5aab5b0a96fcc590cc8/src/constants/businessConstants.ts#L185)
+Defined in: [constants/businessConstants.ts:185](https://github.com/Hack23/cia-compliance-manager/blob/619a0e78ce14948ed535761186ab2648d596a7bd/src/constants/businessConstants.ts#L185)
 
 Business key benefits for each security level

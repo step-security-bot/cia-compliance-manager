@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.34**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.36**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **calculateROIEstimate**(`availabilityLevel`, `integrityLevel`, `confidentialityLevel`): [`ROIEstimate`](../../../types/cia-services/interfaces/ROIEstimate.md)
 
-Defined in: [utils/businessValueUtils.ts:26](https://github.com/Hack23/cia-compliance-manager/blob/93d28e2dddb40364acafb5aab5b0a96fcc590cc8/src/utils/businessValueUtils.ts#L26)
+Defined in: [utils/businessValueUtils.ts:26](https://github.com/Hack23/cia-compliance-manager/blob/619a0e78ce14948ed535761186ab2648d596a7bd/src/utils/businessValueUtils.ts#L26)
 
 Calculates ROI estimate based on security levels
 

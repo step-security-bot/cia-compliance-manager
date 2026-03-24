@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.34**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.36**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **useSecurityLevelState**(`initialLevels?`): [`UseSecurityLevelStateReturn`](../interfaces/UseSecurityLevelStateReturn.md)
 
-Defined in: [hooks/useSecurityLevelState.ts:78](https://github.com/Hack23/cia-compliance-manager/blob/93d28e2dddb40364acafb5aab5b0a96fcc590cc8/src/hooks/useSecurityLevelState.ts#L78)
+Defined in: [hooks/useSecurityLevelState.ts:78](https://github.com/Hack23/cia-compliance-manager/blob/619a0e78ce14948ed535761186ab2648d596a7bd/src/hooks/useSecurityLevelState.ts#L78)
 
 Custom hook for managing CIA triad security levels
 

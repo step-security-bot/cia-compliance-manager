@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.34**](../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.36**](../README.md)
 
 ***
 
@@ -124,6 +124,12 @@ to ensure they're properly accessible throughout the application.
 - [formatSecurityMetric](functions/formatSecurityMetric.md)
 
 ## References
+
+### CostResult
+
+Re-exports [CostResult](costCalculationUtils/interfaces/CostResult.md)
+
+***
 
 ### BUSINESS\_IMPACT\_CATEGORIES
 

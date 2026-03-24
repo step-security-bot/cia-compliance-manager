@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.34**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.36**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: ComponentBusinessConsiderations
 
-Defined in: [types/businessImpact.ts:241](https://github.com/Hack23/cia-compliance-manager/blob/bf8189075bc86cb5a8999dce70d7c9c39852b616/src/types/businessImpact.ts#L241)
+Defined in: [types/businessImpact.ts:241](https://github.com/Hack23/cia-compliance-manager/blob/619a0e78ce14948ed535761186ab2648d596a7bd/src/types/businessImpact.ts#L241)
 
 Business considerations by security level and component
 
@@ -16,7 +16,7 @@ Business considerations by security level and component
 
 > **AVAILABILITY**: `Record`\<`string`, [`ImpactConsideration`](ImpactConsideration.md)[]\>
 
-Defined in: [types/businessImpact.ts:242](https://github.com/Hack23/cia-compliance-manager/blob/bf8189075bc86cb5a8999dce70d7c9c39852b616/src/types/businessImpact.ts#L242)
+Defined in: [types/businessImpact.ts:242](https://github.com/Hack23/cia-compliance-manager/blob/619a0e78ce14948ed535761186ab2648d596a7bd/src/types/businessImpact.ts#L242)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [types/businessImpact.ts:242](https://github.com/Hack23/cia-complian
 
 > **INTEGRITY**: `Record`\<`string`, [`ImpactConsideration`](ImpactConsideration.md)[]\>
 
-Defined in: [types/businessImpact.ts:243](https://github.com/Hack23/cia-compliance-manager/blob/bf8189075bc86cb5a8999dce70d7c9c39852b616/src/types/businessImpact.ts#L243)
+Defined in: [types/businessImpact.ts:243](https://github.com/Hack23/cia-compliance-manager/blob/619a0e78ce14948ed535761186ab2648d596a7bd/src/types/businessImpact.ts#L243)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: [types/businessImpact.ts:243](https://github.com/Hack23/cia-complian
 
 > **CONFIDENTIALITY**: `Record`\<`string`, [`ImpactConsideration`](ImpactConsideration.md)[]\>
 
-Defined in: [types/businessImpact.ts:244](https://github.com/Hack23/cia-compliance-manager/blob/bf8189075bc86cb5a8999dce70d7c9c39852b616/src/types/businessImpact.ts#L244)
+Defined in: [types/businessImpact.ts:244](https://github.com/Hack23/cia-compliance-manager/blob/619a0e78ce14948ed535761186ab2648d596a7bd/src/types/businessImpact.ts#L244)

@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.34**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.36**](../../README.md)
 
 ***
 
@@ -16,6 +16,10 @@ security implementations across the CIA triad.
 These utilities help organizations understand the financial implications
 of different security level choices. They provide consistent cost models
 that can be used for budgeting and ROI analysis. 💰
+
+## Interfaces
+
+- [CostResult](interfaces/CostResult.md)
 
 ## Type Aliases
 

@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.34**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.36**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **useSecuritySummaryData**(`availabilityLevel`, `integrityLevel`, `confidentialityLevel`, `ciaContentService`, `complianceService`): `object`
 
-Defined in: [hooks/useSecuritySummaryData.ts:32](https://github.com/Hack23/cia-compliance-manager/blob/93d28e2dddb40364acafb5aab5b0a96fcc590cc8/src/hooks/useSecuritySummaryData.ts#L32)
+Defined in: [hooks/useSecuritySummaryData.ts:32](https://github.com/Hack23/cia-compliance-manager/blob/619a0e78ce14948ed535761186ab2648d596a7bd/src/hooks/useSecuritySummaryData.ts#L32)
 
 Custom hook for SecuritySummaryWidget data calculations
 Extracts all data transformation logic for better testability and reusability
@@ -95,15 +95,15 @@ Computed security summary data and helper functions
 
 #### costDetails.availabilityCost
 
-> **availabilityCost**: `CostResult`
+> **availabilityCost**: [`CostResult`](../../../utils/costCalculationUtils/interfaces/CostResult.md)
 
 #### costDetails.integrityCost
 
-> **integrityCost**: `CostResult`
+> **integrityCost**: [`CostResult`](../../../utils/costCalculationUtils/interfaces/CostResult.md)
 
 #### costDetails.confidentialityCost
 
-> **confidentialityCost**: `CostResult`
+> **confidentialityCost**: [`CostResult`](../../../utils/costCalculationUtils/interfaces/CostResult.md)
 
 #### costDetails.totalCapex
 

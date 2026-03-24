@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.34**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.36**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **calculateWidgetRiskLevel**(`availabilityLevel`, `integrityLevel`, `confidentialityLevel`): `"Critical"` \| `"High"` \| `"Medium"` \| `"Low"` \| `"Minimal"`
 
-Defined in: [utils/index.ts:158](https://github.com/Hack23/cia-compliance-manager/blob/93d28e2dddb40364acafb5aab5b0a96fcc590cc8/src/utils/index.ts#L158)
+Defined in: [utils/index.ts:161](https://github.com/Hack23/cia-compliance-manager/blob/619a0e78ce14948ed535761186ab2648d596a7bd/src/utils/index.ts#L161)
 
 ## Parameters
 

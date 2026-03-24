@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.34**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.36**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **ensureArray**: \<`T`\>(`value`) => `T`[]
 
-Defined in: [utils/index.ts:196](https://github.com/Hack23/cia-compliance-manager/blob/93d28e2dddb40364acafb5aab5b0a96fcc590cc8/src/utils/index.ts#L196)
+Defined in: [utils/index.ts:199](https://github.com/Hack23/cia-compliance-manager/blob/619a0e78ce14948ed535761186ab2648d596a7bd/src/utils/index.ts#L199)
 
 Ensures value is an array, or converts it to one if not
 

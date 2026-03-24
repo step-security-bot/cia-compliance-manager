@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.34**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.36**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **meetsComplianceRequirements**: (`level`, `framework`) => `boolean`
 
-Defined in: [utils/index.ts:141](https://github.com/Hack23/cia-compliance-manager/blob/bf8189075bc86cb5a8999dce70d7c9c39852b616/src/utils/index.ts#L141)
+Defined in: [utils/index.ts:141](https://github.com/Hack23/cia-compliance-manager/blob/619a0e78ce14948ed535761186ab2648d596a7bd/src/utils/index.ts#L141)
 
 Determine if a security level meets compliance requirements for a specific framework
 

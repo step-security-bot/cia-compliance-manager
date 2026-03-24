@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.34**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.36**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **SPACING**: `object`
 
-Defined in: [constants/designTokens.ts:22](https://github.com/Hack23/cia-compliance-manager/blob/93d28e2dddb40364acafb5aab5b0a96fcc590cc8/src/constants/designTokens.ts#L22)
+Defined in: [constants/designTokens.ts:22](https://github.com/Hack23/cia-compliance-manager/blob/619a0e78ce14948ed535761186ab2648d596a7bd/src/constants/designTokens.ts#L22)
 
 Spacing scale based on a flexible grid system with optimizations
 Use these values for padding, margin, and gap properties

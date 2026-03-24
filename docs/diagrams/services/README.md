@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.34**](../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.36**](../README.md)
 
 ***
 
@@ -116,6 +116,12 @@ Re-exports [createSecurityResourceService](securityResourceService/functions/cre
 ### SecurityResourceService
 
 Re-exports [SecurityResourceService](securityResourceService/classes/SecurityResourceService.md)
+
+***
+
+### EnhancedSecurityResource
+
+Re-exports [EnhancedSecurityResource](../types/securityResources/interfaces/EnhancedSecurityResource.md)
 
 ***
 
