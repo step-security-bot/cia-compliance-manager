@@ -1,6 +1,6 @@
 {
   "name": "cia-compliance-manager",
-  "version": "1.1.38",
+  "version": "1.1.39",
   "description": "Security assessment widgets, hooks, and utilities for CIA triad compliance dashboards",
   "type": "module",
   "main": "dist/index.js",
