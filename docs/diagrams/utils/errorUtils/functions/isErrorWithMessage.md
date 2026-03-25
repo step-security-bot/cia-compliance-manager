@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.38**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.39**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **isErrorWithMessage**(`error`): `error is { message: string }`
 
-Defined in: [utils/errorUtils.ts:117](https://github.com/Hack23/cia-compliance-manager/blob/e53f32b24281901e3964b603dea2bfa4c23bab48/src/utils/errorUtils.ts#L117)
+Defined in: [utils/errorUtils.ts:117](https://github.com/Hack23/cia-compliance-manager/blob/45de32fe0767d7c6a06cfc307e433d32b081c07a/src/utils/errorUtils.ts#L117)
 
 Type guard to check if an error has a message property
 

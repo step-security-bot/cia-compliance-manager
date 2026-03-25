@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.38**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.39**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: BusinessImpactSectionProps
 
-Defined in: [types/componentPropExports.ts:32](https://github.com/Hack23/cia-compliance-manager/blob/e53f32b24281901e3964b603dea2bfa4c23bab48/src/types/componentPropExports.ts#L32)
+Defined in: [types/componentPropExports.ts:32](https://github.com/Hack23/cia-compliance-manager/blob/45de32fe0767d7c6a06cfc307e433d32b081c07a/src/types/componentPropExports.ts#L32)
 
 Props for the BusinessImpactSection component
 
@@ -16,7 +16,7 @@ Props for the BusinessImpactSection component
 
 > **impact**: [`BusinessImpactDetails`](../../cia-services/interfaces/BusinessImpactDetails.md)
 
-Defined in: [types/componentPropExports.ts:33](https://github.com/Hack23/cia-compliance-manager/blob/e53f32b24281901e3964b603dea2bfa4c23bab48/src/types/componentPropExports.ts#L33)
+Defined in: [types/componentPropExports.ts:33](https://github.com/Hack23/cia-compliance-manager/blob/45de32fe0767d7c6a06cfc307e433d32b081c07a/src/types/componentPropExports.ts#L33)
 
 Business impact data to display
 
@@ -26,7 +26,7 @@ Business impact data to display
 
 > **color**: [`CIAComponentColor`](../type-aliases/CIAComponentColor.md)
 
-Defined in: [types/componentPropExports.ts:34](https://github.com/Hack23/cia-compliance-manager/blob/e53f32b24281901e3964b603dea2bfa4c23bab48/src/types/componentPropExports.ts#L34)
+Defined in: [types/componentPropExports.ts:34](https://github.com/Hack23/cia-compliance-manager/blob/45de32fe0767d7c6a06cfc307e433d32b081c07a/src/types/componentPropExports.ts#L34)
 
 Color theme for the section (blue, green, or orange)
 
@@ -36,6 +36,6 @@ Color theme for the section (blue, green, or orange)
 
 > `optional` **testId?**: `string`
 
-Defined in: [types/componentPropExports.ts:35](https://github.com/Hack23/cia-compliance-manager/blob/e53f32b24281901e3964b603dea2bfa4c23bab48/src/types/componentPropExports.ts#L35)
+Defined in: [types/componentPropExports.ts:35](https://github.com/Hack23/cia-compliance-manager/blob/45de32fe0767d7c6a06cfc307e433d32b081c07a/src/types/componentPropExports.ts#L35)
 
 Optional test ID for testing purposes

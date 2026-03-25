@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.38**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.39**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: ROIEstimate
 
-Defined in: [types/cia-services.ts:195](https://github.com/Hack23/cia-compliance-manager/blob/e53f32b24281901e3964b603dea2bfa4c23bab48/src/types/cia-services.ts#L195)
+Defined in: [types/cia-services.ts:195](https://github.com/Hack23/cia-compliance-manager/blob/45de32fe0767d7c6a06cfc307e433d32b081c07a/src/types/cia-services.ts#L195)
 
 Enhanced ROI estimate interface that combines existing definitions
 
@@ -16,7 +16,7 @@ Enhanced ROI estimate interface that combines existing definitions
 
 > **returnRate**: `string`
 
-Defined in: [types/cia-services.ts:196](https://github.com/Hack23/cia-compliance-manager/blob/e53f32b24281901e3964b603dea2bfa4c23bab48/src/types/cia-services.ts#L196)
+Defined in: [types/cia-services.ts:196](https://github.com/Hack23/cia-compliance-manager/blob/45de32fe0767d7c6a06cfc307e433d32b081c07a/src/types/cia-services.ts#L196)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [types/cia-services.ts:196](https://github.com/Hack23/cia-compliance
 
 > **description**: `string`
 
-Defined in: [types/cia-services.ts:197](https://github.com/Hack23/cia-compliance-manager/blob/e53f32b24281901e3964b603dea2bfa4c23bab48/src/types/cia-services.ts#L197)
+Defined in: [types/cia-services.ts:197](https://github.com/Hack23/cia-compliance-manager/blob/45de32fe0767d7c6a06cfc307e433d32b081c07a/src/types/cia-services.ts#L197)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [types/cia-services.ts:197](https://github.com/Hack23/cia-compliance
 
 > `optional` **value?**: `string`
 
-Defined in: [types/cia-services.ts:198](https://github.com/Hack23/cia-compliance-manager/blob/e53f32b24281901e3964b603dea2bfa4c23bab48/src/types/cia-services.ts#L198)
+Defined in: [types/cia-services.ts:198](https://github.com/Hack23/cia-compliance-manager/blob/45de32fe0767d7c6a06cfc307e433d32b081c07a/src/types/cia-services.ts#L198)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [types/cia-services.ts:198](https://github.com/Hack23/cia-compliance
 
 > `optional` **potentialSavings?**: `string`
 
-Defined in: [types/cia-services.ts:199](https://github.com/Hack23/cia-compliance-manager/blob/e53f32b24281901e3964b603dea2bfa4c23bab48/src/types/cia-services.ts#L199)
+Defined in: [types/cia-services.ts:199](https://github.com/Hack23/cia-compliance-manager/blob/45de32fe0767d7c6a06cfc307e433d32b081c07a/src/types/cia-services.ts#L199)
 
 ***
 
@@ -48,4 +48,4 @@ Defined in: [types/cia-services.ts:199](https://github.com/Hack23/cia-compliance
 
 > `optional` **breakEvenPeriod?**: `string`
 
-Defined in: [types/cia-services.ts:200](https://github.com/Hack23/cia-compliance-manager/blob/e53f32b24281901e3964b603dea2bfa4c23bab48/src/types/cia-services.ts#L200)
+Defined in: [types/cia-services.ts:200](https://github.com/Hack23/cia-compliance-manager/blob/45de32fe0767d7c6a06cfc307e433d32b081c07a/src/types/cia-services.ts#L200)
