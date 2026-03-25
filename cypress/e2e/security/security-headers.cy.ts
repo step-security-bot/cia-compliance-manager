@@ -64,9 +64,12 @@ describe("Security Headers", () => {
             "form-action 'self'",
             "CSP should restrict form submissions to same origin"
           );
-          expect(cspContent).to.include(
-            "frame-ancestors 'none'",
-            "CSP should prevent site from being embedded in frames"
+          // frame-ancestors is an HTTP-header-only CSP directive and must not
+          // appear in meta tags (browsers ignore it and emit a console warning).
+          // It is configured via vite.config.ts (dev) and CloudFront (production).
+          expect(cspContent).not.to.include(
+            "frame-ancestors",
+            "CSP meta tag must not contain frame-ancestors (HTTP-header-only directive)"
           );
         });
     });
@@ -126,11 +129,34 @@ describe("Security Headers", () => {
     });
   });
 
-  describe("X-Frame-Options", () => {
-    it("should have X-Frame-Options meta tag set to DENY", () => {
-      cy.get(SECURITY_HEADER_SELECTORS.X_FRAME_OPTIONS)
-        .should("exist")
-        .and("have.attr", "content", "DENY");
+  describe("Clickjacking Protection", () => {
+    it("should not have X-Frame-Options as meta tag (HTTP header only)", () => {
+      // X-Frame-Options can only be set via HTTP headers, not meta tags
+      // Verify it is NOT present as a meta tag (which would be ignored by browsers)
+      cy.get('meta[http-equiv="X-Frame-Options"]').should("not.exist");
+    });
+
+    it("should enforce clickjacking protection via HTTP response headers", () => {
+      // Verify X-Frame-Options and frame-ancestors are delivered as HTTP headers
+      // (configured in vite.config.ts for dev, CloudFront for production)
+      cy.request("/").then((response) => {
+        const headers = response.headers;
+
+        // X-Frame-Options must be DENY via HTTP header
+        expect(headers).to.have.property("x-frame-options");
+        expect(headers["x-frame-options"]).to.match(
+          /deny/i,
+          "X-Frame-Options HTTP header should be DENY"
+        );
+
+        // CSP frame-ancestors must be set to 'none' in the HTTP header to prevent framing
+        expect(headers).to.have.property("content-security-policy");
+        const cspHeader = headers["content-security-policy"] as string;
+        expect(cspHeader).to.include(
+          "frame-ancestors 'none'",
+          "CSP HTTP header should set frame-ancestors to 'none' for clickjacking protection"
+        );
+      });
     });
   });
 
@@ -161,7 +187,6 @@ describe("Security Headers", () => {
       const requiredHeaders = [
         SECURITY_HEADER_SELECTORS.CSP,
         SECURITY_HEADER_SELECTORS.X_CONTENT_TYPE_OPTIONS,
-        SECURITY_HEADER_SELECTORS.X_FRAME_OPTIONS,
         SECURITY_HEADER_SELECTORS.COOP,
         SECURITY_HEADER_SELECTORS.COEP,
         SECURITY_HEADER_SELECTORS.REFERRER,
@@ -213,11 +238,10 @@ describe("Security Headers", () => {
         .find(SECURITY_HEADER_SELECTORS.CSP)
         .should("exist");
       cy.get("head")
-        .find(SECURITY_HEADER_SELECTORS.X_FRAME_OPTIONS)
-        .should("exist");
-      cy.get("head")
         .find(SECURITY_HEADER_SELECTORS.X_CONTENT_TYPE_OPTIONS)
         .should("exist");
+      // Note: X-Frame-Options is enforced via HTTP headers (vite.config.ts dev / CloudFront production)
+      // and should NOT be present as a meta tag
 
       cy.log("✅ Application Security Framework requirements met");
     });
