@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.39**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.40**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > `const` **operationalImpactByLevel**: `Record`\<[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md), [`BusinessImpactDetail`](../../../types/cia-services/interfaces/BusinessImpactDetail.md)\>
 
-Defined in: [data/riskImpactData.ts:158](https://github.com/Hack23/cia-compliance-manager/blob/45de32fe0767d7c6a06cfc307e433d32b081c07a/src/data/riskImpactData.ts#L158)
+Defined in: [data/riskImpactData.ts:158](https://github.com/Hack23/cia-compliance-manager/blob/99a6b37a19b77a1865b964d905f60cd756167ae2/src/data/riskImpactData.ts#L158)
 
 Operational impact data by security level

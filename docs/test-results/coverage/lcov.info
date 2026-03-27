@@ -1782,7 +1782,7 @@ FN:24,(anonymous_0)
 FNF:1
 FNH:1
 FNDA:19,(anonymous_0)
-DA:24,2
+DA:24,3
 DA:35,19
 LF:2
 LH:2
@@ -2006,7 +2006,7 @@ FN:32,(anonymous_0)
 FNF:1
 FNH:1
 FNDA:29,(anonymous_0)
-DA:32,2
+DA:32,3
 DA:45,29
 LF:2
 LH:2
@@ -2022,9 +2022,9 @@ SF:src/components/widgets/assessmentcenter/SecuritySummaryWidget.tsx
 FN:36,(anonymous_0)
 FNF:1
 FNH:1
-FNDA:1,(anonymous_0)
-DA:36,1
-DA:47,1
+FNDA:2,(anonymous_0)
+DA:36,2
+DA:47,2
 DA:51,20
 DA:56,20
 DA:60,20
@@ -2034,8 +2034,8 @@ DA:89,20
 DA:163,20
 LF:9
 LH:9
-BRDA:40,0,0,1
-BRDA:41,1,0,1
+BRDA:40,0,0,2
+BRDA:41,1,0,2
 BRDA:60,2,0,20
 BRDA:60,2,1,20
 BRDA:60,2,2,20

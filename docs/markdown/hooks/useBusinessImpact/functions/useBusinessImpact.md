@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.39**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.40**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **useBusinessImpact**(`component`, `level`): [`BusinessImpactDetails`](../../../types/cia-services/interfaces/BusinessImpactDetails.md)
 
-Defined in: [hooks/useBusinessImpact.ts:30](https://github.com/Hack23/cia-compliance-manager/blob/45de32fe0767d7c6a06cfc307e433d32b081c07a/src/hooks/useBusinessImpact.ts#L30)
+Defined in: [hooks/useBusinessImpact.ts:30](https://github.com/Hack23/cia-compliance-manager/blob/99a6b37a19b77a1865b964d905f60cd756167ae2/src/hooks/useBusinessImpact.ts#L30)
 
 Custom hook for fetching business impact details with fallback
 

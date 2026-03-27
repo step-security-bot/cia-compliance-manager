@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.39**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.40**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getSeverityColor**(`severity`): `"text-green-500"` \| `"text-yellow-500"` \| `"text-red-500"`
 
-Defined in: [utils/index.ts:71](https://github.com/Hack23/cia-compliance-manager/blob/45de32fe0767d7c6a06cfc307e433d32b081c07a/src/utils/index.ts#L71)
+Defined in: [utils/index.ts:71](https://github.com/Hack23/cia-compliance-manager/blob/99a6b37a19b77a1865b964d905f60cd756167ae2/src/utils/index.ts#L71)
 
 ## Parameters
 
