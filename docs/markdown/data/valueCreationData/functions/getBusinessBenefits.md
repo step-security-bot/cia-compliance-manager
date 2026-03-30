@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.40**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.41**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getBusinessBenefits**(`level`): [`BusinessItem`](../../../types/businessImpact/interfaces/BusinessItem.md)[]
 
-Defined in: [data/valueCreationData.ts:414](https://github.com/Hack23/cia-compliance-manager/blob/99a6b37a19b77a1865b964d905f60cd756167ae2/src/data/valueCreationData.ts#L414)
+Defined in: [data/valueCreationData.ts:414](https://github.com/Hack23/cia-compliance-manager/blob/63d3a20253e18e09835ecdb4c858b7e023305469/src/data/valueCreationData.ts#L414)
 
 Get business benefits for a specific security level
 
