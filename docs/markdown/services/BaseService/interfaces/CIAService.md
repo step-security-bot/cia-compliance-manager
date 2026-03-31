@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.41**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.42**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: CIAService
 
-Defined in: [services/BaseService.ts:21](https://github.com/Hack23/cia-compliance-manager/blob/63d3a20253e18e09835ecdb4c858b7e023305469/src/services/BaseService.ts#L21)
+Defined in: [services/BaseService.ts:21](https://github.com/Hack23/cia-compliance-manager/blob/ce3ecc4a3b34e88099c2e6d497b15097021e223f/src/services/BaseService.ts#L21)
 
 Common interface for CIA services
 
@@ -16,7 +16,7 @@ Common interface for CIA services
 
 > **getComponentDetails**(`component`, `level`): [`CIADetails`](../../../types/cia-services/interfaces/CIADetails.md) \| `undefined`
 
-Defined in: [services/BaseService.ts:22](https://github.com/Hack23/cia-compliance-manager/blob/63d3a20253e18e09835ecdb4c858b7e023305469/src/services/BaseService.ts#L22)
+Defined in: [services/BaseService.ts:22](https://github.com/Hack23/cia-compliance-manager/blob/ce3ecc4a3b34e88099c2e6d497b15097021e223f/src/services/BaseService.ts#L22)
 
 #### Parameters
 
@@ -38,7 +38,7 @@ Defined in: [services/BaseService.ts:22](https://github.com/Hack23/cia-complianc
 
 > **getSecurityLevelDescription**(`level`): `string`
 
-Defined in: [services/BaseService.ts:26](https://github.com/Hack23/cia-compliance-manager/blob/63d3a20253e18e09835ecdb4c858b7e023305469/src/services/BaseService.ts#L26)
+Defined in: [services/BaseService.ts:26](https://github.com/Hack23/cia-compliance-manager/blob/ce3ecc4a3b34e88099c2e6d497b15097021e223f/src/services/BaseService.ts#L26)
 
 #### Parameters
 
@@ -56,7 +56,7 @@ Defined in: [services/BaseService.ts:26](https://github.com/Hack23/cia-complianc
 
 > **getRiskLevelFromSecurityLevel**(`level`): `string`
 
-Defined in: [services/BaseService.ts:27](https://github.com/Hack23/cia-compliance-manager/blob/63d3a20253e18e09835ecdb4c858b7e023305469/src/services/BaseService.ts#L27)
+Defined in: [services/BaseService.ts:27](https://github.com/Hack23/cia-compliance-manager/blob/ce3ecc4a3b34e88099c2e6d497b15097021e223f/src/services/BaseService.ts#L27)
 
 #### Parameters
 

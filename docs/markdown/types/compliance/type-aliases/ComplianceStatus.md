@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.41**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.42**](../../../README.md)
 
 ***
 
@@ -8,4 +8,4 @@
 
 > **ComplianceStatus** = [`ComplianceStatusDetails`](../interfaces/ComplianceStatusDetails.md)
 
-Defined in: [types/compliance.ts:86](https://github.com/Hack23/cia-compliance-manager/blob/63d3a20253e18e09835ecdb4c858b7e023305469/src/types/compliance.ts#L86)
+Defined in: [types/compliance.ts:86](https://github.com/Hack23/cia-compliance-manager/blob/ce3ecc4a3b34e88099c2e6d497b15097021e223f/src/types/compliance.ts#L86)

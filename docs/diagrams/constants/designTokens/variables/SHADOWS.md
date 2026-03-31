@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.41**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.42**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **SHADOWS**: `object`
 
-Defined in: [constants/designTokens.ts:147](https://github.com/Hack23/cia-compliance-manager/blob/63d3a20253e18e09835ecdb4c858b7e023305469/src/constants/designTokens.ts#L147)
+Defined in: [constants/designTokens.ts:147](https://github.com/Hack23/cia-compliance-manager/blob/ce3ecc4a3b34e88099c2e6d497b15097021e223f/src/constants/designTokens.ts#L147)
 
 Shadow depths for elevation hierarchy
 Use these to create visual depth and layering
