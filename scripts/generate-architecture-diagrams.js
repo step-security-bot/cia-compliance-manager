@@ -5,51 +5,13 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DOCS_DIR = path.join(__dirname, "..", "docs", "architecture");
-const DEPS_DIR = path.join(__dirname, "..", "docs", "dependencies");
 
-// Ensure directories exist
-[DOCS_DIR, DEPS_DIR].forEach((dir) => {
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true });
-  }
-});
-
-// Check if GraphViz is installed
-try {
-  execSync("dot -V", { stdio: "ignore" });
-  console.log("GraphViz is installed.");
-} catch (error) {
-  console.error(
-    "GraphViz is not installed or not in PATH. Skipping diagram generation that requires GraphViz."
-  );
-  console.error("Please install GraphViz: sudo apt-get install graphviz");
-  // Exit with success to allow workflow to continue
-  process.exit(0);
+// Ensure directory exists
+if (!fs.existsSync(DOCS_DIR)) {
+  fs.mkdirSync(DOCS_DIR, { recursive: true });
 }
 
-// Generate component dependency diagram using madge
-console.log("Generating component dependency diagram...");
-try {
-  execSync(
-    `npx madge --image docs/architecture/component-dependencies.svg --extensions ts,tsx --exclude 'node_modules|.*\\.test\\.tsx?$' src/components`,
-    { stdio: "inherit" }
-  );
-} catch (error) {
-  console.error("Error generating component dependencies:", error);
-}
-
-// Generate module dependency diagram
-console.log("Generating module dependency diagram...");
-try {
-  execSync(
-    `npx madge --image docs/architecture/module-dependencies.svg --extensions ts,tsx --exclude 'node_modules|.*\\.test\\.tsx?$' src`,
-    { stdio: "inherit" }
-  );
-} catch (error) {
-  console.error("Error generating module dependencies:", error);
-}
-
-// Generate trie visualization of project structure
+// Generate project structure visualization
 console.log("Generating project structure visualization...");
 try {
   const projectStructure = execSync(
@@ -102,27 +64,6 @@ ${projectStructure
   fs.writeFileSync(path.join(DOCS_DIR, "project-structure.html"), htmlContent);
 } catch (error) {
   console.error("Error generating project structure visualization:", error);
-}
-
-// Create a basic module dependency file if generation failed
-if (
-  !fs.existsSync(
-    path.join(
-      __dirname,
-      "..",
-      "docs",
-      "dependencies",
-      "module-dependencies.svg"
-    )
-  )
-) {
-  const basicSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="500" height="300">
-    <text x="50" y="50" font-family="Arial" font-size="16">Module dependency diagram generation failed.</text>
-    <text x="50" y="80" font-family="Arial" font-size="14">Please ensure GraphViz is installed.</text>
-    <text x="50" y="110" font-family="Arial" font-size="14">Install with: sudo apt-get install graphviz</text>
-  </svg>`;
-
-  fs.writeFileSync(path.join(DEPS_DIR, "module-dependencies.svg"), basicSvg);
 }
 
 console.log("Architecture diagrams generated successfully!");
