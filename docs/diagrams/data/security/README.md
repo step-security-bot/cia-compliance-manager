@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.42**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.43**](../../README.md)
 
 ***
 
@@ -8,11 +8,31 @@
 
 ## Variables
 
-- [availabilityData](variables/availabilityData.md)
-- [confidentialityData](variables/confidentialityData.md)
 - [availabilityOptions](variables/availabilityOptions.md)
 - [confidentialityOptions](variables/confidentialityOptions.md)
 - [integrityOptions](variables/integrityOptions.md)
 - [ROI\_ESTIMATES](variables/ROI_ESTIMATES.md)
-- [integrityData](variables/integrityData.md)
-- [roiEstimatesData](variables/roiEstimatesData.md)
+
+## References
+
+### availabilityData
+
+Re-exports [availabilityData](../variables/availabilityData.md)
+
+***
+
+### confidentialityData
+
+Re-exports [confidentialityData](../variables/confidentialityData.md)
+
+***
+
+### integrityData
+
+Re-exports [integrityData](../variables/integrityData.md)
+
+***
+
+### roiEstimatesData
+
+Re-exports [roiEstimatesData](../variables/roiEstimatesData.md)

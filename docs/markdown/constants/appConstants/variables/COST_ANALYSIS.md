@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.42**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.43**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **COST\_ANALYSIS**: `object`
 
-Defined in: [constants/appConstants.ts:174](https://github.com/Hack23/cia-compliance-manager/blob/ce3ecc4a3b34e88099c2e6d497b15097021e223f/src/constants/appConstants.ts#L174)
+Defined in: [constants/appConstants.ts:174](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/constants/appConstants.ts#L174)
 
 ## Type Declaration
 

@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.42**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.43**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: ToastConfig
 
-Defined in: [contexts/ErrorContext.tsx:45](https://github.com/Hack23/cia-compliance-manager/blob/ce3ecc4a3b34e88099c2e6d497b15097021e223f/src/contexts/ErrorContext.tsx#L45)
+Defined in: [contexts/ErrorContext.tsx:45](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/contexts/ErrorContext.tsx#L45)
 
 Toast notification configuration
 
@@ -16,7 +16,7 @@ Toast notification configuration
 
 > **message**: `string`
 
-Defined in: [contexts/ErrorContext.tsx:47](https://github.com/Hack23/cia-compliance-manager/blob/ce3ecc4a3b34e88099c2e6d497b15097021e223f/src/contexts/ErrorContext.tsx#L47)
+Defined in: [contexts/ErrorContext.tsx:47](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/contexts/ErrorContext.tsx#L47)
 
 Toast message
 
@@ -26,7 +26,7 @@ Toast message
 
 > `optional` **title?**: `string`
 
-Defined in: [contexts/ErrorContext.tsx:49](https://github.com/Hack23/cia-compliance-manager/blob/ce3ecc4a3b34e88099c2e6d497b15097021e223f/src/contexts/ErrorContext.tsx#L49)
+Defined in: [contexts/ErrorContext.tsx:49](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/contexts/ErrorContext.tsx#L49)
 
 Toast title (optional)
 
@@ -36,7 +36,7 @@ Toast title (optional)
 
 > `optional` **autoHideDuration?**: `number`
 
-Defined in: [contexts/ErrorContext.tsx:51](https://github.com/Hack23/cia-compliance-manager/blob/ce3ecc4a3b34e88099c2e6d497b15097021e223f/src/contexts/ErrorContext.tsx#L51)
+Defined in: [contexts/ErrorContext.tsx:51](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/contexts/ErrorContext.tsx#L51)
 
 Auto-hide duration in milliseconds
 
@@ -46,7 +46,7 @@ Auto-hide duration in milliseconds
 
 > `optional` **position?**: [`ToastPosition`](../../../components/common/ErrorToast/type-aliases/ToastPosition.md)
 
-Defined in: [contexts/ErrorContext.tsx:53](https://github.com/Hack23/cia-compliance-manager/blob/ce3ecc4a3b34e88099c2e6d497b15097021e223f/src/contexts/ErrorContext.tsx#L53)
+Defined in: [contexts/ErrorContext.tsx:53](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/contexts/ErrorContext.tsx#L53)
 
 Toast position
 
@@ -56,7 +56,7 @@ Toast position
 
 > `optional` **retry?**: () => `void`
 
-Defined in: [contexts/ErrorContext.tsx:55](https://github.com/Hack23/cia-compliance-manager/blob/ce3ecc4a3b34e88099c2e6d497b15097021e223f/src/contexts/ErrorContext.tsx#L55)
+Defined in: [contexts/ErrorContext.tsx:55](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/contexts/ErrorContext.tsx#L55)
 
 Retry callback (optional) - aligns with ErrorToast component API
 

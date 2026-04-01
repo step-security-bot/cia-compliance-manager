@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.42**](../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.43**](../README.md)
 
 ***
 
@@ -51,6 +51,24 @@ Renames and re-exports [hooks](../hooks/README.md)
 ### Utils
 
 Renames and re-exports [utils](../utils/README.md)
+
+***
+
+### Constants
+
+Renames and re-exports [constants](../constants/README.md)
+
+***
+
+### Data
+
+Renames and re-exports [data](../data/README.md)
+
+***
+
+### Contexts
+
+Renames and re-exports [contexts](../contexts/README.md)
 
 ***
 

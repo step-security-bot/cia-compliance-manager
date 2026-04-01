@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.42**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.43**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: ISecurityMetrics
 
-Defined in: [types/services.ts:52](https://github.com/Hack23/cia-compliance-manager/blob/ce3ecc4a3b34e88099c2e6d497b15097021e223f/src/types/services.ts#L52)
+Defined in: [types/services.ts:52](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/types/services.ts#L52)
 
 Base security metrics interface
 Services may return richer types that extend this interface
@@ -21,7 +21,7 @@ Services may return richer types that extend this interface
 
 > **availability**: [`IComponentMetrics`](IComponentMetrics.md)
 
-Defined in: [types/services.ts:53](https://github.com/Hack23/cia-compliance-manager/blob/ce3ecc4a3b34e88099c2e6d497b15097021e223f/src/types/services.ts#L53)
+Defined in: [types/services.ts:53](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/types/services.ts#L53)
 
 ***
 
@@ -29,7 +29,7 @@ Defined in: [types/services.ts:53](https://github.com/Hack23/cia-compliance-mana
 
 > **integrity**: [`IComponentMetrics`](IComponentMetrics.md)
 
-Defined in: [types/services.ts:54](https://github.com/Hack23/cia-compliance-manager/blob/ce3ecc4a3b34e88099c2e6d497b15097021e223f/src/types/services.ts#L54)
+Defined in: [types/services.ts:54](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/types/services.ts#L54)
 
 ***
 
@@ -37,7 +37,7 @@ Defined in: [types/services.ts:54](https://github.com/Hack23/cia-compliance-mana
 
 > **confidentiality**: [`IComponentMetrics`](IComponentMetrics.md)
 
-Defined in: [types/services.ts:55](https://github.com/Hack23/cia-compliance-manager/blob/ce3ecc4a3b34e88099c2e6d497b15097021e223f/src/types/services.ts#L55)
+Defined in: [types/services.ts:55](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/types/services.ts#L55)
 
 ***
 
@@ -45,7 +45,7 @@ Defined in: [types/services.ts:55](https://github.com/Hack23/cia-compliance-mana
 
 > **impactMetrics**: [`IImpactMetrics`](IImpactMetrics.md)
 
-Defined in: [types/services.ts:56](https://github.com/Hack23/cia-compliance-manager/blob/ce3ecc4a3b34e88099c2e6d497b15097021e223f/src/types/services.ts#L56)
+Defined in: [types/services.ts:56](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/types/services.ts#L56)
 
 ***
 
@@ -53,7 +53,7 @@ Defined in: [types/services.ts:56](https://github.com/Hack23/cia-compliance-mana
 
 > **overallScore**: `number`
 
-Defined in: [types/services.ts:57](https://github.com/Hack23/cia-compliance-manager/blob/ce3ecc4a3b34e88099c2e6d497b15097021e223f/src/types/services.ts#L57)
+Defined in: [types/services.ts:57](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/types/services.ts#L57)
 
 ***
 
@@ -61,7 +61,7 @@ Defined in: [types/services.ts:57](https://github.com/Hack23/cia-compliance-mana
 
 > **monitoring**: `number`
 
-Defined in: [types/services.ts:58](https://github.com/Hack23/cia-compliance-manager/blob/ce3ecc4a3b34e88099c2e6d497b15097021e223f/src/types/services.ts#L58)
+Defined in: [types/services.ts:58](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/types/services.ts#L58)
 
 ***
 
@@ -69,7 +69,7 @@ Defined in: [types/services.ts:58](https://github.com/Hack23/cia-compliance-mana
 
 > **resilience**: `number`
 
-Defined in: [types/services.ts:59](https://github.com/Hack23/cia-compliance-manager/blob/ce3ecc4a3b34e88099c2e6d497b15097021e223f/src/types/services.ts#L59)
+Defined in: [types/services.ts:59](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/types/services.ts#L59)
 
 ***
 
@@ -77,7 +77,7 @@ Defined in: [types/services.ts:59](https://github.com/Hack23/cia-compliance-mana
 
 > **compliance**: `number`
 
-Defined in: [types/services.ts:60](https://github.com/Hack23/cia-compliance-manager/blob/ce3ecc4a3b34e88099c2e6d497b15097021e223f/src/types/services.ts#L60)
+Defined in: [types/services.ts:60](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/types/services.ts#L60)
 
 ***
 
@@ -85,7 +85,7 @@ Defined in: [types/services.ts:60](https://github.com/Hack23/cia-compliance-mana
 
 > **benchmarkScore**: `number`
 
-Defined in: [types/services.ts:61](https://github.com/Hack23/cia-compliance-manager/blob/ce3ecc4a3b34e88099c2e6d497b15097021e223f/src/types/services.ts#L61)
+Defined in: [types/services.ts:61](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/types/services.ts#L61)
 
 ***
 
@@ -93,4 +93,4 @@ Defined in: [types/services.ts:61](https://github.com/Hack23/cia-compliance-mana
 
 > **securityMaturity**: `string`
 
-Defined in: [types/services.ts:62](https://github.com/Hack23/cia-compliance-manager/blob/ce3ecc4a3b34e88099c2e6d497b15097021e223f/src/types/services.ts#L62)
+Defined in: [types/services.ts:62](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/types/services.ts#L62)

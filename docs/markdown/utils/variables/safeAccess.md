@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.42**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.43**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **safeAccess**: \<`T`\>(`obj`, `path`, `defaultValue?`) => `T`
 
-Defined in: [utils/index.ts:222](https://github.com/Hack23/cia-compliance-manager/blob/ce3ecc4a3b34e88099c2e6d497b15097021e223f/src/utils/index.ts#L222)
+Defined in: [utils/index.ts:222](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/utils/index.ts#L222)
 
 Safely access a nested property in an object using a dot notation path
 

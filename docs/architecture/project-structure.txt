@@ -126,9 +126,11 @@ src/contexts/ErrorContext.test.tsx
 src/contexts/ErrorContext.tsx
 src/contexts/KeyboardShortcutContext.test.tsx
 src/contexts/KeyboardShortcutContext.tsx
+src/contexts/index.ts
 src/data/ciaOptionsData.test.ts
 src/data/ciaOptionsData.ts
 src/data/dataExports.test.ts
+src/data/index.ts
 src/data/riskImpactData.test.ts
 src/data/riskImpactData.ts
 src/data/security/availabilityData.ts
