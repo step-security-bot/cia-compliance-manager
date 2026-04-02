@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.43**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.44**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **BORDER\_RADIUS**: `object`
 
-Defined in: [constants/designTokens.ts:128](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/constants/designTokens.ts#L128)
+Defined in: [constants/designTokens.ts:128](https://github.com/Hack23/cia-compliance-manager/blob/e5798eb2d906d521a46ab269f5cbb9b8afb6f74b/src/constants/designTokens.ts#L128)
 
 Border radius values for consistent rounded corners
 

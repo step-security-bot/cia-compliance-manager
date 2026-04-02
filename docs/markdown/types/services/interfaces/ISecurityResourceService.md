@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.43**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.44**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: ISecurityResourceService
 
-Defined in: [types/services.ts:396](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/types/services.ts#L396)
+Defined in: [types/services.ts:396](https://github.com/Hack23/cia-compliance-manager/blob/e5798eb2d906d521a46ab269f5cbb9b8afb6f74b/src/types/services.ts#L396)
 
 Security Resource Service interface
 
@@ -22,7 +22,7 @@ Provides security resources and references
 
 > `readonly` **name**: `string`
 
-Defined in: [types/services.ts:82](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/types/services.ts#L82)
+Defined in: [types/services.ts:82](https://github.com/Hack23/cia-compliance-manager/blob/e5798eb2d906d521a46ab269f5cbb9b8afb6f74b/src/types/services.ts#L82)
 
 Service name for identification and logging
 
@@ -36,7 +36,7 @@ Service name for identification and logging
 
 > **validate**(`input`): `boolean`
 
-Defined in: [types/services.ts:90](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/types/services.ts#L90)
+Defined in: [types/services.ts:90](https://github.com/Hack23/cia-compliance-manager/blob/e5798eb2d906d521a46ab269f5cbb9b8afb6f74b/src/types/services.ts#L90)
 
 Validate input parameters (returns simple boolean)
 
@@ -64,7 +64,7 @@ True if valid, false otherwise
 
 > **handleError**(`error`): [`ServiceError`](../../../services/errors/classes/ServiceError.md)
 
-Defined in: [types/services.ts:98](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/types/services.ts#L98)
+Defined in: [types/services.ts:98](https://github.com/Hack23/cia-compliance-manager/blob/e5798eb2d906d521a46ab269f5cbb9b8afb6f74b/src/types/services.ts#L98)
 
 Handle errors consistently across services
 
@@ -92,7 +92,7 @@ Formatted ServiceError
 
 > **getSecurityResources**(`component`, `level`): [`SecurityResource`](../../securityResources/interfaces/SecurityResource.md)[]
 
-Defined in: [types/services.ts:404](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/types/services.ts#L404)
+Defined in: [types/services.ts:404](https://github.com/Hack23/cia-compliance-manager/blob/e5798eb2d906d521a46ab269f5cbb9b8afb6f74b/src/types/services.ts#L404)
 
 Get security resources for a component and level
 
@@ -122,7 +122,7 @@ Array of security resources
 
 > **getValuePoints**(`level`): `string`[]
 
-Defined in: [types/services.ts:412](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/types/services.ts#L412)
+Defined in: [types/services.ts:412](https://github.com/Hack23/cia-compliance-manager/blob/e5798eb2d906d521a46ab269f5cbb9b8afb6f74b/src/types/services.ts#L412)
 
 Get value points for a security level
 

@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.43**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.44**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: BusinessImpactMetrics
 
-Defined in: [services/securityMetricsService.ts:71](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/services/securityMetricsService.ts#L71)
+Defined in: [services/securityMetricsService.ts:71](https://github.com/Hack23/cia-compliance-manager/blob/e5798eb2d906d521a46ab269f5cbb9b8afb6f74b/src/services/securityMetricsService.ts#L71)
 
 Business impact metrics for value creation
 
@@ -16,7 +16,7 @@ Business impact metrics for value creation
 
 > **revenueProtection**: `string`
 
-Defined in: [services/securityMetricsService.ts:72](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/services/securityMetricsService.ts#L72)
+Defined in: [services/securityMetricsService.ts:72](https://github.com/Hack23/cia-compliance-manager/blob/e5798eb2d906d521a46ab269f5cbb9b8afb6f74b/src/services/securityMetricsService.ts#L72)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [services/securityMetricsService.ts:72](https://github.com/Hack23/ci
 
 > **costAvoidance**: `string`
 
-Defined in: [services/securityMetricsService.ts:73](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/services/securityMetricsService.ts#L73)
+Defined in: [services/securityMetricsService.ts:73](https://github.com/Hack23/cia-compliance-manager/blob/e5798eb2d906d521a46ab269f5cbb9b8afb6f74b/src/services/securityMetricsService.ts#L73)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: [services/securityMetricsService.ts:73](https://github.com/Hack23/ci
 
 > **productivityImprovement**: `string`
 
-Defined in: [services/securityMetricsService.ts:74](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/services/securityMetricsService.ts#L74)
+Defined in: [services/securityMetricsService.ts:74](https://github.com/Hack23/cia-compliance-manager/blob/e5798eb2d906d521a46ab269f5cbb9b8afb6f74b/src/services/securityMetricsService.ts#L74)

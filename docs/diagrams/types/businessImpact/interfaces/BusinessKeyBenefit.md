@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.43**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.44**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: BusinessKeyBenefit
 
-Defined in: [types/businessImpact.ts:250](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/types/businessImpact.ts#L250)
+Defined in: [types/businessImpact.ts:250](https://github.com/Hack23/cia-compliance-manager/blob/e5798eb2d906d521a46ab269f5cbb9b8afb6f74b/src/types/businessImpact.ts#L250)
 
 Key business benefit
 
@@ -16,7 +16,7 @@ Key business benefit
 
 > **title**: `string`
 
-Defined in: [types/businessImpact.ts:254](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/types/businessImpact.ts#L254)
+Defined in: [types/businessImpact.ts:254](https://github.com/Hack23/cia-compliance-manager/blob/e5798eb2d906d521a46ab269f5cbb9b8afb6f74b/src/types/businessImpact.ts#L254)
 
 Title of the benefit
 
@@ -26,6 +26,6 @@ Title of the benefit
 
 > **description**: `string`
 
-Defined in: [types/businessImpact.ts:259](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/types/businessImpact.ts#L259)
+Defined in: [types/businessImpact.ts:259](https://github.com/Hack23/cia-compliance-manager/blob/e5798eb2d906d521a46ab269f5cbb9b8afb6f74b/src/types/businessImpact.ts#L259)
 
 Description of the benefit

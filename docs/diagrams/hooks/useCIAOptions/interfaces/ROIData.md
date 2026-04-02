@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.43**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.44**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: ROIData
 
-Defined in: [hooks/useCIAOptions.ts:30](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/hooks/useCIAOptions.ts#L30)
+Defined in: [hooks/useCIAOptions.ts:30](https://github.com/Hack23/cia-compliance-manager/blob/e5798eb2d906d521a46ab269f5cbb9b8afb6f74b/src/hooks/useCIAOptions.ts#L30)
 
 ROI data structure containing investment analysis
 
@@ -33,7 +33,7 @@ const roiData: ROIData = {
 
 > **returnRate**: `string`
 
-Defined in: [hooks/useCIAOptions.ts:32](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/hooks/useCIAOptions.ts#L32)
+Defined in: [hooks/useCIAOptions.ts:32](https://github.com/Hack23/cia-compliance-manager/blob/e5798eb2d906d521a46ab269f5cbb9b8afb6f74b/src/hooks/useCIAOptions.ts#L32)
 
 Expected return rate as percentage (e.g., "75%", "100%")
 
@@ -43,7 +43,7 @@ Expected return rate as percentage (e.g., "75%", "100%")
 
 > **recommendation**: `string`
 
-Defined in: [hooks/useCIAOptions.ts:35](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/hooks/useCIAOptions.ts#L35)
+Defined in: [hooks/useCIAOptions.ts:35](https://github.com/Hack23/cia-compliance-manager/blob/e5798eb2d906d521a46ab269f5cbb9b8afb6f74b/src/hooks/useCIAOptions.ts#L35)
 
 Investment recommendation text
 
@@ -53,7 +53,7 @@ Investment recommendation text
 
 > **description**: `string`
 
-Defined in: [hooks/useCIAOptions.ts:38](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/hooks/useCIAOptions.ts#L38)
+Defined in: [hooks/useCIAOptions.ts:38](https://github.com/Hack23/cia-compliance-manager/blob/e5798eb2d906d521a46ab269f5cbb9b8afb6f74b/src/hooks/useCIAOptions.ts#L38)
 
 Detailed description of the investment scenario
 
@@ -63,7 +63,7 @@ Detailed description of the investment scenario
 
 > `optional` **value?**: `string`
 
-Defined in: [hooks/useCIAOptions.ts:41](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/hooks/useCIAOptions.ts#L41)
+Defined in: [hooks/useCIAOptions.ts:41](https://github.com/Hack23/cia-compliance-manager/blob/e5798eb2d906d521a46ab269f5cbb9b8afb6f74b/src/hooks/useCIAOptions.ts#L41)
 
 Optional calculated ROI value in currency
 
@@ -73,7 +73,7 @@ Optional calculated ROI value in currency
 
 > `optional` **potentialSavings?**: `string`
 
-Defined in: [hooks/useCIAOptions.ts:44](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/hooks/useCIAOptions.ts#L44)
+Defined in: [hooks/useCIAOptions.ts:44](https://github.com/Hack23/cia-compliance-manager/blob/e5798eb2d906d521a46ab269f5cbb9b8afb6f74b/src/hooks/useCIAOptions.ts#L44)
 
 Optional estimated cost savings
 
@@ -83,6 +83,6 @@ Optional estimated cost savings
 
 > `optional` **breakEvenPeriod?**: `string`
 
-Defined in: [hooks/useCIAOptions.ts:47](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/hooks/useCIAOptions.ts#L47)
+Defined in: [hooks/useCIAOptions.ts:47](https://github.com/Hack23/cia-compliance-manager/blob/e5798eb2d906d521a46ab269f5cbb9b8afb6f74b/src/hooks/useCIAOptions.ts#L47)
 
 Optional time period to break even on investment

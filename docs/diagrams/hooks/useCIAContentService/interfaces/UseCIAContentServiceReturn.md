@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.43**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.44**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: UseCIAContentServiceReturn
 
-Defined in: [hooks/useCIAContentService.ts:26](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/hooks/useCIAContentService.ts#L26)
+Defined in: [hooks/useCIAContentService.ts:26](https://github.com/Hack23/cia-compliance-manager/blob/e5798eb2d906d521a46ab269f5cbb9b8afb6f74b/src/hooks/useCIAContentService.ts#L26)
 
 Return type for useCIAContentService hook
 
@@ -32,7 +32,7 @@ const details = ciaContentService.getCIADetails('availability', 'High');
 
 > **ciaContentService**: [`CIAContentService`](../../../services/ciaContentService/classes/CIAContentService.md) \| `null`
 
-Defined in: [hooks/useCIAContentService.ts:33](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/hooks/useCIAContentService.ts#L33)
+Defined in: [hooks/useCIAContentService.ts:33](https://github.com/Hack23/cia-compliance-manager/blob/e5798eb2d906d521a46ab269f5cbb9b8afb6f74b/src/hooks/useCIAContentService.ts#L33)
 
 CIA content service instance
 
@@ -45,7 +45,7 @@ and error states before using.
 
 > **isLoading**: `boolean`
 
-Defined in: [hooks/useCIAContentService.ts:41](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/hooks/useCIAContentService.ts#L41)
+Defined in: [hooks/useCIAContentService.ts:41](https://github.com/Hack23/cia-compliance-manager/blob/e5798eb2d906d521a46ab269f5cbb9b8afb6f74b/src/hooks/useCIAContentService.ts#L41)
 
 Loading state indicator
 
@@ -58,7 +58,7 @@ Use to show loading UI.
 
 > **error**: `Error` \| `null`
 
-Defined in: [hooks/useCIAContentService.ts:49](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/hooks/useCIAContentService.ts#L49)
+Defined in: [hooks/useCIAContentService.ts:49](https://github.com/Hack23/cia-compliance-manager/blob/e5798eb2d906d521a46ab269f5cbb9b8afb6f74b/src/hooks/useCIAContentService.ts#L49)
 
 Error object if initialization failed
 
@@ -71,7 +71,7 @@ Use to show error UI and provide retry option.
 
 > **refresh**: () => `void`
 
-Defined in: [hooks/useCIAContentService.ts:66](https://github.com/Hack23/cia-compliance-manager/blob/7480c7701ec22b1ca8552397b5561472bfc309a1/src/hooks/useCIAContentService.ts#L66)
+Defined in: [hooks/useCIAContentService.ts:66](https://github.com/Hack23/cia-compliance-manager/blob/e5798eb2d906d521a46ab269f5cbb9b8afb6f74b/src/hooks/useCIAContentService.ts#L66)
 
 Function to retry service initialization
 
