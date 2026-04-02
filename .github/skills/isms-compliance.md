@@ -491,19 +491,17 @@ Requirements:
 ```bash
 # Run before committing
 npm run lint              # Code style compliance
-npm run type-check        # Type safety compliance
 npm run test              # Functional compliance
-npm run audit             # Dependency vulnerability check
+npm audit                 # Dependency vulnerability check
 npm run coverage          # Test coverage validation
 ```
 
 ### Pre-PR Checks
 ```bash
 # Run before creating PR
-npm run build             # Build succeeds
+npm run build             # Build succeeds (includes TypeScript strict checks)
 npm run test:e2e          # E2E tests pass
-npm run audit:report      # Generate vulnerability report
-npm run bundle-analysis   # Check bundle size compliance
+npm audit                 # Dependency vulnerability check
 ```
 
 ### Documentation Checks
