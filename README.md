@@ -10,6 +10,7 @@
 </p>
 
 [![GitHub Release](https://img.shields.io/github/v/release/Hack23/cia-compliance-manager)](https://github.com/Hack23/cia-compliance-manager/releases) 
+[![NPM Release](https://img.shields.io/npm/v/cia-compliance-manager.svg)](https://www.npmjs.com/package/cia-compliance-manager)
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/Hack23/cia-compliance-manager)
 
 **🔐 ISMS Framework Compliance:**
