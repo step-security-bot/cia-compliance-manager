@@ -1,7 +1,12 @@
 /* Component-specific styles */
 
+/* Ensure hidden tab panels are never shown regardless of other selectors */
+[role="tabpanel"][hidden] {
+  display: none;
+}
+
 /* Widget styles aligned with actual DOM structure */
-[data-testid^="widget-"] {
+[data-testid^="widget-"]:where(:not([role="tabpanel"])) {
   border-radius: 0.5rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -14,17 +19,17 @@
   transition: all 0.2s;
 }
 
-.dark [data-testid^="widget-"] {
+.dark [data-testid^="widget-"]:where(:not([role="tabpanel"])) {
   background-color: var(--card-background);
   border: 1px solid var(--border-color);
 }
 
-[data-testid^="widget-"]:hover {
+[data-testid^="widget-"]:where(:not([role="tabpanel"])):hover {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
-.dark [data-testid^="widget-"]:hover {
+.dark [data-testid^="widget-"]:where(:not([role="tabpanel"])):hover {
   box-shadow: 0 0 15px rgba(0, 204, 102, 0.2);
 }
 
@@ -238,7 +243,7 @@ input:focus {
 
 /* Widget header styling aligned with CIAClassificationApp structure */
 .border-b.border-gray-200.dark\:border-gray-700.px-4.py-3.flex.justify-between.items-center,
-[data-testid^="widget-"] > div:first-child {
+[data-testid^="widget-"]:where(:not([role="tabpanel"])) > div:first-child {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -255,7 +260,7 @@ input:focus {
 }
 
 /* Reduce header text size and make it green */
-[data-testid^="widget-"] > div:first-child h3,
+[data-testid^="widget-"]:where(:not([role="tabpanel"])) > div:first-child h3,
 .border-b.border-gray-200.dark\:border-gray-700.px-4.py-3.flex.justify-between.items-center
   h3 {
   margin: 0;
@@ -270,7 +275,7 @@ input:focus {
 }
 
 /* Widget content area aligned with CIAClassificationApp structure */
-[data-testid^="widget-"] > div.p-4 {
+[data-testid^="widget-"]:where(:not([role="tabpanel"])) > div.p-4 {
   padding: 0.75rem; /* Consistent padding without !important */
   flex: 1 1 auto;
   overflow-y: auto; /* Change to auto for better scrolling */
@@ -1221,7 +1226,7 @@ textarea:focus {
 }
 
 /* Standardize widget content overflow handling */
-[data-testid^="widget-"] > div.p-4,
+[data-testid^="widget-"]:where(:not([role="tabpanel"])) > div.p-4,
 .widget-body {
   overflow-y: auto !important; /* Enable vertical scrolling */
   overflow-x: hidden !important; /* Prevent horizontal scrolling */
@@ -1233,19 +1238,19 @@ textarea:focus {
 }
 
 /* Optimize scrollbars */
-[data-testid^="widget-"] > div.p-4::-webkit-scrollbar,
+[data-testid^="widget-"]:where(:not([role="tabpanel"])) > div.p-4::-webkit-scrollbar,
 .widget-body::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
-[data-testid^="widget-"] > div.p-4::-webkit-scrollbar-thumb,
+[data-testid^="widget-"]:where(:not([role="tabpanel"])) > div.p-4::-webkit-scrollbar-thumb,
 .widget-body::-webkit-scrollbar-thumb {
   background: var(--primary-color);
   border-radius: 3px;
 }
 
-.dark [data-testid^="widget-"] > div.p-4::-webkit-scrollbar-thumb,
+.dark [data-testid^="widget-"]:where(:not([role="tabpanel"])) > div.p-4::-webkit-scrollbar-thumb,
 .dark .widget-body::-webkit-scrollbar-thumb {
   background: rgba(0, 204, 255, 0.5);
 }
@@ -2316,11 +2321,7 @@ button.more-info:hover::before {
 
 /* Ensure tab gap is consistent within widgets without overriding Tailwind utilities */
 [data-testid^="widget-"] nav.flex,
-[data-testid^="widget-"] nav[role="tablist"],
-[data-testid="widget-security-summary"] nav.flex,
-[data-testid="widget-security-summary"] nav[role="tablist"],
-[data-testid="widget-business-impact"] nav.flex,
-[data-testid="widget-business-impact"] nav[role="tablist"] {
+[data-testid^="widget-"] nav[role="tablist"] {
   gap: 0.375rem; /* Consistent spacing between tabs */
 }
 
@@ -2377,21 +2378,15 @@ button[role="tab"]:not([aria-selected="true"]) {
 }
 
 /* Tab content area styling - reduce empty space */
-/* Use exact class selector instead of substring matching */
 [data-testid^="widget-"] .tab-content,
-[data-testid^="widget-"] div.tab-content,
-[data-testid="widget-security-summary"] .tab-content,
-[data-testid="widget-security-summary"] div.tab-content,
-[data-testid="widget-business-impact"] .tab-content,
-[data-testid="widget-business-impact"] div.tab-content {
+[data-testid^="widget-"] div.tab-content {
   padding: 0;
   margin-top: 0.75rem;
 }
 
 /* Tab panels should have consistent minimal padding - use semantic ARIA attributes */
-[data-testid^="widget-"] [role="tabpanel"],
-[data-testid="widget-security-summary"] [role="tabpanel"],
-[data-testid="widget-business-impact"] [role="tabpanel"] {
+/* Only apply padding to visible (not hidden) tab panels */
+[data-testid^="widget-"] [role="tabpanel"]:not([hidden]) {
   padding: 0.5rem 0;
 }
 
