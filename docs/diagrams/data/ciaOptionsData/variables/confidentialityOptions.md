@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.44**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.45**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **confidentialityOptions**: `Record`\<[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md), [`CIADetails`](../../../types/cia-services/interfaces/CIADetails.md)\> = `confidentialityData`
 
-Defined in: [data/ciaOptionsData.ts:28](https://github.com/Hack23/cia-compliance-manager/blob/e5798eb2d906d521a46ab269f5cbb9b8afb6f74b/src/data/ciaOptionsData.ts#L28)
+Defined in: [data/ciaOptionsData.ts:28](https://github.com/Hack23/cia-compliance-manager/blob/568723154325dac17085672acf7cf8f6076f6c87/src/data/ciaOptionsData.ts#L28)
 
 Confidentiality options derived from security module.
 Ensures data confidentiality and privacy.

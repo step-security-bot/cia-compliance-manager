@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.44**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.45**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **INDUSTRY\_SECTORS**: `object`
 
-Defined in: [constants/complianceConstants.ts:82](https://github.com/Hack23/cia-compliance-manager/blob/e5798eb2d906d521a46ab269f5cbb9b8afb6f74b/src/constants/complianceConstants.ts#L82)
+Defined in: [constants/complianceConstants.ts:82](https://github.com/Hack23/cia-compliance-manager/blob/568723154325dac17085672acf7cf8f6076f6c87/src/constants/complianceConstants.ts#L82)
 
 Industry sectors for compliance
 

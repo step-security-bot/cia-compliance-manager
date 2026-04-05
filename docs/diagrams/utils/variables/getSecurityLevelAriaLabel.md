@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.44**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.45**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getSecurityLevelAriaLabel**: (`level`, `component`) => `string`
 
-Defined in: [utils/index.ts:37](https://github.com/Hack23/cia-compliance-manager/blob/e5798eb2d906d521a46ab269f5cbb9b8afb6f74b/src/utils/index.ts#L37)
+Defined in: [utils/index.ts:37](https://github.com/Hack23/cia-compliance-manager/blob/568723154325dac17085672acf7cf8f6076f6c87/src/utils/index.ts#L37)
 
 Create an accessible label for a security level
 

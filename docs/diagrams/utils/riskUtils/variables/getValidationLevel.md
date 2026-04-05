@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.44**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.45**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **getValidationLevel**: (`level`) => `string` = `getDefaultValidationLevel`
 
-Defined in: [utils/riskUtils.ts:33](https://github.com/Hack23/cia-compliance-manager/blob/e5798eb2d906d521a46ab269f5cbb9b8afb6f74b/src/utils/riskUtils.ts#L33)
+Defined in: [utils/riskUtils.ts:33](https://github.com/Hack23/cia-compliance-manager/blob/568723154325dac17085672acf7cf8f6076f6c87/src/utils/riskUtils.ts#L33)
 
 Get default validation level for a security level
 
