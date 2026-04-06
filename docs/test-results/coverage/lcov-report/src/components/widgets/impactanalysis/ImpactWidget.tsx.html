@@ -558,7 +558,9 @@
 <a name='L493'></a><a href='#L493'>493</a>
 <a name='L494'></a><a href='#L494'>494</a>
 <a name='L495'></a><a href='#L495'>495</a>
-<a name='L496'></a><a href='#L496'>496</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L496'></a><a href='#L496'>496</a>
+<a name='L497'></a><a href='#L497'>497</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1078,6 +1080,7 @@ import { getSecurityLevelBackgroundClass } from "../../../utils/colorUtils";
 import { normalizeSecurityLevel } from "../../../utils/securityLevelUtils";
 import { getWidgetAriaDescription } from "../../../utils/accessibility";
 import { getCIAColors } from "../../../utils/ciaColorUtils";
+import { WidgetClasses, cn } from "../../../utils/tailwindClassHelpers";
 import BusinessImpactSection from "../../common/BusinessImpactSection";
 import MetricCard from "../../common/MetricCard";
 import SecurityLevelBadge from "../../common/SecurityLevelBadge";
@@ -1359,13 +1362,13 @@ const ImpactWidget = React.memo&lt;ImpactWidgetProps&gt;(({
         error={error}
       &gt;
         &lt;div
-          className="p-sm space-y-sm"
+          className={cn("p-sm space-y-sm")}
           role="region"
           aria-label={getWidgetAriaDescription(config.defaultTitle, config.ariaDescription)}
         &gt;
           {/* Security level indicator */}
           &lt;section
-            className="mb-sm"
+            className={cn("mb-sm")}
             aria-labelledby={`${component}-level-heading`}
           &gt;
             &lt;h3 id={`${component}-level-heading`} className="sr-only"&gt;
@@ -1383,10 +1386,10 @@ const ImpactWidget = React.memo&lt;ImpactWidgetProps&gt;(({
           {/* Business Impact Analysis */}
           {businessImpact &amp;&amp; (
             &lt;section
-              className="mb-sm"
+              className={cn("mb-sm")}
               aria-labelledby={`${component}-business-impact-heading`}
             &gt;
-              &lt;h3 id={`${component}-business-impact-heading`} className="text-body-lg font-semibold text-gray-800 dark:text-gray-100 mb-sm"&gt;
+              &lt;h3 id={`${component}-business-impact-heading`} className={cn(WidgetClasses.subheading, "font-semibold mb-sm")}&gt;
                 Business Impact
               &lt;/h3&gt;
               &lt;BusinessImpactSection
@@ -1408,7 +1411,7 @@ const ImpactWidget = React.memo&lt;ImpactWidgetProps&gt;(({
               testId={testIds.widgetIds.section("sla-metrics")}
             &gt;
               &lt;div
-                className="grid grid-cols-1 md:grid-cols-3 gap-sm mb-sm"
+                className={cn("grid grid-cols-1 md:grid-cols-3 gap-sm mb-sm")}
                 role="group"
                 aria-label="Service level agreement metrics"
               &gt;
@@ -1437,7 +1440,7 @@ const ImpactWidget = React.memo&lt;ImpactWidgetProps&gt;(({
                   testId={testIds.widgetIds.label("rpo")}
                 /&gt;
               &lt;/div&gt;
-              &lt;div className="grid grid-cols-1 md:grid-cols-2 gap-sm"&gt;
+              &lt;div className={cn("grid grid-cols-1 md:grid-cols-2 gap-sm")}&gt;
                 &lt;MetricCard
                   label="Service Level Agreement"
                   value={metrics.data.sla}
@@ -1458,7 +1461,7 @@ const ImpactWidget = React.memo&lt;ImpactWidgetProps&gt;(({
               className="mb-sm"
               testId={testIds.widgetIds.section("metrics")}
             &gt;
-              &lt;div className="grid grid-cols-1 md:grid-cols-2 gap-sm"&gt;
+              &lt;div className={cn("grid grid-cols-1 md:grid-cols-2 gap-sm")}&gt;
                 &lt;MetricCard
                   label="Data Validation Controls"
                   value={metrics.data.validationLevel}
@@ -1486,7 +1489,7 @@ const ImpactWidget = React.memo&lt;ImpactWidgetProps&gt;(({
                 className="mb-sm"
                 testId={testIds.widgetIds.section("data-protection")}
               &gt;
-                &lt;div className="grid grid-cols-1 md:grid-cols-2 gap-sm"&gt;
+                &lt;div className={cn("grid grid-cols-1 md:grid-cols-2 gap-sm")}&gt;
                   &lt;MetricCard
                     label="Data Classification"
                     value={metrics.data.dataClassification}
@@ -1505,7 +1508,7 @@ const ImpactWidget = React.memo&lt;ImpactWidgetProps&gt;(({
                 className="mb-sm"
                 testId={testIds.widgetIds.section("privacy-impact")}
               &gt;
-                &lt;div className="grid grid-cols-1 lg:grid-cols-2 gap-sm"&gt;
+                &lt;div className={cn("grid grid-cols-1 lg:grid-cols-2 gap-sm")}&gt;
                   &lt;MetricCard
                     label="Privacy Impact"
                     value={metrics.data.privacyImpact}
@@ -1524,13 +1527,13 @@ const ImpactWidget = React.memo&lt;ImpactWidgetProps&gt;(({
             This maintains backward compatibility with the existing API.
           */}
           {showExtendedDetails &amp;&amp; component === "integrity" &amp;&amp; recommendations.length &gt; 0 &amp;&amp; (
-            &lt;div className="mt-md"&gt;
-              &lt;h3 className="text-lg font-medium mb-sm"&gt;Recommendations&lt;/h3&gt;
-              &lt;ul className="list-disc pl-5 space-y-sm"&gt;
+            &lt;div className={cn("mt-md")}&gt;
+              &lt;h3 className={cn(WidgetClasses.subheading, "text-lg")}&gt;Recommendations&lt;/h3&gt;
+              &lt;ul className={cn("list-disc pl-5 space-y-sm")}&gt;
                 {recommendations.map((rec, index) =&gt; (
                   &lt;li
                     key={index}
-                    className="text-sm text-gray-600 dark:text-gray-400"
+                    className={cn(WidgetClasses.body, "text-sm")}
                   &gt;
                     {rec}
                   &lt;/li&gt;
@@ -1555,7 +1558,7 @@ export default ImpactWidget;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-04-05T01:32:29.691Z
+                at 2026-04-06T19:34:22.361Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

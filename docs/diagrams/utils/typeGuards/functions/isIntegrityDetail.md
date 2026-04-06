@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.45**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.46**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **isIntegrityDetail**(`obj`): `obj is IntegrityDetail`
 
-Defined in: [utils/typeGuards.ts:72](https://github.com/Hack23/cia-compliance-manager/blob/568723154325dac17085672acf7cf8f6076f6c87/src/utils/typeGuards.ts#L72)
+Defined in: [utils/typeGuards.ts:72](https://github.com/Hack23/cia-compliance-manager/blob/3c2111b159a69ffb9dbeb7d56f278f1f19203de4/src/utils/typeGuards.ts#L72)
 
 Type guard to check if an object is an IntegrityDetail
 

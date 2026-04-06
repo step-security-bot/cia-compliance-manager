@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.45**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.46**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > `const` **securityResources**: [`SecurityResource`](../../../types/securityResources/interfaces/SecurityResource.md)[]
 
-Defined in: [data/securityResources.ts:6](https://github.com/Hack23/cia-compliance-manager/blob/568723154325dac17085672acf7cf8f6076f6c87/src/data/securityResources.ts#L6)
+Defined in: [data/securityResources.ts:6](https://github.com/Hack23/cia-compliance-manager/blob/3c2111b159a69ffb9dbeb7d56f278f1f19203de4/src/data/securityResources.ts#L6)
 
 Security resources for development and production use

@@ -427,7 +427,9 @@
 <a name='L362'></a><a href='#L362'>362</a>
 <a name='L363'></a><a href='#L363'>363</a>
 <a name='L364'></a><a href='#L364'>364</a>
-<a name='L365'></a><a href='#L365'>365</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L365'></a><a href='#L365'>365</a>
+<a name='L366'></a><a href='#L366'>366</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -810,6 +812,7 @@ import {
   normalizeSecurityLevel,
 } from "../../../utils/securityLevelUtils";
 import { getWidgetAriaDescription } from "../../../utils/accessibility";
+import { WidgetClasses, cn } from "../../../utils/tailwindClassHelpers";
 import RadarChart from "../../charts/RadarChart";
 import SecurityLevelIndicator from "../../common/SecurityLevelIndicator";
 import WidgetContainer from "../../common/WidgetContainer";
@@ -887,9 +890,9 @@ const SecurityVisualizationWidget: React.FC&lt;
 <span class="cstat-no" title="statement not covered" >        return (</span>
           &lt;div
             data-testid={SECURITY_VISUALIZATION_WIDGET_IDS.section('balanced-recommendation')}
-            className="p-md bg-green-50 dark:bg-green-900/20 rounded-lg mt-md"
+            className={cn("p-md bg-green-50 dark:bg-green-900/20 rounded-lg mt-md")}
           &gt;
-            &lt;p className="text-sm"&gt;
+            &lt;p className={cn(WidgetClasses.body, "text-sm")}&gt;
               Your security posture is well-balanced with strong controls across
               all CIA components.
             &lt;/p&gt;
@@ -900,26 +903,26 @@ const SecurityVisualizationWidget: React.FC&lt;
 &nbsp;
     // Component-specific recommendations
     return (
-      &lt;div className="space-y-xs mt-md" data-testid={SECURITY_VISUALIZATION_WIDGET_IDS.section('recommendations')}&gt;
+      &lt;div className={cn("space-y-xs mt-md")} data-testid={SECURITY_VISUALIZATION_WIDGET_IDS.section('recommendations')}&gt;
         {availabilityValue &lt; 2 &amp;&amp; (
-<span class="branch-1 cbranch-no" title="branch not covered" >          &lt;div className="p-sm bg-info-light/10 dark:bg-info-dark/20 rounded"&gt;</span>
-            &lt;p className="text-sm"&gt;
+<span class="branch-1 cbranch-no" title="branch not covered" >          &lt;div className={cn("p-sm bg-info-light/10 dark:bg-info-dark/20 rounded")}&gt;</span>
+            &lt;p className={cn(WidgetClasses.body, "text-sm")}&gt;
               Consider improving availability controls to ensure business
               continuity.
             &lt;/p&gt;
           &lt;/div&gt;
         )}
         {integrityValue &lt; 3 &amp;&amp; (
-          &lt;div className="p-sm bg-success-light/10 dark:bg-success-dark/20 rounded"&gt;
-            &lt;p className="text-sm"&gt;
+          &lt;div className={cn("p-sm bg-success-light/10 dark:bg-success-dark/20 rounded")}&gt;
+            &lt;p className={cn(WidgetClasses.body, "text-sm")}&gt;
               Enhance data validation mechanisms and change management to
               improve integrity.
             &lt;/p&gt;
           &lt;/div&gt;
         )}
         {confidentialityValue &lt; 2 &amp;&amp; (
-<span class="branch-1 cbranch-no" title="branch not covered" >          &lt;div className="p-sm bg-primary-light/10 dark:bg-primary-dark/20 rounded-md"&gt;</span>
-            &lt;p className="text-sm"&gt;
+<span class="branch-1 cbranch-no" title="branch not covered" >          &lt;div className={cn("p-sm bg-primary-light/10 dark:bg-primary-dark/20 rounded-md")}&gt;</span>
+            &lt;p className={cn(WidgetClasses.body, "text-sm")}&gt;
               Strengthen access controls and data protection to improve
               confidentiality.
             &lt;/p&gt;
@@ -940,7 +943,7 @@ const SecurityVisualizationWidget: React.FC&lt;
         error={error}
       &gt;
       &lt;div 
-        className="p-md sm:p-lg"
+        className={cn("p-md sm:p-lg")}
         role="region"
         aria-label={getWidgetAriaDescription(
           "Security Visualization",
@@ -949,18 +952,18 @@ const SecurityVisualizationWidget: React.FC&lt;
       &gt;
         {/* Security score section */}
         &lt;section 
-          className="mb-lg"
+          className={cn(WidgetClasses.section)}
           aria-labelledby="security-posture-heading"
         &gt;
-          &lt;h3 id="security-posture-heading" className="text-subheading font-medium mb-md"&gt;Security Posture&lt;/h3&gt;
+          &lt;h3 id="security-posture-heading" className={cn(WidgetClasses.subheading)}&gt;Security Posture&lt;/h3&gt;
           &lt;div 
-            className="p-md bg-neutral-light/10 dark:bg-neutral-dark/20 rounded-md"
+            className={cn("p-md bg-neutral-light/10 dark:bg-neutral-dark/20 rounded-md")}
             role="group"
             aria-label="Security metrics"
           &gt;
-            &lt;div className="flex justify-between items-center mb-md"&gt;
+            &lt;div className={cn("flex justify-between items-center mb-md")}&gt;
               &lt;div&gt;
-                &lt;div className="text-body text-gray-600 dark:text-gray-400"&gt;
+                &lt;div className={cn(WidgetClasses.body)}&gt;
                   Security Score
                 &lt;/div&gt;
                 &lt;div
@@ -972,7 +975,7 @@ const SecurityVisualizationWidget: React.FC&lt;
                 &lt;/div&gt;
               &lt;/div&gt;
               &lt;div&gt;
-                &lt;div className="text-body text-gray-600 dark:text-gray-400"&gt;
+                &lt;div className={cn(WidgetClasses.body)}&gt;
                   Risk Level
                 &lt;/div&gt;
                 &lt;div
@@ -989,11 +992,11 @@ const SecurityVisualizationWidget: React.FC&lt;
             &lt;/div&gt;
 &nbsp;
             {/* Score gauge */}
-            &lt;div className="mb-sm" aria-label="Security score visualization"&gt;
-              &lt;div className="text-caption text-gray-600 dark:text-gray-400 mb-xs"&gt;
+            &lt;div className={cn("mb-sm")} aria-label="Security score visualization"&gt;
+              &lt;div className={cn(WidgetClasses.body, "text-caption mb-xs")}&gt;
                 Security Level
               &lt;/div&gt;
-              &lt;div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5"&gt;
+              &lt;div className={cn("w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5")}&gt;
                 &lt;div
                   className={`h-2.5 rounded-full ${getSecurityScoreColorClass(
                     securityScore
@@ -1002,7 +1005,7 @@ const SecurityVisualizationWidget: React.FC&lt;
                   data-testid={SECURITY_VISUALIZATION_WIDGET_IDS.section('security-score-bar')}
                 &gt;&lt;/div&gt;
               &lt;/div&gt;
-              &lt;div className="flex justify-between text-caption text-gray-600 dark:text-gray-400 mt-xs"&gt;
+              &lt;div className={cn(WidgetClasses.body, "flex justify-between text-caption mt-xs")}&gt;
                 &lt;div&gt;Critical&lt;/div&gt;
                 &lt;div&gt;High&lt;/div&gt;
                 &lt;div&gt;Medium&lt;/div&gt;
@@ -1014,11 +1017,11 @@ const SecurityVisualizationWidget: React.FC&lt;
         &lt;/section&gt;
 &nbsp;
         {/* Security Radar Chart using existing component */}
-        &lt;div className="mb-lg"&gt;
-          &lt;h3 className="text-subheading font-medium mb-md"&gt;Security Components&lt;/h3&gt;
+        &lt;div className={cn(WidgetClasses.section)}&gt;
+          &lt;h3 className={cn(WidgetClasses.subheading)}&gt;Security Components&lt;/h3&gt;
 &nbsp;
           {/* Reuse the RadarChart component with responsive container */}
-          &lt;div className="p-md bg-white dark:bg-gray-800 rounded-md border border-neutral-light dark:border-neutral-dark"&gt;
+          &lt;div className={cn(WidgetClasses.cardWhite, "p-md border-neutral-light dark:border-neutral-dark")}&gt;
             &lt;div className="w-full aspect-square max-h-[400px] mx-auto"&gt;
               &lt;RadarChart
                 availabilityLevel={availabilityLevel}
@@ -1031,15 +1034,15 @@ const SecurityVisualizationWidget: React.FC&lt;
         &lt;/div&gt;
 &nbsp;
         {/* Component Details Section */}
-        &lt;div className="mb-lg"&gt;
-          &lt;h3 className="text-subheading font-medium mb-md"&gt;Component Details&lt;/h3&gt;
-          &lt;div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-sm"&gt;
+        &lt;div className={cn(WidgetClasses.section)}&gt;
+          &lt;h3 className={cn(WidgetClasses.subheading)}&gt;Component Details&lt;/h3&gt;
+          &lt;div className={cn("grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-sm")}&gt;
             {/* Confidentiality component */}
             &lt;div
-              className="p-md bg-primary-light/10 dark:bg-primary-dark/20 rounded-md"
+              className={cn("p-md bg-primary-light/10 dark:bg-primary-dark/20 rounded-md")}
               data-testid={SECURITY_VISUALIZATION_WIDGET_IDS.section('confidentiality-component')}
             &gt;
-              &lt;div className="flex items-center justify-between mb-sm"&gt;
+              &lt;div className={cn("flex items-center justify-between mb-sm")}&gt;
                 &lt;div className="text-body-lg font-medium text-primary-dark dark:text-primary-light"&gt;
                   Confidentiality
                 &lt;/div&gt;
@@ -1048,9 +1051,9 @@ const SecurityVisualizationWidget: React.FC&lt;
                   testId="confidentiality-level-indicator"
                 /&gt;
               &lt;/div&gt;
-              &lt;div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5"&gt;
+              &lt;div className={cn("w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5")}&gt;
                 &lt;div
-                  className="bg-primary h-1.5 rounded-full"
+                  className={cn("bg-primary h-1.5 rounded-full")}
                   style={{
                     width: `${
                       (getSecurityLevelValue(confidentialityLevel) / 4) * 100
@@ -1063,10 +1066,10 @@ const SecurityVisualizationWidget: React.FC&lt;
 &nbsp;
             {/* Integrity component */}
             &lt;div
-              className="p-md bg-green-50 dark:bg-green-900/20 rounded-lg"
+              className={cn("p-md bg-green-50 dark:bg-green-900/20 rounded-lg")}
               data-testid={SECURITY_VISUALIZATION_WIDGET_IDS.section('integrity-component')}
             &gt;
-              &lt;div className="flex items-center justify-between mb-sm"&gt;
+              &lt;div className={cn("flex items-center justify-between mb-sm")}&gt;
                 &lt;div className="text-body-lg font-medium text-green-800 dark:text-green-300"&gt;
                   Integrity
                 &lt;/div&gt;
@@ -1075,9 +1078,9 @@ const SecurityVisualizationWidget: React.FC&lt;
                   testId="integrity-level-indicator"
                 /&gt;
               &lt;/div&gt;
-              &lt;div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5"&gt;
+              &lt;div className={cn("w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5")}&gt;
                 &lt;div
-                  className="bg-green-500 h-1.5 rounded-full"
+                  className={cn("bg-green-500 h-1.5 rounded-full")}
                   style={{
                     width: `${
                       (getSecurityLevelValue(integrityLevel) / 4) * 100
@@ -1090,10 +1093,10 @@ const SecurityVisualizationWidget: React.FC&lt;
 &nbsp;
             {/* Availability component */}
             &lt;div
-              className="p-md bg-blue-50 dark:bg-blue-900/20 rounded-lg"
+              className={cn("p-md bg-blue-50 dark:bg-blue-900/20 rounded-lg")}
               data-testid={SECURITY_VISUALIZATION_WIDGET_IDS.section('availability-component')}
             &gt;
-              &lt;div className="flex items-center justify-between mb-sm"&gt;
+              &lt;div className={cn("flex items-center justify-between mb-sm")}&gt;
                 &lt;div className="text-body-lg font-medium text-blue-800 dark:text-blue-300"&gt;
                   Availability
                 &lt;/div&gt;
@@ -1102,9 +1105,9 @@ const SecurityVisualizationWidget: React.FC&lt;
                   testId="availability-level-indicator"
                 /&gt;
               &lt;/div&gt;
-              &lt;div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5"&gt;
+              &lt;div className={cn("w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5")}&gt;
                 &lt;div
-                  className="bg-blue-500 h-1.5 rounded-full"
+                  className={cn("bg-blue-500 h-1.5 rounded-full")}
                   style={{
                     width: `${
                       (getSecurityLevelValue(availabilityLevel) / 4) * 100
@@ -1121,29 +1124,29 @@ const SecurityVisualizationWidget: React.FC&lt;
         {getSecurityRecommendations()}
 &nbsp;
         {/* Explanation section */}
-        &lt;div className="p-md bg-blue-50 dark:bg-blue-900/20 rounded-lg mt-md"&gt;
-          &lt;h3 className="text-body-lg font-medium mb-sm"&gt;
+        &lt;div className={cn("p-md bg-blue-50 dark:bg-blue-900/20 rounded-lg mt-md")}&gt;
+          &lt;h3 className={cn("text-body-lg font-medium mb-sm")}&gt;
             Security Visualization Key
           &lt;/h3&gt;
-          &lt;p className="text-body text-gray-600 dark:text-gray-400 mb-sm"&gt;
+          &lt;p className={cn(WidgetClasses.body, "mb-sm")}&gt;
             The security score represents your overall security posture based on
             your CIA triad levels. The risk level indicates the potential
             business risk associated with your current security posture.
           &lt;/p&gt;
-          &lt;div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-sm text-xs"&gt;
-            &lt;div className="p-xs bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300 rounded text-center"&gt;
+          &lt;div className={cn("grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-sm text-xs")}&gt;
+            &lt;div className={cn("p-xs bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300 rounded text-center")}&gt;
               Critical Risk
             &lt;/div&gt;
-            &lt;div className="p-xs bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300 rounded text-center"&gt;
+            &lt;div className={cn("p-xs bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300 rounded text-center")}&gt;
               High Risk
             &lt;/div&gt;
-            &lt;div className="p-xs bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300 rounded text-center"&gt;
+            &lt;div className={cn("p-xs bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300 rounded text-center")}&gt;
               Medium Risk
             &lt;/div&gt;
-            &lt;div className="p-xs bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300 rounded text-center"&gt;
+            &lt;div className={cn("p-xs bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300 rounded text-center")}&gt;
               Low Risk
             &lt;/div&gt;
-            &lt;div className="p-xs bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 rounded text-center"&gt;
+            &lt;div className={cn("p-xs bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 rounded text-center")}&gt;
               Minimal Risk
             &lt;/div&gt;
           &lt;/div&gt;
@@ -1162,7 +1165,7 @@ export default SecurityVisualizationWidget;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-04-05T01:32:29.691Z
+                at 2026-04-06T19:34:22.361Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
