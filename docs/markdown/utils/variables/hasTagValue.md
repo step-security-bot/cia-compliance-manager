@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.46**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.47**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **hasTagValue**: (`obj`, `tagValue`) => `boolean`
 
-Defined in: [utils/index.ts:202](https://github.com/Hack23/cia-compliance-manager/blob/3c2111b159a69ffb9dbeb7d56f278f1f19203de4/src/utils/index.ts#L202)
+Defined in: [utils/index.ts:202](https://github.com/Hack23/cia-compliance-manager/blob/0a914ff8809ea300c13e0a51b2ef582dc0e7a4a4/src/utils/index.ts#L202)
 
 Checks if an object has a specific tag value
 

@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.46**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.47**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: SLAMetrics
 
-Defined in: [types/businessImpact.ts:160](https://github.com/Hack23/cia-compliance-manager/blob/3c2111b159a69ffb9dbeb7d56f278f1f19203de4/src/types/businessImpact.ts#L160)
+Defined in: [types/businessImpact.ts:160](https://github.com/Hack23/cia-compliance-manager/blob/0a914ff8809ea300c13e0a51b2ef582dc0e7a4a4/src/types/businessImpact.ts#L160)
 
 Service level agreement metrics
 
@@ -16,7 +16,7 @@ Service level agreement metrics
 
 > **uptime**: `string`
 
-Defined in: [types/businessImpact.ts:162](https://github.com/Hack23/cia-compliance-manager/blob/3c2111b159a69ffb9dbeb7d56f278f1f19203de4/src/types/businessImpact.ts#L162)
+Defined in: [types/businessImpact.ts:162](https://github.com/Hack23/cia-compliance-manager/blob/0a914ff8809ea300c13e0a51b2ef582dc0e7a4a4/src/types/businessImpact.ts#L162)
 
 Uptime target (e.g., "99.9%")
 
@@ -26,7 +26,7 @@ Uptime target (e.g., "99.9%")
 
 > `optional` **rto?**: `string`
 
-Defined in: [types/businessImpact.ts:165](https://github.com/Hack23/cia-compliance-manager/blob/3c2111b159a69ffb9dbeb7d56f278f1f19203de4/src/types/businessImpact.ts#L165)
+Defined in: [types/businessImpact.ts:165](https://github.com/Hack23/cia-compliance-manager/blob/0a914ff8809ea300c13e0a51b2ef582dc0e7a4a4/src/types/businessImpact.ts#L165)
 
 Recovery Time Objective
 
@@ -36,7 +36,7 @@ Recovery Time Objective
 
 > `optional` **rpo?**: `string`
 
-Defined in: [types/businessImpact.ts:168](https://github.com/Hack23/cia-compliance-manager/blob/3c2111b159a69ffb9dbeb7d56f278f1f19203de4/src/types/businessImpact.ts#L168)
+Defined in: [types/businessImpact.ts:168](https://github.com/Hack23/cia-compliance-manager/blob/0a914ff8809ea300c13e0a51b2ef582dc0e7a4a4/src/types/businessImpact.ts#L168)
 
 Recovery Point Objective
 
@@ -46,6 +46,6 @@ Recovery Point Objective
 
 > `optional` **mttr?**: `string`
 
-Defined in: [types/businessImpact.ts:171](https://github.com/Hack23/cia-compliance-manager/blob/3c2111b159a69ffb9dbeb7d56f278f1f19203de4/src/types/businessImpact.ts#L171)
+Defined in: [types/businessImpact.ts:171](https://github.com/Hack23/cia-compliance-manager/blob/0a914ff8809ea300c13e0a51b2ef582dc0e7a4a4/src/types/businessImpact.ts#L171)
 
 Mean Time to Recover

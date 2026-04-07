@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.46**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.47**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **isValidCIADetail**(`detail`): `detail is CIADetails`
 
-Defined in: [utils/typeGuards.ts:102](https://github.com/Hack23/cia-compliance-manager/blob/3c2111b159a69ffb9dbeb7d56f278f1f19203de4/src/utils/typeGuards.ts#L102)
+Defined in: [utils/typeGuards.ts:102](https://github.com/Hack23/cia-compliance-manager/blob/0a914ff8809ea300c13e0a51b2ef582dc0e7a4a4/src/utils/typeGuards.ts#L102)
 
 Type guard to check if a CIA detail object exists
 

@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.46**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.47**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Class: ServiceError
 
-Defined in: [services/errors.ts:73](https://github.com/Hack23/cia-compliance-manager/blob/3c2111b159a69ffb9dbeb7d56f278f1f19203de4/src/services/errors.ts#L73)
+Defined in: [services/errors.ts:73](https://github.com/Hack23/cia-compliance-manager/blob/0a914ff8809ea300c13e0a51b2ef582dc0e7a4a4/src/services/errors.ts#L73)
 
 Custom error class for service operations
 
@@ -23,7 +23,7 @@ for better debugging and error handling.
 
 > **new ServiceError**(`message`, `code?`, `context?`, `cause?`): `ServiceError`
 
-Defined in: [services/errors.ts:102](https://github.com/Hack23/cia-compliance-manager/blob/3c2111b159a69ffb9dbeb7d56f278f1f19203de4/src/services/errors.ts#L102)
+Defined in: [services/errors.ts:102](https://github.com/Hack23/cia-compliance-manager/blob/0a914ff8809ea300c13e0a51b2ef582dc0e7a4a4/src/services/errors.ts#L102)
 
 Create a new ServiceError
 
@@ -67,7 +67,7 @@ Original error that caused this error
 
 > `readonly` **code**: [`ServiceErrorCode`](../enumerations/ServiceErrorCode.md)
 
-Defined in: [services/errors.ts:77](https://github.com/Hack23/cia-compliance-manager/blob/3c2111b159a69ffb9dbeb7d56f278f1f19203de4/src/services/errors.ts#L77)
+Defined in: [services/errors.ts:77](https://github.com/Hack23/cia-compliance-manager/blob/0a914ff8809ea300c13e0a51b2ef582dc0e7a4a4/src/services/errors.ts#L77)
 
 Error code for categorization
 
@@ -77,7 +77,7 @@ Error code for categorization
 
 > `readonly` **context**: [`ErrorContext`](../interfaces/ErrorContext.md)
 
-Defined in: [services/errors.ts:82](https://github.com/Hack23/cia-compliance-manager/blob/3c2111b159a69ffb9dbeb7d56f278f1f19203de4/src/services/errors.ts#L82)
+Defined in: [services/errors.ts:82](https://github.com/Hack23/cia-compliance-manager/blob/0a914ff8809ea300c13e0a51b2ef582dc0e7a4a4/src/services/errors.ts#L82)
 
 Context information about the error
 
@@ -87,7 +87,7 @@ Context information about the error
 
 > `readonly` `optional` **cause?**: `Error`
 
-Defined in: [services/errors.ts:87](https://github.com/Hack23/cia-compliance-manager/blob/3c2111b159a69ffb9dbeb7d56f278f1f19203de4/src/services/errors.ts#L87)
+Defined in: [services/errors.ts:87](https://github.com/Hack23/cia-compliance-manager/blob/0a914ff8809ea300c13e0a51b2ef582dc0e7a4a4/src/services/errors.ts#L87)
 
 Original error that caused this error (if any)
 
@@ -101,7 +101,7 @@ Original error that caused this error (if any)
 
 > `readonly` **timestamp**: `Date`
 
-Defined in: [services/errors.ts:92](https://github.com/Hack23/cia-compliance-manager/blob/3c2111b159a69ffb9dbeb7d56f278f1f19203de4/src/services/errors.ts#L92)
+Defined in: [services/errors.ts:92](https://github.com/Hack23/cia-compliance-manager/blob/0a914ff8809ea300c13e0a51b2ef582dc0e7a4a4/src/services/errors.ts#L92)
 
 Timestamp when the error occurred
 
@@ -111,7 +111,7 @@ Timestamp when the error occurred
 
 > **getFormattedMessage**(): `string`
 
-Defined in: [services/errors.ts:126](https://github.com/Hack23/cia-compliance-manager/blob/3c2111b159a69ffb9dbeb7d56f278f1f19203de4/src/services/errors.ts#L126)
+Defined in: [services/errors.ts:126](https://github.com/Hack23/cia-compliance-manager/blob/0a914ff8809ea300c13e0a51b2ef582dc0e7a4a4/src/services/errors.ts#L126)
 
 Get a formatted error message with context
 
@@ -127,7 +127,7 @@ Formatted error message
 
 > **toJSON**(): `Record`\<`string`, `unknown`\>
 
-Defined in: [services/errors.ts:166](https://github.com/Hack23/cia-compliance-manager/blob/3c2111b159a69ffb9dbeb7d56f278f1f19203de4/src/services/errors.ts#L166)
+Defined in: [services/errors.ts:166](https://github.com/Hack23/cia-compliance-manager/blob/0a914ff8809ea300c13e0a51b2ef582dc0e7a4a4/src/services/errors.ts#L166)
 
 Convert error to JSON for logging
 

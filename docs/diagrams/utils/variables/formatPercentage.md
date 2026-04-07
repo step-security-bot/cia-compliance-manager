@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.46**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.47**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **formatPercentage**: (`value`, `decimalPlaces`) => `string`
 
-Defined in: [utils/index.ts:98](https://github.com/Hack23/cia-compliance-manager/blob/3c2111b159a69ffb9dbeb7d56f278f1f19203de4/src/utils/index.ts#L98)
+Defined in: [utils/index.ts:98](https://github.com/Hack23/cia-compliance-manager/blob/0a914ff8809ea300c13e0a51b2ef582dc0e7a4a4/src/utils/index.ts#L98)
 
 Formats a decimal as a percentage
 
