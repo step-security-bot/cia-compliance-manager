@@ -49,18 +49,7 @@ Based on [Hack23 AB Classification Framework](https://github.com/Hack23/ISMS-PUB
 ### **🏗️ Core Technology Matrix**
 
 ```mermaid
-%%{
-  init: {
-    'theme': 'base',
-    'themeVariables': {
-      'primaryColor': '#e8f5e9',
-      'primaryTextColor': '#2e7d32',
-      'lineColor': '#4caf50',
-      'secondaryColor': '#fff3e0',
-      'tertiaryColor': '#e3f2fd'
-    }
-  }
-}%%
+%%{init: {"theme": "neutral"}}%%
 mindmap
   root)📊 CIA Compliance Manager Stack(
     (🖥️ Runtime)
@@ -230,18 +219,7 @@ gantt
 ### **🧪 Node.js Testing & Validation Strategy**
 
 ```mermaid
-%%{
-  init: {
-    'theme': 'base',
-    'themeVariables': {
-      'primaryColor': '#e3f2fd',
-      'primaryTextColor': '#01579b',
-      'lineColor': '#2196f3',
-      'secondaryColor': '#f1f8e9',
-      'tertiaryColor': '#fff8e1'
-    }
-  }
-}%%
+%%{init: {"theme": "neutral"}}%%
 flowchart TB
     subgraph PREPARATION["🔬 Pre-Migration Testing"]
         COMPAT_TEST["🧪 Compatibility Testing<br/>• Vite 8+ compatibility<br/>• React 19 compatibility<br/>• TypeScript 6+ compatibility<br/>• Chart.js compatibility"]
@@ -275,10 +253,10 @@ flowchart TB
     STAGING_DEPLOY --> CANARY_RELEASE
     CANARY_RELEASE --> FULL_MIGRATION
 
-    style PREPARATION fill:#bbdefb
-    style ALPHA_CI fill:#e1bee7
-    style VALIDATION fill:#c8e6c9
-    style DEPLOYMENT fill:#ffecb3
+    style PREPARATION fill:#2196F3,color:#ffffff
+    style ALPHA_CI fill:#7B1FA2,color:#ffffff
+    style VALIDATION fill:#4CAF50,color:#ffffff
+    style DEPLOYMENT fill:#FFC107,color:#000000
 ```
 
 ### **📊 Node.js Migration Risk Assessment**
@@ -468,18 +446,7 @@ Aligned with [Hack23 AB's "Living on the Edge" Strategy](https://github.com/Hack
 ### **🔍 Automated Dependency Updates**
 
 ```mermaid
-%%{
-  init: {
-    'theme': 'base',
-    'themeVariables': {
-      'primaryColor': '#f3e5f5',
-      'primaryTextColor': '#6a1b9a',
-      'lineColor': '#ba68c8',
-      'secondaryColor': '#e8f5e9',
-      'tertiaryColor': '#fff3e0'
-    }
-  }
-}%%
+%%{init: {"theme": "neutral"}}%%
 flowchart LR
     subgraph MONITORING["📊 Daily Monitoring (09:00 CET)"]
         DEPENDABOT["🤖 Dependabot Scanning<br/>• NPM security advisories<br/>• Version compatibility<br/>• License compliance<br/>• OpenSSF Scorecard"]
@@ -502,9 +469,9 @@ flowchart LR
     REVIEW_ACTION --> AUTO_MERGE
     AUTO_MERGE --> ROLLBACK
 
-    style MONITORING fill:#e1bee7
-    style VALIDATION fill:#c8e6c9
-    style DEPLOYMENT fill:#ffecb3
+    style MONITORING fill:#7B1FA2,color:#FFFFFF
+    style VALIDATION fill:#4CAF50,color:#FFFFFF
+    style DEPLOYMENT fill:#FFC107,color:#000000
 ```
 
 ### **📋 Update Classification & Response Times**
@@ -548,18 +515,7 @@ CIA Compliance Manager will be designated as EOL and archived in read-only state
 ### **📊 EOL Decision Matrix**
 
 ```mermaid
-%%{
-  init: {
-    'theme': 'base',
-    'themeVariables': {
-      'primaryColor': '#ffcdd2',
-      'primaryTextColor': '#c62828',
-      'lineColor': '#f44336',
-      'secondaryColor': '#fff3e0',
-      'tertiaryColor': '#e8f5e9'
-    }
-  }
-}%%
+%%{init: {"theme": "neutral"}}%%
 flowchart TD
     START[🎯 EOL Assessment Trigger] --> SECURITY{🔒 Security Support Available?}
 
@@ -590,11 +546,11 @@ flowchart TD
 
     PLAN_MIGRATION --> NEW_PLATFORM[🚀 New Platform Development<br/>Modern Technology Stack]
 
-    style CRITICAL fill:#ffcdd2,stroke:#d32f2f
-    style BUSINESS fill:#fff3e0,stroke:#f57c00
-    style TECHNICAL fill:#fff9c4,stroke:#fbc02d
-    style CONTINUE fill:#c8e6c9,stroke:#388e3c
-    style ARCHIVE fill:#f3e5f5,stroke:#7b1fa2
+    style CRITICAL fill:#D32F2F,stroke:#d32f2f,color:#ffffff
+    style BUSINESS fill:#FF9800,stroke:#f57c00,color:#ffffff
+    style TECHNICAL fill:#FFC107,stroke:#fbc02d,color:#000000
+    style CONTINUE fill:#4CAF50,stroke:#388e3c,color:#ffffff
+    style ARCHIVE fill:#7B1FA2,stroke:#7b1fa2,color:#ffffff
 ```
 
 ---
@@ -626,36 +582,23 @@ Should EOL conditions trigger migration, the successor platform will maintain **
 ### **📊 Technology Investment Strategy**
 
 ```mermaid
-%%{
-  init: {
-    'theme': 'base',
-    'themeVariables': {
-      'primaryColor': '#e8f5e9',
-      'primaryTextColor': '#2e7d32',
-      'lineColor': '#4caf50',
-      'secondaryColor': '#e3f2fd',
-      'tertiaryColor': '#fff8e1'
-    }
-  }
-}%%
+%%{init: {"theme": "neutral", "themeVariables": {"quadrant1Fill": "#1565C0", "quadrant2Fill": "#2E7D32", "quadrant3Fill": "#4CAF50", "quadrant4Fill": "#FF9800", "quadrantTitleFill": "#ffffff", "quadrantPointFill": "#ffffff", "quadrantPointTextFill": "#000000", "quadrantXAxisTextFill": "#000000", "quadrantYAxisTextFill": "#000000"}, "quadrantChart": {"chartWidth": 700, "chartHeight": 700, "pointLabelFontSize": 12, "titleFontSize": 20, "quadrantLabelFontSize": 16, "xAxisLabelFontSize": 14, "yAxisLabelFontSize": 14}}}%%
 quadrantChart
     title 🎯 Technology Investment vs Migration Complexity
     x-axis Low Migration Complexity --> High Migration Complexity
     y-axis Low Strategic Value --> High Strategic Value
-
-    quadrant-1 Research & Prototype
-    quadrant-2 Priority Investment
-    quadrant-3 Maintain Current
-    quadrant-4 Evaluate Alternatives
-
-    Node.js Runtime Upgrade: [0.3, 0.8]
-    React Framework Upgrade: [0.4, 0.9]
-    Chart.js Visualization Evolution: [0.7, 0.8]
-    Build System Modernization: [0.5, 0.6]
-    TypeScript Latest: [0.2, 0.7]
-    Testing Framework Update: [0.4, 0.5]
-    TailwindCSS Refinement: [0.3, 0.4]
-    PWA Implementation: [0.7, 0.8]
+    quadrant-1 RESEARCH AND PROTOTYPE
+    quadrant-2 PRIORITY INVESTMENT
+    quadrant-3 MAINTAIN CURRENT
+    quadrant-4 EVALUATE ALTERNATIVES
+    "Node.js Runtime Upgrade": [0.30, 0.80] radius: 8
+    "React Framework Upgrade": [0.40, 0.90] radius: 8
+    "Chart.js Visualization Evolution": [0.70, 0.80] radius: 7
+    "Build System Modernization": [0.50, 0.60] radius: 7
+    "TypeScript Latest": [0.20, 0.70] radius: 7
+    "Testing Framework Update": [0.40, 0.50] radius: 6
+    "TailwindCSS Refinement": [0.30, 0.40] radius: 6
+    "PWA Implementation": [0.70, 0.80] radius: 7
 ```
 
 ---
@@ -721,18 +664,7 @@ Integration with [Hack23 AB Security Metrics](https://github.com/Hack23/ISMS-PUB
 ### **📋 Automated Reporting**
 
 ```mermaid
-%%{
-  init: {
-    'theme': 'base',
-    'themeVariables': {
-      'primaryColor': '#fff8e1',
-      'primaryTextColor': '#e65100',
-      'lineColor': '#ff9800',
-      'secondaryColor': '#e8f5e9',
-      'tertiaryColor': '#e3f2fd'
-    }
-  }
-}%%
+%%{init: {"theme": "neutral"}}%%
 flowchart LR
     subgraph COLLECTION["📊 Data Collection"]
         EOL_API["🌐 endoflife.date API<br/>• Version EOL dates<br/>• Support timelines<br/>• Release schedules"]
@@ -757,9 +689,9 @@ flowchart LR
     TREND_ANALYSIS --> DASHBOARD
     DASHBOARD --> ALERTS
 
-    style COLLECTION fill:#fff8e1
-    style ANALYSIS fill:#e8f5e9
-    style REPORTING fill:#e3f2fd
+    style COLLECTION fill:#FFC107
+    style ANALYSIS fill:#4CAF50
+    style REPORTING fill:#2196F3
 ```
 
 ---
@@ -813,10 +745,10 @@ graph TB
     TOOLS --> ALERTS
     DEPS --> ALERTS
     
-    style REACT fill:#61dafb,color:#000
-    style TS fill:#3178c6,color:#fff
-    style NODE fill:#339933,color:#fff
-    style VITE fill:#646cff,color:#fff
+    style REACT fill:#2196F3,color:#fff
+    style TS fill:#1565C0,color:#fff
+    style NODE fill:#2E7D32,color:#fff
+    style VITE fill:#7B1FA2,color:#fff
     style SECURITY fill:#d32f2f,color:#fff
     style EOL fill:#ff9800,color:#fff
 ```

@@ -65,17 +65,17 @@ flowchart TD
     C --> E([End])
     D --> E
 
-    %% Style definitions with enhanced colors
-    classDef start fill:#2980b9,stroke:#2471a3,stroke-width:2px,color:white,rx:25
-    classDef process fill:#34495e,stroke:#2c3e50,stroke-width:2px,color:white
-    classDef decision fill:#9b59b6,stroke:#8e44ad,stroke-width:2px,color:white
-    classDef end fill:#2ecc71,stroke:#27ae60,stroke-width:2px,color:white,rx:25
+    %% Style definitions following ISMS Style Guide colors
+    classDef start fill:#2196F3,stroke:#1565C0,stroke-width:2px,color:#ffffff
+    classDef process fill:#4CAF50,stroke:#2E7D32,stroke-width:2px,color:#ffffff
+    classDef decision fill:#FF9800,stroke:#F57C00,stroke-width:2px,color:#ffffff
+    classDef finish fill:#9E9E9E,stroke:#616161,stroke-width:2px,color:#ffffff
 
     %% Apply styles
     class A start
     class B decision
     class C,D process
-    class E end
+    class E finish
 ```
 
 #### C4 Diagram Template
@@ -92,9 +92,9 @@ C4Context
   Rel(system, externalSystem, "Gets data from")
 
   %% Style definitions with enhanced colors
-  UpdateElementStyle(user, $fontColor="white", $bgColor="#e74c3c", $borderColor="#c0392b")
-  UpdateElementStyle(system, $fontColor="white", $bgColor="#34495e", $borderColor="#2c3e50")
-  UpdateElementStyle(externalSystem, $fontColor="white", $bgColor="#3498db", $borderColor="#2980b9")
+  UpdateElementStyle(user, $fontColor="white", $bgColor="#D32F2F", $borderColor="#B71C1C")
+  UpdateElementStyle(system, $fontColor="white", $bgColor="#455A64", $borderColor="#2c3e50")
+  UpdateElementStyle(externalSystem, $fontColor="white", $bgColor="#2196F3", $borderColor="#1565C0")
 ```
 
 #### State Diagram Template
@@ -114,9 +114,9 @@ stateDiagram-v2
     }
     
     %% Style definitions with enhanced colors
-    classDef defaultState fill:#34495e,stroke:#2c3e50,color:white
-    classDef activeState fill:#3498db,stroke:#2980b9,color:white
-    classDef terminalState fill:#2ecc71,stroke:#27ae60,color:white
+    classDef defaultState fill:#455A64,stroke:#37474F,stroke-width:2px,color:#ffffff
+    classDef activeState fill:#4CAF50,stroke:#2E7D32,stroke-width:2px,color:#ffffff
+    classDef terminalState fill:#9E9E9E,stroke:#616161,stroke-width:2px,color:#ffffff
     
     class StateA defaultState
     class StateB activeState
@@ -136,9 +136,9 @@ flowchart TD
     end
     
     %% Style definitions with enhanced colors
-    classDef confidentiality fill:#8e44ad,stroke:#6c3483,stroke-width:2px,color:white
-    classDef integrity fill:#27ae60,stroke:#1e8449,stroke-width:2px,color:white
-    classDef availability fill:#2980b9,stroke:#2471a3,stroke-width:2px,color:white
+    classDef confidentiality fill:#7B1FA2,stroke:#4A148C,stroke-width:2px,color:#ffffff
+    classDef integrity fill:#2E7D32,stroke:#1B5E20,stroke-width:2px,color:#ffffff
+    classDef availability fill:#1565C0,stroke:#0D47A1,stroke-width:2px,color:#ffffff
     
     class C confidentiality
     class I integrity
@@ -156,11 +156,11 @@ flowchart TD
     SLW --> AIW[Availability<br>Impact Widget]
     
     %% Style definitions with enhanced colors
-    classDef control fill:#34495e,stroke:#2c3e50,stroke-width:2px,color:white
-    classDef confidentiality fill:#8e44ad,stroke:#6c3483,stroke-width:2px,color:white
-    classDef integrity fill:#27ae60,stroke:#1e8449,stroke-width:2px,color:white
-    classDef availability fill:#2980b9,stroke:#2471a3,stroke-width:2px,color:white
-    classDef business fill:#f1c40f,stroke:#f39c12,stroke-width:2px,color:black
+    classDef control fill:#4CAF50,stroke:#2E7D32,stroke-width:2px,color:#ffffff
+    classDef confidentiality fill:#7B1FA2,stroke:#4A148C,stroke-width:2px,color:#ffffff
+    classDef integrity fill:#2E7D32,stroke:#1B5E20,stroke-width:2px,color:#ffffff
+    classDef availability fill:#1565C0,stroke:#0D47A1,stroke-width:2px,color:#ffffff
+    classDef business fill:#1565C0,stroke:#0D47A1,stroke-width:2px,color:#ffffff
     
     class SLW,SSW control
     class CIW confidentiality
@@ -203,7 +203,11 @@ Brief introduction explaining the document's purpose (1-2 paragraphs).
 Section content with appropriate diagrams and explanations.
 
 ```mermaid
-// Diagram goes here
+flowchart TD
+    A[📋 Section Content] --> B[📊 Analysis]
+    B --> C[📝 Documentation]
+
+    classDef default fill:#2196F3,stroke:#1565C0,stroke-width:2px,color:#ffffff
 ```
 
 ### 📊 Subsection 1.1 Title

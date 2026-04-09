@@ -55,7 +55,7 @@ mindmap
       ⏱️ RTO - Recovery Time (Objectives)
         🚨 Critical Services: Target ~5 min (CloudFront origin failover + health checks + routing propagation)
         🔔 Important Services: Target ~15 min (GitHub Pages DR via DNS switch + TTL propagation)
-        📊 Standard Services: Target < 1 hour
+        📊 Standard Services: Target under 1 hour
       📊 RPO - Recovery Point (Objectives)
         💾 User Data: 0 (browser-based/local storage, no backend persistence)
         ⚙️ Configuration: Last successful CI/CD deployment
@@ -164,13 +164,13 @@ graph TB
         G1 -.-> CR6[High: User data persistence]
     end
 
-    classDef critical fill:#ff6666,stroke:#333,stroke-width:2px,color:white;
-    classDef high fill:#ffaa66,stroke:#333,stroke-width:2px;
-    classDef medium fill:#ffff66,stroke:#333,stroke-width:2px;
+    classDef critical fill:#D32F2F,stroke:#B71C1C,stroke-width:2px,color:#ffffff
+    classDef high fill:#FF9800,stroke:#F57C00,stroke-width:2px,color:#ffffff
+    classDef medium fill:#FFC107,stroke:#FFA000,stroke-width:2px,color:#000000
 
-    class C1,CR2 critical;
-    class B1,B2,D1,D2,F1,G1,CR1,CR3,CR5,CR6 high;
-    class E1,E2,F2,CR4 medium;
+    class C1,CR2 critical
+    class B1,B2,D1,D2,F1,G1,CR1,CR3,CR5,CR6 high
+    class E1,E2,F2,CR4 medium
 ```
 
 #### 🔗 Process Dependencies
@@ -213,32 +213,33 @@ flowchart TB
     FE --> BEX
     CDN --> FE
 
-    classDef github fill:#f5f5f5,stroke:#333,stroke-width:2px;
-    classDef browser fill:#e1f5fe,stroke:#333,stroke-width:2px;
-    classDef external fill:#f9e4b7,stroke:#333,stroke-width:2px;
+    classDef github fill:#455A64,stroke:#37474F,stroke-width:2px,color:#ffffff
+    classDef browser fill:#2196F3,stroke:#333,stroke-width:2px,color:#ffffff
+    classDef external fill:#7B1FA2,stroke:#4A148C,stroke-width:2px,color:#ffffff
 
-    class GHP,GHR,GHA,GHO github;
-    class FE,LS,BEX browser;
-    class CDN external;
+    class GHP,GHR,GHA,GHO github
+    class FE,LS,BEX browser
+    class CDN external
 ```
 
 #### 🔝 Priority Matrix
 
 ```mermaid
+%%{init: {"theme":"neutral","themeVariables":{"quadrant1Fill":"#D32F2F","quadrant2Fill":"#FF9800","quadrant3Fill":"#9E9E9E","quadrant4Fill":"#FFC107","quadrantTitleFill":"#ffffff","quadrantPointFill":"#ffffff","quadrantPointTextFill":"#000000","quadrantXAxisTextFill":"#000000","quadrantYAxisTextFill":"#000000"},"quadrantChart":{"chartWidth":700,"chartHeight":700,"pointLabelFontSize":12,"titleFontSize":20,"quadrantLabelFontSize":16,"xAxisLabelFontSize":14,"yAxisLabelFontSize":14}}}%%
 quadrantChart
-    title Business Function Priority Matrix
+    title 📋 Business Function Priority Matrix
     x-axis Low Impact --> High Impact
     y-axis Low Urgency --> High Urgency
-    quadrant-1 "Prioritize"
-    quadrant-2 "Critical Action"
-    quadrant-3 "Monitor"
-    quadrant-4 "Contingent Effort"
-    "User Authentication": [0.9, 0.95]
-    "Security Assessment Engine": [0.8, 0.85]
-    "Security Dashboard": [0.7, 0.75]
-    "User Data & Settings": [0.8, 0.7]
-    "Reporting & Export": [0.7, 0.6]
-    "Compliance Mapping": [0.5, 0.4]
+    quadrant-1 PRIORITIZE
+    quadrant-2 CRITICAL ACTION
+    quadrant-3 MONITOR
+    quadrant-4 CONTINGENT EFFORT
+    "User Authentication": [0.90, 0.95]
+    "Security Assessment Engine": [0.80, 0.85]
+    "Security Dashboard": [0.70, 0.75]
+    "User Data and Settings": [0.80, 0.70]
+    "Reporting and Export": [0.70, 0.60]
+    "Compliance Mapping": [0.50, 0.40]
 ```
 
 ### 💰 Impact Quantification
@@ -385,14 +386,14 @@ graph TB
         C3 --> D3[Increased Compliance Costs]
     end
 
-    classDef process fill:#f5f5f5,stroke:#333,stroke-width:1px;
-    classDef impact fill:#ffeeee,stroke:#333,stroke-width:1px;
-    classDef consequence fill:#ffcccc,stroke:#333,stroke-width:1px;
+    classDef process fill:#4CAF50,stroke:#2E7D32,stroke-width:2px,color:#ffffff
+    classDef impact fill:#D32F2F,stroke:#B71C1C,stroke-width:2px,color:#ffffff
+    classDef consequence fill:#D32F2F,stroke:#B71C1C,stroke-width:2px,color:#ffffff
 
-    class A1 process;
-    class B1,B2,B3 process;
-    class C1,C2,C3 impact;
-    class D1,D2,D3 consequence;
+    class A1 process
+    class B1,B2,B3 process
+    class C1,C2,C3 impact
+    class D1,D2,D3 consequence
 ```
 
 | Impact Category          | Description                                 | Affected Regulations                                                                                                                                                                   | Risk Level  |
@@ -423,56 +424,56 @@ timeline
 ```mermaid
 mindmap
   root((Recovery<br>Objectives))
-    ⏱️ RTO Targets (Objectives)
+    ⏱️ RTO Targets
       CloudFront Distribution
-        🚨 Target: ~5 min (health checks + routing propagation)
-        🔔 Manual Intervention: ~15 min (investigation + action)
-        ✨ DNS Failover to GitHub Pages: ~15 min (DNS switch + TTL propagation)
+        Target 5 min
+        Manual 15 min
+        DNS Failover 15 min
       S3 Multi-Region
-        🚨 Async CRR: Monitor replication lag (aspirational < 5 min with RTC)
-        🔔 Manual Failover: ~5 min (Route53 DNS adjustment)
-        ✨ GitHub Pages DR: ~15 min (DNS propagation)
+        Async CRR under 5 min
+        Manual Failover 5 min
+        GitHub Pages DR 15 min
       Security Assessment Engine
-        🚨 Critical: ~5 min (CloudFront delivery objective)
-        🔔 Enhanced: ~15 min (GitHub Pages DR objective)
-        ✨ Gold Standard: ~5 min (multi-edge with monitoring)
-      Dashboard & Visualizations
-        🚨 Critical: ~5 min (CloudFront delivery objective)
-        🔔 Enhanced: ~15 min (GitHub Pages DR objective)
-        ✨ Gold Standard: ~5 min (cached with monitoring)
-    📊 RPO Targets (Objectives)
-      Static Content (HTML/CSS/JS)
-        🚨 Critical: Last successful deployment (CI/CD workflow)
-        🔔 Enhanced: Last successful deployment to both platforms
-        ✨ Gold Standard: Last successful deployment + monitoring
+        Critical 5 min
+        Enhanced 15 min
+        Gold Standard 5 min
+      Dashboard and Visualizations
+        Critical 5 min
+        Enhanced 15 min
+        Gold Standard 5 min
+    📊 RPO Targets
+      Static Content
+        Last successful deployment
+        Dual platform deployment
+        Deployment with monitoring
       S3 Replicated Content
-        🚨 Critical: Async CRR (aspirational < 5 min with RTC + alerts)
-        🔔 Enhanced: Monitor replication lag (investigate if > 5 min)
-        ✨ Gold Standard: Observed low latency (RTC + monitoring in place)
+        Async CRR under 5 min
+        Monitor replication lag
+        Low latency with RTC
       CloudFront Cache
-        🚨 Critical: ≤ 15 min (invalidation + TTL propagation window)
-        🔔 Enhanced: ≤ 5 min typical (monitored invalidation completion)
-        ✨ Gold Standard: Within propagation window (typically minutes) with automated monitoring
+        15 min invalidation window
+        5 min typical
+        Automated monitoring
     🔄 MTTR Targets
       CloudFront Edge
-        🎯 Current: < 5 minutes
-        🎯 Target: < 5 minutes (automatic)
+        Current under 5 minutes
+        Target under 5 minutes
       S3 Primary
-        🎯 Current: < 5 minutes
-        🎯 Target: < 5 minutes (automatic)
+        Current under 5 minutes
+        Target under 5 minutes
       GitHub Pages DR
-        🎯 Current: < 15 minutes (DNS switch)
-        🎯 Target: < 10 minutes (automated DNS)
+        Current under 15 minutes
+        Target under 10 minutes
     ⬆️ Uptime Requirements
       CloudFront Distribution
-        🎯 Minimum: 99.9% (AWS SLA)
-        🎯 Target: 99.99% (multi-region)
+        Minimum 99.9 percent
+        Target 99.99 percent
       S3 Multi-Region
-        🎯 Minimum: 99.99% (AWS SLA)
-        🎯 Target: 99.999% (cross-region)
+        Minimum 99.99 percent
+        Target 99.999 percent
       GitHub Pages DR
-        🎯 Minimum: 99.5%
-        🎯 Target: 99.9%
+        Minimum 99.5 percent
+        Target 99.9 percent
 ```
 
 #### Recovery Time Objectives (RTO)
@@ -502,10 +503,10 @@ graph LR
         SD["Session Data: 60"]
     end
 
-    classDef critical fill:#ff6666,stroke:#333,stroke-width:1px,color:white;
-    classDef high fill:#ffaa66,stroke:#333,stroke-width:1px;
-    classDef medium fill:#ffff66,stroke:#333,stroke-width:1px;
-    classDef standard fill:#66ccff,stroke:#333,stroke-width:1px;
+    classDef critical fill:#D32F2F,stroke:#B71C1C,stroke-width:2px,color:#ffffff
+    classDef high fill:#FF9800,stroke:#F57C00,stroke-width:2px,color:#ffffff
+    classDef medium fill:#FFC107,stroke:#FFA000,stroke-width:2px,color:#000000
+    classDef standard fill:#4CAF50,stroke:#2E7D32,stroke-width:2px,color:#ffffff
     
     class UA critical
     class US high
@@ -609,15 +610,15 @@ flowchart TB
         A -.-> GHR_M
     end
 
-    style GHP fill:#e1f5fe,stroke:#333,stroke-width:2px
-    style GHP_B fill:#e1f5fe,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5
-    style GHR fill:#ffecb3,stroke:#333,stroke-width:2px
-    style GHR_M fill:#ffecb3,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5
-    style GHA fill:#e8f5e9,stroke:#333,stroke-width:2px
+    style GHP fill:#2196F3,stroke:#333,stroke-width:2px
+    style GHP_B fill:#2196F3,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5
+    style GHR fill:#FFC107,stroke:#333,stroke-width:2px
+    style GHR_M fill:#FFC107,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5
+    style GHA fill:#4CAF50,stroke:#333,stroke-width:2px
 
-    style C fill:#f8bbd0,stroke:#333,stroke-width:2px
-    style I fill:#c8e6c9,stroke:#333,stroke-width:2px
-    style A fill:#bbdefb,stroke:#333,stroke-width:2px
+    style C fill:#D32F2F,stroke:#333,stroke-width:2px
+    style I fill:#4CAF50,stroke:#333,stroke-width:2px
+    style A fill:#2196F3,stroke:#333,stroke-width:2px
 ```
 
 ```mermaid
@@ -722,10 +723,10 @@ flowchart TD
         E --> E3[Restore from CDN Cache]
     end
 
-    style A fill:#ffcccc,stroke:#333,stroke-width:2px
-    style B fill:#ffffcc,stroke:#333,stroke-width:2px
-    style C,D,E fill:#ccffcc,stroke:#333,stroke-width:2px
-    style C1,C2,C3,D1,D2,D3,E1,E2,E3 fill:#ccccff,stroke:#333,stroke-width:1px
+    style A fill:#D32F2F,stroke:#333,stroke-width:2px
+    style B fill:#FFC107,stroke:#333,stroke-width:2px
+    style C,D,E fill:#4CAF50,stroke:#333,stroke-width:2px
+    style C1,C2,C3,D1,D2,D3,E1,E2,E3 fill:#2196F3,stroke:#333,stroke-width:1px
 ```
 
 | Data Type               | GitHub Recovery Mechanism | Recovery Process              | Recovery Time |
@@ -871,11 +872,11 @@ flowchart TD
         F --> G[Post-Incident Analysis]
     end
 
-    style A fill:#ffcccc,stroke:#333,stroke-width:2px
-    style B fill:#ffffcc,stroke:#333,stroke-width:2px
-    style C1,C2,C3,C4 fill:#ccffcc,stroke:#333,stroke-width:2px
-    style D1,D2,D3,D4 fill:#ccccff,stroke:#333,stroke-width:1px
-    style E,F,G fill:#ffccff,stroke:#333,stroke-width:1px
+    style A fill:#D32F2F,stroke:#333,stroke-width:2px
+    style B fill:#FFC107,stroke:#333,stroke-width:2px
+    style C1,C2,C3,C4 fill:#4CAF50,stroke:#333,stroke-width:2px
+    style D1,D2,D3,D4 fill:#2196F3,stroke:#333,stroke-width:1px
+    style E,F,G fill:#7B1FA2,stroke:#333,stroke-width:1px
 ```
 
 ```mermaid
@@ -883,19 +884,19 @@ mindmap
   root((📱 Communication<br>Plan))
     🚨 Incident Classification
       🔴 Critical (Complete Outage)
-        Initial notification: <15 min
+        Initial notification under 15 min
         Update frequency: Every 30 min
         All channels enabled
       🟠 Major (Partial Outage)
-        Initial notification: <30 min
+        Initial notification under 30 min
         Update frequency: Every 60 min
         Primary channels
       🟡 Moderate (Performance Issues)
-        Initial notification: <60 min
+        Initial notification under 60 min
         Update frequency: Every 4 hours
         Status page + email
       🔵 Minor (Isolated Issues)
-        Initial notification: <4 hours
+        Initial notification under 4 hours
         Update frequency: Daily
         Status page only
     📢 Communication Channels
@@ -967,10 +968,10 @@ flowchart TB
         I --> J[Document Recovery Process]
     end
 
-    style A fill:#ffcccc,stroke:#333,stroke-width:2px
-    style B,C,E fill:#ffffcc,stroke:#333,stroke-width:2px
-    style D,F1,F2,F3,G,H,I,J fill:#ccffcc,stroke:#333,stroke-width:1px
-    style R fill:#ff9999,stroke:#333,stroke-width:2px
+    style A fill:#D32F2F,stroke:#333,stroke-width:2px
+    style B,C,E fill:#FFC107,stroke:#333,stroke-width:2px
+    style D,F1,F2,F3,G,H,I,J fill:#4CAF50,stroke:#333,stroke-width:1px
+    style R fill:#D32F2F,stroke:#333,stroke-width:2px
 ```
 
 ```mermaid
@@ -1361,15 +1362,15 @@ flowchart TD
     CH6 -.-> S2
     CH6 -.-> S3
 
-    classDef critical fill:#ff6666,stroke:#333,stroke-width:2px;
-    classDef major fill:#ff9966,stroke:#333,stroke-width:2px;
-    classDef moderate fill:#ffcc66,stroke:#333,stroke-width:2px;
-    classDef minor fill:#66ccff,stroke:#333,stroke-width:2px;
+    classDef critical fill:#D32F2F,stroke:#B71C1C,stroke-width:2px,color:#ffffff
+    classDef major fill:#D32F2F,stroke:#B71C1C,stroke-width:2px,color:#ffffff
+    classDef moderate fill:#FF9800,stroke:#F57C00,stroke-width:2px,color:#ffffff
+    classDef minor fill:#FFC107,stroke:#FFA000,stroke-width:2px,color:#000000
 
-    class C1,D1,E1 critical;
-    class C2,D2,E2 major;
-    class C3,D3,E3 moderate;
-    class C4,D4,E4 minor;
+    class C1,D1,E1 critical
+    class C2,D2,E2 major
+    class C3,D3,E3 moderate
+    class C4,D4,E4 minor
 ```
 
 ### 📞 Communication Matrix with GitHub-Specific Channels

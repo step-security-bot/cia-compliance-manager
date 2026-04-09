@@ -72,14 +72,14 @@ graph TD
     G --> H[🔄 Continuous Improvement]
     H --> A
     
-    style A fill:#4CAF50
-    style B fill:#FF9800
-    style C fill:#2196F3
-    style D fill:#9C27B0
-    style E fill:#F44336
-    style F fill:#00BCD4
-    style G fill:#FFC107
-    style H fill:#4CAF50
+    style A fill:#4CAF50,color:#ffffff
+    style B fill:#FF9800,color:#ffffff
+    style C fill:#2196F3,color:#ffffff
+    style D fill:#7B1FA2,color:#ffffff
+    style E fill:#D32F2F,color:#ffffff
+    style F fill:#2196F3,color:#ffffff
+    style G fill:#FFC107,color:#000000
+    style H fill:#4CAF50,color:#ffffff
 ```
 
 ### **Control Implementation Evidence**
@@ -139,11 +139,11 @@ graph TD
     C --> D[🔒 Security Tests<br/>SAST/SCA/DAST]
     D --> E[⚡ Performance Tests<br/>Lighthouse 90+]
     
-    style A fill:#4CAF50
-    style B fill:#2196F3
-    style C fill:#FF9800
-    style D fill:#F44336
-    style E fill:#9C27B0
+    style A fill:#4CAF50,color:#ffffff
+    style B fill:#2196F3,color:#ffffff
+    style C fill:#FF9800,color:#ffffff
+    style D fill:#D32F2F,color:#ffffff
+    style E fill:#7B1FA2,color:#ffffff
 ```
 
 ### **Unit Testing**
@@ -323,10 +323,10 @@ graph LR
     B -->|Static Assets| C[📦 Application Bundle]
     C -->|API Requests| D[🔒 External APIs]
     
-    style A fill:#4CAF50
-    style B fill:#2196F3
-    style C fill:#FF9800
-    style D fill:#9C27B0
+    style A fill:#4CAF50,color:#ffffff
+    style B fill:#2196F3,color:#ffffff
+    style C fill:#FF9800,color:#000000
+    style D fill:#7B1FA2,color:#ffffff
 ```
 
 ### **Network Security Controls**
@@ -379,13 +379,13 @@ graph TD
     H --> I[✅ Verify]
     B -->|No| J[📊 Report Status]
     
-    style A fill:#4CAF50
-    style D fill:#F44336
-    style E fill:#FF9800
-    style F fill:#FFC107
-    style G fill:#2196F3
-    style H fill:#9C27B0
-    style I fill:#4CAF50
+    style A fill:#4CAF50,color:#ffffff
+    style D fill:#D32F2F,color:#ffffff
+    style E fill:#FF9800,color:#ffffff
+    style F fill:#FFC107,color:#000000
+    style G fill:#2196F3,color:#ffffff
+    style H fill:#7B1FA2,color:#ffffff
+    style I fill:#4CAF50,color:#ffffff
 ```
 
 ### **Scanning Coverage**
@@ -439,15 +439,15 @@ graph TD
     G --> H[🚀 Deploy]
     H --> I[📊 Monitoring]
     
-    style A fill:#4CAF50
-    style B fill:#2196F3
-    style C fill:#9C27B0
-    style D fill:#F44336
-    style E fill:#4CAF50
-    style F fill:#FF9800
-    style G fill:#2196F3
-    style H fill:#9C27B0
-    style I fill:#4CAF50
+    style A fill:#4CAF50,color:#ffffff
+    style B fill:#2196F3,color:#ffffff
+    style C fill:#7B1FA2,color:#ffffff
+    style D fill:#D32F2F,color:#ffffff
+    style E fill:#4CAF50,color:#ffffff
+    style F fill:#FF9800,color:#000000
+    style G fill:#2196F3,color:#ffffff
+    style H fill:#7B1FA2,color:#ffffff
+    style I fill:#4CAF50,color:#ffffff
 ```
 
 ### **Change Control Gates**
@@ -511,7 +511,7 @@ graph LR
     G --> H[📝 Document]
     H --> I[📚 Lessons Learned]
     
-    style A fill:#F44336
+    style A fill:#D32F2F
     style B fill:#FF9800
     style C fill:#FFC107
     style D fill:#2196F3
@@ -519,7 +519,7 @@ graph LR
     style F fill:#4CAF50
     style G fill:#4CAF50
     style H fill:#2196F3
-    style I fill:#9C27B0
+    style I fill:#7B1FA2
 ```
 
 ### **Security Incident Types**
@@ -576,7 +576,7 @@ graph TD
     
     style A fill:#4CAF50
     style B fill:#2196F3
-    style C fill:#9C27B0
+    style C fill:#7B1FA2
     style D fill:#FF9800
     style E fill:#2196F3
     style F fill:#4CAF50
@@ -628,10 +628,10 @@ graph LR
     A --> F[📦 Dependency Health]
     
     style A fill:#4CAF50
-    style B fill:#F44336
+    style B fill:#D32F2F
     style C fill:#FF9800
     style D fill:#2196F3
-    style E fill:#9C27B0
+    style E fill:#7B1FA2
     style F fill:#4CAF50
 ```
 
@@ -674,12 +674,12 @@ graph TD
     style A fill:#4CAF50
     style B fill:#2196F3
     style C fill:#FF9800
-    style D fill:#9C27B0
-    style E fill:#F44336
+    style D fill:#7B1FA2
+    style E fill:#D32F2F
     style F fill:#FFC107
     style G fill:#FF9800
     style H fill:#4CAF50
-    style I fill:#F44336
+    style I fill:#D32F2F
 ```
 
 ### **Dependency Management**

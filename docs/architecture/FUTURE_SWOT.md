@@ -42,30 +42,28 @@ This document provides a strategic analysis of the CIA Compliance Manager's futu
 ## 📊 Strategic SWOT Overview
 
 ```mermaid
+%%{init: {"theme":"neutral","themeVariables":{"quadrant1Fill":"#2E7D32","quadrant2Fill":"#D32F2F","quadrant3Fill":"#1565C0","quadrant4Fill":"#FF9800","quadrantTitleFill":"#ffffff","quadrantPointFill":"#ffffff","quadrantPointTextFill":"#000000","quadrantXAxisTextFill":"#000000","quadrantYAxisTextFill":"#000000"},"quadrantChart":{"chartWidth":700,"chartHeight":700,"pointLabelFontSize":12,"titleFontSize":20,"quadrantLabelFontSize":16,"xAxisLabelFontSize":14,"yAxisLabelFontSize":14}}}%%
 quadrantChart
-    title Future CIA Compliance Manager Strategic Positioning
-    x-axis Negative Impact --> Positive Impact
-    y-axis External Factors --> Internal Factors
-    quadrant-1 "Strengths"
-    quadrant-2 "Weaknesses"
-    quadrant-3 "Opportunities"
-    quadrant-4 "Threats"
-    
-    "Context-Aware Architecture": [0.8, 0.7]
-    "ML-Enhanced Recommendations": [0.9, 0.8]
-    "Integration Ecosystem": [0.7, 0.6]
-    
-    "Implementation Complexity": [-0.6, 0.7]
-    "ML Data Requirements": [-0.7, 0.8]
-    "Dependency on External Systems": [-0.5, 0.6]
-    
-    "Emerging Security Market": [0.9, -0.7]
-    "Regulatory Complexity Growth": [0.8, -0.8]
-    "AI/ML Adoption in Security": [0.7, -0.6]
-    
-    "Competitive Platform Growth": [-0.7, -0.7]
-    "AI/ML Expertise Scarcity": [-0.8, -0.6]
-    "Integration Standards Flux": [-0.6, -0.8]
+    title 🎯 Future CIA Compliance Manager Strategic SWOT
+    x-axis Internal Factors --> External Factors
+    y-axis Threats --> Opportunities
+    quadrant-1 STRENGTHS
+    quadrant-2 WEAKNESSES
+    quadrant-3 OPPORTUNITIES
+    quadrant-4 THREATS
+
+    "Context-Aware Architecture": [0.20, 0.85] radius: 8
+    "ML-Enhanced Recommendations": [0.15, 0.90] radius: 7
+    "Integration Ecosystem": [0.30, 0.75] radius: 7
+    "Implementation Complexity": [0.25, 0.20] radius: 8
+    "ML Data Requirements": [0.15, 0.25] radius: 7
+    "Dependency on External Systems": [0.35, 0.30] radius: 6
+    "Emerging Security Market": [0.75, 0.85] radius: 8
+    "Regulatory Complexity Growth": [0.85, 0.90] radius: 7
+    "AI/ML Adoption in Security": [0.70, 0.80] radius: 6
+    "Competitive Platform Growth": [0.75, 0.25] radius: 7
+    "AI/ML Expertise Scarcity": [0.85, 0.20] radius: 6
+    "Integration Standards Flux": [0.70, 0.15] radius: 6
 ```
 
 ## 💪 Strengths
@@ -247,22 +245,22 @@ mindmap
 ## 📊 Strategic Position Matrix
 
 ```mermaid
+%%{init: {"theme":"neutral","themeVariables":{"quadrant1Fill":"#2E7D32","quadrant2Fill":"#1565C0","quadrant3Fill":"#9E9E9E","quadrant4Fill":"#FF9800","quadrantTitleFill":"#ffffff","quadrantPointFill":"#ffffff","quadrantPointTextFill":"#000000","quadrantXAxisTextFill":"#000000","quadrantYAxisTextFill":"#000000"},"quadrantChart":{"chartWidth":700,"chartHeight":700,"pointLabelFontSize":12,"titleFontSize":20,"quadrantLabelFontSize":16,"xAxisLabelFontSize":14,"yAxisLabelFontSize":14}}}%%
 quadrantChart
-    title Strategic Positioning Relative to Market
+    title 🎯 Strategic Positioning Relative to Market
     x-axis Traditional --> Innovative
     y-axis Narrow Focus --> Comprehensive
-    quadrant-1 "Market Leaders"
-    quadrant-2 "Niche Innovators"
-    quadrant-3 "Traditional Players"
-    quadrant-4 "Comprehensive Platforms"
-    
-    "Future CIA Compliance Manager": [0.75, 0.8]
-    "Current CIA Compliance Manager": [0.3, 0.5]
-    "Traditional GRC Tools": [0.2, 0.7]
-    "SIEM Platforms": [0.4, 0.6]
-    "Security Scorecards": [0.5, 0.3]
-    "ML Security Startups": [0.8, 0.4]
-    "Big Security Vendors": [0.6, 0.9]
+    quadrant-1 MARKET LEADERS
+    quadrant-2 NICHE INNOVATORS
+    quadrant-3 TRADITIONAL PLAYERS
+    quadrant-4 COMPREHENSIVE PLATFORMS
+    "Future CIA Compliance Manager": [0.75, 0.80] radius: 10
+    "Current CIA Compliance Manager": [0.30, 0.50] radius: 8
+    "Traditional GRC Tools": [0.20, 0.70] radius: 7
+    "SIEM Platforms": [0.40, 0.60] radius: 7
+    "Security Scorecards": [0.50, 0.30] radius: 6
+    "ML Security Startups": [0.80, 0.40] radius: 6
+    "Big Security Vendors": [0.60, 0.90] radius: 8
 ```
 
 ## 🎯 Strategic Recommendations
@@ -329,10 +327,10 @@ flowchart LR
     MR2 --> MS6
     MR3 --> MS5
     
-    classDef compRisk fill:#ffccbc,stroke:#333,stroke-width:1px,color:black
-    classDef techRisk fill:#ffecb3,stroke:#333,stroke-width:1px,color:black
-    classDef marketRisk fill:#d1c4e9,stroke:#333,stroke-width:1px,color:black
-    classDef mitigation fill:#c8e6c9,stroke:#333,stroke-width:1px,color:black
+    classDef compRisk fill:#D32F2F,stroke:#B71C1C,stroke-width:2px,color:#ffffff
+    classDef techRisk fill:#D32F2F,stroke:#B71C1C,stroke-width:2px,color:#ffffff
+    classDef marketRisk fill:#D32F2F,stroke:#B71C1C,stroke-width:2px,color:#ffffff
+    classDef mitigation fill:#4CAF50,stroke:#2E7D32,stroke-width:2px,color:#ffffff
     
     class CR1,CR2,CR3 compRisk
     class TR1,TR2,TR3 techRisk

@@ -114,18 +114,7 @@ Following [Hack23 AB Asset-Centric Threat Modeling](https://github.com/Hack23/IS
 ### **🔐 Crown Jewel Analysis**
 
 ```mermaid
-%%{
-  init: {
-    'theme': 'base',
-    'themeVariables': {
-      'primaryColor': '#e8f5e9',
-      'primaryTextColor': '#2e7d32',
-      'lineColor': '#4caf50',
-      'secondaryColor': '#ffcdd2',
-      'tertiaryColor': '#fff3e0'
-    }
-  }
-}%%
+%%{init: {"theme": "neutral"}}%%
 flowchart TB
     subgraph CROWN_JEWELS["💎 Crown Jewels"]
         ASSESSMENT[🧠 Security Assessment Logic<br/>CIA Evaluation Algorithms]
@@ -157,9 +146,9 @@ flowchart TB
     CYBER_CRIME --> SUPPLY_CHAIN
     INSIDER --> CODE_INJECT
     
-    style ASSESSMENT fill:#ffcdd2,stroke:#d32f2f,color:#000
-    style FRAMEWORKS fill:#ffcdd2,stroke:#d32f2f,color:#000
-    style PIPELINE fill:#ffcdd2,stroke:#d32f2f,color:#000
+    style ASSESSMENT fill:#D32F2F,stroke:#d32f2f,color:#ffffff
+    style FRAMEWORKS fill:#D32F2F,stroke:#d32f2f,color:#ffffff
+    style PIPELINE fill:#D32F2F,stroke:#d32f2f,color:#ffffff
 ```
 
 ---
@@ -171,18 +160,7 @@ flowchart TB
 Following [Architecture-Centric Threat Modeling](https://github.com/Hack23/ISMS-PUBLIC/blob/main/Threat_Modeling.md#architecture-centric-threat-modeling) methodology:
 
 ```mermaid
-%%{
-  init: {
-    'theme': 'base',
-    'themeVariables': {
-      'primaryColor': '#e3f2fd',
-      'primaryTextColor': '#01579b',
-      'lineColor': '#0288d1',
-      'secondaryColor': '#f1f8e9',
-      'tertiaryColor': '#fff8e1'
-    }
-  }
-}%%
+%%{init: {"theme": "neutral"}}%%
 flowchart TB
     subgraph TRUST_BOUNDARY_1["🌐 Internet Trust Boundary"]
         USER[👤 Security Professional]
@@ -224,11 +202,11 @@ flowchart TB
     COMPLIANCE_DATA -->|🎯 T9: Framework Corruption| SERVICES
     USER_DATA -->|🎯 T10: Privacy Violation| LOCAL_STORAGE
     
-    style TRUST_BOUNDARY_1 fill:#ffebee,stroke:#f44336,stroke-width:3px,stroke-dasharray: 5 5
-    style TRUST_BOUNDARY_2 fill:#fff3e0,stroke:#ff9800,stroke-width:3px,stroke-dasharray: 5 5
-    style TRUST_BOUNDARY_3 fill:#e8f5e9,stroke:#4caf50,stroke-width:3px,stroke-dasharray: 5 5
-    style TRUST_BOUNDARY_4 fill:#e3f2fd,stroke:#2196f3,stroke-width:3px,stroke-dasharray: 5 5
-    style TRUST_BOUNDARY_5 fill:#f3e5f5,stroke:#9c27b0,stroke-width:3px,stroke-dasharray: 5 5
+    style TRUST_BOUNDARY_1 fill:#D32F2F,stroke:#D32F2F,stroke-width:3px,stroke-dasharray: 5 5,color:#ffffff
+    style TRUST_BOUNDARY_2 fill:#FF9800,stroke:#ff9800,stroke-width:3px,stroke-dasharray: 5 5,color:#ffffff
+    style TRUST_BOUNDARY_3 fill:#4CAF50,stroke:#4caf50,stroke-width:3px,stroke-dasharray: 5 5,color:#ffffff
+    style TRUST_BOUNDARY_4 fill:#2196F3,stroke:#2196f3,stroke-width:3px,stroke-dasharray: 5 5,color:#ffffff
+    style TRUST_BOUNDARY_5 fill:#7B1FA2,stroke:#7B1FA2,stroke-width:3px,stroke-dasharray: 5 5,color:#ffffff
 ```
 
 ### **🎭 STRIDE per Element Analysis**
@@ -270,18 +248,7 @@ Following [MITRE ATT&CK-Driven Analysis](https://github.com/Hack23/ISMS-PUBLIC/b
 ### **🌳 Attack Tree Analysis**
 
 ```mermaid
-%%{
-  init: {
-    'theme': 'base',
-    'themeVariables': {
-      'primaryColor': '#ffebee',
-      'primaryTextColor': '#c62828',
-      'lineColor': '#f44336',
-      'secondaryColor': '#e8f5e9',
-      'tertiaryColor': '#fff3e0'
-    }
-  }
-}%%
+%%{init: {"theme": "neutral"}}%%
 flowchart TD
     GOAL[🎯 Compromise CIA Manager<br/>Assessment Integrity]
     
@@ -315,10 +282,10 @@ flowchart TD
     DM2 --> DM2A[🎯 Biased Assessments]
     
     style GOAL fill:#d32f2f,color:#fff
-    style PATH1 fill:#ff5722,color:#fff
+    style PATH1 fill:#D32F2F,color:#fff
     style PATH2 fill:#ff9800,color:#fff
     style PATH3 fill:#ffc107,color:#000
-    style PATH4 fill:#9c27b0,color:#fff
+    style PATH4 fill:#7B1FA2,color:#fff
 ```
 
 ### **🔗 Kill Chain Disruption Analysis**
@@ -347,20 +314,20 @@ flowchart LR
     C -.-|CSP connect-src<br/>Network isolation| B6[🛡️ Block]
     A -.-|Build attestations<br/>Integrity checks| B7[🛡️ Block]
 
-    style R fill:#e3f2fd,stroke:#1565c0
-    style W fill:#e8f5e9,stroke:#2e7d32
-    style D fill:#fff3e0,stroke:#e65100
-    style E fill:#fce4ec,stroke:#c62828
-    style I fill:#f3e5f5,stroke:#6a1b9a
-    style C fill:#fff8e1,stroke:#f57f17
-    style A fill:#ffebee,stroke:#b71c1c
-    style B1 fill:#c8e6c9,stroke:#388e3c
-    style B2 fill:#c8e6c9,stroke:#388e3c
-    style B3 fill:#c8e6c9,stroke:#388e3c
-    style B4 fill:#c8e6c9,stroke:#388e3c
-    style B5 fill:#c8e6c9,stroke:#388e3c
-    style B6 fill:#c8e6c9,stroke:#388e3c
-    style B7 fill:#c8e6c9,stroke:#388e3c
+    style R fill:#2196F3,stroke:#1565c0
+    style W fill:#4CAF50,stroke:#2e7d32
+    style D fill:#FF9800,stroke:#e65100
+    style E fill:#D32F2F,stroke:#c62828
+    style I fill:#7B1FA2,stroke:#6a1b9a
+    style C fill:#FFC107,stroke:#f57f17
+    style A fill:#D32F2F,stroke:#b71c1c
+    style B1 fill:#4CAF50,stroke:#388e3c
+    style B2 fill:#4CAF50,stroke:#388e3c
+    style B3 fill:#4CAF50,stroke:#388e3c
+    style B4 fill:#4CAF50,stroke:#388e3c
+    style B5 fill:#4CAF50,stroke:#388e3c
+    style B6 fill:#4CAF50,stroke:#388e3c
+    style B7 fill:#4CAF50,stroke:#388e3c
 ```
 
 **Kill Chain Coverage Assessment:** 7/7 phases have at least one defensive control (100% phase coverage). Early-phase disruption (Reconnaissance, Weaponization) provides the strongest protection through supply chain security controls.
@@ -385,34 +352,24 @@ Following [Risk-Centric Threat Modeling](https://github.com/Hack23/ISMS-PUBLIC/b
 ### **⚖️ Risk Heat Matrix**
 
 ```mermaid
-%%{
-  init: {
-    'theme': 'base',
-    'themeVariables': {
-      'primaryColor': '#fff',
-      'primaryTextColor': '#000',
-      'lineColor': '#333'
-    }
-  }
-}%%
+%%{init: {"theme":"neutral","themeVariables":{"quadrant1Fill":"#FF9800","quadrant2Fill":"#D32F2F","quadrant3Fill":"#4CAF50","quadrant4Fill":"#FFC107","quadrantTitleFill":"#ffffff","quadrantPointFill":"#ffffff","quadrantPointTextFill":"#000000","quadrantXAxisTextFill":"#000000","quadrantYAxisTextFill":"#000000"},"quadrantChart":{"chartWidth":700,"chartHeight":700,"pointLabelFontSize":12,"titleFontSize":20,"quadrantLabelFontSize":16,"xAxisLabelFontSize":14,"yAxisLabelFontSize":14}}}%%
 quadrantChart
     title 🎯 CIA Manager Risk Heat Matrix
     x-axis Low Likelihood --> High Likelihood
     y-axis Low Impact --> High Impact
-    quadrant-1 Monitor & Prepare
-    quadrant-2 Immediate Action Required
-    quadrant-3 Accept Risk
-    quadrant-4 Mitigate & Control
-    
-    "📦 Supply Chain Attack": [0.6, 0.95]
-    "🧠 Algorithm Manipulation": [0.4, 0.9]
-    "📊 Framework Poisoning": [0.3, 0.8]
-    "🏗️ Build Compromise": [0.5, 0.75]
-    "🌐 Client Tampering": [0.6, 0.6]
-    "💾 Privacy Violation": [0.4, 0.5]
-    "🎭 Social Engineering": [0.7, 0.4]
-    "⚡ Service Disruption": [0.8, 0.3]
-    "🔍 Info Disclosure": [0.5, 0.25]
+    quadrant-1 MONITOR AND PREPARE
+    quadrant-2 IMMEDIATE ACTION REQUIRED
+    quadrant-3 ACCEPT RISK
+    quadrant-4 MITIGATE AND CONTROL
+    "Supply Chain Attack": [0.60, 0.95] radius: 8
+    "Algorithm Manipulation": [0.40, 0.90] radius: 7
+    "Framework Poisoning": [0.30, 0.80] radius: 7
+    "Build Compromise": [0.50, 0.75] radius: 7
+    "Client Tampering": [0.60, 0.60] radius: 6
+    "Privacy Violation": [0.40, 0.50] radius: 6
+    "Social Engineering": [0.70, 0.40] radius: 6
+    "Service Disruption": [0.80, 0.30] radius: 6
+    "Info Disclosure": [0.50, 0.25] radius: 5
 ```
 
 ### **📐 Quantitative Risk Assessment**
@@ -464,11 +421,11 @@ flowchart TD
         D --> I[⚡ DoS Risk]
     end
 
-    style A fill:#FF3D00,stroke:#BF360C,stroke-width:2px,color:white,font-weight:bold
-    style B fill:#2979FF,stroke:#0D47A1,stroke-width:2px,color:white,font-weight:bold
-    style C fill:#00C853,stroke:#007E33,stroke-width:2px,color:white,font-weight:bold
-    style D fill:#FF3D00,stroke:#BF360C,stroke-width:2px,color:white,font-weight:bold
-    style E,F,G fill:#FFD600,stroke:#FF8F00,stroke-width:2px,color:black,font-weight:bold
+    style A fill:#D32F2F,stroke:#BF360C,stroke-width:2px,color:white,font-weight:bold
+    style B fill:#2196F3,stroke:#0D47A1,stroke-width:2px,color:white,font-weight:bold
+    style C fill:#4CAF50,stroke:#007E33,stroke-width:2px,color:white,font-weight:bold
+    style D fill:#D32F2F,stroke:#BF360C,stroke-width:2px,color:white,font-weight:bold
+    style E,F,G fill:#FFC107,stroke:#FF8F00,stroke-width:2px,color:black,font-weight:bold
     style H,I fill:#D32F2F,stroke:#B71C1C,stroke-width:2px,color:white,font-weight:bold
 ```
 
@@ -505,10 +462,10 @@ flowchart TD
         J[🌐 E2E Tests] --> K[🔐 Workflow Security Validation]
     end
 
-    style A fill:#00C853,stroke:#007E33,stroke-width:2px,color:white,font-weight:bold
+    style A fill:#4CAF50,stroke:#007E33,stroke-width:2px,color:white,font-weight:bold
     style B,C,D fill:#FF9800,stroke:#F57C00,stroke-width:2px,color:white,font-weight:bold
-    style E,F,G fill:#2979FF,stroke:#0D47A1,stroke-width:2px,color:white,font-weight:bold
-    style H,I,J,K fill:#9C27B0,stroke:#6A1B9A,stroke-width:2px,color:white,font-weight:bold
+    style E,F,G fill:#2196F3,stroke:#0D47A1,stroke-width:2px,color:white,font-weight:bold
+    style H,I,J,K fill:#7B1FA2,stroke:#6A1B9A,stroke-width:2px,color:white,font-weight:bold
 ```
 
 #### **🎯 Cypress Testing Threat Scenarios**
@@ -544,12 +501,12 @@ flowchart LR
         G -->|User Input| I[🔒 Sanitized by React]
     end
 
-    style A fill:#FF3D00,stroke:#BF360C,stroke-width:2px,color:white,font-weight:bold
-    style B fill:#2979FF,stroke:#0D47A1,stroke-width:2px,color:white,font-weight:bold
-    style C,D,E fill:#00C853,stroke:#007E33,stroke-width:2px,color:white,font-weight:bold
+    style A fill:#D32F2F,stroke:#BF360C,stroke-width:2px,color:white,font-weight:bold
+    style B fill:#2196F3,stroke:#0D47A1,stroke-width:2px,color:white,font-weight:bold
+    style C,D,E fill:#4CAF50,stroke:#007E33,stroke-width:2px,color:white,font-weight:bold
     style F fill:#FF9800,stroke:#F57C00,stroke-width:2px,color:white,font-weight:bold
-    style G fill:#9C27B0,stroke:#6A1B9A,stroke-width:2px,color:white,font-weight:bold
-    style H,I fill:#00C853,stroke:#007E33,stroke-width:2px,color:white,font-weight:bold
+    style G fill:#7B1FA2,stroke:#6A1B9A,stroke-width:2px,color:white,font-weight:bold
+    style H,I fill:#4CAF50,stroke:#007E33,stroke-width:2px,color:white,font-weight:bold
 ```
 
 #### **🎯 CSP Bypass Threat Scenarios**
@@ -589,11 +546,11 @@ flowchart TD
         J --> B
     end
 
-    style A fill:#FF3D00,stroke:#BF360C,stroke-width:2px,color:white,font-weight:bold
-    style B fill:#2979FF,stroke:#0D47A1,stroke-width:2px,color:white,font-weight:bold
-    style C,D,E fill:#00C853,stroke:#007E33,stroke-width:2px,color:white,font-weight:bold
-    style F,G,H fill:#FFD600,stroke:#FF8F00,stroke-width:2px,color:black,font-weight:bold
-    style I,J fill:#9C27B0,stroke:#6A1B9A,stroke-width:2px,color:white,font-weight:bold
+    style A fill:#D32F2F,stroke:#BF360C,stroke-width:2px,color:white,font-weight:bold
+    style B fill:#2196F3,stroke:#0D47A1,stroke-width:2px,color:white,font-weight:bold
+    style C,D,E fill:#4CAF50,stroke:#007E33,stroke-width:2px,color:white,font-weight:bold
+    style F,G,H fill:#FFC107,stroke:#FF8F00,stroke-width:2px,color:black,font-weight:bold
+    style I,J fill:#7B1FA2,stroke:#6A1B9A,stroke-width:2px,color:white,font-weight:bold
 ```
 
 #### **🎯 Supply Chain Threat Scenarios**
@@ -641,18 +598,7 @@ flowchart TD
 Aligned with [Security Architecture](SECURITY_ARCHITECTURE.md) implementation:
 
 ```mermaid
-%%{
-  init: {
-    'theme': 'base',
-    'themeVariables': {
-      'primaryColor': '#e8f5e9',
-      'primaryTextColor': '#2e7d32',
-      'lineColor': '#4caf50',
-      'secondaryColor': '#e3f2fd',
-      'tertiaryColor': '#fff3e0'
-    }
-  }
-}%%
+%%{init: {"theme": "neutral"}}%%
 flowchart TB
     subgraph PERIMETER["🌐 Perimeter Security"]
         DNSSEC[🛡️ DNSSEC + Route53]
@@ -700,11 +646,11 @@ flowchart TB
     CODE_SCAN -.-> DEP_REVIEW
     SCORECARD -.-> ZAP_SCAN
     
-    style PERIMETER fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px
-    style SUPPLY_CHAIN fill:#fff3e0,stroke:#ff9800,stroke-width:2px
-    style APPLICATION fill:#e8f5e9,stroke:#4caf50,stroke-width:2px
-    style DATA fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
-    style MONITORING fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px
+    style PERIMETER fill:#D32F2F,stroke:#d32f2f,stroke-width:2px
+    style SUPPLY_CHAIN fill:#FF9800,stroke:#ff9800,stroke-width:2px
+    style APPLICATION fill:#4CAF50,stroke:#4caf50,stroke-width:2px
+    style DATA fill:#2196F3,stroke:#2196f3,stroke-width:2px
+    style MONITORING fill:#7B1FA2,stroke:#7B1FA2,stroke-width:2px
 ```
 
 ### **🎭 STRIDE → Control Mapping**
@@ -727,18 +673,7 @@ flowchart TB
 Following [Hack23 AB Workshop Framework](https://github.com/Hack23/ISMS-PUBLIC/blob/main/Threat_Modeling.md#threat-modeling-workshop-framework):
 
 ```mermaid
-%%{
-  init: {
-    'theme': 'base',
-    'themeVariables': {
-      'primaryColor': '#e3f2fd',
-      'primaryTextColor': '#01579b',
-      'lineColor': '#0288d1',
-      'secondaryColor': '#f1f8e9',
-      'tertiaryColor': '#fff8e1'
-    }
-  }
-}%%
+%%{init: {"theme": "neutral"}}%%
 flowchart LR
     PRE[📋 Pre-Workshop Prep] --> ENUM[🎯 Asset & Trust Boundary Enumeration]
     ENUM --> THREATS[🔍 Threat Identification<br/>STRIDE + MITRE ATT&CK]
@@ -828,18 +763,7 @@ Implementing [ENISA Threat Landscape 2024](https://www.enisa.europa.eu/publicati
 Following [Hack23 AB Comprehensive Threat Modeling Strategies](https://github.com/Hack23/ISMS-PUBLIC/blob/main/Threat_Modeling.md#comprehensive-threat-modeling-strategies--models):
 
 ```mermaid
-%%{
-  init: {
-    'theme': 'base',
-    'themeVariables': {
-      'primaryColor': '#e8f5e9',
-      'primaryTextColor': '#2e7d32',
-      'lineColor': '#4caf50',
-      'secondaryColor': '#ffcdd2',
-      'tertiaryColor': '#e1bee7'
-    }
-  }
-}%%
+%%{init: {"theme": "neutral"}}%%
 mindmap
   root)🎯 CIA Manager Threat Modeling Strategies(
     (🎖️ Attacker-Centric)
@@ -895,18 +819,7 @@ Following [Hack23 AB Scenario-Centric Modeling](https://github.com/Hack23/ISMS-P
 #### **👤 Compliance Persona-Based Threat Analysis**
 
 ```mermaid
-%%{
-  init: {
-    'theme': 'base',
-    'themeVariables': {
-      'primaryColor': '#f3e5f5',
-      'primaryTextColor': '#6a1b9a',
-      'lineColor': '#9c27b0',
-      'secondaryColor': '#e8f5e9',
-      'tertiaryColor': '#fff3e0'
-    }
-  }
-}%%
+%%{init: {"theme": "neutral"}}%%
 flowchart TD
     subgraph PERSONAS["👥 Compliance Threat Personas"]
         COMPETITIVE[🏢 Commercial Vendor<br/>High Resources, Market Protection]
@@ -941,10 +854,10 @@ flowchart TD
     AUTOMATED --> TECHNICAL_EXPLOIT
     AUTOMATED --> REPUTATION
     
-    style COMPETITIVE fill:#ffcdd2
-    style REGULATORY fill:#fff3e0
-    style INTERNAL fill:#e8f5e9
-    style AUTOMATED fill:#e3f2fd
+    style COMPETITIVE fill:#D32F2F
+    style REGULATORY fill:#FF9800
+    style INTERNAL fill:#4CAF50
+    style AUTOMATED fill:#2196F3
 ```
 
 #### **🎲 Compliance What-If Scenario Planning**
@@ -1292,18 +1205,7 @@ After achieving v1.0 stability, these advanced security capabilities can be expl
 The CIA Compliance Manager implements comprehensive security testing aligned with threat scenarios:
 
 ```mermaid
-%%{
-  init: {
-    'theme': 'base',
-    'themeVariables': {
-      'primaryColor': '#e8f5e9',
-      'primaryTextColor': '#2e7d32',
-      'lineColor': '#4caf50',
-      'secondaryColor': '#e3f2fd',
-      'tertiaryColor': '#fff3e0'
-    }
-  }
-}%%
+%%{init: {"theme": "neutral"}}%%
 flowchart TB
     subgraph SECURITY_TESTING["🔒 Security Testing Framework"]
         STATIC[🔍 Static Analysis Security Testing]
@@ -1336,10 +1238,10 @@ flowchart TB
     SUPPLY_TEST --> PROFESSIONAL
     CLIENT_TEST --> CONTINUOUS
     
-    style STATIC fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
-    style DYNAMIC fill:#fff3e0,stroke:#ff9800,stroke-width:2px
-    style SUPPLY fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px
-    style INTEGRATION fill:#ffebee,stroke:#f44336,stroke-width:2px
+    style STATIC fill:#2196F3,stroke:#2196f3,stroke-width:2px
+    style DYNAMIC fill:#FF9800,stroke:#ff9800,stroke-width:2px
+    style SUPPLY fill:#7B1FA2,stroke:#7B1FA2,stroke-width:2px
+    style INTEGRATION fill:#D32F2F,stroke:#D32F2F,stroke-width:2px
 ```
 
 ### **📊 Security Metrics and KPIs (v1.0 Achievement)**
@@ -1359,18 +1261,7 @@ flowchart TB
 ### **🔄 Security Review Cycle**
 
 ```mermaid
-%%{
-  init: {
-    'theme': 'base',
-    'themeVariables': {
-      'primaryColor': '#e8f5e9',
-      'primaryTextColor': '#2e7d32',
-      'lineColor': '#4caf50',
-      'secondaryColor': '#e3f2fd',
-      'tertiaryColor': '#fff3e0'
-    }
-  }
-}%%
+%%{init: {"theme": "neutral"}}%%
 timeline
     title Security Review and Validation Cycle
     section Monthly
