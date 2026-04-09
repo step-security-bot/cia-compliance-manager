@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.47**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.48**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **meetsSecurityRequirements**(`availabilityLevel`, `integrityLevel`, `confidentialityLevel`, `minAvailability`, `minIntegrity`, `minConfidentiality`): `boolean`
 
-Defined in: [utils/securityLevelUtils.ts:295](https://github.com/Hack23/cia-compliance-manager/blob/0a914ff8809ea300c13e0a51b2ef582dc0e7a4a4/src/utils/securityLevelUtils.ts#L295)
+Defined in: [utils/securityLevelUtils.ts:295](https://github.com/Hack23/cia-compliance-manager/blob/3c37deec8b67c1a91d7d51d274964a1a674bf3b7/src/utils/securityLevelUtils.ts#L295)
 
 Determine if a given set of security levels meets minimum requirements
 

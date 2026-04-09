@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.47**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.48**](../../README.md)
 
 ***
 
@@ -8,4 +8,4 @@
 
 > `const` **RadarChart**: `React.FC`\<`RadarChartProps`\>
 
-Defined in: [components/charts/RadarChart.tsx:45](https://github.com/Hack23/cia-compliance-manager/blob/0a914ff8809ea300c13e0a51b2ef582dc0e7a4a4/src/components/charts/RadarChart.tsx#L45)
+Defined in: [components/charts/RadarChart.tsx:45](https://github.com/Hack23/cia-compliance-manager/blob/3c37deec8b67c1a91d7d51d274964a1a674bf3b7/src/components/charts/RadarChart.tsx#L45)

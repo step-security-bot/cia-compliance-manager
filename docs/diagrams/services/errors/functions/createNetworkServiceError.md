@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.47**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.48**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **createNetworkServiceError**(`message`, `statusCode?`, `context?`): [`ServiceError`](../classes/ServiceError.md)
 
-Defined in: [services/errors.ts:296](https://github.com/Hack23/cia-compliance-manager/blob/0a914ff8809ea300c13e0a51b2ef582dc0e7a4a4/src/services/errors.ts#L296)
+Defined in: [services/errors.ts:296](https://github.com/Hack23/cia-compliance-manager/blob/3c37deec8b67c1a91d7d51d274964a1a674bf3b7/src/services/errors.ts#L296)
 
 Create a network error using ServiceError
 
