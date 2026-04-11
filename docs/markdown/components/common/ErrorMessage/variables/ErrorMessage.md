@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.48**](../../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.49**](../../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **ErrorMessage**: `React.FC`\<[`ErrorMessageProps`](../interfaces/ErrorMessageProps.md)\>
 
-Defined in: [components/common/ErrorMessage.tsx:67](https://github.com/Hack23/cia-compliance-manager/blob/3c37deec8b67c1a91d7d51d274964a1a674bf3b7/src/components/common/ErrorMessage.tsx#L67)
+Defined in: [components/common/ErrorMessage.tsx:67](https://github.com/Hack23/cia-compliance-manager/blob/97b3dab8edb119b45dc90436543513baec730232/src/components/common/ErrorMessage.tsx#L67)
 
 Error message component for displaying errors to users
 

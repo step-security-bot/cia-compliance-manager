@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.48**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.49**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getBusinessConsiderations**(`level`): [`BusinessItem`](../../../types/businessImpact/interfaces/BusinessItem.md)[]
 
-Defined in: [data/valueCreationData.ts:402](https://github.com/Hack23/cia-compliance-manager/blob/3c37deec8b67c1a91d7d51d274964a1a674bf3b7/src/data/valueCreationData.ts#L402)
+Defined in: [data/valueCreationData.ts:402](https://github.com/Hack23/cia-compliance-manager/blob/97b3dab8edb119b45dc90436543513baec730232/src/data/valueCreationData.ts#L402)
 
 Get business considerations for a specific security level
 

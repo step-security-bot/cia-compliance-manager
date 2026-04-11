@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.48**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.49**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **ErrorProvider**: `React.FC`\<[`ErrorProviderProps`](../interfaces/ErrorProviderProps.md)\>
 
-Defined in: [contexts/ErrorContext.tsx:133](https://github.com/Hack23/cia-compliance-manager/blob/3c37deec8b67c1a91d7d51d274964a1a674bf3b7/src/contexts/ErrorContext.tsx#L133)
+Defined in: [contexts/ErrorContext.tsx:133](https://github.com/Hack23/cia-compliance-manager/blob/97b3dab8edb119b45dc90436543513baec730232/src/contexts/ErrorContext.tsx#L133)
 
 Error Provider Component
 

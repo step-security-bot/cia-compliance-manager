@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.48**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.49**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **SEMANTIC\_COLORS**: `object`
 
-Defined in: [constants/designTokens.ts:84](https://github.com/Hack23/cia-compliance-manager/blob/3c37deec8b67c1a91d7d51d274964a1a674bf3b7/src/constants/designTokens.ts#L84)
+Defined in: [constants/designTokens.ts:84](https://github.com/Hack23/cia-compliance-manager/blob/97b3dab8edb119b45dc90436543513baec730232/src/constants/designTokens.ts#L84)
 
 Semantic color system
 These colors should be used based on meaning, not appearance

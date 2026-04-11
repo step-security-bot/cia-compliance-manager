@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.48**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.49**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **formatShortcut**(`keys`, `platform?`): `string`
 
-Defined in: [utils/keyboardUtils.ts:291](https://github.com/Hack23/cia-compliance-manager/blob/3c37deec8b67c1a91d7d51d274964a1a674bf3b7/src/utils/keyboardUtils.ts#L291)
+Defined in: [utils/keyboardUtils.ts:291](https://github.com/Hack23/cia-compliance-manager/blob/97b3dab8edb119b45dc90436543513baec730232/src/utils/keyboardUtils.ts#L291)
 
 Format shortcut for display based on platform
 

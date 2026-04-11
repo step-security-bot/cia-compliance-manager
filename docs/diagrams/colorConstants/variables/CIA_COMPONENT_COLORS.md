@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.48**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.49**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **CIA\_COMPONENT\_COLORS**: `object`
 
-Defined in: [constants/colorConstants.ts:122](https://github.com/Hack23/cia-compliance-manager/blob/3c37deec8b67c1a91d7d51d274964a1a674bf3b7/src/constants/colorConstants.ts#L122)
+Defined in: [constants/colorConstants.ts:122](https://github.com/Hack23/cia-compliance-manager/blob/97b3dab8edb119b45dc90436543513baec730232/src/constants/colorConstants.ts#L122)
 
 Color schemes for CIA triad components with enhanced distinctiveness.
 
