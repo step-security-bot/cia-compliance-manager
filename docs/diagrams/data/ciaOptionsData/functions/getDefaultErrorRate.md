@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.49**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.50**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getDefaultErrorRate**(`level`): `string`
 
-Defined in: [data/ciaOptionsData.ts:512](https://github.com/Hack23/cia-compliance-manager/blob/97b3dab8edb119b45dc90436543513baec730232/src/data/ciaOptionsData.ts#L512)
+Defined in: [data/ciaOptionsData.ts:512](https://github.com/Hack23/cia-compliance-manager/blob/0596f77c548db1bdb6aac53bc43b69ece0d44bff/src/data/ciaOptionsData.ts#L512)
 
 Get default error rate for a security level
 

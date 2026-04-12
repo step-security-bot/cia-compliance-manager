@@ -1,4 +1,4 @@
-**CIA Compliance Manager — UML Diagrams v1.1.49**
+**CIA Compliance Manager — UML Diagrams v1.1.50**
 
 ***
 

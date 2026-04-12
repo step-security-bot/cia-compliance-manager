@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.49**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.50**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **SECURITY\_ICONS**: `object`
 
-Defined in: [constants/uiConstants.ts:46](https://github.com/Hack23/cia-compliance-manager/blob/97b3dab8edb119b45dc90436543513baec730232/src/constants/uiConstants.ts#L46)
+Defined in: [constants/uiConstants.ts:46](https://github.com/Hack23/cia-compliance-manager/blob/0596f77c548db1bdb6aac53bc43b69ece0d44bff/src/constants/uiConstants.ts#L46)
 
 Icons for security-related concepts
 

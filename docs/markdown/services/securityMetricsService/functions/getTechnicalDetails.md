@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.49**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.50**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getTechnicalDetails**(`availabilityLevel`, `integrityLevel`, `confidentialityLevel`): `Promise`\<[`TechnicalDetailsResponse`](../interfaces/TechnicalDetailsResponse.md)\>
 
-Defined in: [services/securityMetricsService.ts:1511](https://github.com/Hack23/cia-compliance-manager/blob/97b3dab8edb119b45dc90436543513baec730232/src/services/securityMetricsService.ts#L1511)
+Defined in: [services/securityMetricsService.ts:1511](https://github.com/Hack23/cia-compliance-manager/blob/0596f77c548db1bdb6aac53bc43b69ece0d44bff/src/services/securityMetricsService.ts#L1511)
 
 Get technical details based on security levels
 

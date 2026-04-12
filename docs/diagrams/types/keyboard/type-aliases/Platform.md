@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.49**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.50**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > **Platform** = `"windows"` \| `"mac"` \| `"linux"` \| `"unknown"`
 
-Defined in: [types/keyboard.ts:25](https://github.com/Hack23/cia-compliance-manager/blob/97b3dab8edb119b45dc90436543513baec730232/src/types/keyboard.ts#L25)
+Defined in: [types/keyboard.ts:25](https://github.com/Hack23/cia-compliance-manager/blob/0596f77c548db1bdb6aac53bc43b69ece0d44bff/src/types/keyboard.ts#L25)
 
 Platform types for keyboard shortcut display

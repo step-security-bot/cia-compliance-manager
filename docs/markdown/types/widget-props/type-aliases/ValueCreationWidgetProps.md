@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.49**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.50**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **ValueCreationWidgetProps** = [`AllCIAComponentsProps`](../interfaces/AllCIAComponentsProps.md)
 
-Defined in: [types/widget-props.ts:550](https://github.com/Hack23/cia-compliance-manager/blob/97b3dab8edb119b45dc90436543513baec730232/src/types/widget-props.ts#L550)
+Defined in: [types/widget-props.ts:550](https://github.com/Hack23/cia-compliance-manager/blob/0596f77c548db1bdb6aac53bc43b69ece0d44bff/src/types/widget-props.ts#L550)
 
 Props for ValueCreationWidget component
 

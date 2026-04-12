@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.49**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.50**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **CIA\_LABELS**: `object`
 
-Defined in: [constants/coreConstants.ts:104](https://github.com/Hack23/cia-compliance-manager/blob/97b3dab8edb119b45dc90436543513baec730232/src/constants/coreConstants.ts#L104)
+Defined in: [constants/coreConstants.ts:104](https://github.com/Hack23/cia-compliance-manager/blob/0596f77c548db1bdb6aac53bc43b69ece0d44bff/src/constants/coreConstants.ts#L104)
 
 CIA component label constants for consistent terminology.
 
