@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.51**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.52**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getFrameworkCoverage**(`levels`): [`FrameworkCoverage`](../interfaces/FrameworkCoverage.md)[]
 
-Defined in: [services/ComplianceServiceAdapter.ts:463](https://github.com/Hack23/cia-compliance-manager/blob/86b846d7899a64ef6107abca6a5f64502752b5cc/src/services/ComplianceServiceAdapter.ts#L463)
+Defined in: [services/ComplianceServiceAdapter.ts:463](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/services/ComplianceServiceAdapter.ts#L463)
 
 Get framework coverage analysis based on security levels
 

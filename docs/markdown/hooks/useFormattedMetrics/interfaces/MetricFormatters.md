@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.51**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.52**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: MetricFormatters
 
-Defined in: [hooks/useFormattedMetrics.ts:22](https://github.com/Hack23/cia-compliance-manager/blob/86b846d7899a64ef6107abca6a5f64502752b5cc/src/hooks/useFormattedMetrics.ts#L22)
+Defined in: [hooks/useFormattedMetrics.ts:22](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/hooks/useFormattedMetrics.ts#L22)
 
 Formatted metric functions
 
@@ -16,7 +16,7 @@ Formatted metric functions
 
 > **currency**: (`value`) => `string`
 
-Defined in: [hooks/useFormattedMetrics.ts:28](https://github.com/Hack23/cia-compliance-manager/blob/86b846d7899a64ef6107abca6a5f64502752b5cc/src/hooks/useFormattedMetrics.ts#L28)
+Defined in: [hooks/useFormattedMetrics.ts:28](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/hooks/useFormattedMetrics.ts#L28)
 
 Format a number as currency
 
@@ -40,7 +40,7 @@ Formatted currency string
 
 > **percentage**: (`value`, `decimalPlaces?`) => `string`
 
-Defined in: [hooks/useFormattedMetrics.ts:36](https://github.com/Hack23/cia-compliance-manager/blob/86b846d7899a64ef6107abca6a5f64502752b5cc/src/hooks/useFormattedMetrics.ts#L36)
+Defined in: [hooks/useFormattedMetrics.ts:36](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/hooks/useFormattedMetrics.ts#L36)
 
 Format a decimal as percentage
 
@@ -70,7 +70,7 @@ Formatted percentage string
 
 > **number**: (`value`) => `string`
 
-Defined in: [hooks/useFormattedMetrics.ts:43](https://github.com/Hack23/cia-compliance-manager/blob/86b846d7899a64ef6107abca6a5f64502752b5cc/src/hooks/useFormattedMetrics.ts#L43)
+Defined in: [hooks/useFormattedMetrics.ts:43](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/hooks/useFormattedMetrics.ts#L43)
 
 Format a number with locale-specific formatting
 

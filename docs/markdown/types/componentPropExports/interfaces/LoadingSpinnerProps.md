@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.51**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.52**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: LoadingSpinnerProps
 
-Defined in: [types/componentPropExports.ts:336](https://github.com/Hack23/cia-compliance-manager/blob/86b846d7899a64ef6107abca6a5f64502752b5cc/src/types/componentPropExports.ts#L336)
+Defined in: [types/componentPropExports.ts:336](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/types/componentPropExports.ts#L336)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [types/componentPropExports.ts:336](https://github.com/Hack23/cia-co
 
 > `optional` **size?**: `"sm"` \| `"md"` \| `"lg"`
 
-Defined in: [types/componentPropExports.ts:341](https://github.com/Hack23/cia-compliance-manager/blob/86b846d7899a64ef6107abca6a5f64502752b5cc/src/types/componentPropExports.ts#L341)
+Defined in: [types/componentPropExports.ts:341](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/types/componentPropExports.ts#L341)
 
 Size of the spinner
 
@@ -30,7 +30,7 @@ Size of the spinner
 
 > `optional` **testId?**: `string`
 
-Defined in: [types/componentPropExports.ts:346](https://github.com/Hack23/cia-compliance-manager/blob/86b846d7899a64ef6107abca6a5f64502752b5cc/src/types/componentPropExports.ts#L346)
+Defined in: [types/componentPropExports.ts:346](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/types/componentPropExports.ts#L346)
 
 Optional test ID for automated testing
 
@@ -40,6 +40,6 @@ Optional test ID for automated testing
 
 > `optional` **className?**: `string`
 
-Defined in: [types/componentPropExports.ts:351](https://github.com/Hack23/cia-compliance-manager/blob/86b846d7899a64ef6107abca6a5f64502752b5cc/src/types/componentPropExports.ts#L351)
+Defined in: [types/componentPropExports.ts:351](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/types/componentPropExports.ts#L351)
 
 Optional CSS class name

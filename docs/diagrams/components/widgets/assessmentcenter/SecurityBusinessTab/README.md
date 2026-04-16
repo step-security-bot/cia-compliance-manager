@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.51**](../../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.52**](../../../../README.md)
 
 ***
 

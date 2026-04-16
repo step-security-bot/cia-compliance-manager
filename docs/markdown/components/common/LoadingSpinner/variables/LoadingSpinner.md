@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.51**](../../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.52**](../../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **LoadingSpinner**: `React.FC`\<[`LoadingSpinnerProps`](../interfaces/LoadingSpinnerProps.md)\>
 
-Defined in: [components/common/LoadingSpinner.tsx:51](https://github.com/Hack23/cia-compliance-manager/blob/86b846d7899a64ef6107abca6a5f64502752b5cc/src/components/common/LoadingSpinner.tsx#L51)
+Defined in: [components/common/LoadingSpinner.tsx:51](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/components/common/LoadingSpinner.tsx#L51)
 
 Loading spinner component for indicating loading states
 
