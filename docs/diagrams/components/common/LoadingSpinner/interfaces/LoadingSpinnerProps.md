@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.52**](../../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.53**](../../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: LoadingSpinnerProps
 
-Defined in: [components/common/LoadingSpinner.tsx:6](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/components/common/LoadingSpinner.tsx#L6)
+Defined in: [components/common/LoadingSpinner.tsx:6](https://github.com/Hack23/cia-compliance-manager/blob/21b7c0f56334578902f2a0b9e3a8ba680378a873/src/components/common/LoadingSpinner.tsx#L6)
 
 Props for LoadingSpinner component
 
@@ -16,7 +16,7 @@ Props for LoadingSpinner component
 
 > `optional` **size?**: `"sm"` \| `"md"` \| `"lg"`
 
-Defined in: [components/common/LoadingSpinner.tsx:11](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/components/common/LoadingSpinner.tsx#L11)
+Defined in: [components/common/LoadingSpinner.tsx:11](https://github.com/Hack23/cia-compliance-manager/blob/21b7c0f56334578902f2a0b9e3a8ba680378a873/src/components/common/LoadingSpinner.tsx#L11)
 
 Size of the spinner
 
@@ -32,7 +32,7 @@ Size of the spinner
 
 > `optional` **testId?**: `string`
 
-Defined in: [components/common/LoadingSpinner.tsx:16](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/components/common/LoadingSpinner.tsx#L16)
+Defined in: [components/common/LoadingSpinner.tsx:16](https://github.com/Hack23/cia-compliance-manager/blob/21b7c0f56334578902f2a0b9e3a8ba680378a873/src/components/common/LoadingSpinner.tsx#L16)
 
 Optional test ID for automated testing
 
@@ -42,6 +42,6 @@ Optional test ID for automated testing
 
 > `optional` **className?**: `string`
 
-Defined in: [components/common/LoadingSpinner.tsx:21](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/components/common/LoadingSpinner.tsx#L21)
+Defined in: [components/common/LoadingSpinner.tsx:21](https://github.com/Hack23/cia-compliance-manager/blob/21b7c0f56334578902f2a0b9e3a8ba680378a873/src/components/common/LoadingSpinner.tsx#L21)
 
 Optional CSS class name

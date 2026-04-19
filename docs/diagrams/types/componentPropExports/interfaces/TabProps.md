@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.52**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.53**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: TabProps
 
-Defined in: [types/componentPropExports.ts:192](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/types/componentPropExports.ts#L192)
+Defined in: [types/componentPropExports.ts:192](https://github.com/Hack23/cia-compliance-manager/blob/21b7c0f56334578902f2a0b9e3a8ba680378a873/src/types/componentPropExports.ts#L192)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [types/componentPropExports.ts:192](https://github.com/Hack23/cia-co
 
 > **label**: `string`
 
-Defined in: [types/componentPropExports.ts:193](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/types/componentPropExports.ts#L193)
+Defined in: [types/componentPropExports.ts:193](https://github.com/Hack23/cia-compliance-manager/blob/21b7c0f56334578902f2a0b9e3a8ba680378a873/src/types/componentPropExports.ts#L193)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [types/componentPropExports.ts:193](https://github.com/Hack23/cia-co
 
 > **value**: `string`
 
-Defined in: [types/componentPropExports.ts:194](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/types/componentPropExports.ts#L194)
+Defined in: [types/componentPropExports.ts:194](https://github.com/Hack23/cia-compliance-manager/blob/21b7c0f56334578902f2a0b9e3a8ba680378a873/src/types/componentPropExports.ts#L194)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: [types/componentPropExports.ts:194](https://github.com/Hack23/cia-co
 
 > `optional` **isActive?**: `boolean`
 
-Defined in: [types/componentPropExports.ts:195](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/types/componentPropExports.ts#L195)
+Defined in: [types/componentPropExports.ts:195](https://github.com/Hack23/cia-compliance-manager/blob/21b7c0f56334578902f2a0b9e3a8ba680378a873/src/types/componentPropExports.ts#L195)
 
 ***
 
@@ -38,7 +38,7 @@ Defined in: [types/componentPropExports.ts:195](https://github.com/Hack23/cia-co
 
 > **onClick**: (`value`) => `void`
 
-Defined in: [types/componentPropExports.ts:196](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/types/componentPropExports.ts#L196)
+Defined in: [types/componentPropExports.ts:196](https://github.com/Hack23/cia-compliance-manager/blob/21b7c0f56334578902f2a0b9e3a8ba680378a873/src/types/componentPropExports.ts#L196)
 
 #### Parameters
 
@@ -56,4 +56,4 @@ Defined in: [types/componentPropExports.ts:196](https://github.com/Hack23/cia-co
 
 > `optional` **testId?**: `string`
 
-Defined in: [types/componentPropExports.ts:197](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/types/componentPropExports.ts#L197)
+Defined in: [types/componentPropExports.ts:197](https://github.com/Hack23/cia-compliance-manager/blob/21b7c0f56334578902f2a0b9e3a8ba680378a873/src/types/componentPropExports.ts#L197)

@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.52**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.53**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: BusinessItem
 
-Defined in: [types/businessImpact.ts:307](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/types/businessImpact.ts#L307)
+Defined in: [types/businessImpact.ts:307](https://github.com/Hack23/cia-compliance-manager/blob/21b7c0f56334578902f2a0b9e3a8ba680378a873/src/types/businessImpact.ts#L307)
 
 Business consideration or benefit item
 
@@ -16,7 +16,7 @@ Business consideration or benefit item
 
 > `optional` **title?**: `string`
 
-Defined in: [types/businessImpact.ts:311](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/types/businessImpact.ts#L311)
+Defined in: [types/businessImpact.ts:311](https://github.com/Hack23/cia-compliance-manager/blob/21b7c0f56334578902f2a0b9e3a8ba680378a873/src/types/businessImpact.ts#L311)
 
 Title of the consideration or benefit
 
@@ -26,7 +26,7 @@ Title of the consideration or benefit
 
 > **description**: `string`
 
-Defined in: [types/businessImpact.ts:316](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/types/businessImpact.ts#L316)
+Defined in: [types/businessImpact.ts:316](https://github.com/Hack23/cia-compliance-manager/blob/21b7c0f56334578902f2a0b9e3a8ba680378a873/src/types/businessImpact.ts#L316)
 
 Description of the consideration or benefit
 
@@ -36,7 +36,7 @@ Description of the consideration or benefit
 
 > `optional` **category?**: `string`
 
-Defined in: [types/businessImpact.ts:321](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/types/businessImpact.ts#L321)
+Defined in: [types/businessImpact.ts:321](https://github.com/Hack23/cia-compliance-manager/blob/21b7c0f56334578902f2a0b9e3a8ba680378a873/src/types/businessImpact.ts#L321)
 
 Category of the consideration or benefit (e.g., "financial", "operational")
 
@@ -46,7 +46,7 @@ Category of the consideration or benefit (e.g., "financial", "operational")
 
 > `optional` **priority?**: `number`
 
-Defined in: [types/businessImpact.ts:326](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/types/businessImpact.ts#L326)
+Defined in: [types/businessImpact.ts:326](https://github.com/Hack23/cia-compliance-manager/blob/21b7c0f56334578902f2a0b9e3a8ba680378a873/src/types/businessImpact.ts#L326)
 
 Priority or importance (1-5)
 
@@ -56,6 +56,6 @@ Priority or importance (1-5)
 
 > `optional` **icon?**: `string`
 
-Defined in: [types/businessImpact.ts:331](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/types/businessImpact.ts#L331)
+Defined in: [types/businessImpact.ts:331](https://github.com/Hack23/cia-compliance-manager/blob/21b7c0f56334578902f2a0b9e3a8ba680378a873/src/types/businessImpact.ts#L331)
 
 Icon representation

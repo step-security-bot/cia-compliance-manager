@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.52**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.53**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: BusinessImpactDetails
 
-Defined in: [types/impact.ts:14](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/types/impact.ts#L14)
+Defined in: [types/impact.ts:14](https://github.com/Hack23/cia-compliance-manager/blob/21b7c0f56334578902f2a0b9e3a8ba680378a873/src/types/impact.ts#L14)
 
 Enhanced interface for business impact details
 
@@ -16,7 +16,7 @@ Enhanced interface for business impact details
 
 > **summary**: `string`
 
-Defined in: [types/impact.ts:18](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/types/impact.ts#L18)
+Defined in: [types/impact.ts:18](https://github.com/Hack23/cia-compliance-manager/blob/21b7c0f56334578902f2a0b9e3a8ba680378a873/src/types/impact.ts#L18)
 
 Overall summary of business impact
 
@@ -26,7 +26,7 @@ Overall summary of business impact
 
 > **financial**: `object`
 
-Defined in: [types/impact.ts:23](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/types/impact.ts#L23)
+Defined in: [types/impact.ts:23](https://github.com/Hack23/cia-compliance-manager/blob/21b7c0f56334578902f2a0b9e3a8ba680378a873/src/types/impact.ts#L23)
 
 Financial impact details
 
@@ -54,7 +54,7 @@ Estimated annual revenue loss
 
 > **operational**: `object`
 
-Defined in: [types/impact.ts:41](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/types/impact.ts#L41)
+Defined in: [types/impact.ts:41](https://github.com/Hack23/cia-compliance-manager/blob/21b7c0f56334578902f2a0b9e3a8ba680378a873/src/types/impact.ts#L41)
 
 Operational impact details
 
@@ -82,7 +82,7 @@ Mean time to recover from incidents
 
 > `optional` **reputational?**: `object`
 
-Defined in: [types/impact.ts:59](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/types/impact.ts#L59)
+Defined in: [types/impact.ts:59](https://github.com/Hack23/cia-compliance-manager/blob/21b7c0f56334578902f2a0b9e3a8ba680378a873/src/types/impact.ts#L59)
 
 Reputational impact details
 
@@ -104,7 +104,7 @@ Description of reputational impact
 
 > `optional` **regulatory?**: `object`
 
-Defined in: [types/impact.ts:73](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/types/impact.ts#L73)
+Defined in: [types/impact.ts:73](https://github.com/Hack23/cia-compliance-manager/blob/21b7c0f56334578902f2a0b9e3a8ba680378a873/src/types/impact.ts#L73)
 
 Regulatory impact details
 
@@ -132,7 +132,7 @@ List of potential compliance violations
 
 > `optional` **strategic?**: `object`
 
-Defined in: [types/impact.ts:91](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/types/impact.ts#L91)
+Defined in: [types/impact.ts:91](https://github.com/Hack23/cia-compliance-manager/blob/21b7c0f56334578902f2a0b9e3a8ba680378a873/src/types/impact.ts#L91)
 
 Strategic impact details
 

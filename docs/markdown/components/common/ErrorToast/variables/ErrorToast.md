@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.52**](../../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.53**](../../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **ErrorToast**: `React.FC`\<[`ErrorToastProps`](../interfaces/ErrorToastProps.md)\>
 
-Defined in: [components/common/ErrorToast.tsx:137](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/components/common/ErrorToast.tsx#L137)
+Defined in: [components/common/ErrorToast.tsx:137](https://github.com/Hack23/cia-compliance-manager/blob/21b7c0f56334578902f2a0b9e3a8ba680378a873/src/components/common/ErrorToast.tsx#L137)
 
 Error Toast Component
 

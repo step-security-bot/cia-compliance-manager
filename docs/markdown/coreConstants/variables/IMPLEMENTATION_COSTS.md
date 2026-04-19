@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.52**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.53**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **IMPLEMENTATION\_COSTS**: `Record`\<[`SecurityLevel`](../../types/cia/type-aliases/SecurityLevel.md), \{ `developmentEffort`: `string`; `maintenance`: `string`; `expertise`: `string`; \}\>
 
-Defined in: [constants/coreConstants.ts:226](https://github.com/Hack23/cia-compliance-manager/blob/24a2323b3ae1c30737b07fe40ab27a2a098b000b/src/constants/coreConstants.ts#L226)
+Defined in: [constants/coreConstants.ts:226](https://github.com/Hack23/cia-compliance-manager/blob/21b7c0f56334578902f2a0b9e3a8ba680378a873/src/constants/coreConstants.ts#L226)
 
 Implementation cost estimates by security level.
 
