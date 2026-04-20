@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.53**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.54**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getRequiredSecurityLevel**(`framework`, `component`): [`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
 
-Defined in: [constants/complianceConstants.ts:242](https://github.com/Hack23/cia-compliance-manager/blob/21b7c0f56334578902f2a0b9e3a8ba680378a873/src/constants/complianceConstants.ts#L242)
+Defined in: [constants/complianceConstants.ts:242](https://github.com/Hack23/cia-compliance-manager/blob/ec53446d20ff3941e43c6f67d15ff98cb084ddbd/src/constants/complianceConstants.ts#L242)
 
 Get the required security level for a specific framework and component
 

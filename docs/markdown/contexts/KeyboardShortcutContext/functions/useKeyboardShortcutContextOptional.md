@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.53**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.54**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **useKeyboardShortcutContextOptional**(): [`KeyboardShortcutContextValue`](../../../types/keyboard/interfaces/KeyboardShortcutContextValue.md) \| `undefined`
 
-Defined in: [contexts/KeyboardShortcutContext.tsx:169](https://github.com/Hack23/cia-compliance-manager/blob/21b7c0f56334578902f2a0b9e3a8ba680378a873/src/contexts/KeyboardShortcutContext.tsx#L169)
+Defined in: [contexts/KeyboardShortcutContext.tsx:169](https://github.com/Hack23/cia-compliance-manager/blob/ec53446d20ff3941e43c6f67d15ff98cb084ddbd/src/contexts/KeyboardShortcutContext.tsx#L169)
 
 Optional hook to access keyboard shortcut context (returns undefined if not in provider)
 
