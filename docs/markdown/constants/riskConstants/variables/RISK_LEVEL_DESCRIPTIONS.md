@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.54**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.55**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > `const` **RISK\_LEVEL\_DESCRIPTIONS**: `Record`\<`string`, `string`\>
 
-Defined in: [constants/riskConstants.ts:57](https://github.com/Hack23/cia-compliance-manager/blob/ec53446d20ff3941e43c6f67d15ff98cb084ddbd/src/constants/riskConstants.ts#L57)
+Defined in: [constants/riskConstants.ts:57](https://github.com/Hack23/cia-compliance-manager/blob/180ab7279d949938b21fc9271873d60dde559b30/src/constants/riskConstants.ts#L57)
 
 Risk level descriptions

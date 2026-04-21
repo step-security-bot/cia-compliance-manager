@@ -1,8 +1,8 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.54**](README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.55**](README.md)
 
 ***
 
-# CIA Compliance Manager — UML Diagrams v1.1.54
+# CIA Compliance Manager — UML Diagrams v1.1.55
 
 ## Modules
 

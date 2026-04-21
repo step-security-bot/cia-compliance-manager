@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.54**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.55**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **asSecurityLevel**(`level`): [`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
 
-Defined in: [constants/testIds.ts:1170](https://github.com/Hack23/cia-compliance-manager/blob/ec53446d20ff3941e43c6f67d15ff98cb084ddbd/src/constants/testIds.ts#L1170)
+Defined in: [constants/testIds.ts:1170](https://github.com/Hack23/cia-compliance-manager/blob/180ab7279d949938b21fc9271873d60dde559b30/src/constants/testIds.ts#L1170)
 
 Helper for type-safe SecurityLevel conversion
 Use this to convert strings to SecurityLevel type when needed

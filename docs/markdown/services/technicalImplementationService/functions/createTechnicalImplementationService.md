@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.54**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.55**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **createTechnicalImplementationService**(`dataProvider?`): [`TechnicalImplementationService`](../classes/TechnicalImplementationService.md)
 
-Defined in: [services/technicalImplementationService.ts:413](https://github.com/Hack23/cia-compliance-manager/blob/ec53446d20ff3941e43c6f67d15ff98cb084ddbd/src/services/technicalImplementationService.ts#L413)
+Defined in: [services/technicalImplementationService.ts:413](https://github.com/Hack23/cia-compliance-manager/blob/180ab7279d949938b21fc9271873d60dde559b30/src/services/technicalImplementationService.ts#L413)
 
 Create a TechnicalImplementationService instance
 
