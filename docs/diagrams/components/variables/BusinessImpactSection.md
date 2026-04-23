@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.55**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.56**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **BusinessImpactSection**: `React.FC`\<[`BusinessImpactSectionProps`](../../types/componentPropExports/interfaces/BusinessImpactSectionProps.md)\>
 
-Defined in: [components/common/BusinessImpactSection.tsx:72](https://github.com/Hack23/cia-compliance-manager/blob/180ab7279d949938b21fc9271873d60dde559b30/src/components/common/BusinessImpactSection.tsx#L72)
+Defined in: [components/common/BusinessImpactSection.tsx:72](https://github.com/Hack23/cia-compliance-manager/blob/947de98b1b44a8456f3ca81571083fd214d2e336/src/components/common/BusinessImpactSection.tsx#L72)
 
 Reusable component for displaying business impact information
 Used by various CIA impact widgets to provide consistent UI

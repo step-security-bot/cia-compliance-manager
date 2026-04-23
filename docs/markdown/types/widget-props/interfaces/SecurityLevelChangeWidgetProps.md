@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.55**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.56**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: SecurityLevelChangeWidgetProps
 
-Defined in: [types/widget-props.ts:292](https://github.com/Hack23/cia-compliance-manager/blob/180ab7279d949938b21fc9271873d60dde559b30/src/types/widget-props.ts#L292)
+Defined in: [types/widget-props.ts:292](https://github.com/Hack23/cia-compliance-manager/blob/947de98b1b44a8456f3ca81571083fd214d2e336/src/types/widget-props.ts#L292)
 
 Base props for widgets that allow security level changes
 
@@ -32,7 +32,7 @@ Extends CIAComponentWidgetProps with interactive change capability.
 
 > `optional` **className?**: `string`
 
-Defined in: [types/widget-props.ts:124](https://github.com/Hack23/cia-compliance-manager/blob/180ab7279d949938b21fc9271873d60dde559b30/src/types/widget-props.ts#L124)
+Defined in: [types/widget-props.ts:124](https://github.com/Hack23/cia-compliance-manager/blob/947de98b1b44a8456f3ca81571083fd214d2e336/src/types/widget-props.ts#L124)
 
 Optional CSS class name for custom styling
 
@@ -55,7 +55,7 @@ Use Tailwind CSS classes or custom CSS classes.
 
 > `optional` **testId?**: `string`
 
-Defined in: [types/widget-props.ts:135](https://github.com/Hack23/cia-compliance-manager/blob/180ab7279d949938b21fc9271873d60dde559b30/src/types/widget-props.ts#L135)
+Defined in: [types/widget-props.ts:135](https://github.com/Hack23/cia-compliance-manager/blob/947de98b1b44a8456f3ca81571083fd214d2e336/src/types/widget-props.ts#L135)
 
 Optional test ID for automated testing
 
@@ -79,7 +79,7 @@ defined in testIds constants.
 
 > `optional` **children?**: `ReactNode`
 
-Defined in: [types/widget-props.ts:244](https://github.com/Hack23/cia-compliance-manager/blob/180ab7279d949938b21fc9271873d60dde559b30/src/types/widget-props.ts#L244)
+Defined in: [types/widget-props.ts:244](https://github.com/Hack23/cia-compliance-manager/blob/947de98b1b44a8456f3ca81571083fd214d2e336/src/types/widget-props.ts#L244)
 
 Optional children elements
 
@@ -93,7 +93,7 @@ Optional children elements
 
 > `optional` **onError?**: (`error`) => `void`
 
-Defined in: [types/widget-props.ts:250](https://github.com/Hack23/cia-compliance-manager/blob/180ab7279d949938b21fc9271873d60dde559b30/src/types/widget-props.ts#L250)
+Defined in: [types/widget-props.ts:250](https://github.com/Hack23/cia-compliance-manager/blob/947de98b1b44a8456f3ca81571083fd214d2e336/src/types/widget-props.ts#L250)
 
 Optional callback when widget encounters an error
 
@@ -119,7 +119,7 @@ Error that occurred
 
 > **component**: [`CIAComponent`](../../cia/type-aliases/CIAComponent.md)
 
-Defined in: [types/widget-props.ts:270](https://github.com/Hack23/cia-compliance-manager/blob/180ab7279d949938b21fc9271873d60dde559b30/src/types/widget-props.ts#L270)
+Defined in: [types/widget-props.ts:270](https://github.com/Hack23/cia-compliance-manager/blob/947de98b1b44a8456f3ca81571083fd214d2e336/src/types/widget-props.ts#L270)
 
 CIA triad component (availability, integrity, or confidentiality)
 
@@ -133,7 +133,7 @@ CIA triad component (availability, integrity, or confidentiality)
 
 > **level**: [`SecurityLevel`](../../cia/type-aliases/SecurityLevel.md)
 
-Defined in: [types/widget-props.ts:275](https://github.com/Hack23/cia-compliance-manager/blob/180ab7279d949938b21fc9271873d60dde559b30/src/types/widget-props.ts#L275)
+Defined in: [types/widget-props.ts:275](https://github.com/Hack23/cia-compliance-manager/blob/947de98b1b44a8456f3ca81571083fd214d2e336/src/types/widget-props.ts#L275)
 
 Current security level for the component
 
@@ -147,7 +147,7 @@ Current security level for the component
 
 > **onLevelChange**: (`level`) => `void`
 
-Defined in: [types/widget-props.ts:297](https://github.com/Hack23/cia-compliance-manager/blob/180ab7279d949938b21fc9271873d60dde559b30/src/types/widget-props.ts#L297)
+Defined in: [types/widget-props.ts:297](https://github.com/Hack23/cia-compliance-manager/blob/947de98b1b44a8456f3ca81571083fd214d2e336/src/types/widget-props.ts#L297)
 
 Callback fired when security level changes
 
@@ -169,7 +169,7 @@ New security level selected by user
 
 > `optional` **disabled?**: `boolean`
 
-Defined in: [types/widget-props.ts:303](https://github.com/Hack23/cia-compliance-manager/blob/180ab7279d949938b21fc9271873d60dde559b30/src/types/widget-props.ts#L303)
+Defined in: [types/widget-props.ts:303](https://github.com/Hack23/cia-compliance-manager/blob/947de98b1b44a8456f3ca81571083fd214d2e336/src/types/widget-props.ts#L303)
 
 If true, the widget is disabled and cannot be interacted with
 

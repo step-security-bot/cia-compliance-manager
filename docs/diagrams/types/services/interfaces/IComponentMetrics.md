@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.55**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.56**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: IComponentMetrics
 
-Defined in: [types/services.ts:29](https://github.com/Hack23/cia-compliance-manager/blob/180ab7279d949938b21fc9271873d60dde559b30/src/types/services.ts#L29)
+Defined in: [types/services.ts:29](https://github.com/Hack23/cia-compliance-manager/blob/947de98b1b44a8456f3ca81571083fd214d2e336/src/types/services.ts#L29)
 
 Base component metrics interface
 Services may return richer types that extend this interface
@@ -17,7 +17,7 @@ Services may return richer types that extend this interface
 
 > `optional` **component?**: [`CIAComponentType`](../../cia-services/type-aliases/CIAComponentType.md)
 
-Defined in: [types/services.ts:30](https://github.com/Hack23/cia-compliance-manager/blob/180ab7279d949938b21fc9271873d60dde559b30/src/types/services.ts#L30)
+Defined in: [types/services.ts:30](https://github.com/Hack23/cia-compliance-manager/blob/947de98b1b44a8456f3ca81571083fd214d2e336/src/types/services.ts#L30)
 
 ***
 
@@ -25,7 +25,7 @@ Defined in: [types/services.ts:30](https://github.com/Hack23/cia-compliance-mana
 
 > **level**: [`SecurityLevel`](../../cia/type-aliases/SecurityLevel.md)
 
-Defined in: [types/services.ts:31](https://github.com/Hack23/cia-compliance-manager/blob/180ab7279d949938b21fc9271873d60dde559b30/src/types/services.ts#L31)
+Defined in: [types/services.ts:31](https://github.com/Hack23/cia-compliance-manager/blob/947de98b1b44a8456f3ca81571083fd214d2e336/src/types/services.ts#L31)
 
 ***
 
@@ -33,7 +33,7 @@ Defined in: [types/services.ts:31](https://github.com/Hack23/cia-compliance-mana
 
 > **score**: `number`
 
-Defined in: [types/services.ts:32](https://github.com/Hack23/cia-compliance-manager/blob/180ab7279d949938b21fc9271873d60dde559b30/src/types/services.ts#L32)
+Defined in: [types/services.ts:32](https://github.com/Hack23/cia-compliance-manager/blob/947de98b1b44a8456f3ca81571083fd214d2e336/src/types/services.ts#L32)
 
 ***
 
@@ -41,4 +41,4 @@ Defined in: [types/services.ts:32](https://github.com/Hack23/cia-compliance-mana
 
 > **description**: `string`
 
-Defined in: [types/services.ts:33](https://github.com/Hack23/cia-compliance-manager/blob/180ab7279d949938b21fc9271873d60dde559b30/src/types/services.ts#L33)
+Defined in: [types/services.ts:33](https://github.com/Hack23/cia-compliance-manager/blob/947de98b1b44a8456f3ca81571083fd214d2e336/src/types/services.ts#L33)

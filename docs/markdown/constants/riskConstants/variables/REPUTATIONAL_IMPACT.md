@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.55**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.56**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > `const` **REPUTATIONAL\_IMPACT**: `Record`\<`string`, `string`\>
 
-Defined in: [constants/riskConstants.ts:91](https://github.com/Hack23/cia-compliance-manager/blob/180ab7279d949938b21fc9271873d60dde559b30/src/constants/riskConstants.ts#L91)
+Defined in: [constants/riskConstants.ts:91](https://github.com/Hack23/cia-compliance-manager/blob/947de98b1b44a8456f3ca81571083fd214d2e336/src/constants/riskConstants.ts#L91)
 
 Reputational impact descriptions by risk level
