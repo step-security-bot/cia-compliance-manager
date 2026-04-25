@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.56**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.57**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: WidgetContainerProps
 
-Defined in: [types/componentPropExports.ts:301](https://github.com/Hack23/cia-compliance-manager/blob/947de98b1b44a8456f3ca81571083fd214d2e336/src/types/componentPropExports.ts#L301)
+Defined in: [types/componentPropExports.ts:301](https://github.com/Hack23/cia-compliance-manager/blob/b65886b2c937dced390a9cf3f2ef04f8227e15f8/src/types/componentPropExports.ts#L301)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [types/componentPropExports.ts:301](https://github.com/Hack23/cia-co
 
 > **children**: `ReactNode`
 
-Defined in: [types/componentPropExports.ts:302](https://github.com/Hack23/cia-compliance-manager/blob/947de98b1b44a8456f3ca81571083fd214d2e336/src/types/componentPropExports.ts#L302)
+Defined in: [types/componentPropExports.ts:302](https://github.com/Hack23/cia-compliance-manager/blob/b65886b2c937dced390a9cf3f2ef04f8227e15f8/src/types/componentPropExports.ts#L302)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [types/componentPropExports.ts:302](https://github.com/Hack23/cia-co
 
 > `optional` **className?**: `string`
 
-Defined in: [types/componentPropExports.ts:303](https://github.com/Hack23/cia-compliance-manager/blob/947de98b1b44a8456f3ca81571083fd214d2e336/src/types/componentPropExports.ts#L303)
+Defined in: [types/componentPropExports.ts:303](https://github.com/Hack23/cia-compliance-manager/blob/b65886b2c937dced390a9cf3f2ef04f8227e15f8/src/types/componentPropExports.ts#L303)
 
 ***
 
@@ -30,4 +30,4 @@ Defined in: [types/componentPropExports.ts:303](https://github.com/Hack23/cia-co
 
 > `optional` **testId?**: `string`
 
-Defined in: [types/componentPropExports.ts:304](https://github.com/Hack23/cia-compliance-manager/blob/947de98b1b44a8456f3ca81571083fd214d2e336/src/types/componentPropExports.ts#L304)
+Defined in: [types/componentPropExports.ts:304](https://github.com/Hack23/cia-compliance-manager/blob/b65886b2c937dced390a9cf3f2ef04f8227e15f8/src/types/componentPropExports.ts#L304)

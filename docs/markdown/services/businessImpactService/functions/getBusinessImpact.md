@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.56**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.57**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getBusinessImpact**(`availabilityLevel`, `integrityLevel`, `confidentialityLevel`): `Promise`\<[`BusinessImpactDetail`](../../../types/cia-services/interfaces/BusinessImpactDetail.md)\>
 
-Defined in: [services/businessImpactService.ts:566](https://github.com/Hack23/cia-compliance-manager/blob/947de98b1b44a8456f3ca81571083fd214d2e336/src/services/businessImpactService.ts#L566)
+Defined in: [services/businessImpactService.ts:566](https://github.com/Hack23/cia-compliance-manager/blob/b65886b2c937dced390a9cf3f2ef04f8227e15f8/src/services/businessImpactService.ts#L566)
 
 Get business impact details based on security levels
 

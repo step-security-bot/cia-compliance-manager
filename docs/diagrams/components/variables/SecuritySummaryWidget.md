@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.56**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.57**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **SecuritySummaryWidget**: `React.FC`\<[`SecuritySummaryWidgetProps`](../../types/widget-props/type-aliases/SecuritySummaryWidgetProps.md)\>
 
-Defined in: [components/widgets/assessmentcenter/SecuritySummaryWidget.tsx:36](https://github.com/Hack23/cia-compliance-manager/blob/947de98b1b44a8456f3ca81571083fd214d2e336/src/components/widgets/assessmentcenter/SecuritySummaryWidget.tsx#L36)
+Defined in: [components/widgets/assessmentcenter/SecuritySummaryWidget.tsx:36](https://github.com/Hack23/cia-compliance-manager/blob/b65886b2c937dced390a9cf3f2ef04f8227e15f8/src/components/widgets/assessmentcenter/SecuritySummaryWidget.tsx#L36)
 
 Displays a comprehensive executive summary of security posture with key metrics
 

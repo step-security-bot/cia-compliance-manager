@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.56**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.57**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **isRiskImpact**(`value`): `value is RiskImpact`
 
-Defined in: [data/riskImpactData.ts:64](https://github.com/Hack23/cia-compliance-manager/blob/947de98b1b44a8456f3ca81571083fd214d2e336/src/data/riskImpactData.ts#L64)
+Defined in: [data/riskImpactData.ts:64](https://github.com/Hack23/cia-compliance-manager/blob/b65886b2c937dced390a9cf3f2ef04f8227e15f8/src/data/riskImpactData.ts#L64)
 
 Type guard to check if a value is a valid RiskImpact object
 
