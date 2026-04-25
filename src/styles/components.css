@@ -6,11 +6,11 @@
 }
 
 /* Widget styles aligned with actual DOM structure */
-[data-testid^="widget-"]:where(:not([role="tabpanel"])) {
+[data-testid^="widget-container"] {
   border-radius: 0.5rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  height: 100%; /* Ensure widgets fill their containers */
+  height: auto; /* Let cards size to content instead of stretching grid rows */
   max-height: none; /* Remove max-height restrictions */
   min-height: 0; /* Remove min-height restrictions */
   display: flex;
@@ -19,17 +19,17 @@
   transition: all 0.2s;
 }
 
-.dark [data-testid^="widget-"]:where(:not([role="tabpanel"])) {
+.dark [data-testid^="widget-container"] {
   background-color: var(--card-background);
   border: 1px solid var(--border-color);
 }
 
-[data-testid^="widget-"]:where(:not([role="tabpanel"])):hover {
+[data-testid^="widget-container"]:hover {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
-.dark [data-testid^="widget-"]:where(:not([role="tabpanel"])):hover {
+.dark [data-testid^="widget-container"]:hover {
   box-shadow: 0 0 15px rgba(0, 204, 102, 0.2);
 }
 
@@ -85,7 +85,7 @@
 .widget-container > div:nth-child(2),
 [data-testid^="widget-container"] > div:nth-child(2) {
   padding: 0.75rem;
-  overflow-y: auto;
+  overflow-y: visible;
   flex: 1;
   min-height: 0;
   min-width: 0;
@@ -205,10 +205,10 @@ span[class*="text-blue"] {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-/* Add these new styles for better overflow handling in widgets */
+/* Widget body children must size to content; constrained max-height caused tab panels to clip. */
 .widget-body > div,
 [data-testid^="widget-container"] > div:nth-child(2) > div {
-  max-height: 100%;
+  max-height: none;
 }
 
 /* Fix for tables and data layout within widgets */
@@ -245,7 +245,7 @@ input:focus {
 
 /* Widget header styling aligned with CIAClassificationApp structure */
 .border-b.border-gray-200.dark\:border-gray-700.px-4.py-3.flex.justify-between.items-center,
-[data-testid^="widget-"]:where(:not([role="tabpanel"])) > div:first-child {
+[data-testid^="widget-container"] > div:first-child {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -262,7 +262,7 @@ input:focus {
 }
 
 /* Reduce header text size and make it green */
-[data-testid^="widget-"]:where(:not([role="tabpanel"])) > div:first-child h3,
+[data-testid^="widget-container"] > div:first-child h3,
 .border-b.border-gray-200.dark\:border-gray-700.px-4.py-3.flex.justify-between.items-center
   h3 {
   margin: 0;
@@ -277,7 +277,7 @@ input:focus {
 }
 
 /* Widget content area aligned with CIAClassificationApp structure */
-[data-testid^="widget-"]:where(:not([role="tabpanel"])) > div.p-4 {
+[data-testid^="widget-container"] > div.p-4 {
   padding: 0.75rem; /* Consistent padding */
   flex: 1 1 auto;
   overflow-y: auto; /* Change to auto for better scrolling */
@@ -424,7 +424,7 @@ input:focus {
 .widget-body {
   padding: 0.75rem; /* Consolidated: consistent widget body padding */
   flex: 1 1 auto;
-  overflow-y: auto;
+  overflow-y: visible;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
@@ -455,7 +455,6 @@ input:focus {
 /* Ensure text elements have minimum height/width */
 .technical-value,
 .metric-value,
-[class*="value"],
 .value {
   min-height: 20px;
   min-width: 60px;
@@ -1170,7 +1169,7 @@ textarea:focus {
 }
 
 /* Ensure widget content text is visible in dark mode */
-.dark [data-testid^="widget-"] .widget-body {
+.dark [data-testid^="widget-container"] .widget-body {
   color: var(--text-color);
 }
 
@@ -1199,9 +1198,9 @@ textarea:focus {
 }
 
 /* Standardize widget content overflow handling */
-[data-testid^="widget-"]:where(:not([role="tabpanel"])) > div.p-4,
+[data-testid^="widget-container"] > div.p-4,
 .widget-body {
-  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-y: visible; /* Let widgets expand; page-level scrolling handles long content */
   overflow-x: hidden; /* Prevent horizontal scrolling */
   scrollbar-width: thin; /* Firefox */
   height: auto; /* Don't force a specific height */
@@ -1211,19 +1210,19 @@ textarea:focus {
 }
 
 /* Optimize scrollbars */
-[data-testid^="widget-"]:where(:not([role="tabpanel"])) > div.p-4::-webkit-scrollbar,
+[data-testid^="widget-container"] > div.p-4::-webkit-scrollbar,
 .widget-body::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
-[data-testid^="widget-"]:where(:not([role="tabpanel"])) > div.p-4::-webkit-scrollbar-thumb,
+[data-testid^="widget-container"] > div.p-4::-webkit-scrollbar-thumb,
 .widget-body::-webkit-scrollbar-thumb {
   background: var(--primary-color);
   border-radius: 3px;
 }
 
-.dark [data-testid^="widget-"]:where(:not([role="tabpanel"])) > div.p-4::-webkit-scrollbar-thumb,
+.dark [data-testid^="widget-container"] > div.p-4::-webkit-scrollbar-thumb,
 .dark .widget-body::-webkit-scrollbar-thumb {
   background: rgba(0, 204, 255, 0.5);
 }
@@ -1441,9 +1440,9 @@ textarea:focus {
 .dark input,
 .dark select,
 .dark textarea,
-.dark [data-testid^="widget-"] p,
-.dark [data-testid^="widget-"] div,
-.dark [data-testid^="widget-"] span:not([class*="icon"]):not([class*="text-purple"]):not([class*="text-green"]):not([class*="text-blue"]):not([class*="text-red"]):not([class*="text-yellow"]):not([class*="text-orange"]):not([class*="color-"]):not(.status-badge):not(.security-badge) {
+.dark [data-testid^="widget-container"] p,
+.dark [data-testid^="widget-container"] div,
+.dark [data-testid^="widget-container"] span:not([class*="icon"]):not([class*="text-purple"]):not([class*="text-green"]):not([class*="text-blue"]):not([class*="text-red"]):not([class*="text-yellow"]):not([class*="text-orange"]):not([class*="color-"]):not(.status-badge):not(.security-badge) {
   color: var(--text-color);
 }
 
@@ -1451,9 +1450,9 @@ textarea:focus {
 .dark h4,
 .dark h5,
 .dark h6,
-.dark [data-testid^="widget-"] h4,
-.dark [data-testid^="widget-"] h5,
-.dark [data-testid^="widget-"] h6 {
+.dark [data-testid^="widget-container"] h4,
+.dark [data-testid^="widget-container"] h5,
+.dark [data-testid^="widget-container"] h6 {
   color: #ffffff;
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
   font-weight: 600;
@@ -1481,9 +1480,9 @@ textarea:focus {
 }
 
 /* Ensure visibility in recommendation sections */
-.dark [data-testid^="widget-"] [data-testid$="-recommendation-0"],
-.dark [data-testid^="widget-"] [data-testid$="-recommendation-1"],
-.dark [data-testid^="widget-"] [data-testid$="-recommendation-2"] {
+.dark [data-testid^="widget-container"] [data-testid$="-recommendation-0"],
+.dark [data-testid^="widget-container"] [data-testid$="-recommendation-1"],
+.dark [data-testid^="widget-container"] [data-testid$="-recommendation-2"] {
   color: var(--text-color);
 }
 
@@ -2164,8 +2163,8 @@ button.more-info:hover::before {
 }
 
 /* Ensure tab gap is consistent within widgets without overriding Tailwind utilities */
-[data-testid^="widget-"] nav.flex,
-[data-testid^="widget-"] nav[role="tablist"] {
+[data-testid^="widget-container"] nav.flex,
+[data-testid^="widget-container"] nav[role="tablist"] {
   gap: 0.375rem; /* Consistent spacing between tabs */
 }
 
@@ -2173,7 +2172,8 @@ button.more-info:hover::before {
 /* Simplified approach: use semantic .widget-tab class for explicit styling */
 /* Also support standard role="tab" for accessibility */
 .widget-tab,
-button[role="tab"] {
+.widget-container button[role="tab"],
+[data-testid^="widget-container"] button[role="tab"] {
   position: relative;
   overflow: hidden;
   padding: 0.75rem 1rem; /* Consistent comfortable padding */
@@ -2188,7 +2188,8 @@ button[role="tab"] {
 
 /* Hover state for all tabs - using CSS variables */
 .widget-tab:hover,
-button[role="tab"]:hover {
+.widget-container button[role="tab"]:hover,
+[data-testid^="widget-container"] button[role="tab"]:hover {
   background-color: var(--primary-bg-hover);
   transform: translateY(-1px);
 }
@@ -2196,7 +2197,8 @@ button[role="tab"]:hover {
 /* Active/Selected tab state - Light theme - using aria-selected for semantics */
 .widget-tab[aria-selected="true"],
 .widget-tab.active,
-button[role="tab"][aria-selected="true"] {
+.widget-container button[role="tab"][aria-selected="true"],
+[data-testid^="widget-container"] button[role="tab"][aria-selected="true"] {
   border-bottom-color: var(--primary-color);
   color: var(--primary-color);
   font-weight: 600;
@@ -2206,7 +2208,8 @@ button[role="tab"][aria-selected="true"] {
 /* Active/Selected tab state - Dark theme - using CSS variables */
 .dark .widget-tab[aria-selected="true"],
 .dark .widget-tab.active,
-.dark button[role="tab"][aria-selected="true"] {
+.dark .widget-container button[role="tab"][aria-selected="true"],
+.dark [data-testid^="widget-container"] button[role="tab"][aria-selected="true"] {
   border-bottom-color: var(--primary-color);
   color: var(--primary-light);
   font-weight: 600;
@@ -2217,20 +2220,21 @@ button[role="tab"][aria-selected="true"] {
 
 /* Inactive tab colors using theme-specific --text-secondary CSS variable */
 .widget-tab:not([aria-selected="true"]),
-button[role="tab"]:not([aria-selected="true"]) {
+.widget-container button[role="tab"]:not([aria-selected="true"]),
+[data-testid^="widget-container"] button[role="tab"]:not([aria-selected="true"]) {
   color: var(--text-secondary);
 }
 
 /* Tab content area styling - reduce empty space */
-[data-testid^="widget-"] .tab-content,
-[data-testid^="widget-"] div.tab-content {
+[data-testid^="widget-container"] .tab-content,
+[data-testid^="widget-container"] div.tab-content {
   padding: 0;
   margin-top: 0.75rem;
 }
 
 /* Tab panels should have consistent minimal padding - use semantic ARIA attributes */
 /* Only apply padding to visible (not hidden) tab panels */
-[data-testid^="widget-"] [role="tabpanel"]:not([hidden]) {
+[data-testid^="widget-container"] [role="tabpanel"]:not([hidden]) {
   padding: 0.5rem 0;
 }
 
@@ -2316,5 +2320,419 @@ button[role="tab"]:not([aria-selected="true"]) {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* ========== Dashboard widget UX refinements ========== */
+/* Keep widget cards readable without the previous nested blue-outline effect. */
+/**
+ * Widget design tokens used by the dashboard refinement rules below.
+ * Neutral shell tokens keep surfaces readable while preserving semantic status
+ * colors for badges, risk levels, and CIA component text. Accent tokens are
+ * decorative 3px top borders only; they complement labels/icons and are not
+ * the sole source of meaning, preserving accessibility for color-blind users.
+ */
+:root {
+  /*
+   * Widget UI tokens intentionally use neutral slate colors so security-level
+   * semantic colors remain reserved for risk, CIA component, and status cues.
+   */
+  --widget-shell-border: rgba(15, 23, 42, 0.14);
+  --widget-inner-border: rgba(15, 23, 42, 0.12);
+  --widget-muted-border: rgba(100, 116, 139, 0.18);
+  --widget-surface: #ffffff;
+  --widget-subtle-surface: #f8fafc;
+  --widget-header-surface: linear-gradient(135deg, #f8fafc 0%, #eef6ff 100%);
+  --widget-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  --widget-tab-min-width: 5.25rem; /* 84px: allows two accessible tabs per 390px mobile row and avoids four-tab wrapping in ~460px dashboard widgets. */
+  --widget-tab-font-size: 0.78rem;
+  --widget-accent-confidentiality: #7b1fa2;
+  --widget-accent-integrity: #2e7d32;
+  --widget-accent-availability: #1565c0;
+  --widget-accent-business: #f59e0b;
+  --widget-accent-implementation: #0d9488;
+}
+
+.dark {
+  --widget-shell-border: rgba(148, 163, 184, 0.2);
+  --widget-inner-border: rgba(148, 163, 184, 0.18);
+  --widget-muted-border: rgba(148, 163, 184, 0.16);
+  --widget-surface: var(--card-background);
+  --widget-subtle-surface: rgba(148, 163, 184, 0.06);
+  --widget-header-surface: linear-gradient(
+    135deg,
+    rgba(30, 36, 48, 0.98) 0%,
+    rgba(23, 31, 45, 0.98) 100%
+  );
+  --widget-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+}
+
+.widget-container,
+[data-testid^="widget-container"] {
+  background: var(--widget-surface);
+  border: 1px solid var(--widget-shell-border);
+  border-radius: 0.75rem;
+  box-shadow: var(--widget-shadow);
+  min-height: 250px;
+  max-height: none;
+  height: auto;
+}
+
+.widget-container:hover,
+[data-testid^="widget-container"]:hover {
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.12);
+  transform: none;
+}
+
+.dark .widget-container:hover,
+.dark [data-testid^="widget-container"]:hover {
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.34);
+}
+
+.widget-header,
+.widget-container > div:first-child,
+[data-testid^="widget-container"] > div:first-child {
+  min-height: 44px;
+  height: auto;
+  padding: 0.75rem 1rem;
+  background: var(--widget-header-surface);
+  border-bottom: 1px solid var(--widget-inner-border);
+}
+
+.widget-header h3,
+.widget-container > div:first-child h3,
+[data-testid^="widget-container"] > div:first-child h3 {
+  color: var(--primary-dark);
+  font-size: 0.95rem;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+  text-shadow: none;
+}
+
+.dark .widget-header h3,
+.dark .widget-container > div:first-child h3,
+.dark [data-testid^="widget-container"] > div:first-child h3 {
+  color: var(--primary-light);
+  text-shadow: none;
+}
+
+.widget-body,
+.widget-container > div:nth-child(2),
+[data-testid^="widget-container"] > div:nth-child(2) {
+  gap: 0.75rem;
+  padding: 0.75rem;
+  line-height: 1.45;
+  background: var(--widget-surface);
+  container-type: inline-size;
+  container-name: widget-body;
+  max-height: none;
+  scrollbar-color: rgba(100, 116, 139, 0.38) transparent;
+}
+
+.widget-body::-webkit-scrollbar,
+[data-testid^="widget-container"] > div:nth-child(2)::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.widget-body::-webkit-scrollbar-thumb,
+[data-testid^="widget-container"] > div:nth-child(2)::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.38);
+  border-radius: 999px;
+}
+
+.widget-body .shadow-sm,
+.widget-body .shadow-md,
+.widget-body .shadow-lg,
+[data-testid^="widget-container"] .shadow-sm,
+[data-testid^="widget-container"] .shadow-md,
+[data-testid^="widget-container"] .shadow-lg {
+  box-shadow: none;
+}
+
+.widget-body .section-container,
+.widget-body .content-section,
+.widget-body .metric-card,
+[data-testid^="widget-container"] .section-container,
+[data-testid^="widget-container"] .content-section,
+[data-testid^="widget-container"] .metric-card {
+  border-color: var(--widget-inner-border);
+  background-color: var(--widget-subtle-surface);
+}
+
+.widget-body [class~="border-blue-200"]:not([class*="border-l"]),
+.widget-body [class~="border-blue-300"]:not([class*="border-l"]),
+.widget-body [class~="border-blue-400"]:not([class*="border-l"]),
+.widget-body [class~="border-info"]:not([class*="border-l"]),
+.widget-body [class~="border-info-light"]:not([class*="border-l"]),
+.widget-body [class~="border-info-dark"]:not([class*="border-l"]),
+[data-testid^="widget-container"] [class~="border-blue-200"]:not([class*="border-l"]),
+[data-testid^="widget-container"] [class~="border-blue-300"]:not([class*="border-l"]),
+[data-testid^="widget-container"] [class~="border-blue-400"]:not([class*="border-l"]),
+[data-testid^="widget-container"] [class~="border-info"]:not([class*="border-l"]),
+[data-testid^="widget-container"] [class~="border-info-light"]:not([class*="border-l"]),
+[data-testid^="widget-container"] [class~="border-info-dark"]:not([class*="border-l"]) {
+  border-color: var(--widget-inner-border);
+}
+
+.widget-body input,
+.widget-body select,
+.widget-body textarea,
+[data-testid^="widget-container"] input,
+[data-testid^="widget-container"] select,
+[data-testid^="widget-container"] textarea {
+  max-width: 100%;
+  min-height: 40px;
+  border-color: var(--widget-muted-border);
+  background-color: var(--widget-surface);
+}
+
+.widget-body button,
+[data-testid^="widget-container"] button {
+  min-height: 40px;
+  max-width: 100%;
+  box-shadow: none;
+}
+
+.widget-container [role="tablist"],
+[data-testid^="widget-container"] [role="tablist"] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  border-bottom-color: var(--widget-inner-border);
+}
+
+/* Reset TabContainer space-x margins so wrapped widget tabs rely only on gap spacing. */
+.widget-container [role="tablist"] > * + *,
+[data-testid^="widget-container"] [role="tablist"] > * + * {
+  margin-inline-start: 0;
+}
+
+.widget-container button[role="tab"],
+[data-testid^="widget-container"] button[role="tab"] {
+  flex: 1 1 var(--widget-tab-min-width);
+  min-width: 0;
+  min-height: 44px;
+  padding: 0.45rem 0.6rem;
+  font-size: var(--widget-tab-font-size);
+  letter-spacing: 0.01em;
+  border: 1px solid var(--widget-inner-border);
+  border-radius: 0.5rem;
+  background: var(--widget-subtle-surface);
+  text-align: center;
+  box-shadow: none;
+}
+
+.widget-container button[role="tab"][aria-selected="true"],
+[data-testid^="widget-container"] button[role="tab"][aria-selected="true"] {
+  border-color: var(--primary-border-hover);
+  background: var(--primary-bg-active);
+  box-shadow: none;
+}
+
+.widget-container button[role="tab"] > div,
+[data-testid^="widget-container"] button[role="tab"] > div {
+  justify-content: center;
+  min-width: 0;
+  gap: 0.25rem;
+}
+
+.widget-container button[role="tab"] > div > span:not([aria-hidden="true"]),
+[data-testid^="widget-container"] button[role="tab"] > div > span:not([aria-hidden="true"]) {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  overflow-wrap: break-word;
+}
+
+.widget-container [role="tabpanel"]:not([hidden]),
+[data-testid^="widget-container"] [role="tabpanel"]:not([hidden]) {
+  min-width: 0;
+}
+
+/**
+ * Container-aware widget grids. Dashboard cells can be much narrower than
+ * viewport breakpoints, so these scoped overrides make Tailwind responsive
+ * grids respond to the widget body width. Standard Tailwind behavior remains
+ * unchanged outside widget containers.
+ */
+:is(.widget-body, [data-testid^="widget-container"]) .grid.grid-cols-1:is(.md\:grid-cols-2, .sm\:grid-cols-2),
+:is(.widget-body, [data-testid^="widget-container"]) .grid.grid-cols-1:is(.sm\:grid-cols-3, .md\:grid-cols-3) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+:is(.widget-body, [data-testid^="widget-container"]) .grid.grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-5 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* Container threshold values are authoritative here; CSS custom properties are not interoperable in container conditions across the browser baseline yet. */
+/* 360px: sm:grid-cols-2 summary pairs get about 170px per card in mobile/full-width widgets. */
+@container widget-body (min-width: 360px) {
+  :is(.widget-body, [data-testid^="widget-container"]) .grid.grid-cols-1.sm\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* 520px: three metric cards get about 160px each; five compact overview cells get about 96px each. */
+@container widget-body (min-width: 520px) {
+  :is(.widget-body, [data-testid^="widget-container"]) .grid.grid-cols-1:is(.sm\:grid-cols-3, .md\:grid-cols-3) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  :is(.widget-body, [data-testid^="widget-container"]) .grid.grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+/* 560px: md:grid-cols-2 detail panels get about 260px each; lower values caused text collisions in ~460px dashboard cells. */
+@container widget-body (min-width: 560px) {
+  :is(.widget-body, [data-testid^="widget-container"]) .grid.grid-cols-1.md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.widget-body button.w-full,
+[data-testid^="widget-container"] button.w-full {
+  min-height: 44px;
+  font-weight: 500;
+}
+
+.widget-body p,
+.widget-body li,
+.widget-body h3,
+.widget-body h4,
+.widget-body h5,
+[data-testid^="widget-container"] p,
+[data-testid^="widget-container"] li {
+  overflow-wrap: break-word;
+}
+
+.widget-container,
+[data-testid^="widget-container"] {
+  position: relative;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.widget-container::before,
+[data-testid^="widget-container"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 60%);
+  opacity: 0.6;
+  z-index: 0;
+}
+
+.dark .widget-container::before,
+.dark [data-testid^="widget-container"]::before {
+  background: linear-gradient(180deg, rgba(43, 138, 255, 0.08), rgba(43, 138, 255, 0) 60%);
+  opacity: 1;
+}
+
+.widget-container > *,
+[data-testid^="widget-container"] > * {
+  position: relative;
+  z-index: 1;
+}
+
+[data-testid="widget-container-widget-confidentiality-impact"],
+[data-testid="widget-container-widget-integrity-impact"],
+[data-testid="widget-container-widget-availability-impact"],
+[data-testid="widget-container-widget-security-level"],
+[data-testid="widget-container-widget-business-impact"],
+[data-testid="widget-container-widget-security-summary"],
+[data-testid="widget-container-widget-value-creation"],
+[data-testid="widget-container-widget-cost-estimation"],
+[data-testid="widget-container-widget-compliance-status"],
+[data-testid="widget-container-widget-technical-details"],
+[data-testid="widget-container-widget-security-visualization"],
+[data-testid="widget-container-widget-security-resources"] {
+  border-top: 3px solid var(--accent-stripe, var(--primary-color));
+}
+
+[data-testid="widget-container-widget-confidentiality-impact"] { --accent-stripe: var(--widget-accent-confidentiality); }
+[data-testid="widget-container-widget-integrity-impact"] { --accent-stripe: var(--widget-accent-integrity); }
+[data-testid="widget-container-widget-availability-impact"] { --accent-stripe: var(--widget-accent-availability); }
+[data-testid="widget-container-widget-security-level"],
+[data-testid="widget-container-widget-security-summary"] { --accent-stripe: var(--primary-color); }
+[data-testid="widget-container-widget-value-creation"],
+[data-testid="widget-container-widget-cost-estimation"],
+[data-testid="widget-container-widget-business-impact"],
+[data-testid="widget-container-widget-compliance-status"] { --accent-stripe: var(--widget-accent-business); }
+[data-testid="widget-container-widget-technical-details"],
+[data-testid="widget-container-widget-security-visualization"],
+[data-testid="widget-container-widget-security-resources"] { --accent-stripe: var(--widget-accent-implementation); }
+
+
+
+/* Grid replaces WidgetClasses.flexRow here so gap and columns use one layout model. */
+.security-resources-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+
+.security-resources-sidebar,
+.security-resources-list {
+  min-width: 0;
+  width: 100%;
+}
+
+.security-resources-sidebar dd,
+.security-resources-sidebar dt {
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+@container widget-body (min-width: 760px) {
+  .security-resources-layout {
+    grid-template-columns: minmax(14rem, 0.28fr) minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+/* Rich first-row widgets need more horizontal space than generic viewport breakpoints provide. */
+.security-level-config-layout,
+.business-impact-card-grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@container widget-body (min-width: 680px) {
+  .security-level-config-layout {
+    grid-template-columns: minmax(16rem, 0.9fr) minmax(0, 1.1fr);
+  }
+
+  .business-impact-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.widget-body [data-testid^="widget-"]:not([data-testid^="widget-container"]),
+[data-testid^="widget-container"] [data-testid^="widget-"]:not([data-testid^="widget-container"]) {
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  overflow: visible;
+}
+
+.widget-body section,
+.widget-body [role="region"],
+[data-testid^="widget-container"] section,
+[data-testid^="widget-container"] [role="region"] {
+  min-height: 0;
+}
+
+@media (max-width: 768px) {
+  .widget-body,
+  .widget-container > div:nth-child(2),
+  [data-testid^="widget-container"] > div:nth-child(2) {
+    padding: 0.75rem;
+  }
+
+  .widget-container button[role="tab"],
+  [data-testid^="widget-container"] button[role="tab"] {
+    flex-basis: calc(50% - 0.5rem);
   }
 }

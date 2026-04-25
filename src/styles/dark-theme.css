@@ -534,3 +534,9 @@
 /* Dark mode text visibility, headings, badges, links, and recommendations
  * are handled in components.css to avoid duplicate rules and !important conflicts.
  * See components.css "Enhanced text visibility" section. */
+
+/* Final widget overflow guard: themes must not reintroduce nested widget scroll panes. */
+.widget-container,
+[data-testid^="widget-container"] {
+  overflow: visible;
+}

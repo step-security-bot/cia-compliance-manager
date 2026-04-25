@@ -327,3 +327,10 @@ button.lightbutton:hover:active {
 .code-block .variable {
   color: #2980b9;
 }
+
+
+/* Final widget overflow guard: themes must not reintroduce nested widget scroll panes. */
+.widget-container,
+[data-testid^="widget-container"] {
+  overflow: visible;
+}
