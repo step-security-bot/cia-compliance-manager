@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.58**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.59**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **useCIAOptions**(): [`UseCIAOptionsReturn`](../interfaces/UseCIAOptionsReturn.md)
 
-Defined in: [hooks/useCIAOptions.ts:417](https://github.com/Hack23/cia-compliance-manager/blob/84222a9962d7a7a5e28ce024c77c70b4ccc10b90/src/hooks/useCIAOptions.ts#L417)
+Defined in: [hooks/useCIAOptions.ts:417](https://github.com/Hack23/cia-compliance-manager/blob/515f932b483ce1f886256c39ce71bb5cda13f205/src/hooks/useCIAOptions.ts#L417)
 
 Custom hook for accessing CIA security level options and ROI estimates
 
