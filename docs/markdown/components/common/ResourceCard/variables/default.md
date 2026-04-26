@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.57**](../../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.58**](../../../../README.md)
 
 ***
 
@@ -8,4 +8,13 @@
 
 > `const` **default**: `React.FC`\<`ResourceCardProps`\>
 
-Defined in: [components/common/ResourceCard.tsx:17](https://github.com/Hack23/cia-compliance-manager/blob/b65886b2c937dced390a9cf3f2ef04f8227e15f8/src/components/common/ResourceCard.tsx#L17)
+Defined in: [components/common/ResourceCard.tsx:66](https://github.com/Hack23/cia-compliance-manager/blob/84222a9962d7a7a5e28ce024c77c70b4ccc10b90/src/components/common/ResourceCard.tsx#L66)
+
+Compact, color-coded resource card.
+
+Densely packed dashboards forced us to constrain card content:
+- Title is clamped to 2 lines (no horizontal overflow on long titles).
+- Type badge is constrained in width and clipped with ellipsis.
+- Description is truncated to ≤100 chars (preserved for existing test).
+- Tags are limited to 3 visible tags with a "+N" indicator for the rest.
+- A left accent border encodes the CIA component (purple / green / blue).

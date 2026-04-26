@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.57**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.58**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getProtectionLevel**(`level`): `string`
 
-Defined in: [utils/securityDefaults.ts:62](https://github.com/Hack23/cia-compliance-manager/blob/b65886b2c937dced390a9cf3f2ef04f8227e15f8/src/utils/securityDefaults.ts#L62)
+Defined in: [utils/securityDefaults.ts:62](https://github.com/Hack23/cia-compliance-manager/blob/84222a9962d7a7a5e28ce024c77c70b4ccc10b90/src/utils/securityDefaults.ts#L62)
 
 Gets protection level description based on confidentiality level
 
