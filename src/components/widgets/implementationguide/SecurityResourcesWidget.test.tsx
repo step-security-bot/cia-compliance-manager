@@ -1,5 +1,5 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { act, fireEvent, render, screen } from "@testing-library/react";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { SecurityLevel } from "../../../types/cia";
 import { EnhancedSecurityResource } from "../../../types/securityResources";
 import SecurityResourcesWidget from "./SecurityResourcesWidget";
@@ -91,7 +91,7 @@ vi.mock("../../../components/common/WidgetContainer", () => ({
   }) => (
     <div data-testid={testId || "widget-container"} className={className || ""}>
       <h3>{title}</h3>
-      {children}
+      <div className="widget-body">{children}</div>
     </div>
   ),
 }));
@@ -107,6 +107,33 @@ vi.mock("../../../components/common/ResourceCard", () => ({
 }));
 
 describe("SecurityResourcesWidget", () => {
+  const originalResizeObserver = globalThis.ResizeObserver;
+  let resizeObserverCallback: ResizeObserverCallback | undefined;
+  let observeMock: ReturnType<
+    typeof vi.fn<
+      (target: Element, options?: ResizeObserverOptions | undefined) => void
+    >
+  >;
+  let disconnectMock: ReturnType<typeof vi.fn<() => void>>;
+
+  class MockResizeObserver implements ResizeObserver {
+    constructor(callback: ResizeObserverCallback) {
+      resizeObserverCallback = callback;
+    }
+
+    observe(target: Element, options?: ResizeObserverOptions): void {
+      observeMock(target, options);
+    }
+
+    unobserve(): void {
+      return undefined;
+    }
+
+    disconnect(): void {
+      disconnectMock();
+    }
+  }
+
   // Default props for the component
   const defaultProps = {
     availabilityLevel: "Moderate" as SecurityLevel,
@@ -117,7 +144,50 @@ describe("SecurityResourcesWidget", () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
+    resizeObserverCallback = undefined;
+    observeMock =
+      vi.fn<
+        (target: Element, options?: ResizeObserverOptions | undefined) => void
+      >();
+    disconnectMock = vi.fn<() => void>();
+    globalThis.ResizeObserver =
+      MockResizeObserver as unknown as typeof ResizeObserver;
   });
+
+  afterEach(() => {
+    vi.useRealTimers();
+    globalThis.ResizeObserver = originalResizeObserver;
+  });
+
+  const emitObservedInlineSize = (inlineSize: number): void => {
+    if (!resizeObserverCallback) {
+      throw new Error("Expected ResizeObserver callback to be registered");
+    }
+
+    resizeObserverCallback(
+      [
+        {
+          contentBoxSize: [
+            { blockSize: 100, inlineSize },
+          ] as readonly ResizeObserverSize[],
+          contentRect: { width: inlineSize } as DOMRectReadOnly,
+        } as ResizeObserverEntry,
+      ],
+      {} as ResizeObserver
+    );
+  };
+
+  const getFiltersPanel = (): HTMLElement => {
+    const panel = document.getElementById(`${defaultProps.testId}-filters-panel`);
+
+    if (!panel) {
+      throw new Error(
+        `Expected filters panel "${defaultProps.testId}-filters-panel" to be rendered`
+      );
+    }
+
+    return panel;
+  };
 
   it("renders without crashing", () => {
     render(<SecurityResourcesWidget {...defaultProps} />);
@@ -146,6 +216,69 @@ describe("SecurityResourcesWidget", () => {
       "placeholder",
       expect.stringContaining("Search")
     );
+  });
+
+  it("expands filters when the observed widget body is wide", () => {
+    vi.useFakeTimers();
+
+    render(<SecurityResourcesWidget {...defaultProps} />);
+    expect(getFiltersPanel()).toHaveAttribute("aria-hidden", "true");
+
+    act(() => {
+      emitObservedInlineSize(800);
+      vi.advanceTimersByTime(150);
+    });
+
+    expect(getFiltersPanel()).toHaveAttribute("aria-hidden", "false");
+  });
+
+  it("observes and disconnects the widget body resize observer", () => {
+    const { unmount } = render(<SecurityResourcesWidget {...defaultProps} />);
+    const observedElement = observeMock.mock.calls[0]?.[0];
+
+    expect(observedElement).toBeInstanceOf(HTMLElement);
+    expect((observedElement as HTMLElement).className).toContain("widget-body");
+
+    unmount();
+
+    expect(disconnectMock).toHaveBeenCalledOnce();
+  });
+
+  it("debounces wide-layout filter expansion from observed inline-size", () => {
+    vi.useFakeTimers();
+
+    render(<SecurityResourcesWidget {...defaultProps} />);
+    expect(getFiltersPanel()).toHaveAttribute("aria-hidden", "true");
+
+    act(() => {
+      emitObservedInlineSize(800);
+    });
+    expect(getFiltersPanel()).toHaveAttribute("aria-hidden", "true");
+
+    act(() => {
+      vi.advanceTimersByTime(149);
+    });
+    expect(getFiltersPanel()).toHaveAttribute("aria-hidden", "true");
+
+    act(() => {
+      vi.advanceTimersByTime(1);
+    });
+    expect(getFiltersPanel()).toHaveAttribute("aria-hidden", "false");
+  });
+
+  it("clears pending resize timers on unmount", () => {
+    vi.useFakeTimers();
+
+    const { unmount } = render(<SecurityResourcesWidget {...defaultProps} />);
+
+    act(() => {
+      emitObservedInlineSize(800);
+    });
+    expect(vi.getTimerCount()).toBe(1);
+
+    unmount();
+
+    expect(vi.getTimerCount()).toBe(0);
   });
 
   it("displays resources filtered by security level", () => {

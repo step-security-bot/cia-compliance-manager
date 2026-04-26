@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { WIDGET_ICONS, WIDGET_TITLES } from "../../../constants/appConstants";
 import { SECURITY_RESOURCES_WIDGET_IDS } from "../../../constants/testIds";
 import { SECURITY_RESOURCES_TEST_IDS } from "../../../constants/testIds";
@@ -22,6 +22,7 @@ import ImplementationGuidancePanel from "./ImplementationGuidancePanel";
 // Constants for top resources filtering
 const TOP_RESOURCES_PERCENTAGE = 0.5; // 50%
 const MIN_TOP_RESOURCES = 5;
+const WIDE_LAYOUT_BREAKPOINT = 760;
 
 /**
  * Helper function to extract relevance score from a security resource
@@ -101,12 +102,103 @@ const SecurityResourcesWidget: React.FC<SecurityResourcesWidgetProps> = ({
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [resourcesPerPage, setResourcesPerPage] = useState(maxItems);
+  const widgetContentRef = useRef<HTMLDivElement | null>(null);
+  // Sidebar visibility - collapsed by default in narrow widget cells, expanded in wide ones.
+  // Container queries hide the toggle above 760px (see CSS), so the panel is
+  // expanded when the rendered widget body reaches that same inline-size.
+  const [showFilters, setShowFilters] = useState(false);
 
   // Update resourcesPerPage when maxItems changes
-  React.useEffect(() => {
+  useEffect(() => {
     setResourcesPerPage(maxItems);
   }, [maxItems]);
 
+  /**
+   * Synchronizes filter panel expansion with the responsive sidebar contract.
+   *
+   * Dependencies: none; registers one `ResizeObserver` after mount.
+   * Behavior: expands filters when the rendered widget body reaches the same
+   * wide-layout breakpoint used by the container-query CSS, but does not
+   * auto-collapse user-opened filters when the widget becomes narrow again.
+   * Cleanup: disconnects the observer and clears any pending 150ms debounce timer.
+   */
+  useEffect(() => {
+    if (
+      typeof document === "undefined" ||
+      typeof ResizeObserver === "undefined"
+    ) {
+      return undefined;
+    }
+
+    const widgetElement =
+      widgetContentRef.current?.closest<HTMLElement>(".widget-body") ??
+      widgetContentRef.current;
+
+    if (isNullish(widgetElement)) {
+      return undefined;
+    }
+
+    let resizeTimer: ReturnType<typeof setTimeout> | undefined;
+
+    const getInlineSize = (entry: ResizeObserverEntry): number => {
+      const { contentBoxSize, contentRect } = entry;
+      const boxSize = contentBoxSize as
+        | ResizeObserverSize
+        | readonly ResizeObserverSize[]
+        | undefined;
+
+      if (Array.isArray(boxSize)) {
+        if (boxSize.length > 0) {
+          return boxSize[0].inlineSize;
+        }
+
+        return contentRect.width;
+      }
+
+      const singleBoxSize = boxSize as ResizeObserverSize | undefined;
+
+      if (!isNullish(singleBoxSize)) {
+        return singleBoxSize.inlineSize;
+      }
+
+      return contentRect.width;
+    };
+
+    const expandFiltersForWideLayout = (getObservedInlineSize: () => number): void => {
+      if (resizeTimer !== undefined) {
+        clearTimeout(resizeTimer);
+      }
+
+      resizeTimer = setTimeout((): void => {
+        if (getObservedInlineSize() >= WIDE_LAYOUT_BREAKPOINT) {
+          setShowFilters(true);
+        }
+      }, 150);
+    };
+
+    const observer = new ResizeObserver(
+      (entries: readonly ResizeObserverEntry[]): void => {
+        const [entry] = entries;
+
+        if (isNullish(entry)) {
+          return;
+        }
+
+        expandFiltersForWideLayout(() => getInlineSize(entry));
+      }
+    );
+
+    observer.observe(widgetElement);
+    expandFiltersForWideLayout(() => widgetElement.getBoundingClientRect().width);
+
+    return (): void => {
+      observer.disconnect();
+
+      if (resizeTimer !== undefined) {
+        clearTimeout(resizeTimer);
+      }
+    };
+  }, []);
   // Calculate security resources with proper error handling and type safety
   const securityResources = useMemo((): SecurityResource[] => {
     try {
@@ -317,6 +409,7 @@ const SecurityResourcesWidget: React.FC<SecurityResourcesWidgetProps> = ({
         error={serviceError}
       >
       <div 
+        ref={widgetContentRef}
         className="p-sm sm:p-md"
         role="region"
         aria-label={getWidgetAriaDescription(
@@ -342,11 +435,44 @@ const SecurityResourcesWidget: React.FC<SecurityResourcesWidgetProps> = ({
         </section>
 
         <div className="security-resources-layout">
-          {/* Filters and search - left column on larger screens */}
+          {/* Filters and search - left column on larger screens.
+              Sidebar contents can collapse to reduce vertical space; the toggle is hidden
+              once the sidebar shares horizontal space with the resource list. */}
           <aside 
             className="security-resources-sidebar"
             aria-label="Resource filters and search"
           >
+            <button
+              type="button"
+              onClick={() => setShowFilters((v) => !v)}
+              aria-expanded={showFilters}
+              aria-controls={`${testId}-filters-panel`}
+              className={cn(
+                "security-resources-sidebar-toggle",
+                "w-full flex items-center justify-between px-sm py-xs mb-sm rounded-md",
+                "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200",
+                "hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors",
+                WidgetClasses.focusVisible
+              )}
+              data-testid={`${testId}-toggle-filters`}
+            >
+              <span className="flex items-center gap-xs text-sm font-medium">
+                <span aria-hidden="true">⚙️</span>
+                Filters &amp; Guidelines
+              </span>
+              <span aria-hidden="true" className="text-xs">
+                {showFilters ? "▲" : "▼"}
+              </span>
+            </button>
+
+            <div
+              id={`${testId}-filters-panel`}
+              className={cn(
+                "security-resources-sidebar-panel",
+                !showFilters && "hidden"
+              )}
+              aria-hidden={!showFilters ? "true" : "false"}
+            >
             <div className="mb-md">
               <label
                 htmlFor="resource-search"
@@ -454,6 +580,7 @@ const SecurityResourcesWidget: React.FC<SecurityResourcesWidgetProps> = ({
                 </p>
               </div>
             </section>
+            </div>
           </aside>
 
           {/* Resources grid - right column on larger screens */}

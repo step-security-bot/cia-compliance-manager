@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { createEvent, fireEvent, render, screen } from "@testing-library/react";
 import ResourceCard from "./ResourceCard";
 import { SecurityResource } from "../../types/securityResources";
 
@@ -15,6 +15,38 @@ describe("ResourceCard Component", () => {
     level: "Moderate",
     tags: ["tag1", "tag2", "tag3"],
   };
+
+  const accentCases: Array<{
+    name: string;
+    component: SecurityResource["component"];
+    borderClass: string;
+    badgeClass: string;
+  }> = [
+    {
+      name: "confidentiality",
+      component: "confidentiality",
+      borderClass: "border-l-purple-500",
+      badgeClass: "bg-purple-100",
+    },
+    {
+      name: "integrity",
+      component: "integrity",
+      borderClass: "border-l-green-500",
+      badgeClass: "bg-green-100",
+    },
+    {
+      name: "availability",
+      component: "availability",
+      borderClass: "border-l-blue-500",
+      badgeClass: "bg-blue-100",
+    },
+    {
+      name: "general",
+      component: undefined,
+      borderClass: "border-l-gray-300",
+      badgeClass: "bg-gray-100",
+    },
+  ];
 
   it("renders without crashing", () => {
     render(<ResourceCard resource={mockResource} />);
@@ -69,6 +101,38 @@ describe("ResourceCard Component", () => {
     });
   });
 
+  it("limits visible tags and shows overflow count", () => {
+    render(
+      <ResourceCard
+        resource={{
+          ...mockResource,
+          tags: ["tag1", "tag2", "tag3", "tag4", "tag5"],
+        }}
+      />
+    );
+
+    expect(screen.getByText("tag1")).toBeInTheDocument();
+    expect(screen.getByText("tag2")).toBeInTheDocument();
+    expect(screen.getByText("tag3")).toBeInTheDocument();
+    expect(screen.queryByText("tag4")).not.toBeInTheDocument();
+    expect(screen.queryByText("tag5")).not.toBeInTheDocument();
+    expect(screen.getByText("+2")).toBeInTheDocument();
+  });
+
+  it.each(accentCases)("applies $name accent classes", ({ component, borderClass, badgeClass }) => {
+    const testId = `resource-${component ?? "general"}`;
+    render(
+      <ResourceCard
+        resource={{ ...mockResource, component }}
+        testId={testId}
+      />
+    );
+
+    const card = screen.getByTestId(testId);
+    expect(card).toHaveClass(borderClass);
+    expect(card.querySelector("span[title]")).toHaveClass(badgeClass);
+  });
+
   it("opens URL in new tab when clicked without custom onClick", () => {
     const windowOpenSpy = vi.spyOn(window, "open").mockImplementation(() => null);
     render(<ResourceCard resource={mockResource} />);
@@ -105,14 +169,39 @@ describe("ResourceCard Component", () => {
     expect(mockOnClick).toHaveBeenCalledWith(mockResource);
   });
 
-  it("handles keyboard Space key", () => {
+  it("prevents page scrolling on keyboard Space keydown", () => {
     const mockOnClick = vi.fn();
     render(<ResourceCard resource={mockResource} onClick={mockOnClick} />);
 
     const card = screen.getByTestId("resource-item");
-    fireEvent.keyDown(card, { key: " " });
+    const spaceEvent = createEvent.keyDown(card, { key: " " });
+    const preventDefault = vi.spyOn(spaceEvent, "preventDefault");
 
+    fireEvent(card, spaceEvent);
+
+    expect(mockOnClick).not.toHaveBeenCalled();
+    expect(preventDefault).toHaveBeenCalled();
+  });
+
+  it("handles keyboard Space keyup once", () => {
+    const mockOnClick = vi.fn();
+    render(<ResourceCard resource={mockResource} onClick={mockOnClick} />);
+
+    const card = screen.getByTestId("resource-item");
+    fireEvent.keyUp(card, { key: " " });
+
+    expect(mockOnClick).toHaveBeenCalledOnce();
     expect(mockOnClick).toHaveBeenCalledWith(mockResource);
+  });
+
+  it("ignores repeated keyboard Space keyup events", () => {
+    const mockOnClick = vi.fn();
+    render(<ResourceCard resource={mockResource} onClick={mockOnClick} />);
+
+    const card = screen.getByTestId("resource-item");
+    fireEvent.keyUp(card, { key: " ", repeat: true });
+
+    expect(mockOnClick).not.toHaveBeenCalled();
   });
 
   it("does not trigger action on other keyboard keys", () => {
