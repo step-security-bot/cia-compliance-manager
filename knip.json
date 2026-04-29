@@ -2,26 +2,39 @@
   "$schema": "https://unpkg.com/knip@6/schema.json",
   "entry": [
     "src/index.ts",
-    "src/App.tsx"
+    "src/App.tsx",
+    "src/types/index.ts",
+    "src/services/index.ts",
+    "src/hooks/index.ts",
+    "src/utils/index.ts",
+    "src/components/index.ts",
+    "src/components/widgets/index.ts",
+    "src/constants/index.ts",
+    "src/data/index.ts",
+    "src/contexts/index.ts",
+    "eslint-local-rules.cjs",
+    "scripts/**/*.{js,mjs,cjs,ts}",
+    "cypress/e2e/**/*.cy.{ts,tsx}",
+    "cypress/plugins/**/*.{ts,js}",
+    "src/**/*.test.{ts,tsx}"
   ],
   "project": [
-    "src/**/*.{ts,tsx}"
+    "src/**/*.{ts,tsx,js,jsx}",
+    "cypress/**/*.{ts,tsx,js}",
+    "scripts/**/*.{js,mjs,cjs,ts}",
+    "*.{ts,js,mjs,cjs}"
   ],
   "ignore": [
-    "src/tests/**",
     "src/constants/complianceConstants.ts",
     "src/utils/complianceTextUtils.ts"
   ],
   "ignoreDependencies": [
-    "@tailwindcss/postcss",
     "cypress-junit-reporter",
     "cypress-react-selector",
     "cypress-wait-until",
     "glob",
-
     "mocha-junit-reporter",
     "mochawesome",
-    "postcss",
     "typedoc-plugin-markdown",
     "typedoc-plugin-mermaid",
     "react-error-boundary"
@@ -42,7 +55,7 @@
     "config": ["eslint.config.js"]
   },
   "typescript": {
-    "config": ["tsconfig.json", "tsconfig.lib.json"]
+    "config": ["tsconfig.json", "tsconfig.lib.json", "tsconfig.node.json", "cypress/tsconfig.json"]
   },
   "typedoc": false
 }

@@ -5,23 +5,18 @@ import {
   calculateBusinessImpactLevel,
   calculateCombinedRiskLevel,
   calculateRiskScore,
-  createBusinessImpact,
   formatRiskLevel,
   getDefaultBusinessImpact,
-  getErrorRate,
   getFormattedRiskLevel,
   getHighestImpactArea,
   getImplementationComplexity,
-  getPrivacyImpact,
   getRiskBadgeVariant,
   getRiskLevelFromImpactLevel,
   getRiskLevelFromSecurityLevel,
   getRiskScoreFromSecurityLevel,
   getRiskSeverityDescription,
   getSecurityLevelColorClass,
-  getSLAMetrics,
   getStatusBadgeForRiskLevel,
-  getValidationLevel,
   parseRiskLevel,
   securityLevelToValue,
 } from "./riskUtils";
@@ -120,43 +115,6 @@ describe("riskUtils", () => {
       expect(result.financial).toBeDefined();
       expect(result.operational).toBeDefined();
       expect(result.reputational).toBeDefined();
-    });
-  });
-
-  describe("legacy function mappings", () => {
-    it("should export getSLAMetrics", () => {
-      const metrics = getSLAMetrics("High");
-      expect(metrics).toBeDefined();
-      expect(metrics.uptime).toBeDefined();
-      expect(metrics.rto).toBeDefined();
-      expect(metrics.rpo).toBeDefined();
-    });
-
-    it("should export getPrivacyImpact", () => {
-      const impact = getPrivacyImpact("High");
-      expect(impact).toBeDefined();
-      expect(impact).toContain("Privacy");
-    });
-
-    it("should export getValidationLevel", () => {
-      const validation = getValidationLevel("High");
-      expect(validation).toBeDefined();
-      expect(typeof validation).toBe("string");
-      expect(validation).toBe("Enhanced");
-    });
-
-    it("should export getErrorRate", () => {
-      const errorRate = getErrorRate("High");
-      expect(errorRate).toBeDefined();
-      expect(typeof errorRate).toBe("string");
-      expect(errorRate).toBe("< 1%");
-    });
-
-    it("should export createBusinessImpact", () => {
-      const impact = createBusinessImpact("availability", "Moderate");
-      expect(impact).toBeDefined();
-      expect(impact.summary).toContain("availability");
-      expect(impact.summary).toContain("Moderate");
     });
   });
 
@@ -402,14 +360,17 @@ describe("riskUtils", () => {
   describe("getHighestImpactArea", () => {
     it("should identify operational as highest impact", () => {
       const availImpact = {
+        summary: "availImpact",
         operational: { riskLevel: "High Risk", description: "High operational risk" },
         financial: { riskLevel: "Low Risk", description: "Low financial risk" },
       };
       const integImpact = {
+        summary: "integImpact",
         operational: { riskLevel: "Low Risk", description: "Low operational risk" },
         financial: { riskLevel: "Low Risk", description: "Low financial risk" },
       };
       const confImpact = {
+        summary: "confImpact",
         reputational: { riskLevel: "Low Risk", description: "Low reputational risk" },
         regulatory: { riskLevel: "Low Risk", description: "Low regulatory risk" },
       };
@@ -424,14 +385,17 @@ describe("riskUtils", () => {
 
     it("should identify financial as highest impact", () => {
       const availImpact = {
+        summary: "availImpact",
         operational: { riskLevel: "Low Risk", description: "Low operational risk" },
         financial: { riskLevel: "High Risk", description: "High financial risk" },
       };
       const integImpact = {
+        summary: "integImpact",
         operational: { riskLevel: "Low Risk", description: "Low operational risk" },
         financial: { riskLevel: "Low Risk", description: "Low financial risk" },
       };
       const confImpact = {
+        summary: "confImpact",
         reputational: { riskLevel: "Low Risk", description: "Low reputational risk" },
         regulatory: { riskLevel: "Low Risk", description: "Low regulatory risk" },
       };
@@ -446,14 +410,17 @@ describe("riskUtils", () => {
 
     it("should return minimal for no high impact areas", () => {
       const availImpact = {
+        summary: "availImpact",
         operational: { riskLevel: "Low Risk", description: "Low operational risk" },
         financial: { riskLevel: "Low Risk", description: "Low financial risk" },
       };
       const integImpact = {
+        summary: "integImpact",
         operational: { riskLevel: "Low Risk", description: "Low operational risk" },
         financial: { riskLevel: "Low Risk", description: "Low financial risk" },
       };
       const confImpact = {
+        summary: "confImpact",
         reputational: { riskLevel: "Low Risk", description: "Low reputational risk" },
         regulatory: { riskLevel: "Low Risk", description: "Low regulatory risk" },
       };
@@ -468,14 +435,17 @@ describe("riskUtils", () => {
 
     it("should handle multiple high impact areas", () => {
       const availImpact = {
+        summary: "availImpact",
         operational: { riskLevel: "High Risk", description: "High operational risk" },
         financial: { riskLevel: "High Risk", description: "High financial risk" },
       };
       const integImpact = {
+        summary: "integImpact",
         operational: { riskLevel: "High Risk", description: "High operational risk" },
         financial: { riskLevel: "Low Risk", description: "Low financial risk" },
       };
       const confImpact = {
+        summary: "confImpact",
         reputational: { riskLevel: "Low Risk", description: "Low reputational risk" },
         regulatory: { riskLevel: "Low Risk", description: "Low regulatory risk" },
       };
@@ -491,14 +461,17 @@ describe("riskUtils", () => {
 
     it("should return multiple for more than 2 high impact areas", () => {
       const availImpact = {
+        summary: "availImpact",
         operational: { riskLevel: "High Risk", description: "High operational risk" },
         financial: { riskLevel: "High Risk", description: "High financial risk" },
       };
       const integImpact = {
+        summary: "integImpact",
         operational: { riskLevel: "High Risk", description: "High operational risk" },
         financial: { riskLevel: "High Risk", description: "High financial risk" },
       };
       const confImpact = {
+        summary: "confImpact",
         reputational: { riskLevel: "Low Risk", description: "Low reputational risk" },
         regulatory: { riskLevel: "Low Risk", description: "Low regulatory risk" },
       };
