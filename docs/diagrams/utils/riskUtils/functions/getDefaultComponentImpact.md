@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.60**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.61**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getDefaultComponentImpact**(`component`, `level`): [`BusinessImpactDetails`](../../../types/cia-services/interfaces/BusinessImpactDetails.md)
 
-Defined in: [utils/riskUtils.ts:514](https://github.com/Hack23/cia-compliance-manager/blob/0cdaa699961034bd3b82df0ef071fbc8e3c44aa7/src/utils/riskUtils.ts#L514)
+Defined in: [utils/riskUtils.ts:507](https://github.com/Hack23/cia-compliance-manager/blob/02ebfb86f7d3e96b15edf3dc4b91da2f5f6a3a27/src/utils/riskUtils.ts#L507)
 
 Generates default component impact data when service data isn't available
 

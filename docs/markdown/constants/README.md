@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.60**](../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.61**](../README.md)
 
 ***
 
@@ -683,18 +683,6 @@ Re-exports [WidgetTestIds](testIds/interfaces/WidgetTestIds.md)
 ### createWidgetTestId
 
 Re-exports [createWidgetTestId](testIds/functions/createWidgetTestId.md)
-
-***
-
-### createContextualTestId
-
-Re-exports [createContextualTestId](testIds/functions/createContextualTestId.md)
-
-***
-
-### getTestId
-
-Re-exports [getTestId](testIds/functions/getTestId.md)
 
 ***
 

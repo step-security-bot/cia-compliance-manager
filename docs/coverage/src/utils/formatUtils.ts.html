@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>63/63</span>
+                <span class='fraction'>62/62</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">95.45% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>44/44</span>
+                <span class='fraction'>42/44</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>59/59</span>
+                <span class='fraction'>58/58</span>
             </div>
         
             
@@ -475,10 +475,7 @@
 <a name='L410'></a><a href='#L410'>410</a>
 <a name='L411'></a><a href='#L411'>411</a>
 <a name='L412'></a><a href='#L412'>412</a>
-<a name='L413'></a><a href='#L413'>413</a>
-<a name='L414'></a><a href='#L414'>414</a>
-<a name='L415'></a><a href='#L415'>415</a>
-<a name='L416'></a><a href='#L416'>416</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L413'></a><a href='#L413'>413</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -593,37 +590,34 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">702x</span>
-<span class="cline-any cline-yes">702x</span>
-<span class="cline-any cline-yes">702x</span>
-<span class="cline-any cline-yes">702x</span>
+<span class="cline-any cline-yes">701x</span>
+<span class="cline-any cline-yes">701x</span>
+<span class="cline-any cline-yes">701x</span>
+<span class="cline-any cline-yes">701x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">702x</span>
+<span class="cline-any cline-yes">701x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">696x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">695x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">702x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">701x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -967,32 +961,32 @@ export function formatPercentage(value: number, decimalPlaces: number = 0): stri
 &nbsp;
 /**
  * Formats a number as currency with proper thousands separators
- * 
+ *
  * Provides flexible currency formatting with support for different locales
- * and currencies. Handles both object-style and legacy string-style parameters
- * for backward compatibility.
- * 
+ * and currencies. Accepts either an options object or a positional currency
+ * code with optional locale.
+ *
  * @param value - The numeric value to format as currency
- * @param options - Formatting options object or currency code string (for backward compatibility)
+ * @param options - Formatting options object or currency code string
  * @param options.locale - Locale string for regional formatting (e.g., 'en-US', 'sv-SE')
  * @param options.currency - Currency code (e.g., 'USD', 'EUR', 'SEK')
  * @param options.minimumFractionDigits - Minimum decimal places to show
  * @param options.maximumFractionDigits - Maximum decimal places to show
- * @param locale - Optional locale for backward compatibility with string options
+ * @param locale - Optional locale when using the positional currency-code form
  * @returns Formatted currency string with symbol and separators
- * 
+ *
  * @example
  * ```typescript
  * // Object-style options (recommended)
  * formatCurrency(1234.56)                                    // "$1,235" (default: USD, 0 decimals)
  * formatCurrency(1234.56, { currency: 'EUR' })              // "€1,235"
- * formatCurrency(1234.56, { 
+ * formatCurrency(1234.56, {
  *   currency: 'USD',
  *   minimumFractionDigits: 2,
  *   maximumFractionDigits: 2
  * })                                                         // "$1,234.56"
- * 
- * // Legacy string-style options (backward compatible)
+ *
+ * // Positional string-style options
  * formatCurrency(1234.56, 'SEK', 'sv-SE')                   // "1 235 kr"
  * formatCurrency(50000, 'USD')                              // "$50,000"
  * ```
@@ -1013,7 +1007,7 @@ export function formatCurrency(
   let minFractionDigits = 0;
   let maxFractionDigits = 0;
 &nbsp;
-  // Handle backward compatibility with string options
+  // Handle positional string form: formatCurrency(value, 'USD', 'en-US')
   if (typeof options === 'string') {
     currencyCode = options;
     if (locale) {
@@ -1024,8 +1018,8 @@ export function formatCurrency(
   else if (options &amp;&amp; typeof options === 'object') {
     if (options.currency) currencyCode = options.currency;
     if (options.locale) localeValue = options.locale;
-    if (options.minimumFractionDigits !== undefined) minFractionDigits = options.minimumFractionDigits;
-    if (options.maximumFractionDigits !== undefined) maxFractionDigits = options.maximumFractionDigits;
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (options.minimumFractionDigits !== undefined) minFractionDigits = options.minimumFractionDigits;
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (options.maximumFractionDigits !== undefined) maxFractionDigits = options.maximumFractionDigits;
   }
 &nbsp;
   // Use Intl.NumberFormat for consistent currency formatting
@@ -1036,9 +1030,6 @@ export function formatCurrency(
     maximumFractionDigits: maxFractionDigits
   }).format(value);
 }
-&nbsp;
-// For backward compatibility, re-export this function
-export const formatCurrencyWithOptions = formatCurrency;
 &nbsp;
 /**
  * Format security level for display
@@ -1315,7 +1306,7 @@ export function formatTimeframe(minutes: number): string {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-04-28T15:37:55.554Z
+                at 2026-04-29T23:46:47.262Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

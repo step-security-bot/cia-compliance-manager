@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.69% </span>
+                <span class="strong">82.95% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>77/92</span>
+                <span class='fraction'>73/88</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">67.39% </span>
+                <span class="strong">65.9% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>31/46</span>
+                <span class='fraction'>29/44</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.69% </span>
+                <span class="strong">82.95% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>77/92</span>
+                <span class='fraction'>73/88</span>
             </div>
         
             
@@ -1273,27 +1273,7 @@
 <a name='L1208'></a><a href='#L1208'>1208</a>
 <a name='L1209'></a><a href='#L1209'>1209</a>
 <a name='L1210'></a><a href='#L1210'>1210</a>
-<a name='L1211'></a><a href='#L1211'>1211</a>
-<a name='L1212'></a><a href='#L1212'>1212</a>
-<a name='L1213'></a><a href='#L1213'>1213</a>
-<a name='L1214'></a><a href='#L1214'>1214</a>
-<a name='L1215'></a><a href='#L1215'>1215</a>
-<a name='L1216'></a><a href='#L1216'>1216</a>
-<a name='L1217'></a><a href='#L1217'>1217</a>
-<a name='L1218'></a><a href='#L1218'>1218</a>
-<a name='L1219'></a><a href='#L1219'>1219</a>
-<a name='L1220'></a><a href='#L1220'>1220</a>
-<a name='L1221'></a><a href='#L1221'>1221</a>
-<a name='L1222'></a><a href='#L1222'>1222</a>
-<a name='L1223'></a><a href='#L1223'>1223</a>
-<a name='L1224'></a><a href='#L1224'>1224</a>
-<a name='L1225'></a><a href='#L1225'>1225</a>
-<a name='L1226'></a><a href='#L1226'>1226</a>
-<a name='L1227'></a><a href='#L1227'>1227</a>
-<a name='L1228'></a><a href='#L1228'>1228</a>
-<a name='L1229'></a><a href='#L1229'>1229</a>
-<a name='L1230'></a><a href='#L1230'>1230</a>
-<a name='L1231'></a><a href='#L1231'>1231</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L1211'></a><a href='#L1211'>1211</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1420,25 +1400,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">42x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">42x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">42x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -2413,7 +2374,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">42x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -2646,25 +2606,6 @@ export function createWidgetTestId(widgetName: string): WidgetTestIds {
         : createTestId('widget', normalizedName, 'footer'),
   };
 }
-&nbsp;
-/**
- * Create a context-specific test ID by combining a component prefix with an element ID
- * @deprecated Use createTestId() or createWidgetTestId() instead for consistency
- */
-export const createContextualTestId = (
-  componentPrefix: string,
-  elementId: string
-): string =&gt; {
-  return `${componentPrefix}-${elementId}`;
-};
-&nbsp;
-/**
- * Helper to create a test ID with a prefix
- * @deprecated Use createTestId() instead for consistency
- */
-export const getTestId = (prefix: string, id: string): string =&gt; {
-  return `${prefix}-${id}`;
-};
 &nbsp;
 /**
  * Dynamic test ID creation functions for various component types
@@ -3663,7 +3604,6 @@ export const TEST_IDS = {
   ...VALUE_CREATION_TEST_IDS,
   ...COMPLIANCE_TEST_IDS,
   createDynamicTestId,
-  getTestId,
   TEST_HELPERS,
   costEstimation: {
     container: "cost-estimation-container",
@@ -3760,7 +3700,7 @@ export const ACCESSIBILITY_TEST_IDS = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-04-28T15:37:55.554Z
+                at 2026-04-29T23:46:47.262Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

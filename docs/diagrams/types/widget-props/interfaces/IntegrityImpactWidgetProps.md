@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.60**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.61**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: IntegrityImpactWidgetProps
 
-Defined in: [types/widget-props.ts:611](https://github.com/Hack23/cia-compliance-manager/blob/0cdaa699961034bd3b82df0ef071fbc8e3c44aa7/src/types/widget-props.ts#L611)
+Defined in: [types/widget-props.ts:610](https://github.com/Hack23/cia-compliance-manager/blob/02ebfb86f7d3e96b15edf3dc4b91da2f5f6a3a27/src/types/widget-props.ts#L610)
 
 Props for IntegrityImpactWidget component
 
@@ -34,7 +34,7 @@ validation requirements, and audit controls.
 
 > `optional` **className?**: `string`
 
-Defined in: [types/widget-props.ts:124](https://github.com/Hack23/cia-compliance-manager/blob/0cdaa699961034bd3b82df0ef071fbc8e3c44aa7/src/types/widget-props.ts#L124)
+Defined in: [types/widget-props.ts:124](https://github.com/Hack23/cia-compliance-manager/blob/02ebfb86f7d3e96b15edf3dc4b91da2f5f6a3a27/src/types/widget-props.ts#L124)
 
 Optional CSS class name for custom styling
 
@@ -57,7 +57,7 @@ Use Tailwind CSS classes or custom CSS classes.
 
 > `optional` **testId?**: `string`
 
-Defined in: [types/widget-props.ts:135](https://github.com/Hack23/cia-compliance-manager/blob/0cdaa699961034bd3b82df0ef071fbc8e3c44aa7/src/types/widget-props.ts#L135)
+Defined in: [types/widget-props.ts:135](https://github.com/Hack23/cia-compliance-manager/blob/02ebfb86f7d3e96b15edf3dc4b91da2f5f6a3a27/src/types/widget-props.ts#L135)
 
 Optional test ID for automated testing
 
@@ -81,7 +81,7 @@ defined in testIds constants.
 
 > `optional` **children?**: `ReactNode`
 
-Defined in: [types/widget-props.ts:244](https://github.com/Hack23/cia-compliance-manager/blob/0cdaa699961034bd3b82df0ef071fbc8e3c44aa7/src/types/widget-props.ts#L244)
+Defined in: [types/widget-props.ts:243](https://github.com/Hack23/cia-compliance-manager/blob/02ebfb86f7d3e96b15edf3dc4b91da2f5f6a3a27/src/types/widget-props.ts#L243)
 
 Optional children elements
 
@@ -95,7 +95,7 @@ Optional children elements
 
 > `optional` **onError?**: (`error`) => `void`
 
-Defined in: [types/widget-props.ts:250](https://github.com/Hack23/cia-compliance-manager/blob/0cdaa699961034bd3b82df0ef071fbc8e3c44aa7/src/types/widget-props.ts#L250)
+Defined in: [types/widget-props.ts:249](https://github.com/Hack23/cia-compliance-manager/blob/02ebfb86f7d3e96b15edf3dc4b91da2f5f6a3a27/src/types/widget-props.ts#L249)
 
 Optional callback when widget encounters an error
 
@@ -121,7 +121,7 @@ Error that occurred
 
 > `optional` **availabilityLevel?**: [`SecurityLevel`](../../cia/type-aliases/SecurityLevel.md)
 
-Defined in: [types/widget-props.ts:615](https://github.com/Hack23/cia-compliance-manager/blob/0cdaa699961034bd3b82df0ef071fbc8e3c44aa7/src/types/widget-props.ts#L615)
+Defined in: [types/widget-props.ts:614](https://github.com/Hack23/cia-compliance-manager/blob/02ebfb86f7d3e96b15edf3dc4b91da2f5f6a3a27/src/types/widget-props.ts#L614)
 
 Availability security level (optional, for context)
 
@@ -131,7 +131,7 @@ Availability security level (optional, for context)
 
 > **integrityLevel**: [`SecurityLevel`](../../cia/type-aliases/SecurityLevel.md)
 
-Defined in: [types/widget-props.ts:620](https://github.com/Hack23/cia-compliance-manager/blob/0cdaa699961034bd3b82df0ef071fbc8e3c44aa7/src/types/widget-props.ts#L620)
+Defined in: [types/widget-props.ts:619](https://github.com/Hack23/cia-compliance-manager/blob/02ebfb86f7d3e96b15edf3dc4b91da2f5f6a3a27/src/types/widget-props.ts#L619)
 
 Integrity security level
 
@@ -141,7 +141,7 @@ Integrity security level
 
 > `optional` **confidentialityLevel?**: [`SecurityLevel`](../../cia/type-aliases/SecurityLevel.md)
 
-Defined in: [types/widget-props.ts:625](https://github.com/Hack23/cia-compliance-manager/blob/0cdaa699961034bd3b82df0ef071fbc8e3c44aa7/src/types/widget-props.ts#L625)
+Defined in: [types/widget-props.ts:624](https://github.com/Hack23/cia-compliance-manager/blob/02ebfb86f7d3e96b15edf3dc4b91da2f5f6a3a27/src/types/widget-props.ts#L624)
 
 Confidentiality security level (optional, for context)
 
@@ -151,7 +151,7 @@ Confidentiality security level (optional, for context)
 
 > `optional` **showExtendedDetails?**: `boolean`
 
-Defined in: [types/widget-props.ts:631](https://github.com/Hack23/cia-compliance-manager/blob/0cdaa699961034bd3b82df0ef071fbc8e3c44aa7/src/types/widget-props.ts#L631)
+Defined in: [types/widget-props.ts:630](https://github.com/Hack23/cia-compliance-manager/blob/02ebfb86f7d3e96b15edf3dc4b91da2f5f6a3a27/src/types/widget-props.ts#L630)
 
 If true, displays extended details
 

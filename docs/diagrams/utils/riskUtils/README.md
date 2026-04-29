@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.60**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.61**](../../README.md)
 
 ***
 
@@ -10,20 +10,8 @@
 
 - [RiskLevel](type-aliases/RiskLevel.md)
 
-## Variables
-
-- [getSLAMetrics](variables/getSLAMetrics.md)
-- [getPrivacyImpact](variables/getPrivacyImpact.md)
-- [getValidationLevel](variables/getValidationLevel.md)
-- [getErrorRate](variables/getErrorRate.md)
-- [createBusinessImpact](variables/createBusinessImpact.md)
-
 ## Functions
 
-- [getDefaultSLAMetrics](functions/getDefaultSLAMetrics.md)
-- [getDefaultPrivacyImpact](functions/getDefaultPrivacyImpact.md)
-- [getDefaultValidationLevel](functions/getDefaultValidationLevel.md)
-- [createDefaultBusinessImpact](functions/createDefaultBusinessImpact.md)
 - [getDefaultBusinessImpact](functions/getDefaultBusinessImpact.md)
 - [getRiskLevelFromSecurityLevel](functions/getRiskLevelFromSecurityLevel.md)
 - [formatRiskLevel](functions/formatRiskLevel.md)
@@ -45,6 +33,30 @@
 
 ## References
 
+### createDefaultBusinessImpact
+
+Re-exports [createDefaultBusinessImpact](../../data/riskImpactData/functions/createDefaultBusinessImpact.md)
+
+***
+
 ### getDefaultErrorRate
 
 Re-exports [getDefaultErrorRate](../../data/ciaOptionsData/functions/getDefaultErrorRate.md)
+
+***
+
+### getDefaultPrivacyImpact
+
+Re-exports [getDefaultPrivacyImpact](../../data/ciaOptionsData/functions/getDefaultPrivacyImpact.md)
+
+***
+
+### getDefaultSLAMetrics
+
+Re-exports [getDefaultSLAMetrics](../../data/ciaOptionsData/functions/getDefaultSLAMetrics.md)
+
+***
+
+### getDefaultValidationLevel
+
+Re-exports [getDefaultValidationLevel](../../data/ciaOptionsData/functions/getDefaultValidationLevel.md)

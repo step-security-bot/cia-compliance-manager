@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.60**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.61**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > `const` **SECURITY\_LEVEL\_COLOR\_MAP**: `Record`\<[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md), [`SecurityLevelColorPair`](../../../colorConstants/interfaces/SecurityLevelColorPair.md)\>
 
-Defined in: [constants/securityLevels.ts:54](https://github.com/Hack23/cia-compliance-manager/blob/0cdaa699961034bd3b82df0ef071fbc8e3c44aa7/src/constants/securityLevels.ts#L54)
+Defined in: [constants/securityLevels.ts:54](https://github.com/Hack23/cia-compliance-manager/blob/02ebfb86f7d3e96b15edf3dc4b91da2f5f6a3a27/src/constants/securityLevels.ts#L54)
 
 Color coding for security levels

@@ -1,14 +1,10 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.60**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.61**](../../README.md)
 
 ***
 
 [CIA Compliance Manager — UML Diagrams](../../modules.md) / utils/formatUtils
 
 # utils/formatUtils
-
-## Variables
-
-- [formatCurrencyWithOptions](variables/formatCurrencyWithOptions.md)
 
 ## Functions
 

@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.60**](../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.61**](../README.md)
 
 ***
 
@@ -38,7 +38,6 @@ to ensure they're properly accessible throughout the application.
 - [getRecommendedBudgetAllocation](variables/getRecommendedBudgetAllocation.md)
 - [formatBudgetPercentage](variables/formatBudgetPercentage.md)
 - [formatCurrency](variables/formatCurrency.md)
-- [formatCurrencyWithOptions](variables/formatCurrencyWithOptions.md)
 - [formatDate](variables/formatDate.md)
 - [formatLargeNumber](variables/formatLargeNumber.md)
 - [formatNumber](variables/formatNumber.md)

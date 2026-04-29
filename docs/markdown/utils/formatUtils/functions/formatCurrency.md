@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.60**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.61**](../../../README.md)
 
 ***
 
@@ -8,13 +8,13 @@
 
 > **formatCurrency**(`value`, `options?`, `locale?`): `string`
 
-Defined in: [utils/formatUtils.ts:105](https://github.com/Hack23/cia-compliance-manager/blob/0cdaa699961034bd3b82df0ef071fbc8e3c44aa7/src/utils/formatUtils.ts#L105)
+Defined in: [utils/formatUtils.ts:105](https://github.com/Hack23/cia-compliance-manager/blob/02ebfb86f7d3e96b15edf3dc4b91da2f5f6a3a27/src/utils/formatUtils.ts#L105)
 
 Formats a number as currency with proper thousands separators
 
 Provides flexible currency formatting with support for different locales
-and currencies. Handles both object-style and legacy string-style parameters
-for backward compatibility.
+and currencies. Accepts either an options object or a positional currency
+code with optional locale.
 
 ## Parameters
 
@@ -28,7 +28,7 @@ The numeric value to format as currency
 
 `string` \| \{ `locale?`: `string`; `currency?`: `string`; `minimumFractionDigits?`: `number`; `maximumFractionDigits?`: `number`; \}
 
-Formatting options object or currency code string (for backward compatibility)
+Formatting options object or currency code string
 
 `string`
 
@@ -38,7 +38,7 @@ Formatting options object or currency code string (for backward compatibility)
 
 \{ `locale?`: `string`; `currency?`: `string`; `minimumFractionDigits?`: `number`; `maximumFractionDigits?`: `number`; \}
 
-Formatting options object or currency code string (for backward compatibility)
+Formatting options object or currency code string
 
 ##### locale?
 
@@ -68,7 +68,7 @@ Maximum decimal places to show
 
 `string`
 
-Optional locale for backward compatibility with string options
+Optional locale when using the positional currency-code form
 
 ## Returns
 
@@ -82,13 +82,13 @@ Formatted currency string with symbol and separators
 // Object-style options (recommended)
 formatCurrency(1234.56)                                    // "$1,235" (default: USD, 0 decimals)
 formatCurrency(1234.56, { currency: 'EUR' })              // "€1,235"
-formatCurrency(1234.56, { 
+formatCurrency(1234.56, {
   currency: 'USD',
   minimumFractionDigits: 2,
   maximumFractionDigits: 2
 })                                                         // "$1,234.56"
 
-// Legacy string-style options (backward compatible)
+// Positional string-style options
 formatCurrency(1234.56, 'SEK', 'sv-SE')                   // "1 235 kr"
 formatCurrency(50000, 'USD')                              // "$50,000"
 ```

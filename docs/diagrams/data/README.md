@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.60**](../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.61**](../README.md)
 
 ***
 
@@ -18,13 +18,6 @@ and value creation data.
 - [confidentialityData](variables/confidentialityData.md)
 - [integrityData](variables/integrityData.md)
 - [roiEstimatesData](variables/roiEstimatesData.md)
-
-## Functions
-
-- [getDefaultSLAMetrics](functions/getDefaultSLAMetrics.md)
-- [getDefaultPrivacyImpact](functions/getDefaultPrivacyImpact.md)
-- [getDefaultValidationLevel](functions/getDefaultValidationLevel.md)
-- [createDefaultBusinessImpact](functions/createDefaultBusinessImpact.md)
 
 ## References
 
@@ -67,6 +60,24 @@ Re-exports [getCIAOptionsForComponent](ciaOptionsData/functions/getCIAOptionsFor
 ### getImplementationDetails
 
 Re-exports [getImplementationDetails](ciaOptionsData/functions/getImplementationDetails.md)
+
+***
+
+### getDefaultSLAMetrics
+
+Re-exports [getDefaultSLAMetrics](ciaOptionsData/functions/getDefaultSLAMetrics.md)
+
+***
+
+### getDefaultPrivacyImpact
+
+Re-exports [getDefaultPrivacyImpact](ciaOptionsData/functions/getDefaultPrivacyImpact.md)
+
+***
+
+### getDefaultValidationLevel
+
+Re-exports [getDefaultValidationLevel](ciaOptionsData/functions/getDefaultValidationLevel.md)
 
 ***
 
@@ -139,6 +150,12 @@ Re-exports [calculateBusinessImpactLevel](riskImpactData/functions/calculateBusi
 ### getRiskImpactLabel
 
 Re-exports [getRiskImpactLabel](riskImpactData/functions/getRiskImpactLabel.md)
+
+***
+
+### createDefaultBusinessImpact
+
+Re-exports [createDefaultBusinessImpact](riskImpactData/functions/createDefaultBusinessImpact.md)
 
 ***
 

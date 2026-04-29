@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.60**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.61**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: ROIEstimatesMap
 
-Defined in: [services/securityMetricsService.ts:170](https://github.com/Hack23/cia-compliance-manager/blob/0cdaa699961034bd3b82df0ef071fbc8e3c44aa7/src/services/securityMetricsService.ts#L170)
+Defined in: [services/securityMetricsService.ts:165](https://github.com/Hack23/cia-compliance-manager/blob/02ebfb86f7d3e96b15edf3dc4b91da2f5f6a3a27/src/services/securityMetricsService.ts#L165)
 
 Interface for ROI estimates map
 
@@ -16,7 +16,7 @@ Interface for ROI estimates map
 
 > **NONE**: `object`
 
-Defined in: [services/securityMetricsService.ts:171](https://github.com/Hack23/cia-compliance-manager/blob/0cdaa699961034bd3b82df0ef071fbc8e3c44aa7/src/services/securityMetricsService.ts#L171)
+Defined in: [services/securityMetricsService.ts:166](https://github.com/Hack23/cia-compliance-manager/blob/02ebfb86f7d3e96b15edf3dc4b91da2f5f6a3a27/src/services/securityMetricsService.ts#L166)
 
 #### returnRate
 
@@ -44,7 +44,7 @@ Defined in: [services/securityMetricsService.ts:171](https://github.com/Hack23/c
 
 > **LOW**: `object`
 
-Defined in: [services/securityMetricsService.ts:178](https://github.com/Hack23/cia-compliance-manager/blob/0cdaa699961034bd3b82df0ef071fbc8e3c44aa7/src/services/securityMetricsService.ts#L178)
+Defined in: [services/securityMetricsService.ts:173](https://github.com/Hack23/cia-compliance-manager/blob/02ebfb86f7d3e96b15edf3dc4b91da2f5f6a3a27/src/services/securityMetricsService.ts#L173)
 
 #### returnRate
 
@@ -72,7 +72,7 @@ Defined in: [services/securityMetricsService.ts:178](https://github.com/Hack23/c
 
 > **MODERATE**: `object`
 
-Defined in: [services/securityMetricsService.ts:185](https://github.com/Hack23/cia-compliance-manager/blob/0cdaa699961034bd3b82df0ef071fbc8e3c44aa7/src/services/securityMetricsService.ts#L185)
+Defined in: [services/securityMetricsService.ts:180](https://github.com/Hack23/cia-compliance-manager/blob/02ebfb86f7d3e96b15edf3dc4b91da2f5f6a3a27/src/services/securityMetricsService.ts#L180)
 
 #### returnRate
 
@@ -100,7 +100,7 @@ Defined in: [services/securityMetricsService.ts:185](https://github.com/Hack23/c
 
 > **HIGH**: `object`
 
-Defined in: [services/securityMetricsService.ts:192](https://github.com/Hack23/cia-compliance-manager/blob/0cdaa699961034bd3b82df0ef071fbc8e3c44aa7/src/services/securityMetricsService.ts#L192)
+Defined in: [services/securityMetricsService.ts:187](https://github.com/Hack23/cia-compliance-manager/blob/02ebfb86f7d3e96b15edf3dc4b91da2f5f6a3a27/src/services/securityMetricsService.ts#L187)
 
 #### returnRate
 
@@ -128,7 +128,7 @@ Defined in: [services/securityMetricsService.ts:192](https://github.com/Hack23/c
 
 > **VERY\_HIGH**: `object`
 
-Defined in: [services/securityMetricsService.ts:199](https://github.com/Hack23/cia-compliance-manager/blob/0cdaa699961034bd3b82df0ef071fbc8e3c44aa7/src/services/securityMetricsService.ts#L199)
+Defined in: [services/securityMetricsService.ts:194](https://github.com/Hack23/cia-compliance-manager/blob/02ebfb86f7d3e96b15edf3dc4b91da2f5f6a3a27/src/services/securityMetricsService.ts#L194)
 
 #### returnRate
 

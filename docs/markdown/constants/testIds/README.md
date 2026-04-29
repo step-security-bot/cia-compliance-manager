@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.60**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.61**](../../README.md)
 
 ***
 
@@ -58,8 +58,6 @@
 
 - [createTestId](functions/createTestId.md)
 - [createWidgetTestId](functions/createWidgetTestId.md)
-- [~~createContextualTestId~~](functions/createContextualTestId.md)
-- [~~getTestId~~](functions/getTestId.md)
 - [categorySpecific](functions/categorySpecific.md)
 - [createCompoundTestId](functions/createCompoundTestId.md)
 - [asSecurityLevel](functions/asSecurityLevel.md)

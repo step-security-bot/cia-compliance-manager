@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.60**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.61**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **TEST\_IDS**: `object`
 
-Defined in: [constants/testIds.ts:1120](https://github.com/Hack23/cia-compliance-manager/blob/0cdaa699961034bd3b82df0ef071fbc8e3c44aa7/src/constants/testIds.ts#L1120)
+Defined in: [constants/testIds.ts:1101](https://github.com/Hack23/cia-compliance-manager/blob/02ebfb86f7d3e96b15edf3dc4b91da2f5f6a3a27/src/constants/testIds.ts#L1101)
 
 Consolidated export of all test IDs for easier imports
 
@@ -1905,30 +1905,6 @@ Create test ID for a tech stack
 ##### Returns
 
 `string`
-
-### ~~getTestId~~
-
-> **getTestId**: (`prefix`, `id`) => `string`
-
-Helper to create a test ID with a prefix
-
-#### Parameters
-
-##### prefix
-
-`string`
-
-##### id
-
-`string`
-
-#### Returns
-
-`string`
-
-#### Deprecated
-
-Use createTestId() instead for consistency
 
 ### TEST\_HELPERS
 
