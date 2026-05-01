@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.61**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.62**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: ResourceCategory
 
-Defined in: [types/securityResources.ts:151](https://github.com/Hack23/cia-compliance-manager/blob/02ebfb86f7d3e96b15edf3dc4b91da2f5f6a3a27/src/types/securityResources.ts#L151)
+Defined in: [types/securityResources.ts:151](https://github.com/Hack23/cia-compliance-manager/blob/739b2f432f580c940623f2d428467162720ae01f/src/types/securityResources.ts#L151)
 
 Type for a security resource category
 
@@ -16,7 +16,7 @@ Type for a security resource category
 
 > **id**: `string`
 
-Defined in: [types/securityResources.ts:155](https://github.com/Hack23/cia-compliance-manager/blob/02ebfb86f7d3e96b15edf3dc4b91da2f5f6a3a27/src/types/securityResources.ts#L155)
+Defined in: [types/securityResources.ts:155](https://github.com/Hack23/cia-compliance-manager/blob/739b2f432f580c940623f2d428467162720ae01f/src/types/securityResources.ts#L155)
 
 Category identifier
 
@@ -26,7 +26,7 @@ Category identifier
 
 > **name**: `string`
 
-Defined in: [types/securityResources.ts:160](https://github.com/Hack23/cia-compliance-manager/blob/02ebfb86f7d3e96b15edf3dc4b91da2f5f6a3a27/src/types/securityResources.ts#L160)
+Defined in: [types/securityResources.ts:160](https://github.com/Hack23/cia-compliance-manager/blob/739b2f432f580c940623f2d428467162720ae01f/src/types/securityResources.ts#L160)
 
 Category name
 
@@ -36,7 +36,7 @@ Category name
 
 > **description**: `string`
 
-Defined in: [types/securityResources.ts:165](https://github.com/Hack23/cia-compliance-manager/blob/02ebfb86f7d3e96b15edf3dc4b91da2f5f6a3a27/src/types/securityResources.ts#L165)
+Defined in: [types/securityResources.ts:165](https://github.com/Hack23/cia-compliance-manager/blob/739b2f432f580c940623f2d428467162720ae01f/src/types/securityResources.ts#L165)
 
 Category description
 
@@ -46,6 +46,6 @@ Category description
 
 > `optional` **icon?**: `string`
 
-Defined in: [types/securityResources.ts:170](https://github.com/Hack23/cia-compliance-manager/blob/02ebfb86f7d3e96b15edf3dc4b91da2f5f6a3a27/src/types/securityResources.ts#L170)
+Defined in: [types/securityResources.ts:170](https://github.com/Hack23/cia-compliance-manager/blob/739b2f432f580c940623f2d428467162720ae01f/src/types/securityResources.ts#L170)
 
 Category icon

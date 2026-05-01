@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.61**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.62**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **useSecuritySummaryData**(`availabilityLevel`, `integrityLevel`, `confidentialityLevel`, `ciaContentService`, `complianceService`): `object`
 
-Defined in: [hooks/useSecuritySummaryData.ts:32](https://github.com/Hack23/cia-compliance-manager/blob/02ebfb86f7d3e96b15edf3dc4b91da2f5f6a3a27/src/hooks/useSecuritySummaryData.ts#L32)
+Defined in: [hooks/useSecuritySummaryData.ts:32](https://github.com/Hack23/cia-compliance-manager/blob/739b2f432f580c940623f2d428467162720ae01f/src/hooks/useSecuritySummaryData.ts#L32)
 
 Custom hook for SecuritySummaryWidget data calculations
 Extracts all data transformation logic for better testability and reusability
