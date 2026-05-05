@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.64**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.65**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **default**(): `Element`
 
-Defined in: [App.tsx:30](https://github.com/Hack23/cia-compliance-manager/blob/3132182b5e653fb389a929289fa4441c76c22e5e/src/App.tsx#L30)
+Defined in: [App.tsx:30](https://github.com/Hack23/cia-compliance-manager/blob/77dc8b893bfd5ae3bdbf0f6fc651128f655bd7a7/src/App.tsx#L30)
 
 Main App component
 

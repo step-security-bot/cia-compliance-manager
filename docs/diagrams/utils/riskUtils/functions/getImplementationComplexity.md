@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.64**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.65**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getImplementationComplexity**(`availabilityLevel`, `integrityLevel`, `confidentialityLevel`): `string`
 
-Defined in: [utils/riskUtils.ts:417](https://github.com/Hack23/cia-compliance-manager/blob/3132182b5e653fb389a929289fa4441c76c22e5e/src/utils/riskUtils.ts#L417)
+Defined in: [utils/riskUtils.ts:417](https://github.com/Hack23/cia-compliance-manager/blob/77dc8b893bfd5ae3bdbf0f6fc651128f655bd7a7/src/utils/riskUtils.ts#L417)
 
 Determines the implementation complexity based on security levels
 

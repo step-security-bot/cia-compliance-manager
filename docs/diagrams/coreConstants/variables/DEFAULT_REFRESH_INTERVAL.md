@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.64**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.65**](../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > `const` **DEFAULT\_REFRESH\_INTERVAL**: `60000` = `60000`
 
-Defined in: [constants/coreConstants.ts:510](https://github.com/Hack23/cia-compliance-manager/blob/3132182b5e653fb389a929289fa4441c76c22e5e/src/constants/coreConstants.ts#L510)
+Defined in: [constants/coreConstants.ts:510](https://github.com/Hack23/cia-compliance-manager/blob/77dc8b893bfd5ae3bdbf0f6fc651128f655bd7a7/src/constants/coreConstants.ts#L510)
 
 Default data refresh interval in milliseconds

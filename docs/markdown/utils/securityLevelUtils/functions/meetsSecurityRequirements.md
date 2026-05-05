@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.64**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.65**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **meetsSecurityRequirements**(`availabilityLevel`, `integrityLevel`, `confidentialityLevel`, `minAvailability`, `minIntegrity`, `minConfidentiality`): `boolean`
 
-Defined in: [utils/securityLevelUtils.ts:295](https://github.com/Hack23/cia-compliance-manager/blob/3132182b5e653fb389a929289fa4441c76c22e5e/src/utils/securityLevelUtils.ts#L295)
+Defined in: [utils/securityLevelUtils.ts:295](https://github.com/Hack23/cia-compliance-manager/blob/77dc8b893bfd5ae3bdbf0f6fc651128f655bd7a7/src/utils/securityLevelUtils.ts#L295)
 
 Determine if a given set of security levels meets minimum requirements
 
