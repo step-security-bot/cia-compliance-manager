@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.62**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.63**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: IServiceFactory\<T\>
 
-Defined in: [types/services.ts:420](https://github.com/Hack23/cia-compliance-manager/blob/739b2f432f580c940623f2d428467162720ae01f/src/types/services.ts#L420)
+Defined in: [types/services.ts:420](https://github.com/Hack23/cia-compliance-manager/blob/6d954d2566bfb96b9e9ada8fdcaca90cbf2874a9/src/types/services.ts#L420)
 
 Service factory interface
 
@@ -24,7 +24,7 @@ Defines a standard way to create service instances
 
 > **create**(`config?`): `T`
 
-Defined in: [types/services.ts:427](https://github.com/Hack23/cia-compliance-manager/blob/739b2f432f580c940623f2d428467162720ae01f/src/types/services.ts#L427)
+Defined in: [types/services.ts:427](https://github.com/Hack23/cia-compliance-manager/blob/6d954d2566bfb96b9e9ada8fdcaca90cbf2874a9/src/types/services.ts#L427)
 
 Create a new service instance
 

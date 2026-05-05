@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.62**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.63**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getComplianceStatusText**(`complianceScore`): `string`
 
-Defined in: [utils/statusUtils.ts:114](https://github.com/Hack23/cia-compliance-manager/blob/739b2f432f580c940623f2d428467162720ae01f/src/utils/statusUtils.ts#L114)
+Defined in: [utils/statusUtils.ts:114](https://github.com/Hack23/cia-compliance-manager/blob/6d954d2566bfb96b9e9ada8fdcaca90cbf2874a9/src/utils/statusUtils.ts#L114)
 
 Gets compliance status text based on compliance score
 

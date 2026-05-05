@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.62**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.63**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: ROIMetrics
 
-Defined in: [services/ciaContentService.ts:30](https://github.com/Hack23/cia-compliance-manager/blob/739b2f432f580c940623f2d428467162720ae01f/src/services/ciaContentService.ts#L30)
+Defined in: [services/ciaContentService.ts:30](https://github.com/Hack23/cia-compliance-manager/blob/6d954d2566bfb96b9e9ada8fdcaca90cbf2874a9/src/services/ciaContentService.ts#L30)
 
 Metrics for ROI assessment
 
@@ -16,7 +16,7 @@ Metrics for ROI assessment
 
 > **value**: `string`
 
-Defined in: [services/ciaContentService.ts:31](https://github.com/Hack23/cia-compliance-manager/blob/739b2f432f580c940623f2d428467162720ae01f/src/services/ciaContentService.ts#L31)
+Defined in: [services/ciaContentService.ts:31](https://github.com/Hack23/cia-compliance-manager/blob/6d954d2566bfb96b9e9ada8fdcaca90cbf2874a9/src/services/ciaContentService.ts#L31)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [services/ciaContentService.ts:31](https://github.com/Hack23/cia-com
 
 > **percentage**: `string`
 
-Defined in: [services/ciaContentService.ts:32](https://github.com/Hack23/cia-compliance-manager/blob/739b2f432f580c940623f2d428467162720ae01f/src/services/ciaContentService.ts#L32)
+Defined in: [services/ciaContentService.ts:32](https://github.com/Hack23/cia-compliance-manager/blob/6d954d2566bfb96b9e9ada8fdcaca90cbf2874a9/src/services/ciaContentService.ts#L32)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: [services/ciaContentService.ts:32](https://github.com/Hack23/cia-com
 
 > **description**: `string`
 
-Defined in: [services/ciaContentService.ts:33](https://github.com/Hack23/cia-compliance-manager/blob/739b2f432f580c940623f2d428467162720ae01f/src/services/ciaContentService.ts#L33)
+Defined in: [services/ciaContentService.ts:33](https://github.com/Hack23/cia-compliance-manager/blob/6d954d2566bfb96b9e9ada8fdcaca90cbf2874a9/src/services/ciaContentService.ts#L33)

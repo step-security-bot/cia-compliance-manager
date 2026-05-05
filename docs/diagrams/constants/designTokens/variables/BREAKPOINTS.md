@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.62**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.63**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **BREAKPOINTS**: `object`
 
-Defined in: [constants/designTokens.ts:229](https://github.com/Hack23/cia-compliance-manager/blob/739b2f432f580c940623f2d428467162720ae01f/src/constants/designTokens.ts#L229)
+Defined in: [constants/designTokens.ts:229](https://github.com/Hack23/cia-compliance-manager/blob/6d954d2566bfb96b9e9ada8fdcaca90cbf2874a9/src/constants/designTokens.ts#L229)
 
 Responsive breakpoints (matching TailwindCSS defaults)
 

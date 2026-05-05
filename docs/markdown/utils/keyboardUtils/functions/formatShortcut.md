@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.62**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.63**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **formatShortcut**(`keys`, `platform?`): `string`
 
-Defined in: [utils/keyboardUtils.ts:291](https://github.com/Hack23/cia-compliance-manager/blob/739b2f432f580c940623f2d428467162720ae01f/src/utils/keyboardUtils.ts#L291)
+Defined in: [utils/keyboardUtils.ts:291](https://github.com/Hack23/cia-compliance-manager/blob/6d954d2566bfb96b9e9ada8fdcaca90cbf2874a9/src/utils/keyboardUtils.ts#L291)
 
 Format shortcut for display based on platform
 
