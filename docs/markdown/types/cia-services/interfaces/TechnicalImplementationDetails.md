@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.63**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.64**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: TechnicalImplementationDetails
 
-Defined in: [types/cia-services.ts:147](https://github.com/Hack23/cia-compliance-manager/blob/6d954d2566bfb96b9e9ada8fdcaca90cbf2874a9/src/types/cia-services.ts#L147)
+Defined in: [types/cia-services.ts:147](https://github.com/Hack23/cia-compliance-manager/blob/3132182b5e653fb389a929289fa4441c76c22e5e/src/types/cia-services.ts#L147)
 
 Technical implementation details
 
@@ -20,7 +20,7 @@ Technical implementation details
 
 > **description**: `string`
 
-Defined in: [types/cia-services.ts:148](https://github.com/Hack23/cia-compliance-manager/blob/6d954d2566bfb96b9e9ada8fdcaca90cbf2874a9/src/types/cia-services.ts#L148)
+Defined in: [types/cia-services.ts:148](https://github.com/Hack23/cia-compliance-manager/blob/3132182b5e653fb389a929289fa4441c76c22e5e/src/types/cia-services.ts#L148)
 
 ***
 
@@ -28,7 +28,7 @@ Defined in: [types/cia-services.ts:148](https://github.com/Hack23/cia-compliance
 
 > **implementationSteps**: `string`[]
 
-Defined in: [types/cia-services.ts:149](https://github.com/Hack23/cia-compliance-manager/blob/6d954d2566bfb96b9e9ada8fdcaca90cbf2874a9/src/types/cia-services.ts#L149)
+Defined in: [types/cia-services.ts:149](https://github.com/Hack23/cia-compliance-manager/blob/3132182b5e653fb389a929289fa4441c76c22e5e/src/types/cia-services.ts#L149)
 
 ***
 
@@ -36,7 +36,7 @@ Defined in: [types/cia-services.ts:149](https://github.com/Hack23/cia-compliance
 
 > **effort**: `object`
 
-Defined in: [types/cia-services.ts:150](https://github.com/Hack23/cia-compliance-manager/blob/6d954d2566bfb96b9e9ada8fdcaca90cbf2874a9/src/types/cia-services.ts#L150)
+Defined in: [types/cia-services.ts:150](https://github.com/Hack23/cia-compliance-manager/blob/3132182b5e653fb389a929289fa4441c76c22e5e/src/types/cia-services.ts#L150)
 
 #### development
 
@@ -56,7 +56,7 @@ Defined in: [types/cia-services.ts:150](https://github.com/Hack23/cia-compliance
 
 > `optional` **validationMethod?**: `string`
 
-Defined in: [types/cia-services.ts:156](https://github.com/Hack23/cia-compliance-manager/blob/6d954d2566bfb96b9e9ada8fdcaca90cbf2874a9/src/types/cia-services.ts#L156)
+Defined in: [types/cia-services.ts:156](https://github.com/Hack23/cia-compliance-manager/blob/3132182b5e653fb389a929289fa4441c76c22e5e/src/types/cia-services.ts#L156)
 
 ***
 
@@ -64,7 +64,7 @@ Defined in: [types/cia-services.ts:156](https://github.com/Hack23/cia-compliance
 
 > `optional` **protectionMethod?**: `string`
 
-Defined in: [types/cia-services.ts:157](https://github.com/Hack23/cia-compliance-manager/blob/6d954d2566bfb96b9e9ada8fdcaca90cbf2874a9/src/types/cia-services.ts#L157)
+Defined in: [types/cia-services.ts:157](https://github.com/Hack23/cia-compliance-manager/blob/3132182b5e653fb389a929289fa4441c76c22e5e/src/types/cia-services.ts#L157)
 
 ***
 
@@ -72,7 +72,7 @@ Defined in: [types/cia-services.ts:157](https://github.com/Hack23/cia-compliance
 
 > `optional` **recoveryMethod?**: `string`
 
-Defined in: [types/cia-services.ts:158](https://github.com/Hack23/cia-compliance-manager/blob/6d954d2566bfb96b9e9ada8fdcaca90cbf2874a9/src/types/cia-services.ts#L158)
+Defined in: [types/cia-services.ts:158](https://github.com/Hack23/cia-compliance-manager/blob/3132182b5e653fb389a929289fa4441c76c22e5e/src/types/cia-services.ts#L158)
 
 ***
 
@@ -80,7 +80,7 @@ Defined in: [types/cia-services.ts:158](https://github.com/Hack23/cia-compliance
 
 > `optional` **expertiseLevel?**: `string`
 
-Defined in: [types/cia-services.ts:160](https://github.com/Hack23/cia-compliance-manager/blob/6d954d2566bfb96b9e9ada8fdcaca90cbf2874a9/src/types/cia-services.ts#L160)
+Defined in: [types/cia-services.ts:160](https://github.com/Hack23/cia-compliance-manager/blob/3132182b5e653fb389a929289fa4441c76c22e5e/src/types/cia-services.ts#L160)
 
 ***
 
@@ -88,4 +88,4 @@ Defined in: [types/cia-services.ts:160](https://github.com/Hack23/cia-compliance
 
 > `optional` **developmentEffort?**: `string`
 
-Defined in: [types/cia-services.ts:161](https://github.com/Hack23/cia-compliance-manager/blob/6d954d2566bfb96b9e9ada8fdcaca90cbf2874a9/src/types/cia-services.ts#L161)
+Defined in: [types/cia-services.ts:161](https://github.com/Hack23/cia-compliance-manager/blob/3132182b5e653fb389a929289fa4441c76c22e5e/src/types/cia-services.ts#L161)

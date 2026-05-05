@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.63**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.64**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: CIAColors
 
-Defined in: [utils/ciaColorUtils.ts:10](https://github.com/Hack23/cia-compliance-manager/blob/6d954d2566bfb96b9e9ada8fdcaca90cbf2874a9/src/utils/ciaColorUtils.ts#L10)
+Defined in: [utils/ciaColorUtils.ts:10](https://github.com/Hack23/cia-compliance-manager/blob/3132182b5e653fb389a929289fa4441c76c22e5e/src/utils/ciaColorUtils.ts#L10)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [utils/ciaColorUtils.ts:10](https://github.com/Hack23/cia-compliance
 
 > **bg**: `string`
 
-Defined in: [utils/ciaColorUtils.ts:11](https://github.com/Hack23/cia-compliance-manager/blob/6d954d2566bfb96b9e9ada8fdcaca90cbf2874a9/src/utils/ciaColorUtils.ts#L11)
+Defined in: [utils/ciaColorUtils.ts:11](https://github.com/Hack23/cia-compliance-manager/blob/3132182b5e653fb389a929289fa4441c76c22e5e/src/utils/ciaColorUtils.ts#L11)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [utils/ciaColorUtils.ts:11](https://github.com/Hack23/cia-compliance
 
 > **text**: `string`
 
-Defined in: [utils/ciaColorUtils.ts:12](https://github.com/Hack23/cia-compliance-manager/blob/6d954d2566bfb96b9e9ada8fdcaca90cbf2874a9/src/utils/ciaColorUtils.ts#L12)
+Defined in: [utils/ciaColorUtils.ts:12](https://github.com/Hack23/cia-compliance-manager/blob/3132182b5e653fb389a929289fa4441c76c22e5e/src/utils/ciaColorUtils.ts#L12)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: [utils/ciaColorUtils.ts:12](https://github.com/Hack23/cia-compliance
 
 > **border**: `string`
 
-Defined in: [utils/ciaColorUtils.ts:13](https://github.com/Hack23/cia-compliance-manager/blob/6d954d2566bfb96b9e9ada8fdcaca90cbf2874a9/src/utils/ciaColorUtils.ts#L13)
+Defined in: [utils/ciaColorUtils.ts:13](https://github.com/Hack23/cia-compliance-manager/blob/3132182b5e653fb389a929289fa4441c76c22e5e/src/utils/ciaColorUtils.ts#L13)
 
 ***
 
@@ -38,4 +38,4 @@ Defined in: [utils/ciaColorUtils.ts:13](https://github.com/Hack23/cia-compliance
 
 > **badge**: `string`
 
-Defined in: [utils/ciaColorUtils.ts:14](https://github.com/Hack23/cia-compliance-manager/blob/6d954d2566bfb96b9e9ada8fdcaca90cbf2874a9/src/utils/ciaColorUtils.ts#L14)
+Defined in: [utils/ciaColorUtils.ts:14](https://github.com/Hack23/cia-compliance-manager/blob/3132182b5e653fb389a929289fa4441c76c22e5e/src/utils/ciaColorUtils.ts#L14)

@@ -240,7 +240,10 @@
 <a name='L175'></a><a href='#L175'>175</a>
 <a name='L176'></a><a href='#L176'>176</a>
 <a name='L177'></a><a href='#L177'>177</a>
-<a name='L178'></a><a href='#L178'>178</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -284,7 +287,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -422,7 +428,7 @@ import { SECURITY_SUMMARY_WIDGET_IDS, SECURITY_SUMMARY_TEST_IDS } from "../../..
 import { SecurityLevel } from "../../../types/cia";
 import { StatusType } from "../../../types/common/StatusTypes";
 import { getRiskLevelFromSecurityLevel } from "../../../utils/securityLevelUtils";
-import { WidgetClasses } from "../../../utils/tailwindClassHelpers";
+import { WidgetClasses, cn } from "../../../utils/tailwindClassHelpers";
 import RadarChart from "../../charts/RadarChart";
 import SecurityLevelIndicator from "../../common/SecurityLevelIndicator";
 import StatusBadge from "../../common/StatusBadge";
@@ -462,13 +468,16 @@ export const SecurityOverviewTab: React.FC&lt;SecurityOverviewTabProps&gt; = ({
   getStatusVariant,
 }) =&gt; {
   return (
-    &lt;div data-testid={testId || <span class="branch-1 cbranch-no" title="branch not covered" >SECURITY_SUMMARY_WIDGET_IDS.section('content-overview')}</span> className="space-y-sm"&gt;
+    &lt;div
+      data-testid={testId || <span class="branch-1 cbranch-no" title="branch not covered" >SECURITY_SUMMARY_WIDGET_IDS.section('content-overview')}</span>
+      className="space-y-sm security-summary-overview"
+    &gt;
       {/* Security Radar Chart */}
-      &lt;div className="rounded-lg border border-gray-100 dark:border-gray-700 p-sm bg-white dark:bg-gray-800"&gt;
+      &lt;div className="rounded-lg border border-gray-100 dark:border-gray-700 p-sm bg-white dark:bg-gray-800 security-summary-radar-shell"&gt;
         &lt;h3 className="text-body-lg font-medium mb-sm text-gray-800 dark:text-gray-100"&gt;
           Security Profile
         &lt;/h3&gt;
-        &lt;div className="h-[200px]"&gt;
+        &lt;div className="security-summary-radar-frame"&gt;
           &lt;RadarChart
             availabilityLevel={availabilityLevel}
             integrityLevel={integrityLevel}
@@ -479,15 +488,15 @@ export const SecurityOverviewTab: React.FC&lt;SecurityOverviewTabProps&gt; = ({
       &lt;/div&gt;
 &nbsp;
       {/* Security Level Summary */}
-      &lt;div className="rounded-lg border border-gray-100 dark:border-gray-700 p-sm bg-white dark:bg-gray-800"&gt;
+      &lt;div className="rounded-lg border border-gray-100 dark:border-gray-700 p-sm bg-white dark:bg-gray-800 security-summary-section"&gt;
         &lt;h3 className="text-body-lg font-medium mb-sm text-gray-800 dark:text-gray-100"&gt;
           Security Components
         &lt;/h3&gt;
 &nbsp;
-        &lt;div className={WidgetClasses.grid3Cols}&gt;
+        &lt;div className={cn(WidgetClasses.grid3Cols, "security-summary-component-grid")}&gt;
           {/* Confidentiality Card */}
           &lt;div
-            className="p-sm bg-purple-50 dark:bg-purple-900/20 rounded border border-purple-100 dark:border-purple-800"
+            className="p-sm bg-purple-50 dark:bg-purple-900/20 rounded border border-purple-100 dark:border-purple-800 security-summary-component-card"
             data-testid={SECURITY_SUMMARY_TEST_IDS.CONFIDENTIALITY_CARD}
           &gt;
             &lt;div className="flex items-center mb-sm"&gt;
@@ -513,7 +522,7 @@ export const SecurityOverviewTab: React.FC&lt;SecurityOverviewTabProps&gt; = ({
 &nbsp;
           {/* Integrity Card */}
           &lt;div
-            className="p-sm bg-green-50 dark:bg-green-900/20 rounded border border-green-100 dark:border-green-800"
+            className="p-sm bg-green-50 dark:bg-green-900/20 rounded border border-green-100 dark:border-green-800 security-summary-component-card"
             data-testid={SECURITY_SUMMARY_TEST_IDS.INTEGRITY_CARD}
           &gt;
             &lt;div className="flex items-center mb-sm"&gt;
@@ -539,7 +548,7 @@ export const SecurityOverviewTab: React.FC&lt;SecurityOverviewTabProps&gt; = ({
 &nbsp;
           {/* Availability Card */}
           &lt;div
-            className="p-sm bg-blue-50 dark:bg-blue-900/20 rounded border border-blue-100 dark:border-blue-800"
+            className="p-sm bg-blue-50 dark:bg-blue-900/20 rounded border border-blue-100 dark:border-blue-800 security-summary-component-card"
             data-testid={SECURITY_SUMMARY_TEST_IDS.AVAILABILITY_CARD}
           &gt;
             &lt;div className="flex items-center mb-sm"&gt;
@@ -566,11 +575,11 @@ export const SecurityOverviewTab: React.FC&lt;SecurityOverviewTabProps&gt; = ({
       &lt;/div&gt;
 &nbsp;
       {/* Key Metrics Dashboard */}
-      &lt;div className="rounded-lg border border-gray-100 dark:border-gray-700 p-sm bg-white dark:bg-gray-800"&gt;
+      &lt;div className="rounded-lg border border-gray-100 dark:border-gray-700 p-sm bg-white dark:bg-gray-800 security-summary-section"&gt;
         &lt;h3 className="text-body-lg font-medium mb-sm text-gray-800 dark:text-gray-100"&gt;
           Key Metrics
         &lt;/h3&gt;
-        &lt;div className="grid grid-cols-1 md:grid-cols-3 gap-sm"&gt;
+        &lt;div className="grid grid-cols-1 md:grid-cols-3 gap-sm security-summary-metric-grid"&gt;
           &lt;div className="p-sm bg-gray-50 dark:bg-gray-700 rounded"&gt;
             &lt;div className="text-xs font-medium mb-sm text-gray-700 dark:text-gray-200"&gt;
               Complexity
@@ -601,7 +610,7 @@ export const SecurityOverviewTab: React.FC&lt;SecurityOverviewTabProps&gt; = ({
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-05-05T08:09:55.916Z
+                at 2026-05-05T10:50:04.132Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.63**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.64**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > **RiskLevel** = *typeof* [`CRITICAL`](../../../constants/riskConstants/variables/RISK_LEVELS.md#critical) \| *typeof* [`HIGH`](../../../constants/riskConstants/variables/RISK_LEVELS.md#high) \| *typeof* [`MEDIUM`](../../../constants/riskConstants/variables/RISK_LEVELS.md#medium) \| *typeof* [`LOW`](../../../constants/riskConstants/variables/RISK_LEVELS.md#low) \| *typeof* [`MINIMAL`](../../../constants/riskConstants/variables/RISK_LEVELS.md#minimal) \| *typeof* [`UNKNOWN`](../../../constants/riskConstants/variables/RISK_LEVELS.md#unknown)
 
-Defined in: [types/cia.ts:43](https://github.com/Hack23/cia-compliance-manager/blob/6d954d2566bfb96b9e9ada8fdcaca90cbf2874a9/src/types/cia.ts#L43)
+Defined in: [types/cia.ts:43](https://github.com/Hack23/cia-compliance-manager/blob/3132182b5e653fb389a929289fa4441c76c22e5e/src/types/cia.ts#L43)
 
 The RISK_LEVELS constant values that can be returned by risk calculation functions

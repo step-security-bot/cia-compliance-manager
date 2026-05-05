@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.63**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.64**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: FrameworkCoverage
 
-Defined in: [services/ComplianceServiceAdapter.ts:12](https://github.com/Hack23/cia-compliance-manager/blob/6d954d2566bfb96b9e9ada8fdcaca90cbf2874a9/src/services/ComplianceServiceAdapter.ts#L12)
+Defined in: [services/ComplianceServiceAdapter.ts:12](https://github.com/Hack23/cia-compliance-manager/blob/3132182b5e653fb389a929289fa4441c76c22e5e/src/services/ComplianceServiceAdapter.ts#L12)
 
 Framework coverage information
 
@@ -16,7 +16,7 @@ Framework coverage information
 
 > **framework**: `string`
 
-Defined in: [services/ComplianceServiceAdapter.ts:13](https://github.com/Hack23/cia-compliance-manager/blob/6d954d2566bfb96b9e9ada8fdcaca90cbf2874a9/src/services/ComplianceServiceAdapter.ts#L13)
+Defined in: [services/ComplianceServiceAdapter.ts:13](https://github.com/Hack23/cia-compliance-manager/blob/3132182b5e653fb389a929289fa4441c76c22e5e/src/services/ComplianceServiceAdapter.ts#L13)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [services/ComplianceServiceAdapter.ts:13](https://github.com/Hack23/
 
 > **coverage**: `number`
 
-Defined in: [services/ComplianceServiceAdapter.ts:14](https://github.com/Hack23/cia-compliance-manager/blob/6d954d2566bfb96b9e9ada8fdcaca90cbf2874a9/src/services/ComplianceServiceAdapter.ts#L14)
+Defined in: [services/ComplianceServiceAdapter.ts:14](https://github.com/Hack23/cia-compliance-manager/blob/3132182b5e653fb389a929289fa4441c76c22e5e/src/services/ComplianceServiceAdapter.ts#L14)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [services/ComplianceServiceAdapter.ts:14](https://github.com/Hack23/
 
 > **status**: `string`
 
-Defined in: [services/ComplianceServiceAdapter.ts:15](https://github.com/Hack23/cia-compliance-manager/blob/6d954d2566bfb96b9e9ada8fdcaca90cbf2874a9/src/services/ComplianceServiceAdapter.ts#L15)
+Defined in: [services/ComplianceServiceAdapter.ts:15](https://github.com/Hack23/cia-compliance-manager/blob/3132182b5e653fb389a929289fa4441c76c22e5e/src/services/ComplianceServiceAdapter.ts#L15)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [services/ComplianceServiceAdapter.ts:15](https://github.com/Hack23/
 
 > **required**: `object`
 
-Defined in: [services/ComplianceServiceAdapter.ts:16](https://github.com/Hack23/cia-compliance-manager/blob/6d954d2566bfb96b9e9ada8fdcaca90cbf2874a9/src/services/ComplianceServiceAdapter.ts#L16)
+Defined in: [services/ComplianceServiceAdapter.ts:16](https://github.com/Hack23/cia-compliance-manager/blob/3132182b5e653fb389a929289fa4441c76c22e5e/src/services/ComplianceServiceAdapter.ts#L16)
 
 #### availability
 

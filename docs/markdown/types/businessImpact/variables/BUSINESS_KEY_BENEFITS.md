@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.63**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.64**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **BUSINESS\_KEY\_BENEFITS**: `object`
 
-Defined in: [types/businessImpact.ts:418](https://github.com/Hack23/cia-compliance-manager/blob/6d954d2566bfb96b9e9ada8fdcaca90cbf2874a9/src/types/businessImpact.ts#L418)
+Defined in: [types/businessImpact.ts:418](https://github.com/Hack23/cia-compliance-manager/blob/3132182b5e653fb389a929289fa4441c76c22e5e/src/types/businessImpact.ts#L418)
 
 ## Type Declaration
 
