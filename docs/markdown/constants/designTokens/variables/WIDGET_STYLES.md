@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.65**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.66**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **WIDGET\_STYLES**: `object`
 
-Defined in: [constants/designTokens.ts:295](https://github.com/Hack23/cia-compliance-manager/blob/77dc8b893bfd5ae3bdbf0f6fc651128f655bd7a7/src/constants/designTokens.ts#L295)
+Defined in: [constants/designTokens.ts:295](https://github.com/Hack23/cia-compliance-manager/blob/97cb56d15411f9f3fd82222df7eda6b2d578a697/src/constants/designTokens.ts#L295)
 
 Widget-specific styling utilities
 These helpers generate consistent className strings for common widget patterns

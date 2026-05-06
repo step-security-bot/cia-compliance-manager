@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.65**](../../../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.66**](../../../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **SecurityOverviewTab**: `React.FC`\<[`SecurityOverviewTabProps`](../interfaces/SecurityOverviewTabProps.md)\>
 
-Defined in: [components/widgets/assessmentcenter/SecurityOverviewTab.tsx:32](https://github.com/Hack23/cia-compliance-manager/blob/77dc8b893bfd5ae3bdbf0f6fc651128f655bd7a7/src/components/widgets/assessmentcenter/SecurityOverviewTab.tsx#L32)
+Defined in: [components/widgets/assessmentcenter/SecurityOverviewTab.tsx:32](https://github.com/Hack23/cia-compliance-manager/blob/97cb56d15411f9f3fd82222df7eda6b2d578a697/src/components/widgets/assessmentcenter/SecurityOverviewTab.tsx#L32)
 
 Overview tab component for SecuritySummaryWidget
 Displays security profile radar chart and key metrics
