@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.66**](../../../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.67**](../../../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **SecurityImplementationTab**: `React.FC`\<[`SecurityImplementationTabProps`](../interfaces/SecurityImplementationTabProps.md)\>
 
-Defined in: [components/widgets/assessmentcenter/SecurityImplementationTab.tsx:24](https://github.com/Hack23/cia-compliance-manager/blob/97cb56d15411f9f3fd82222df7eda6b2d578a697/src/components/widgets/assessmentcenter/SecurityImplementationTab.tsx#L24)
+Defined in: [components/widgets/assessmentcenter/SecurityImplementationTab.tsx:24](https://github.com/Hack23/cia-compliance-manager/blob/ecf5f1e7d4d1c31b8c0dc2e884639fdfcbce5261/src/components/widgets/assessmentcenter/SecurityImplementationTab.tsx#L24)
 
 Implementation tab component for SecuritySummaryWidget
 Displays implementation requirements, timeline, resources, and considerations

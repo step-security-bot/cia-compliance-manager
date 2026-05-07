@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.66**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.67**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **formatCurrency**(`amount`, `currency?`): `string`
 
-Defined in: [constants/costConstants.ts:243](https://github.com/Hack23/cia-compliance-manager/blob/97cb56d15411f9f3fd82222df7eda6b2d578a697/src/constants/costConstants.ts#L243)
+Defined in: [constants/costConstants.ts:243](https://github.com/Hack23/cia-compliance-manager/blob/ecf5f1e7d4d1c31b8c0dc2e884639fdfcbce5261/src/constants/costConstants.ts#L243)
 
 Format currency for display
 
