@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.67**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.68**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: ShortcutBadgeProps
 
-Defined in: [types/keyboard.ts:121](https://github.com/Hack23/cia-compliance-manager/blob/ecf5f1e7d4d1c31b8c0dc2e884639fdfcbce5261/src/types/keyboard.ts#L121)
+Defined in: [types/keyboard.ts:121](https://github.com/Hack23/cia-compliance-manager/blob/b2cfb8ae239614a440c2cc33a32530c7444c75a4/src/types/keyboard.ts#L121)
 
 Props for shortcut badge component
 
@@ -16,7 +16,7 @@ Props for shortcut badge component
 
 > **shortcut**: `string`
 
-Defined in: [types/keyboard.ts:123](https://github.com/Hack23/cia-compliance-manager/blob/ecf5f1e7d4d1c31b8c0dc2e884639fdfcbce5261/src/types/keyboard.ts#L123)
+Defined in: [types/keyboard.ts:123](https://github.com/Hack23/cia-compliance-manager/blob/b2cfb8ae239614a440c2cc33a32530c7444c75a4/src/types/keyboard.ts#L123)
 
 Key combination to display
 
@@ -26,7 +26,7 @@ Key combination to display
 
 > `optional` **size?**: `"sm"` \| `"md"` \| `"lg"`
 
-Defined in: [types/keyboard.ts:126](https://github.com/Hack23/cia-compliance-manager/blob/ecf5f1e7d4d1c31b8c0dc2e884639fdfcbce5261/src/types/keyboard.ts#L126)
+Defined in: [types/keyboard.ts:126](https://github.com/Hack23/cia-compliance-manager/blob/b2cfb8ae239614a440c2cc33a32530c7444c75a4/src/types/keyboard.ts#L126)
 
 Size variant
 
@@ -36,7 +36,7 @@ Size variant
 
 > `optional` **className?**: `string`
 
-Defined in: [types/keyboard.ts:129](https://github.com/Hack23/cia-compliance-manager/blob/ecf5f1e7d4d1c31b8c0dc2e884639fdfcbce5261/src/types/keyboard.ts#L129)
+Defined in: [types/keyboard.ts:129](https://github.com/Hack23/cia-compliance-manager/blob/b2cfb8ae239614a440c2cc33a32530c7444c75a4/src/types/keyboard.ts#L129)
 
 Additional CSS classes
 
@@ -46,6 +46,6 @@ Additional CSS classes
 
 > `optional` **platformSpecific?**: `boolean`
 
-Defined in: [types/keyboard.ts:132](https://github.com/Hack23/cia-compliance-manager/blob/ecf5f1e7d4d1c31b8c0dc2e884639fdfcbce5261/src/types/keyboard.ts#L132)
+Defined in: [types/keyboard.ts:132](https://github.com/Hack23/cia-compliance-manager/blob/b2cfb8ae239614a440c2cc33a32530c7444c75a4/src/types/keyboard.ts#L132)
 
 Whether to show platform-specific keys

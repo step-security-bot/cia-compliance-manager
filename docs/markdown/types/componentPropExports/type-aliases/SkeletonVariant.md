@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.67**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.68**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > **SkeletonVariant** = `"summary"` \| `"chart"` \| `"list"` \| `"metrics"` \| `"tabs"` \| `"default"`
 
-Defined in: [types/componentPropExports.ts:530](https://github.com/Hack23/cia-compliance-manager/blob/ecf5f1e7d4d1c31b8c0dc2e884639fdfcbce5261/src/types/componentPropExports.ts#L530)
+Defined in: [types/componentPropExports.ts:530](https://github.com/Hack23/cia-compliance-manager/blob/b2cfb8ae239614a440c2cc33a32530c7444c75a4/src/types/componentPropExports.ts#L530)
 
 Skeleton variant types for different widget layouts

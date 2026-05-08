@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.67**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.68**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **safeAccess**\<`T`\>(`obj`, `path`, `defaultValue?`): `T`
 
-Defined in: [utils/typeGuards.ts:163](https://github.com/Hack23/cia-compliance-manager/blob/ecf5f1e7d4d1c31b8c0dc2e884639fdfcbce5261/src/utils/typeGuards.ts#L163)
+Defined in: [utils/typeGuards.ts:163](https://github.com/Hack23/cia-compliance-manager/blob/b2cfb8ae239614a440c2cc33a32530c7444c75a4/src/utils/typeGuards.ts#L163)
 
 Safely access a nested property in an object using a dot notation path
 
