@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.68**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.69**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: ServiceConfig
 
-Defined in: [types/services.ts:69](https://github.com/Hack23/cia-compliance-manager/blob/b2cfb8ae239614a440c2cc33a32530c7444c75a4/src/types/services.ts#L69)
+Defined in: [types/services.ts:69](https://github.com/Hack23/cia-compliance-manager/blob/b616fbaa2bb30d924b7315cd583f8328bb70f347/src/types/services.ts#L69)
 
 Configuration options for service factory
 

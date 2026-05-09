@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.68**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.69**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **isRiskImpact**(`value`): `value is RiskImpact`
 
-Defined in: [data/riskImpactData.ts:64](https://github.com/Hack23/cia-compliance-manager/blob/b2cfb8ae239614a440c2cc33a32530c7444c75a4/src/data/riskImpactData.ts#L64)
+Defined in: [data/riskImpactData.ts:64](https://github.com/Hack23/cia-compliance-manager/blob/b616fbaa2bb30d924b7315cd583f8328bb70f347/src/data/riskImpactData.ts#L64)
 
 Type guard to check if a value is a valid RiskImpact object
 

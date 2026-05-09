@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.68**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.69**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > `const` **DEFAULT\_TRANSITION\_DURATION**: `300` = `300`
 
-Defined in: [constants/appConstants.ts:459](https://github.com/Hack23/cia-compliance-manager/blob/b2cfb8ae239614a440c2cc33a32530c7444c75a4/src/constants/appConstants.ts#L459)
+Defined in: [constants/appConstants.ts:459](https://github.com/Hack23/cia-compliance-manager/blob/b616fbaa2bb30d924b7315cd583f8328bb70f347/src/constants/appConstants.ts#L459)
 
 Default transition duration in milliseconds

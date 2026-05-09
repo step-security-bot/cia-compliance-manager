@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.68**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.69**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **isDate**(`value`): `value is Date`
 
-Defined in: [utils/typeGuards.ts:894](https://github.com/Hack23/cia-compliance-manager/blob/b2cfb8ae239614a440c2cc33a32530c7444c75a4/src/utils/typeGuards.ts#L894)
+Defined in: [utils/typeGuards.ts:894](https://github.com/Hack23/cia-compliance-manager/blob/b616fbaa2bb30d924b7315cd583f8328bb70f347/src/utils/typeGuards.ts#L894)
 
 Type guard to check if a value is a Date object
 
