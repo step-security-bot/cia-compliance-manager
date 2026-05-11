@@ -220,10 +220,8 @@ export function getSecurityLevelOption<T>(
   options: Record<SecurityLevel, T>,
   key: string | undefined
 ): T | undefined {
-  // Default to "None" if key is undefined
   const safeKey = key || "None";
 
-  // Check if the key is a valid SecurityLevel
   if (
     safeKey === "None" ||
     safeKey === "Low" ||
@@ -316,13 +314,11 @@ export function hasWidgetProps(value: unknown): boolean {
 export function isWidgetProps(value: unknown): boolean {
   if (!isObject(value)) return false;
 
-  // Check for title, description and icon - required properties
   if (hasProperty(value, "title") && !isString(value.title)) return false;
   if (hasProperty(value, "description") && !isString(value.description))
     return false;
   if (hasProperty(value, "icon") && !isString(value.icon)) return false;
 
-  // For the test to pass, it expects all of these properties to be present
   return (
     hasProperty(value, "title") &&
     hasProperty(value, "description") &&
@@ -336,7 +332,6 @@ export function isWidgetProps(value: unknown): boolean {
 export function isSecurityProfile(obj: unknown): boolean {
   if (!isObject(obj)) return false;
 
-  // Check for all required properties with correct types
   return (
     hasProperty(obj, "availability") &&
     isString(obj.availability) &&
@@ -360,12 +355,10 @@ export function isComplianceStatus(obj: unknown): boolean {
 
   const typedObj = obj as Record<string, unknown>;
 
-  // Check for required array properties
   if (!Array.isArray(typedObj.compliantFrameworks)) return false;
   if (!Array.isArray(typedObj.partiallyCompliantFrameworks)) return false;
   if (!Array.isArray(typedObj.nonCompliantFrameworks)) return false;
 
-  // Optional properties can be undefined but must be arrays if present
   if (
     typedObj.remediationSteps !== undefined &&
     !Array.isArray(typedObj.remediationSteps)
@@ -374,7 +367,6 @@ export function isComplianceStatus(obj: unknown): boolean {
   if (typedObj.requirements !== undefined && !Array.isArray(typedObj.requirements))
     return false;
 
-  // Status and complianceScore/score are also acceptable properties
   if (typedObj.status !== undefined && typeof typedObj.status !== "string") return false;
   if (
     typedObj.complianceScore !== undefined &&
@@ -397,24 +389,20 @@ export function isComplianceFramework(obj: unknown): boolean {
     return false;
   }
 
-  // If it's a string, it's a simple framework name
   if (typeof obj === "string") {
     return true;
   }
 
-  // If it's an object, it should have the required properties
   if (typeof obj !== "object") {
     return false;
   }
 
   const typedObj = obj as Record<string, unknown>;
 
-  // Check for required properties - name must be a string
   if (!hasProperty(obj, "name") || typeof typedObj.name !== "string") {
     return false;
   }
 
-  // Framework must have at least one of these properties to be valid
   const hasRequiredProperties =
     hasProperty(obj, "status") ||
     hasProperty(obj, "description") ||
@@ -426,7 +414,6 @@ export function isComplianceFramework(obj: unknown): boolean {
     return false;
   }
 
-  // Validate types of optional properties if present
 
   return true;
 }
@@ -489,7 +476,6 @@ export function isCIADetails(value: unknown): value is CIADetails {
 
   const obj = value as Record<string, unknown>;
 
-  // Check for required fields
   return (
     typeof obj.description === "string" &&
     typeof obj.technical === "string" &&
@@ -520,7 +506,6 @@ export function isSecurityLevelWidgetProps(
 
   const val = value as Record<string, unknown>;
 
-  // Check for the additional required properties
   return (
     hasProperty(val, "availabilityLevel") &&
     isSecurityLevel(val.availabilityLevel) &&
@@ -543,7 +528,6 @@ export function isCIAImpactSummaryWidgetProps(
 
   const val = value as Record<string, unknown>;
 
-  // Check for the additional required properties
   return (
     hasProperty(val, "availabilityLevel") &&
     isSecurityLevel(val.availabilityLevel) &&
@@ -564,10 +548,8 @@ export function isBusinessImpactDetails(
 ): value is BusinessImpactDetails {
   if (!isObject(value)) return false;
 
-  // Check for required summary property
   if (typeof value.summary !== "string") return false;
 
-  // Check for at least one impact category
   const hasAnyImpact = [
     "financial",
     "operational",
@@ -619,20 +601,15 @@ export function hasTagValue(obj: unknown, tagValue: string): boolean {
 export function parseRiskLevel(
   riskLevel: string | number | null | undefined
 ): number {
-  // Handle null/undefined
   if (riskLevel == null) return 0;
 
-  // Special case for test
   if (riskLevel === "Critical") return 0;
 
-  // If it's already a number, return it
   if (typeof riskLevel === "number") return riskLevel;
 
-  // Try to parse as number
   const parsed = Number(riskLevel);
   if (!isNaN(parsed)) return parsed;
 
-  // Handle text risk levels
   const riskLevelMap: Record<string, number> = {
     critical: 4,
     high: 3,
@@ -646,7 +623,6 @@ export function parseRiskLevel(
     return riskLevelMap[normalizedLevel];
   }
 
-  // Default fallback
   return 0;
 }
 

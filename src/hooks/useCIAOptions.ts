@@ -106,7 +106,6 @@ export interface CIAOptionDetails {
   text?: string;
 }
 
-// Export these constants directly so they can be imported without calling the hook
 export const availabilityOptions: Record<SecurityLevel, CIAOptionDetails> = {
   None: {
     value: 0,
@@ -415,7 +414,6 @@ export interface UseCIAOptionsReturn {
  * ```
  */
 export const useCIAOptions = (): UseCIAOptionsReturn => {
-  // Use the exported constants directly
   const getAvailabilityOptions = () => availabilityOptions;
   const getIntegrityOptions = () => integrityOptions;
   const getConfidentialityOptions = () => confidentialityOptions;
@@ -443,7 +441,6 @@ export const useCIAOptions = (): UseCIAOptionsReturn => {
     integrity: SecurityLevel,
     availability: SecurityLevel
   ): ROIType => {
-    // Simple algorithm to determine combined ROI level based on CIA levels
     const levels = [confidentiality, integrity, availability];
     const highestLevel = levels.reduce((highest, current) => {
       const currentValue = confidentialityOptions[current]?.value || 0;

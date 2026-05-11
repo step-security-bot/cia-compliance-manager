@@ -15,7 +15,6 @@ const getBackgroundColorClasses = (color: CIAComponentColor): string => {
     case "orange":
       return "bg-orange-100 dark:bg-orange-900 border-orange-200 dark:border-orange-800";
     default: {
-      // Exhaustive check - TypeScript will error if new colors are added
       const exhaustiveCheck: never = color;
       throw new Error(`Unsupported color: ${String(exhaustiveCheck)}`);
     }
@@ -36,7 +35,6 @@ const getTextColorClasses = (color: CIAComponentColor): string => {
     case "orange":
       return "text-orange-700 dark:text-orange-300";
     default: {
-      // Exhaustive check - TypeScript will error if new colors are added
       const exhaustiveCheck: never = color;
       throw new Error(`Unsupported color: ${String(exhaustiveCheck)}`);
     }
@@ -58,7 +56,6 @@ const getBadgeColorClasses = (color: CIAComponentColor): string => {
     case "orange":
       return "bg-orange-50 text-orange-700 dark:bg-orange-900/50 dark:text-orange-300";
     default: {
-      // Exhaustive check - TypeScript will error if new colors are added
       const exhaustiveCheck: never = color;
       throw new Error(`Unsupported color: ${String(exhaustiveCheck)}`);
     }
@@ -74,12 +71,9 @@ const BusinessImpactSection: React.FC<BusinessImpactSectionProps> = ({
   color,
   testId = "business-impact-section",
 }) => {
-  // Extract risk level from the impact financial or operational data
-  // Using the risk level in the UI
   const riskLevelForDisplay =
     impact.financial?.riskLevel || impact.operational?.riskLevel || "Unknown";
 
-  // Get explicit color classes for this color scheme
   const bgClasses = getBackgroundColorClasses(color);
   const textClasses = getTextColorClasses(color);
   const badgeClasses = getBadgeColorClasses(color);

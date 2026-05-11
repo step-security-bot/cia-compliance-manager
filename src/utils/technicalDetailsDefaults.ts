@@ -67,7 +67,6 @@ export function getDefaultDescription(
     }
   }
 
-  // Default to availability
   switch (level) {
     case "None":
       return "No availability controls implemented, no guarantees for system uptime.";
@@ -129,7 +128,6 @@ export function getDefaultTechDescription(
     }
   }
 
-  // Default to availability
   switch (level) {
     case "None":
       return "No specific technical controls for ensuring system availability.";
@@ -236,7 +234,6 @@ export function getDefaultRequirements(
     }
   }
 
-  // Default to availability
   switch (level) {
     case "None":
       return ["No specific requirements."];
@@ -320,7 +317,6 @@ export function getDefaultTechnologies(
     }
   }
 
-  // Default to availability
   switch (level) {
     case "None":
       return "No specific technologies";
@@ -382,7 +378,6 @@ export function getDefaultConfigurations(
     }
   }
 
-  // Default to availability
   switch (level) {
     case "None":
       return "No specific configurations";
@@ -473,7 +468,6 @@ export function getDefaultExpertise(
     }
   }
 
-  // Default to availability expertise
   switch (level) {
     case "None":
       return ["No specific expertise required"];

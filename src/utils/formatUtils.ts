@@ -63,10 +63,8 @@ export function toTitleCase(str: string): string {
  * ```
  */
 export function formatPercentage(value: number, decimalPlaces: number = 0): string {
-  // Multiply by 100 to convert decimal to percentage
   const percentage = value * 100;
 
-  // Format with specified decimal places
   return `${percentage.toFixed(decimalPlaces)}%`;
 }
 
@@ -112,20 +110,17 @@ export function formatCurrency(
   } | string,
   locale?: string
 ): string {
-  // Default values
   let currencyCode = 'USD';
   let localeValue = 'en-US';
   let minFractionDigits = 0;
   let maxFractionDigits = 0;
 
-  // Handle positional string form: formatCurrency(value, 'USD', 'en-US')
   if (typeof options === 'string') {
     currencyCode = options;
     if (locale) {
       localeValue = locale;
     }
   }
-  // Handle object options
   else if (options && typeof options === 'object') {
     if (options.currency) currencyCode = options.currency;
     if (options.locale) localeValue = options.locale;
@@ -133,7 +128,6 @@ export function formatCurrency(
     if (options.maximumFractionDigits !== undefined) maxFractionDigits = options.maximumFractionDigits;
   }
 
-  // Use Intl.NumberFormat for consistent currency formatting
   return new Intl.NumberFormat(localeValue, {
     style: 'currency',
     currency: currencyCode,
@@ -200,10 +194,8 @@ const RISK_LEVEL_ICONS: Record<string, string> = {
  * ```
  */
 export function formatRiskLevel(riskLevel: string): string {
-  // Handle case insensitivity by checking against lowercase values
   let icon = "❓"; // Default icon for unknown risk levels
 
-  // Look up the icon based on the risk level
   const riskLowerCase = riskLevel.toLowerCase();
   Object.entries(RISK_LEVEL_ICONS).forEach(([level, levelIcon]) => {
     if (level.toLowerCase() === riskLowerCase) {
@@ -211,7 +203,6 @@ export function formatRiskLevel(riskLevel: string): string {
     }
   });
 
-  // Return risk level with the icon
   return `${icon} ${riskLevel}`;
 }
 
@@ -312,18 +303,15 @@ export function formatBudgetPercentage(value: number, isCapex: boolean): string 
  * ```
  */
 export function formatUptime(uptime: string): string {
-  // If uptime is already formatted, return as is
   if (uptime.includes('%')) {
     return uptime;
   }
 
-  // Try to convert to a percentage if it's a number
   const uptimeValue = parseFloat(uptime);
   if (!isNaN(uptimeValue)) {
     return formatPercentage(uptimeValue);
   }
 
-  // If not a percentage, return as is
   return uptime;
 }
 

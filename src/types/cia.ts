@@ -106,7 +106,6 @@ export function getSecurityLevelValue(level: SecurityLevel | string): number {
     "Very High": 4,
   };
 
-  // Standardize the level format
   const formattedLevel =
     typeof level === "string" ? formatSecurityLevel(level) : "None";
 
@@ -183,14 +182,12 @@ export function calculateRiskLevel(
   integrityLevel: SecurityLevel,
   confidentialityLevel: SecurityLevel
 ): RiskLevel {
-  // Calculate overall security level
   const overallLevel = calculateOverallSecurityLevel(
     availabilityLevel,
     integrityLevel,
     confidentialityLevel
   );
 
-  // Map security levels to risk levels
   switch (overallLevel) {
     case "None":
       return RISK_LEVELS.CRITICAL;
@@ -207,8 +204,6 @@ export function calculateRiskLevel(
   }
 }
 
-// No need to re-export ROIEstimate, it's already exported from cia-services.ts
-// The conflicting export has been removed
 
 /**
  * CIA triad components representing different security aspects

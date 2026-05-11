@@ -40,15 +40,11 @@ const ValueCreationWidget: React.FC<ValueCreationWidgetProps> = ({
   className = "",
   testId = VALUE_CREATION_WIDGET_IDS.root,
 }) => {
-  // Get CIA content service for value creation data
   const { ciaContentService, error, isLoading } = useCIAContentService();
 
-  // State for collapsible sections - start with "summary" expanded to show metrics immediately
   const [expandedSection, setExpandedSection] = React.useState<string | null>("summary");
 
-  // Calculate overall security level
   const securityScore = useMemo(() => {
-    // Use riskUtils instead of local calculation
     return calculateBusinessImpactLevel(
       availabilityLevel,
       integrityLevel,
@@ -56,9 +52,7 @@ const ValueCreationWidget: React.FC<ValueCreationWidgetProps> = ({
     );
   }, [availabilityLevel, integrityLevel, confidentialityLevel]);
 
-  // Convert security score to SecurityLevel for component compatibility
   const securityScoreAsLevel = useMemo((): SecurityLevel => {
-    // Convert the string returned by calculateBusinessImpactLevel to SecurityLevel type
     switch (securityScore) {
       case "Minimal":
         return "None";
@@ -75,7 +69,6 @@ const ValueCreationWidget: React.FC<ValueCreationWidgetProps> = ({
     }
   }, [securityScore]);
 
-  // Create a numeric impact level for percentage calculations
   const impactLevelNumeric = useMemo((): number => {
     switch (securityScore) {
       case "Minimal":
@@ -93,11 +86,9 @@ const ValueCreationWidget: React.FC<ValueCreationWidgetProps> = ({
     }
   }, [securityScore]);
 
-  // Get business value metrics with fallback implementation
   const valueMetrics = useMemo((): BusinessValueMetric[] => {
     try {
       if (!isNullish(ciaContentService)) {
-        // Check if the service has getBusinessValueMetrics method
         if (hasMethod(ciaContentService, "getBusinessValueMetrics")) {
           const metrics = ciaContentService.getBusinessValueMetrics(
             availabilityLevel,
@@ -111,7 +102,6 @@ const ValueCreationWidget: React.FC<ValueCreationWidgetProps> = ({
         }
       }
 
-      // Fallback metrics if service doesn't provide them
       return generateFallbackValueMetrics(
         availabilityLevel,
         integrityLevel,
@@ -135,14 +125,12 @@ const ValueCreationWidget: React.FC<ValueCreationWidgetProps> = ({
     impactLevelNumeric,
   ]);
 
-  // Get component-specific value statements
   const getComponentValueStatements = (
     component: "availability" | "integrity" | "confidentiality",
     level: SecurityLevel
   ): string[] => {
     try {
       if (!isNullish(ciaContentService)) {
-        // Check if the service has getComponentValueStatements method
         if (hasMethod(ciaContentService, "getComponentValueStatements")) {
           const statements =
             ciaContentService.getComponentValueStatements(component, level);
@@ -153,7 +141,6 @@ const ValueCreationWidget: React.FC<ValueCreationWidgetProps> = ({
         }
       }
 
-      // Fallback value statements
       switch (component) {
         case "availability":
           if (level === "None" || level === "Low") {
@@ -227,10 +214,8 @@ const ValueCreationWidget: React.FC<ValueCreationWidgetProps> = ({
     }
   };
 
-  // Get ROI estimates based on security levels
   const getROIEstimate = (): { value: string; description: string } => {
     try {
-      // Use the centralized utility function for consistent ROI calculation
       const roiEstimate = calculateROIEstimate(
         availabilityLevel,
         integrityLevel,
@@ -250,11 +235,9 @@ const ValueCreationWidget: React.FC<ValueCreationWidgetProps> = ({
     }
   };
 
-  // Get the business value summary text
   const getBusinessValueSummary = (): string => {
     try {
       if (!isNullish(ciaContentService)) {
-        // Check if the service has getBusinessValueSummary method
         if (hasMethod(ciaContentService, "getBusinessValueSummary")) {
           const summary = ciaContentService.getBusinessValueSummary(
             availabilityLevel,
@@ -268,7 +251,6 @@ const ValueCreationWidget: React.FC<ValueCreationWidgetProps> = ({
         }
       }
 
-      // Fallback summary based on security score
       switch (securityScore) {
         case "None":
           return "Minimal security investments provide basic operational capabilities but limited business value.";
@@ -289,7 +271,6 @@ const ValueCreationWidget: React.FC<ValueCreationWidgetProps> = ({
     }
   };
 
-  // Get the ROI estimate
   const roiEstimate = useMemo(
     () => getROIEstimate(),
     [
@@ -301,7 +282,6 @@ const ValueCreationWidget: React.FC<ValueCreationWidgetProps> = ({
     ]
   );
 
-  // Toggle section expansion
   const toggleSection = (section: string): void => {
     setExpandedSection(expandedSection === section ? null : section);
   };
@@ -521,21 +501,18 @@ const ValueCreationWidget: React.FC<ValueCreationWidgetProps> = ({
   );
 };
 
-// Helper function to generate fallback value metrics - refactored to use riskUtils
 function generateFallbackValueMetrics(
   availabilityLevel: SecurityLevel,
   integrityLevel: SecurityLevel,
   confidentialityLevel: SecurityLevel,
   overallLevel: number
 ): BusinessValueMetric[] {
-  // Import calculateBusinessImpactLevel from riskUtils instead of recalculating here
   const impactLevel = calculateBusinessImpactLevel(
     availabilityLevel,
     integrityLevel,
     confidentialityLevel
   );
 
-  // Use the impact level to generate appropriate metrics
   return [
     {
       category: "Trust Enhancement",
@@ -576,7 +553,6 @@ function generateFallbackValueMetrics(
   ];
 }
 
-// Helper to generate a reasonable percentage based on security score
 function getPercentageValue(score: number, baseValue: number): string {
   const percentage = Math.min(
     95,

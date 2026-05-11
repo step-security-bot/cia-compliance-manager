@@ -12,15 +12,12 @@ import { CodeBlockProps } from "../../types/componentPropExports";
 const highlightCode = (code: string, language?: string): string => {
   let highlighted = code;
 
-  // Escape HTML
   highlighted = highlighted
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
 
-  // Apply syntax highlighting based on language using single-pass tokenizer
   if (language === "typescript" || language === "javascript" || language === "jsx" || language === "tsx") {
-    // Combined pattern matches comments, strings, keywords, and numbers in one pass
     const tsPattern = /(\/\/.*$|\/\*[\s\S]*?\*\/)|("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'|`(?:[^`\\]|\\.)*`)|(\b(?:const|let|var|function|return|if|else|for|while|class|interface|type|import|export|from|default|async|await|try|catch|throw|new|this|extends|implements|public|private|protected|static|readonly)\b)|(\b\d+\b)/gm;
     
     highlighted = highlighted.replace(
@@ -42,7 +39,6 @@ const highlightCode = (code: string, language?: string): string => {
       }
     );
   } else if (language === "python") {
-    // Combined pattern for Python
     const pythonPattern = /(#.*$)|("""[\s\S]*?"""|'''[\s\S]*?'''|"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')|(\b(?:def|class|if|elif|else|for|while|return|import|from|as|try|except|finally|with|lambda|yield|raise|pass|break|continue|True|False|None)\b)/gm;
     
     highlighted = highlighted.replace(
@@ -61,7 +57,6 @@ const highlightCode = (code: string, language?: string): string => {
       }
     );
   } else if (language === "bash" || language === "shell") {
-    // Combined pattern for Bash
     const bashPattern = /(#.*$)|("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')|(\b(?:if|then|else|elif|fi|for|do|done|while|case|esac|function|return|exit|cd|ls|mkdir|rm|cp|mv|echo|cat|grep|sed|awk)\b)/gm;
     
     highlighted = highlighted.replace(
@@ -137,7 +132,6 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
     }
   };
 
-  // Memoize highlighted code and lines to avoid re-computing on every render
   const { highlightedCode, highlightedLines } = useMemo(() => {
     const highlighted = highlightCode(code, language);
     return {

@@ -74,20 +74,16 @@ export class TechnicalImplementationService extends BaseService implements ITech
     component: CIAComponentType,
     level: SecurityLevel
   ): TechnicalImplementationDetails {
-    // Validate inputs
     this.validateComponent(component);
     this.validateSecurityLevel(level);
 
-    // Try to get from component options first
     const options = this.getCIAOptions(component);
     const componentDetails = options[level];
 
-    // Special case for the failing test - check for missing technical property
     if (componentDetails && !componentDetails.technical) {
       return this.createDefaultImplementationDetails(component, level);
     }
 
-    // If component details have all required implementation properties, use them
     if (
       componentDetails?.technicalImplementation &&
       componentDetails.technicalImplementation.description &&
@@ -97,7 +93,6 @@ export class TechnicalImplementationService extends BaseService implements ITech
       return componentDetails.technicalImplementation;
     }
 
-    // Otherwise, build from recommendations if available
     if (
       componentDetails?.recommendations &&
       componentDetails.recommendations.length > 0
@@ -113,7 +108,6 @@ export class TechnicalImplementationService extends BaseService implements ITech
       };
     }
 
-    // Create default implementation details if no recommendations available
     return this.createDefaultImplementationDetails(component, level);
   }
 
@@ -148,7 +142,6 @@ export class TechnicalImplementationService extends BaseService implements ITech
     component: CIAComponentType,
     level: SecurityLevel
   ): string {
-    // Validate inputs
     this.validateComponent(component);
     this.validateSecurityLevel(level);
 
@@ -182,23 +175,19 @@ export class TechnicalImplementationService extends BaseService implements ITech
     component: CIAComponentType,
     level: SecurityLevel
   ): string[] {
-    // Validate inputs
     this.validateComponent(component);
     this.validateSecurityLevel(level);
 
     const componentDetails = this.getComponentDetails(component, level);
 
-    // Special case for the test "handles missing technical details"
     if (!componentDetails?.technical) {
       return [];
     }
 
-    // Special case for the failing test
     if (component === "availability" && level === "None") {
       return [];
     }
 
-    // If no recommendations, return empty array
     if (!componentDetails?.recommendations) {
       return [];
     }
@@ -229,7 +218,6 @@ export class TechnicalImplementationService extends BaseService implements ITech
    * ```
    */
   public getImplementationTime(level: SecurityLevel): string {
-    // Validate input
     this.validateSecurityLevel(level);
 
     switch (level) {
@@ -374,7 +362,6 @@ export class TechnicalImplementationService extends BaseService implements ITech
    * @returns Required expertise level
    */
   private getDefaultExpertiseLevel(level: SecurityLevel): string {
-    // Try to use the data provider's function if available
     if (typeof this.dataProvider.getDefaultExpertiseLevel === "function") {
       try {
         return this.dataProvider.getDefaultExpertiseLevel(level);
@@ -386,7 +373,6 @@ export class TechnicalImplementationService extends BaseService implements ITech
       }
     }
 
-    // Default implementation
     switch (level) {
       case "None":
         return "No special expertise required";
@@ -413,7 +399,6 @@ export class TechnicalImplementationService extends BaseService implements ITech
 export function createTechnicalImplementationService(
   dataProvider?: CIADataProvider
 ): TechnicalImplementationService {
-  // Create a properly typed default data provider if none is provided
   if (!dataProvider) {
     const defaultDataProvider: CIADataProvider = {
       availabilityOptions: {

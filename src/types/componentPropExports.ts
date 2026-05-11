@@ -11,7 +11,6 @@
  * @packageDocumentation
  */
 
-// Import common component prop interfaces
 import type { ReactNode } from "react";
 import { CIAComponent, SecurityLevel } from "./cia";
 import { BusinessImpactDetails } from "./cia-services";
@@ -233,7 +232,6 @@ export interface WidgetHeaderProps {
   testId?: string;
 }
 
-// Chart component props
 export interface RadarChartProps {
   availabilityLevel: SecurityLevel;
   integrityLevel: SecurityLevel;
@@ -242,7 +240,6 @@ export interface RadarChartProps {
   testId?: string;
 }
 
-// Security level component props
 export interface SecurityLevelSelectorProps {
   component: "availability" | "integrity" | "confidentiality";
   selectedLevel: SecurityLevel;
@@ -263,14 +260,12 @@ export interface SelectionProps {
   testId?: string;
 }
 
-// Performance component props
 export interface SecurityLevelChangeTrackerProps {
   showPerformance?: boolean;
   children: React.ReactNode;
   testId?: string;
 }
 
-// Context props
 export interface SecurityLevelContextType {
   availabilityLevel: SecurityLevel;
   integrityLevel: SecurityLevel;
@@ -287,7 +282,6 @@ export interface SecurityLevelProviderProps {
   initialConfidentiality?: SecurityLevel;
 }
 
-// Hook options
 export interface UseSecurityLevelStateOptions {
   availabilityLevel?: SecurityLevel;
   integrityLevel?: SecurityLevel;
@@ -297,14 +291,12 @@ export interface UseSecurityLevelStateOptions {
   onConfidentialityChange?: (level: SecurityLevel) => void;
 }
 
-// Export WidgetContainerProps which was missing
 export interface WidgetContainerProps {
   children: ReactNode;
   className?: string;
   testId?: string;
 }
 
-// Error handling component props
 export interface ErrorMessageProps {
   /**
    * Error title
@@ -485,40 +477,30 @@ export interface MetricCardProps {
   ariaLabel?: string;
 }
 
-// ============================================================================
-// STANDARDIZED WIDGET PROP INTERFACES
-// ============================================================================
 
-// Export all standardized widget prop interfaces from widget-props
 export type {
-  // Base interfaces
   BaseWidgetProps,
   CIAComponentWidgetProps,
   SecurityLevelChangeWidgetProps,
   AllCIAComponentsProps,
   
-  // Utility types
   CIALevelsOnly,
   PartialCIALevels,
   WidgetPropsWithLoading,
   
-  // Assessment Center widgets
   SecurityLevelWidgetProps,
   SecuritySummaryWidgetProps,
   BusinessImpactAnalysisWidgetProps,
   
-  // Business Value widgets
   CostEstimationWidgetProps,
   ComplianceStatusWidgetProps,
   ValueCreationWidgetProps,
   
-  // Impact Analysis widgets
   AvailabilityImpactWidgetProps,
   IntegrityImpactWidgetProps,
   ConfidentialityImpactWidgetProps,
   ImpactWidgetProps,
   
-  // Implementation Guide widgets
   TechnicalDetailsWidgetProps,
   SecurityResourcesWidgetProps,
   SecurityVisualizationWidgetProps,
