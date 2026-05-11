@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.69**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.70**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **cn**(...`classes`): `string`
 
-Defined in: [utils/tailwindClassHelpers.ts:294](https://github.com/Hack23/cia-compliance-manager/blob/b616fbaa2bb30d924b7315cd583f8328bb70f347/src/utils/tailwindClassHelpers.ts#L294)
+Defined in: [utils/tailwindClassHelpers.ts:294](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/utils/tailwindClassHelpers.ts#L294)
 
 Combine Tailwind classes with proper handling of conditionals
 

@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.69**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.70**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **calculateRiskLevel**(`availabilityLevel`, `integrityLevel`, `confidentialityLevel`): `string`
 
-Defined in: [types/cia.utility.ts:129](https://github.com/Hack23/cia-compliance-manager/blob/b616fbaa2bb30d924b7315cd583f8328bb70f347/src/types/cia.utility.ts#L129)
+Defined in: [types/cia.utility.ts:129](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/types/cia.utility.ts#L129)
 
 Calculate risk level based on security levels
 

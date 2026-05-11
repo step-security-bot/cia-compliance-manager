@@ -1,4 +1,4 @@
-**CIA Compliance Manager — Markdown Documentation v1.1.69**
+**CIA Compliance Manager — Markdown Documentation v1.1.70**
 
 ***
 

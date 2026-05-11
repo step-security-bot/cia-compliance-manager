@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.69**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.70**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **meetsContrastRequirement**(`foreground`, `background`, `isLargeText?`): `boolean`
 
-Defined in: [utils/accessibility.ts:585](https://github.com/Hack23/cia-compliance-manager/blob/b616fbaa2bb30d924b7315cd583f8328bb70f347/src/utils/accessibility.ts#L585)
+Defined in: [utils/accessibility.ts:585](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/utils/accessibility.ts#L585)
 
 Check if element has sufficient color contrast
 Note: This is a simplified check. Use dedicated tools for comprehensive testing.

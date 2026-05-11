@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.69**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.70**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: ErrorContext
 
-Defined in: [services/errors.ts:54](https://github.com/Hack23/cia-compliance-manager/blob/b616fbaa2bb30d924b7315cd583f8328bb70f347/src/services/errors.ts#L54)
+Defined in: [services/errors.ts:54](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/services/errors.ts#L54)
 
 Context information for errors
 
@@ -22,7 +22,7 @@ Additional context information
 
 > `optional` **service?**: `string`
 
-Defined in: [services/errors.ts:56](https://github.com/Hack23/cia-compliance-manager/blob/b616fbaa2bb30d924b7315cd583f8328bb70f347/src/services/errors.ts#L56)
+Defined in: [services/errors.ts:56](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/services/errors.ts#L56)
 
 Service that generated the error
 
@@ -32,7 +32,7 @@ Service that generated the error
 
 > `optional` **method?**: `string`
 
-Defined in: [services/errors.ts:58](https://github.com/Hack23/cia-compliance-manager/blob/b616fbaa2bb30d924b7315cd583f8328bb70f347/src/services/errors.ts#L58)
+Defined in: [services/errors.ts:58](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/services/errors.ts#L58)
 
 Method that generated the error
 
@@ -42,7 +42,7 @@ Method that generated the error
 
 > `optional` **component?**: `string`
 
-Defined in: [services/errors.ts:60](https://github.com/Hack23/cia-compliance-manager/blob/b616fbaa2bb30d924b7315cd583f8328bb70f347/src/services/errors.ts#L60)
+Defined in: [services/errors.ts:60](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/services/errors.ts#L60)
 
 Component being processed
 
@@ -52,6 +52,6 @@ Component being processed
 
 > `optional` **level?**: `string`
 
-Defined in: [services/errors.ts:62](https://github.com/Hack23/cia-compliance-manager/blob/b616fbaa2bb30d924b7315cd583f8328bb70f347/src/services/errors.ts#L62)
+Defined in: [services/errors.ts:62](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/services/errors.ts#L62)
 
 Security level being processed

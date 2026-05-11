@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.69**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.70**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **SecurityLevel** = `"None"` \| `"Low"` \| `"Moderate"` \| `"High"` \| `"Very High"`
 
-Defined in: [types/cia.ts:38](https://github.com/Hack23/cia-compliance-manager/blob/b616fbaa2bb30d924b7315cd583f8328bb70f347/src/types/cia.ts#L38)
+Defined in: [types/cia.ts:38](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/types/cia.ts#L38)
 
 Security levels available for CIA triad components
 
