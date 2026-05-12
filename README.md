@@ -409,7 +409,7 @@ import { SecurityProfileProvider, ComplianceContext } from 'cia-compliance-manag
 ```
 
 **Technology Stack:**
-- **Runtime:** Node ≥25.0.0, npm ≥10.0.0
+- **Runtime:** Node ≥26.0.0, npm ≥10.0.0
 - **Language:** TypeScript 6.0.3 (ES2025 target)
 - **Framework:** React 19.2.5 + React DOM 19.2.5
 - **Build:** Vite 8.0.10 (ES module bundler)
@@ -680,7 +680,7 @@ console.log(`Estimated Cost: $${assessment.estimatedCost.toLocaleString()}`);
 git clone https://github.com/Hack23/cia-compliance-manager.git
 cd cia-compliance-manager
 
-# Install dependencies (requires Node ≥25.0.0, npm ≥10.0.0)
+# Install dependencies (requires Node ≥26.0.0, npm ≥10.0.0)
 npm install
 
 # Run development server
