@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.70**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.71**](../../../README.md)
 
 ***
 
@@ -8,7 +8,9 @@
 
 > `const` **UI\_TEXT**: `object`
 
-Defined in: [constants/appConstants.ts:192](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/constants/appConstants.ts#L192)
+Defined in: [constants/appConstants.ts:184](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/constants/appConstants.ts#L184)
+
+Centralized UI text constants
 
 ## Type Declaration
 

@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.70**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.71**](../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > **WidgetClassKey** = keyof *typeof* [`WidgetClasses`](../variables/WidgetClasses.md)
 
-Defined in: [utils/tailwindClassHelpers.ts:301](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/utils/tailwindClassHelpers.ts#L301)
+Defined in: [utils/tailwindClassHelpers.ts:291](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/utils/tailwindClassHelpers.ts#L291)
 
 Type definitions for better TypeScript support

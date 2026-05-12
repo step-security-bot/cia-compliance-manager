@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.70**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.71**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **IMPLEMENTATION\_TIMEFRAMES**: `object`
 
-Defined in: [constants/costConstants.ts:117](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/constants/costConstants.ts#L117)
+Defined in: [constants/costConstants.ts:110](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/constants/costConstants.ts#L110)
 
 Time-to-implement estimates (in months) for each security level
 

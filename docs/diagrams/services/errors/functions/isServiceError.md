@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.70**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.71**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **isServiceError**(`error`): `error is ServiceError`
 
-Defined in: [services/errors.ts:242](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/services/errors.ts#L242)
+Defined in: [services/errors.ts:235](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/errors.ts#L235)
 
 Type guard to check if an error is a ServiceError
 

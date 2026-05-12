@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.70**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.71**](../../README.md)
 
 ***
 
@@ -8,4 +8,6 @@
 
 > **SecurityLevelKey** = `"NONE"` \| `"LOW"` \| `"MODERATE"` \| `"HIGH"` \| `"VERY_HIGH"`
 
-Defined in: [constants/coreConstants.ts:294](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/constants/coreConstants.ts#L294)
+Defined in: [constants/coreConstants.ts:290](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/constants/coreConstants.ts#L290)
+
+Security level constant key type

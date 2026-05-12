@@ -559,13 +559,7 @@
 <a name='L494'></a><a href='#L494'>494</a>
 <a name='L495'></a><a href='#L495'>495</a>
 <a name='L496'></a><a href='#L496'>496</a>
-<a name='L497'></a><a href='#L497'>497</a>
-<a name='L498'></a><a href='#L498'>498</a>
-<a name='L499'></a><a href='#L499'>499</a>
-<a name='L500'></a><a href='#L500'>500</a>
-<a name='L501'></a><a href='#L501'>501</a>
-<a name='L502'></a><a href='#L502'>502</a>
-<a name='L503'></a><a href='#L503'>503</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L497'></a><a href='#L497'>497</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -631,7 +625,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -693,7 +686,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -803,7 +795,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -887,7 +878,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -946,7 +936,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1037,7 +1026,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1136,7 +1124,6 @@ export function getDefaultDescription(
     }
   }
 &nbsp;
-  // Default to availability
   switch (level) {
 <span class="branch-0 cbranch-no" title="branch not covered" >    case "None":</span>
 <span class="cstat-no" title="statement not covered" >      return "No availability controls implemented, no guarantees for system uptime.";</span>
@@ -1198,7 +1185,6 @@ export function getDefaultTechDescription(
     }
   }
 &nbsp;
-  // Default to availability
   switch (level) {
     case "None":
 <span class="cstat-no" title="statement not covered" >      return "No specific technical controls for ensuring system availability.";</span>
@@ -1305,7 +1291,6 @@ export function getDefaultRequirements(
     }
   }
 &nbsp;
-  // Default to availability
   switch (level) {
 <span class="branch-0 cbranch-no" title="branch not covered" >    case "None":</span>
 <span class="cstat-no" title="statement not covered" >      return ["No specific requirements."];</span>
@@ -1389,7 +1374,6 @@ export function <span class="fstat-no" title="function not covered" >getDefaultT
     }
   }
 &nbsp;
-  // Default to availability
 <span class="cstat-no" title="statement not covered" >  switch (level) {</span>
     case "None":
 <span class="cstat-no" title="statement not covered" >      return "No specific technologies";</span>
@@ -1451,7 +1435,6 @@ export function <span class="fstat-no" title="function not covered" >getDefaultC
     }
   }
 &nbsp;
-  // Default to availability
 <span class="cstat-no" title="statement not covered" >  switch (level) {</span>
     case "None":
 <span class="cstat-no" title="statement not covered" >      return "No specific configurations";</span>
@@ -1542,7 +1525,6 @@ export function <span class="fstat-no" title="function not covered" >getDefaultE
     }
   }
 &nbsp;
-  // Default to availability expertise
 <span class="cstat-no" title="statement not covered" >  switch (level) {</span>
     case "None":
 <span class="cstat-no" title="statement not covered" >      return ["No specific expertise required"];</span>
@@ -1576,7 +1558,7 @@ export function <span class="fstat-no" title="function not covered" >getDefaultE
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-05-11T17:11:18.393Z
+                at 2026-05-12T12:44:39.350Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

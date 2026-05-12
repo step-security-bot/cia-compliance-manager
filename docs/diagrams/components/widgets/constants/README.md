@@ -1,10 +1,12 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.70**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.71**](../../../README.md)
 
 ***
 
 [CIA Compliance Manager — UML Diagrams](../../../modules.md) / components/widgets/constants
 
 # components/widgets/constants
+
+Constants used by widget components
 
 ## Variables
 

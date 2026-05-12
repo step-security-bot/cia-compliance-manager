@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.70**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.71**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: ComplianceGapAnalysis
 
-Defined in: [types/compliance.ts:103](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/types/compliance.ts#L103)
+Defined in: [types/compliance.ts:99](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/types/compliance.ts#L99)
 
 Interface for compliance gap analysis
 
@@ -16,7 +16,7 @@ Interface for compliance gap analysis
 
 > **isCompliant**: `boolean`
 
-Defined in: [types/compliance.ts:107](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/types/compliance.ts#L107)
+Defined in: [types/compliance.ts:103](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/types/compliance.ts#L103)
 
 Whether the organization is compliant with the framework
 
@@ -26,7 +26,7 @@ Whether the organization is compliant with the framework
 
 > **gaps**: [`ComplianceGap`](ComplianceGap.md)[]
 
-Defined in: [types/compliance.ts:112](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/types/compliance.ts#L112)
+Defined in: [types/compliance.ts:108](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/types/compliance.ts#L108)
 
 List of compliance gaps by framework
 
@@ -36,7 +36,7 @@ List of compliance gaps by framework
 
 > **recommendations**: `string`[]
 
-Defined in: [types/compliance.ts:117](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/types/compliance.ts#L117)
+Defined in: [types/compliance.ts:113](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/types/compliance.ts#L113)
 
 Recommendations for addressing compliance gaps
 
@@ -46,7 +46,7 @@ Recommendations for addressing compliance gaps
 
 > `optional` **overallStatus?**: `string`
 
-Defined in: [types/compliance.ts:122](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/types/compliance.ts#L122)
+Defined in: [types/compliance.ts:118](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/types/compliance.ts#L118)
 
 Overall compliance status text
 
@@ -56,6 +56,6 @@ Overall compliance status text
 
 > `optional` **complianceScore?**: `number`
 
-Defined in: [types/compliance.ts:127](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/types/compliance.ts#L127)
+Defined in: [types/compliance.ts:123](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/types/compliance.ts#L123)
 
 Compliance score (0-100)

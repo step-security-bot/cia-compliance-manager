@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.70**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.71**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **displayErrorMessage**(`error`): `void`
 
-Defined in: [utils/errorUtils.ts:182](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/utils/errorUtils.ts#L182)
+Defined in: [utils/errorUtils.ts:180](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/utils/errorUtils.ts#L180)
 
 Display an error message in the console
 

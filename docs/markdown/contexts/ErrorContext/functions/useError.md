@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.70**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.71**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **useError**(): [`ErrorContextValue`](../interfaces/ErrorContextValue.md)
 
-Defined in: [contexts/ErrorContext.tsx:266](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/contexts/ErrorContext.tsx#L266)
+Defined in: [contexts/ErrorContext.tsx:262](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/contexts/ErrorContext.tsx#L262)
 
 Custom hook to use error context
 

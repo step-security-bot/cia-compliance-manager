@@ -305,15 +305,7 @@
 <a name='L240'></a><a href='#L240'>240</a>
 <a name='L241'></a><a href='#L241'>241</a>
 <a name='L242'></a><a href='#L242'>242</a>
-<a name='L243'></a><a href='#L243'>243</a>
-<a name='L244'></a><a href='#L244'>244</a>
-<a name='L245'></a><a href='#L245'>245</a>
-<a name='L246'></a><a href='#L246'>246</a>
-<a name='L247'></a><a href='#L247'>247</a>
-<a name='L248'></a><a href='#L248'>248</a>
-<a name='L249'></a><a href='#L249'>249</a>
-<a name='L250'></a><a href='#L250'>250</a>
-<a name='L251'></a><a href='#L251'>251</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L243'></a><a href='#L243'>243</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -346,10 +338,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -359,7 +348,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -369,7 +358,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">20x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">20x</span>
@@ -390,9 +378,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">20x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -476,8 +462,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">20x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -586,8 +570,6 @@ import { SecurityComplianceTab } from "./SecurityComplianceTab";
 import { SecurityImplementationTab } from "./SecurityImplementationTab";
 import { SecurityOverviewTab } from "./SecurityOverviewTab";
 &nbsp;
-&nbsp;
-&nbsp;
 /**
  * Displays a comprehensive executive summary of security posture with key metrics
  *
@@ -605,7 +587,6 @@ const SecuritySummaryWidget: React.FC&lt;SecuritySummaryWidgetProps&gt; = ({
   className = "",
   testId = SECURITY_SUMMARY_TEST_IDS.WIDGET,
 }) =&gt; {
-  // Get services for data
   const {
     ciaContentService,
     error: ciaError,
@@ -621,11 +602,9 @@ const SecuritySummaryWidget: React.FC&lt;SecuritySummaryWidgetProps&gt; = ({
     isLoading: complianceLoading,
   } = useComplianceService();
 &nbsp;
-  // Determine if any service is loading or has errors
   const isLoading = ciaLoading || metricsLoading || complianceLoading;
   const error = ciaError || metricsError || complianceError;
 &nbsp;
-  // Use custom hook for all data calculations
   const {
     securityLevelDescription,
     securityScore,
@@ -650,7 +629,6 @@ const SecuritySummaryWidget: React.FC&lt;SecuritySummaryWidgetProps&gt; = ({
     complianceService
   );
 &nbsp;
-  // Configure tabs with content
   const tabs: Tab[] = [
     {
       id: 'overview',
@@ -743,7 +721,6 @@ const SecuritySummaryWidget: React.FC&lt;SecuritySummaryWidgetProps&gt; = ({
             "Comprehensive executive summary of security posture with key metrics"
           )}
         &gt;
-          {/* Security Classification Banner - Compact layout */}
           &lt;section
             className={cn(
               "p-sm rounded-md border-l-4 border-info dark:border-info-light",
@@ -800,7 +777,6 @@ const SecuritySummaryWidget: React.FC&lt;SecuritySummaryWidgetProps&gt; = ({
             &lt;/div&gt;
           &lt;/section&gt;
 &nbsp;
-          {/* Tab Navigation and Content */}
           &lt;TabContainer
             tabs={tabs}
             initialTab="overview"
@@ -820,7 +796,7 @@ export default SecuritySummaryWidget;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-05-11T17:11:18.276Z
+                at 2026-05-12T12:44:39.237Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

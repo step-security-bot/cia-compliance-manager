@@ -188,15 +188,7 @@
 <a name='L123'></a><a href='#L123'>123</a>
 <a name='L124'></a><a href='#L124'>124</a>
 <a name='L125'></a><a href='#L125'>125</a>
-<a name='L126'></a><a href='#L126'>126</a>
-<a name='L127'></a><a href='#L127'>127</a>
-<a name='L128'></a><a href='#L128'>128</a>
-<a name='L129'></a><a href='#L129'>129</a>
-<a name='L130'></a><a href='#L130'>130</a>
-<a name='L131'></a><a href='#L131'>131</a>
-<a name='L132'></a><a href='#L132'>132</a>
-<a name='L133'></a><a href='#L133'>133</a>
-<a name='L134'></a><a href='#L134'>134</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L126'></a><a href='#L126'>126</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -230,7 +222,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6442x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6442x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6442x</span>
@@ -238,7 +229,6 @@
 <span class="cline-any cline-yes">5075x</span>
 <span class="cline-any cline-yes">2482x</span>
 <span class="cline-any cline-yes">495x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
@@ -278,19 +268,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">17x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
@@ -310,7 +295,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -363,7 +347,6 @@ export const SECURITY_LEVEL_VALUES: Record&lt;SecurityLevel, number&gt; = {
  */
 export function getSecurityLevelValue(level: SecurityLevel | string): number {
   <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof level === 'string') {
-    // Normalize the level to handle case-insensitive matching
     const normalizedLevel = level.trim();
 &nbsp;
     if (/^none$/i.test(normalizedLevel)) return 0;
@@ -373,7 +356,6 @@ export function getSecurityLevelValue(level: SecurityLevel | string): number {
     if (/^very\s*high$/i.test(normalizedLevel)) return 4;
   }
 &nbsp;
-  // For SecurityLevel type or unknown strings
   return SECURITY_LEVEL_VALUES[level as SecurityLevel] ?? 0;
 }
 &nbsp;
@@ -411,20 +393,15 @@ export function calculateOverallSecurityLevel(
 &nbsp;
   switch (strategy) {
     case 'min':
-      // Security is only as strong as the weakest link
       result = Math.min(availValue, integValue, confValue);
       break;
     case 'max':
-      // For maximum level calculation
       result = Math.max(availValue, integValue, confValue);
       break;
     case 'avg':
-      // Average security level
       result = Math.round((availValue + integValue + confValue) / 3);
       break;
     case 'weighted':
-      // Weighted calculation based on business priorities
-      // This example uses 30% availability, 30% integrity, 40% confidentiality
       result = Math.round((availValue * 0.3) + (integValue * 0.3) + (confValue * 0.4));
       break;
 <span class="branch-4 cbranch-no" title="branch not covered" >    default:</span>
@@ -443,7 +420,6 @@ export function calculateOverallSecurityLevel(
  */
 export function getNormalizedSecurityValue(level: SecurityLevel): number {
   const value = getSecurityLevelValue(level);
-  // Convert 0-4 scale to 0-100 scale
   return (value / 4) * 100;
 }
 &nbsp;
@@ -469,7 +445,7 @@ export function compareSecurityLevels(levelA: SecurityLevel, levelB: SecurityLev
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-05-11T17:11:18.276Z
+                at 2026-05-12T12:44:39.237Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

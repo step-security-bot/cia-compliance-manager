@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.70**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.71**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **WIDGET\_ICONS**: `object`
 
-Defined in: [constants/appConstants.ts:339](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/constants/appConstants.ts#L339)
+Defined in: [constants/appConstants.ts:323](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/constants/appConstants.ts#L323)
 
 Widget icons for consistent UI representation
 
@@ -16,39 +16,39 @@ Widget icons for consistent UI representation
 
 ### SECURITY\_LEVEL
 
-> **SECURITY\_LEVEL**: `string` = `"🔐"`
+> **SECURITY\_LEVEL**: `string` = "\uD83D\uDD10"
 
 ### SECURITY\_SUMMARY
 
-> **SECURITY\_SUMMARY**: `string` = `"📊"`
+> **SECURITY\_SUMMARY**: `string` = "\uD83D\uDCCA"
 
 ### BUSINESS\_IMPACT\_ANALYSIS
 
-> **BUSINESS\_IMPACT\_ANALYSIS**: `string` = `"📈"`
+> **BUSINESS\_IMPACT\_ANALYSIS**: `string` = "\uD83D\uDCC8"
 
 ### COMPLIANCE\_STATUS
 
-> **COMPLIANCE\_STATUS**: `string` = `"📋"`
+> **COMPLIANCE\_STATUS**: `string` = "\uD83D\uDCCB"
 
 ### SECURITY\_RESOURCES
 
-> **SECURITY\_RESOURCES**: `string` = `"📚"`
+> **SECURITY\_RESOURCES**: `string` = "\uD83D\uDCDA"
 
 ### COST\_ESTIMATION
 
-> **COST\_ESTIMATION**: `string` = `"💰"`
+> **COST\_ESTIMATION**: `string` = "\uD83D\uDCB0"
 
 ### VALUE\_CREATION
 
-> **VALUE\_CREATION**: `string` = `"💎"`
+> **VALUE\_CREATION**: `string` = "\uD83D\uDC8E"
 
 ### TECHNICAL\_DETAILS
 
-> **TECHNICAL\_DETAILS**: `string` = `"⚙️"`
+> **TECHNICAL\_DETAILS**: `string` = "\u2699\uFE0F"
 
 ### SECURITY\_VISUALIZATION
 
-> **SECURITY\_VISUALIZATION**: `string` = `"📈"`
+> **SECURITY\_VISUALIZATION**: `string` = "\uD83D\uDCC8"
 
 ### AVAILABILITY\_IMPACT
 

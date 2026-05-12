@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.70**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.71**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: CIAContentService
 
-Defined in: [types/cia-services.ts:399](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/types/cia-services.ts#L399)
+Defined in: [types/cia-services.ts:381](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/types/cia-services.ts#L381)
 
 CIA Content Service interface
 Defines methods for retrieving CIA-related content and technical details
@@ -17,7 +17,7 @@ Defines methods for retrieving CIA-related content and technical details
 
 > `optional` **getComponentDetails?**: (`component`, `level`) => `unknown`
 
-Defined in: [types/cia-services.ts:400](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/types/cia-services.ts#L400)
+Defined in: [types/cia-services.ts:382](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/types/cia-services.ts#L382)
 
 #### Parameters
 
@@ -39,7 +39,7 @@ Defined in: [types/cia-services.ts:400](https://github.com/Hack23/cia-compliance
 
 > `optional` **getTechnicalRequirements?**: (`component`, `level`) => `string`[]
 
-Defined in: [types/cia-services.ts:401](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/types/cia-services.ts#L401)
+Defined in: [types/cia-services.ts:383](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/types/cia-services.ts#L383)
 
 #### Parameters
 
@@ -61,7 +61,7 @@ Defined in: [types/cia-services.ts:401](https://github.com/Hack23/cia-compliance
 
 > `optional` **getRequiredExpertise?**: (`component`, `level`) => `string`[]
 
-Defined in: [types/cia-services.ts:402](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/types/cia-services.ts#L402)
+Defined in: [types/cia-services.ts:384](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/types/cia-services.ts#L384)
 
 #### Parameters
 
@@ -83,7 +83,7 @@ Defined in: [types/cia-services.ts:402](https://github.com/Hack23/cia-compliance
 
 > `optional` **getInformationSensitivity?**: (`level`) => `string`
 
-Defined in: [types/cia-services.ts:403](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/types/cia-services.ts#L403)
+Defined in: [types/cia-services.ts:385](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/types/cia-services.ts#L385)
 
 #### Parameters
 

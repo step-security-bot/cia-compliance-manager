@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.70**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.71**](../../README.md)
 
 ***
 
@@ -8,4 +8,22 @@
 
 > `const` **RadarChart**: `React.FC`\<`RadarChartProps`\>
 
-Defined in: [components/charts/RadarChart.tsx:45](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/components/charts/RadarChart.tsx#L45)
+Defined in: [components/charts/RadarChart.tsx:64](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/components/charts/RadarChart.tsx#L64)
+
+Radar chart visualization of the CIA security triad
+
+## Business Perspective
+
+Provides an intuitive visual representation of the security posture
+across all three CIA triad dimensions, enabling at-a-glance assessment
+of security balance and identifying areas needing improvement. 📊
+
+## Example
+
+```tsx
+<RadarChart
+  availabilityLevel="High"
+  integrityLevel="Moderate"
+  confidentialityLevel="Very High"
+/>
+```

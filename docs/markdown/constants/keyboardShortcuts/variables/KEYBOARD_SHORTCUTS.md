@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.70**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.71**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **KEYBOARD\_SHORTCUTS**: `object`
 
-Defined in: [constants/keyboardShortcuts.ts:15](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/constants/keyboardShortcuts.ts#L15)
+Defined in: [constants/keyboardShortcuts.ts:15](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/constants/keyboardShortcuts.ts#L15)
 
 Keyboard shortcut configuration constants
 
@@ -295,7 +295,7 @@ with browser default shortcuts.
 
 #### SHOW\_HELP\_ALT.keys
 
-> `readonly` **keys**: `"ctrl+/"` = `'ctrl+/'`
+> `readonly` **keys**: `"ctrl/"` = `'ctrl/'`
 
 #### SHOW\_HELP\_ALT.description
 

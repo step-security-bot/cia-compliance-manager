@@ -354,16 +354,7 @@
 <a name='L289'></a><a href='#L289'>289</a>
 <a name='L290'></a><a href='#L290'>290</a>
 <a name='L291'></a><a href='#L291'>291</a>
-<a name='L292'></a><a href='#L292'>292</a>
-<a name='L293'></a><a href='#L293'>293</a>
-<a name='L294'></a><a href='#L294'>294</a>
-<a name='L295'></a><a href='#L295'>295</a>
-<a name='L296'></a><a href='#L296'>296</a>
-<a name='L297'></a><a href='#L297'>297</a>
-<a name='L298'></a><a href='#L298'>298</a>
-<a name='L299'></a><a href='#L299'>299</a>
-<a name='L300'></a><a href='#L300'>300</a>
-<a name='L301'></a><a href='#L301'>301</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L292'></a><a href='#L292'>292</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -456,17 +447,14 @@
 <span class="cline-any cline-yes">62x</span>
 <span class="cline-any cline-yes">62x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">62x</span>
 <span class="cline-any cline-yes">51x</span>
 <span class="cline-any cline-yes">51x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">62x</span>
 <span class="cline-any cline-yes">51x</span>
 <span class="cline-any cline-yes">51x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -567,10 +555,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">124x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -588,9 +573,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -691,7 +673,7 @@ interface ComponentTheme {
  */
 const COMPONENT_THEMES: Record&lt;CIAComponent, ComponentTheme&gt; = {
   confidentiality: {
-    icon: "🔒",
+    icon: "\uD83D\uDD12",
     colorClass: "bg-purple-100 dark:bg-purple-900/20",
     textClass: "text-purple-800 dark:text-purple-300",
     bgClass: "bg-purple-50 dark:bg-purple-900/20",
@@ -701,7 +683,7 @@ const COMPONENT_THEMES: Record&lt;CIAComponent, ComponentTheme&gt; = {
     title: "Confidentiality Controls",
   },
   integrity: {
-    icon: "✓",
+    icon: "\u2713",
     colorClass: "bg-green-100 dark:bg-green-900/20",
     textClass: "text-green-800 dark:text-green-300",
     bgClass: "bg-green-50 dark:bg-green-900/20",
@@ -711,7 +693,7 @@ const COMPONENT_THEMES: Record&lt;CIAComponent, ComponentTheme&gt; = {
     title: "Integrity Controls",
   },
   availability: {
-    icon: "⏱️",
+    icon: "\u23F1\uFE0F",
     colorClass: "bg-blue-100 dark:bg-blue-900/20",
     textClass: "text-blue-800 dark:text-blue-300",
     bgClass: "bg-blue-50 dark:bg-blue-900/20",
@@ -756,13 +738,11 @@ export const CIAComponentDetails: React.FC&lt;CIAComponentDetailsProps&gt; = ({
   const theme = COMPONENT_THEMES[component];
   const [showAdvancedDetails, setShowAdvancedDetails] = useState(false);
 &nbsp;
-  // Helper to convert complexity string to numeric value for UI
   const getComplexityValue = (complexity: string): number =&gt; {
     const value = getSecurityLevelValue(complexity as SecurityLevel);
     return value * 25;
   };
 &nbsp;
-  // Calculate complexity using existing utility
   const complexity = useMemo(() =&gt; {
     const complexityLabel = getImplementationComplexity(level, level, level);
     return {
@@ -771,7 +751,6 @@ export const CIAComponentDetails: React.FC&lt;CIAComponentDetailsProps&gt; = ({
     };
   }, [level]);
 &nbsp;
-  // Get optional property with fallback
   const getOptionalProperty = (
     obj: unknown,
     property: string,
@@ -804,7 +783,6 @@ export const CIAComponentDetails: React.FC&lt;CIAComponentDetailsProps&gt; = ({
       &lt;/div&gt;
 &nbsp;
       &lt;div className="grid grid-cols-1 lg:grid-cols-2 gap-sm mb-md"&gt;
-        {/* Main technical details card */}
         &lt;div
           className={`p-sm ${theme.bgClass} rounded-lg shadow-sm border ${theme.borderClass}`}
         &gt;
@@ -856,7 +834,6 @@ export const CIAComponentDetails: React.FC&lt;CIAComponentDetailsProps&gt; = ({
           &lt;/div&gt;
         &lt;/div&gt;
 &nbsp;
-        {/* Implementation requirements card */}
         &lt;div className="p-sm bg-white dark:bg-gray-800 rounded-md shadow-md border border-neutral-light dark:border-neutral-dark"&gt;
           &lt;h4
             className="text-md font-medium mb-md"
@@ -880,7 +857,6 @@ export const CIAComponentDetails: React.FC&lt;CIAComponentDetailsProps&gt; = ({
         &lt;/div&gt;
       &lt;/div&gt;
 &nbsp;
-      {/* Advanced Details - Collapsible */}
       &lt;div className="mb-sm"&gt;
         &lt;button
           onClick={() =&gt; setShowAdvancedDetails(!showAdvancedDetails)}
@@ -900,17 +876,16 @@ export const CIAComponentDetails: React.FC&lt;CIAComponentDetailsProps&gt; = ({
             {showAdvancedDetails ? "Hide" : "Show"} Advanced Details
           &lt;/span&gt;
           &lt;span className="text-gray-500"&gt;
-            {showAdvancedDetails ? "▲" : "▼"}
+            {showAdvancedDetails ? "\u25B2" : "\u25BC"}
           &lt;/span&gt;
         &lt;/button&gt;
         
         {showAdvancedDetails &amp;&amp; (
           &lt;div id={`${testId}-${component}-advanced-content`} className="mt-sm space-y-sm"&gt;
             &lt;div className="grid grid-cols-1 md:grid-cols-2 gap-sm"&gt;
-              {/* Technologies card */}
               &lt;div className="p-sm bg-white dark:bg-gray-800 rounded-md shadow-sm border border-neutral-light dark:border-neutral-dark"&gt;
                 &lt;h4 className="text-body font-medium flex items-center mb-sm"&gt;
-                  &lt;span className={`mr-xs ${theme.accentClass}`}&gt;💻&lt;/span&gt;Technologies
+                  &lt;span className={`mr-xs ${theme.accentClass}`}&gt;\uD83D\uDCBB&lt;/span&gt;Technologies
                 &lt;/h4&gt;
                 &lt;p className={`text-sm ${theme.textClass}`}&gt;
                   {getOptionalProperty(
@@ -921,10 +896,9 @@ export const CIAComponentDetails: React.FC&lt;CIAComponentDetailsProps&gt; = ({
                 &lt;/p&gt;
               &lt;/div&gt;
 &nbsp;
-              {/* Configurations card */}
               &lt;div className="p-sm bg-white dark:bg-gray-800 rounded-md shadow-sm border border-neutral-light dark:border-neutral-dark"&gt;
                 &lt;h4 className="text-body font-medium flex items-center mb-sm"&gt;
-                  &lt;span className={`mr-xs ${theme.accentClass}`}&gt;⚙️&lt;/span&gt;
+                  &lt;span className={`mr-xs ${theme.accentClass}`}&gt;\u2699\uFE0F&lt;/span&gt;
                   Configurations
                 &lt;/h4&gt;
                 &lt;p className={`text-sm ${theme.textClass}`}&gt;
@@ -937,10 +911,9 @@ export const CIAComponentDetails: React.FC&lt;CIAComponentDetailsProps&gt; = ({
               &lt;/div&gt;
             &lt;/div&gt;
 &nbsp;
-            {/* Expertise Required card */}
             &lt;div className="p-sm bg-white dark:bg-gray-800 rounded-md shadow-sm border border-gray-200 dark:border-gray-700"&gt;
               &lt;h4 className="text-body font-medium flex items-center mb-sm"&gt;
-                &lt;span className={`mr-xs ${theme.accentClass}`}&gt;👨‍💻&lt;/span&gt;Expertise Required
+                &lt;span className={`mr-xs ${theme.accentClass}`}&gt;\uD83D\uDC68\u200D\uD83D\uDCBB&lt;/span&gt;Expertise Required
               &lt;/h4&gt;
               &lt;ul
                 className="grid grid-cols-1 lg:grid-cols-2 gap-xs"
@@ -970,7 +943,7 @@ export const CIAComponentDetails: React.FC&lt;CIAComponentDetailsProps&gt; = ({
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-05-11T17:11:18.276Z
+                at 2026-05-12T12:44:39.237Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

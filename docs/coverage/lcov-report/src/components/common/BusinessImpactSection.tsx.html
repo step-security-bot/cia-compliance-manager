@@ -307,13 +307,7 @@
 <a name='L242'></a><a href='#L242'>242</a>
 <a name='L243'></a><a href='#L243'>243</a>
 <a name='L244'></a><a href='#L244'>244</a>
-<a name='L245'></a><a href='#L245'>245</a>
-<a name='L246'></a><a href='#L246'>246</a>
-<a name='L247'></a><a href='#L247'>247</a>
-<a name='L248'></a><a href='#L248'>248</a>
-<a name='L249'></a><a href='#L249'>249</a>
-<a name='L250'></a><a href='#L250'>250</a>
-<a name='L251'></a><a href='#L251'>251</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L245'></a><a href='#L245'>245</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -329,7 +323,6 @@
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -350,7 +343,6 @@
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -373,7 +365,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -390,10 +381,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">30x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-yes">30x</span>
@@ -580,7 +568,6 @@ const getBackgroundColorClasses = (color: CIAComponentColor): string =&gt; {
     case "orange":
       return "bg-orange-100 dark:bg-orange-900 border-orange-200 dark:border-orange-800";
 <span class="branch-3 cbranch-no" title="branch not covered" >    default: {</span>
-      // Exhaustive check - TypeScript will error if new colors are added
       const exhaustiveCheck: never = <span class="cstat-no" title="statement not covered" >color;</span>
 <span class="cstat-no" title="statement not covered" >      throw new Error(`Unsupported color: ${String(exhaustiveCheck)}`);</span>
     }
@@ -601,7 +588,6 @@ const getTextColorClasses = (color: CIAComponentColor): string =&gt; {
     case "orange":
       return "text-orange-700 dark:text-orange-300";
 <span class="branch-3 cbranch-no" title="branch not covered" >    default: {</span>
-      // Exhaustive check - TypeScript will error if new colors are added
       const exhaustiveCheck: never = <span class="cstat-no" title="statement not covered" >color;</span>
 <span class="cstat-no" title="statement not covered" >      throw new Error(`Unsupported color: ${String(exhaustiveCheck)}`);</span>
     }
@@ -623,7 +609,6 @@ const getBadgeColorClasses = (color: CIAComponentColor): string =&gt; {
     case "orange":
       return "bg-orange-50 text-orange-700 dark:bg-orange-900/50 dark:text-orange-300";
 <span class="branch-3 cbranch-no" title="branch not covered" >    default: {</span>
-      // Exhaustive check - TypeScript will error if new colors are added
       const exhaustiveCheck: never = <span class="cstat-no" title="statement not covered" >color;</span>
 <span class="cstat-no" title="statement not covered" >      throw new Error(`Unsupported color: ${String(exhaustiveCheck)}`);</span>
     }
@@ -639,12 +624,9 @@ const BusinessImpactSection: React.FC&lt;BusinessImpactSectionProps&gt; = ({
   color,
   testId = "business-impact-section",
 }) =&gt; {
-  // Extract risk level from the impact financial or operational data
-  // Using the risk level in the UI
   const riskLevelForDisplay =
     impact.financial?.riskLevel || impact.operational?.riskLevel || "Unknown";
 &nbsp;
-  // Get explicit color classes for this color scheme
   const bgClasses = getBackgroundColorClasses(color);
   const textClasses = getTextColorClasses(color);
   const badgeClasses = getBadgeColorClasses(color);
@@ -820,7 +802,7 @@ export default BusinessImpactSection;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-05-11T17:11:18.393Z
+                at 2026-05-12T12:44:39.350Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

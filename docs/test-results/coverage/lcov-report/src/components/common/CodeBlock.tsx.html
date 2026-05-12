@@ -263,13 +263,7 @@
 <a name='L198'></a><a href='#L198'>198</a>
 <a name='L199'></a><a href='#L199'>199</a>
 <a name='L200'></a><a href='#L200'>200</a>
-<a name='L201'></a><a href='#L201'>201</a>
-<a name='L202'></a><a href='#L202'>202</a>
-<a name='L203'></a><a href='#L203'>203</a>
-<a name='L204'></a><a href='#L204'>204</a>
-<a name='L205'></a><a href='#L205'>205</a>
-<a name='L206'></a><a href='#L206'>206</a>
-<a name='L207'></a><a href='#L207'>207</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L201'></a><a href='#L201'>201</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -283,15 +277,12 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">18x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
@@ -313,7 +304,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -332,7 +322,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -405,7 +394,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -489,15 +477,12 @@ import { CodeBlockProps } from "../../types/componentPropExports";
 const highlightCode = (code: string, language?: string): string =&gt; {
   let highlighted = code;
 &nbsp;
-  // Escape HTML
   highlighted = highlighted
     .replace(/&amp;/g, "&amp;amp;")
     .replace(/&lt;/g, "&amp;lt;")
     .replace(/&gt;/g, "&amp;gt;");
 &nbsp;
-  // Apply syntax highlighting based on language using single-pass tokenizer
   if (language === "typescript" || language === "javascript" || language === "jsx" || language === "tsx") {
-    // Combined pattern matches comments, strings, keywords, and numbers in one pass
     const tsPattern = /(\/\/.*$|\/\*[\s\S]*?\*\/)|("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'|`(?:[^`\\]|\\.)*`)|(\b(?:const|let|var|function|return|if|else|for|while|class|interface|type|import|export|from|default|async|await|try|catch|throw|new|this|extends|implements|public|private|protected|static|readonly)\b)|(\b\d+\b)/gm;
     
     highlighted = highlighted.replace(
@@ -519,7 +504,6 @@ const highlightCode = (code: string, language?: string): string =&gt; {
       }
     );
   } else if (language === "python") {
-    // Combined pattern for Python
     const pythonPattern = /(#.*$)|("""[\s\S]*?"""|'''[\s\S]*?'''|"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')|(\b(?:def|class|if|elif|else|for|while|return|import|from|as|try|except|finally|with|lambda|yield|raise|pass|break|continue|True|False|None)\b)/gm;
     
     highlighted = highlighted.replace(
@@ -538,7 +522,6 @@ const highlightCode = (code: string, language?: string): string =&gt; {
       }
     );
   } else if (language === "bash" || language === "shell") {
-    // Combined pattern for Bash
     const bashPattern = /(#.*$)|("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')|(\b(?:if|then|else|elif|fi|for|do|done|while|case|esac|function|return|exit|cd|ls|mkdir|rm|cp|mv|echo|cat|grep|sed|awk)\b)/gm;
     
     highlighted = highlighted.replace(
@@ -614,7 +597,6 @@ const CodeBlock: React.FC&lt;CodeBlockProps&gt; = ({
     }
   };
 &nbsp;
-  // Memoize highlighted code and lines to avoid re-computing on every render
   const { highlightedCode, highlightedLines } = useMemo(() =&gt; {
     const highlighted = highlightCode(code, language);
     return {
@@ -688,7 +670,7 @@ export default CodeBlock;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-05-11T17:11:18.393Z
+                at 2026-05-12T12:44:39.350Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

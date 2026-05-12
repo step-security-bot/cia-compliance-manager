@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.70**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.71**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > `const` **BUSINESS\_CONSIDERATIONS**: `Record`\<[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md), [`BusinessItem`](../../../types/businessImpact/interfaces/BusinessItem.md)[]\>
 
-Defined in: [data/valueCreationData.ts:195](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/data/valueCreationData.ts#L195)
+Defined in: [data/valueCreationData.ts:194](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/data/valueCreationData.ts#L194)
 
 Business considerations by security level

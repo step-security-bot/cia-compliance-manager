@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.70**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.71**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: MetricCardProps
 
-Defined in: [types/componentPropExports.ts:441](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/types/componentPropExports.ts#L441)
+Defined in: [types/componentPropExports.ts:433](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/types/componentPropExports.ts#L433)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [types/componentPropExports.ts:441](https://github.com/Hack23/cia-co
 
 > **label**: `string`
 
-Defined in: [types/componentPropExports.ts:445](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/types/componentPropExports.ts#L445)
+Defined in: [types/componentPropExports.ts:437](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/types/componentPropExports.ts#L437)
 
 Metric label
 
@@ -24,7 +24,7 @@ Metric label
 
 > **value**: `string` \| `number`
 
-Defined in: [types/componentPropExports.ts:450](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/types/componentPropExports.ts#L450)
+Defined in: [types/componentPropExports.ts:442](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/types/componentPropExports.ts#L442)
 
 Metric value
 
@@ -34,7 +34,7 @@ Metric value
 
 > `optional` **unit?**: `string`
 
-Defined in: [types/componentPropExports.ts:455](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/types/componentPropExports.ts#L455)
+Defined in: [types/componentPropExports.ts:447](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/types/componentPropExports.ts#L447)
 
 Optional unit (e.g., '%', '$')
 
@@ -44,7 +44,7 @@ Optional unit (e.g., '%', '$')
 
 > `optional` **icon?**: `ReactNode`
 
-Defined in: [types/componentPropExports.ts:460](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/types/componentPropExports.ts#L460)
+Defined in: [types/componentPropExports.ts:452](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/types/componentPropExports.ts#L452)
 
 Optional icon
 
@@ -54,7 +54,7 @@ Optional icon
 
 > `optional` **description?**: `string`
 
-Defined in: [types/componentPropExports.ts:465](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/types/componentPropExports.ts#L465)
+Defined in: [types/componentPropExports.ts:457](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/types/componentPropExports.ts#L457)
 
 Optional description/subtitle
 
@@ -64,7 +64,7 @@ Optional description/subtitle
 
 > `optional` **variant?**: `"success"` \| `"info"` \| `"warning"` \| `"error"` \| `"primary"` \| `"default"`
 
-Defined in: [types/componentPropExports.ts:470](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/types/componentPropExports.ts#L470)
+Defined in: [types/componentPropExports.ts:462](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/types/componentPropExports.ts#L462)
 
 Optional color variant
 
@@ -74,7 +74,7 @@ Optional color variant
 
 > `optional` **testId?**: `string`
 
-Defined in: [types/componentPropExports.ts:475](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/types/componentPropExports.ts#L475)
+Defined in: [types/componentPropExports.ts:467](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/types/componentPropExports.ts#L467)
 
 Test ID
 
@@ -84,7 +84,7 @@ Test ID
 
 > `optional` **className?**: `string`
 
-Defined in: [types/componentPropExports.ts:480](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/types/componentPropExports.ts#L480)
+Defined in: [types/componentPropExports.ts:472](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/types/componentPropExports.ts#L472)
 
 Optional CSS class
 
@@ -94,6 +94,6 @@ Optional CSS class
 
 > `optional` **ariaLabel?**: `string`
 
-Defined in: [types/componentPropExports.ts:485](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/types/componentPropExports.ts#L485)
+Defined in: [types/componentPropExports.ts:477](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/types/componentPropExports.ts#L477)
 
 Optional aria-label for accessibility

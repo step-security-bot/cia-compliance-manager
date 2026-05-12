@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.70**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.71**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **calculateTotalOpex**(`availabilityLevel`, `integrityLevel`, `confidentialityLevel`): `number`
 
-Defined in: [constants/costConstants.ts:289](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/constants/costConstants.ts#L289)
+Defined in: [constants/costConstants.ts:282](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/constants/costConstants.ts#L282)
 
 Calculate total OPEX for all components
 

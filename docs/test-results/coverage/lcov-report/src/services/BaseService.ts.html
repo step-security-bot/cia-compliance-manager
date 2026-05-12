@@ -519,16 +519,7 @@
 <a name='L454'></a><a href='#L454'>454</a>
 <a name='L455'></a><a href='#L455'>455</a>
 <a name='L456'></a><a href='#L456'>456</a>
-<a name='L457'></a><a href='#L457'>457</a>
-<a name='L458'></a><a href='#L458'>458</a>
-<a name='L459'></a><a href='#L459'>459</a>
-<a name='L460'></a><a href='#L460'>460</a>
-<a name='L461'></a><a href='#L461'>461</a>
-<a name='L462'></a><a href='#L462'>462</a>
-<a name='L463'></a><a href='#L463'>463</a>
-<a name='L464'></a><a href='#L464'>464</a>
-<a name='L465'></a><a href='#L465'>465</a>
-<a name='L466'></a><a href='#L466'>466</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L457'></a><a href='#L457'>457</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -584,7 +575,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2027x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -601,8 +591,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -620,7 +608,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -636,7 +623,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -761,7 +747,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -775,7 +760,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -812,11 +796,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
@@ -1049,7 +1031,6 @@ export class BaseService implements CIAService, IBaseService {
    * @param dataProvider - Data provider for security information
    */
   constructor(dataProvider: CIADataProvider) {
-    // Validate data provider
     <span class="missing-if-branch" title="if path not taken" >I</span>if (!dataProvider) {
 <span class="cstat-no" title="statement not covered" >      throw createValidationError(</span>
         'Data provider is required',
@@ -1066,8 +1047,6 @@ export class BaseService implements CIAService, IBaseService {
    * @returns True if valid, false otherwise
    */
 <span class="fstat-no" title="function not covered" >  public v</span>alidate(input: unknown): boolean {
-    // Default implementation returns true
-    // Subclasses should override this method
 <span class="cstat-no" title="statement not covered" >    return input !== null &amp;&amp; input !== undefined;</span>
   }
 &nbsp;
@@ -1097,13 +1076,11 @@ export class BaseService implements CIAService, IBaseService {
    * @returns ServiceError
    */
   public handleError(error: Error): ServiceError {
-    // If already a ServiceError, return it
     <span class="missing-if-branch" title="if path not taken" >I</span>if (isServiceError(error)) {
 <span class="cstat-no" title="statement not covered" >      logger.error(error.getFormattedMessage());</span>
 <span class="cstat-no" title="statement not covered" >      return error;</span>
     }
 &nbsp;
-    // Convert to ServiceError
     const serviceError = new ServiceError(
       error.message,
       ServiceErrorCode.INTERNAL_ERROR,
@@ -1226,7 +1203,6 @@ export class BaseService implements CIAService, IBaseService {
    * Get security level description
    */
   public getSecurityLevelDescription(level: SecurityLevel): string {
-    // Default implementation
     switch (level) {
       case "None":
         return "No security controls";
@@ -1247,7 +1223,6 @@ export class BaseService implements CIAService, IBaseService {
    * Get risk level from security level
    */
   public getRiskLevelFromSecurityLevel(level: SecurityLevel): string {
-    // Modified to return the exact format expected by tests
     const riskLevels: Record&lt;SecurityLevel, string&gt; = {
       None: "Critical",
       Low: "High",
@@ -1277,13 +1252,11 @@ export class BaseService implements CIAService, IBaseService {
    * Get default security icon for a level
    */
   protected getDefaultSecurityIcon(level: SecurityLevel): string {
-    // Check if dataProvider provides the method and if it returns a non-null value
     <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof this.dataProvider.getDefaultSecurityIcon === "function") {
       const icon = this.dataProvider.getDefaultSecurityIcon(level);
       if (icon) return icon;
     }
 &nbsp;
-    // Default icons
     switch (level) {
       case "None":
         return "⚠️";
@@ -1465,7 +1438,7 @@ export class BaseService implements CIAService, IBaseService {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-05-11T17:11:18.393Z
+                at 2026-05-12T12:44:39.350Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

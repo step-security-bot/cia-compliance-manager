@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.70**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.71**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **COST\_COMPONENTS**: `object`
 
-Defined in: [constants/costConstants.ts:168](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/constants/costConstants.ts#L168)
+Defined in: [constants/costConstants.ts:161](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/constants/costConstants.ts#L161)
 
 Typical cost components for security implementations
 

@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.70**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.71**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getWidgetRowSpan**(`_size`): `string`
 
-Defined in: [utils/widgetHelpers.ts:80](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/utils/widgetHelpers.ts#L80)
+Defined in: [utils/widgetHelpers.ts:77](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/utils/widgetHelpers.ts#L77)
 
 ## Parameters
 

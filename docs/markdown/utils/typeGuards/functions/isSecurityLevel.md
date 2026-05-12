@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.70**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.71**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **isSecurityLevel**(`value`): `value is SecurityLevel`
 
-Defined in: [utils/typeGuards.ts:461](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/utils/typeGuards.ts#L461)
+Defined in: [utils/typeGuards.ts:448](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/utils/typeGuards.ts#L448)
 
 Type guard for SecurityLevel
 

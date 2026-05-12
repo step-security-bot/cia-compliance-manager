@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.70**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.71**](../../../README.md)
 
 ***
 
@@ -8,13 +8,21 @@
 
 > **useComplianceService**(): `object`
 
-Defined in: [hooks/useComplianceService.ts:8](https://github.com/Hack23/cia-compliance-manager/blob/761505116bf51c4d4f34df509345cff1443ea33a/src/hooks/useComplianceService.ts#L8)
+Defined in: [hooks/useComplianceService.ts:26](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/hooks/useComplianceService.ts#L26)
 
 Hook to access compliance service functionality
+
+## Business Perspective
+
+Provides compliance status and framework validation capabilities for CIA security levels.
+Enables widgets to determine which compliance frameworks are satisfied based on
+selected security configurations. 📋
 
 ## Returns
 
 `object`
+
+Object containing complianceService, isLoading state, and error state
 
 ### isLoading
 
@@ -27,3 +35,14 @@ Hook to access compliance service functionality
 ### error
 
 > **error**: `Error` \| `null`
+
+## Example
+
+```typescript
+const { complianceService, isLoading, error } = useComplianceService();
+
+if (!isLoading && complianceService) {
+  const status = complianceService.getComplianceStatus('High', 'High', 'High');
+  console.log(status?.compliantFrameworks);
+}
+```
