@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.71**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.72**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getStatusVariant**(`level`): [`StatusType`](../../../types/common/StatusTypes/type-aliases/StatusType.md)
 
-Defined in: [utils/statusUtils.ts:47](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/utils/statusUtils.ts#L47)
+Defined in: [utils/statusUtils.ts:47](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/utils/statusUtils.ts#L47)
 
 Converts a risk level string to a status badge variant
 

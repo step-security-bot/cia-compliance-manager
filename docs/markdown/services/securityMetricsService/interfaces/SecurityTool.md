@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.71**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.72**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: SecurityTool
 
-Defined in: [services/securityMetricsService.ts:14](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/securityMetricsService.ts#L14)
+Defined in: [services/securityMetricsService.ts:14](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/securityMetricsService.ts#L14)
 
 Represents a security tool recommendation
 
@@ -16,7 +16,7 @@ Represents a security tool recommendation
 
 > **name**: `string`
 
-Defined in: [services/securityMetricsService.ts:15](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/securityMetricsService.ts#L15)
+Defined in: [services/securityMetricsService.ts:15](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/securityMetricsService.ts#L15)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [services/securityMetricsService.ts:15](https://github.com/Hack23/ci
 
 > **example**: `string`
 
-Defined in: [services/securityMetricsService.ts:16](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/securityMetricsService.ts#L16)
+Defined in: [services/securityMetricsService.ts:16](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/securityMetricsService.ts#L16)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: [services/securityMetricsService.ts:16](https://github.com/Hack23/ci
 
 > **purpose**: `string`
 
-Defined in: [services/securityMetricsService.ts:17](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/securityMetricsService.ts#L17)
+Defined in: [services/securityMetricsService.ts:17](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/securityMetricsService.ts#L17)

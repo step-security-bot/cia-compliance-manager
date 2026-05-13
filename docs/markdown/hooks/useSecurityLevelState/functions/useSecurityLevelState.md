@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.71**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.72**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **useSecurityLevelState**(`initialLevels?`): [`UseSecurityLevelStateReturn`](../interfaces/UseSecurityLevelStateReturn.md)
 
-Defined in: [hooks/useSecurityLevelState.ts:78](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/hooks/useSecurityLevelState.ts#L78)
+Defined in: [hooks/useSecurityLevelState.ts:78](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/hooks/useSecurityLevelState.ts#L78)
 
 Custom hook for managing CIA triad security levels
 

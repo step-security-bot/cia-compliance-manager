@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.71**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.72**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Class: CIAContentService
 
-Defined in: [services/ciaContentService.ts:164](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L164)
+Defined in: [services/ciaContentService.ts:164](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L164)
 
 Main service to provide CIA content and utilities throughout the application
 
@@ -26,7 +26,7 @@ impact analysis, technical implementations, and compliance requirements. 🔒
 
 > **new CIAContentService**(`dataProvider?`): `CIAContentService`
 
-Defined in: [services/ciaContentService.ts:172](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L172)
+Defined in: [services/ciaContentService.ts:172](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L172)
 
 #### Parameters
 
@@ -48,7 +48,7 @@ Defined in: [services/ciaContentService.ts:172](https://github.com/Hack23/cia-co
 
 > `readonly` **name**: `string` = `'BaseService'`
 
-Defined in: [services/BaseService.ts:44](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/BaseService.ts#L44)
+Defined in: [services/BaseService.ts:44](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/BaseService.ts#L44)
 
 Service name for identification
 
@@ -62,7 +62,7 @@ Service name for identification
 
 > **validate**(`input`): `boolean`
 
-Defined in: [services/BaseService.ts:72](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/BaseService.ts#L72)
+Defined in: [services/BaseService.ts:72](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/BaseService.ts#L72)
 
 Validate input parameters (to be overridden by subclasses)
 
@@ -90,7 +90,7 @@ True if valid, false otherwise
 
 > **handleError**(`error`): [`ServiceError`](../../errors/classes/ServiceError.md)
 
-Defined in: [services/BaseService.ts:101](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/BaseService.ts#L101)
+Defined in: [services/BaseService.ts:101](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/BaseService.ts#L101)
 
 Handle errors consistently across services
 
@@ -118,7 +118,7 @@ ServiceError
 
 > **getRiskLevelFromSecurityLevel**(`level`): `string`
 
-Defined in: [services/BaseService.ts:248](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/BaseService.ts#L248)
+Defined in: [services/BaseService.ts:248](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/BaseService.ts#L248)
 
 Get risk level from security level
 
@@ -142,7 +142,7 @@ Get risk level from security level
 
 > **initialize**(): `Promise`\<`void`\>
 
-Defined in: [services/ciaContentService.ts:199](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L199)
+Defined in: [services/ciaContentService.ts:199](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L199)
 
 Initialize the service
 This is a placeholder for any async initialization that might be needed
@@ -157,7 +157,7 @@ This is a placeholder for any async initialization that might be needed
 
 > **getCIAOptions**(`component`): `Record`\<[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md), [`CIADetails`](../../../types/cia-services/interfaces/CIADetails.md)\>
 
-Defined in: [services/ciaContentService.ts:227](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L227)
+Defined in: [services/ciaContentService.ts:227](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L227)
 
 Get options data for a CIA component
 
@@ -204,7 +204,7 @@ Object.entries(options).forEach(([level, details]) => {
 
 > **getComponentDetails**(`component`, `level`): [`CIADetails`](../../../types/cia-services/interfaces/CIADetails.md) \| `undefined`
 
-Defined in: [services/ciaContentService.ts:324](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L324)
+Defined in: [services/ciaContentService.ts:324](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L324)
 
 Get details for a specific component and security level
 
@@ -265,7 +265,7 @@ if (details) {
 
 > **getROIEstimate**(`level`): [`ROIEstimate`](../../../types/cia-services/interfaces/ROIEstimate.md)
 
-Defined in: [services/ciaContentService.ts:374](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L374)
+Defined in: [services/ciaContentService.ts:374](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L374)
 
 Get ROI (Return on Investment) estimate for a security level
 
@@ -311,7 +311,7 @@ console.log('Description:', roi.description);
 
 > **getROIEstimates**(`level`): [`ROIEstimate`](../../../types/cia-services/interfaces/ROIEstimate.md)
 
-Defined in: [services/ciaContentService.ts:406](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L406)
+Defined in: [services/ciaContentService.ts:406](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L406)
 
 Get ROI estimates for a specific security level
 
@@ -331,7 +331,7 @@ Get ROI estimates for a specific security level
 
 > **getAllROIEstimates**(): [`ROIEstimatesMap`](../../../types/cia-services/interfaces/ROIEstimatesMap.md)
 
-Defined in: [services/ciaContentService.ts:466](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L466)
+Defined in: [services/ciaContentService.ts:466](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L466)
 
 Get overall ROI estimates map
 
@@ -345,7 +345,7 @@ Get overall ROI estimates map
 
 > **getBusinessImpact**(`component`, `level`): [`BusinessImpactDetails`](../../../types/cia-services/interfaces/BusinessImpactDetails.md)
 
-Defined in: [services/ciaContentService.ts:470](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L470)
+Defined in: [services/ciaContentService.ts:470](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L470)
 
 #### Parameters
 
@@ -367,7 +367,7 @@ Defined in: [services/ciaContentService.ts:470](https://github.com/Hack23/cia-co
 
 > **getTechnicalImplementation**(`_component`, `level`): [`TechnicalImplementationDetails`](../../../types/cia-services/interfaces/TechnicalImplementationDetails.md)
 
-Defined in: [services/ciaContentService.ts:480](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L480)
+Defined in: [services/ciaContentService.ts:480](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L480)
 
 Get technical implementation details for a component and security level
 
@@ -391,7 +391,7 @@ Get technical implementation details for a component and security level
 
 > **getComponentImplementationDetails**(`component`, `level`): [`TechnicalImplementationDetails`](../../../types/cia-services/interfaces/TechnicalImplementationDetails.md)
 
-Defined in: [services/ciaContentService.ts:493](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L493)
+Defined in: [services/ciaContentService.ts:493](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L493)
 
 Get component implementation details
 
@@ -415,7 +415,7 @@ Get component implementation details
 
 > **getBusinessImpactDescription**(`component`, `level`): `string`
 
-Defined in: [services/ciaContentService.ts:506](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L506)
+Defined in: [services/ciaContentService.ts:506](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L506)
 
 Get business impact description
 
@@ -439,7 +439,7 @@ Get business impact description
 
 > **getTechnicalDescription**(`component`, `level`): `string`
 
-Defined in: [services/ciaContentService.ts:519](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L519)
+Defined in: [services/ciaContentService.ts:519](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L519)
 
 Get technical description
 
@@ -463,7 +463,7 @@ Get technical description
 
 > **getDetailedDescription**(`component`, `level`): [`BusinessImpactDetails`](../../../types/cia-services/interfaces/BusinessImpactDetails.md)
 
-Defined in: [services/ciaContentService.ts:532](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L532)
+Defined in: [services/ciaContentService.ts:532](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L532)
 
 Get detailed description
 
@@ -487,7 +487,7 @@ Get detailed description
 
 > **getRecommendations**(`component`, `level`): `string`[]
 
-Defined in: [services/ciaContentService.ts:554](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L554)
+Defined in: [services/ciaContentService.ts:554](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L554)
 
 Get recommendations
 
@@ -511,7 +511,7 @@ Get recommendations
 
 > **calculateRoi**(`level`, `implementationCost`): [`ROIMetrics`](../interfaces/ROIMetrics.md)
 
-Defined in: [services/ciaContentService.ts:567](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L567)
+Defined in: [services/ciaContentService.ts:567](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L567)
 
 Calculate ROI
 
@@ -535,7 +535,7 @@ Calculate ROI
 
 > **getSecurityMetrics**(`availabilityLevel`, `integrityLevel?`, `confidentialityLevel?`): [`SecurityMetrics`](../../securityMetricsService/interfaces/SecurityMetrics.md)
 
-Defined in: [services/ciaContentService.ts:607](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L607)
+Defined in: [services/ciaContentService.ts:607](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L607)
 
 Get security metrics
 
@@ -563,7 +563,7 @@ Get security metrics
 
 > **getComplianceStatus**(`availabilityLevel`, `integrityLevel`, `confidentialityLevel`): [`ComplianceStatusDetails`](../../../types/compliance/interfaces/ComplianceStatusDetails.md)
 
-Defined in: [services/ciaContentService.ts:622](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L622)
+Defined in: [services/ciaContentService.ts:622](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L622)
 
 Get compliance status
 
@@ -591,7 +591,7 @@ Get compliance status
 
 > **getComponentMetrics**(`component`, `level`): [`ComponentMetrics`](../../securityMetricsService/interfaces/ComponentMetrics.md)
 
-Defined in: [services/ciaContentService.ts:637](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L637)
+Defined in: [services/ciaContentService.ts:637](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L637)
 
 Get component metrics
 
@@ -615,7 +615,7 @@ Get component metrics
 
 > **getImpactMetrics**(`component`, `level`): [`ImpactMetrics`](../../securityMetricsService/interfaces/ImpactMetrics.md)
 
-Defined in: [services/ciaContentService.ts:647](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L647)
+Defined in: [services/ciaContentService.ts:647](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L647)
 
 Get impact metrics
 
@@ -639,7 +639,7 @@ Get impact metrics
 
 > **getSecurityResources**(`component`, `level`): [`EnhancedSecurityResource`](../../../types/securityResources/interfaces/EnhancedSecurityResource.md)[]
 
-Defined in: [services/ciaContentService.ts:654](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L654)
+Defined in: [services/ciaContentService.ts:654](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L654)
 
 Get security resources
 
@@ -663,7 +663,7 @@ Get security resources
 
 > **getSecurityLevelDescription**(`level`): `string`
 
-Defined in: [services/ciaContentService.ts:664](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L664)
+Defined in: [services/ciaContentService.ts:664](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L664)
 
 Get security level description
 
@@ -687,7 +687,7 @@ Get security level description
 
 > **getProtectionLevel**(`level`): `string`
 
-Defined in: [services/ciaContentService.ts:671](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L671)
+Defined in: [services/ciaContentService.ts:671](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L671)
 
 Get protection level
 
@@ -707,7 +707,7 @@ Get protection level
 
 > **calculateBusinessImpactLevel**(`availabilityLevel`, `integrityLevel?`, `confidentialityLevel?`): `string`
 
-Defined in: [services/ciaContentService.ts:683](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L683)
+Defined in: [services/ciaContentService.ts:683](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L683)
 
 Calculate business impact level based on security levels
 
@@ -743,7 +743,7 @@ Business impact level description
 
 > **getRiskBadgeVariant**(`riskLevel`): `"success"` \| `"info"` \| `"warning"` \| `"error"` \| `"neutral"`
 
-Defined in: [services/ciaContentService.ts:698](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L698)
+Defined in: [services/ciaContentService.ts:698](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L698)
 
 Get risk badge variant
 
@@ -763,7 +763,7 @@ Get risk badge variant
 
 > **getCategoryIcon**(`category`): `string`
 
-Defined in: [services/ciaContentService.ts:705](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L705)
+Defined in: [services/ciaContentService.ts:705](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L705)
 
 Get category icon
 
@@ -783,7 +783,7 @@ Get category icon
 
 > **getValuePoints**(`level`): `string`[]
 
-Defined in: [services/ciaContentService.ts:712](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L712)
+Defined in: [services/ciaContentService.ts:712](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L712)
 
 Get value points
 
@@ -807,7 +807,7 @@ Get value points
 
 > **getImplementationConsiderations**(`levels`): `string`
 
-Defined in: [services/ciaContentService.ts:722](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L722)
+Defined in: [services/ciaContentService.ts:722](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L722)
 
 Get implementation considerations for the given CIA levels.
 
@@ -831,7 +831,7 @@ String with implementation considerations
 
 > **getSecurityIcon**(`level`): `string`
 
-Defined in: [services/ciaContentService.ts:737](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L737)
+Defined in: [services/ciaContentService.ts:737](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L737)
 
 Get security icon
 
@@ -851,7 +851,7 @@ Get security icon
 
 > **getCompliantFrameworks**(`level`): `string`[]
 
-Defined in: [services/ciaContentService.ts:744](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L744)
+Defined in: [services/ciaContentService.ts:744](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L744)
 
 Get compliant frameworks
 
@@ -871,7 +871,7 @@ Get compliant frameworks
 
 > **getFrameworkDescription**(`framework`): `string`
 
-Defined in: [services/ciaContentService.ts:751](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L751)
+Defined in: [services/ciaContentService.ts:751](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L751)
 
 Get framework description
 
@@ -891,7 +891,7 @@ Get framework description
 
 > **getFrameworkRequiredLevel**(`component`, `level`): `string`
 
-Defined in: [services/ciaContentService.ts:758](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L758)
+Defined in: [services/ciaContentService.ts:758](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L758)
 
 Get framework required level for a component
 
@@ -915,7 +915,7 @@ Get framework required level for a component
 
 > **getImplementationTime**(`level`): `string`
 
-Defined in: [services/ciaContentService.ts:797](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L797)
+Defined in: [services/ciaContentService.ts:797](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L797)
 
 Get implementation time
 
@@ -935,7 +935,7 @@ Get implementation time
 
 > **getTotalImplementationTime**(`availabilityLevel`, `integrityLevel`, `confidentialityLevel`): `string`
 
-Defined in: [services/ciaContentService.ts:804](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L804)
+Defined in: [services/ciaContentService.ts:804](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L804)
 
 Get total implementation time for combined security levels
 
@@ -963,7 +963,7 @@ Get total implementation time for combined security levels
 
 > **getRequiredExpertise**(`availabilityLevel`, `integrityLevel`, `confidentialityLevel`): `string`
 
-Defined in: [services/ciaContentService.ts:838](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L838)
+Defined in: [services/ciaContentService.ts:838](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L838)
 
 Get required expertise based on selected security levels
 
@@ -991,7 +991,7 @@ Get required expertise based on selected security levels
 
 > **getRecommendedImplementationPlan**(`availabilityLevel`, `integrityLevel`, `confidentialityLevel`): `string`
 
-Defined in: [services/ciaContentService.ts:868](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L868)
+Defined in: [services/ciaContentService.ts:868](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L868)
 
 Get recommended implementation plan based on selected security levels
 
@@ -1019,7 +1019,7 @@ Get recommended implementation plan based on selected security levels
 
 > **getInformationSensitivity**(`level`): `string`
 
-Defined in: [services/ciaContentService.ts:896](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L896)
+Defined in: [services/ciaContentService.ts:896](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L896)
 
 Get information sensitivity classification for a security level
 
@@ -1043,7 +1043,7 @@ Information sensitivity classification
 
 > **getComponentContent**(`component`, `level`): `object`
 
-Defined in: [services/ciaContentService.ts:920](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L920)
+Defined in: [services/ciaContentService.ts:920](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L920)
 
 Get component content details for a specific component and security level
 
@@ -1089,7 +1089,7 @@ Component content details
 
 > **getBusinessImpactContent**(`component`, `level`): `string`
 
-Defined in: [services/ciaContentService.ts:963](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L963)
+Defined in: [services/ciaContentService.ts:963](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L963)
 
 Get business impact content for a specific component and security level
 
@@ -1119,7 +1119,7 @@ Business impact content as formatted string
 
 > **getSummaryContent**(`availabilityLevel`, `integrityLevel`, `confidentialityLevel`): `string`
 
-Defined in: [services/ciaContentService.ts:1012](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L1012)
+Defined in: [services/ciaContentService.ts:1012](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L1012)
 
 Get summary content for all three CIA components
 
@@ -1155,7 +1155,7 @@ Summary content as formatted string
 
 > **getComplianceDescription**(`level`): `string`
 
-Defined in: [services/ciaContentService.ts:1099](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L1099)
+Defined in: [services/ciaContentService.ts:1099](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L1099)
 
 Get compliance description for a specific security level
 
@@ -1179,7 +1179,7 @@ Compliance description
 
 > **getKeyValuePoints**(`_component`, `level`): `string`[]
 
-Defined in: [services/ciaContentService.ts:1123](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L1123)
+Defined in: [services/ciaContentService.ts:1123](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L1123)
 
 Get key value points for a specific component and security level
 
@@ -1207,7 +1207,7 @@ Array of value points
 
 > **getDefaultPrivacyImpact**(`level`): `string`
 
-Defined in: [services/ciaContentService.ts:1136](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L1136)
+Defined in: [services/ciaContentService.ts:1136](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L1136)
 
 Get default privacy impact based on security level
 
@@ -1231,7 +1231,7 @@ Privacy impact description
 
 > **getDefaultSLAMetrics**(`level`): `object`
 
-Defined in: [services/ciaContentService.ts:1159](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L1159)
+Defined in: [services/ciaContentService.ts:1159](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L1159)
 
 Get default SLA metrics based on security level
 
@@ -1275,7 +1275,7 @@ SLA metrics for availability
 
 > **getDefaultValidationLevel**(`level`): `string`
 
-Defined in: [services/ciaContentService.ts:1224](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L1224)
+Defined in: [services/ciaContentService.ts:1224](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L1224)
 
 Get default data validation level based on security level
 
@@ -1299,7 +1299,7 @@ Validation level description
 
 > **getDefaultErrorRate**(`level`): `string`
 
-Defined in: [services/ciaContentService.ts:1247](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/services/ciaContentService.ts#L1247)
+Defined in: [services/ciaContentService.ts:1247](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/services/ciaContentService.ts#L1247)
 
 Get default error rate based on security level
 

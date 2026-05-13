@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.71**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.72**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > **CIAComponentType** = `"confidentiality"` \| `"integrity"` \| `"availability"`
 
-Defined in: [types/cia-services.ts:45](https://github.com/Hack23/cia-compliance-manager/blob/a041326f9c457337cb564b4c94a2078e965cfb67/src/types/cia-services.ts#L45)
+Defined in: [types/cia-services.ts:45](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/types/cia-services.ts#L45)
 
 Type representing CIA component types
