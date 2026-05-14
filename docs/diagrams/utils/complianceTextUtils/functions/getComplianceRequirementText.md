@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.72**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.73**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getComplianceRequirementText**(`component`, `level`): `string`
 
-Defined in: [utils/complianceTextUtils.ts:28](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/utils/complianceTextUtils.ts#L28)
+Defined in: [utils/complianceTextUtils.ts:28](https://github.com/Hack23/cia-compliance-manager/blob/4b899266e126b7483606799cc60e609bb932c74e/src/utils/complianceTextUtils.ts#L28)
 
 Gets compliance requirement text for a security component and level
 

@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.72**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.73**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getProgressAriaProps**(`label`, `valuenow`, `valuemin?`, `valuemax?`, `valuetext?`): `object`
 
-Defined in: [utils/accessibility.ts:331](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/utils/accessibility.ts#L331)
+Defined in: [utils/accessibility.ts:331](https://github.com/Hack23/cia-compliance-manager/blob/4b899266e126b7483606799cc60e609bb932c74e/src/utils/accessibility.ts#L331)
 
 Generate ARIA props for a progress bar or meter
 

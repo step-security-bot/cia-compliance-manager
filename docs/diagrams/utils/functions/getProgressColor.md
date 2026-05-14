@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.72**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.73**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getProgressColor**(`progress`): `"text-green-500"` \| `"text-blue-500"` \| `"text-yellow-500"` \| `"text-red-500"`
 
-Defined in: [utils/index.ts:55](https://github.com/Hack23/cia-compliance-manager/blob/b1e3e6a4b46e82b2bf6550c217205c9e138cce5a/src/utils/index.ts#L55)
+Defined in: [utils/index.ts:55](https://github.com/Hack23/cia-compliance-manager/blob/4b899266e126b7483606799cc60e609bb932c74e/src/utils/index.ts#L55)
 
 ## Parameters
 
