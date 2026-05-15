@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.73**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.74**](../../../README.md)
 
 ***
 
@@ -8,4 +8,4 @@
 
 > **RiskLevel** = *typeof* [`RISK_LEVELS`](../variables/RISK_LEVELS.md)\[keyof *typeof* [`RISK_LEVELS`](../variables/RISK_LEVELS.md)\]
 
-Defined in: [constants/riskConstants.ts:16](https://github.com/Hack23/cia-compliance-manager/blob/4b899266e126b7483606799cc60e609bb932c74e/src/constants/riskConstants.ts#L16)
+Defined in: [constants/riskConstants.ts:16](https://github.com/Hack23/cia-compliance-manager/blob/a913226273db6b85a320c35f59cd28b443d0365e/src/constants/riskConstants.ts#L16)

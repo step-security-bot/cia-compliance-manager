@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.73**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.74**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **hasTagValue**(`obj`, `tagValue`): `boolean`
 
-Defined in: [utils/typeGuards.ts:588](https://github.com/Hack23/cia-compliance-manager/blob/4b899266e126b7483606799cc60e609bb932c74e/src/utils/typeGuards.ts#L588)
+Defined in: [utils/typeGuards.ts:588](https://github.com/Hack23/cia-compliance-manager/blob/a913226273db6b85a320c35f59cd28b443d0365e/src/utils/typeGuards.ts#L588)
 
 Checks if an object has a specific tag value
 

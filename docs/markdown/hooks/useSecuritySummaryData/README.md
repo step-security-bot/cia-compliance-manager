@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.73**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.74**](../../README.md)
 
 ***
 
