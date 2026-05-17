@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.74**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.75**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getComponentIcon**(`component`): `string`
 
-Defined in: [constants/uiConstants.ts:67](https://github.com/Hack23/cia-compliance-manager/blob/a913226273db6b85a320c35f59cd28b443d0365e/src/constants/uiConstants.ts#L67)
+Defined in: [constants/uiConstants.ts:67](https://github.com/Hack23/cia-compliance-manager/blob/a6c7db5280f5aeb6cc66c1125f8c3d523ae00a40/src/constants/uiConstants.ts#L67)
 
 Get icon for a specific CIA component
 

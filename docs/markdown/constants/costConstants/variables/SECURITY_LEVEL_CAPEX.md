@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.74**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.75**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **SECURITY\_LEVEL\_CAPEX**: `Record`\<[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md), `number`\>
 
-Defined in: [constants/costConstants.ts:177](https://github.com/Hack23/cia-compliance-manager/blob/a913226273db6b85a320c35f59cd28b443d0365e/src/constants/costConstants.ts#L177)
+Defined in: [constants/costConstants.ts:177](https://github.com/Hack23/cia-compliance-manager/blob/a6c7db5280f5aeb6cc66c1125f8c3d523ae00a40/src/constants/costConstants.ts#L177)
 
 CAPEX cost ratio for each security level
 Used for calculating implementation costs

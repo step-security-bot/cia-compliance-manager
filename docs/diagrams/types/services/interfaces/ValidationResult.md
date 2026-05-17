@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.74**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.75**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: ValidationResult
 
-Defined in: [types/services.ts:433](https://github.com/Hack23/cia-compliance-manager/blob/a913226273db6b85a320c35f59cd28b443d0365e/src/types/services.ts#L433)
+Defined in: [types/services.ts:433](https://github.com/Hack23/cia-compliance-manager/blob/a6c7db5280f5aeb6cc66c1125f8c3d523ae00a40/src/types/services.ts#L433)
 
 Detailed validation result (for internal use)
 
@@ -16,7 +16,7 @@ Detailed validation result (for internal use)
 
 > **valid**: `boolean`
 
-Defined in: [types/services.ts:437](https://github.com/Hack23/cia-compliance-manager/blob/a913226273db6b85a320c35f59cd28b443d0365e/src/types/services.ts#L437)
+Defined in: [types/services.ts:437](https://github.com/Hack23/cia-compliance-manager/blob/a6c7db5280f5aeb6cc66c1125f8c3d523ae00a40/src/types/services.ts#L437)
 
 Whether validation passed
 
@@ -26,6 +26,6 @@ Whether validation passed
 
 > **errors**: `string`[]
 
-Defined in: [types/services.ts:442](https://github.com/Hack23/cia-compliance-manager/blob/a913226273db6b85a320c35f59cd28b443d0365e/src/types/services.ts#L442)
+Defined in: [types/services.ts:442](https://github.com/Hack23/cia-compliance-manager/blob/a6c7db5280f5aeb6cc66c1125f8c3d523ae00a40/src/types/services.ts#L442)
 
 Validation errors if any
