@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.75**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.76**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **handleApiError**(`error`, `operation`): `string`
 
-Defined in: [utils/errorUtils.ts:188](https://github.com/Hack23/cia-compliance-manager/blob/a6c7db5280f5aeb6cc66c1125f8c3d523ae00a40/src/utils/errorUtils.ts#L188)
+Defined in: [utils/errorUtils.ts:188](https://github.com/Hack23/cia-compliance-manager/blob/51ee42c9c3b472e585f56fbb8f6773f8ab7e935a/src/utils/errorUtils.ts#L188)
 
 Handle an API error with operation context
 

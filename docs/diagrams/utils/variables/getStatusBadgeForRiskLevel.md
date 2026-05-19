@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.75**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.76**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getStatusBadgeForRiskLevel**: (`riskLevel`) => [`StatusType`](../../types/common/StatusTypes/type-aliases/StatusType.md)
 
-Defined in: [utils/index.ts:110](https://github.com/Hack23/cia-compliance-manager/blob/a6c7db5280f5aeb6cc66c1125f8c3d523ae00a40/src/utils/index.ts#L110)
+Defined in: [utils/index.ts:110](https://github.com/Hack23/cia-compliance-manager/blob/51ee42c9c3b472e585f56fbb8f6773f8ab7e935a/src/utils/index.ts#L110)
 
 Get status badge variant for risk level
 

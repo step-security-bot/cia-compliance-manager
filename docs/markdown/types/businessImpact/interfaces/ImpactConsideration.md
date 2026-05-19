@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.75**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.76**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: ImpactConsideration
 
-Defined in: [types/businessImpact.ts:218](https://github.com/Hack23/cia-compliance-manager/blob/a6c7db5280f5aeb6cc66c1125f8c3d523ae00a40/src/types/businessImpact.ts#L218)
+Defined in: [types/businessImpact.ts:218](https://github.com/Hack23/cia-compliance-manager/blob/51ee42c9c3b472e585f56fbb8f6773f8ab7e935a/src/types/businessImpact.ts#L218)
 
 Impact consideration type used in component business considerations
 
@@ -16,7 +16,7 @@ Impact consideration type used in component business considerations
 
 > **title**: `string`
 
-Defined in: [types/businessImpact.ts:220](https://github.com/Hack23/cia-compliance-manager/blob/a6c7db5280f5aeb6cc66c1125f8c3d523ae00a40/src/types/businessImpact.ts#L220)
+Defined in: [types/businessImpact.ts:220](https://github.com/Hack23/cia-compliance-manager/blob/51ee42c9c3b472e585f56fbb8f6773f8ab7e935a/src/types/businessImpact.ts#L220)
 
 Title of the consideration
 
@@ -26,7 +26,7 @@ Title of the consideration
 
 > **description**: `string`
 
-Defined in: [types/businessImpact.ts:223](https://github.com/Hack23/cia-compliance-manager/blob/a6c7db5280f5aeb6cc66c1125f8c3d523ae00a40/src/types/businessImpact.ts#L223)
+Defined in: [types/businessImpact.ts:223](https://github.com/Hack23/cia-compliance-manager/blob/51ee42c9c3b472e585f56fbb8f6773f8ab7e935a/src/types/businessImpact.ts#L223)
 
 Description of the consideration
 
@@ -36,7 +36,7 @@ Description of the consideration
 
 > `optional` **type?**: `string`
 
-Defined in: [types/businessImpact.ts:226](https://github.com/Hack23/cia-compliance-manager/blob/a6c7db5280f5aeb6cc66c1125f8c3d523ae00a40/src/types/businessImpact.ts#L226)
+Defined in: [types/businessImpact.ts:226](https://github.com/Hack23/cia-compliance-manager/blob/51ee42c9c3b472e585f56fbb8f6773f8ab7e935a/src/types/businessImpact.ts#L226)
 
 Type of the consideration
 
@@ -46,7 +46,7 @@ Type of the consideration
 
 > `optional` **businessArea?**: `string`
 
-Defined in: [types/businessImpact.ts:229](https://github.com/Hack23/cia-compliance-manager/blob/a6c7db5280f5aeb6cc66c1125f8c3d523ae00a40/src/types/businessImpact.ts#L229)
+Defined in: [types/businessImpact.ts:229](https://github.com/Hack23/cia-compliance-manager/blob/51ee42c9c3b472e585f56fbb8f6773f8ab7e935a/src/types/businessImpact.ts#L229)
 
 Business area affected
 
@@ -56,7 +56,7 @@ Business area affected
 
 > `optional` **importance?**: `string`
 
-Defined in: [types/businessImpact.ts:232](https://github.com/Hack23/cia-compliance-manager/blob/a6c7db5280f5aeb6cc66c1125f8c3d523ae00a40/src/types/businessImpact.ts#L232)
+Defined in: [types/businessImpact.ts:232](https://github.com/Hack23/cia-compliance-manager/blob/51ee42c9c3b472e585f56fbb8f6773f8ab7e935a/src/types/businessImpact.ts#L232)
 
 Impact level
 
@@ -66,6 +66,6 @@ Impact level
 
 > `optional` **risk?**: `string`
 
-Defined in: [types/businessImpact.ts:235](https://github.com/Hack23/cia-compliance-manager/blob/a6c7db5280f5aeb6cc66c1125f8c3d523ae00a40/src/types/businessImpact.ts#L235)
+Defined in: [types/businessImpact.ts:235](https://github.com/Hack23/cia-compliance-manager/blob/51ee42c9c3b472e585f56fbb8f6773f8ab7e935a/src/types/businessImpact.ts#L235)
 
 Risk level - added to match usage in businessConstants
