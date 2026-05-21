@@ -1821,7 +1821,7 @@ FN:24,(anonymous_0)
 FNF:1
 FNH:1
 FNDA:19,(anonymous_0)
-DA:24,2
+DA:24,3
 DA:35,19
 LF:2
 LH:2
@@ -2045,7 +2045,7 @@ FN:32,(anonymous_0)
 FNF:1
 FNH:1
 FNDA:30,(anonymous_0)
-DA:32,2
+DA:32,3
 DA:45,30
 LF:2
 LH:2
@@ -2061,9 +2061,9 @@ SF:src/components/widgets/assessmentcenter/SecuritySummaryWidget.tsx
 FN:34,(anonymous_0)
 FNF:1
 FNH:1
-FNDA:1,(anonymous_0)
-DA:34,1
-DA:44,1
+FNDA:2,(anonymous_0)
+DA:34,2
+DA:44,2
 DA:48,20
 DA:53,20
 DA:56,20
@@ -2073,8 +2073,8 @@ DA:83,20
 DA:157,20
 LF:9
 LH:9
-BRDA:38,0,0,1
-BRDA:39,1,0,1
+BRDA:38,0,0,2
+BRDA:39,1,0,2
 BRDA:56,2,0,20
 BRDA:56,2,1,20
 BRDA:56,2,2,20
@@ -9394,7 +9394,7 @@ FNDA:7,handleArrowKeyNavigation
 FNDA:3,getMetricAccessibleName
 FNDA:11,getLiveRegion
 FNDA:11,announceToScreenReader
-FNDA:7,(anonymous_14)
+FNDA:6,(anonymous_14)
 FNDA:2,(anonymous_15)
 FNDA:6,meetsContrastRequirement
 FNDA:6,calculateContrastRatio
@@ -9488,7 +9488,7 @@ DA:551,11
 DA:552,16
 DA:553,16
 DA:556,11
-DA:557,7
+DA:557,6
 DA:559,11
 DA:561,11
 DA:562,2

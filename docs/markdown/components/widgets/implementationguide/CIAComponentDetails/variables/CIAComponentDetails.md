@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.76**](../../../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.77**](../../../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **CIAComponentDetails**: `React.FC`\<[`CIAComponentDetailsProps`](../interfaces/CIAComponentDetailsProps.md)\>
 
-Defined in: [components/widgets/implementationguide/CIAComponentDetails.tsx:80](https://github.com/Hack23/cia-compliance-manager/blob/51ee42c9c3b472e585f56fbb8f6773f8ab7e935a/src/components/widgets/implementationguide/CIAComponentDetails.tsx#L80)
+Defined in: [components/widgets/implementationguide/CIAComponentDetails.tsx:80](https://github.com/Hack23/cia-compliance-manager/blob/bb6771f1780ae2f20879ca12f020c45fa6e4a1e2/src/components/widgets/implementationguide/CIAComponentDetails.tsx#L80)
 
 Reusable component for displaying CIA component details
 Handles rendering for confidentiality, integrity, or availability

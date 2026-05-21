@@ -1,8 +1,8 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.76**](README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.77**](README.md)
 
 ***
 
-# CIA Compliance Manager — Markdown Documentation v1.1.76
+# CIA Compliance Manager — Markdown Documentation v1.1.77
 
 ## Modules
 
