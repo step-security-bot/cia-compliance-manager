@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.77**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.78**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **handleArrowKeyNavigation**(`event`, `currentIndex`, `totalItems`, `onIndexChange`, `orientation?`): `void`
 
-Defined in: [utils/accessibility.ts:448](https://github.com/Hack23/cia-compliance-manager/blob/bb6771f1780ae2f20879ca12f020c45fa6e4a1e2/src/utils/accessibility.ts#L448)
+Defined in: [utils/accessibility.ts:448](https://github.com/Hack23/cia-compliance-manager/blob/326f5e224f54a8645f7aa8019136892910008a47/src/utils/accessibility.ts#L448)
 
 Handle keyboard navigation for arrow keys in a list or grid
 
