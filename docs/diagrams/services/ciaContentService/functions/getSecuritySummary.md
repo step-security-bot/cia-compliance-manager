@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.78**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.79**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getSecuritySummary**(`availabilityLevel`, `integrityLevel`, `confidentialityLevel`): `Promise`\<`Record`\<`string`, `unknown`\>\>
 
-Defined in: [services/ciaContentService.ts:1454](https://github.com/Hack23/cia-compliance-manager/blob/326f5e224f54a8645f7aa8019136892910008a47/src/services/ciaContentService.ts#L1454)
+Defined in: [services/ciaContentService.ts:1454](https://github.com/Hack23/cia-compliance-manager/blob/a9ec77027ad49f5e9db798a4850ca95226a2431e/src/services/ciaContentService.ts#L1454)
 
 Get security summary based on security levels
 

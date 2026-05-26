@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.78**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.79**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **formatCurrency**(`value`, `options?`, `locale?`): `string`
 
-Defined in: [utils/formatUtils.ts:103](https://github.com/Hack23/cia-compliance-manager/blob/326f5e224f54a8645f7aa8019136892910008a47/src/utils/formatUtils.ts#L103)
+Defined in: [utils/formatUtils.ts:103](https://github.com/Hack23/cia-compliance-manager/blob/a9ec77027ad49f5e9db798a4850ca95226a2431e/src/utils/formatUtils.ts#L103)
 
 Formats a number as currency with proper thousands separators
 

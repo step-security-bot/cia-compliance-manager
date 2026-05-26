@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.78**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.79**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getStatusBadgeForRiskLevel**: (`riskLevel`) => [`StatusType`](../../types/common/StatusTypes/type-aliases/StatusType.md)
 
-Defined in: [utils/index.ts:110](https://github.com/Hack23/cia-compliance-manager/blob/326f5e224f54a8645f7aa8019136892910008a47/src/utils/index.ts#L110)
+Defined in: [utils/index.ts:110](https://github.com/Hack23/cia-compliance-manager/blob/a9ec77027ad49f5e9db798a4850ca95226a2431e/src/utils/index.ts#L110)
 
 Get status badge variant for risk level
 

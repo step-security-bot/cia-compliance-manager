@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.78**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.79**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > `const` **BYPASS\_INPUT\_CHECK\_KEYS**: readonly \[`"Escape"`, `"F1"`, `"F2"`, `"F3"`, `"F4"`, `"F5"`, `"F6"`, `"F7"`, `"F8"`, `"F9"`, `"F10"`, `"F11"`, `"F12"`\]
 
-Defined in: [constants/keyboardShortcuts.ts:224](https://github.com/Hack23/cia-compliance-manager/blob/326f5e224f54a8645f7aa8019136892910008a47/src/constants/keyboardShortcuts.ts#L224)
+Defined in: [constants/keyboardShortcuts.ts:224](https://github.com/Hack23/cia-compliance-manager/blob/a9ec77027ad49f5e9db798a4850ca95226a2431e/src/constants/keyboardShortcuts.ts#L224)
 
 Keys that should bypass input element check

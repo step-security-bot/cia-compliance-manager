@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.78**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.79**](../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > `const` **RiskLevelBadge**: `React.FC`\<`RiskLevelBadgeProps`\>
 
-Defined in: [components/common/RiskLevelBadge.tsx:31](https://github.com/Hack23/cia-compliance-manager/blob/326f5e224f54a8645f7aa8019136892910008a47/src/components/common/RiskLevelBadge.tsx#L31)
+Defined in: [components/common/RiskLevelBadge.tsx:31](https://github.com/Hack23/cia-compliance-manager/blob/a9ec77027ad49f5e9db798a4850ca95226a2431e/src/components/common/RiskLevelBadge.tsx#L31)
 
 Badge for displaying risk levels with appropriate styling
