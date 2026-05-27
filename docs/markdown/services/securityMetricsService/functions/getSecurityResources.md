@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.79**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.80**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getSecurityResources**(`availabilityLevel`, `integrityLevel`, `confidentialityLevel`): `Promise`\<`Record`\<`string`, `unknown`\>\>
 
-Defined in: [services/securityMetricsService.ts:1581](https://github.com/Hack23/cia-compliance-manager/blob/a9ec77027ad49f5e9db798a4850ca95226a2431e/src/services/securityMetricsService.ts#L1581)
+Defined in: [services/securityMetricsService.ts:1581](https://github.com/Hack23/cia-compliance-manager/blob/31b40525874d6d3a1bd6045dfd29f1e237e01fe5/src/services/securityMetricsService.ts#L1581)
 
 Get security resources based on security levels
 

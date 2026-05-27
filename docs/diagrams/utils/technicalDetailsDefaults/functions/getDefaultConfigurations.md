@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.79**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.80**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getDefaultConfigurations**(`component`, `level`): `string`
 
-Defined in: [utils/technicalDetailsDefaults.ts:343](https://github.com/Hack23/cia-compliance-manager/blob/a9ec77027ad49f5e9db798a4850ca95226a2431e/src/utils/technicalDetailsDefaults.ts#L343)
+Defined in: [utils/technicalDetailsDefaults.ts:343](https://github.com/Hack23/cia-compliance-manager/blob/31b40525874d6d3a1bd6045dfd29f1e237e01fe5/src/utils/technicalDetailsDefaults.ts#L343)
 
 Gets default configurations for a CIA component at a specific security level
 

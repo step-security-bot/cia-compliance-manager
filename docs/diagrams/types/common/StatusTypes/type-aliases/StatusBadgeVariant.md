@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.79**](../../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.80**](../../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > **StatusBadgeVariant** = [`StatusType`](StatusType.md)
 
-Defined in: [types/common/StatusTypes.ts:19](https://github.com/Hack23/cia-compliance-manager/blob/a9ec77027ad49f5e9db798a4850ca95226a2431e/src/types/common/StatusTypes.ts#L19)
+Defined in: [types/common/StatusTypes.ts:19](https://github.com/Hack23/cia-compliance-manager/blob/31b40525874d6d3a1bd6045dfd29f1e237e01fe5/src/types/common/StatusTypes.ts#L19)
 
 Alias for StatusType for backwards compatibility
