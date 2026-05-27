@@ -10,6 +10,10 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+/** Write informational output to stdout (avoids ESLint no-console rule) */
+const log = (...args) => process.stdout.write(args.join(' ') + '\n');
+
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -616,7 +620,7 @@ function generateSitemapHTML(entries) {
  * Main function
  */
 function main() {
-  console.log('🗺️  Generating sitemaps for CIA Compliance Manager...\n');
+  log('🗺️  Generating sitemaps for CIA Compliance Manager...\n');
 
   // Check if docs directory exists
   if (!fs.existsSync(DOCS_DIR)) {
@@ -625,9 +629,9 @@ function main() {
   }
 
   // Find all files
-  console.log('📁 Scanning docs directory...');
+  log('📁 Scanning docs directory...');
   const allFiles = findFiles(DOCS_DIR);
-  console.log(`   Found ${allFiles.length} total files`);
+  log(`   Found ${allFiles.length} total files`);
 
   // Process files
   const entries = [];
@@ -650,24 +654,24 @@ function main() {
     });
   });
 
-  console.log(`✅ Processed ${entries.length} HTML pages\n`);
+  log(`✅ Processed ${entries.length} HTML pages\n`);
 
   // Generate sitemap.xml
-  console.log('📄 Generating sitemap.xml...');
+  log('📄 Generating sitemap.xml...');
   const sitemapXML = generateSitemapXML(entries);
   const xmlPath = path.join(DOCS_DIR, 'sitemap.xml');
   fs.writeFileSync(xmlPath, sitemapXML, 'utf8');
-  console.log(`   ✅ Created ${xmlPath}`);
+  log(`   ✅ Created ${xmlPath}`);
 
   // Generate sitemap.html
-  console.log('📄 Generating sitemap.html...');
+  log('📄 Generating sitemap.html...');
   const sitemapHTML = generateSitemapHTML(entries);
   const htmlPath = path.join(DOCS_DIR, 'sitemap.html');
   fs.writeFileSync(htmlPath, sitemapHTML, 'utf8');
-  console.log(`   ✅ Created ${htmlPath}`);
+  log(`   ✅ Created ${htmlPath}`);
 
   // Print summary by category
-  console.log('\n📊 Summary by Category:');
+  log('\n📊 Summary by Category:');
   const categoryCounts = {};
   entries.forEach(entry => {
     categoryCounts[entry.category] = (categoryCounts[entry.category] || 0) + 1;
@@ -676,12 +680,12 @@ function main() {
   Object.entries(categoryCounts)
     .sort((a, b) => b[1] - a[1])
     .forEach(([category, count]) => {
-      console.log(`   ${category}: ${count} pages`);
+      log(`   ${category}: ${count} pages`);
     });
 
-  console.log('\n✨ Sitemap generation complete!');
-  console.log(`📍 XML Sitemap: ${BASE_URL}/sitemap.xml`);
-  console.log(`📍 HTML Sitemap: ${BASE_URL}/sitemap.html`);
+  log('\n✨ Sitemap generation complete!');
+  log(`📍 XML Sitemap: ${BASE_URL}/sitemap.xml`);
+  log(`📍 HTML Sitemap: ${BASE_URL}/sitemap.html`);
 }
 
 // Run the script

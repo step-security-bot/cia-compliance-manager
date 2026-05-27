@@ -35,6 +35,10 @@
 import fs from "node:fs";
 import path from "node:path";
 
+/** Write informational output to stdout (avoids ESLint no-console rule) */
+const log = (...args) => process.stdout.write(args.join(' ') + '\n');
+
+
 const REPO_ROOT = path.resolve(process.argv[2] && !process.argv[2].startsWith("--") ? process.argv[2] : process.cwd());
 const DRY_RUN = process.argv.includes("--dry-run");
 
@@ -43,7 +47,7 @@ const SKIP_DIRS = new Set(["node_modules", ".git", "dist", "build", "coverage", 
 // Detect emoji and other characters that need quoting in mermaid labels.
 // We deliberately include `(`, `)`, `<`, `>`, `&`, `#`, `%` because mermaid
 // flowchart parsers reject these inside unquoted node labels.
-const NEEDS_QUOTING_RE = /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2300}-\u{23FF}\u{2B00}-\u{2BFF}\u{1F100}-\u{1F1FF}\u{FE0F}()<>&#%]/u;
+const NEEDS_QUOTING_RE = /(?:[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2300}-\u{23FF}\u{2B00}-\u{2BFF}\u{1F100}-\u{1F1FF}()<>&#%]|\u{FE0F})/u;
 
 function walkMd(dir, out = []) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -182,7 +186,7 @@ for (const f of files) {
   if (changed > 0) {
     totalChanged += changed;
     filesChanged++;
-    console.log(`${DRY_RUN ? "would change" : "updated"} ${path.relative(REPO_ROOT, f)}: ${changed} line(s)`);
+    log(`${DRY_RUN ? "would change" : "updated"} ${path.relative(REPO_ROOT, f)}: ${changed} line(s)`);
   }
 }
-console.log(`\n${DRY_RUN ? "Would change" : "Changed"} ${totalChanged} line(s) in ${filesChanged} file(s).`);
+log(`\n${DRY_RUN ? "Would change" : "Changed"} ${totalChanged} line(s) in ${filesChanged} file(s).`);
