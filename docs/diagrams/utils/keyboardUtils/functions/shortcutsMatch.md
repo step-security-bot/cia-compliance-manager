@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.80**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.81**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **shortcutsMatch**(`shortcut1`, `shortcut2`): `boolean`
 
-Defined in: [utils/keyboardUtils.ts:263](https://github.com/Hack23/cia-compliance-manager/blob/31b40525874d6d3a1bd6045dfd29f1e237e01fe5/src/utils/keyboardUtils.ts#L263)
+Defined in: [utils/keyboardUtils.ts:263](https://github.com/Hack23/cia-compliance-manager/blob/8fa41915ca9153d5689c4d663292dcfd3d6de4ad/src/utils/keyboardUtils.ts#L263)
 
 Check if two shortcuts match
 

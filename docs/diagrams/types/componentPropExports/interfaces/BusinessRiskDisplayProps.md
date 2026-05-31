@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.80**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.81**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: BusinessRiskDisplayProps
 
-Defined in: [types/componentPropExports.ts:37](https://github.com/Hack23/cia-compliance-manager/blob/31b40525874d6d3a1bd6045dfd29f1e237e01fe5/src/types/componentPropExports.ts#L37)
+Defined in: [types/componentPropExports.ts:37](https://github.com/Hack23/cia-compliance-manager/blob/8fa41915ca9153d5689c4d663292dcfd3d6de4ad/src/types/componentPropExports.ts#L37)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [types/componentPropExports.ts:37](https://github.com/Hack23/cia-com
 
 > **riskLevel**: `string`
 
-Defined in: [types/componentPropExports.ts:38](https://github.com/Hack23/cia-compliance-manager/blob/31b40525874d6d3a1bd6045dfd29f1e237e01fe5/src/types/componentPropExports.ts#L38)
+Defined in: [types/componentPropExports.ts:38](https://github.com/Hack23/cia-compliance-manager/blob/8fa41915ca9153d5689c4d663292dcfd3d6de4ad/src/types/componentPropExports.ts#L38)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [types/componentPropExports.ts:38](https://github.com/Hack23/cia-com
 
 > `optional` **description?**: `string`
 
-Defined in: [types/componentPropExports.ts:39](https://github.com/Hack23/cia-compliance-manager/blob/31b40525874d6d3a1bd6045dfd29f1e237e01fe5/src/types/componentPropExports.ts#L39)
+Defined in: [types/componentPropExports.ts:39](https://github.com/Hack23/cia-compliance-manager/blob/8fa41915ca9153d5689c4d663292dcfd3d6de4ad/src/types/componentPropExports.ts#L39)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: [types/componentPropExports.ts:39](https://github.com/Hack23/cia-com
 
 > `optional` **showIcon?**: `boolean`
 
-Defined in: [types/componentPropExports.ts:40](https://github.com/Hack23/cia-compliance-manager/blob/31b40525874d6d3a1bd6045dfd29f1e237e01fe5/src/types/componentPropExports.ts#L40)
+Defined in: [types/componentPropExports.ts:40](https://github.com/Hack23/cia-compliance-manager/blob/8fa41915ca9153d5689c4d663292dcfd3d6de4ad/src/types/componentPropExports.ts#L40)
 
 ***
 
@@ -38,7 +38,7 @@ Defined in: [types/componentPropExports.ts:40](https://github.com/Hack23/cia-com
 
 > `optional` **className?**: `string`
 
-Defined in: [types/componentPropExports.ts:41](https://github.com/Hack23/cia-compliance-manager/blob/31b40525874d6d3a1bd6045dfd29f1e237e01fe5/src/types/componentPropExports.ts#L41)
+Defined in: [types/componentPropExports.ts:41](https://github.com/Hack23/cia-compliance-manager/blob/8fa41915ca9153d5689c4d663292dcfd3d6de4ad/src/types/componentPropExports.ts#L41)
 
 ***
 
@@ -46,4 +46,4 @@ Defined in: [types/componentPropExports.ts:41](https://github.com/Hack23/cia-com
 
 > `optional` **testId?**: `string`
 
-Defined in: [types/componentPropExports.ts:42](https://github.com/Hack23/cia-compliance-manager/blob/31b40525874d6d3a1bd6045dfd29f1e237e01fe5/src/types/componentPropExports.ts#L42)
+Defined in: [types/componentPropExports.ts:42](https://github.com/Hack23/cia-compliance-manager/blob/8fa41915ca9153d5689c4d663292dcfd3d6de4ad/src/types/componentPropExports.ts#L42)

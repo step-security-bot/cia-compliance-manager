@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.80**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.81**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: ComplianceService
 
-Defined in: [types/cia-services.ts:392](https://github.com/Hack23/cia-compliance-manager/blob/31b40525874d6d3a1bd6045dfd29f1e237e01fe5/src/types/cia-services.ts#L392)
+Defined in: [types/cia-services.ts:392](https://github.com/Hack23/cia-compliance-manager/blob/8fa41915ca9153d5689c4d663292dcfd3d6de4ad/src/types/cia-services.ts#L392)
 
 Compliance Service interface
 Defines methods for compliance status and framework checks
@@ -17,7 +17,7 @@ Defines methods for compliance status and framework checks
 
 > `optional` **getComplianceStatus?**: (`availabilityLevel`, `integrityLevel`, `confidentialityLevel`) => [`ComplianceStatus`](ComplianceStatus.md) \| `null`
 
-Defined in: [types/cia-services.ts:393](https://github.com/Hack23/cia-compliance-manager/blob/31b40525874d6d3a1bd6045dfd29f1e237e01fe5/src/types/cia-services.ts#L393)
+Defined in: [types/cia-services.ts:393](https://github.com/Hack23/cia-compliance-manager/blob/8fa41915ca9153d5689c4d663292dcfd3d6de4ad/src/types/cia-services.ts#L393)
 
 #### Parameters
 

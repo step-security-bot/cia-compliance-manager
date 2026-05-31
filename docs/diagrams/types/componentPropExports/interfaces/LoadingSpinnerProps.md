@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.80**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.81**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: LoadingSpinnerProps
 
-Defined in: [types/componentPropExports.ts:328](https://github.com/Hack23/cia-compliance-manager/blob/31b40525874d6d3a1bd6045dfd29f1e237e01fe5/src/types/componentPropExports.ts#L328)
+Defined in: [types/componentPropExports.ts:328](https://github.com/Hack23/cia-compliance-manager/blob/8fa41915ca9153d5689c4d663292dcfd3d6de4ad/src/types/componentPropExports.ts#L328)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [types/componentPropExports.ts:328](https://github.com/Hack23/cia-co
 
 > `optional` **size?**: `"sm"` \| `"md"` \| `"lg"`
 
-Defined in: [types/componentPropExports.ts:333](https://github.com/Hack23/cia-compliance-manager/blob/31b40525874d6d3a1bd6045dfd29f1e237e01fe5/src/types/componentPropExports.ts#L333)
+Defined in: [types/componentPropExports.ts:333](https://github.com/Hack23/cia-compliance-manager/blob/8fa41915ca9153d5689c4d663292dcfd3d6de4ad/src/types/componentPropExports.ts#L333)
 
 Size of the spinner
 
@@ -30,7 +30,7 @@ Size of the spinner
 
 > `optional` **testId?**: `string`
 
-Defined in: [types/componentPropExports.ts:338](https://github.com/Hack23/cia-compliance-manager/blob/31b40525874d6d3a1bd6045dfd29f1e237e01fe5/src/types/componentPropExports.ts#L338)
+Defined in: [types/componentPropExports.ts:338](https://github.com/Hack23/cia-compliance-manager/blob/8fa41915ca9153d5689c4d663292dcfd3d6de4ad/src/types/componentPropExports.ts#L338)
 
 Optional test ID for automated testing
 
@@ -40,6 +40,6 @@ Optional test ID for automated testing
 
 > `optional` **className?**: `string`
 
-Defined in: [types/componentPropExports.ts:343](https://github.com/Hack23/cia-compliance-manager/blob/31b40525874d6d3a1bd6045dfd29f1e237e01fe5/src/types/componentPropExports.ts#L343)
+Defined in: [types/componentPropExports.ts:343](https://github.com/Hack23/cia-compliance-manager/blob/8fa41915ca9153d5689c4d663292dcfd3d6de4ad/src/types/componentPropExports.ts#L343)
 
 Optional CSS class name

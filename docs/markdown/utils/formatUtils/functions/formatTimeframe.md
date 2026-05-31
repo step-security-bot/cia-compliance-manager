@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.80**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.81**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **formatTimeframe**(`minutes`): `string`
 
-Defined in: [utils/formatUtils.ts:384](https://github.com/Hack23/cia-compliance-manager/blob/31b40525874d6d3a1bd6045dfd29f1e237e01fe5/src/utils/formatUtils.ts#L384)
+Defined in: [utils/formatUtils.ts:384](https://github.com/Hack23/cia-compliance-manager/blob/8fa41915ca9153d5689c4d663292dcfd3d6de4ad/src/utils/formatUtils.ts#L384)
 
 Formats a timeframe in a human-readable format
 
