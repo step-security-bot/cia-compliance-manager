@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.81**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.82**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **calculateOverallSecurityLevel**: (`availabilityLevel`, `integrityLevel`, `confidentialityLevel`) => [`SecurityLevel`](../../types/cia/type-aliases/SecurityLevel.md)
 
-Defined in: [utils/index.ts:115](https://github.com/Hack23/cia-compliance-manager/blob/8fa41915ca9153d5689c4d663292dcfd3d6de4ad/src/utils/index.ts#L115)
+Defined in: [utils/index.ts:115](https://github.com/Hack23/cia-compliance-manager/blob/18eb0e178e70b2f5a83fed4363f4edc4f8dd7a1b/src/utils/index.ts#L115)
 
 Calculates the overall security level based on individual CIA components
 
