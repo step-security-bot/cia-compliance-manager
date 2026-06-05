@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.82**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.83**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **calculateTotalSecurityCost**(`availabilityLevel`, `integrityLevel`, `confidentialityLevel`, `orgSize?`, `industry?`): `object`
 
-Defined in: [utils/costCalculationUtils.ts:110](https://github.com/Hack23/cia-compliance-manager/blob/18eb0e178e70b2f5a83fed4363f4edc4f8dd7a1b/src/utils/costCalculationUtils.ts#L110)
+Defined in: [utils/costCalculationUtils.ts:110](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/utils/costCalculationUtils.ts#L110)
 
 Calculate total security costs across all CIA components
 

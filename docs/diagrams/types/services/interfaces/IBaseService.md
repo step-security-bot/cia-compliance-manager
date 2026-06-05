@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.82**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.83**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: IBaseService
 
-Defined in: [types/services.ts:78](https://github.com/Hack23/cia-compliance-manager/blob/18eb0e178e70b2f5a83fed4363f4edc4f8dd7a1b/src/types/services.ts#L78)
+Defined in: [types/services.ts:78](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/types/services.ts#L78)
 
 Base service interface that all services must implement
 
@@ -27,7 +27,7 @@ Provides common functionality for validation and error handling
 
 > `readonly` **name**: `string`
 
-Defined in: [types/services.ts:82](https://github.com/Hack23/cia-compliance-manager/blob/18eb0e178e70b2f5a83fed4363f4edc4f8dd7a1b/src/types/services.ts#L82)
+Defined in: [types/services.ts:82](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/types/services.ts#L82)
 
 Service name for identification and logging
 
@@ -37,7 +37,7 @@ Service name for identification and logging
 
 > **validate**(`input`): `boolean`
 
-Defined in: [types/services.ts:90](https://github.com/Hack23/cia-compliance-manager/blob/18eb0e178e70b2f5a83fed4363f4edc4f8dd7a1b/src/types/services.ts#L90)
+Defined in: [types/services.ts:90](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/types/services.ts#L90)
 
 Validate input parameters (returns simple boolean)
 
@@ -61,7 +61,7 @@ True if valid, false otherwise
 
 > **handleError**(`error`): [`ServiceError`](../../../services/errors/classes/ServiceError.md)
 
-Defined in: [types/services.ts:98](https://github.com/Hack23/cia-compliance-manager/blob/18eb0e178e70b2f5a83fed4363f4edc4f8dd7a1b/src/types/services.ts#L98)
+Defined in: [types/services.ts:98](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/types/services.ts#L98)
 
 Handle errors consistently across services
 

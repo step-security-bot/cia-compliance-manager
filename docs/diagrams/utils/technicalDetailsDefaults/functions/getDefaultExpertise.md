@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.82**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.83**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getDefaultExpertise**(`component`, `level`): `string`[]
 
-Defined in: [utils/technicalDetailsDefaults.ts:404](https://github.com/Hack23/cia-compliance-manager/blob/18eb0e178e70b2f5a83fed4363f4edc4f8dd7a1b/src/utils/technicalDetailsDefaults.ts#L404)
+Defined in: [utils/technicalDetailsDefaults.ts:404](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/utils/technicalDetailsDefaults.ts#L404)
 
 Gets default expertise requirements for a CIA component at a specific security level
 

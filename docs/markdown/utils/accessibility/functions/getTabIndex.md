@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.82**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.83**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getTabIndex**(`isInteractive`, `isDisabled?`): `number` \| `undefined`
 
-Defined in: [utils/accessibility.ts:429](https://github.com/Hack23/cia-compliance-manager/blob/18eb0e178e70b2f5a83fed4363f4edc4f8dd7a1b/src/utils/accessibility.ts#L429)
+Defined in: [utils/accessibility.ts:429](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/utils/accessibility.ts#L429)
 
 Check if an element should be keyboard focusable
 

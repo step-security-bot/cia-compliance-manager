@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.82**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.83**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **StatusBadge**: `React.FC`\<[`StatusBadgeProps`](../common/StatusBadge/interfaces/StatusBadgeProps.md)\>
 
-Defined in: [components/common/StatusBadge.tsx:66](https://github.com/Hack23/cia-compliance-manager/blob/18eb0e178e70b2f5a83fed4363f4edc4f8dd7a1b/src/components/common/StatusBadge.tsx#L66)
+Defined in: [components/common/StatusBadge.tsx:66](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/components/common/StatusBadge.tsx#L66)
 
 Displays a status badge with appropriate colors
 

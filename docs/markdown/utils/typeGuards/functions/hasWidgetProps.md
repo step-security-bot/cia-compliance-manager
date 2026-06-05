@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.82**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.83**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **hasWidgetProps**(`value`): `boolean`
 
-Defined in: [utils/typeGuards.ts:300](https://github.com/Hack23/cia-compliance-manager/blob/18eb0e178e70b2f5a83fed4363f4edc4f8dd7a1b/src/utils/typeGuards.ts#L300)
+Defined in: [utils/typeGuards.ts:300](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/utils/typeGuards.ts#L300)
 
 Type guard for basic widget props
 

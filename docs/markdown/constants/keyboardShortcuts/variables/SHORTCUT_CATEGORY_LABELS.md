@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.82**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.83**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > `const` **SHORTCUT\_CATEGORY\_LABELS**: `Record`\<[`ShortcutCategory`](../../../types/keyboard/type-aliases/ShortcutCategory.md), `string`\>
 
-Defined in: [constants/keyboardShortcuts.ts:115](https://github.com/Hack23/cia-compliance-manager/blob/18eb0e178e70b2f5a83fed4363f4edc4f8dd7a1b/src/constants/keyboardShortcuts.ts#L115)
+Defined in: [constants/keyboardShortcuts.ts:115](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/constants/keyboardShortcuts.ts#L115)
 
 Category labels for help display
