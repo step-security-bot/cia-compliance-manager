@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.83**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.84**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > `const` **SECURITY\_LEVEL\_VALUES**: `Record`\<[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md), `number`\>
 
-Defined in: [utils/levelValuesUtils.ts:19](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/utils/levelValuesUtils.ts#L19)
+Defined in: [utils/levelValuesUtils.ts:19](https://github.com/Hack23/cia-compliance-manager/blob/7201f34acb231ae313f2df36dc12dde9bf124d67/src/utils/levelValuesUtils.ts#L19)
 
 Map security levels to numeric values for calculations

@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.83**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.84**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **mapOptionsToConstants**\<`T`, `R`\>(`options`, `key`, `transform?`): \{ `NONE`: `undefined`; `LOW`: `undefined`; `MODERATE`: `undefined`; `HIGH`: `undefined`; `VERY_HIGH`: `undefined`; \} \| \{ `NONE`: `R` \| [`CIADetails`](../../../types/cia-services/interfaces/CIADetails.md)\[`T`\]; `LOW`: `R` \| [`CIADetails`](../../../types/cia-services/interfaces/CIADetails.md)\[`T`\]; `MODERATE`: `R` \| [`CIADetails`](../../../types/cia-services/interfaces/CIADetails.md)\[`T`\]; `HIGH`: `R` \| [`CIADetails`](../../../types/cia-services/interfaces/CIADetails.md)\[`T`\]; `VERY_HIGH`: `R` \| [`CIADetails`](../../../types/cia-services/interfaces/CIADetails.md)\[`T`\]; \}
 
-Defined in: [constants/appConstants.ts:23](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/constants/appConstants.ts#L23)
+Defined in: [constants/appConstants.ts:23](https://github.com/Hack23/cia-compliance-manager/blob/7201f34acb231ae313f2df36dc12dde9bf124d67/src/constants/appConstants.ts#L23)
 
 Maps CIA option values to constants with consistent naming (NONE, LOW, etc.)
 Modified version to avoid circular dependencies

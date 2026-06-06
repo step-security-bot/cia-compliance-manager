@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.83**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.84**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getRiskColorClass**(`risk`): `string`
 
-Defined in: [utils/statusUtils.ts:81](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/utils/statusUtils.ts#L81)
+Defined in: [utils/statusUtils.ts:81](https://github.com/Hack23/cia-compliance-manager/blob/7201f34acb231ae313f2df36dc12dde9bf124d67/src/utils/statusUtils.ts#L81)
 
 Gets the appropriate Tailwind CSS color class for a risk level
 

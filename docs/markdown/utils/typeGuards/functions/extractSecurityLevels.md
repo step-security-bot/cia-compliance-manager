@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.83**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.84**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **extractSecurityLevels**(`obj`): `object`
 
-Defined in: [utils/typeGuards.ts:632](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/utils/typeGuards.ts#L632)
+Defined in: [utils/typeGuards.ts:632](https://github.com/Hack23/cia-compliance-manager/blob/7201f34acb231ae313f2df36dc12dde9bf124d67/src/utils/typeGuards.ts#L632)
 
 Extracts CIA security levels from an object
 

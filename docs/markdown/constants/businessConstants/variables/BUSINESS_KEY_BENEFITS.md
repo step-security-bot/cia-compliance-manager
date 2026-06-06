@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.83**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.84**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > `const` **BUSINESS\_KEY\_BENEFITS**: [`BusinessKeyBenefits`](../../../types/businessImpact/interfaces/BusinessKeyBenefits.md)
 
-Defined in: [constants/businessConstants.ts:185](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/constants/businessConstants.ts#L185)
+Defined in: [constants/businessConstants.ts:185](https://github.com/Hack23/cia-compliance-manager/blob/7201f34acb231ae313f2df36dc12dde9bf124d67/src/constants/businessConstants.ts#L185)
 
 Business key benefits for each security level

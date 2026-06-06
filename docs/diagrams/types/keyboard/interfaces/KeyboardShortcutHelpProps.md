@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.83**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.84**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: KeyboardShortcutHelpProps
 
-Defined in: [types/keyboard.ts:107](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/types/keyboard.ts#L107)
+Defined in: [types/keyboard.ts:107](https://github.com/Hack23/cia-compliance-manager/blob/7201f34acb231ae313f2df36dc12dde9bf124d67/src/types/keyboard.ts#L107)
 
 Props for keyboard shortcut help modal
 
@@ -16,7 +16,7 @@ Props for keyboard shortcut help modal
 
 > **isOpen**: `boolean`
 
-Defined in: [types/keyboard.ts:109](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/types/keyboard.ts#L109)
+Defined in: [types/keyboard.ts:109](https://github.com/Hack23/cia-compliance-manager/blob/7201f34acb231ae313f2df36dc12dde9bf124d67/src/types/keyboard.ts#L109)
 
 Whether the modal is open
 
@@ -26,7 +26,7 @@ Whether the modal is open
 
 > **onClose**: () => `void`
 
-Defined in: [types/keyboard.ts:112](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/types/keyboard.ts#L112)
+Defined in: [types/keyboard.ts:112](https://github.com/Hack23/cia-compliance-manager/blob/7201f34acb231ae313f2df36dc12dde9bf124d67/src/types/keyboard.ts#L112)
 
 Callback when modal is closed
 
@@ -40,6 +40,6 @@ Callback when modal is closed
 
 > `optional` **shortcuts?**: [`ShortcutMap`](../type-aliases/ShortcutMap.md)
 
-Defined in: [types/keyboard.ts:115](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/types/keyboard.ts#L115)
+Defined in: [types/keyboard.ts:115](https://github.com/Hack23/cia-compliance-manager/blob/7201f34acb231ae313f2df36dc12dde9bf124d67/src/types/keyboard.ts#L115)
 
 Shortcuts to display (defaults to all)

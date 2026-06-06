@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.83**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.84**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: WidgetActionsProps
 
-Defined in: [types/componentPropExports.ts:220](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/types/componentPropExports.ts#L220)
+Defined in: [types/componentPropExports.ts:220](https://github.com/Hack23/cia-compliance-manager/blob/7201f34acb231ae313f2df36dc12dde9bf124d67/src/types/componentPropExports.ts#L220)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [types/componentPropExports.ts:220](https://github.com/Hack23/cia-co
 
 > **actions**: [`WidgetActionButtonProps`](WidgetActionButtonProps.md)[]
 
-Defined in: [types/componentPropExports.ts:221](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/types/componentPropExports.ts#L221)
+Defined in: [types/componentPropExports.ts:221](https://github.com/Hack23/cia-compliance-manager/blob/7201f34acb231ae313f2df36dc12dde9bf124d67/src/types/componentPropExports.ts#L221)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [types/componentPropExports.ts:221](https://github.com/Hack23/cia-co
 
 > `optional` **className?**: `string`
 
-Defined in: [types/componentPropExports.ts:222](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/types/componentPropExports.ts#L222)
+Defined in: [types/componentPropExports.ts:222](https://github.com/Hack23/cia-compliance-manager/blob/7201f34acb231ae313f2df36dc12dde9bf124d67/src/types/componentPropExports.ts#L222)
 
 ***
 
@@ -30,4 +30,4 @@ Defined in: [types/componentPropExports.ts:222](https://github.com/Hack23/cia-co
 
 > `optional` **testId?**: `string`
 
-Defined in: [types/componentPropExports.ts:223](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/types/componentPropExports.ts#L223)
+Defined in: [types/componentPropExports.ts:223](https://github.com/Hack23/cia-compliance-manager/blob/7201f34acb231ae313f2df36dc12dde9bf124d67/src/types/componentPropExports.ts#L223)

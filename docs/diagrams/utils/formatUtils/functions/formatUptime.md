@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.83**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.84**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **formatUptime**(`uptime`): `string`
 
-Defined in: [utils/formatUtils.ts:305](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/utils/formatUtils.ts#L305)
+Defined in: [utils/formatUtils.ts:305](https://github.com/Hack23/cia-compliance-manager/blob/7201f34acb231ae313f2df36dc12dde9bf124d67/src/utils/formatUtils.ts#L305)
 
 Format uptime percentage for availability display
 

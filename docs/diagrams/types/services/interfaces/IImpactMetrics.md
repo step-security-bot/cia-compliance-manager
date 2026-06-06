@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.83**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.84**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: IImpactMetrics
 
-Defined in: [types/services.ts:40](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/types/services.ts#L40)
+Defined in: [types/services.ts:40](https://github.com/Hack23/cia-compliance-manager/blob/7201f34acb231ae313f2df36dc12dde9bf124d67/src/types/services.ts#L40)
 
 Base impact metrics interface
 Services may return richer types that extend this interface
@@ -21,7 +21,7 @@ Services may return richer types that extend this interface
 
 > `optional` **financialImpact?**: `string`
 
-Defined in: [types/services.ts:41](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/types/services.ts#L41)
+Defined in: [types/services.ts:41](https://github.com/Hack23/cia-compliance-manager/blob/7201f34acb231ae313f2df36dc12dde9bf124d67/src/types/services.ts#L41)
 
 ***
 
@@ -29,7 +29,7 @@ Defined in: [types/services.ts:41](https://github.com/Hack23/cia-compliance-mana
 
 > `optional` **operationalImpact?**: `string`
 
-Defined in: [types/services.ts:42](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/types/services.ts#L42)
+Defined in: [types/services.ts:42](https://github.com/Hack23/cia-compliance-manager/blob/7201f34acb231ae313f2df36dc12dde9bf124d67/src/types/services.ts#L42)
 
 ***
 
@@ -37,7 +37,7 @@ Defined in: [types/services.ts:42](https://github.com/Hack23/cia-compliance-mana
 
 > `optional` **reputationalImpact?**: `string`
 
-Defined in: [types/services.ts:43](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/types/services.ts#L43)
+Defined in: [types/services.ts:43](https://github.com/Hack23/cia-compliance-manager/blob/7201f34acb231ae313f2df36dc12dde9bf124d67/src/types/services.ts#L43)
 
 ***
 
@@ -45,4 +45,4 @@ Defined in: [types/services.ts:43](https://github.com/Hack23/cia-compliance-mana
 
 > `optional` **complianceImpact?**: `string`
 
-Defined in: [types/services.ts:44](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/types/services.ts#L44)
+Defined in: [types/services.ts:44](https://github.com/Hack23/cia-compliance-manager/blob/7201f34acb231ae313f2df36dc12dde9bf124d67/src/types/services.ts#L44)

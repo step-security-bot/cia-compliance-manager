@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.83**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.84**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: CIAOptions
 
-Defined in: [types/cia.ts:474](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/types/cia.ts#L474)
+Defined in: [types/cia.ts:474](https://github.com/Hack23/cia-compliance-manager/blob/7201f34acb231ae313f2df36dc12dde9bf124d67/src/types/cia.ts#L474)
 
 Available options for each CIA pillar
 
@@ -29,7 +29,7 @@ const options: CIAOptions = {
 
 > **availability**: [`SecurityLevel`](../type-aliases/SecurityLevel.md)[]
 
-Defined in: [types/cia.ts:476](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/types/cia.ts#L476)
+Defined in: [types/cia.ts:476](https://github.com/Hack23/cia-compliance-manager/blob/7201f34acb231ae313f2df36dc12dde9bf124d67/src/types/cia.ts#L476)
 
 Available security level options for availability
 
@@ -39,7 +39,7 @@ Available security level options for availability
 
 > **integrity**: [`SecurityLevel`](../type-aliases/SecurityLevel.md)[]
 
-Defined in: [types/cia.ts:479](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/types/cia.ts#L479)
+Defined in: [types/cia.ts:479](https://github.com/Hack23/cia-compliance-manager/blob/7201f34acb231ae313f2df36dc12dde9bf124d67/src/types/cia.ts#L479)
 
 Available security level options for integrity
 
@@ -49,6 +49,6 @@ Available security level options for integrity
 
 > **confidentiality**: [`SecurityLevel`](../type-aliases/SecurityLevel.md)[]
 
-Defined in: [types/cia.ts:482](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/types/cia.ts#L482)
+Defined in: [types/cia.ts:482](https://github.com/Hack23/cia-compliance-manager/blob/7201f34acb231ae313f2df36dc12dde9bf124d67/src/types/cia.ts#L482)
 
 Available security level options for confidentiality

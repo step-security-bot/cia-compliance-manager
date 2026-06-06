@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.83**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.84**](../../../README.md)
 
 ***
 
@@ -8,4 +8,4 @@
 
 > **BorderRadiusSize** = keyof *typeof* [`BORDER_RADIUS`](../variables/BORDER_RADIUS.md)
 
-Defined in: [constants/designTokens.ts:377](https://github.com/Hack23/cia-compliance-manager/blob/40141afd4258e5104de6eec47ab5bf629c9b15d1/src/constants/designTokens.ts#L377)
+Defined in: [constants/designTokens.ts:377](https://github.com/Hack23/cia-compliance-manager/blob/7201f34acb231ae313f2df36dc12dde9bf124d67/src/constants/designTokens.ts#L377)
