@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.84**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.85**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > **ComplianceStatusType** = `"compliant"` \| `"partially-compliant"` \| `"non-compliant"`
 
-Defined in: [services/complianceService.ts:14](https://github.com/Hack23/cia-compliance-manager/blob/7201f34acb231ae313f2df36dc12dde9bf124d67/src/services/complianceService.ts#L14)
+Defined in: [services/complianceService.ts:14](https://github.com/Hack23/cia-compliance-manager/blob/612cf447fc0534e6658cb45923adb133997d9d57/src/services/complianceService.ts#L14)
 
 Status of compliance with a framework

@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.84**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.85**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **CIAComponentColor** = `"blue"` \| `"green"` \| `"orange"`
 
-Defined in: [types/componentPropExports.ts:23](https://github.com/Hack23/cia-compliance-manager/blob/7201f34acb231ae313f2df36dc12dde9bf124d67/src/types/componentPropExports.ts#L23)
+Defined in: [types/componentPropExports.ts:23](https://github.com/Hack23/cia-compliance-manager/blob/612cf447fc0534e6658cb45923adb133997d9d57/src/types/componentPropExports.ts#L23)
 
 Valid color values for CIA component visualizations
 Limited to colors actually used by CIA components (Availability=blue, Integrity=green, Confidentiality=orange)

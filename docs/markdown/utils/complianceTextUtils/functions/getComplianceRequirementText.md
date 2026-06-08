@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.84**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.85**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getComplianceRequirementText**(`component`, `level`): `string`
 
-Defined in: [utils/complianceTextUtils.ts:28](https://github.com/Hack23/cia-compliance-manager/blob/7201f34acb231ae313f2df36dc12dde9bf124d67/src/utils/complianceTextUtils.ts#L28)
+Defined in: [utils/complianceTextUtils.ts:28](https://github.com/Hack23/cia-compliance-manager/blob/612cf447fc0534e6658cb45923adb133997d9d57/src/utils/complianceTextUtils.ts#L28)
 
 Gets compliance requirement text for a security component and level
 

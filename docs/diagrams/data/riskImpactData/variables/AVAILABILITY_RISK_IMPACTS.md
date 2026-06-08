@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.84**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.85**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > `const` **AVAILABILITY\_RISK\_IMPACTS**: `Record`\<[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md), [`RiskImpact`](../interfaces/RiskImpact.md)\>
 
-Defined in: [data/riskImpactData.ts:222](https://github.com/Hack23/cia-compliance-manager/blob/7201f34acb231ae313f2df36dc12dde9bf124d67/src/data/riskImpactData.ts#L222)
+Defined in: [data/riskImpactData.ts:222](https://github.com/Hack23/cia-compliance-manager/blob/612cf447fc0534e6658cb45923adb133997d9d57/src/data/riskImpactData.ts#L222)
 
 Risk impact data by security level for availability

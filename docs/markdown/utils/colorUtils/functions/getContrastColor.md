@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.84**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.85**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getContrastColor**(`backgroundColor`): `string`
 
-Defined in: [utils/colorUtils.ts:189](https://github.com/Hack23/cia-compliance-manager/blob/7201f34acb231ae313f2df36dc12dde9bf124d67/src/utils/colorUtils.ts#L189)
+Defined in: [utils/colorUtils.ts:189](https://github.com/Hack23/cia-compliance-manager/blob/612cf447fc0534e6658cb45923adb133997d9d57/src/utils/colorUtils.ts#L189)
 
 Calculate contrast color (black or white) based on background
 
