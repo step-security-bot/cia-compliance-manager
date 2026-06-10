@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.85**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.86**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getSecurityLevelByValue**(`value`): [`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)
 
-Defined in: [constants/securityLevels.ts:111](https://github.com/Hack23/cia-compliance-manager/blob/612cf447fc0534e6658cb45923adb133997d9d57/src/constants/securityLevels.ts#L111)
+Defined in: [constants/securityLevels.ts:111](https://github.com/Hack23/cia-compliance-manager/blob/291151a4aaa6ab487167f02ba32ad558685a3eca/src/constants/securityLevels.ts#L111)
 
 Get a security level by its number value
 

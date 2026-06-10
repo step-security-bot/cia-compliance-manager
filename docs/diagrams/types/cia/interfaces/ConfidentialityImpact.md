@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.85**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.86**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: ConfidentialityImpact
 
-Defined in: [types/cia.ts:410](https://github.com/Hack23/cia-compliance-manager/blob/612cf447fc0534e6658cb45923adb133997d9d57/src/types/cia.ts#L410)
+Defined in: [types/cia.ts:410](https://github.com/Hack23/cia-compliance-manager/blob/291151a4aaa6ab487167f02ba32ad558685a3eca/src/types/cia.ts#L410)
 
 Impact associated with the confidentiality of the system
 
@@ -34,7 +34,7 @@ const impact: ConfidentialityImpact = {
 
 > **level**: [`SecurityLevel`](../type-aliases/SecurityLevel.md)
 
-Defined in: [types/cia.ts:340](https://github.com/Hack23/cia-compliance-manager/blob/612cf447fc0534e6658cb45923adb133997d9d57/src/types/cia.ts#L340)
+Defined in: [types/cia.ts:340](https://github.com/Hack23/cia-compliance-manager/blob/291151a4aaa6ab487167f02ba32ad558685a3eca/src/types/cia.ts#L340)
 
 Security level associated with this impact
 
@@ -48,7 +48,7 @@ Security level associated with this impact
 
 > **description**: `string`
 
-Defined in: [types/cia.ts:343](https://github.com/Hack23/cia-compliance-manager/blob/612cf447fc0534e6658cb45923adb133997d9d57/src/types/cia.ts#L343)
+Defined in: [types/cia.ts:343](https://github.com/Hack23/cia-compliance-manager/blob/291151a4aaa6ab487167f02ba32ad558685a3eca/src/types/cia.ts#L343)
 
 Human-readable description of the impact
 
@@ -62,7 +62,7 @@ Human-readable description of the impact
 
 > **dataClassification**: `string`
 
-Defined in: [types/cia.ts:412](https://github.com/Hack23/cia-compliance-manager/blob/612cf447fc0534e6658cb45923adb133997d9d57/src/types/cia.ts#L412)
+Defined in: [types/cia.ts:412](https://github.com/Hack23/cia-compliance-manager/blob/291151a4aaa6ab487167f02ba32ad558685a3eca/src/types/cia.ts#L412)
 
 Data classification level (e.g., "Public", "Internal", "Confidential", "Restricted")
 
@@ -72,6 +72,6 @@ Data classification level (e.g., "Public", "Internal", "Confidential", "Restrict
 
 > **accessControls**: `string`
 
-Defined in: [types/cia.ts:415](https://github.com/Hack23/cia-compliance-manager/blob/612cf447fc0534e6658cb45923adb133997d9d57/src/types/cia.ts#L415)
+Defined in: [types/cia.ts:415](https://github.com/Hack23/cia-compliance-manager/blob/291151a4aaa6ab487167f02ba32ad558685a3eca/src/types/cia.ts#L415)
 
 Access control mechanisms required (e.g., "MFA", "RBAC", "encryption")

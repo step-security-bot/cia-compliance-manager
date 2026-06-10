@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.85**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.86**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: KeyboardShortcutProviderProps
 
-Defined in: [contexts/KeyboardShortcutContext.tsx:24](https://github.com/Hack23/cia-compliance-manager/blob/612cf447fc0534e6658cb45923adb133997d9d57/src/contexts/KeyboardShortcutContext.tsx#L24)
+Defined in: [contexts/KeyboardShortcutContext.tsx:24](https://github.com/Hack23/cia-compliance-manager/blob/291151a4aaa6ab487167f02ba32ad558685a3eca/src/contexts/KeyboardShortcutContext.tsx#L24)
 
 Props for KeyboardShortcutProvider
 
@@ -16,7 +16,7 @@ Props for KeyboardShortcutProvider
 
 > **children**: `ReactNode`
 
-Defined in: [contexts/KeyboardShortcutContext.tsx:26](https://github.com/Hack23/cia-compliance-manager/blob/612cf447fc0534e6658cb45923adb133997d9d57/src/contexts/KeyboardShortcutContext.tsx#L26)
+Defined in: [contexts/KeyboardShortcutContext.tsx:26](https://github.com/Hack23/cia-compliance-manager/blob/291151a4aaa6ab487167f02ba32ad558685a3eca/src/contexts/KeyboardShortcutContext.tsx#L26)
 
 Child components
 
@@ -26,7 +26,7 @@ Child components
 
 > `optional` **initialShortcuts?**: [`ShortcutMap`](../../../types/keyboard/type-aliases/ShortcutMap.md)
 
-Defined in: [contexts/KeyboardShortcutContext.tsx:29](https://github.com/Hack23/cia-compliance-manager/blob/612cf447fc0534e6658cb45923adb133997d9d57/src/contexts/KeyboardShortcutContext.tsx#L29)
+Defined in: [contexts/KeyboardShortcutContext.tsx:29](https://github.com/Hack23/cia-compliance-manager/blob/291151a4aaa6ab487167f02ba32ad558685a3eca/src/contexts/KeyboardShortcutContext.tsx#L29)
 
 Initial shortcuts to register
 
@@ -36,6 +36,6 @@ Initial shortcuts to register
 
 > `optional` **defaultEnabled?**: `boolean`
 
-Defined in: [contexts/KeyboardShortcutContext.tsx:32](https://github.com/Hack23/cia-compliance-manager/blob/612cf447fc0534e6658cb45923adb133997d9d57/src/contexts/KeyboardShortcutContext.tsx#L32)
+Defined in: [contexts/KeyboardShortcutContext.tsx:32](https://github.com/Hack23/cia-compliance-manager/blob/291151a4aaa6ab487167f02ba32ad558685a3eca/src/contexts/KeyboardShortcutContext.tsx#L32)
 
 Whether shortcuts are enabled by default

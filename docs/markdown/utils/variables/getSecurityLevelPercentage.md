@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.85**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.86**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getSecurityLevelPercentage**: (`level`) => `string`
 
-Defined in: [utils/index.ts:123](https://github.com/Hack23/cia-compliance-manager/blob/612cf447fc0534e6658cb45923adb133997d9d57/src/utils/index.ts#L123)
+Defined in: [utils/index.ts:123](https://github.com/Hack23/cia-compliance-manager/blob/291151a4aaa6ab487167f02ba32ad558685a3eca/src/utils/index.ts#L123)
 
 Provides a numerical representation of security levels for UI presentation
 

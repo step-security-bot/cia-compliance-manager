@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.85**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.86**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **BusinessImpactAnalysisWidgetProps** = [`AllCIAComponentsProps`](../interfaces/AllCIAComponentsProps.md)
 
-Defined in: [types/widget-props.ts:482](https://github.com/Hack23/cia-compliance-manager/blob/612cf447fc0534e6658cb45923adb133997d9d57/src/types/widget-props.ts#L482)
+Defined in: [types/widget-props.ts:482](https://github.com/Hack23/cia-compliance-manager/blob/291151a4aaa6ab487167f02ba32ad558685a3eca/src/types/widget-props.ts#L482)
 
 Props for BusinessImpactAnalysisWidget component
 

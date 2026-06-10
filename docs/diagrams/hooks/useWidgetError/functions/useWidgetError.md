@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.85**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.86**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **useWidgetError**(`widgetName`): [`WidgetErrorState`](../interfaces/WidgetErrorState.md)
 
-Defined in: [hooks/useWidgetError.ts:80](https://github.com/Hack23/cia-compliance-manager/blob/612cf447fc0534e6658cb45923adb133997d9d57/src/hooks/useWidgetError.ts#L80)
+Defined in: [hooks/useWidgetError.ts:80](https://github.com/Hack23/cia-compliance-manager/blob/291151a4aaa6ab487167f02ba32ad558685a3eca/src/hooks/useWidgetError.ts#L80)
 
 Custom hook for consistent widget error handling
 

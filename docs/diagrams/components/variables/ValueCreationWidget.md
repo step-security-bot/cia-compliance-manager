@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.85**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.86**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **ValueCreationWidget**: `React.FC`\<[`ValueCreationWidgetProps`](../../types/widget-props/type-aliases/ValueCreationWidgetProps.md)\>
 
-Defined in: [components/widgets/businessvalue/ValueCreationWidget.tsx:36](https://github.com/Hack23/cia-compliance-manager/blob/612cf447fc0534e6658cb45923adb133997d9d57/src/components/widgets/businessvalue/ValueCreationWidget.tsx#L36)
+Defined in: [components/widgets/businessvalue/ValueCreationWidget.tsx:36](https://github.com/Hack23/cia-compliance-manager/blob/291151a4aaa6ab487167f02ba32ad558685a3eca/src/components/widgets/businessvalue/ValueCreationWidget.tsx#L36)
 
 Display value creation information for chosen security levels
 

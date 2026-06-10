@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.85**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.86**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: BusinessImpactSectionProps
 
-Defined in: [types/componentPropExports.ts:31](https://github.com/Hack23/cia-compliance-manager/blob/612cf447fc0534e6658cb45923adb133997d9d57/src/types/componentPropExports.ts#L31)
+Defined in: [types/componentPropExports.ts:31](https://github.com/Hack23/cia-compliance-manager/blob/291151a4aaa6ab487167f02ba32ad558685a3eca/src/types/componentPropExports.ts#L31)
 
 Props for the BusinessImpactSection component
 
@@ -16,7 +16,7 @@ Props for the BusinessImpactSection component
 
 > **impact**: [`BusinessImpactDetails`](../../cia-services/interfaces/BusinessImpactDetails.md)
 
-Defined in: [types/componentPropExports.ts:32](https://github.com/Hack23/cia-compliance-manager/blob/612cf447fc0534e6658cb45923adb133997d9d57/src/types/componentPropExports.ts#L32)
+Defined in: [types/componentPropExports.ts:32](https://github.com/Hack23/cia-compliance-manager/blob/291151a4aaa6ab487167f02ba32ad558685a3eca/src/types/componentPropExports.ts#L32)
 
 Business impact data to display
 
@@ -26,7 +26,7 @@ Business impact data to display
 
 > **color**: [`CIAComponentColor`](../type-aliases/CIAComponentColor.md)
 
-Defined in: [types/componentPropExports.ts:33](https://github.com/Hack23/cia-compliance-manager/blob/612cf447fc0534e6658cb45923adb133997d9d57/src/types/componentPropExports.ts#L33)
+Defined in: [types/componentPropExports.ts:33](https://github.com/Hack23/cia-compliance-manager/blob/291151a4aaa6ab487167f02ba32ad558685a3eca/src/types/componentPropExports.ts#L33)
 
 Color theme for the section (blue, green, or orange)
 
@@ -36,6 +36,6 @@ Color theme for the section (blue, green, or orange)
 
 > `optional` **testId?**: `string`
 
-Defined in: [types/componentPropExports.ts:34](https://github.com/Hack23/cia-compliance-manager/blob/612cf447fc0534e6658cb45923adb133997d9d57/src/types/componentPropExports.ts#L34)
+Defined in: [types/componentPropExports.ts:34](https://github.com/Hack23/cia-compliance-manager/blob/291151a4aaa6ab487167f02ba32ad558685a3eca/src/types/componentPropExports.ts#L34)
 
 Optional test ID for testing purposes
