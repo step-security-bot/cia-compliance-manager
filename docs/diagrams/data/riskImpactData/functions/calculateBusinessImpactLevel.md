@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.86**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.87**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **calculateBusinessImpactLevel**(`availabilityLevel`, `integrityLevel`, `confidentialityLevel`): [`RiskImpactLevel`](../type-aliases/RiskImpactLevel.md)
 
-Defined in: [data/riskImpactData.ts:456](https://github.com/Hack23/cia-compliance-manager/blob/291151a4aaa6ab487167f02ba32ad558685a3eca/src/data/riskImpactData.ts#L456)
+Defined in: [data/riskImpactData.ts:456](https://github.com/Hack23/cia-compliance-manager/blob/a11560a745c378c1fceeb4ba46fba618fee7de09/src/data/riskImpactData.ts#L456)
 
 Calculate the overall business impact level based on security levels
 

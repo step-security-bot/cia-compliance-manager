@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.86**](../../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.87**](../../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > **StatusType** = `"success"` \| `"info"` \| `"warning"` \| `"error"` \| `"neutral"` \| `"purple"`
 
-Defined in: [types/common/StatusTypes.ts:8](https://github.com/Hack23/cia-compliance-manager/blob/291151a4aaa6ab487167f02ba32ad558685a3eca/src/types/common/StatusTypes.ts#L8)
+Defined in: [types/common/StatusTypes.ts:8](https://github.com/Hack23/cia-compliance-manager/blob/a11560a745c378c1fceeb4ba46fba618fee7de09/src/types/common/StatusTypes.ts#L8)
 
 Available status types for badges and indicators

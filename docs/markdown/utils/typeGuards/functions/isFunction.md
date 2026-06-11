@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.86**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.87**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **isFunction**(`value`): `value is Function`
 
-Defined in: [utils/typeGuards.ts:834](https://github.com/Hack23/cia-compliance-manager/blob/291151a4aaa6ab487167f02ba32ad558685a3eca/src/utils/typeGuards.ts#L834)
+Defined in: [utils/typeGuards.ts:834](https://github.com/Hack23/cia-compliance-manager/blob/a11560a745c378c1fceeb4ba46fba618fee7de09/src/utils/typeGuards.ts#L834)
 
 Type guard to check if a value is a function.
 Note: `typeof` returns "function" for both callables and class constructors,

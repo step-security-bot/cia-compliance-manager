@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.86**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.87**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Enumeration: ErrorSeverity
 
-Defined in: [services/errorService.ts:33](https://github.com/Hack23/cia-compliance-manager/blob/291151a4aaa6ab487167f02ba32ad558685a3eca/src/services/errorService.ts#L33)
+Defined in: [services/errorService.ts:33](https://github.com/Hack23/cia-compliance-manager/blob/a11560a745c378c1fceeb4ba46fba618fee7de09/src/services/errorService.ts#L33)
 
 Error severity levels for categorization
 
@@ -16,7 +16,7 @@ Error severity levels for categorization
 
 > **LOW**: `"low"`
 
-Defined in: [services/errorService.ts:35](https://github.com/Hack23/cia-compliance-manager/blob/291151a4aaa6ab487167f02ba32ad558685a3eca/src/services/errorService.ts#L35)
+Defined in: [services/errorService.ts:35](https://github.com/Hack23/cia-compliance-manager/blob/a11560a745c378c1fceeb4ba46fba618fee7de09/src/services/errorService.ts#L35)
 
 Low severity - informational errors
 
@@ -26,7 +26,7 @@ Low severity - informational errors
 
 > **MEDIUM**: `"medium"`
 
-Defined in: [services/errorService.ts:37](https://github.com/Hack23/cia-compliance-manager/blob/291151a4aaa6ab487167f02ba32ad558685a3eca/src/services/errorService.ts#L37)
+Defined in: [services/errorService.ts:37](https://github.com/Hack23/cia-compliance-manager/blob/a11560a745c378c1fceeb4ba46fba618fee7de09/src/services/errorService.ts#L37)
 
 Medium severity - user action may be needed
 
@@ -36,7 +36,7 @@ Medium severity - user action may be needed
 
 > **HIGH**: `"high"`
 
-Defined in: [services/errorService.ts:39](https://github.com/Hack23/cia-compliance-manager/blob/291151a4aaa6ab487167f02ba32ad558685a3eca/src/services/errorService.ts#L39)
+Defined in: [services/errorService.ts:39](https://github.com/Hack23/cia-compliance-manager/blob/a11560a745c378c1fceeb4ba46fba618fee7de09/src/services/errorService.ts#L39)
 
 High severity - significant functionality impacted
 
@@ -46,6 +46,6 @@ High severity - significant functionality impacted
 
 > **CRITICAL**: `"critical"`
 
-Defined in: [services/errorService.ts:41](https://github.com/Hack23/cia-compliance-manager/blob/291151a4aaa6ab487167f02ba32ad558685a3eca/src/services/errorService.ts#L41)
+Defined in: [services/errorService.ts:41](https://github.com/Hack23/cia-compliance-manager/blob/a11560a745c378c1fceeb4ba46fba618fee7de09/src/services/errorService.ts#L41)
 
 Critical severity - application-wide impact
