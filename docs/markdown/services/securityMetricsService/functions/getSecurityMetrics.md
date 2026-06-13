@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.87**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.88**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getSecurityMetrics**(`availabilityLevel`, `integrityLevel`, `confidentialityLevel`): `Promise`\<[`SecurityMetrics`](../interfaces/SecurityMetrics.md)\>
 
-Defined in: [services/securityMetricsService.ts:1482](https://github.com/Hack23/cia-compliance-manager/blob/a11560a745c378c1fceeb4ba46fba618fee7de09/src/services/securityMetricsService.ts#L1482)
+Defined in: [services/securityMetricsService.ts:1482](https://github.com/Hack23/cia-compliance-manager/blob/33a6e06f56bdf18af5506272bbd4bc140a490de3/src/services/securityMetricsService.ts#L1482)
 
 Get security metrics based on security levels
 

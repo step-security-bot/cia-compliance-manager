@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.87**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.88**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: ITechnicalImplementationService
 
-Defined in: [types/services.ts:351](https://github.com/Hack23/cia-compliance-manager/blob/a11560a745c378c1fceeb4ba46fba618fee7de09/src/types/services.ts#L351)
+Defined in: [types/services.ts:351](https://github.com/Hack23/cia-compliance-manager/blob/33a6e06f56bdf18af5506272bbd4bc140a490de3/src/types/services.ts#L351)
 
 Technical Implementation Service interface
 
@@ -22,7 +22,7 @@ Provides technical implementation guidance and details
 
 > `readonly` **name**: `string`
 
-Defined in: [types/services.ts:82](https://github.com/Hack23/cia-compliance-manager/blob/a11560a745c378c1fceeb4ba46fba618fee7de09/src/types/services.ts#L82)
+Defined in: [types/services.ts:82](https://github.com/Hack23/cia-compliance-manager/blob/33a6e06f56bdf18af5506272bbd4bc140a490de3/src/types/services.ts#L82)
 
 Service name for identification and logging
 
@@ -36,7 +36,7 @@ Service name for identification and logging
 
 > **validate**(`input`): `boolean`
 
-Defined in: [types/services.ts:90](https://github.com/Hack23/cia-compliance-manager/blob/a11560a745c378c1fceeb4ba46fba618fee7de09/src/types/services.ts#L90)
+Defined in: [types/services.ts:90](https://github.com/Hack23/cia-compliance-manager/blob/33a6e06f56bdf18af5506272bbd4bc140a490de3/src/types/services.ts#L90)
 
 Validate input parameters (returns simple boolean)
 
@@ -64,7 +64,7 @@ True if valid, false otherwise
 
 > **handleError**(`error`): [`ServiceError`](../../../services/errors/classes/ServiceError.md)
 
-Defined in: [types/services.ts:98](https://github.com/Hack23/cia-compliance-manager/blob/a11560a745c378c1fceeb4ba46fba618fee7de09/src/types/services.ts#L98)
+Defined in: [types/services.ts:98](https://github.com/Hack23/cia-compliance-manager/blob/33a6e06f56bdf18af5506272bbd4bc140a490de3/src/types/services.ts#L98)
 
 Handle errors consistently across services
 
@@ -92,7 +92,7 @@ Formatted ServiceError
 
 > **getTechnicalImplementation**(`component`, `level`): [`TechnicalImplementationDetails`](../../cia-services/interfaces/TechnicalImplementationDetails.md)
 
-Defined in: [types/services.ts:359](https://github.com/Hack23/cia-compliance-manager/blob/a11560a745c378c1fceeb4ba46fba618fee7de09/src/types/services.ts#L359)
+Defined in: [types/services.ts:359](https://github.com/Hack23/cia-compliance-manager/blob/33a6e06f56bdf18af5506272bbd4bc140a490de3/src/types/services.ts#L359)
 
 Get technical implementation details
 
@@ -122,7 +122,7 @@ Technical implementation details
 
 > **getRecommendations**(`component`, `level`): `string`[]
 
-Defined in: [types/services.ts:371](https://github.com/Hack23/cia-compliance-manager/blob/a11560a745c378c1fceeb4ba46fba618fee7de09/src/types/services.ts#L371)
+Defined in: [types/services.ts:371](https://github.com/Hack23/cia-compliance-manager/blob/33a6e06f56bdf18af5506272bbd4bc140a490de3/src/types/services.ts#L371)
 
 Get recommendations for implementation
 
@@ -152,7 +152,7 @@ Array of recommendations
 
 > **getImplementationTime**(`level`): `string`
 
-Defined in: [types/services.ts:379](https://github.com/Hack23/cia-compliance-manager/blob/a11560a745c378c1fceeb4ba46fba618fee7de09/src/types/services.ts#L379)
+Defined in: [types/services.ts:379](https://github.com/Hack23/cia-compliance-manager/blob/33a6e06f56bdf18af5506272bbd4bc140a490de3/src/types/services.ts#L379)
 
 Get implementation time estimate
 
@@ -176,7 +176,7 @@ Time estimate string
 
 > **getTechnicalDescription**(`component`, `level`): `string`
 
-Defined in: [types/services.ts:388](https://github.com/Hack23/cia-compliance-manager/blob/a11560a745c378c1fceeb4ba46fba618fee7de09/src/types/services.ts#L388)
+Defined in: [types/services.ts:388](https://github.com/Hack23/cia-compliance-manager/blob/33a6e06f56bdf18af5506272bbd4bc140a490de3/src/types/services.ts#L388)
 
 Get technical description
 

@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.87**](../../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.88**](../../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **WidgetSection**: `React.FC`\<`WidgetSectionProps`\>
 
-Defined in: [components/common/WidgetSection.tsx:46](https://github.com/Hack23/cia-compliance-manager/blob/a11560a745c378c1fceeb4ba46fba618fee7de09/src/components/common/WidgetSection.tsx#L46)
+Defined in: [components/common/WidgetSection.tsx:46](https://github.com/Hack23/cia-compliance-manager/blob/33a6e06f56bdf18af5506272bbd4bc140a490de3/src/components/common/WidgetSection.tsx#L46)
 
 Reusable section component for consistent widget layout
 

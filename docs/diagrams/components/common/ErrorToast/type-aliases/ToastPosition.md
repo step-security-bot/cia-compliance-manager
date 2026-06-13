@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.87**](../../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.88**](../../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > **ToastPosition** = `"top-left"` \| `"top-center"` \| `"top-right"` \| `"bottom-left"` \| `"bottom-center"` \| `"bottom-right"`
 
-Defined in: [components/common/ErrorToast.tsx:25](https://github.com/Hack23/cia-compliance-manager/blob/a11560a745c378c1fceeb4ba46fba618fee7de09/src/components/common/ErrorToast.tsx#L25)
+Defined in: [components/common/ErrorToast.tsx:25](https://github.com/Hack23/cia-compliance-manager/blob/33a6e06f56bdf18af5506272bbd4bc140a490de3/src/components/common/ErrorToast.tsx#L25)
 
 Toast notification position
