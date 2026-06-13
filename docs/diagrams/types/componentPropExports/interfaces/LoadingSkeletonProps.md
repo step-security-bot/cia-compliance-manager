@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.88**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.89**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: LoadingSkeletonProps
 
-Defined in: [types/componentPropExports.ts:346](https://github.com/Hack23/cia-compliance-manager/blob/33a6e06f56bdf18af5506272bbd4bc140a490de3/src/types/componentPropExports.ts#L346)
+Defined in: [types/componentPropExports.ts:346](https://github.com/Hack23/cia-compliance-manager/blob/0ccfae8ee114f5804bb25f89f2d1de1e1af26e3b/src/types/componentPropExports.ts#L346)
 
 Props for LoadingSkeleton component
 
@@ -16,7 +16,7 @@ Props for LoadingSkeleton component
 
 > `optional` **lines?**: `number`
 
-Defined in: [types/componentPropExports.ts:351](https://github.com/Hack23/cia-compliance-manager/blob/33a6e06f56bdf18af5506272bbd4bc140a490de3/src/types/componentPropExports.ts#L351)
+Defined in: [types/componentPropExports.ts:351](https://github.com/Hack23/cia-compliance-manager/blob/0ccfae8ee114f5804bb25f89f2d1de1e1af26e3b/src/types/componentPropExports.ts#L351)
 
 Number of skeleton lines to display
 
@@ -32,7 +32,7 @@ Number of skeleton lines to display
 
 > `optional` **testId?**: `string`
 
-Defined in: [types/componentPropExports.ts:356](https://github.com/Hack23/cia-compliance-manager/blob/33a6e06f56bdf18af5506272bbd4bc140a490de3/src/types/componentPropExports.ts#L356)
+Defined in: [types/componentPropExports.ts:356](https://github.com/Hack23/cia-compliance-manager/blob/0ccfae8ee114f5804bb25f89f2d1de1e1af26e3b/src/types/componentPropExports.ts#L356)
 
 Optional test ID for automated testing
 
@@ -42,7 +42,7 @@ Optional test ID for automated testing
 
 > `optional` **className?**: `string`
 
-Defined in: [types/componentPropExports.ts:361](https://github.com/Hack23/cia-compliance-manager/blob/33a6e06f56bdf18af5506272bbd4bc140a490de3/src/types/componentPropExports.ts#L361)
+Defined in: [types/componentPropExports.ts:361](https://github.com/Hack23/cia-compliance-manager/blob/0ccfae8ee114f5804bb25f89f2d1de1e1af26e3b/src/types/componentPropExports.ts#L361)
 
 Optional CSS class name
 
@@ -52,7 +52,7 @@ Optional CSS class name
 
 > `optional` **variant?**: [`SkeletonVariant`](../type-aliases/SkeletonVariant.md)
 
-Defined in: [types/componentPropExports.ts:528](https://github.com/Hack23/cia-compliance-manager/blob/33a6e06f56bdf18af5506272bbd4bc140a490de3/src/types/componentPropExports.ts#L528)
+Defined in: [types/componentPropExports.ts:528](https://github.com/Hack23/cia-compliance-manager/blob/0ccfae8ee114f5804bb25f89f2d1de1e1af26e3b/src/types/componentPropExports.ts#L528)
 
 Skeleton variant for different widget types
 

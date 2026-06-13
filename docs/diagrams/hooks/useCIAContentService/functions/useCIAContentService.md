@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.88**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.89**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **useCIAContentService**(): [`UseCIAContentServiceReturn`](../interfaces/UseCIAContentServiceReturn.md)
 
-Defined in: [hooks/useCIAContentService.ts:151](https://github.com/Hack23/cia-compliance-manager/blob/33a6e06f56bdf18af5506272bbd4bc140a490de3/src/hooks/useCIAContentService.ts#L151)
+Defined in: [hooks/useCIAContentService.ts:151](https://github.com/Hack23/cia-compliance-manager/blob/0ccfae8ee114f5804bb25f89f2d1de1e1af26e3b/src/hooks/useCIAContentService.ts#L151)
 
 Custom hook to access the CIA content service with loading and error states
 

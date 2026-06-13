@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.88**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.89**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **TRANSITIONS**: `object`
 
-Defined in: [constants/designTokens.ts:165](https://github.com/Hack23/cia-compliance-manager/blob/33a6e06f56bdf18af5506272bbd4bc140a490de3/src/constants/designTokens.ts#L165)
+Defined in: [constants/designTokens.ts:165](https://github.com/Hack23/cia-compliance-manager/blob/0ccfae8ee114f5804bb25f89f2d1de1e1af26e3b/src/constants/designTokens.ts#L165)
 
 Transition durations for consistent animations
 

@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.88**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.89**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getRecommendedBudgetAllocation**(`totalBudget`, `availabilityLevel`, `integrityLevel`, `confidentialityLevel`): `object`
 
-Defined in: [utils/costCalculationUtils.ts:196](https://github.com/Hack23/cia-compliance-manager/blob/33a6e06f56bdf18af5506272bbd4bc140a490de3/src/utils/costCalculationUtils.ts#L196)
+Defined in: [utils/costCalculationUtils.ts:196](https://github.com/Hack23/cia-compliance-manager/blob/0ccfae8ee114f5804bb25f89f2d1de1e1af26e3b/src/utils/costCalculationUtils.ts#L196)
 
 Get recommended budget allocation based on security levels
 

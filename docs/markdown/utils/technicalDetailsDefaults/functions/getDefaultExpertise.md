@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.88**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.89**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getDefaultExpertise**(`component`, `level`): `string`[]
 
-Defined in: [utils/technicalDetailsDefaults.ts:404](https://github.com/Hack23/cia-compliance-manager/blob/33a6e06f56bdf18af5506272bbd4bc140a490de3/src/utils/technicalDetailsDefaults.ts#L404)
+Defined in: [utils/technicalDetailsDefaults.ts:404](https://github.com/Hack23/cia-compliance-manager/blob/0ccfae8ee114f5804bb25f89f2d1de1e1af26e3b/src/utils/technicalDetailsDefaults.ts#L404)
 
 Gets default expertise requirements for a CIA component at a specific security level
 

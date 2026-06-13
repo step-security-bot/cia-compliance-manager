@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.88**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.89**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **formatErrorMessage**(`error`): `string`
 
-Defined in: [utils/errorUtils.ts:161](https://github.com/Hack23/cia-compliance-manager/blob/33a6e06f56bdf18af5506272bbd4bc140a490de3/src/utils/errorUtils.ts#L161)
+Defined in: [utils/errorUtils.ts:161](https://github.com/Hack23/cia-compliance-manager/blob/0ccfae8ee114f5804bb25f89f2d1de1e1af26e3b/src/utils/errorUtils.ts#L161)
 
 Format an error message from various error types
 

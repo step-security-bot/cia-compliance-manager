@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.88**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.89**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: SecurityLevels
 
-Defined in: [types/cia.ts:500](https://github.com/Hack23/cia-compliance-manager/blob/33a6e06f56bdf18af5506272bbd4bc140a490de3/src/types/cia.ts#L500)
+Defined in: [types/cia.ts:500](https://github.com/Hack23/cia-compliance-manager/blob/0ccfae8ee114f5804bb25f89f2d1de1e1af26e3b/src/types/cia.ts#L500)
 
 Selected security levels for each CIA pillar
 
@@ -29,7 +29,7 @@ const selectedLevels: SecurityLevels = {
 
 > **availability**: [`SecurityLevel`](../type-aliases/SecurityLevel.md)
 
-Defined in: [types/cia.ts:502](https://github.com/Hack23/cia-compliance-manager/blob/33a6e06f56bdf18af5506272bbd4bc140a490de3/src/types/cia.ts#L502)
+Defined in: [types/cia.ts:502](https://github.com/Hack23/cia-compliance-manager/blob/0ccfae8ee114f5804bb25f89f2d1de1e1af26e3b/src/types/cia.ts#L502)
 
 Selected availability security level
 
@@ -39,7 +39,7 @@ Selected availability security level
 
 > **integrity**: [`SecurityLevel`](../type-aliases/SecurityLevel.md)
 
-Defined in: [types/cia.ts:505](https://github.com/Hack23/cia-compliance-manager/blob/33a6e06f56bdf18af5506272bbd4bc140a490de3/src/types/cia.ts#L505)
+Defined in: [types/cia.ts:505](https://github.com/Hack23/cia-compliance-manager/blob/0ccfae8ee114f5804bb25f89f2d1de1e1af26e3b/src/types/cia.ts#L505)
 
 Selected integrity security level
 
@@ -49,6 +49,6 @@ Selected integrity security level
 
 > **confidentiality**: [`SecurityLevel`](../type-aliases/SecurityLevel.md)
 
-Defined in: [types/cia.ts:508](https://github.com/Hack23/cia-compliance-manager/blob/33a6e06f56bdf18af5506272bbd4bc140a490de3/src/types/cia.ts#L508)
+Defined in: [types/cia.ts:508](https://github.com/Hack23/cia-compliance-manager/blob/0ccfae8ee114f5804bb25f89f2d1de1e1af26e3b/src/types/cia.ts#L508)
 
 Selected confidentiality security level
