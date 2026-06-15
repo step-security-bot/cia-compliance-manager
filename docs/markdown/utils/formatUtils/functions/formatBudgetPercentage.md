@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.89**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.90**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **formatBudgetPercentage**(`value`, `isCapex`): `string`
 
-Defined in: [utils/formatUtils.ts:278](https://github.com/Hack23/cia-compliance-manager/blob/0ccfae8ee114f5804bb25f89f2d1de1e1af26e3b/src/utils/formatUtils.ts#L278)
+Defined in: [utils/formatUtils.ts:278](https://github.com/Hack23/cia-compliance-manager/blob/b8338d711d47ba3fba3fa9866890e62875eaca63/src/utils/formatUtils.ts#L278)
 
 Format a cost value for budget display
 

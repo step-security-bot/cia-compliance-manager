@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.89**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.90**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **hasMethod**\<`T`, `K`\>(`obj`, `methodName`): `obj is T & Record<K, (args: unknown[]) => unknown>`
 
-Defined in: [utils/typeGuards.ts:956](https://github.com/Hack23/cia-compliance-manager/blob/0ccfae8ee114f5804bb25f89f2d1de1e1af26e3b/src/utils/typeGuards.ts#L956)
+Defined in: [utils/typeGuards.ts:956](https://github.com/Hack23/cia-compliance-manager/blob/b8338d711d47ba3fba3fa9866890e62875eaca63/src/utils/typeGuards.ts#L956)
 
 Type guard to check if an object has a specific method
 

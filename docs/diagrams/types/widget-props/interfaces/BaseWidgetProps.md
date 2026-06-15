@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.89**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.90**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: BaseWidgetProps
 
-Defined in: [types/widget-props.ts:239](https://github.com/Hack23/cia-compliance-manager/blob/0ccfae8ee114f5804bb25f89f2d1de1e1af26e3b/src/types/widget-props.ts#L239)
+Defined in: [types/widget-props.ts:239](https://github.com/Hack23/cia-compliance-manager/blob/b8338d711d47ba3fba3fa9866890e62875eaca63/src/types/widget-props.ts#L239)
 
 Base props common to all widgets
 
@@ -43,7 +43,7 @@ interface MyWidgetProps extends BaseWidgetProps {
 
 > `optional` **className?**: `string`
 
-Defined in: [types/widget-props.ts:124](https://github.com/Hack23/cia-compliance-manager/blob/0ccfae8ee114f5804bb25f89f2d1de1e1af26e3b/src/types/widget-props.ts#L124)
+Defined in: [types/widget-props.ts:124](https://github.com/Hack23/cia-compliance-manager/blob/b8338d711d47ba3fba3fa9866890e62875eaca63/src/types/widget-props.ts#L124)
 
 Optional CSS class name for custom styling
 
@@ -66,7 +66,7 @@ Use Tailwind CSS classes or custom CSS classes.
 
 > `optional` **testId?**: `string`
 
-Defined in: [types/widget-props.ts:135](https://github.com/Hack23/cia-compliance-manager/blob/0ccfae8ee114f5804bb25f89f2d1de1e1af26e3b/src/types/widget-props.ts#L135)
+Defined in: [types/widget-props.ts:135](https://github.com/Hack23/cia-compliance-manager/blob/b8338d711d47ba3fba3fa9866890e62875eaca63/src/types/widget-props.ts#L135)
 
 Optional test ID for automated testing
 
@@ -90,7 +90,7 @@ defined in testIds constants.
 
 > `optional` **children?**: `ReactNode`
 
-Defined in: [types/widget-props.ts:243](https://github.com/Hack23/cia-compliance-manager/blob/0ccfae8ee114f5804bb25f89f2d1de1e1af26e3b/src/types/widget-props.ts#L243)
+Defined in: [types/widget-props.ts:243](https://github.com/Hack23/cia-compliance-manager/blob/b8338d711d47ba3fba3fa9866890e62875eaca63/src/types/widget-props.ts#L243)
 
 Optional children elements
 
@@ -100,7 +100,7 @@ Optional children elements
 
 > `optional` **onError?**: (`error`) => `void`
 
-Defined in: [types/widget-props.ts:249](https://github.com/Hack23/cia-compliance-manager/blob/0ccfae8ee114f5804bb25f89f2d1de1e1af26e3b/src/types/widget-props.ts#L249)
+Defined in: [types/widget-props.ts:249](https://github.com/Hack23/cia-compliance-manager/blob/b8338d711d47ba3fba3fa9866890e62875eaca63/src/types/widget-props.ts#L249)
 
 Optional callback when widget encounters an error
 

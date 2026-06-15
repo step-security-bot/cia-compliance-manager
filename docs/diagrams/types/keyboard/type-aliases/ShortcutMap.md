@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.89**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.90**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > **ShortcutMap** = `Record`\<`string`, [`KeyboardShortcut`](../interfaces/KeyboardShortcut.md)\>
 
-Defined in: [types/keyboard.ts:56](https://github.com/Hack23/cia-compliance-manager/blob/0ccfae8ee114f5804bb25f89f2d1de1e1af26e3b/src/types/keyboard.ts#L56)
+Defined in: [types/keyboard.ts:56](https://github.com/Hack23/cia-compliance-manager/blob/b8338d711d47ba3fba3fa9866890e62875eaca63/src/types/keyboard.ts#L56)
 
 Keyboard shortcut map for registration
