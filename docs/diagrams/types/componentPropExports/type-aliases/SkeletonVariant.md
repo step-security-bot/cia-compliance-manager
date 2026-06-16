@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.90**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.91**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > **SkeletonVariant** = `"summary"` \| `"chart"` \| `"list"` \| `"metrics"` \| `"tabs"` \| `"default"`
 
-Defined in: [types/componentPropExports.ts:512](https://github.com/Hack23/cia-compliance-manager/blob/b8338d711d47ba3fba3fa9866890e62875eaca63/src/types/componentPropExports.ts#L512)
+Defined in: [types/componentPropExports.ts:512](https://github.com/Hack23/cia-compliance-manager/blob/0046341d620858f307c6d62799feab258fe05400/src/types/componentPropExports.ts#L512)
 
 Skeleton variant types for different widget layouts

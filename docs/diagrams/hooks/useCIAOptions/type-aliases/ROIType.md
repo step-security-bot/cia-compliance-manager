@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.90**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.91**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **ROIType** = `"NONE"` \| `"LOW"` \| `"MODERATE"` \| `"HIGH"` \| `"VERY_HIGH"`
 
-Defined in: [hooks/useCIAOptions.ts:9](https://github.com/Hack23/cia-compliance-manager/blob/b8338d711d47ba3fba3fa9866890e62875eaca63/src/hooks/useCIAOptions.ts#L9)
+Defined in: [hooks/useCIAOptions.ts:9](https://github.com/Hack23/cia-compliance-manager/blob/0046341d620858f307c6d62799feab258fe05400/src/hooks/useCIAOptions.ts#L9)
 
 ROI type representing different security level categories
 

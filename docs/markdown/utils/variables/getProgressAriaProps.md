@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.90**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.91**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getProgressAriaProps**: (`label`, `valuenow`, `valuemin`, `valuemax`, `valuetext?`) => `object`
 
-Defined in: [utils/index.ts:37](https://github.com/Hack23/cia-compliance-manager/blob/b8338d711d47ba3fba3fa9866890e62875eaca63/src/utils/index.ts#L37)
+Defined in: [utils/index.ts:37](https://github.com/Hack23/cia-compliance-manager/blob/0046341d620858f307c6d62799feab258fe05400/src/utils/index.ts#L37)
 
 Generate ARIA props for a progress bar or meter
 

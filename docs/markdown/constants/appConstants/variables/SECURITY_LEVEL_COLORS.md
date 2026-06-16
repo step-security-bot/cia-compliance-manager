@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.90**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.91**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **SECURITY\_LEVEL\_COLORS**: `object`
 
-Defined in: [constants/appConstants.ts:359](https://github.com/Hack23/cia-compliance-manager/blob/b8338d711d47ba3fba3fa9866890e62875eaca63/src/constants/appConstants.ts#L359)
+Defined in: [constants/appConstants.ts:359](https://github.com/Hack23/cia-compliance-manager/blob/0046341d620858f307c6d62799feab258fe05400/src/constants/appConstants.ts#L359)
 
 Colors for different security levels
 

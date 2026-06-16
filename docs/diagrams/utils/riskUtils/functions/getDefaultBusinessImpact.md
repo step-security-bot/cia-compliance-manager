@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.90**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.91**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getDefaultBusinessImpact**(`component`, `level`): [`BusinessImpactDetails`](../../../types/cia-services/interfaces/BusinessImpactDetails.md)
 
-Defined in: [utils/riskUtils.ts:33](https://github.com/Hack23/cia-compliance-manager/blob/b8338d711d47ba3fba3fa9866890e62875eaca63/src/utils/riskUtils.ts#L33)
+Defined in: [utils/riskUtils.ts:33](https://github.com/Hack23/cia-compliance-manager/blob/0046341d620858f307c6d62799feab258fe05400/src/utils/riskUtils.ts#L33)
 
 Get default business impact details
 

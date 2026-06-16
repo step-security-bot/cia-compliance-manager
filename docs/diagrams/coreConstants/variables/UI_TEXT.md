@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.90**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.91**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **UI\_TEXT**: `object`
 
-Defined in: [constants/coreConstants.ts:262](https://github.com/Hack23/cia-compliance-manager/blob/b8338d711d47ba3fba3fa9866890e62875eaca63/src/constants/coreConstants.ts#L262)
+Defined in: [constants/coreConstants.ts:262](https://github.com/Hack23/cia-compliance-manager/blob/0046341d620858f307c6d62799feab258fe05400/src/constants/coreConstants.ts#L262)
 
 UI text constants for labels
 

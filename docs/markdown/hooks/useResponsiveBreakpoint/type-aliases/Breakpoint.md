@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.90**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.91**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > **Breakpoint** = `"mobile"` \| `"tablet"` \| `"desktop"`
 
-Defined in: [hooks/useResponsiveBreakpoint.ts:6](https://github.com/Hack23/cia-compliance-manager/blob/b8338d711d47ba3fba3fa9866890e62875eaca63/src/hooks/useResponsiveBreakpoint.ts#L6)
+Defined in: [hooks/useResponsiveBreakpoint.ts:6](https://github.com/Hack23/cia-compliance-manager/blob/0046341d620858f307c6d62799feab258fe05400/src/hooks/useResponsiveBreakpoint.ts#L6)
 
 Responsive breakpoint names

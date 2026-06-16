@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.90**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.91**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getRecommendedSecurityLevel**: (`dataSensitivity`) => [`SecurityLevel`](../../types/cia/type-aliases/SecurityLevel.md)
 
-Defined in: [utils/index.ts:118](https://github.com/Hack23/cia-compliance-manager/blob/b8338d711d47ba3fba3fa9866890e62875eaca63/src/utils/index.ts#L118)
+Defined in: [utils/index.ts:118](https://github.com/Hack23/cia-compliance-manager/blob/0046341d620858f307c6d62799feab258fe05400/src/utils/index.ts#L118)
 
 Get recommended security level based on data sensitivity
 

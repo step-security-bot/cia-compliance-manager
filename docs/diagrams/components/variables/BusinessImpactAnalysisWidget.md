@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.90**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.91**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **BusinessImpactAnalysisWidget**: `React.FC`\<[`BusinessImpactAnalysisWidgetProps`](../../types/widget-props/type-aliases/BusinessImpactAnalysisWidgetProps.md)\>
 
-Defined in: [components/widgets/assessmentcenter/BusinessImpactAnalysisWidget.tsx:33](https://github.com/Hack23/cia-compliance-manager/blob/b8338d711d47ba3fba3fa9866890e62875eaca63/src/components/widgets/assessmentcenter/BusinessImpactAnalysisWidget.tsx#L33)
+Defined in: [components/widgets/assessmentcenter/BusinessImpactAnalysisWidget.tsx:33](https://github.com/Hack23/cia-compliance-manager/blob/0046341d620858f307c6d62799feab258fe05400/src/components/widgets/assessmentcenter/BusinessImpactAnalysisWidget.tsx#L33)
 
 Business Impact Analysis Widget provides insights on security impacts
 

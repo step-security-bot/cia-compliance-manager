@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.90**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.91**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **WIDGET\_SIZES**: `object`
 
-Defined in: [constants/appConstants.ts:373](https://github.com/Hack23/cia-compliance-manager/blob/b8338d711d47ba3fba3fa9866890e62875eaca63/src/constants/appConstants.ts#L373)
+Defined in: [constants/appConstants.ts:373](https://github.com/Hack23/cia-compliance-manager/blob/0046341d620858f307c6d62799feab258fe05400/src/constants/appConstants.ts#L373)
 
 Widget sizes for layout
 

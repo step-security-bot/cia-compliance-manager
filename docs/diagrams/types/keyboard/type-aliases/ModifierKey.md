@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.90**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.91**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > **ModifierKey** = `"ctrl"` \| `"shift"` \| `"alt"` \| `"meta"` \| `"cmd"`
 
-Defined in: [types/keyboard.ts:20](https://github.com/Hack23/cia-compliance-manager/blob/b8338d711d47ba3fba3fa9866890e62875eaca63/src/types/keyboard.ts#L20)
+Defined in: [types/keyboard.ts:20](https://github.com/Hack23/cia-compliance-manager/blob/0046341d620858f307c6d62799feab258fe05400/src/types/keyboard.ts#L20)
 
 Modifier keys for keyboard shortcuts

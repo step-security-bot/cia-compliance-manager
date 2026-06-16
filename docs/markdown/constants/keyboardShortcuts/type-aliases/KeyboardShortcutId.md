@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.90**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.91**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > **KeyboardShortcutId** = keyof *typeof* [`KEYBOARD_SHORTCUTS`](../variables/KEYBOARD_SHORTCUTS.md)
 
-Defined in: [constants/keyboardShortcuts.ts:110](https://github.com/Hack23/cia-compliance-manager/blob/b8338d711d47ba3fba3fa9866890e62875eaca63/src/constants/keyboardShortcuts.ts#L110)
+Defined in: [constants/keyboardShortcuts.ts:110](https://github.com/Hack23/cia-compliance-manager/blob/0046341d620858f307c6d62799feab258fe05400/src/constants/keyboardShortcuts.ts#L110)
 
 Keyboard shortcut IDs for type-safe access
