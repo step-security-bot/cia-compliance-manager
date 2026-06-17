@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.91**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.92**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **securityLevelToValue**(`level`): `number`
 
-Defined in: [utils/riskUtils.ts:250](https://github.com/Hack23/cia-compliance-manager/blob/0046341d620858f307c6d62799feab258fe05400/src/utils/riskUtils.ts#L250)
+Defined in: [utils/riskUtils.ts:250](https://github.com/Hack23/cia-compliance-manager/blob/b521903ae36f0e78cfb438c973afc64eece3f537/src/utils/riskUtils.ts#L250)
 
 Convert security level to numerical value
 

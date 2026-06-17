@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.91**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.92**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getRiskLevelFromImpactLevel**(`impactLevel`): `string`
 
-Defined in: [utils/riskUtils.ts:102](https://github.com/Hack23/cia-compliance-manager/blob/0046341d620858f307c6d62799feab258fe05400/src/utils/riskUtils.ts#L102)
+Defined in: [utils/riskUtils.ts:102](https://github.com/Hack23/cia-compliance-manager/blob/b521903ae36f0e78cfb438c973afc64eece3f537/src/utils/riskUtils.ts#L102)
 
 Maps business impact levels to risk level strings
 This mapping ensures consistent risk level terminology across the application

@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.91**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.92**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **isSecurityResource**(`value`): `boolean`
 
-Defined in: [utils/typeGuards.ts:282](https://github.com/Hack23/cia-compliance-manager/blob/0046341d620858f307c6d62799feab258fe05400/src/utils/typeGuards.ts#L282)
+Defined in: [utils/typeGuards.ts:282](https://github.com/Hack23/cia-compliance-manager/blob/b521903ae36f0e78cfb438c973afc64eece3f537/src/utils/typeGuards.ts#L282)
 
 Type guard for security resource objects
 

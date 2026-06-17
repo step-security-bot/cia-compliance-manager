@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.91**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.92**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **useCIADataProvider**(): `object`
 
-Defined in: [hooks/useCIADataProvider.ts:9](https://github.com/Hack23/cia-compliance-manager/blob/0046341d620858f307c6d62799feab258fe05400/src/hooks/useCIADataProvider.ts#L9)
+Defined in: [hooks/useCIADataProvider.ts:9](https://github.com/Hack23/cia-compliance-manager/blob/b521903ae36f0e78cfb438c973afc64eece3f537/src/hooks/useCIADataProvider.ts#L9)
 
 Hook that provides access to the CIA data provider
 

@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.91**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.92**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **createDefaultDataProvider**(): [`CIADataProvider`](../../../types/cia-services/interfaces/CIADataProvider.md)
 
-Defined in: [services/dataProviders.ts:8](https://github.com/Hack23/cia-compliance-manager/blob/0046341d620858f307c6d62799feab258fe05400/src/services/dataProviders.ts#L8)
+Defined in: [services/dataProviders.ts:8](https://github.com/Hack23/cia-compliance-manager/blob/b521903ae36f0e78cfb438c973afc64eece3f537/src/services/dataProviders.ts#L8)
 
 Creates a default data provider with mock data
 

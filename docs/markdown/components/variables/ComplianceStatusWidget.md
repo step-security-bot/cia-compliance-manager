@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.91**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.92**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **ComplianceStatusWidget**: `React.FC`\<[`ComplianceStatusWidgetProps`](../../types/widget-props/interfaces/ComplianceStatusWidgetProps.md)\>
 
-Defined in: [components/widgets/businessvalue/ComplianceStatusWidget.tsx:32](https://github.com/Hack23/cia-compliance-manager/blob/0046341d620858f307c6d62799feab258fe05400/src/components/widgets/businessvalue/ComplianceStatusWidget.tsx#L32)
+Defined in: [components/widgets/businessvalue/ComplianceStatusWidget.tsx:32](https://github.com/Hack23/cia-compliance-manager/blob/b521903ae36f0e78cfb438c973afc64eece3f537/src/components/widgets/businessvalue/ComplianceStatusWidget.tsx#L32)
 
 ComplianceStatusWidget displays status of compliance with various frameworks
 

@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.91**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.92**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: ComplianceService
 
-Defined in: [types/cia-services.ts:392](https://github.com/Hack23/cia-compliance-manager/blob/0046341d620858f307c6d62799feab258fe05400/src/types/cia-services.ts#L392)
+Defined in: [types/cia-services.ts:392](https://github.com/Hack23/cia-compliance-manager/blob/b521903ae36f0e78cfb438c973afc64eece3f537/src/types/cia-services.ts#L392)
 
 Compliance Service interface
 Defines methods for compliance status and framework checks
@@ -17,7 +17,7 @@ Defines methods for compliance status and framework checks
 
 > `optional` **getComplianceStatus?**: (`availabilityLevel`, `integrityLevel`, `confidentialityLevel`) => [`ComplianceStatus`](ComplianceStatus.md) \| `null`
 
-Defined in: [types/cia-services.ts:393](https://github.com/Hack23/cia-compliance-manager/blob/0046341d620858f307c6d62799feab258fe05400/src/types/cia-services.ts#L393)
+Defined in: [types/cia-services.ts:393](https://github.com/Hack23/cia-compliance-manager/blob/b521903ae36f0e78cfb438c973afc64eece3f537/src/types/cia-services.ts#L393)
 
 #### Parameters
 

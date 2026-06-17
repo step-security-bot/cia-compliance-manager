@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.91**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.92**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **isCIAComponent**(`value`): `value is CIAComponentType`
 
-Defined in: [utils/typeGuards.ts:898](https://github.com/Hack23/cia-compliance-manager/blob/0046341d620858f307c6d62799feab258fe05400/src/utils/typeGuards.ts#L898)
+Defined in: [utils/typeGuards.ts:898](https://github.com/Hack23/cia-compliance-manager/blob/b521903ae36f0e78cfb438c973afc64eece3f537/src/utils/typeGuards.ts#L898)
 
 Type guard to check if a value is a valid CIA component
 Alias for isCIAComponentType for backward compatibility
