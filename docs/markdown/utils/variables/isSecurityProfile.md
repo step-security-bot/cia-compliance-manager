@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.92**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.93**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **isSecurityProfile**: (`obj`) => `boolean`
 
-Defined in: [utils/index.ts:196](https://github.com/Hack23/cia-compliance-manager/blob/b521903ae36f0e78cfb438c973afc64eece3f537/src/utils/index.ts#L196)
+Defined in: [utils/index.ts:196](https://github.com/Hack23/cia-compliance-manager/blob/06d50a5058053bb206ed360d6872714a86cfd3b0/src/utils/index.ts#L196)
 
 Checks if an object is a valid security profile
 

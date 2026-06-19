@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.92**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.93**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > `const` **DEFAULT\_SECURITY\_LEVEL**: [`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md) = `"None"`
 
-Defined in: [constants/appConstants.ts:368](https://github.com/Hack23/cia-compliance-manager/blob/b521903ae36f0e78cfb438c973afc64eece3f537/src/constants/appConstants.ts#L368)
+Defined in: [constants/appConstants.ts:368](https://github.com/Hack23/cia-compliance-manager/blob/06d50a5058053bb206ed360d6872714a86cfd3b0/src/constants/appConstants.ts#L368)
 
 Default security level
