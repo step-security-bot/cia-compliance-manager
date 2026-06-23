@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.93**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.94**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **handleArrowKeyNavigation**(`event`, `currentIndex`, `totalItems`, `onIndexChange`, `orientation?`): `void`
 
-Defined in: [utils/accessibility.ts:448](https://github.com/Hack23/cia-compliance-manager/blob/06d50a5058053bb206ed360d6872714a86cfd3b0/src/utils/accessibility.ts#L448)
+Defined in: [utils/accessibility.ts:448](https://github.com/Hack23/cia-compliance-manager/blob/68c52fccf536a323de20e9513ca471d972c5cfae/src/utils/accessibility.ts#L448)
 
 Handle keyboard navigation for arrow keys in a list or grid
 

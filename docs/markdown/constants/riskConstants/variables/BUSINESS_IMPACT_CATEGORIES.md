@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.93**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.94**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **BUSINESS\_IMPACT\_CATEGORIES**: `object`
 
-Defined in: [constants/riskConstants.ts:24](https://github.com/Hack23/cia-compliance-manager/blob/06d50a5058053bb206ed360d6872714a86cfd3b0/src/constants/riskConstants.ts#L24)
+Defined in: [constants/riskConstants.ts:24](https://github.com/Hack23/cia-compliance-manager/blob/68c52fccf536a323de20e9513ca471d972c5cfae/src/constants/riskConstants.ts#L24)
 
 Categories for business impact analysis
 

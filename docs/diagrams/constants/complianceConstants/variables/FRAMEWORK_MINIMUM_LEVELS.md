@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.93**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.94**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > `const` **FRAMEWORK\_MINIMUM\_LEVELS**: `Record`\<`string`, \{ `availability`: [`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md); `integrity`: [`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md); `confidentiality`: [`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md); \}\>
 
-Defined in: [constants/complianceConstants.ts:186](https://github.com/Hack23/cia-compliance-manager/blob/06d50a5058053bb206ed360d6872714a86cfd3b0/src/constants/complianceConstants.ts#L186)
+Defined in: [constants/complianceConstants.ts:186](https://github.com/Hack23/cia-compliance-manager/blob/68c52fccf536a323de20e9513ca471d972c5cfae/src/constants/complianceConstants.ts#L186)
 
 Minimum security levels required for each framework

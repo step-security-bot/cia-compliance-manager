@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.93**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.94**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **formatDate**(`date`, `options?`): `string`
 
-Defined in: [utils/formatUtils.ts:330](https://github.com/Hack23/cia-compliance-manager/blob/06d50a5058053bb206ed360d6872714a86cfd3b0/src/utils/formatUtils.ts#L330)
+Defined in: [utils/formatUtils.ts:330](https://github.com/Hack23/cia-compliance-manager/blob/68c52fccf536a323de20e9513ca471d972c5cfae/src/utils/formatUtils.ts#L330)
 
 Formats a date using the browser's local formatting
 
