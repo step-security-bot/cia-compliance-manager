@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.94**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.95**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **KeyboardShortcutProvider**(`__namedParameters`): `ReactElement`
 
-Defined in: [contexts/KeyboardShortcutContext.tsx:45](https://github.com/Hack23/cia-compliance-manager/blob/68c52fccf536a323de20e9513ca471d972c5cfae/src/contexts/KeyboardShortcutContext.tsx#L45)
+Defined in: [contexts/KeyboardShortcutContext.tsx:45](https://github.com/Hack23/cia-compliance-manager/blob/bba60f76ac6969aa94082ad8531f42bf036c004a/src/contexts/KeyboardShortcutContext.tsx#L45)
 
 Provider component for keyboard shortcut context
 

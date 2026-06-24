@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.94**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.95**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > **ShortcutCategory** = `"Selection"` \| `"Navigation"` \| `"Actions"` \| `"Help"` \| `"General"`
 
-Defined in: [types/keyboard.ts:10](https://github.com/Hack23/cia-compliance-manager/blob/68c52fccf536a323de20e9513ca471d972c5cfae/src/types/keyboard.ts#L10)
+Defined in: [types/keyboard.ts:10](https://github.com/Hack23/cia-compliance-manager/blob/bba60f76ac6969aa94082ad8531f42bf036c004a/src/types/keyboard.ts#L10)
 
 Keyboard shortcut categories for organization

@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.94**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.95**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > `const` **FRAMEWORK\_DESCRIPTIONS**: `Record`\<`string`, `string`\>
 
-Defined in: [constants/complianceConstants.ts:41](https://github.com/Hack23/cia-compliance-manager/blob/68c52fccf536a323de20e9513ca471d972c5cfae/src/constants/complianceConstants.ts#L41)
+Defined in: [constants/complianceConstants.ts:41](https://github.com/Hack23/cia-compliance-manager/blob/bba60f76ac6969aa94082ad8531f42bf036c004a/src/constants/complianceConstants.ts#L41)
 
 Descriptions for compliance frameworks

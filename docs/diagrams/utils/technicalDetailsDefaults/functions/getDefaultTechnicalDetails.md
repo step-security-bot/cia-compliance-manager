@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.94**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.95**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getDefaultTechnicalDetails**(`component`, `level`): `object`
 
-Defined in: [utils/technicalDetailsDefaults.ts:10](https://github.com/Hack23/cia-compliance-manager/blob/68c52fccf536a323de20e9513ca471d972c5cfae/src/utils/technicalDetailsDefaults.ts#L10)
+Defined in: [utils/technicalDetailsDefaults.ts:10](https://github.com/Hack23/cia-compliance-manager/blob/bba60f76ac6969aa94082ad8531f42bf036c004a/src/utils/technicalDetailsDefaults.ts#L10)
 
 Gets default technical details when service isn't available
 

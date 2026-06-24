@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.94**](../../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.95**](../../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **ShortcutBadge**: `React.FC`\<[`ShortcutBadgeProps`](../../../../types/keyboard/interfaces/ShortcutBadgeProps.md)\>
 
-Defined in: [components/common/ShortcutBadge.tsx:26](https://github.com/Hack23/cia-compliance-manager/blob/68c52fccf536a323de20e9513ca471d972c5cfae/src/components/common/ShortcutBadge.tsx#L26)
+Defined in: [components/common/ShortcutBadge.tsx:26](https://github.com/Hack23/cia-compliance-manager/blob/bba60f76ac6969aa94082ad8531f42bf036c004a/src/components/common/ShortcutBadge.tsx#L26)
 
 ShortcutBadge component displays a visual representation of a keyboard shortcut
 

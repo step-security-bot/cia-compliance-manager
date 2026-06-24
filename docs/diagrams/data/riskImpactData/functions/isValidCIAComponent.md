@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.94**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.95**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **isValidCIAComponent**(`value`): `value is CIAComponent`
 
-Defined in: [data/riskImpactData.ts:84](https://github.com/Hack23/cia-compliance-manager/blob/68c52fccf536a323de20e9513ca471d972c5cfae/src/data/riskImpactData.ts#L84)
+Defined in: [data/riskImpactData.ts:84](https://github.com/Hack23/cia-compliance-manager/blob/bba60f76ac6969aa94082ad8531f42bf036c004a/src/data/riskImpactData.ts#L84)
 
 Type guard to check if a value is a valid CIA component for risk impact
 

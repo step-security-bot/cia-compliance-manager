@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.94**](../../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.95**](../../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **COMPLIANCE\_STATUS**: `object`
 
-Defined in: [components/widgets/constants.ts:10](https://github.com/Hack23/cia-compliance-manager/blob/68c52fccf536a323de20e9513ca471d972c5cfae/src/components/widgets/constants.ts#L10)
+Defined in: [components/widgets/constants.ts:10](https://github.com/Hack23/cia-compliance-manager/blob/bba60f76ac6969aa94082ad8531f42bf036c004a/src/components/widgets/constants.ts#L10)
 
 Human-readable compliance status message strings keyed by compliance level
 
