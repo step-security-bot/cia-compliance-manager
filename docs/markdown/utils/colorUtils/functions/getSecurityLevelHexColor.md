@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.95**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.96**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getSecurityLevelHexColor**(`level`): `string`
 
-Defined in: [utils/colorUtils.ts:159](https://github.com/Hack23/cia-compliance-manager/blob/bba60f76ac6969aa94082ad8531f42bf036c004a/src/utils/colorUtils.ts#L159)
+Defined in: [utils/colorUtils.ts:159](https://github.com/Hack23/cia-compliance-manager/blob/1de07b21c58ee7b60c2d9f35da724493bd69cdb4/src/utils/colorUtils.ts#L159)
 
 Get hex color for a security level based on current theme
 

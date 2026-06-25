@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.95**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.96**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **REGULATORY\_REGIONS**: `object`
 
-Defined in: [constants/complianceConstants.ts:67](https://github.com/Hack23/cia-compliance-manager/blob/bba60f76ac6969aa94082ad8531f42bf036c004a/src/constants/complianceConstants.ts#L67)
+Defined in: [constants/complianceConstants.ts:67](https://github.com/Hack23/cia-compliance-manager/blob/1de07b21c58ee7b60c2d9f35da724493bd69cdb4/src/constants/complianceConstants.ts#L67)
 
 Regulatory regions
 
