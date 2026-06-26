@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.96**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.97**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **mapOptionsToConstants**\<`T`, `R`\>(`options`, `key`, `transform?`): \{ `NONE`: `undefined`; `LOW`: `undefined`; `MODERATE`: `undefined`; `HIGH`: `undefined`; `VERY_HIGH`: `undefined`; \} \| \{ `NONE`: `R` \| [`CIADetails`](../../../types/cia-services/interfaces/CIADetails.md)\[`T`\]; `LOW`: `R` \| [`CIADetails`](../../../types/cia-services/interfaces/CIADetails.md)\[`T`\]; `MODERATE`: `R` \| [`CIADetails`](../../../types/cia-services/interfaces/CIADetails.md)\[`T`\]; `HIGH`: `R` \| [`CIADetails`](../../../types/cia-services/interfaces/CIADetails.md)\[`T`\]; `VERY_HIGH`: `R` \| [`CIADetails`](../../../types/cia-services/interfaces/CIADetails.md)\[`T`\]; \}
 
-Defined in: [constants/appConstants.ts:23](https://github.com/Hack23/cia-compliance-manager/blob/1de07b21c58ee7b60c2d9f35da724493bd69cdb4/src/constants/appConstants.ts#L23)
+Defined in: [constants/appConstants.ts:23](https://github.com/Hack23/cia-compliance-manager/blob/1b85d34c82bd4d30675f1a8b2cd37f0e6398fc9d/src/constants/appConstants.ts#L23)
 
 Maps CIA option values to constants with consistent naming (NONE, LOW, etc.)
 Modified version to avoid circular dependencies

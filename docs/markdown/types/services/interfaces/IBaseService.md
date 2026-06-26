@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.96**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.97**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: IBaseService
 
-Defined in: [types/services.ts:78](https://github.com/Hack23/cia-compliance-manager/blob/1de07b21c58ee7b60c2d9f35da724493bd69cdb4/src/types/services.ts#L78)
+Defined in: [types/services.ts:78](https://github.com/Hack23/cia-compliance-manager/blob/1b85d34c82bd4d30675f1a8b2cd37f0e6398fc9d/src/types/services.ts#L78)
 
 Base service interface that all services must implement
 
@@ -27,7 +27,7 @@ Provides common functionality for validation and error handling
 
 > `readonly` **name**: `string`
 
-Defined in: [types/services.ts:82](https://github.com/Hack23/cia-compliance-manager/blob/1de07b21c58ee7b60c2d9f35da724493bd69cdb4/src/types/services.ts#L82)
+Defined in: [types/services.ts:82](https://github.com/Hack23/cia-compliance-manager/blob/1b85d34c82bd4d30675f1a8b2cd37f0e6398fc9d/src/types/services.ts#L82)
 
 Service name for identification and logging
 
@@ -37,7 +37,7 @@ Service name for identification and logging
 
 > **validate**(`input`): `boolean`
 
-Defined in: [types/services.ts:90](https://github.com/Hack23/cia-compliance-manager/blob/1de07b21c58ee7b60c2d9f35da724493bd69cdb4/src/types/services.ts#L90)
+Defined in: [types/services.ts:90](https://github.com/Hack23/cia-compliance-manager/blob/1b85d34c82bd4d30675f1a8b2cd37f0e6398fc9d/src/types/services.ts#L90)
 
 Validate input parameters (returns simple boolean)
 
@@ -61,7 +61,7 @@ True if valid, false otherwise
 
 > **handleError**(`error`): [`ServiceError`](../../../services/errors/classes/ServiceError.md)
 
-Defined in: [types/services.ts:98](https://github.com/Hack23/cia-compliance-manager/blob/1de07b21c58ee7b60c2d9f35da724493bd69cdb4/src/types/services.ts#L98)
+Defined in: [types/services.ts:98](https://github.com/Hack23/cia-compliance-manager/blob/1b85d34c82bd4d30675f1a8b2cd37f0e6398fc9d/src/types/services.ts#L98)
 
 Handle errors consistently across services
 

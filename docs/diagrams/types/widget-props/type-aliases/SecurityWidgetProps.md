@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.96**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.97**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **SecurityWidgetProps** = [`WithSecurityLevelProps`](../interfaces/WithSecurityLevelProps.md) & [`CommonWidgetProps`](../interfaces/CommonWidgetProps.md)
 
-Defined in: [types/widget-props.ts:162](https://github.com/Hack23/cia-compliance-manager/blob/1de07b21c58ee7b60c2d9f35da724493bd69cdb4/src/types/widget-props.ts#L162)
+Defined in: [types/widget-props.ts:162](https://github.com/Hack23/cia-compliance-manager/blob/1b85d34c82bd4d30675f1a8b2cd37f0e6398fc9d/src/types/widget-props.ts#L162)
 
 Combined interface for widgets that use security levels
 

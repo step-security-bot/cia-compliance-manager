@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.96**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.97**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **useTechnicalDetailsData**(`availabilityLevel`, `integrityLevel`, `confidentialityLevel`, `ciaContentService`): `object`
 
-Defined in: [hooks/useTechnicalDetailsData.ts:26](https://github.com/Hack23/cia-compliance-manager/blob/1de07b21c58ee7b60c2d9f35da724493bd69cdb4/src/hooks/useTechnicalDetailsData.ts#L26)
+Defined in: [hooks/useTechnicalDetailsData.ts:26](https://github.com/Hack23/cia-compliance-manager/blob/1b85d34c82bd4d30675f1a8b2cd37f0e6398fc9d/src/hooks/useTechnicalDetailsData.ts#L26)
 
 Custom hook for TechnicalDetailsWidget helper functions and data
 Centralizes all fallback logic for technical details
