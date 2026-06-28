@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.97**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.98**](../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > `const` **DEFAULT\_REFRESH\_INTERVAL**: `60000` = `60000`
 
-Defined in: [constants/coreConstants.ts:502](https://github.com/Hack23/cia-compliance-manager/blob/1b85d34c82bd4d30675f1a8b2cd37f0e6398fc9d/src/constants/coreConstants.ts#L502)
+Defined in: [constants/coreConstants.ts:502](https://github.com/Hack23/cia-compliance-manager/blob/2f201a728b15b42b9d8c9bebf9ed16f5d9c05e5e/src/constants/coreConstants.ts#L502)
 
 Default data refresh interval in milliseconds

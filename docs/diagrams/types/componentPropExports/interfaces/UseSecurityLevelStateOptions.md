@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.97**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.98**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: UseSecurityLevelStateOptions
 
-Defined in: [types/componentPropExports.ts:285](https://github.com/Hack23/cia-compliance-manager/blob/1b85d34c82bd4d30675f1a8b2cd37f0e6398fc9d/src/types/componentPropExports.ts#L285)
+Defined in: [types/componentPropExports.ts:285](https://github.com/Hack23/cia-compliance-manager/blob/2f201a728b15b42b9d8c9bebf9ed16f5d9c05e5e/src/types/componentPropExports.ts#L285)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [types/componentPropExports.ts:285](https://github.com/Hack23/cia-co
 
 > `optional` **availabilityLevel?**: [`SecurityLevel`](../../cia/type-aliases/SecurityLevel.md)
 
-Defined in: [types/componentPropExports.ts:286](https://github.com/Hack23/cia-compliance-manager/blob/1b85d34c82bd4d30675f1a8b2cd37f0e6398fc9d/src/types/componentPropExports.ts#L286)
+Defined in: [types/componentPropExports.ts:286](https://github.com/Hack23/cia-compliance-manager/blob/2f201a728b15b42b9d8c9bebf9ed16f5d9c05e5e/src/types/componentPropExports.ts#L286)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [types/componentPropExports.ts:286](https://github.com/Hack23/cia-co
 
 > `optional` **integrityLevel?**: [`SecurityLevel`](../../cia/type-aliases/SecurityLevel.md)
 
-Defined in: [types/componentPropExports.ts:287](https://github.com/Hack23/cia-compliance-manager/blob/1b85d34c82bd4d30675f1a8b2cd37f0e6398fc9d/src/types/componentPropExports.ts#L287)
+Defined in: [types/componentPropExports.ts:287](https://github.com/Hack23/cia-compliance-manager/blob/2f201a728b15b42b9d8c9bebf9ed16f5d9c05e5e/src/types/componentPropExports.ts#L287)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: [types/componentPropExports.ts:287](https://github.com/Hack23/cia-co
 
 > `optional` **confidentialityLevel?**: [`SecurityLevel`](../../cia/type-aliases/SecurityLevel.md)
 
-Defined in: [types/componentPropExports.ts:288](https://github.com/Hack23/cia-compliance-manager/blob/1b85d34c82bd4d30675f1a8b2cd37f0e6398fc9d/src/types/componentPropExports.ts#L288)
+Defined in: [types/componentPropExports.ts:288](https://github.com/Hack23/cia-compliance-manager/blob/2f201a728b15b42b9d8c9bebf9ed16f5d9c05e5e/src/types/componentPropExports.ts#L288)
 
 ***
 
@@ -38,7 +38,7 @@ Defined in: [types/componentPropExports.ts:288](https://github.com/Hack23/cia-co
 
 > `optional` **onAvailabilityChange?**: (`level`) => `void`
 
-Defined in: [types/componentPropExports.ts:289](https://github.com/Hack23/cia-compliance-manager/blob/1b85d34c82bd4d30675f1a8b2cd37f0e6398fc9d/src/types/componentPropExports.ts#L289)
+Defined in: [types/componentPropExports.ts:289](https://github.com/Hack23/cia-compliance-manager/blob/2f201a728b15b42b9d8c9bebf9ed16f5d9c05e5e/src/types/componentPropExports.ts#L289)
 
 #### Parameters
 
@@ -56,7 +56,7 @@ Defined in: [types/componentPropExports.ts:289](https://github.com/Hack23/cia-co
 
 > `optional` **onIntegrityChange?**: (`level`) => `void`
 
-Defined in: [types/componentPropExports.ts:290](https://github.com/Hack23/cia-compliance-manager/blob/1b85d34c82bd4d30675f1a8b2cd37f0e6398fc9d/src/types/componentPropExports.ts#L290)
+Defined in: [types/componentPropExports.ts:290](https://github.com/Hack23/cia-compliance-manager/blob/2f201a728b15b42b9d8c9bebf9ed16f5d9c05e5e/src/types/componentPropExports.ts#L290)
 
 #### Parameters
 
@@ -74,7 +74,7 @@ Defined in: [types/componentPropExports.ts:290](https://github.com/Hack23/cia-co
 
 > `optional` **onConfidentialityChange?**: (`level`) => `void`
 
-Defined in: [types/componentPropExports.ts:291](https://github.com/Hack23/cia-compliance-manager/blob/1b85d34c82bd4d30675f1a8b2cd37f0e6398fc9d/src/types/componentPropExports.ts#L291)
+Defined in: [types/componentPropExports.ts:291](https://github.com/Hack23/cia-compliance-manager/blob/2f201a728b15b42b9d8c9bebf9ed16f5d9c05e5e/src/types/componentPropExports.ts#L291)
 
 #### Parameters
 
