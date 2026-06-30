@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.98**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.99**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **useTechnicalDetailsData**(`availabilityLevel`, `integrityLevel`, `confidentialityLevel`, `ciaContentService`): `object`
 
-Defined in: [hooks/useTechnicalDetailsData.ts:26](https://github.com/Hack23/cia-compliance-manager/blob/2f201a728b15b42b9d8c9bebf9ed16f5d9c05e5e/src/hooks/useTechnicalDetailsData.ts#L26)
+Defined in: [hooks/useTechnicalDetailsData.ts:26](https://github.com/Hack23/cia-compliance-manager/blob/fbee8b3f7a24ec2601813198a27e1ee87a439636/src/hooks/useTechnicalDetailsData.ts#L26)
 
 Custom hook for TechnicalDetailsWidget helper functions and data
 Centralizes all fallback logic for technical details

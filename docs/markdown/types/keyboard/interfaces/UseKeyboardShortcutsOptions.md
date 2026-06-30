@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.98**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.99**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: UseKeyboardShortcutsOptions
 
-Defined in: [types/keyboard.ts:61](https://github.com/Hack23/cia-compliance-manager/blob/2f201a728b15b42b9d8c9bebf9ed16f5d9c05e5e/src/types/keyboard.ts#L61)
+Defined in: [types/keyboard.ts:61](https://github.com/Hack23/cia-compliance-manager/blob/fbee8b3f7a24ec2601813198a27e1ee87a439636/src/types/keyboard.ts#L61)
 
 Props for keyboard shortcut hook
 
@@ -16,7 +16,7 @@ Props for keyboard shortcut hook
 
 > **shortcuts**: [`ShortcutMap`](../type-aliases/ShortcutMap.md)
 
-Defined in: [types/keyboard.ts:63](https://github.com/Hack23/cia-compliance-manager/blob/2f201a728b15b42b9d8c9bebf9ed16f5d9c05e5e/src/types/keyboard.ts#L63)
+Defined in: [types/keyboard.ts:63](https://github.com/Hack23/cia-compliance-manager/blob/fbee8b3f7a24ec2601813198a27e1ee87a439636/src/types/keyboard.ts#L63)
 
 Map of shortcuts to register
 
@@ -26,7 +26,7 @@ Map of shortcuts to register
 
 > `optional` **enabled?**: `boolean`
 
-Defined in: [types/keyboard.ts:66](https://github.com/Hack23/cia-compliance-manager/blob/2f201a728b15b42b9d8c9bebf9ed16f5d9c05e5e/src/types/keyboard.ts#L66)
+Defined in: [types/keyboard.ts:66](https://github.com/Hack23/cia-compliance-manager/blob/fbee8b3f7a24ec2601813198a27e1ee87a439636/src/types/keyboard.ts#L66)
 
 Whether shortcuts are enabled
 
@@ -36,7 +36,7 @@ Whether shortcuts are enabled
 
 > `optional` **preventDefault?**: `boolean`
 
-Defined in: [types/keyboard.ts:69](https://github.com/Hack23/cia-compliance-manager/blob/2f201a728b15b42b9d8c9bebf9ed16f5d9c05e5e/src/types/keyboard.ts#L69)
+Defined in: [types/keyboard.ts:69](https://github.com/Hack23/cia-compliance-manager/blob/fbee8b3f7a24ec2601813198a27e1ee87a439636/src/types/keyboard.ts#L69)
 
 Prevent default browser behavior
 
@@ -46,6 +46,6 @@ Prevent default browser behavior
 
 > `optional` **stopPropagation?**: `boolean`
 
-Defined in: [types/keyboard.ts:72](https://github.com/Hack23/cia-compliance-manager/blob/2f201a728b15b42b9d8c9bebf9ed16f5d9c05e5e/src/types/keyboard.ts#L72)
+Defined in: [types/keyboard.ts:72](https://github.com/Hack23/cia-compliance-manager/blob/fbee8b3f7a24ec2601813198a27e1ee87a439636/src/types/keyboard.ts#L72)
 
 Stop event propagation

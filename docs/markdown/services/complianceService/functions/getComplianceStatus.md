@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.98**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.99**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getComplianceStatus**(`availabilityLevel`, `integrityLevel`, `confidentialityLevel`): `Promise`\<[`ComplianceStatusDetails`](../../../types/compliance/interfaces/ComplianceStatusDetails.md)\>
 
-Defined in: [services/complianceService.ts:1059](https://github.com/Hack23/cia-compliance-manager/blob/2f201a728b15b42b9d8c9bebf9ed16f5d9c05e5e/src/services/complianceService.ts#L1059)
+Defined in: [services/complianceService.ts:1059](https://github.com/Hack23/cia-compliance-manager/blob/fbee8b3f7a24ec2601813198a27e1ee87a439636/src/services/complianceService.ts#L1059)
 
 Get compliance status based on security levels
 

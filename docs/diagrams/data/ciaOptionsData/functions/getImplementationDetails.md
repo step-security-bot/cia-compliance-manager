@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.98**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.99**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getImplementationDetails**(`component`, `level`): `object`
 
-Defined in: [data/ciaOptionsData.ts:331](https://github.com/Hack23/cia-compliance-manager/blob/2f201a728b15b42b9d8c9bebf9ed16f5d9c05e5e/src/data/ciaOptionsData.ts#L331)
+Defined in: [data/ciaOptionsData.ts:331](https://github.com/Hack23/cia-compliance-manager/blob/fbee8b3f7a24ec2601813198a27e1ee87a439636/src/data/ciaOptionsData.ts#L331)
 
 Get the implementation details for a specific component and level
 

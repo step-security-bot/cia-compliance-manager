@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.98**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.99**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > **RiskLevel** = *typeof* [`CRITICAL`](../../../constants/riskConstants/variables/RISK_LEVELS.md#critical) \| *typeof* [`HIGH`](../../../constants/riskConstants/variables/RISK_LEVELS.md#high) \| *typeof* [`MEDIUM`](../../../constants/riskConstants/variables/RISK_LEVELS.md#medium) \| *typeof* [`LOW`](../../../constants/riskConstants/variables/RISK_LEVELS.md#low) \| *typeof* [`MINIMAL`](../../../constants/riskConstants/variables/RISK_LEVELS.md#minimal) \| *typeof* [`UNKNOWN`](../../../constants/riskConstants/variables/RISK_LEVELS.md#unknown)
 
-Defined in: [types/cia.ts:43](https://github.com/Hack23/cia-compliance-manager/blob/2f201a728b15b42b9d8c9bebf9ed16f5d9c05e5e/src/types/cia.ts#L43)
+Defined in: [types/cia.ts:43](https://github.com/Hack23/cia-compliance-manager/blob/fbee8b3f7a24ec2601813198a27e1ee87a439636/src/types/cia.ts#L43)
 
 The RISK_LEVELS constant values that can be returned by risk calculation functions
