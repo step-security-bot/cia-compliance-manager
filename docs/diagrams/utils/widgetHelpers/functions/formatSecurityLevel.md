@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.99**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.100**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **formatSecurityLevel**(`level`): `string`
 
-Defined in: [utils/widgetHelpers.ts:46](https://github.com/Hack23/cia-compliance-manager/blob/fbee8b3f7a24ec2601813198a27e1ee87a439636/src/utils/widgetHelpers.ts#L46)
+Defined in: [utils/widgetHelpers.ts:46](https://github.com/Hack23/cia-compliance-manager/blob/0ccaee54608d4cc98f2276cb75ad2836fff7d84f/src/utils/widgetHelpers.ts#L46)
 
 Format security level string to the standardized format
 

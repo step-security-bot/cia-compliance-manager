@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.99**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.100**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **formatCurrency**(`value`, `options?`, `locale?`): `string`
 
-Defined in: [utils/formatUtils.ts:103](https://github.com/Hack23/cia-compliance-manager/blob/fbee8b3f7a24ec2601813198a27e1ee87a439636/src/utils/formatUtils.ts#L103)
+Defined in: [utils/formatUtils.ts:103](https://github.com/Hack23/cia-compliance-manager/blob/0ccaee54608d4cc98f2276cb75ad2836fff7d84f/src/utils/formatUtils.ts#L103)
 
 Formats a number as currency with proper thousands separators
 

@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.99**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.100**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **BREAKPOINTS**: `object`
 
-Defined in: [constants/designTokens.ts:229](https://github.com/Hack23/cia-compliance-manager/blob/fbee8b3f7a24ec2601813198a27e1ee87a439636/src/constants/designTokens.ts#L229)
+Defined in: [constants/designTokens.ts:229](https://github.com/Hack23/cia-compliance-manager/blob/0ccaee54608d4cc98f2276cb75ad2836fff7d84f/src/constants/designTokens.ts#L229)
 
 Responsive breakpoints (matching TailwindCSS defaults)
 
