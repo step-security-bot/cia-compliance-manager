@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.100**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.101**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getRecommendedSecurityLevels**(`currentAvailability`, `currentIntegrity`, `currentConfidentiality`, `minAvailability`, `minIntegrity`, `minConfidentiality`): `object`
 
-Defined in: [utils/securityLevelUtils.ts:362](https://github.com/Hack23/cia-compliance-manager/blob/0ccaee54608d4cc98f2276cb75ad2836fff7d84f/src/utils/securityLevelUtils.ts#L362)
+Defined in: [utils/securityLevelUtils.ts:362](https://github.com/Hack23/cia-compliance-manager/blob/6723306427ccc04dd3d118787ac833aded0c707b/src/utils/securityLevelUtils.ts#L362)
 
 Get a set of recommended security levels that would meet compliance requirements
 

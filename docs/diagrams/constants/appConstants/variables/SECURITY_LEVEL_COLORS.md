@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.100**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.101**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **SECURITY\_LEVEL\_COLORS**: `object`
 
-Defined in: [constants/appConstants.ts:359](https://github.com/Hack23/cia-compliance-manager/blob/0ccaee54608d4cc98f2276cb75ad2836fff7d84f/src/constants/appConstants.ts#L359)
+Defined in: [constants/appConstants.ts:359](https://github.com/Hack23/cia-compliance-manager/blob/6723306427ccc04dd3d118787ac833aded0c707b/src/constants/appConstants.ts#L359)
 
 Colors for different security levels
 

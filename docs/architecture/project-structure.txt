@@ -261,7 +261,6 @@ src/types/cia.ts
 src/types/cia.utility.test.ts
 src/types/cia.utility.ts
 src/types/common/StatusTypes.ts
-src/types/compliance-service.d.ts
 src/types/compliance.ts
 src/types/componentPropExports.ts
 src/types/glob.d.ts
