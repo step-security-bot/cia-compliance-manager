@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.101**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.102**](../../../README.md)
 
 ***
 
@@ -8,4 +8,4 @@
 
 > `const` **confidentialityOptions**: `Record`\<[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md), [`CIAOptionDetails`](../interfaces/CIAOptionDetails.md)\>
 
-Defined in: [hooks/useCIAOptions.ts:185](https://github.com/Hack23/cia-compliance-manager/blob/6723306427ccc04dd3d118787ac833aded0c707b/src/hooks/useCIAOptions.ts#L185)
+Defined in: [hooks/useCIAOptions.ts:185](https://github.com/Hack23/cia-compliance-manager/blob/bfb8c9fef6315cdabac68419a9744b7771c7d28c/src/hooks/useCIAOptions.ts#L185)

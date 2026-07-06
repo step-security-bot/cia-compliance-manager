@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.101**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.102**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: MetricFormatters
 
-Defined in: [hooks/useFormattedMetrics.ts:22](https://github.com/Hack23/cia-compliance-manager/blob/6723306427ccc04dd3d118787ac833aded0c707b/src/hooks/useFormattedMetrics.ts#L22)
+Defined in: [hooks/useFormattedMetrics.ts:22](https://github.com/Hack23/cia-compliance-manager/blob/bfb8c9fef6315cdabac68419a9744b7771c7d28c/src/hooks/useFormattedMetrics.ts#L22)
 
 Formatted metric functions
 
@@ -16,7 +16,7 @@ Formatted metric functions
 
 > **currency**: (`value`) => `string`
 
-Defined in: [hooks/useFormattedMetrics.ts:28](https://github.com/Hack23/cia-compliance-manager/blob/6723306427ccc04dd3d118787ac833aded0c707b/src/hooks/useFormattedMetrics.ts#L28)
+Defined in: [hooks/useFormattedMetrics.ts:28](https://github.com/Hack23/cia-compliance-manager/blob/bfb8c9fef6315cdabac68419a9744b7771c7d28c/src/hooks/useFormattedMetrics.ts#L28)
 
 Format a number as currency
 
@@ -40,7 +40,7 @@ Formatted currency string
 
 > **percentage**: (`value`, `decimalPlaces?`) => `string`
 
-Defined in: [hooks/useFormattedMetrics.ts:36](https://github.com/Hack23/cia-compliance-manager/blob/6723306427ccc04dd3d118787ac833aded0c707b/src/hooks/useFormattedMetrics.ts#L36)
+Defined in: [hooks/useFormattedMetrics.ts:36](https://github.com/Hack23/cia-compliance-manager/blob/bfb8c9fef6315cdabac68419a9744b7771c7d28c/src/hooks/useFormattedMetrics.ts#L36)
 
 Format a decimal as percentage
 
@@ -70,7 +70,7 @@ Formatted percentage string
 
 > **number**: (`value`) => `string`
 
-Defined in: [hooks/useFormattedMetrics.ts:43](https://github.com/Hack23/cia-compliance-manager/blob/6723306427ccc04dd3d118787ac833aded0c707b/src/hooks/useFormattedMetrics.ts#L43)
+Defined in: [hooks/useFormattedMetrics.ts:43](https://github.com/Hack23/cia-compliance-manager/blob/bfb8c9fef6315cdabac68419a9744b7771c7d28c/src/hooks/useFormattedMetrics.ts#L43)
 
 Format a number with locale-specific formatting
 

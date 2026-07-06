@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.101**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.102**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getSecuritySummary**(`availabilityLevel`, `integrityLevel`, `confidentialityLevel`): `Promise`\<`Record`\<`string`, `unknown`\>\>
 
-Defined in: [services/ciaContentService.ts:1441](https://github.com/Hack23/cia-compliance-manager/blob/6723306427ccc04dd3d118787ac833aded0c707b/src/services/ciaContentService.ts#L1441)
+Defined in: [services/ciaContentService.ts:1441](https://github.com/Hack23/cia-compliance-manager/blob/bfb8c9fef6315cdabac68419a9744b7771c7d28c/src/services/ciaContentService.ts#L1441)
 
 Get security summary based on security levels
 

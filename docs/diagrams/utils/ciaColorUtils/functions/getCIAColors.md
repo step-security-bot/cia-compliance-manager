@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.101**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.102**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getCIAColors**(`component`): [`CIAColors`](../interfaces/CIAColors.md)
 
-Defined in: [utils/ciaColorUtils.ts:31](https://github.com/Hack23/cia-compliance-manager/blob/6723306427ccc04dd3d118787ac833aded0c707b/src/utils/ciaColorUtils.ts#L31)
+Defined in: [utils/ciaColorUtils.ts:31](https://github.com/Hack23/cia-compliance-manager/blob/bfb8c9fef6315cdabac68419a9744b7771c7d28c/src/utils/ciaColorUtils.ts#L31)
 
 Get consistent color classes for CIA components
 

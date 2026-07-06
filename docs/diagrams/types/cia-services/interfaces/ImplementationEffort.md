@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.101**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.102**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: ImplementationEffort
 
-Defined in: [types/cia-services.ts:138](https://github.com/Hack23/cia-compliance-manager/blob/6723306427ccc04dd3d118787ac833aded0c707b/src/types/cia-services.ts#L138)
+Defined in: [types/cia-services.ts:138](https://github.com/Hack23/cia-compliance-manager/blob/bfb8c9fef6315cdabac68419a9744b7771c7d28c/src/types/cia-services.ts#L138)
 
 Technical implementation effort details
 
@@ -16,7 +16,7 @@ Technical implementation effort details
 
 > **development**: `string`
 
-Defined in: [types/cia-services.ts:139](https://github.com/Hack23/cia-compliance-manager/blob/6723306427ccc04dd3d118787ac833aded0c707b/src/types/cia-services.ts#L139)
+Defined in: [types/cia-services.ts:139](https://github.com/Hack23/cia-compliance-manager/blob/bfb8c9fef6315cdabac68419a9744b7771c7d28c/src/types/cia-services.ts#L139)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [types/cia-services.ts:139](https://github.com/Hack23/cia-compliance
 
 > **maintenance**: `string`
 
-Defined in: [types/cia-services.ts:140](https://github.com/Hack23/cia-compliance-manager/blob/6723306427ccc04dd3d118787ac833aded0c707b/src/types/cia-services.ts#L140)
+Defined in: [types/cia-services.ts:140](https://github.com/Hack23/cia-compliance-manager/blob/bfb8c9fef6315cdabac68419a9744b7771c7d28c/src/types/cia-services.ts#L140)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: [types/cia-services.ts:140](https://github.com/Hack23/cia-compliance
 
 > **expertise**: `string`
 
-Defined in: [types/cia-services.ts:141](https://github.com/Hack23/cia-compliance-manager/blob/6723306427ccc04dd3d118787ac833aded0c707b/src/types/cia-services.ts#L141)
+Defined in: [types/cia-services.ts:141](https://github.com/Hack23/cia-compliance-manager/blob/bfb8c9fef6315cdabac68419a9744b7771c7d28c/src/types/cia-services.ts#L141)

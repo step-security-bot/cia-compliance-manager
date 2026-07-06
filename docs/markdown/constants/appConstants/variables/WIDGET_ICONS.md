@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.101**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.102**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **WIDGET\_ICONS**: `object`
 
-Defined in: [constants/appConstants.ts:323](https://github.com/Hack23/cia-compliance-manager/blob/6723306427ccc04dd3d118787ac833aded0c707b/src/constants/appConstants.ts#L323)
+Defined in: [constants/appConstants.ts:323](https://github.com/Hack23/cia-compliance-manager/blob/bfb8c9fef6315cdabac68419a9744b7771c7d28c/src/constants/appConstants.ts#L323)
 
 Widget icons for consistent UI representation
 
