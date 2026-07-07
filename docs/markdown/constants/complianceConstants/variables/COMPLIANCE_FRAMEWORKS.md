@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.102**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.103**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **COMPLIANCE\_FRAMEWORKS**: `object`
 
-Defined in: [constants/complianceConstants.ts:16](https://github.com/Hack23/cia-compliance-manager/blob/bfb8c9fef6315cdabac68419a9744b7771c7d28c/src/constants/complianceConstants.ts#L16)
+Defined in: [constants/complianceConstants.ts:16](https://github.com/Hack23/cia-compliance-manager/blob/f5d6fc63c080fb7a03445a3cfec1e22f1b9e04a0/src/constants/complianceConstants.ts#L16)
 
 Compliance frameworks supported by the application
 

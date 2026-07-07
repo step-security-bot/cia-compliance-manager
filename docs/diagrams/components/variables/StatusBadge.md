@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.102**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.103**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **StatusBadge**: `React.FC`\<[`StatusBadgeProps`](../common/StatusBadge/interfaces/StatusBadgeProps.md)\>
 
-Defined in: [components/common/StatusBadge.tsx:66](https://github.com/Hack23/cia-compliance-manager/blob/bfb8c9fef6315cdabac68419a9744b7771c7d28c/src/components/common/StatusBadge.tsx#L66)
+Defined in: [components/common/StatusBadge.tsx:66](https://github.com/Hack23/cia-compliance-manager/blob/f5d6fc63c080fb7a03445a3cfec1e22f1b9e04a0/src/components/common/StatusBadge.tsx#L66)
 
 Displays a status badge with appropriate colors
 

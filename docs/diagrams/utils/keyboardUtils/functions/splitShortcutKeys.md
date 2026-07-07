@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.102**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.103**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **splitShortcutKeys**(`keys`, `platform?`): `string`[]
 
-Defined in: [utils/keyboardUtils.ts:306](https://github.com/Hack23/cia-compliance-manager/blob/bfb8c9fef6315cdabac68419a9744b7771c7d28c/src/utils/keyboardUtils.ts#L306)
+Defined in: [utils/keyboardUtils.ts:306](https://github.com/Hack23/cia-compliance-manager/blob/f5d6fc63c080fb7a03445a3cfec1e22f1b9e04a0/src/utils/keyboardUtils.ts#L306)
 
 Split formatted shortcut into individual keys for badge display
 
