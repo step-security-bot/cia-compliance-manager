@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.103**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.104**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > **WidgetProps** = [`WidgetBaseProps`](../interfaces/WidgetBaseProps.md)
 
-Defined in: [types/widgets.ts:105](https://github.com/Hack23/cia-compliance-manager/blob/f5d6fc63c080fb7a03445a3cfec1e22f1b9e04a0/src/types/widgets.ts#L105)
+Defined in: [types/widgets.ts:105](https://github.com/Hack23/cia-compliance-manager/blob/c7d5254d855bc10f378adc2213f7487f1b036e2d/src/types/widgets.ts#L105)
 
 Alias type for WidgetBaseProps to maintain backward compatibility

@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.103**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.104**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: CostResult
 
-Defined in: [utils/costCalculationUtils.ts:29](https://github.com/Hack23/cia-compliance-manager/blob/f5d6fc63c080fb7a03445a3cfec1e22f1b9e04a0/src/utils/costCalculationUtils.ts#L29)
+Defined in: [utils/costCalculationUtils.ts:29](https://github.com/Hack23/cia-compliance-manager/blob/c7d5254d855bc10f378adc2213f7487f1b036e2d/src/utils/costCalculationUtils.ts#L29)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [utils/costCalculationUtils.ts:29](https://github.com/Hack23/cia-com
 
 > **capex**: `number`
 
-Defined in: [utils/costCalculationUtils.ts:30](https://github.com/Hack23/cia-compliance-manager/blob/f5d6fc63c080fb7a03445a3cfec1e22f1b9e04a0/src/utils/costCalculationUtils.ts#L30)
+Defined in: [utils/costCalculationUtils.ts:30](https://github.com/Hack23/cia-compliance-manager/blob/c7d5254d855bc10f378adc2213f7487f1b036e2d/src/utils/costCalculationUtils.ts#L30)
 
 ***
 
@@ -22,4 +22,4 @@ Defined in: [utils/costCalculationUtils.ts:30](https://github.com/Hack23/cia-com
 
 > **opex**: `number`
 
-Defined in: [utils/costCalculationUtils.ts:31](https://github.com/Hack23/cia-compliance-manager/blob/f5d6fc63c080fb7a03445a3cfec1e22f1b9e04a0/src/utils/costCalculationUtils.ts#L31)
+Defined in: [utils/costCalculationUtils.ts:31](https://github.com/Hack23/cia-compliance-manager/blob/c7d5254d855bc10f378adc2213f7487f1b036e2d/src/utils/costCalculationUtils.ts#L31)

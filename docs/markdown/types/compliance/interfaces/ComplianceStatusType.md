@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.103**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.104**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: ComplianceStatusType
 
-Defined in: [types/compliance.ts:27](https://github.com/Hack23/cia-compliance-manager/blob/f5d6fc63c080fb7a03445a3cfec1e22f1b9e04a0/src/types/compliance.ts#L27)
+Defined in: [types/compliance.ts:27](https://github.com/Hack23/cia-compliance-manager/blob/c7d5254d855bc10f378adc2213f7487f1b036e2d/src/types/compliance.ts#L27)
 
 Interface for compliance status used in SecuritySummaryWidget
 Represents a simplified view of compliance status for UI display
@@ -17,7 +17,7 @@ Represents a simplified view of compliance status for UI display
 
 > `optional` **status?**: `string`
 
-Defined in: [types/compliance.ts:29](https://github.com/Hack23/cia-compliance-manager/blob/f5d6fc63c080fb7a03445a3cfec1e22f1b9e04a0/src/types/compliance.ts#L29)
+Defined in: [types/compliance.ts:29](https://github.com/Hack23/cia-compliance-manager/blob/c7d5254d855bc10f378adc2213f7487f1b036e2d/src/types/compliance.ts#L29)
 
 Optional status text
 
@@ -27,7 +27,7 @@ Optional status text
 
 > `optional` **complianceScore?**: `number`
 
-Defined in: [types/compliance.ts:31](https://github.com/Hack23/cia-compliance-manager/blob/f5d6fc63c080fb7a03445a3cfec1e22f1b9e04a0/src/types/compliance.ts#L31)
+Defined in: [types/compliance.ts:31](https://github.com/Hack23/cia-compliance-manager/blob/c7d5254d855bc10f378adc2213f7487f1b036e2d/src/types/compliance.ts#L31)
 
 Compliance score (0-100)
 
@@ -37,7 +37,7 @@ Compliance score (0-100)
 
 > **compliantFrameworks**: `string`[]
 
-Defined in: [types/compliance.ts:33](https://github.com/Hack23/cia-compliance-manager/blob/f5d6fc63c080fb7a03445a3cfec1e22f1b9e04a0/src/types/compliance.ts#L33)
+Defined in: [types/compliance.ts:33](https://github.com/Hack23/cia-compliance-manager/blob/c7d5254d855bc10f378adc2213f7487f1b036e2d/src/types/compliance.ts#L33)
 
 List of fully compliant frameworks
 
@@ -47,7 +47,7 @@ List of fully compliant frameworks
 
 > **partiallyCompliantFrameworks**: `string`[]
 
-Defined in: [types/compliance.ts:35](https://github.com/Hack23/cia-compliance-manager/blob/f5d6fc63c080fb7a03445a3cfec1e22f1b9e04a0/src/types/compliance.ts#L35)
+Defined in: [types/compliance.ts:35](https://github.com/Hack23/cia-compliance-manager/blob/c7d5254d855bc10f378adc2213f7487f1b036e2d/src/types/compliance.ts#L35)
 
 List of partially compliant frameworks
 
@@ -57,7 +57,7 @@ List of partially compliant frameworks
 
 > `optional` **nonCompliantFrameworks?**: `string`[]
 
-Defined in: [types/compliance.ts:37](https://github.com/Hack23/cia-compliance-manager/blob/f5d6fc63c080fb7a03445a3cfec1e22f1b9e04a0/src/types/compliance.ts#L37)
+Defined in: [types/compliance.ts:37](https://github.com/Hack23/cia-compliance-manager/blob/c7d5254d855bc10f378adc2213f7487f1b036e2d/src/types/compliance.ts#L37)
 
 List of non-compliant frameworks
 
@@ -67,6 +67,6 @@ List of non-compliant frameworks
 
 > `optional` **remediationSteps?**: `string`[]
 
-Defined in: [types/compliance.ts:39](https://github.com/Hack23/cia-compliance-manager/blob/f5d6fc63c080fb7a03445a3cfec1e22f1b9e04a0/src/types/compliance.ts#L39)
+Defined in: [types/compliance.ts:39](https://github.com/Hack23/cia-compliance-manager/blob/c7d5254d855bc10f378adc2213f7487f1b036e2d/src/types/compliance.ts#L39)
 
 Recommended remediation steps
