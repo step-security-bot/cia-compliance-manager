@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.104**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.105**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **useWidgetError**(`widgetName`): [`WidgetErrorState`](../interfaces/WidgetErrorState.md)
 
-Defined in: [hooks/useWidgetError.ts:80](https://github.com/Hack23/cia-compliance-manager/blob/c7d5254d855bc10f378adc2213f7487f1b036e2d/src/hooks/useWidgetError.ts#L80)
+Defined in: [hooks/useWidgetError.ts:80](https://github.com/Hack23/cia-compliance-manager/blob/337ef8ec401e219f25fa6640ab05b7671e3a9819/src/hooks/useWidgetError.ts#L80)
 
 Custom hook for consistent widget error handling
 

@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.104**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.105**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > `const` **ALL\_SECURITY\_LEVELS**: [`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md)[]
 
-Defined in: [constants/securityLevels.ts:97](https://github.com/Hack23/cia-compliance-manager/blob/c7d5254d855bc10f378adc2213f7487f1b036e2d/src/constants/securityLevels.ts#L97)
+Defined in: [constants/securityLevels.ts:97](https://github.com/Hack23/cia-compliance-manager/blob/337ef8ec401e219f25fa6640ab05b7671e3a9819/src/constants/securityLevels.ts#L97)
 
 All security levels as array for mapping
