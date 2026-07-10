@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.105**](../../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.106**](../../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **default**: `React.FC`\<`ResourceCardProps`\>
 
-Defined in: [components/common/ResourceCard.tsx:65](https://github.com/Hack23/cia-compliance-manager/blob/337ef8ec401e219f25fa6640ab05b7671e3a9819/src/components/common/ResourceCard.tsx#L65)
+Defined in: [components/common/ResourceCard.tsx:65](https://github.com/Hack23/cia-compliance-manager/blob/122721fe21088cc17896bc69556bad86b47a1c48/src/components/common/ResourceCard.tsx#L65)
 
 Compact, color-coded resource card.
 

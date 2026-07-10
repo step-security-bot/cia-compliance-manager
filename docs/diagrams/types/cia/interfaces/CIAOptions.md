@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.105**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.106**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: CIAOptions
 
-Defined in: [types/cia.ts:474](https://github.com/Hack23/cia-compliance-manager/blob/337ef8ec401e219f25fa6640ab05b7671e3a9819/src/types/cia.ts#L474)
+Defined in: [types/cia.ts:474](https://github.com/Hack23/cia-compliance-manager/blob/122721fe21088cc17896bc69556bad86b47a1c48/src/types/cia.ts#L474)
 
 Available options for each CIA pillar
 
@@ -29,7 +29,7 @@ const options: CIAOptions = {
 
 > **availability**: [`SecurityLevel`](../type-aliases/SecurityLevel.md)[]
 
-Defined in: [types/cia.ts:476](https://github.com/Hack23/cia-compliance-manager/blob/337ef8ec401e219f25fa6640ab05b7671e3a9819/src/types/cia.ts#L476)
+Defined in: [types/cia.ts:476](https://github.com/Hack23/cia-compliance-manager/blob/122721fe21088cc17896bc69556bad86b47a1c48/src/types/cia.ts#L476)
 
 Available security level options for availability
 
@@ -39,7 +39,7 @@ Available security level options for availability
 
 > **integrity**: [`SecurityLevel`](../type-aliases/SecurityLevel.md)[]
 
-Defined in: [types/cia.ts:479](https://github.com/Hack23/cia-compliance-manager/blob/337ef8ec401e219f25fa6640ab05b7671e3a9819/src/types/cia.ts#L479)
+Defined in: [types/cia.ts:479](https://github.com/Hack23/cia-compliance-manager/blob/122721fe21088cc17896bc69556bad86b47a1c48/src/types/cia.ts#L479)
 
 Available security level options for integrity
 
@@ -49,6 +49,6 @@ Available security level options for integrity
 
 > **confidentiality**: [`SecurityLevel`](../type-aliases/SecurityLevel.md)[]
 
-Defined in: [types/cia.ts:482](https://github.com/Hack23/cia-compliance-manager/blob/337ef8ec401e219f25fa6640ab05b7671e3a9819/src/types/cia.ts#L482)
+Defined in: [types/cia.ts:482](https://github.com/Hack23/cia-compliance-manager/blob/122721fe21088cc17896bc69556bad86b47a1c48/src/types/cia.ts#L482)
 
 Available security level options for confidentiality

@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.105**](../../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.106**](../../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: WidgetErrorBoundaryProps
 
-Defined in: [components/common/WidgetErrorBoundary.tsx:8](https://github.com/Hack23/cia-compliance-manager/blob/337ef8ec401e219f25fa6640ab05b7671e3a9819/src/components/common/WidgetErrorBoundary.tsx#L8)
+Defined in: [components/common/WidgetErrorBoundary.tsx:8](https://github.com/Hack23/cia-compliance-manager/blob/122721fe21088cc17896bc69556bad86b47a1c48/src/components/common/WidgetErrorBoundary.tsx#L8)
 
 Props for WidgetErrorBoundary component
 
@@ -16,7 +16,7 @@ Props for WidgetErrorBoundary component
 
 > **children**: `ReactNode`
 
-Defined in: [components/common/WidgetErrorBoundary.tsx:12](https://github.com/Hack23/cia-compliance-manager/blob/337ef8ec401e219f25fa6640ab05b7671e3a9819/src/components/common/WidgetErrorBoundary.tsx#L12)
+Defined in: [components/common/WidgetErrorBoundary.tsx:12](https://github.com/Hack23/cia-compliance-manager/blob/122721fe21088cc17896bc69556bad86b47a1c48/src/components/common/WidgetErrorBoundary.tsx#L12)
 
 Child components to wrap with error boundary
 
@@ -26,7 +26,7 @@ Child components to wrap with error boundary
 
 > `optional` **fallback?**: `ReactNode`
 
-Defined in: [components/common/WidgetErrorBoundary.tsx:17](https://github.com/Hack23/cia-compliance-manager/blob/337ef8ec401e219f25fa6640ab05b7671e3a9819/src/components/common/WidgetErrorBoundary.tsx#L17)
+Defined in: [components/common/WidgetErrorBoundary.tsx:17](https://github.com/Hack23/cia-compliance-manager/blob/122721fe21088cc17896bc69556bad86b47a1c48/src/components/common/WidgetErrorBoundary.tsx#L17)
 
 Optional custom fallback component to display on error
 
@@ -36,7 +36,7 @@ Optional custom fallback component to display on error
 
 > `optional` **onError?**: (`error`, `errorInfo`) => `void`
 
-Defined in: [components/common/WidgetErrorBoundary.tsx:22](https://github.com/Hack23/cia-compliance-manager/blob/337ef8ec401e219f25fa6640ab05b7671e3a9819/src/components/common/WidgetErrorBoundary.tsx#L22)
+Defined in: [components/common/WidgetErrorBoundary.tsx:22](https://github.com/Hack23/cia-compliance-manager/blob/122721fe21088cc17896bc69556bad86b47a1c48/src/components/common/WidgetErrorBoundary.tsx#L22)
 
 Optional callback when an error is caught
 
@@ -60,7 +60,7 @@ Optional callback when an error is caught
 
 > `optional` **widgetName?**: `string`
 
-Defined in: [components/common/WidgetErrorBoundary.tsx:27](https://github.com/Hack23/cia-compliance-manager/blob/337ef8ec401e219f25fa6640ab05b7671e3a9819/src/components/common/WidgetErrorBoundary.tsx#L27)
+Defined in: [components/common/WidgetErrorBoundary.tsx:27](https://github.com/Hack23/cia-compliance-manager/blob/122721fe21088cc17896bc69556bad86b47a1c48/src/components/common/WidgetErrorBoundary.tsx#L27)
 
 Optional widget name for error messages
 
@@ -70,6 +70,6 @@ Optional widget name for error messages
 
 > `optional` **testId?**: `string`
 
-Defined in: [components/common/WidgetErrorBoundary.tsx:32](https://github.com/Hack23/cia-compliance-manager/blob/337ef8ec401e219f25fa6640ab05b7671e3a9819/src/components/common/WidgetErrorBoundary.tsx#L32)
+Defined in: [components/common/WidgetErrorBoundary.tsx:32](https://github.com/Hack23/cia-compliance-manager/blob/122721fe21088cc17896bc69556bad86b47a1c48/src/components/common/WidgetErrorBoundary.tsx#L32)
 
 Optional test ID for automated testing

@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.105**](../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.106**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > `const` **IMPLEMENTATION\_COSTS**: `Record`\<[`SecurityLevel`](../../types/cia/type-aliases/SecurityLevel.md), \{ `developmentEffort`: `string`; `maintenance`: `string`; `expertise`: `string`; \}\>
 
-Defined in: [constants/coreConstants.ts:226](https://github.com/Hack23/cia-compliance-manager/blob/337ef8ec401e219f25fa6640ab05b7671e3a9819/src/constants/coreConstants.ts#L226)
+Defined in: [constants/coreConstants.ts:226](https://github.com/Hack23/cia-compliance-manager/blob/122721fe21088cc17896bc69556bad86b47a1c48/src/constants/coreConstants.ts#L226)
 
 Implementation cost estimates by security level.
 

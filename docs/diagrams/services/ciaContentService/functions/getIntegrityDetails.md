@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.105**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.106**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getIntegrityDetails**(`level`): `Promise`\<[`CIADetails`](../../../types/cia-services/interfaces/CIADetails.md)\>
 
-Defined in: [services/ciaContentService.ts:1511](https://github.com/Hack23/cia-compliance-manager/blob/337ef8ec401e219f25fa6640ab05b7671e3a9819/src/services/ciaContentService.ts#L1511)
+Defined in: [services/ciaContentService.ts:1511](https://github.com/Hack23/cia-compliance-manager/blob/122721fe21088cc17896bc69556bad86b47a1c48/src/services/ciaContentService.ts#L1511)
 
 Get integrity details based on security level
 
