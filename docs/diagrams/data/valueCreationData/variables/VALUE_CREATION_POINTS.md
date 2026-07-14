@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.106**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.107**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > `const` **VALUE\_CREATION\_POINTS**: `Record`\<[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md), `string`[]\>
 
-Defined in: [data/valueCreationData.ts:158](https://github.com/Hack23/cia-compliance-manager/blob/122721fe21088cc17896bc69556bad86b47a1c48/src/data/valueCreationData.ts#L158)
+Defined in: [data/valueCreationData.ts:158](https://github.com/Hack23/cia-compliance-manager/blob/136c4eac67174302169f1de284a10b51af1f24f5/src/data/valueCreationData.ts#L158)
 
 Value creation data by security level

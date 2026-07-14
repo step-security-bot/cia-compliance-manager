@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.106**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.107**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getAvailabilityUptimeTarget**(`level`): `string`
 
-Defined in: [utils/implementationUtils.ts:147](https://github.com/Hack23/cia-compliance-manager/blob/122721fe21088cc17896bc69556bad86b47a1c48/src/utils/implementationUtils.ts#L147)
+Defined in: [utils/implementationUtils.ts:147](https://github.com/Hack23/cia-compliance-manager/blob/136c4eac67174302169f1de284a10b51af1f24f5/src/utils/implementationUtils.ts#L147)
 
 Gets uptime target text for availability security level
 

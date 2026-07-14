@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.106**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.107**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getCIAOptionsForComponent**(`component`): `Record`\<[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md), [`CIADetails`](../../../types/cia-services/interfaces/CIADetails.md)\>
 
-Defined in: [data/ciaOptionsData.ts:309](https://github.com/Hack23/cia-compliance-manager/blob/122721fe21088cc17896bc69556bad86b47a1c48/src/data/ciaOptionsData.ts#L309)
+Defined in: [data/ciaOptionsData.ts:309](https://github.com/Hack23/cia-compliance-manager/blob/136c4eac67174302169f1de284a10b51af1f24f5/src/data/ciaOptionsData.ts#L309)
 
 Get CIA options for a specific component
 

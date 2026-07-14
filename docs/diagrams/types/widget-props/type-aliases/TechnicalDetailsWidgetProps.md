@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.106**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.107**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **TechnicalDetailsWidgetProps** = [`AllCIAComponentsProps`](../interfaces/AllCIAComponentsProps.md)
 
-Defined in: [types/widget-props.ts:714](https://github.com/Hack23/cia-compliance-manager/blob/122721fe21088cc17896bc69556bad86b47a1c48/src/types/widget-props.ts#L714)
+Defined in: [types/widget-props.ts:714](https://github.com/Hack23/cia-compliance-manager/blob/136c4eac67174302169f1de284a10b51af1f24f5/src/types/widget-props.ts#L714)
 
 Props for TechnicalDetailsWidget component
 

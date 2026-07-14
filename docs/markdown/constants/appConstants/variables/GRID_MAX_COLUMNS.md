@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.106**](../../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.107**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > `const` **GRID\_MAX\_COLUMNS**: `12` = `12`
 
-Defined in: [constants/appConstants.ts:454](https://github.com/Hack23/cia-compliance-manager/blob/122721fe21088cc17896bc69556bad86b47a1c48/src/constants/appConstants.ts#L454)
+Defined in: [constants/appConstants.ts:454](https://github.com/Hack23/cia-compliance-manager/blob/136c4eac67174302169f1de284a10b51af1f24f5/src/constants/appConstants.ts#L454)
 
 Maximum column count for grid layout

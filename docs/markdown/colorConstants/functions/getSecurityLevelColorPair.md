@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.106**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.107**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getSecurityLevelColorPair**(`level`): [`SecurityLevelColorPair`](../interfaces/SecurityLevelColorPair.md)
 
-Defined in: [constants/colorConstants.ts:174](https://github.com/Hack23/cia-compliance-manager/blob/122721fe21088cc17896bc69556bad86b47a1c48/src/constants/colorConstants.ts#L174)
+Defined in: [constants/colorConstants.ts:174](https://github.com/Hack23/cia-compliance-manager/blob/136c4eac67174302169f1de284a10b51af1f24f5/src/constants/colorConstants.ts#L174)
 
 Get security level color pair by level name.
 

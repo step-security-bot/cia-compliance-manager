@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.106**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.107**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **isValidKey**(`value`): value is string \| number \| symbol
 
-Defined in: [utils/typeGuards.ts:888](https://github.com/Hack23/cia-compliance-manager/blob/122721fe21088cc17896bc69556bad86b47a1c48/src/utils/typeGuards.ts#L888)
+Defined in: [utils/typeGuards.ts:888](https://github.com/Hack23/cia-compliance-manager/blob/136c4eac67174302169f1de284a10b51af1f24f5/src/utils/typeGuards.ts#L888)
 
 Check if a value can be used as an object key
 

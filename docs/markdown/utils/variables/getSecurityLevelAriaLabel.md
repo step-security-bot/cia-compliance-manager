@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — Markdown Documentation v1.1.106**](../../README.md)
+[**CIA Compliance Manager — Markdown Documentation v1.1.107**](../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getSecurityLevelAriaLabel**: (`level`, `component`) => `string`
 
-Defined in: [utils/index.ts:31](https://github.com/Hack23/cia-compliance-manager/blob/122721fe21088cc17896bc69556bad86b47a1c48/src/utils/index.ts#L31)
+Defined in: [utils/index.ts:31](https://github.com/Hack23/cia-compliance-manager/blob/136c4eac67174302169f1de284a10b51af1f24f5/src/utils/index.ts#L31)
 
 Create an accessible label for a security level
 

@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.106**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.107**](../../../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getComponentIcon**(`component`): `string`
 
-Defined in: [constants/uiConstants.ts:67](https://github.com/Hack23/cia-compliance-manager/blob/122721fe21088cc17896bc69556bad86b47a1c48/src/constants/uiConstants.ts#L67)
+Defined in: [constants/uiConstants.ts:67](https://github.com/Hack23/cia-compliance-manager/blob/136c4eac67174302169f1de284a10b51af1f24f5/src/constants/uiConstants.ts#L67)
 
 Get icon for a specific CIA component
 

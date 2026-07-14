@@ -1,4 +1,4 @@
-[**CIA Compliance Manager — UML Diagrams v1.1.106**](../../../README.md)
+[**CIA Compliance Manager — UML Diagrams v1.1.107**](../../../README.md)
 
 ***
 
@@ -8,6 +8,6 @@
 
 > `const` **CONFIDENTIALITY\_REQUIREMENTS**: `Record`\<`string`, `Record`\<[`SecurityLevel`](../../../types/cia/type-aliases/SecurityLevel.md), `string`[]\>\>
 
-Defined in: [constants/complianceConstants.ts:156](https://github.com/Hack23/cia-compliance-manager/blob/122721fe21088cc17896bc69556bad86b47a1c48/src/constants/complianceConstants.ts#L156)
+Defined in: [constants/complianceConstants.ts:156](https://github.com/Hack23/cia-compliance-manager/blob/136c4eac67174302169f1de284a10b51af1f24f5/src/constants/complianceConstants.ts#L156)
 
 Framework requirements by security level for confidentiality
